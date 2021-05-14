@@ -10,7 +10,7 @@
             <h5>{{$tanggalhariini}}</h5>
         </b>
     </div>
-    <h4><b>Periode &nbsp;{{$periodess->nama_periode}}</b></h4>
+    <h4><b>Periode : &nbsp; {{ $periodess->nama_periode ?? '' }}</b></h4>
     <!-- Content Row -->
     <div class="row">
 

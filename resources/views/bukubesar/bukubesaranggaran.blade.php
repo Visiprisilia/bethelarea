@@ -29,10 +29,9 @@
                 </div>
             </form>
         </div>
-      
-        &nbsp; Nama Akun : {{$coas->nama_akun}} <br> 
-        &nbsp; Periode : {{$periodes->nama_periode}}
-      
+        &nbsp; Nama Akun : {{$coas->nama_akun ?? '' }} <br> 
+        &nbsp; Periode : {{$periodes->nama_periode ?? '' }}
+        
         <div class="card-body">
             <div class="table-responsive" id="table">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

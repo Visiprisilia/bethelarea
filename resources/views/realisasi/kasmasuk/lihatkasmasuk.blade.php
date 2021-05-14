@@ -49,10 +49,10 @@
                                                 <label for="exampleFormControlInput1">Keterangan</label>
                                                 <input class="form-control" id="keterangan" name="keterangan" disabled value="{{$item->keterangan}}"/>
                                             </div>      
-                                            <div class="mb-3">
+                                            <!-- <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Akun</label>
                                                 <input class="form-control"  id="akun" name="akun" disabled value="{{$item->nama_akun}}"/>
-                                            </div>                           
+                                            </div>                            -->
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Sumber</label>
                                                 <input class="form-control"  id="sumber" name="sumber" disabled value="{{$item->nama_sumber}}"/>

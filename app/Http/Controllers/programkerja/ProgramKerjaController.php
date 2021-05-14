@@ -21,7 +21,7 @@ class ProgramKerjaController extends Controller
 	{
 		$programkerja = Periode::orderBy('created_at', 'desc')->get();
 		$coa = Coa::orderBy('created_at', 'desc')->get();
-		return view('programkerja/programkerja/programkerja', compact('programkerja', 'coa'));
+		return view('programkerja/programkerja/programkerja2', compact('programkerja', 'coa'));
 	}
 	public function viewprogramkerja(Request $request)
 	{
@@ -59,7 +59,7 @@ class ProgramKerjaController extends Controller
 
 		$validator = Validator::make($request->all(), [
 
-			'pob' => 'required',
+			// 'pob' => 'required',
 			'periode' => 'required',
 			// 'kode_akun' => 'required|exists:akuns,id',
 			'kode_akun' => 'unique:akuns',
@@ -73,7 +73,7 @@ class ProgramKerjaController extends Controller
 			'keterangan_proker' => 'required'
 		], [
 			"kode_akun.unique" => "Kode akun tersebut sudah di anggarkan",
-			"pob.required" => "Program Kerja tidak boleh kosong",
+			// "pob.required" => "Program Kerja tidak boleh kosong",
 			"periode.required" => "Periode tidak boleh kosong",
 			"nama_proker.required" => "Nama Program Kerja tidak boleh kosong",
 			"penanggungjawab.required" => "Penanggung Jawab tidak boleh kosong",
@@ -106,6 +106,8 @@ class ProgramKerjaController extends Controller
 
 		//$check = Periode kolom counter_proker +1, sesuai dengan $periode
 		//setelah menambah proker, ubah di tabel periode untuk kolom counter_proker =+1 sesuai dengan $periode
+		$anggaran = $request->anggaran;
+		$anggarans = str_replace(array('','.'),'',$anggaran);
 		$data_proker = [
 			'kode_proker' => $kode_proker,
 			'periode' => $periode,
@@ -115,7 +117,7 @@ class ProgramKerjaController extends Controller
 			'waktu_selesai' => $request->waktu_selesai,
 			'tujuan' => $request->tujuan,
 			'indikator' => $request->indikator,
-			'anggaran' => $request->anggaran,
+			'anggaran' => $anggarans,
 			'keterangan_proker' => $request->keterangan_proker,
 			'pob' => 'Pendapatan',
 			'status_proker' => 'Menunggu Persetujuan'
@@ -137,7 +139,8 @@ class ProgramKerjaController extends Controller
 		// 	);
 		// 	return redirect('/tambahprogramkerja')->withErrors($validator);
 		// }
-
+		$jumlah = $request->jumlah;
+		$jumlahs = str_replace(array('','.'),'',$jumlah);
 		$no_jumlah = 0;
 		foreach ($kode_akun as $i) {
 			$data = [
@@ -145,7 +148,7 @@ class ProgramKerjaController extends Controller
 				'kode_akun' => $i,
 				'penanggungjawab' => $penanggungjawab,
 				'periode' => $periode,
-				'jumlah' => $request->jumlah[$no_jumlah],
+				'jumlah' => $jumlahs[$no_jumlah],
 			];
 			$no_jumlah++;
 
@@ -163,7 +166,7 @@ class ProgramKerjaController extends Controller
 
 		$validator = Validator::make($request->all(), [
 
-			'pob' => 'required',
+			// 'pob' => 'required',
 			'periode' => 'required',
 			// 'kode_akun' => 'required|exists:akuns,id',
 			'kode_akun' => 'unique:akuns',
@@ -177,7 +180,7 @@ class ProgramKerjaController extends Controller
 			'keterangan_proker' => 'required'
 		], [
 			"kode_akun.unique" => "Kode akun tersebut sudah di anggarkan",
-			"pob.required" => "Program Kerja tidak boleh kosong",
+			// "pob.required" => "Program Kerja tidak boleh kosong",
 			"periode.required" => "Periode tidak boleh kosong",
 			"nama_proker.required" => "Nama Program Kerja tidak boleh kosong",
 			"penanggungjawab.required" => "Penanggung Jawab tidak boleh kosong",
@@ -210,6 +213,8 @@ class ProgramKerjaController extends Controller
 
 		//$check = Periode kolom counter_proker +1, sesuai dengan $periode
 		//setelah menambah proker, ubah di tabel periode untuk kolom counter_proker =+1 sesuai dengan $periode
+		$anggaran = $request->anggaran;
+		$anggarans = str_replace(array('','.'),'',$anggaran);
 		$data_proker = [
 			'kode_proker' => $kode_proker,
 			'periode' => $periode,
@@ -219,7 +224,7 @@ class ProgramKerjaController extends Controller
 			'waktu_selesai' => $request->waktu_selesai,
 			'tujuan' => $request->tujuan,
 			'indikator' => $request->indikator,
-			'anggaran' => $request->anggaran,
+			'anggaran' => $anggarans,
 			'keterangan_proker' => $request->keterangan_proker,
 			'pob' => 'Biaya',
 			'status_proker' => 'Menunggu Persetujuan'
@@ -242,6 +247,8 @@ class ProgramKerjaController extends Controller
 		// 	return redirect('/tambahprogramkerja')->withErrors($validator);
 		// }
 
+		$jumlah = $request->jumlah;
+		$jumlahs = str_replace(array('','.'),'',$jumlah);
 		$no_jumlah = 0;
 		foreach ($kode_akun as $i) {
 			$data = [
@@ -249,13 +256,14 @@ class ProgramKerjaController extends Controller
 				'kode_akun' => $i,
 				'penanggungjawab' => $penanggungjawab,
 				'periode' => $periode,
-				'jumlah' => $request->jumlah[$no_jumlah],
+				'jumlah' => $jumlahs[$no_jumlah],
 			];
 			$no_jumlah++;
 
 			Akuns::create($data);
 			// return $periode;
 		}
+
 
 		Periode::where('kode_periode', $periode)->update(['counter_proker' => $check + 1]);
 
@@ -286,6 +294,7 @@ class ProgramKerjaController extends Controller
 	public function updateprogramkerja(Request $request)
 	{
 		// var_dump($request);
+		
 		$programkerja = ProgramKerja::where('kode_proker', $request->kode_proker)->update([
 			'nama_proker' => $request->nama_proker,
 			'penanggungjawab' => $request->penanggungjawab,

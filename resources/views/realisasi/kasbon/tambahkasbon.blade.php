@@ -40,7 +40,7 @@
                                 <!-- Component Preview-->
                                 <div class="sbp-preview">
                                     <div class="sbp-preview-content">
-                                        <form action="/simpankasbon" method="post">
+                                        <form action="/simpankasbon" method="post" enctype="multipart/form-data">
                                             @csrf
                                             <!-- <div class="mb-3">
                                                 <label for="exampleFormControlInput1">No Bukti</label>
@@ -91,46 +91,45 @@
                                                     <label class="mb-1" for="inputFirstName">Anggaran</label>
                                                     <input class="form-control" readonly id="anggaran_bon" name="anggaran_bon" placeholder="Masukkan Anggaran"  />
                                                 </div> -->
-                                                <div class="col-md-4">
+                                                <div class="col-md-3">
                                                         <label class="mb-1" for="inputFirstName">Saldo Kas</label>
                                                         <input class="form-control" readonly id="totalkas" name="totalkas" value="{{$totalkas}}"  />
                                                     </div>
-                                                <div class="col-md-4" id="anggaran_bon">
-                                                    <label class="mb-1" for="inputFirstName">Anggaran</label>
-                                                    <!-- <input class="form-control" readonly id="anggaran" name="anggaran"   /> -->
+                                                <div class="col-md-3" >
+                                                    <label class="mb-1" for="inputFirstName">Anggaran Proker</label>
+                                                    <input class="form-control" readonly id="anggarans" name="anggarans"   />
                                                 </div>
-                                                <div class="col-md-4">
+                                                <div class="col-md-3">
+                                                    <label class="mb-1" for="inputFirstName">Anggaran Akun</label>
+                                                    <input class="form-control" readonly id="anggaran_bon" name="anggaran_bon"   />
+                                                </div>
+                                                <div class="col-md-3">
                                                     <label class="mb-1" for="inputFirstName">Jumlah</label>
-                                                    <input class="form-control" type-currency="IDR" id="jumlah_bon" name="jumlah_bon" placeholder="Masukkan Jumlah"  />
+                                                    <input class="form-control" id="jumlah_bon" name="jumlah_bon" placeholder="Masukkan Jumlah"  />
                                                 </div>
                                             </div>
-                                            <div class="row gx-3 mb-3">
-                                                <!-- <div class="col-md-6">
-                                                    <label class="mb-1" for="inputFirstName">Penanggung Jawab</label>
-                                                    <input class="form-control" id="penanggungjawab_bon" name="penanggungjawab_bon" placeholder="Masukkan penanggung jawab"  />
-                                                </div> -->
+                                         
+                                                <div class="row gx-3 mb-3">                                               
                                                 <div class="col-md-6">
-                                                    <label class="mb-1" for="inputLastName">Penanggung Jawab</label>
-                                                    <select class="form-control" id="penanggungjawab_bon" name="penanggungjawab_bon">
-                                                        <option  value>Pilih Penanggung Jawab</option>
-                                                        @foreach ($pegawai as $item)
-                                                        <option value="{{ $item->niy}}">{{$item->nama}}</option>
-                                                        @endforeach
-                                                    </select>
+                                                    <label class="mb-1" for="inputFirstName">Penanggung Jawab :</label>                                              
+                                                    <input class="form-control" readonly id="penanggungjawab_bon"  name="penanggungjawab_bon" placeholder="Penanggung jawab" />
                                                 </div>
-                                                <!-- <div class="col-md-6">
-                                                    <label class="mb-1" for="inputLastName">Tanggal Pertanggungjawaban</label>
-                                                    <input class="form-control" type="date" id="tanggal_ptj" name="tanggal_ptj" placeholder="Masukkan Proker" required />
-                                                </div> -->
+                                                <div class="col-md-6" >
+                                                    <label class="mb-1" for="inputFirstName"></label>
+                                                    <input class="form-control" readonly id="penanggungjawabs" name="penanggungjawabs"  placeholder="Penanggung jawab"  />                                              
+                                                </div>
                                             </div>
-                                            <!-- <div class="mb-3">
-                                            <label for="inputLastName">Status</label>
-                                                <select class="form-control" id="status_bon" name="status_bon" required>
-                                                    <option  value>Pilih Status</option>
-                                                    <option>Sudah Dipertanggungjawabkan</option>
-                                                    <option>Belum Dipertanggungjawabkan</option>
-                                                </select>                                              
-                                            </div> -->
+                                                <div class="row gx-3 mb-3">
+                                                <div class="col-md-6">
+                                                    <label class="mb-1" for="inputFirstName">Bukti</label>
+                                                    <input class="form-control" type="file" id="bukti_bon" name="bukti_bon" placeholder="Masukkan Jumlah" />
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="mb-1" for="inputLastName">Dibayar Kepada</label>
+                                                    <input class="form-control" id="dibayarkepada" name="dibayarkepada" placeholder="Dibayar Kepada" required />
+                                                </div>
+                                            </div>
+                                     
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Tambah</button>
                                                 <a href="{{url('/kasbon')}}" class="btn btn-danger">Batal</a>

@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('kas_bon', function (Blueprint $table) {
-            $table->string('no_buktibon')->primary();
+            $table->string('no_bukti')->primary();
             $table->string('periode')->nullable();
             $table->string('tanggal_pengajuan')->nullable();
             $table->string('keterangan_bon')->nullable();

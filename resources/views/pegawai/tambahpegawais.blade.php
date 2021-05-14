@@ -142,9 +142,17 @@
                                                     <label class="mb-1" for="inputLastName">SK Pegawai</label>
                                                     <input class="form-control" type="file" id="file_suket" name="file_suket" />
                                                 </div>
+                                                <div class="col-md-4" id="tglpst" style="display: none;">
+                                                    <label class="mb-1" for="inputLastName">Tanggal PST</label>
+                                                    <input class="form-control" type="date" id="tanggal_ppt" name="tanggal_ppt" />
+                                                </div>
+                                                <div class="col-md-4" id="skstaf" style="display: none;">
+                                                    <label class="mb-1" for="inputLastName">SK Staf</label>
+                                                    <input class="form-control" type="file" id="file_suketstaf" name="file_suketstaf" />
+                                                </div>
                                             </div>
                                             <div class="row gx-3 mb-3">
-                                                <div class="col-md-4" >
+                                                <div class="col-md-4">
                                                     <label class="mb-1" for="inputFirstName">Jabatan</label>
                                                     <input class="form-control" id="jabatan" name="jabatan" placeholder="Masukkan Jabatan" />
                                                 </div>
@@ -200,13 +208,13 @@
 
         //   if(val=="murid"{})  
         // alert(val);
-    })</script>
-    <script>
+    })
+
     $(document).on('change', '#status_kepegawaian', function() {
         var val = $('#status_kepegawaian option').filter(':selected').val() == "Guru Tetap" ? $('#tglppt').show() : $('#tglppt').hide();
-        var val = $('#status_kepegawaian option').filter(':selected').val() == "Guru Tetap" ? $('#skpegawai').show() : $('#skpegawai').hide();       
-        //   if(val=="murid"{})  
-        // alert(val);
+        var val = $('#status_kepegawaian option').filter(':selected').val() == "Guru Tetap" ? $('#skpegawai').show() : $('#skpegawai').hide();
+        var val = $('#status_kepegawaian option').filter(':selected').val() == "Staf Tetap" ? $('#tglpst').show() : $('#tglpst').hide();
+        var val = $('#status_kepegawaian option').filter(':selected').val() == "Staf Tetap" ? $('#skstaf').show() : $('#skstaf').hide();
     })
 </script>
 @endsection

@@ -126,6 +126,7 @@ Route::get('/hapuskelas/{kode_kelas}', [KelasController::class,'hapuskelas'])->m
 
 //Murid -->
 Route::get('/murid', [MuridController::class,'murid']);
+Route::get('/viewmurid', [MuridController::class,'viewmurid']);
 Route::get('/cetakmurid', [MuridController::class,'cetakmurid']);
 Route::get('/viewcetakmurid', [MuridController::class,'viewcetakmurid']);
 Route::get('/tambahmurid', [MuridController::class,'tambahmurid'])->middleware(['auth', 'ceklevel:super admin']);
@@ -160,7 +161,8 @@ Route::get('/tambahprogramkerjapendapatan', [ProgramKerjaController::class,'tamb
 Route::get('/tambahprogramkerjabiaya', [ProgramKerjaController::class,'tambahprogramkerjabiaya'])->middleware('auth', 'ceklevel:unit');
 Route::get('/pilihprokeranggaran', [ProgramKerjaController::class,'pilihprokeranggaran'])->name('pilihprokeranggaran.index')->middleware('auth', 'ceklevel:unit');
 Route::get('/pilihakunz/{kode_rek}', [ProgramKerjaController::class,'pilihakunz'])->middleware('auth', 'ceklevel:unit');
-Route::post('/simpanprogramkerja', [ProgramKerjaController::class,'simpanprogramkerja'])->middleware('auth', 'ceklevel:unit');
+Route::post('/simpanprogramkerjapendapatan', [ProgramKerjaController::class,'simpanprogramkerjapendapatan'])->middleware('auth', 'ceklevel:unit');
+Route::post('/simpanprogramkerjabiaya', [ProgramKerjaController::class,'simpanprogramkerjabiaya'])->middleware('auth', 'ceklevel:unit');
 Route::get('/editprogramkerja/{kode_proker}', [ProgramKerjaController::class,'editprogramkerja'])->middleware('auth', 'ceklevel:unit');
 Route::post('/updateprogramkerja/{kode_proker}', [ProgramKerjaController::class,'updateprogramkerja'])->middleware('auth', 'ceklevel:unit');
 Route::get('/hapusprogramkerja/{kode_proker}', [ProgramKerjaController::class,'hapusprogramkerja'])->middleware('auth', 'ceklevel:unit');
@@ -208,16 +210,18 @@ Route::get('/kasbon', [KasBonController::class,'kasbon']);
 Route::get('/viewkasbon', [KasBonController::class,'viewkasbon']);
 Route::get('/tambahkasbon', [KasBonController::class,'tambahkasbon'])->middleware('auth', 'ceklevel:unit');
 Route::post('/simpankasbon', [KasBonController::class,'simpankasbon'])->middleware('auth', 'ceklevel:unit');
-Route::get('/editkasbon/{no_buktibon}', [KasBonController::class,'editkasbon'])->middleware('auth', 'ceklevel:unit');
-Route::get('/lihatkasbon/{no_buktibon}', [KasBonController::class,'lihatkasbon'])->middleware('auth', 'ceklevel:unit');
-Route::get('/cetakkasbon', [KasBonController::class,'cetakkasbon'])->middleware('auth', 'ceklevel:unit');
-Route::post('/updatekasbon/{no_buktibon}', [KasBonController::class,'updatekasbon'])->middleware('auth', 'ceklevel:unit');
-Route::get('/hapuskasbon/{no_buktibon}', [KasBonController::class,'hapuskasbon'])->middleware('auth', 'ceklevel:unit');
+Route::get('/ptjbons/{no_bukti}', [KasBonController::class,'ptjbons'])->middleware('auth', 'ceklevel:unit');
+Route::get('/editkasbon/{no_bukti}', [KasBonController::class,'editkasbon'])->middleware('auth', 'ceklevel:unit');
+Route::get('/lihatkasbon/{no_bukti}', [KasBonController::class,'lihatkasbon'])->middleware('auth', 'ceklevel:unit');
+Route::get('/cetakkasbon/{no_bukti}', [KasBonController::class,'cetakkasbon'])->middleware('auth', 'ceklevel:unit');
+Route::post('/updatekasbon/{no_bukti}', [KasBonController::class,'updatekasbon'])->middleware('auth', 'ceklevel:unit');
+Route::get('/hapuskasbon/{no_bukti}', [KasBonController::class,'hapuskasbon'])->middleware('auth', 'ceklevel:unit');
 Route::get('/pilihprokerbon', [KasBonController::class,'pilihprokerbon'])->name('pilihprokerbon.index')->middleware('auth', 'ceklevel:unit');
 Route::get('/pilihprokerbonakun/{kode_proker}', [KasBonController::class,'pilihprokerbonakun'])->middleware('auth', 'ceklevel:unit');
 Route::get('/pilihprokerbonakuns', [KasBonController::class,'pilihprokerbonakuns'])->middleware('auth', 'ceklevel:unit');
+Route::get('/pilihprokerz', [KasBonController::class,'pilihprokerz'])->middleware('auth', 'ceklevel:unit');
 Route::get('/ptjbon', [KasBonController::class,'ptjbon'])->middleware('auth', 'ceklevel:unit');
-
+Route::get('/pilihptj', [KasBonController::class,'pilihptj'])->middleware('auth', 'ceklevel:unit'); 
 
 
 //Kas Masuk
@@ -260,6 +264,7 @@ Route::get('/lihatkaskeluar/{no_bukti}', [KasKeluarController::class,'lihatkaske
 Route::get('/cetakkaskeluar/{no_bukti}', [KasKeluarController::class,'cetakkaskeluar'])->middleware('auth', 'ceklevel:unit');
 Route::post('/updatekaskeluar/{no_bukti}', [KasKeluarController::class,'updatekaskeluar'])->middleware('auth', 'ceklevel:unit');
 Route::get('/hapuskaskeluar/{no_bukti}', [KasKeluarController::class,'hapuskaskeluar'])->middleware('auth', 'ceklevel:unit');
+Route::get('/pilihprokers', [KasKeluarController::class,'pilihprokers'])->name('pilihproker.index')->middleware('auth', 'ceklevel:unit');
 Route::get('/pilihproker', [KasKeluarController::class,'pilihproker'])->name('pilihproker.index')->middleware('auth', 'ceklevel:unit');
 Route::get('/pilihakun/{kode_proker}', [KasKeluarController::class,'pilihakun'])->middleware('auth', 'ceklevel:unit');
 Route::get('/pilihakuns', [KasKeluarController::class,'pilihakuns'])->middleware('auth', 'ceklevel:unit');

@@ -36,31 +36,69 @@ $(document).on("change","#kode_prokeramandemen",function(){
     })
     // alert(kode);
 })
-function anggarans() {
-    var anggaran=0;
-    $('.jumlah').each(function(){
-        anggaran += parseFloat($(this).val());
-        $('#anggaran_amandemen').val(anggaran);
-    })
+// function anggarans() {
+//     var anggaran=0;
+//     $('.jumlah').each(function(){
+//         anggaran += parseFloat($(this).val());
+//         $('#anggaran_amandemen').val(anggaran);
+//     })
     
-}
-$(document).on('click','#tambah',function(){
-    var $akun=$('#akun').clone();
-    $("#selectakun").append($akun);
-    anggarans();
-    // alert($akun);
-})
-$(document).on('change','.jumlah',function(){
-    if(isNaN(parseFloat($(this).val()))){
-        // alert('ok');
-        $(this).val(0);
-    }
+// }
+// $(document).on('click','#tambah',function(){
+//     var $akun=$('#akun').clone();
+//     $("#selectakun").append($akun);
+//     anggarans();
+//     // alert($akun);
+// })
+// $(document).on('change','.jumlah',function(){
+//     if(isNaN(parseFloat($(this).val()))){
+//         // alert('ok');
+//         $(this).val(0);
+//     }
     
-    anggarans();
+//     anggarans();
 
    
-    //  alert(parseFloat($(this).val()));
+//     //  alert(parseFloat($(this).val()));
 
-})
+// })
+function anggarans(iJumlah, jml) {
+    console.info("Jml : " + jml);
+    var anggaran = 0;
+    $('#jumlah' + iJumlah).each(function(){
+        console.info("anggaran_amandemen : " + anggaran);
+        anggaran += parseInt($(this).val().split('.').join(""));
+        $('#anggaran_amandemen').val(anggaran);
+    })
+}
+
+let iJumlah = 0;
+
+
+
+function test_rp(jumlah){
+    console.log((document.getElementById('jumlah'+jumlah).value.replaceAll('.','')));
+    var jumlah_input = (parseInt(document.getElementById('jumlah'+jumlah).value.replaceAll('.',''))).toLocaleString('id-ID', {
+        style: 'currency',
+        currency: 'IDR',
+    });
+    document.getElementById('jumlah'+jumlah).value=jumlah_input.substring(2).replaceAll(',','.').slice(0, -3);
+    tambah_anggaran();
+}
+
+function tambah_anggaran(){
+    let jumlahs = document.getElementsByName('jumlah[]');
+    let sum = 0;
+    for (let index = 0; index < jumlahs.length; index++) {
+        sum+=parseInt(jumlahs[index].value.replaceAll('.',''));
+    }
+    var sum_rupiah = sum.toLocaleString('id-ID', {
+        style: 'currency',
+        currency: 'IDR',
+    });
+    document.getElementById('anggaran_amandemen').value=sum_rupiah.substring(2).replaceAll(',','.').slice(0, -3);
+}
+
+
 
 

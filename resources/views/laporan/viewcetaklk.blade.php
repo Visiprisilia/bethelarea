@@ -13,7 +13,7 @@
             <td>{{Str::rupiah($kurang)}}</td>
         </tr>
         <tr>
-            <td><b> Saldo Kas Periode : </b></td>
+            <td><b> Saldo Kas Periode {{$tanggalhariini}} : </b></td>
             <td><b>{{Str::rupiah($totalkas)}}</b></td>
         </tr>
 

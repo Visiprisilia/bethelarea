@@ -347,7 +347,7 @@ class KasMasukController extends Controller
 	ProgramKerja::join("akuns", "program_kerja.kode_proker", "=", "akuns.kode_proker")
 	->where('akuns.kode_akun', $akun)->where('waktu_selesai','!=',$tanggalhariinis)->update(['status_realisasi' => 'Realisasi Sebagian']);
 	ProgramKerja::join("akuns", "program_kerja.kode_proker", "=", "akuns.kode_proker")
-	->where('akuns.kode_akun', $akun)->where('waktu_selesai','=',$tanggalhariinis)->update(['status_realisasi' => 'Realisasi sto']);
+	->where('akuns.kode_akun', $akun)->where('waktu_selesai','=',$tanggalhariinis)->update(['status_realisasi' => 'Realisasi']);
 	
 	Periode::where('kode_periode', $periode)->update(['counter_km'=>$check+1]);
 	return redirect('/kasmasuk')->with('status', 'Data berhasil ditambahkan');
@@ -359,14 +359,14 @@ class KasMasukController extends Controller
 			'periode' => 'required',
 			'keterangan' => 'required',
 			// 'sumber' => 'required',
-			'jumlah' => 'required|numeric'
+			'jumlah' => 'required'
 
 		],[
 			"periode.required"=>"Periode tidak boleh kosong",
 			"keterangan.required"=>"Keterangan tidak boleh kosong",			
 			// "sumber.required"=>"Sumber tidak boleh kosong",
 			"jumlah.required"=>"Jumlah tidak boleh kosong",
-			"jumlah.numeric"=>"Jumlah arus berupa nilai rupiah"
+			// "jumlah.numeric"=>"Jumlah arus berupa nilai rupiah"
 		]);
 
 		if ($validator->fails()) {    
@@ -395,7 +395,6 @@ class KasMasukController extends Controller
 		$destinationPath = 'assets/images/kasmasuk/';
 		$buktis = 'BKM_' . $no_bukti . '.' . $bukti->getClientOriginalExtension();
 		$bukti->move($destinationPath, $buktis);
-		$no_buktibon = $request->no_buktibon;
 
 		$jumlah = $request->jumlah;
 		$jumlahs = str_replace(array('','.'),'',$jumlah);
@@ -452,7 +451,7 @@ class KasMasukController extends Controller
 	{
 		$murid = Murid::orderBy('created_at','desc')->get();
 		$kasmasuk = KasMasuk::join("sumber","kas_masuk.sumber","=","sumber.id_sumber")
-		->join("coa","kas_masuk.akun","=","coa.kode_akun")
+		// ->join("coa","kas_masuk.akun","=","coa.kode_akun")
 		// ->join("murid","kas_masuk.kasir","=","murid.nomor_induk")
 		->where('no_bukti', $no_bukti)->get();
 		return view('realisasi/kasmasuk/lihatkasmasuk', compact('kasmasuk','murid'));

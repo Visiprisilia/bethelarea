@@ -47,7 +47,6 @@ class KasKeluarController extends Controller
 	{
 		$periode = Periode::where('status', 'LIKE', 'AKTIF')->get();
 		$pegawai = Pegawai::where('status', 'LIKE', 'AKTIF')->get();
-		$kasbon = KasBon::where('status_bon', 'LIKE', 'Belum Dipertanggungjawabkan')->get();
 		$laporankas = BukuBesarKas::orderBy('tgl','desc')->get();  
         $tambah = BukuBesarKas::join("periode", "bbkas.periode", "=", "periode.kode_periode")
 		->where('status', 'LIKE', 'AKTIF')
@@ -88,8 +87,7 @@ class KasKeluarController extends Controller
 		->where('persetujuan_proker', 'LIKE', 'Disetujui')//proker
 		->orwhere('persetujuan_amandemen', 'LIKE', 'Disetujui')//proker
 		->get();
-		return view('realisasi/kaskeluar/tambahkaskeluar', ['periode' => $periode, 'akun' => $akun, 'pegawai' => $pegawai, 
-		'kasbon' => $kasbon, 'programkerja' => $programkerja, 'totalkas'=>$totalkas]);
+		return view('realisasi/kaskeluar/tambahkaskeluar', ['periode' => $periode, 'akun' => $akun, 'pegawai' => $pegawai,'programkerja' => $programkerja, 'totalkas'=>$totalkas]);
 	}
 		public function setoran()
 	{
@@ -125,7 +123,7 @@ class KasKeluarController extends Controller
 	public function simpankaskeluar(Request $request)
 	{
 		$validator = Validator::make($request->all(), [	
-			// 'jumlah' => 'lte:anggaran|lte:totalkas|required',
+			'jumlah' => 'lte:anggaran|lte:totalkas|lte:anggarans|required',
 			'periode'=> 'required',
 			'keterangan'=> 'required',
 			'akun'=> 'required',
@@ -135,7 +133,7 @@ class KasKeluarController extends Controller
 			'penanggungjawab'=> 'required',
 			'kasir'=> 'required',
 		],[
-			// "jumlah.lte"=>"Jumlah harus bernilai kurang dari atau sama dengan Saldo Kas dan Anggaran",
+			"jumlah.lte"=>"Jumlah harus bernilai kurang dari atau sama dengan Saldo Kas dan Anggaran Proker",
 			// "jumlah.numeric"=>"Jumlah harus berupa nilai rupiah",
 			"periode.required"=>"Periode tidak boleh kosong",
 			"keterangan.required"=>"Keterangan tidak boleh kosong",
@@ -176,7 +174,6 @@ class KasKeluarController extends Controller
 		$destinationPath = 'assets/images/kaskeluar/';
 		$buktis = 'BKK_' . $no_bukti . '.' . $bukti->getClientOriginalExtension();
 		$bukti->move($destinationPath, $buktis);
-		$no_buktibon = $request->no_buktibon;
 
 		//$check = Periode kolom counter_kk +1, sesuai dengan $periode
 		//setelah menambah kk, ubah di tabel periode untuk kolom counter_kk =+1 sesuai dengan $periode
@@ -200,33 +197,21 @@ class KasKeluarController extends Controller
 			'penanggungjawab' => $request->penanggungjawab,
 			'kasir' => $request->kasir,
 			'totalkas' => $request->totalkas,
-			'no_buktibon' => $request->no_buktibon
 		]);
-		if ($no_buktibon != null) {
-			$kasbon = KasBon::where('no_buktibon', $request->no_buktibon)->update([
-				'jumlah_ptj' => $request->jumlah,
-				'status_bon' => 'Sudah Dipertanggungjawabkan',
-				'tanggal_ptj' => $tanggalhariinis,
-			]);
-		}
-
-		//jika kas bon !=null 
-		//update untuk table kas bon pada kolom jumlah_ptj sesuai dengan bukti kas bon
-		//rumus jumlah_ptj=jumlah_ptj+jumlah kk
+	
 		$prokers = $request->prokers;
 		$waktu_selesai = $request->waktu_selesai;
-
-		// ProgramKerja::where('kode_proker', $prokers)->update(['status_realisasi' => 'Realisasi Sebagian']);
-		// if ($tanggalhariinis == $tanggalhariinis) {
-		// 	$programkerja = ProgramKerja::where('kode_proker', $request->kode_proker)->update([
-		// 		'status_realisasi' =>'Realisasi'
-		// 	]);
-		// }
 		ProgramKerja::where('kode_proker', $prokers)->where('waktu_selesai','!=',$tanggalhariinis)->update(['status_realisasi' => 'Realisasi Sebagian']);
 		ProgramKerja::where('kode_proker', $prokers)->where('waktu_selesai','=',$tanggalhariinis)->update(['status_realisasi' => 'Realisasi']);
-		// ProgramKerja::whereColumn([['kode_proker', $prokers],['waktu_selesai','==',$tanggalhariinis]])->update(['status_realisasi' => 'Realisasi']);
 		
-		Amandemen::where('kode_prokeramandemen', $prokers)->update(['status_realisasi' => 'Realisasi']);
+		Amandemen::join("program_kerja", "amandemen.kode_prokeramandemen", "=", "program_kerja.kode_proker")
+		->where('program_kerja.kode_proker', $prokers)
+		->where('program_kerja.waktu_selesai','!=',$tanggalhariinis)
+		->update(['amandemen.status_realisasi' => 'Realisasi Sebagian']);
+		Amandemen::join("program_kerja", "amandemen.kode_prokeramandemen", "=", "program_kerja.kode_proker")
+		->where('program_kerja.kode_proker', $prokers)
+		->where('program_kerja.waktu_selesai','=',$tanggalhariinis)
+		->update(['amandemen.status_realisasi' => 'Realisasi']);
 		Periode::where('kode_periode', $periode)->update(['counter_kk' => $check + 1]);
 	
 		return redirect('/kaskeluar')->with('status', 'Data berhasil ditambahkan');
@@ -236,7 +221,7 @@ class KasKeluarController extends Controller
 
 			
 		$validator = Validator::make($request->all(), [	
-			'jumlah' => 'numeric|required',
+			'jumlah' => 'required',
 			'periode'=> 'required',
 			'keterangan'=> 'required',
 			// 'akun'=> 'required',
@@ -247,7 +232,7 @@ class KasKeluarController extends Controller
 			// 'kasir'=> 'required',
 		],[
 			// "jumlah.lte"=>"Jumlah harus bernilai kurang dari atau sama dengan Anggaran",
-			"jumlah.numeric"=>"Jumlah arus berupa nilai rupiah",
+			// "jumlah.numeric"=>"Jumlah arus berupa nilai rupiah",
 			"periode.required"=>"Periode tidak boleh kosong",
 			"keterangan.required"=>"Keterangan tidak boleh kosong",
 			// "akun.required"=>"Akun tidak boleh kosong",
@@ -287,7 +272,6 @@ class KasKeluarController extends Controller
 		$destinationPath = 'assets/images/kaskeluar/';
 		$buktis = 'BKK_' . $no_bukti . '.' . $bukti->getClientOriginalExtension();
 		$bukti->move($destinationPath, $buktis);
-		$no_buktibon = $request->no_buktibon;
 
 		//$check = Periode kolom counter_kk +1, sesuai dengan $periode
 		//setelah menambah kk, ubah di tabel periode untuk kolom counter_kk =+1 sesuai dengan $periode
@@ -308,15 +292,8 @@ class KasKeluarController extends Controller
 			'penanggungjawab' => '20100401003',
 			'kasir' => 'Neny Widijawati',
 			'totalkas' => NULL,
-			'no_buktibon' =>0
 		]);
-		if ($no_buktibon != null) {
-			$kasbon = KasBon::where('no_buktibon', $request->no_buktibon)->update([
-				'jumlah_ptj' => $request->jumlah,
-				'status_bon' => 'Sudah Dipertanggungjawabkan',
-				'tanggal_ptj' => $tanggalhariinis,
-			]);
-		}
+		
 		//jika kas bon !=null 
 		//update untuk table kas bon pada kolom jumlah_ptj sesuai dengan bukti kas bon
 		//rumus jumlah_ptj=jumlah_ptj+jumlah kk
@@ -359,14 +336,13 @@ class KasKeluarController extends Controller
 			'bukti' => $buktis,
 			'penanggungjawab' => $request->penanggungjawab,
 			'kasir' => $request->kasir,
-			'no_buktibon' => $request->no_buktibon
+			// 'no_buktibon' => $request->no_buktibon
 		]);
 		return redirect('/kaskeluar')->with('status', 'Data berhasil diubah');
 	}
 	public function lihatkaskeluar($no_bukti)
 	{
-		$kaskeluar = KasKeluar::join("coa","kas_keluar.akun","=","coa.kode_akun")
-		->join("pegawai","kas_keluar.penanggungjawab","=","pegawai.niy")
+		$kaskeluar = KasKeluar::join("pegawai","kas_keluar.penanggungjawab","=","pegawai.niy")
 		->where('no_bukti', $no_bukti)->get();
 		return view('realisasi/kaskeluar/lihatkaskeluar', compact('kaskeluar'));
 	}
@@ -390,6 +366,17 @@ class KasKeluarController extends Controller
         return response()->json($data);
 	
 	}
+	public function pilihprokers(Request $request)
+	{
+		$id = $request->id;
+		// $data = Akuns::where("kode_akun", $request->kode)
+		$data = ProgramKerja::where('pob','=','biaya')->where("kode_proker", $request->id)
+		->where('status_proker','=','Disetujui')
+		->where('nama_proker', 'LIKE', '%'.request('q').'%')->paginate(10);
+
+        return response()->json($data);
+	
+	}
 	public function pilihakun($kode_proker)
 	{
 		$data = Akuns::join("coa", "akuns.kode_akun", "=", "coa.kode_akun")
@@ -406,18 +393,12 @@ class KasKeluarController extends Controller
 		$kode = $request->kode;
 		$data = Akuns::where("kode_akun", $request->kode)
 		->where('status_amandemens','!=','Amandemen')->first();
-		// $data2 =LaporanPosisiAnggaran::where("akun",$kode)->get();
 		$data2 = Akuns::join("lapposisianggaran", "akuns.kode_akun", "=", "lapposisianggaran.akun")
 		->join("coa", "akuns.kode_akun", "=", "coa.kode_akun")
 		->where("akun", $kode)->where("status_amandemens","!=","Amandemen")->get();
 		$data3 = Akuns::join("pegawai", "akuns.penanggungjawab", "=", "pegawai.niy")
 		->where("kode_akun", $request->kode)
 		->where('status_amandemens','!=','Amandemen')->get();
-		// $data2 = BukuBesarKas::orderBy('tgl','desc')->where('periode',$kode)->get();  
-		// $laporankas = BukuBesarKas::orderBy('tgl','desc')->get();  
-        // $tambah = BukuBesarKas::sum('bertambah');
-        // $kurang = BukuBesarKas::sum('berkurang');
-        // $totalkas = $tambah-$kurang;
 		return response()->json([
 			"proker"=>$data,
 			"lappa"=>$data2,
@@ -428,11 +409,11 @@ class KasKeluarController extends Controller
 	public function pilihbon(Request $request)
 	{
 		$no = $request->no;
-		$data = KasBon::where("no_buktibon", $no)->first();
-		$data2 = KasBon::where("no_buktibon", $no)->get();
-		$data3 = KasBon::join("program_kerja", "kas_bon.proker_bon", "=", "program_kerja.kode_proker")->where("no_buktibon", $no)->get();
-		$data4 = KasBon::join("coa", "kas_bon.akun_bon", "=", "coa.kode_akun")->where("no_buktibon", $no)->get();
-		$data5 = KasBon::join("pegawai", "kas_bon.penanggungjawab_bon", "=", "pegawai.niy")->where("no_buktibon", $no)->get();
+		$data = KasBon::where("no_bukti", $no)->first();
+		$data2 = KasBon::where("no_bukti", $no)->get();
+		$data3 = KasBon::join("program_kerja", "kas_bon.proker_bon", "=", "program_kerja.kode_proker")->where("no_bukti", $no)->get();
+		$data4 = KasBon::join("coa", "kas_bon.akun_bon", "=", "coa.kode_akun")->where("no_bukti", $no)->get();
+		$data5 = KasBon::join("pegawai", "kas_bon.penanggungjawab_bon", "=", "pegawai.niy")->where("no_bukti", $no)->get();
 		return response()->json([
 			"bon" => $data,
 			"coba"=>$data2,

@@ -12,6 +12,6 @@ class Pegawai extends Model
     protected $table = 'pegawai';
     protected $primaryKey = 'niy';
     protected $fillable = ['niy', 'nama','tempat_lahir','ttl','jk', 'agama','pendidikan','file_ijasah', 'alamat','penempatan',
-    'file_skpenempatan','jabatan','file_skjabatan','file_skgolongan','tanggal_masuk','status_kepegawaian', 'tanggal_ppt', 'file_suket','status',
+    'file_skpenempatan','jabatan','file_skjabatan','file_skgolongan','tanggal_masuk','status_kepegawaian', 'tanggal_ppt','tanggal_pst', 'file_suket','file_suketstaf','status',
     'tanggal_terminasi','file_skpemberhentian','foto_pegawai','file_ktp','keterangan_pegawai'];
 }

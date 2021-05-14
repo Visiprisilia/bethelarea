@@ -110,7 +110,7 @@
                                                                 @endforeach
                                                             </select>
                                                             <div>
-                                                                <input type="text" class="form-control mb-1 jumlah" name="jumlah[]" placeholder="Masukkan Jumlah" required>
+                                                            <input type="text" class="form-control mb-1 jumlah" onkeyup="tambah_anggaran()" type-currency="IDR" id="jumlah0" name="jumlah[]" placeholder="Masukkan Jumlah">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -142,4 +142,41 @@
 </div>
 <!-- <script src="/proker/proker.js"></script> -->
 <script src="/proker/amandemen.js"></script>
+<script>
+    document.querySelectorAll('input[type-currency="IDR"]').forEach((element) => {
+        element.addEventListener('keyup', function(e) {
+            let cursorPostion = this.selectionStart;
+            console.info(cursorPostion);
+            let value = parseInt(this.value.replace(/[^,\d]/g, ''));
+            let originalLenght = this.value.length;
+            if (isNaN(value)) {
+                this.value = "";
+            } else {
+                this.value = value.toLocaleString('id-ID', {
+                    currency: 'IDR',
+                    // style: 'currency',
+                    minimumFractionDigits: 0
+                });
+                cursorPostion = this.value.length - originalLenght + cursorPostion;
+                this.setSelectionRange(cursorPostion, cursorPostion);
+            }
+        });
+    });
+
+    $(document).on('click', '#tambah', function() {
+        const item = <?php echo json_encode($coa); ?>;
+        iJumlah++;
+        var akun = '<div class="form-group" id="akun" name="akun"><select class="form-control select2 mb-1" style="width: 100%;" name="akun[]">' +
+            '<option  value>Pilih Akun</option>';
+        item.forEach((e) => {
+            akun += '<option value="' + e.kode_akun + '">' + e.kode_akun + ' - ' + e.nama_akun + '</option>'
+        });
+        akun += '</select><div><input type="text"  ' +
+            'class="form-control mb-1 jumlah" type-currency="IDR" id="jumlah' + iJumlah + '" onkeyup="test_rp(' + iJumlah + ');" name="jumlah[]" ' +
+            'placeholder="Masukkan Jumlah" ></div></div>';
+        $("#selectakun").append(akun);
+    })
+</script>
+<!-- $string = str_replace(array(‘Rp’, ‘.’ ), ”, $_POST[‘angka’]); -->
+<!-- type-currency="IDR" -->
 @endsection

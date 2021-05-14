@@ -61,7 +61,8 @@
                         <h6 style="color:blue;" >Kode Kelas : 22202 -> Nama Kelas : Maria -> Keterangan : Kelas TK B2</h6>
                         <h6 style="color:blue;" >Kode Kelas Selanjutnya Diinput Urut Dengan Kode Kelas Sebelumnya</h6>                        
                         <h6 style="color:Tomato;">Kode Kelas : Digit Pertama Kode unit, digit kedua kode sub unit, digit 3 kode kelas, digit keempat dan lima kode sub kelas</h6>
-                       
+                        <h6 style="color:Tomato;" >Pastikan Kode dan Nama harus sesuai!</h6>
+
                     </div>
                 </div>
             </div>

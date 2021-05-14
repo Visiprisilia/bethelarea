@@ -10,6 +10,19 @@ integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+f
     @endforeach
 </ul>
 @endif
+<!-- <style>
+      /* Works for Chrome, Safari, Edge, Opera */
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      /* Works for Firefox */
+      input[type="number"] {
+        -moz-appearance: textfield;
+      }
+    </style> -->
 <!-- Default Bootstrap Form Controls-->
 <div id="layoutSidenav_content">
     <main>
@@ -42,19 +55,7 @@ integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+f
                                     <div class="sbp-preview-content">
                                         <form action="/simpankaskeluar" method="post" enctype="multipart/form-data">
                                             @csrf
-                                            <!-- <div class="mb-3">
-                                                <label for="exampleFormControlInput1">No Bukti</label>
-                                                <input class="form-control" id="no_bukti" name="no_bukti"/>
-                                            </div> -->
-                                            <div class="mb-3">
-                                                <label class="mb-1" for="inputLastName">Kas Bon</label>
-                                                <select class="form-control" id="no_buktibon" name="no_buktibon">
-                                                    <option value>Pilih Kas Bon</option>
-                                                    @foreach ($kasbon as $item)
-                                                    <option value="{{ $item->no_buktibon}}">{{$item->no_buktibon}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
+                                      
                                             <div class="mb-3">
                                                 <label class="mb-1" for="inputLastName">Periode</label>
                                                 <select class="form-control" id="periode" name="periode">
@@ -94,39 +95,43 @@ integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+f
                                             </div>
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-6" id="prok">
-                                                    <label class="mb-1" for="inputFirstName">Program Kerja</label>
+                                                    <!-- <label class="mb-1" for="inputFirstName">Program Kerja</label> -->
                                                     <!-- <input class="form-control" readonly id="totalkas" name="totalkas" value="{{$totalkas}}" /> -->
                                                 </div>
                                                 <div class="col-md-6" id="akbon">
-                                                    <label class="mb-1" for="inputFirstName">Akun</label>
+                                                    <!-- <label class="mb-1" for="inputFirstName">Akun</label> -->
                                                     <!-- <input class="form-control" readonly id="anggaran" name="anggaran"   /> -->
                                                 </div>
                                             </div>
                                             <div class="row gx-3 mb-3">
-                                                <div class="col-md-4">
+                                                <div class="col-md-3">
                                                     <label class="mb-1" for="inputFirstName">Saldo Kas</label>
-                                                    <input class="form-control" readonly id="totalkas" name="totalkas" value="{{$totalkas}}" />
+                                                    <input class="form-control" readonly id="totalkas" name="totalkas" value="{{$totalkas}}"/>
                                                 </div>
-                                                <div class="col-md-4" id="anggaran">
-                                                    <label class="mb-1" for="inputFirstName">Anggaran</label>
-                                                    <!-- <input class="form-control" readonly id="anggaran" name="anggaran"   /> -->
+                                                <div class="col-md-3">
+                                                    <label class="mb-1" for="inputFirstName">Anggaran Proker</label>
+                                                    <input class="form-control" readonly id="anggarans" name="anggarans" />
                                                 </div>
-                                                <div class="col-md-4">
+                                                <div class="col-md-3" >
+                                                    <label class="mb-1" for="inputFirstName">Anggaran Akun</label>
+                                                    <input class="form-control" readonly id="anggaran" name="anggaran"/>
+                                                </div>                                                
+                                                <div class="col-md-3">
                                                     <label class="mb-1" for="inputFirstName">Jumlah</label>
-                                                    <input class="form-control" id="jumlah" name="jumlah" type-currency="IDR" placeholder="Masukkan Jumlah" />
+                                                    <input class="form-control" id="jumlah" name="jumlah" type="text" placeholder="Masukkan Jumlah" />
                                                 </div>
                                             </div>
 
                                             <div class="row gx-3 mb-3">                                               
-                                                <div class="col-md-6" id="penanggungjawab">
+                                                <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Penanggung Jawab :</label>
                                                     <!-- <input class="form-control" readonly id="penanggungjawabs" name="penanggungjawabs"  placeholder="Penanggung jawab"  /> -->
                                               
-                                                    <!-- <input class="form-control" readonly id="penanggungjawab"  name="penanggungjawab" placeholder="Penanggung jawab" /> -->
+                                                    <input class="form-control" readonly id="penanggungjawab"  name="penanggungjawab" placeholder="Penanggung jawab" />
                                                 </div>
-                                                <div class="col-md-6" id="penanggungjawabs">
+                                                <div class="col-md-6" >
                                                     <label class="mb-1" for="inputFirstName"></label>
-                                                    <!-- <input class="form-control" readonly id="penanggungjawabs" name="penanggungjawabs"  placeholder="Penanggung jawab"  /> -->                                              
+                                                    <input class="form-control" readonly id="penanggungjawabs" name="penanggungjawabs"  placeholder="Penanggung jawab"  />                                              
                                                     <!-- <input class="form-control" readonly id="penanggungjawab"  name="penanggungjawab"  /> -->
                                                 </div>
                                             </div>
@@ -158,6 +163,15 @@ integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+f
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script src="/proker/kaskeluar.js"></script>
 <script>
+    // function set_max(){
+    //     let kas = parseInt(document.getElementById('totalkas').value);
+    //     let anggarans = parseInt(document.getElementById('anggarans').value);
+    //     let anggaran = parseInt(document.getElementById('anggaran').value);
+    //     var total = kas+anggaran+anggarans;
+    //     document.getElementById("jumlah").max=total;
+    //     // console.log(total);
+    // }
+
     $(document).ready(function() {
         $("#prokers").select2({
             placeholder: 'Pilih Proker',
@@ -224,9 +238,9 @@ integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+f
 <!-- $string = str_replace(array(‘Rp’, ‘.’ ), ”, $_POST[‘angka’]); -->
 <!-- type-currency="IDR" -->
 <script>
-    $(document).on('change', '#no_buktibon', function() {
-        var val = $('#no_buktibon option').filter(':selected').val() == "?" ? $('#prokers').show() : $('#prokers').hide();
-        var val = $('#no_buktibon option').filter(':selected').val() == "?" ? $('#akun').show() : $('#akun').hide();
+    $(document).on('change', '#no_bukti', function() {
+        var val = $('#no_bukti option').filter(':selected').val() == "?" ? $('#prokers').show() : $('#prokers').select2().next().hide();
+        var val = $('#no_bukti option').filter(':selected').val() == "?" ? $('#akun').show() : $('#akun').hide();
     })
 </script>
 @endsection

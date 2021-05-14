@@ -83,6 +83,7 @@
                         <h6 style="color:blue;" >Kode Sub Unit : 2.1 -> Nama Sub Unit : Kelompok Bermain </h6>
                         <h6 style="color:blue;" >Kode Sub Unit : 2.2 -> Nama Sub Unit : Taman Kanak-kanak </h6>
                         <h6 style="color:blue;" >Kode Sub Unit Selanjutnya Diinput Urut Dengan Kode Sub Unit Sebelumnya</h6>
+                        <h6 style="color:Tomato;" >Pastikan Kode dan Nama harus sesuai!</h6>
                     </div>
                 </div>
             </div>

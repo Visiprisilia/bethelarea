@@ -32,14 +32,14 @@
                     <!-- Default Bootstrap Form Controls-->
                     <div id="default">
                         <div class="card mb-4">
-                            <div class="card-header">Program Kerja</div>
+                            <div class="card-header">Program Kerja Anggaran Pendapatan</div>
                             <div class="card-body">
                                 <!-- Component Preview-->
                                 <div class="sbp-preview">
                                     <div class="sbp-preview-content">
                                         <form action="/simpanprogramkerjapendapatan" method="post">
                                             @csrf
-                                            <div class="row gx-3 mb-3">
+                                            
                                                 <!-- <div class="col-md-6">
                                                     <label class="mb-1" for="inputLastName">Program Kerja</label>
                                                     <select class="form-control" id="pob"  name="pob">
@@ -48,7 +48,7 @@
                                                         <option value="Biaya">Anggaran Biaya</option>
                                                     </select>
                                                 </div> -->
-                                                <div class="col-md-6">
+                                                <div class="mb-3">
                                                     <label class="mb-1" for="inputLastName">Periode</label>
                                                     <select class="form-control" id="periode"  name="periode">
                                                         <option  value>Pilih Periode</option>
@@ -61,7 +61,7 @@
                                                     <label class="mb-1" for="inputFirstName">Kode Program Kerja</label>
                                                     <input class="form-control" id="kode_proker" name="kode_proker" placeholder="Masukkan Kode Proker"  />
                                                 </div> -->
-                                            </div>
+                                        
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Nama Program Kerja</label>
@@ -110,7 +110,7 @@
                                                                 @endforeach
                                                             </select>
                                                             <div>
-                                                                <input type="text"  class="form-control mb-1 jumlah" name="jumlah[]" placeholder="Masukkan Jumlah" >
+                                                            <input type="text" class="form-control mb-1 jumlah" onkeyup="tambah_anggaran()" type-currency="IDR" id="jumlah0" name="jumlah[]" placeholder="Masukkan Jumlah">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -145,6 +145,7 @@
     document.querySelectorAll('input[type-currency="IDR"]').forEach((element) => {
         element.addEventListener('keyup', function(e) {
             let cursorPostion = this.selectionStart;
+            console.info(cursorPostion);
             let value = parseInt(this.value.replace(/[^,\d]/g, ''));
             let originalLenght = this.value.length;
             if (isNaN(value)) {
@@ -160,6 +161,20 @@
             }
         });
     });
+
+    $(document).on('click', '#tambah', function() {
+        const item = <?php echo json_encode($coa); ?>;
+        iJumlah++;
+        var akun = '<div class="form-group" id="akun" name="akun"><select class="form-control select2 mb-1" style="width: 100%;" name="akun[]">' +
+            '<option  value>Pilih Akun</option>';
+        item.forEach((e) => {
+            akun += '<option value="' + e.kode_akun + '">' + e.kode_akun + ' - ' + e.nama_akun + '</option>'
+        });
+        akun += '</select><div><input type="text"  ' +
+            'class="form-control mb-1 jumlah" type-currency="IDR" id="jumlah' + iJumlah + '" onkeyup="test_rp(' + iJumlah + ');" name="jumlah[]" ' +
+            'placeholder="Masukkan Jumlah" ></div></div>';
+        $("#selectakun").append(akun);
+    })
 </script>
 <!-- $string = str_replace(array(‘Rp’, ‘.’ ), ”, $_POST[‘angka’]); -->
 <!-- type-currency="IDR" -->

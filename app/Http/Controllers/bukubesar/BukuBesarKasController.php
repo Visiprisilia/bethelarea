@@ -4,6 +4,7 @@ namespace App\Http\Controllers\bukubesar;
 
 use Illuminate\Http\Request;
 use App\Models\Realisasi\KasMasuk;
+use App\Models\Realisasi\KasBon;
 use App\Models\Realisasi\KasKeluar;
 use App\Models\Periode\Periode;
 use App\Models\Murid\Murid;
@@ -37,17 +38,18 @@ class BukuBesarKasController extends Controller
   public function lihatkas($no_bukti)
   {
     $kasmasuk = KasMasuk::join("sumber","kas_masuk.sumber","=","sumber.id_sumber")
-		->join("coa","kas_masuk.akun","=","coa.kode_akun")
-    // ->join("murid","kas_masuk.kasir","=","murid.nomor_induk")
     ->where('no_bukti', $no_bukti)->where('no_bukti','LIKE','BKM%')->get();
-    $kaskeluar = KasKeluar::join("coa","kas_keluar.akun","=","coa.kode_akun")
-    ->join("pegawai","kas_keluar.penanggungjawab","=","pegawai.niy")
+    $kaskeluar = KasKeluar::join("pegawai","kas_keluar.penanggungjawab","=","pegawai.niy")
     ->where('no_bukti', $no_bukti)->where('no_bukti','LIKE','BKK%')->get();
-
-    if (count ($kaskeluar)==0) {
+    $kasbon = KasBon::join("pegawai","kas_bon.penanggungjawab_bon","=","pegawai.niy")
+		->where('no_bukti', $no_bukti)->where('no_bukti','LIKE','BKB%')->get();
+    // dd($kasbon);
+    if (count ($kasmasuk)==1) {
       return view('realisasi/kasmasuk/lihatkasmasuk', compact('kasmasuk'));
-    } else{
+    } elseif (count ($kaskeluar)==1) {
         return view('realisasi/kaskeluar/lihatkaskeluar', compact('kaskeluar'));    
+    } elseif (count ($kasbon)==1){
+      return view('realisasi/kasbon/lihatkasbon', compact('kasbon'));  
     }
   }
 }

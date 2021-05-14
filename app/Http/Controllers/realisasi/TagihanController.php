@@ -135,7 +135,7 @@ class TagihanController extends Controller
 	{		
 		$validator = Validator::make($request->all(), [	
 			'kode_akun' => ['required',Rule::unique('item_tagihan')->where('id_tagihan', $request->id_tagihan)],
-			'nominal_tagihan' => 'required|numeric',
+			'nominal_tagihan' => 'required',
 		],[
 			"kode_akun.required"=>"Jenis Tagihan tidak boleh kosong",
 			"kode_akun.unique"=>"Jenis Tagihan tersebut sudah terdaftar",
@@ -148,7 +148,7 @@ class TagihanController extends Controller
 			$api = array(
 				'message' => $message
 			);
-			return redirect('/tagihan')->withErrors($validator);
+			return redirect('/tambahtagihanmurid')->withErrors($validator);
 			// return redirect('/tagihan')->with('status', 'Data berhasil ditambahkan');
 
 		}

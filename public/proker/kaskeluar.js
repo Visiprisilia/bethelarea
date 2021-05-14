@@ -14,19 +14,50 @@
 
             $.each(data.lappa, function (x, i) {
 
-                $("#anggaran").append('<input class="form-control" id="anggaran" name="anggaran" readonly name="anggaran" value="' + i.posisi_anggaran + '" placeholder="Masukkan Akun Biaya" required />');
+                $("#anggaran").val(i.posisi_anggaran);
 
             })
             $.each(data.prokerz, function (x, i) {
 
-                $("#penanggungjawabs").append('<input class="form-control" id="penanggungjawabs" name="penanggungjawabs" readonly name="penanggungjawabs" value="' + i.nama + '" placeholder="Masukkan Akun Biaya" required />');
-                $("#penanggungjawab").append('<input class="form-control" id="penanggungjawab" name="penanggungjawab" readonly name="penanggungjawab" value="' + i.niy + '" placeholder="Masukkan Akun Biaya" required />');
+                $("#penanggungjawabs").val(i.nama);
+                $("#penanggungjawab").val(i.niy);
 
             })
+          
         }
     })
+
+
+    
 //     // alert(kode);
 })
+
+
+$(document).on("change", "#prokers", function () {
+    var id = $(this).val();
+    $.ajax({
+        url: '/pilihprokers',
+        method: "get",
+        data: {
+            id: id
+        },
+        success: function (data) {
+            // $("#akun").val(data.proker.kode_akun);
+            // $("#id").val(data.proker.id);
+            // $("#anggarans").val(data.data.anggaran);
+
+            $.each(data.data, function (x, i) {
+
+                $("#anggarans").val(i.anggaran);
+
+            })
+          
+        }
+    })
+
+
+})
+
 //TIDAK DIPAKAI
 // $(document).on("change", "#prokers", function () {
 //     var kode = $(this).val();
@@ -94,7 +125,7 @@
 //     // alert(kode);
 // })
 
-$(document).on("change", "#no_buktibon", function () {
+$(document).on("change", "#no_bukti", function () {
     var no = $(this).val();
     $.ajax({
         url: "/pilihbon",
@@ -117,12 +148,14 @@ $(document).on("change", "#no_buktibon", function () {
             })                
             $.each(data.coba2, function (x, i) {
 
-                $("#prok").append('<input class="form-control" id="prokers" name="prokers" readonly name="prokers" value="' + i.nama_proker + '" placeholder="Masukkan Akun Biaya" required />');
+                $("#prok").append('<input class="form-control" id="prokers" name="prokers" hidden readonly name="prokers" value="' + i.kode_proker + '" placeholder="Masukkan Akun Biaya" required />');
+                $("#prok").append('<input class="form-control" id="proks" name="proks" readonly name="proks" value="' + i.nama_proker + '" placeholder="Masukkan Akun Biaya" required />');
 
             })    
             $.each(data.coba3, function (x, i) {
 
-                $("#akbon").append('<input class="form-control" id="akun" name="akun" readonly name="akun" value="' + i.nama_akun + '" readonly placeholder="Masukkan Akun Biaya" required />');
+                $("#akbon").append('<input class="form-control" id="akun" name="akun" hidden readonly name="akun" value="' + i.kode_akun + '" readonly placeholder="Masukkan Akun Biaya" required />');
+                $("#akbon").append('<input class="form-control" id="akbons" name="akbons" readonly name="akbons" value="' + i.nama_akun + '" readonly placeholder="Masukkan Akun Biaya" required />');
 
             })  
             $.each(data.coba4, function (x, i) {

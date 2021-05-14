@@ -91,10 +91,13 @@ class AmandemenController extends Controller
 			'indikator' => $request->indikator,
 			'anggaran' => 0,
 			'keterangan_proker' => $request->keterangan_amandemen,
-			'status_proker' => 'Disetujui'
+			'status_proker' => 'Disetujui',
+			'pob' => 'Biaya'
 		];
 
 		ProgramKerja::create($data_amandemen);
+		$jumlah = $request->jumlah;
+		$jumlahs = str_replace(array('','.'),'',$jumlah);
 		$kode_akun = $request->akun;
 		$no_jumlah = 0;
 		foreach ($kode_akun as $i) {
@@ -103,7 +106,7 @@ class AmandemenController extends Controller
 				'kode_akun' => $i,
 				'penanggungjawab' => $penanggungjawab,
 				'periode' => $periode_amandemen,
-				'jumlah' => $request->jumlah[$no_jumlah],
+				'jumlah' => $jumlahs[$no_jumlah],
 				'status_pa' => "Amandemen",
 			];
 			$no_jumlah++;
@@ -132,12 +135,14 @@ class AmandemenController extends Controller
 			$checkp = $ca->counter_proker;
 		}
 		$id_amandemen = $check + 1;
+		$anggaran_amandemen = $request->anggaran_amandemen;
+		$anggarans = str_replace(array('','.'),'',$anggaran_amandemen);
 		Amandemen::create([
 			'id_amandemen' => $id_amandemen,
 			'kode_prokeramandemen' => $kode_prokeramandemen,
 			'periode_amandemen' => $request->periode_amandemen,
 			'tanggal_amandemen' => $tanggalhariinis,
-			'anggaran_amandemen' => $request->anggaran_amandemen,
+			'anggaran_amandemen' => $anggarans,
 			'status_amandemen' => 'Menunggu Persetujuan',
 			'keterangan_amandemen' => $request->keterangan_amandemen,
 			'catatan_amandemen' => $request->catatan_amandemen,
@@ -167,17 +172,21 @@ class AmandemenController extends Controller
 			$check = $ca->counter_amandemen;
 		}
 		$id_amandemen = $check + 1;
+		$anggaran_amandemen = $request->anggaran_amandemen;
+		$anggarans = str_replace(array('','.'),'',$anggaran_amandemen);
 		Amandemen::create([
 			'id_amandemen' => $id_amandemen,
 			'kode_prokeramandemen' => $request->kode_prokeramandemen,
 			'periode_amandemen' => $request->periode_amandemen,
 			'tanggal_amandemen' => $tanggalhariinis,
-			'anggaran_amandemen' => $request->anggaran_amandemen,
+			'anggaran_amandemen' => $anggarans,
 			'status_amandemen' => 'Menunggu Persetujuan',
 			'keterangan_amandemen' => $request->keterangan_amandemen,
 			'catatan_amandemen' => $request->catatan_amandemen,
 		]);
 	
+		$jumlah = $request->jumlah;
+		$jumlahs = str_replace(array('','.'),'',$jumlah);
 		$kode_akun = $request->akun;
 		$no_jumlah = 0;
 		foreach ($kode_akun as $i) {
@@ -186,7 +195,7 @@ class AmandemenController extends Controller
 				'kode_akun' => $i,
 				'penanggungjawab' => $request->penanggungjawab,
 				'periode' => $request->periode_amandemen,
-				'jumlah' => $request->jumlah[$no_jumlah],
+				'jumlah' => $jumlahs[$no_jumlah],
 				'status_pa' => "Amandemen",
 			];
 			$no_jumlah++;

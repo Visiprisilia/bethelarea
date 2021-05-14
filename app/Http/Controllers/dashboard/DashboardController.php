@@ -22,19 +22,7 @@ class DashboardController extends Controller
         $pembayarans = User::where('nama_user', $request->nama_user)->get()->first();
         return view('dashboard/home', compact('pembayarans'));
            }
-    public function hum()
-    {
-        // $nama_user = $request->rincian_nis;
-        $userss = User::join("pembayaran","users.nama_user","=","pembayaran.rincian_nis")
-		->get()->first();
-        return view('dashboard/hum', compact('userss'));
-    }
-    public function hums($rincian_nis)
-    {
-        $userss = User::join("pembayaran","users.nama_user","=","pembayaran.rincian_nis")
-		->where('nama_user', $rincian_nis)->get()->first();
-        return view('dashboard/hum', compact('userss'));
-    }
+ 
     public function dashboard(Request $request)
     {
         $id = $request->id;

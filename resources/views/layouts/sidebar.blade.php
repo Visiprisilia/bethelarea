@@ -1,6 +1,6 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="bethelarea">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="home">
         <div class="sidebar-brand-icon">
             <img src="{{asset('template/img/sirekan.png')}}" alt="" width="220px;">
         </div>
@@ -75,9 +75,9 @@
         <div id="realisasi" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Realisasi:</h6>
-                <a class="collapse-item" href="/kasbon">Pendaftaran Kas Bon</a>
                 <a class="collapse-item" href="/kasmasuk">Kas Masuk</a>
                 <a class="collapse-item" href="/kaskeluar">Kas Keluar</a>
+                <a class="collapse-item" href="/kasbon">Kas Bon</a>
                 <!-- <a class="collapse-item" href="/tagihan">Daftar Jenis Tagihan Murid</a> -->
                 <!-- <a class="collapse-item" href="/pembayaranmurid">Pembayaran Murid</a> -->
             </div>
