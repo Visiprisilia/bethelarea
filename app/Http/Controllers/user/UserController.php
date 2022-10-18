@@ -9,7 +9,7 @@ class UserController extends Controller
 {
     public function user()
     {
-        return view('user/user' , [
+        return view('user/user', [
             "title" => "User"
         ]);
     }

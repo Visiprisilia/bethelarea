@@ -9,7 +9,7 @@ class PeriodeController extends Controller
 {
     public function periode()
     {
-        return view('periode/periode' , [
+        return view('periode/periode', [
             "title" => "Periode"
         ]);
     }

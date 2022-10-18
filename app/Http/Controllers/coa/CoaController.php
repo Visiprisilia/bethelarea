@@ -9,12 +9,12 @@ class CoaController extends Controller
 {
     public function coa()
     {
-        return view('coa/coa' , [
+        return view('coa/coa', [
             "title" => "Coa"
         ]);
     }
     public function tambah()
-	{
-		return view('coa/tambahcoa');
-	}
+    {
+        return view('coa/tambahcoa');
+    }
 }

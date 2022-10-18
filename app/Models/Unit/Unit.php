@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Unit extends Model
 {
     use HasFactory;
-    protected $fillable =[
+    protected $fillable = [
         'nama_unit',
         'status',
-        
+
     ];
 }

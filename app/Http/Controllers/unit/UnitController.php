@@ -9,7 +9,7 @@ class UnitController extends Controller
 {
     public function unit()
     {
-        return view('unit/unit' , [
+        return view('unit/unit', [
             "title" => "Unit"
         ]);
     }
