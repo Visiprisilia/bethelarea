@@ -14,7 +14,7 @@ class CoaController extends Controller
         ]);
     }
     public function tambah()
-    {
-        return view('coa/tambahcoa');
-    }
+	{
+		return view('coa/tambahcoa');
+	}
 }

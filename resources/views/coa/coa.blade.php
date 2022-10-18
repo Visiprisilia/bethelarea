@@ -11,7 +11,7 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
-            <h3 class="btn btn-success"><a href="/tambah">Tambah Data</a></h3>
+            <h6 class="btn btn-success"><a href="tambahcoa">Tambah Data</a></h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
