@@ -8,19 +8,37 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Daftar Periode</h6>
+        <a href="tambahperiode" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i>Tambah Data</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Nama Periode</th>
+                            <th>No</th>
+                            <th>Kode</th>
+                            <th>Periode</th>
+                            <th>Awal Periode</th>
+                            <th>Akhir Periode</th>
                             <th>Status</th>
-                            <th>Tanggal Awal</th>
-                            <th>Tanggal Akhir</th>
                             <th>Aksi</th>
                         </tr>
+                    <tbody>
+                        @foreach ($periode as $item)
+                        <tr>
+                            <td>{{ $loop->iteration}}</td>
+                            <td>{{ $item->kode_periode}}</td>
+                            <td>{{ $item->nama_periode}}</td>
+                            <td>{{ $item->awal_periode}}</td>
+                            <td>{{ $item->akhir_periode}}</td>
+                            <td>{{ $item->status}}</td>
+                            <td>
+                                <a href="/editperiode/{{$item->kode_periode}}"><i class="fas fa-edit" style="color:green"></i></a> |
+                                <a href="/hapusperiode/{{$item->kode_periode}}"><i class="fas fa-trash-alt" style="color:red"></i></a>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
                     </thead>
                 </table>
             </div>

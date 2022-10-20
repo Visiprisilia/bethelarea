@@ -5,6 +5,7 @@ use App\Http\Controllers\dashboard\DashboardController;
 use App\Http\Controllers\periode\PeriodeController;
 use App\Http\Controllers\user\UserController;
 use App\Http\Controllers\coa\CoaController;
+use App\Http\Controllers\pegawai\PegawaiController;
 use App\Http\Controllers\unit\UnitController;
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,11 @@ use App\Http\Controllers\unit\UnitController;
 Route::get('/bethelarea', [DashboardController::class,'dashboard']);
 // Periode -->
 Route::get('/periode', [PeriodeController::class,'periode']);
+Route::get('/tambahperiode', [PeriodeController::class,'tambahperiode']);
+Route::post('/simpanperiode', [PeriodeController::class,'simpanperiode']);
+Route::get('/editperiode/{kode_periode}', [PeriodeController::class,'editperiode']);
+Route::post('/updateperiode/{kode_periode}', [PeriodeController::class,'updateperiode']);
+Route::get('/hapusperiode/{kode_periode}', [PeriodeController::class,'hapusperiode']);
 // user-->
 Route::get('/user', [UserController::class,'user']);
 // coa -->
@@ -36,3 +42,10 @@ Route::post('/simpanunit', [UnitController::class,'simpanunit']);
 Route::get('/editunit/{kode_unit}', [UnitController::class,'editunit']);
 Route::post('/updateunit/{kode_unit}', [UnitController::class,'updateunit']);
 Route::get('/hapusunit/{kode_unit}', [UnitController::class,'hapusunit']);
+// pegawai -->
+Route::get('/pegawai', [PegawaiController::class,'pegawai']);
+Route::get('/tambahpegawai', [PegawaiController::class,'tambahpegawai']);
+Route::post('/simpanpegawai', [PegawaiController::class,'simpanpegawai']);
+Route::get('/editpegawai/{kode_pegawai}', [PegawaiController::class,'editpegawai']);
+Route::post('/updatepegawai/{kode_pegawai}', [PegawaiController::class,'updatepegawai']);
+Route::get('/hapuspegawai/{kode_pegawai}', [PegawaiController::class,'hapuspegawai']);
