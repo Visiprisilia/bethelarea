@@ -25,31 +25,24 @@
                     <!-- Default Bootstrap Form Controls-->
                     <div id="default">
                         <div class="card mb-4">
-                            <div class="card-header">Chart of Accounts</div>
+                            <div class="card-header">Unit</div>
                             <div class="card-body">
                                 <!-- Component Preview-->
                                 <div class="sbp-preview">
                                     <div class="sbp-preview-content">
-                                        <form action="/simpancoa" method="post">
+                                        <form action="/simpanunit" method="post">
                                             @csrf
                                             <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Kode Akun</label>
-                                                <input class="form-control" id="kode_akun" name="kode_akun" placeholder="Kode Akun" />
+                                                <label for="exampleFormControlInput1">Kode Unit</label>
+                                                <input class="form-control" id="kode_unit" name="kode_unit" placeholder="Kode Unit" />
                                             </div>
                                             <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Nama Akun</label>
-                                                <input class="form-control" id="nama_akun" name="nama_akun" placeholder="Nama Akun" />
+                                                <label for="exampleFormControlInput1">Nama Unit</label>
+                                                <input class="form-control" id="nama_unit" name="nama_unit" placeholder="Nama Unit" />
                                             </div>
                                             <div class="mb-3">
-                                                <label for="exampleFormControlSelect1">Saldo Normal</label>
-                                                <select class="form-control" id="saldo_normal" name="saldo_normal">
-                                                    <option>Debit</option>
-                                                    <option>Kredit</option>
-                                                </select>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Keterangan</label>
-                                                <input class="form-control" id="keterangan" name="keterangan" placeholder="Keterangan" />
+                                                <label for="exampleFormControlInput1">Status</label>
+                                                <input class="form-control" id="status_unit" name="status_unit" placeholder="Status" />
                                             </div>
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-primary">Tambah</button>

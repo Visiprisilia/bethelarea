@@ -8,10 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Coa extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'kode_akun',
-        'nama_akun',
-        'saldo_normal',
-        'keterangan'
-    ];
+
+    protected $table = 'coa';
+    protected $primaryKey = 'kode_surat';
+    protected $fillable = ['kode_akun', 'nama_akun', 'saldo_normal', 'keterangan'];
 }

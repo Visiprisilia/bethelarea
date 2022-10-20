@@ -10,7 +10,7 @@
                         <div class="col-auto mt-4">
                             <h1 class="page-header-title">
                                 <div class="page-header-icon"><i data-feather="edit-3"></i></div>
-                                Tambah Data
+                                Edit Data
                             </h1>
 
                         </div>
@@ -30,29 +30,30 @@
                                 <!-- Component Preview-->
                                 <div class="sbp-preview">
                                     <div class="sbp-preview-content">
-                                        <form action="/simpancoa" method="post">
+                                        @foreach($coa as $item)
+                                        <form action="/updatecoa/{{$item->kode_akun}}" method="post">
                                             @csrf
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Kode Akun</label>
-                                                <input class="form-control" id="kode_akun" name="kode_akun" placeholder="Kode Akun" />
+                                                <input class="form-control" id="kode_akun" name="kode_akun" value="{{$item->kode_akun}}" placeholder="Kode Akun" />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Nama Akun</label>
-                                                <input class="form-control" id="nama_akun" name="nama_akun" placeholder="Nama Akun" />
+                                                <input class="form-control" id="nama_akun" name="nama_akun" value="{{$item->nama_akun}}" placeholder="Nama Akun" />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlSelect1">Saldo Normal</label>
-                                                <select class="form-control" id="saldo_normal" name="saldo_normal">
+                                                <select class="form-control" id="saldo_normal" name="saldo_normal" value="{{$item->saldo_normal}}">
                                                     <option>Debit</option>
                                                     <option>Kredit</option>
                                                 </select>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Keterangan</label>
-                                                <input class="form-control" id="keterangan" name="keterangan" placeholder="Keterangan" />
+                                                <input class="form-control" id="keterangan" name="keterangan" value="{{$item->keterangan}}" placeholder="Keterangan" />
                                             </div>
                                             <div class="mb-3">
-                                                <button type="submit" class="btn btn-primary">Tambah</button>
+                                                <button type="submit" class="btn btn-primary">Simpan</button>
                                             </div>
                                         </form>
                                     </div>
@@ -65,4 +66,5 @@
         </div>
     </main>
 </div>
+@endforeach
 @endsection

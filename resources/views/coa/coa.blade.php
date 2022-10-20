@@ -10,7 +10,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+            <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
             <h6 class="btn btn-success"><a href="tambahcoa">Tambah Data</a></h6>
         </div>
         <div class="card-body">
@@ -22,7 +22,22 @@
                             <th>Nama Akun</th>
                             <th>Saldo Normal</th>
                             <th>Keterangan</th>
-                        </tr>
+                            <th>Aksi</th>
+                        </tr>                      
+                        <tbody>
+                        @foreach ($coa as $item)
+                        <tr>
+                            <td>{{ $item->kode_akun}}</td>
+                            <td>{{ $item->nama_akun}}</td>
+                            <td>{{ $item->saldo_normal}}</td>
+                            <td>{{ $item->keterangan}}</td>
+                            <td>
+                                <a href="/editcoa/{{$item->kode_akun}}"><i class="fas fa-edit" style="color:green"></i></a> | 
+                                <a href="/hapuscoa/{{$item->kode_akun}}"><i class="fas fa-trash-alt" style="color:red"></i></a> 
+                            </td>
+                        </tr>  
+                        @endforeach  
+                        </tbody>                
                     </thead>
                 </table>
             </div>
@@ -31,4 +46,5 @@
 
 </div>
 <!-- /.container-fluid -->
+
 @endsection

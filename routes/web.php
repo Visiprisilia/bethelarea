@@ -16,8 +16,23 @@ use App\Http\Controllers\unit\UnitController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Dashboard -->
 Route::get('/bethelarea', [DashboardController::class,'dashboard']);
+// Periode -->
 Route::get('/periode', [PeriodeController::class,'periode']);
+// user-->
 Route::get('/user', [UserController::class,'user']);
+// coa -->
 Route::get('/coa', [CoaController::class,'coa']);
+Route::get('/tambahcoa', [CoaController::class,'tambahcoa']);
+Route::post('/simpancoa', [CoaController::class,'simpancoa']);
+Route::get('/editcoa/{kode_akun}', [CoaController::class,'editcoa']);
+Route::post('/updatecoa/{kode_akun}', [CoaController::class,'updatecoa']);
+Route::get('/hapuscoa/{kode_akun}', [CoaController::class,'hapuscoa']);
+// unit -->
 Route::get('/unit', [UnitController::class,'unit']);
+Route::get('/tambahunit', [UnitController::class,'tambahunit']);
+Route::post('/simpanunit', [UnitController::class,'simpanunit']);
+Route::get('/editunit/{kode_unit}', [UnitController::class,'editunit']);
+Route::post('/updateunit/{kode_unit}', [UnitController::class,'updateunit']);
+Route::get('/hapusunit/{kode_unit}', [UnitController::class,'hapusunit']);
