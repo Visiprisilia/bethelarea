@@ -22,6 +22,7 @@ class CoaController extends Controller
 		Coa::create([
 			'kode_akun'=>$request->kode_akun,
 			'nama_akun'=>$request->nama_akun,
+			'kelompok_rek'=>$request->kelompok_rek,
 			'saldo_normal'=>$request->saldo_normal,	
 			'keterangan'=>$request->keterangan	
 			]);
@@ -37,6 +38,7 @@ class CoaController extends Controller
 		$coa = Coa::where('kode_akun', $request->kode_akun)->update([
 			'kode_akun'=>$request->kode_akun,
 			'nama_akun'=>$request->nama_akun,
+			'kelompok_rek'=>$request->kelompok_rek,
 			'saldo_normal'=>$request->saldo_normal,	
 			'keterangan'=>$request->keterangan	
 		]);

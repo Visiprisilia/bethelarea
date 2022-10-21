@@ -61,8 +61,8 @@
                                                 <input class="form-control" type="date" id="tanggal_ppt" name="tanggal_ppt" placeholder="Status" />
                                             </div>
                                             <div class="mb-3">
-                                                <button type="submit" class="btn btn-primary">Tambah</button>
-                                            </div>
+                                                <button type="submit" class="btn btn-success">Tambah</button>
+                                                <a href="{{url('/pegawai')}}" class="btn btn-danger">Batal</a>                                            </div>
                                         </form>
                                     </div>
                                 </div>

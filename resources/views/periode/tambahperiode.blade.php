@@ -53,8 +53,8 @@
                                                 <input class="form-control" id="stats" name="status" placeholder="Status" />
                                             </div>
                                             <div class="mb-3">
-                                                <button type="submit" class="btn btn-primary">Tambah</button>
-                                            </div>
+                                                <button type="submit" class="btn btn-success">Tambah</button>
+                                                <a href="{{url('/periode')}}" class="btn btn-danger">Batal</a>                                            </div>
                                         </form>
                                     </div>
                                 </div>

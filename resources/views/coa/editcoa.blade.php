@@ -10,7 +10,7 @@
                         <div class="col-auto mt-4">
                             <h1 class="page-header-title">
                                 <div class="page-header-icon"><i data-feather="edit-3"></i></div>
-                                Edit Data
+                                Ubah Data
                             </h1>
 
                         </div>
@@ -35,11 +35,16 @@
                                             @csrf
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Kode Akun</label>
+                                                <input type="hidden" name="kode_akun" id="kode_akun">
                                                 <input class="form-control" id="kode_akun" name="kode_akun" value="{{$item->kode_akun}}" placeholder="Kode Akun" />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Nama Akun</label>
                                                 <input class="form-control" id="nama_akun" name="nama_akun" value="{{$item->nama_akun}}" placeholder="Nama Akun" />
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Kelompok Rekening</label>
+                                                <input class="form-control" id="kelompok_rek" name="kelompok_rek" value="{{$item->kelompok_rek}}" placeholder="Kelompok Rekening" />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlSelect1">Saldo Normal</label>
@@ -53,7 +58,8 @@
                                                 <input class="form-control" id="keterangan" name="keterangan" value="{{$item->keterangan}}" placeholder="Keterangan" />
                                             </div>
                                             <div class="mb-3">
-                                                <button type="submit" class="btn btn-primary">Simpan</button>
+                                                <button type="submit" class="btn btn-success">Simpan</button>
+                                                <a href="{{url('/coa')}}" class="btn btn-danger">Batal</a>
                                             </div>
                                         </form>
                                     </div>

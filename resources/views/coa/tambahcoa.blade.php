@@ -41,6 +41,10 @@
                                                 <input class="form-control" id="nama_akun" name="nama_akun" placeholder="Nama Akun" />
                                             </div>
                                             <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Kelompok Rekening</label>
+                                                <input class="form-control" id="kelompok_rek" name="kelompok_rek" placeholder="Kelompok Rekening" />
+                                            </div>
+                                            <div class="mb-3">
                                                 <label for="exampleFormControlSelect1">Saldo Normal</label>
                                                 <select class="form-control" id="saldo_normal" name="saldo_normal">
                                                     <option>Debit</option>
@@ -52,8 +56,8 @@
                                                 <input class="form-control" id="keterangan" name="keterangan" placeholder="Keterangan" />
                                             </div>
                                             <div class="mb-3">
-                                                <button type="submit" class="btn btn-primary">Tambah</button>
-                                            </div>
+                                                <button type="submit" class="btn btn-success">Tambah</button>
+                                                <a href="{{url('/coa')}}" class="btn btn-danger">Batal</a>                                            </div>
                                         </form>
                                     </div>
                                 </div>

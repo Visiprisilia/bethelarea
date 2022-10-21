@@ -45,8 +45,10 @@
                                                 <input class="form-control" id="status_unit" name="status_unit" placeholder="Status" />
                                             </div>
                                             <div class="mb-3">
-                                                <button type="submit" class="btn btn-primary">Tambah</button>
+                                                <button type="submit" class="btn btn-success">Tambah</button>
+                                                <a href="{{url('/unit')}}" class="btn btn-danger">Kembali</a>
                                             </div>
+
                                         </form>
                                     </div>
                                 </div>

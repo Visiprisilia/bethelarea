@@ -10,7 +10,7 @@
                         <div class="col-auto mt-4">
                             <h1 class="page-header-title">
                                 <div class="page-header-icon"><i data-feather="edit-3"></i></div>
-                                Tambah Data
+                                Ubah Data
                             </h1>
 
                         </div>
@@ -30,7 +30,7 @@
                                 <!-- Component Preview-->
                                 <div class="sbp-preview">
                                     <div class="sbp-preview-content">
-                                    @foreach($unit as $item)
+                                        @foreach($unit as $item)
                                         <form action="/updateunit/{{$item->kode_unit}}" method="post">
                                             @csrf
                                             <div class="mb-3">
@@ -39,15 +39,15 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Nama Unit</label>
-                                                <input class="form-control" id="nama_unit" name="nama_unit"  value="{{$item->nama_unit}}" placeholder="Nama Unit" />
+                                                <input class="form-control" id="nama_unit" name="nama_unit" value="{{$item->nama_unit}}" placeholder="Nama Unit" />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Status</label>
-                                                <input class="form-control" id="status_unit" name="status_unit"  value="{{$item->status_unit}}" placeholder="Status" />
+                                                <input class="form-control" id="status_unit" name="status_unit" value="{{$item->status_unit}}" placeholder="Status" />
                                             </div>
                                             <div class="mb-3">
-                                                <button type="submit" class="btn btn-primary">Simpan</button>
-                                            </div>
+                                                <button type="submit" class="btn btn-success">Simpan</button>
+                                                <a href="{{url('/unit')}}" class="btn btn-danger">Batal</a>                                            </div>
                                         </form>
                                     </div>
                                 </div>

@@ -10,7 +10,7 @@
                         <div class="col-auto mt-4">
                             <h1 class="page-header-title">
                                 <div class="page-header-icon"><i data-feather="edit-3"></i></div>
-                                Tambah Data
+                                Ubah Data 
                             </h1>
 
                         </div>
@@ -24,8 +24,8 @@
                 <div class="col-lg-9">
                     <!-- Default Bootstrap Form Controls-->
                     <div id="default">
-                        <div class="card mb-4">
-                            <div class="card-header">Unit</div>
+                        <div class="card mb-4"> 
+                            <div class="card-header">Periode</div>
                             <div class="card-body">
                                 <!-- Component Preview-->
                                 <div class="sbp-preview">
@@ -54,8 +54,8 @@
                                                 <input class="form-control" id="stats" name="status" value="{{$item->status}}" placeholder="Status" />
                                             </div>
                                             <div class="mb-3">
-                                                <button type="submit" class="btn btn-primary">Simpan</button>
-                                            </div>
+                                                <button type="submit" class="btn btn-success">Simpan</button>
+                                                <a href="{{url('/periode')}}" class="btn btn-danger">Batal</a>                                            </div>
                                         </form>
                                     </div>
                                 </div>

@@ -41,7 +41,7 @@
                 <a class="collapse-item" href="/periode">Periode</a>
                 <a class="collapse-item" href="/user">User</a>
                 <a class="collapse-item" href="/pegawai">Daftar Pegawai</a>
-                <a class="collapse-item" href="/coa">Card Of Account</a>
+                <a class="collapse-item" href="/coa">Chart Of Account</a>
                 <a class="collapse-item" href="/unit">Daftar Unit</a>
             </div>
         </div>
