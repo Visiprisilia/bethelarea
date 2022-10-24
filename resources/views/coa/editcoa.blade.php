@@ -35,16 +35,21 @@
                                             @csrf
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Kode Akun</label>
-                                                <input type="hidden" name="kode_akun" id="kode_akun">
-                                                <input class="form-control" id="kode_akun" name="kode_akun" value="{{$item->kode_akun}}" placeholder="Kode Akun" />
+                                                <input class="form-control" type="hidden" id="kode_akun" name="kode_akun" value="{{$item->kode_akun}}" placeholder="Kode Akun" />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Nama Akun</label>
                                                 <input class="form-control" id="nama_akun" name="nama_akun" value="{{$item->nama_akun}}" placeholder="Nama Akun" />
                                             </div>
                                             <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Kelompok Rekening</label>
-                                                <input class="form-control" id="kelompok_rek" name="kelompok_rek" value="{{$item->kelompok_rek}}" placeholder="Kelompok Rekening" />
+                                                <label for="exampleFormControlSelect1">Kelompok Rekening</label>
+                                                <select class="form-control" id="kelompok_rek" name="kelompok_rek" value="{{$item->kelompok_rek}}">
+                                                    <option>Aktiva</option>
+                                                    <option>Utang</option>
+                                                    <option>Biaya</option>
+                                                    <option>Modal</option>
+                                                    <option>Pendapatan</option>
+                                                </select>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlSelect1">Saldo Normal</label>

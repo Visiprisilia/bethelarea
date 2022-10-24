@@ -35,7 +35,7 @@
                                             @csrf
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Kode</label>
-                                                <input class="form-control" id="kode_periode" name="kode_periode" value="{{$item->kode_periode}}" placeholder="Kode periode" />
+                                                <input class="form-control" type="hidden" id="kode_periode" name="kode_periode" value="{{$item->kode_periode}}" placeholder="Kode periode" />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Periode</label>

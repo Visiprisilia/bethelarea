@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\pengguna\LoginController;
 use App\Http\Controllers\dashboard\DashboardController;
 use App\Http\Controllers\periode\PeriodeController;
 use App\Http\Controllers\user\UserController;
@@ -17,6 +18,15 @@ use App\Http\Controllers\unit\UnitController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Login-->
+Route::get('/login', function (){
+    return view('pengguna/login');
+})->name('login');
+
+Route::post('/postlogin', [LoginController::class,'postlogin']);
+Route::get('/logout', [LoginController::class,'logout']);
+
+route::group(['middleware' => ['auth']], function(){
 // Dashboard -->
 Route::get('/bethelarea', [DashboardController::class,'dashboard']);
 // Periode -->
@@ -49,3 +59,4 @@ Route::post('/simpanpegawai', [PegawaiController::class,'simpanpegawai']);
 Route::get('/editpegawai/{kode_pegawai}', [PegawaiController::class,'editpegawai']);
 Route::post('/updatepegawai/{kode_pegawai}', [PegawaiController::class,'updatepegawai']);
 Route::get('/hapuspegawai/{kode_pegawai}', [PegawaiController::class,'hapuspegawai']);
+});

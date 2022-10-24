@@ -39,10 +39,16 @@
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Nama Akun</label>
                                                 <input class="form-control" id="nama_akun" name="nama_akun" placeholder="Nama Akun" />
-                                            </div>
+                                            </div>                                         
                                             <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Kelompok Rekening</label>
-                                                <input class="form-control" id="kelompok_rek" name="kelompok_rek" placeholder="Kelompok Rekening" />
+                                                <label for="exampleFormControlSelect1">Kelompok Rekening</label>
+                                                <select class="form-control" id="kelompok_rek" name="kelompok_rek">
+                                                    <option>Aktiva</option>
+                                                    <option>Utang</option>
+                                                    <option>Biaya</option>
+                                                    <option>Modal</option>
+                                                    <option>Pendapatan</option>
+                                                </select>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlSelect1">Saldo Normal</label>
