@@ -7,6 +7,7 @@ use App\Http\Controllers\periode\PeriodeController;
 use App\Http\Controllers\user\UserController;
 use App\Http\Controllers\coa\CoaController;
 use App\Http\Controllers\pegawai\PegawaiController;
+use App\Http\Controllers\pengajuan\PengajuanController;
 use App\Http\Controllers\unit\UnitController;
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +29,7 @@ Route::post('/simpanregistrasi', [LoginController::class,'simpanregistrasi']);
 Route::post('/postlogin', [LoginController::class,'postlogin']);
 Route::get('/logout', [LoginController::class,'logout']);
 
-route::group(['middleware' => ['auth','ceklevel:super admin']], function(){
+Route::group(['middleware' => ['auth', 'ceklevel:super admin']], function(){
 // Dashboard -->
 Route::get('/dashboard', [DashboardController::class,'dashboard']);
 // Periode -->
@@ -62,20 +63,8 @@ Route::get('/editpegawai/{kode_pegawai}', [PegawaiController::class,'editpegawai
 Route::post('/updatepegawai/{kode_pegawai}', [PegawaiController::class,'updatepegawai']);
 Route::get('/hapuspegawai/{kode_pegawai}', [PegawaiController::class,'hapuspegawai']);
 });
-
-route::group(['middleware' => ['auth','ceklevel:pegawai']], function(){
-    // Dashboard -->
+Route::group(['middleware' => ['auth', 'ceklevel:super admin,pegawai']], function(){
 Route::get('/dashboard', [DashboardController::class,'dashboard']);
-// Periode -->
-Route::get('/periode', [PeriodeController::class,'periode']);
-Route::get('/tambahperiode', [PeriodeController::class,'tambahperiode']);
-Route::post('/simpanperiode', [PeriodeController::class,'simpanperiode']);
-Route::get('/editperiode/{kode_periode}', [PeriodeController::class,'editperiode']);
-Route::post('/updateperiode/{kode_periode}', [PeriodeController::class,'updateperiode']);
-Route::get('/hapusperiode/{kode_periode}', [PeriodeController::class,'hapusperiode']);
-// user-->
-Route::get('/user', [UserController::class,'user']);
-
 // pegawai -->
 Route::get('/pegawai', [PegawaiController::class,'pegawai']);
 Route::get('/tambahpegawai', [PegawaiController::class,'tambahpegawai']);
