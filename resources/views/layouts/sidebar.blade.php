@@ -30,6 +30,7 @@
             </div> -->
 
     <!-- Nav Item - Pages Collapse Menu -->
+    @if(auth()->user()->level=="super admin")
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-cog"></i>
@@ -46,7 +47,7 @@
             </div>
         </div>
     </li>
-
+    @endif
     <!-- Nav Item - pengajuan -->
     <li class="nav-item">
         <a class="nav-link" href="charts.html">
