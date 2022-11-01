@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\pengguna;
 use App\Models\User;
-
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -41,6 +40,7 @@ class LoginController extends Controller
 			'remember_token'=> Str::random(60),
 
 			]);
-			return redirect('/coa')->with('success', 'Task Created Successfully!');
+			return redirect('/dashboard');
 	}
+
 	}

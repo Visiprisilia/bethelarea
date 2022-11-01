@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\pengguna\LoginController;
 use App\Http\Controllers\dashboard\DashboardController;
 use App\Http\Controllers\periode\PeriodeController;
-use App\Http\Controllers\user\UserController;
+use App\Http\Controllers\pengguna\UserController;
 use App\Http\Controllers\coa\CoaController;
 use App\Http\Controllers\pegawai\PegawaiController;
 use App\Http\Controllers\pengajuan\PengajuanController;
@@ -41,6 +41,8 @@ Route::post('/updateperiode/{kode_periode}', [PeriodeController::class,'updatepe
 Route::get('/hapusperiode/{kode_periode}', [PeriodeController::class,'hapusperiode']);
 // user-->
 Route::get('/user', [UserController::class,'user']);
+// profile-->
+Route::get('/editprofile/{id}', [UserController::class,'editprofile']);
 // coa -->
 Route::get('/coa', [CoaController::class,'coa']);
 Route::get('/tambahcoa', [CoaController::class,'tambahcoa']);
@@ -65,11 +67,12 @@ Route::get('/hapuspegawai/{kode_pegawai}', [PegawaiController::class,'hapuspegaw
 });
 Route::group(['middleware' => ['auth', 'ceklevel:super admin,pegawai']], function(){
 Route::get('/dashboard', [DashboardController::class,'dashboard']);
-// pegawai -->
-Route::get('/pegawai', [PegawaiController::class,'pegawai']);
-Route::get('/tambahpegawai', [PegawaiController::class,'tambahpegawai']);
-Route::post('/simpanpegawai', [PegawaiController::class,'simpanpegawai']);
-Route::get('/editpegawai/{kode_pegawai}', [PegawaiController::class,'editpegawai']);
-Route::post('/updatepegawai/{kode_pegawai}', [PegawaiController::class,'updatepegawai']);
-Route::get('/hapuspegawai/{kode_pegawai}', [PegawaiController::class,'hapuspegawai']);
+//pengajuan
+Route::get('/pengajuan', [PengajuanController::class,'pengajuan']);
+Route::get('/tambahpengajuan', [PengajuanController::class,'tambahpengajuan']);
+Route::post('/simpanpengajuan', [PengajuanController::class,'simpanpengajuan']);
+Route::get('/editpengajuan/{kode_pengajuan}', [PengajuanController::class,'editpengajuan']);
+Route::post('/updatepengajuan/{kode_pengajuan}', [PengajuanController::class,'updatepengajuan']);
+Route::get('/hapuspengajuan/{kode_pengajuan}', [PengajuanController::class,'hapuspengajuan']);
+
 });

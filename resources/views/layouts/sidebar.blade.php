@@ -16,7 +16,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-        <a class="nav-link" href="/bethelarea">
+        <a class="nav-link" href="/dashboard">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -50,7 +50,7 @@
     @endif
     <!-- Nav Item - pengajuan -->
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="/pengajuan">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Pengajuan Anggaran</span></a>
     </li>
@@ -113,11 +113,11 @@
             <i class="fas fa-fw fa-table"></i>
             <span>Tables</span></a>
     </li>
-    <li class="nav-item">
+    <!-- <li class="nav-item">
         <a class="nav-link" href="/logout">
             <i class="fas fa-fw fa-sign-out-alt"></i>
             <span>Logout</span></a>
-    </li>
+    </li> -->
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
