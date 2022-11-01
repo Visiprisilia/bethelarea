@@ -55,3 +55,4 @@
 </div>
 <!-- /.container-fluid -->
 @endsection
+@include('sweetalert::alert')

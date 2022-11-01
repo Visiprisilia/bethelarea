@@ -47,16 +47,24 @@
             </div>
         </div>
     </li>
-    @endif
+    @elseif(auth()->user()->level=="yayasan")
+    <!-- Nav Item - kebijakan -->
+    <li class="nav-item">
+        <a class="nav-link" href="/kebijakan">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Kebijakan Yayasan</span></a>
+    </li>
+    @elseif(auth()->user()->level=="pegawai")
     <!-- Nav Item - pengajuan -->
     <li class="nav-item">
         <a class="nav-link" href="/pengajuan">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Pengajuan Anggaran</span></a>
     </li>
+    @endif
 
     <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item">
+    <!-- <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-fw fa-wrench"></i>
             <span>Utilities</span>
@@ -70,18 +78,18 @@
                 <a class="collapse-item" href="utilities-other.html">Other</a>
             </div>
         </div>
-    </li>
+    </li> -->
 
     <!-- Divider -->
-    <hr class="sidebar-divider">
+    <!-- <hr class="sidebar-divider"> -->
 
     <!-- Heading -->
-    <div class="sidebar-heading">
+    <!-- <div class="sidebar-heading">
         Addons
-    </div>
+    </div> -->
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item ">
+    <!-- <li class="nav-item ">
         <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
             <i class="fas fa-fw fa-folder"></i>
             <span>Pages</span>
@@ -98,21 +106,21 @@
                 <a class="collapse-item" href="blank.html">Blank Page</a>
             </div>
         </div>
-    </li>
+    </li> -->
 
     <!-- Nav Item - Charts -->
-    <li class="nav-item">
+    <!-- <li class="nav-item">
         <a class="nav-link" href="charts.html">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Charts</span></a>
-    </li>
+    </li> -->
 
     <!-- Nav Item - Tables -->
-    <li class="nav-item">
+    <!-- <li class="nav-item">
         <a class="nav-link" href="tables.html">
             <i class="fas fa-fw fa-table"></i>
             <span>Tables</span></a>
-    </li>
+    </li> -->
     <!-- <li class="nav-item">
         <a class="nav-link" href="/logout">
             <i class="fas fa-fw fa-sign-out-alt"></i>
@@ -120,7 +128,7 @@
     </li> -->
 
     <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block">
+    <!-- <hr class="sidebar-divider d-none d-md-block"> -->
 
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">
