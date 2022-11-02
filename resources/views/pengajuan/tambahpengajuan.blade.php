@@ -33,16 +33,41 @@
                                         <form action="/simpanpengajuan" method="post">
                                             @csrf
                                             <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Kode</label>
-                                                <input class="form-control" id="kode_pengajuan" name="kode_pengajuan" placeholder="Kode Pengajuan" />
+                                                <label for="exampleFormControlInput1">Kode Program Kerja</label>
+                                                <input class="form-control" id="kode_proker" name="kode_proker"/>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Nama Kegiatan</label>
-                                                <input class="form-control" id="kegiatan" name="kegiatan" placeholder="Nama Kegiatan" />
+                                                <label for="exampleFormControlInput1">Program Kerja</label>
+                                                <input class="form-control" id="proker" name="proker" />
                                             </div>
                                             <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Nominal</label>
-                                                <input class="form-control" id="nominal" name="nominal" placeholder="Nominal" />
+                                            <label for="exampleFormControlSelect1">Penanggung Jawab</label>
+                                                <select class="form-control select2" id="pegawai_id" name="pegawai_id">
+                                                    <option disabled value>Pilih Penanggung Jawab</option>
+                                                    @foreach ($pegawai as $item)
+                                                    <option value="{{ $item->kode_pegawai}}">{{$item->nama_pegawai}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Tujuan</label>
+                                                <input class="form-control" id="tujuan" name="tujuan" />
+                                            </div>      
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Akun Biaya</label>
+                                                <input class="form-control" id="akun_biaya" name="akun_biaya" />
+                                            </div> 
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Anggaran</label>
+                                                <input class="form-control" id="anggaran" name="anggaran"  />
+                                            </div> 
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Waktu</label>
+                                                <input class="form-control" type="date" id="waktu" name="waktu" />
+                                            </div>      
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Indikator Pencapaian</label>
+                                                <input class="form-control"  id="indikator" name="indikator" />
                                             </div>                                                                                                                              
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Tambah</button>

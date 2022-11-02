@@ -34,15 +34,15 @@
                                             @csrf
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Kode Unit</label>
-                                                <input class="form-control" id="kode_unit" name="kode_unit" placeholder="Kode Unit" />
+                                                <input class="form-control" id="kode_unit" name="kode_unit"  />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Nama Unit</label>
-                                                <input class="form-control" id="nama_unit" name="nama_unit" placeholder="Nama Unit" />
+                                                <input class="form-control" id="nama_unit" name="nama_unit"  />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Status</label>
-                                                <input class="form-control" id="status_unit" name="status_unit" placeholder="Status" />
+                                                <input class="form-control" id="status_unit" name="status_unit"  />
                                             </div>
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Tambah</button>

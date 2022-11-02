@@ -30,25 +30,52 @@
                                 <!-- Component Preview-->
                                 <div class="sbp-preview">
                                     <div class="sbp-preview-content">
-                                    @foreach($pengajuan as $item)
-                                    <form action="/updatepengajuan/{{$item->kode_pengajuan}}" method="post">
+                                        @foreach($pengajuan as $item)
+                                        <form action="/updatepengajuan/{{$item->kode_proker}}" method="post">
                                             @csrf
                                             <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Kode</label>
-                                                <input class="form-control" type="hidden" id="kode_pengajuan" name="kode_pengajuan" value="{{$item->kode_pengajuan}}" placeholder="Kode Pengajuan" />
+                                                <label for="exampleFormControlInput1">Kode Program Kerja</label>
+                                                <input class="form-control" type="hidden" id="kode_proker" name="kode_proker" value="{{$item->kode_proker}}" placeholder="Kode Program Kerja" />
                                             </div>
                                             <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Nama Kegiatan</label>
-                                                <input class="form-control" id="kegiatan" name="kegiatan" value="{{$item->kegiatan}}" placeholder="Nama Kegiatan" />
+                                                <label for="exampleFormControlInput1">Program Kerja</label>
+                                                <input class="form-control" id="proker" name="proker" value="{{$item->proker}}" placeholder="Program Kerja" />
                                             </div>
                                             <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Nominal</label>
-                                                <input class="form-control" id="nominal" name="nominal" value="{{$item->nominal}}" placeholder="Nominal" />
+                                            <label for="exampleFormControlSelect1">Penanggung Jawab</label>
+                                                <select class="form-control select2" id="pegawai_id" name="pegawai_id" value="{{$item->pegawai_id">
+                                                    <option disabled value>Pilih Penanggung Jawab</option>
+                                                    <option value="{{ $item->pegawai_id}}">{{$item->nama_pegawai}}</option>
+
+                                                    @foreach ($pegawai as $item)
+                                                    <option value="{{ $item->kode_pegawai}}">{{$item->nama_pegawai}}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
-                                          
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Tujuan</label>
+                                                <input class="form-control" id="tujuan" name="tujuan" value="{{$item->tujuan}}" placeholder="Tujuan" />
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Akun Biaya</label>
+                                                <input class="form-control" id="akun_biaya" name="akun_biaya" value="{{$item->akun_biaya}}" placeholder="Akun Biaya" />
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Anggaran</label>
+                                                <input class="form-control" id="anggaran" name="anggaran" value="{{$item->anggaran}}" placeholder="Anggaran" />
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Waktu</label>
+                                                <input class="form-control" type="date" id="waktu" name="waktu" value="{{$item->waktu}}" />
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Indikator Pencapaian</label>
+                                                <input class="form-control" id="indikator" name="indikator" value="{{$item->indikator}}" />
+                                            </div>
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Simpan</button>
-                                                <a href="{{url('/pengajuan')}}" class="btn btn-danger">Batal</a>                                            </div>
+                                                <a href="{{url('/pengajuan')}}" class="btn btn-danger">Batal</a>
+                                            </div>
                                         </form>
                                     </div>
                                 </div>

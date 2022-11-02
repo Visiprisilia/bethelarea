@@ -19,23 +19,31 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Kode</th>
-                            <th>Periode</th>
-                            <th>Nama Kegiatan</th>
-                            <th>Nominal</th>                            
+                            <th>Kode Program Kerja</th>
+                            <th>Program Kerja</th>
+                            <th>Penanggung Jawab</th>
+                            <th>Tujuan</th>                            
+                            <th>Akun Biaya</th>                            
+                            <th>Anggaran</th>                            
+                            <th>Waktu</th>                            
+                            <th>Indikator Pencapaian</th>                            
                             <th>Aksi</th>
                         </tr>
                     <tbody>
                         @foreach ($pengajuan as $item)
                         <tr>
                             <td>{{ $loop->iteration}}</td>
-                            <td>{{ $item->kode_pengajuan}}</td>
-                            <td>{{ $item->nama_periode}}</td>
-                            <td>{{ $item->kegiatan}}</td>
-                            <td>{{ $item->nominal}}</td>                            
+                            <td>{{ $item->kode_proker}}</td>
+                            <td>{{ $item->proker}}</td>
+                            <td>{{ $item->pegawai->nama_pegawai}}</td>
+                            <td>{{ $item->tujuan}}</td>                            
+                            <td>{{ $item->akun_biaya}}</td>                            
+                            <td>{{ $item->anggaran}}</td>                            
+                            <td>{{ $item->waktu}}</td>                            
+                            <td>{{ $item->indikator}}</td>                            
                             <td>
-                                <a href="/editpengajuan/{{$item->kode_pengajuan}}"><i class="fas fa-edit" style="color:green"></i></a> |
-                                <a href="/hapuspengajuan/{{$item->kode_pengajuan}}"><i class="fas fa-trash-alt" style="color:red"></i></a>
+                                <a href="/editpengajuan/{{$item->kode_proker}}"><i class="fas fa-edit" style="color:green"></i></a> |
+                                <a href="/hapuspengajuan/{{$item->kode_proker}}"><i class="fas fa-trash-alt" style="color:red"></i></a>
                             </td>
                         </tr>
                         @endforeach

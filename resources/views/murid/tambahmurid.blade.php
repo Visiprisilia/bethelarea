@@ -25,46 +25,45 @@
                     <!-- Default Bootstrap Form Controls-->
                     <div id="default">
                         <div class="card mb-4">
-                            <div class="card-header">Chart of Accounts</div>
+                            <div class="card-header">Murid</div>
                             <div class="card-body">
                                 <!-- Component Preview-->
                                 <div class="sbp-preview">
                                     <div class="sbp-preview-content">
-                                        <form action="/simpancoa" method="post">
+                                        <form action="/simpanmurid" method="post">
                                             @csrf
                                             <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Kode Akun</label>
-                                                <input class="form-control" id="kode_akun" name="kode_akun" />
+                                                <label for="exampleFormControlInput1">Nomor Induk</label>
+                                                <input class="form-control" id="nomor_induk" name="nomor_induk"  />
                                             </div>
                                             <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Nama Akun</label>
-                                                <input class="form-control" id="nama_akun" name="nama_akun"/>
-                                            </div>                                         
+                                                <label for="exampleFormControlInput1">Nama</label>
+                                                <input class="form-control" id="nama" name="nama"  />
+                                            </div>
                                             <div class="mb-3">
-                                                <label for="exampleFormControlSelect1">Kelompok Rekening</label>
-                                                <select class="form-control" id="kelompok_rek" name="kelompok_rek">
-                                                <option disabled value>Pilih Kelompok Rekening</option>    
-                                                <option>Aktiva</option>
-                                                    <option>Utang</option>
-                                                    <option>Biaya</option>
-                                                    <option>Modal</option>
-                                                    <option>Pendapatan</option>
+                                            <label for="exampleFormControlSelect1">Jenis Kelamin</label>
+                                                <select class="form-control" id="jk" name="jk">
+                                                <option disabled value>Pilih Jenis Kelamin</option>   
+                                                <option>Perempuan</option>
+                                                    <option>Laki-laki</option>
                                                 </select>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="exampleFormControlSelect1">Saldo Normal</label>
-                                                <select class="form-control" id="saldo_normal" name="saldo_normal">
-                                                    <option>Debit</option>
-                                                    <option>Kredit</option>
-                                                </select>
+                                                <label for="exampleFormControlInput1">Tanggal Lahir</label>
+                                                <input class="form-control" type="date" id="ttl" name="ttl" />
                                             </div>
                                             <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Keterangan</label>
-                                                <input class="form-control" id="keterangan" name="keterangan" />
+                                                <label for="exampleFormControlInput1">Alamat</label>
+                                                <input class="form-control" id="alamat" name="alamat"  />
                                             </div>
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Agama</label>
+                                                <input class="form-control" id="agama" name="agama" />
+                                            </div>                                           
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Tambah</button>
-                                                <a href="{{url('/coa')}}" class="btn btn-danger">Batal</a>                                            </div>
+                                                <a href="{{url('/pegawai')}}" class="btn btn-danger">Batal</a>                                           
+                                             </div>
                                         </form>
                                     </div>
                                 </div>

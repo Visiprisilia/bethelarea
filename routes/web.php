@@ -7,6 +7,7 @@ use App\Http\Controllers\periode\PeriodeController;
 use App\Http\Controllers\pengguna\UserController;
 use App\Http\Controllers\coa\CoaController;
 use App\Http\Controllers\pegawai\PegawaiController;
+use App\Http\Controllers\murid\MuridController;
 use App\Http\Controllers\yayasan\KebijakanController;
 use App\Http\Controllers\pengajuan\PengajuanController;
 use App\Http\Controllers\unit\UnitController;
@@ -65,6 +66,16 @@ Route::post('/simpanpegawai', [PegawaiController::class,'simpanpegawai']);
 Route::get('/editpegawai/{kode_pegawai}', [PegawaiController::class,'editpegawai']);
 Route::post('/updatepegawai/{kode_pegawai}', [PegawaiController::class,'updatepegawai']);
 Route::get('/hapuspegawai/{kode_pegawai}', [PegawaiController::class,'hapuspegawai']);
+
+// murid -->
+Route::get('/murid', [MuridController::class,'murid']);
+Route::get('/tambahmurid', [MuridController::class,'tambahmurid']);
+Route::post('/simpanmurid', [MuridController::class,'simpanmurid']);
+Route::get('/editmurid/{nomor_murid}', [MuridController::class,'editmurid']);
+Route::post('/updatemurid/{nomor_murid}', [MuridController::class,'updatemurid']);
+Route::get('/hapusmurid/{nomor_murid}', [MuridController::class,'hapusmurid']);
+Route::get('/cetakpdf', [MuridController::class,'cetakpdf']);
+
 });
 Route::group(['middleware' => ['auth', 'ceklevel:super admin,yayasan']], function(){
 Route::get('/dashboard', [DashboardController::class,'dashboard']);

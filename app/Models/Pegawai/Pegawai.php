@@ -12,4 +12,9 @@ class Pegawai extends Model
     protected $table = 'pegawai';
     protected $primaryKey = 'kode_pegawai';
     protected $fillable = ['kode_pegawai', 'nama_pegawai', 'jabatan_pegawai','pendidikan', 'tanggal_masuk', 'status_kepegawaian', 'tanggal_ppt'];
+
+    public function pengajuan()
+	{
+		return $this->hasMany(pengajuan::class);
+	}
 }

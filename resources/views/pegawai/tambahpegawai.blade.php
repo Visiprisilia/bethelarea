@@ -34,31 +34,42 @@
                                             @csrf
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Kode</label>
-                                                <input class="form-control" id="kode_pegawai" name="kode_pegawai" placeholder="Kode pegawai" />
+                                                <input class="form-control" id="kode_pegawai" name="kode_pegawai"  />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Nama</label>
-                                                <input class="form-control" id="nama_pegawai" name="nama_pegawai" placeholder="Nama pegawai" />
+                                                <input class="form-control" id="nama_pegawai" name="nama_pegawai"  />
                                             </div>
                                             <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Jabatan</label>
-                                                <input class="form-control" id="jabatan_pegawai" name="jabatan_pegawai" placeholder="Status" />
+                                            <label for="exampleFormControlSelect1">Jabatan</label>
+                                                <select class="form-control" id="jabatan_pegawai" name="jabatan_pegawai">
+                                                <option disabled value>Pilih Jabatan</option>    
+                                                <option>Kepala Sekolah</option>
+                                                    <option>Guru</option>
+                                                    <option>Staf</option>
+                                                    <option>Bendahara</option>
+                                                </select>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Pendidikan</label>
-                                                <input class="form-control" id="pendidikan" name="pendidikan" placeholder="Status" />
+                                                <input class="form-control" id="pendidikan" name="pendidikan" />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Tanggal Masuk</label>
-                                                <input class="form-control" type="date" id="tanggal_masuk" name="tanggal_masuk" placeholder="Status" />
+                                                <input class="form-control" type="date" id="tanggal_masuk" name="tanggal_masuk"  />
                                             </div>
                                             <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Status Kepegawaian</label>
-                                                <input class="form-control" id="status_kepegawaian" name="status_kepegawaian" placeholder="Status" />
+                                            <label for="exampleFormControlSelect1">Status Kepegawaian</label>
+                                                <select class="form-control" id="status_kepegawaian" name="status_kepegawaian">
+                                                <option disabled value>Pilih Kepegawaian</option>   
+                                                <option>Pegawai Tetap</option>
+                                                    <option>GTT</option>
+                                                    <option>TTT</option>
+                                                </select>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Tanggal Penetapan Pegawai Tetap</label>
-                                                <input class="form-control" type="date" id="tanggal_ppt" name="tanggal_ppt" placeholder="Status" />
+                                                <input class="form-control" type="date" id="tanggal_ppt" name="tanggal_ppt" />
                                             </div>
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Tambah</button>

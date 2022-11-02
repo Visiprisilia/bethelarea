@@ -34,23 +34,23 @@
                                             @csrf
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Kode</label>
-                                                <input class="form-control" id="kode_periode" name="kode_periode" placeholder="Kode periode" />
+                                                <input class="form-control" id="kode_periode" name="kode_periode" />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Periode</label>
-                                                <input class="form-control" id="nama_periode" name="nama_periode" placeholder="Nama periode" />
+                                                <input class="form-control" id="nama_periode" name="nama_periode" />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Awal Periode</label>
-                                                <input class="form-control" id="awal_periode" name="awal_periode" placeholder="Awal Periode" />
+                                                <input class="form-control" type="date" id="awal_periode" name="awal_periode" />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Akhir Periode</label>
-                                                <input class="form-control" id="akhir_periode" name="akhir_periode" placeholder="Akhir Periode" />
+                                                <input class="form-control" type="date" id="akhir_periode" name="akhir_periode" />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Status</label>
-                                                <input class="form-control" id="stats" name="status" placeholder="Status" />
+                                                <input class="form-control" id="stats" name="status" />
                                             </div>
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Tambah</button>

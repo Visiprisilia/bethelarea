@@ -10,6 +10,11 @@ class Pengajuan extends Model
     use HasFactory;
 
     protected $table = 'pengajuan';
-    protected $primaryKey = 'kode_pengajuan';
-    protected $fillable = ['kode_pengajuan', 'kegiatan', 'nominal'];
+    protected $primaryKey = 'kode_proker';
+    protected $fillable = ['kode_proker', 'proker', 'pegawai_id', 'tujuan', 'akun_biaya', 'anggaran', 'waktu', 'indikator' ];
+    
+    public function pegawai()
+	{
+		return $this->belongsTo(pegawai::class);
+	}
 }

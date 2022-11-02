@@ -13,14 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pengajuan', function (Blueprint $table) {
-            $table->string('kode_proker')->primary();
-            $table->string('proker')->nullable();
-            $table->string('pic')->nullable();
-            $table->string('tujuan')->nullable();
-            $table->string('akunbiaya')->nullable();
-            $table->string('anggaran')->nullable();
-            $table->string('waktu')->nullable();
+        Schema::create('murid', function (Blueprint $table) {
+            $table->string('nomor_induk')->primary();
+            $table->string('nama')->nullable();
+            $table->string('jk')->nullable();
+            $table->string('ttl')->nullable();
+            $table->string('alamat')->nullable();
+            $table->string('agama')->nullable();
             $table->timestamps();
         });
     }

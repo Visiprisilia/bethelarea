@@ -31,22 +31,73 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     @if(auth()->user()->level=="super admin")
+    <!-- Nav Item - kebijakan -->
     <li class="nav-item">
+        <a class="nav-link" href="/kebijakan">
+            <i class="fas fa-solid fa-pen-nib"></i>
+            <span>Kebijakan Yayasan</span></a>
+    </li>
+    <!-- Nav Item - unit -->
+    <li class="nav-item">
+        <a class="nav-link" href="/unit">
+            <i class="fas fa-solid fa-landmark"></i>
+            <span>Unit</span></a>
+    </li>
+    <!-- Nav Item - periode -->
+    <li class="nav-item">
+        <a class="nav-link" href="/periode">
+            <i class="fas fa-solid fa-calendar"></i>
+            <span>Periode</span></a>
+    </li>
+    <!-- Nav Item - pegawai -->
+    <li class="nav-item">
+        <a class="nav-link" href="/pegawai">
+            <i class="fas fa-solid fa-users"></i>
+            <span>Pegawai</span></a>
+    </li>
+    <!-- Nav Item - pegawai -->
+    <li class="nav-item">
+        <a class="nav-link" href="/murid">
+            <i class="fas fa-solid fa-child"></i>
+            <span>Murid</span></a>
+    </li>
+    <!-- Nav Item - coa -->
+    <li class="nav-item">
+        <a class="nav-link" href="/coa">
+            <i class="fas fa-solid fa-book"></i>
+            <span>Chart Of Account</span></a>
+    </li>
+    
+           <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>Data Master</span>
+            <i class="fas fa-regular fa-money-check"></i> 
+            <span>Program Kerja</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Data Master:</h6>
-                <a class="collapse-item" href="/periode">Periode</a>
-                <a class="collapse-item" href="/user">User</a>
-                <a class="collapse-item" href="/pegawai">Daftar Pegawai</a>
-                <a class="collapse-item" href="/coa">Chart Of Account</a>
-                <a class="collapse-item" href="/unit">Daftar Unit</a>
+                <h6 class="collapse-header">Program Kerja:</h6>
+                <a class="collapse-item" href="/pengajuan">Pengajuan</a>
+                <a class="collapse-item" href="/validasi">Validasi</a>
+                <a class="collapse-item" href="/realisasi">Realisasi</a>
             </div>
         </div>
+    </li> 
+    <!-- Nav Item - anggaran -->
+    <li class="nav-item">
+        <a class="nav-link" href="/pengajuan">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Anggaran</span></a>
     </li>
+    <!-- Nav Item - user -->
+    <li class="nav-item">
+        <a class="nav-link" href="/user">
+            <i class="fas fa-solid fa-user"></i>
+            <span>User</span></a>
+    </li>
+    
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+   
     @elseif(auth()->user()->level=="yayasan")
     <!-- Nav Item - kebijakan -->
     <li class="nav-item">
@@ -59,7 +110,7 @@
     <li class="nav-item">
         <a class="nav-link" href="/pengajuan">
             <i class="fas fa-fw fa-chart-area"></i>
-            <span>Pengajuan Anggaran</span></a>
+            <span>Pengajuan</span></a>
     </li>
     @endif
 
@@ -80,8 +131,7 @@
         </div>
     </li> -->
 
-    <!-- Divider -->
-    <!-- <hr class="sidebar-divider"> -->
+
 
     <!-- Heading -->
     <!-- <div class="sidebar-heading">

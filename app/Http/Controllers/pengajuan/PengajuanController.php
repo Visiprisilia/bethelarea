@@ -4,6 +4,7 @@ namespace App\Http\Controllers\pengajuan;
 
 use Illuminate\Http\Request;
 use App\Models\Pengajuan\Pengajuan;
+use App\Models\Pegawai\Pegawai;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 
@@ -11,43 +12,55 @@ class PengajuanController extends Controller
 {
     public function pengajuan()
     {
-        $pengajuan = DB::table('pengajuan')
-		->join('periode','periode.kode_periode', '=', 'pengajuan.kode_pengajuan')
-		->get();
-        return view('pengajuan/pengajuan')->with('pengajuan', $pengajuan);
-    }
+	
+		$pengajuan = Pengajuan::with('pegawai');
+        return view('pengajuan/pengajuan', compact('pengajuan'));
+		}
     public function tambahpengajuan()
 	{
-		return view('pengajuan/tambahpengajuan');
+		$pegawai = Pegawai::all();
+		return view('pengajuan/tambahpengajuan', compact('pegawai'));
 	}
     public function simpanpengajuan(Request $request)
 	{
 		Pengajuan::create([
-			'kode_pengajuan'=>$request->kode_pengajuan,
-			'kegiatan'=>$request->kegiatan,
-			'nominal'=>$request->nominal	
+			'kode_proker'=>$request->kode_proker,
+			'proker'=>$request->proker,
+			'pegawai_id'=>$request->pegawai_id,
+			'tujuan'=>$request->tujuan,
+			'akun_biaya'=>$request->akun_biaya,
+			'anggaran'=>$request->anggaran,
+			'waktu'=>$request->waktu,	
+			'indikator'=>$request->indikator	
 			
 			]);
 			return redirect('/pengajuan')->with('status', 'Data berhasil ditambahkan');
 	}
-	public function editpengajuan($kode_pengajuan)
+	public function editpengajuan($kode_proker)
 	{
-		$pengajuan = Pengajuan::where('kode_pengajuan', $kode_pengajuan)->get();
-		return view('pengajuan/editpengajuan', compact('pengajuan'));
+		$pegawai = Pegawai::all();
+		$pengajuan = Pengajuan::with('pegawai')->findOrFail('pegawai_id');
+		$pengajuan = Pengajuan::where('kode_proker', $kode_proker)->get();
+		return view('pengajuan/editpengajuan', compact('pengajuan', 'pegawai'));
 	}
 	public function updatepengajuan(Request $request)
 	{
-		$pengajuan = Pengajuan::where('kode_pengajuan', $request->kode_pengajuan)->update([
-			'kode_pengajuan'=>$request->kode_pengajuan,
-			'kegiatan'=>$request->kegiatan,
-			'nominal'=>$request->nominal	
+		$pengajuan = Pengajuan::where('kode_proker', $request->kode_proker)->update([
+			'kode_proker'=>$request->kode_proker,
+			'proker'=>$request->proker,
+			'pegawai_id'=>$request->pegawai_id,
+			'tujuan'=>$request->tujuan,
+			'akun_biaya'=>$request->akun_biaya,
+			'anggaran'=>$request->anggaran,
+			'waktu'=>$request->waktu,
+			'indikator'=>$request->indikator		
 		
 		]);
 		return redirect('/pengajuan')->with('status', 'Data berhasil diubah');
 	}
-	public function hapuspengajuan($kode_pengajuan)
+	public function hapuspengajuan($kode_proker)
 	{
-		$pengajuan = Pengajuan::where('kode_pengajuan', $kode_pengajuan)->delete();
+		$pengajuan = Pengajuan::where('kode_proker', $kode_proker)->delete();
 		return redirect('/pengajuan') -> with ('status', 'Data berhasil dihapus');
 	}
 }

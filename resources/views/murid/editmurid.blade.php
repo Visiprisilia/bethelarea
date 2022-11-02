@@ -25,48 +25,45 @@
                     <!-- Default Bootstrap Form Controls-->
                     <div id="default">
                         <div class="card mb-4">
-                            <div class="card-header">Chart of Accounts</div>
+                            <div class="card-header">Murid</div>
                             <div class="card-body">
                                 <!-- Component Preview-->
                                 <div class="sbp-preview">
                                     <div class="sbp-preview-content">
-                                        @foreach($coa as $item)
-                                        <form action="/updatecoa/{{$item->kode_akun}}" method="post">
+                                    @foreach($murid as $item)
+                                    <form action="/updatemurid/{{$item->nomor_induk}}" method="post">
                                             @csrf
                                             <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Kode Akun</label>
-                                                <input class="form-control" type="hidden" id="kode_akun" name="kode_akun" value="{{$item->kode_akun}}" placeholder="Kode Akun" />
+                                                <label for="exampleFormControlInput1">Nomor Induk</label>
+                                                <input class="form-control" id="nomor_induk" name="nomor_induk" value="{{$item->nomor_induk}}"  />
                                             </div>
                                             <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Nama Akun</label>
-                                                <input class="form-control" id="nama_akun" name="nama_akun" value="{{$item->nama_akun}}" placeholder="Nama Akun" />
+                                                <label for="exampleFormControlInput1">Nama</label>
+                                                <input class="form-control" id="nama" name="nama" value="{{$item->nama}}" />
                                             </div>
                                             <div class="mb-3">
-                                                <label for="exampleFormControlSelect1">Kelompok Rekening</label>
-                                                <select class="form-control" id="kelompok_rek" name="kelompok_rek" value="{{$item->kelompok_rek}}">
-                                                <option disabled value>Pilih Kelompok Rekening</option>      
-                                                <option>Aktiva</option>
-                                                    <option>Utang</option>
-                                                    <option>Biaya</option>
-                                                    <option>Modal</option>
-                                                    <option>Pendapatan</option>
+                                            <label for="exampleFormControlSelect1">Jenis Kelamin</label>
+                                                <select class="form-control" id="jk" name="jk" value="{{$item->jk}}">
+                                                <option disabled value>Pilih Jenis Kelamin</option>   
+                                                <option>Perempuan</option>
+                                                    <option>Laki-laki</option>
                                                 </select>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="exampleFormControlSelect1">Saldo Normal</label>
-                                                <select class="form-control" id="saldo_normal" name="saldo_normal" value="{{$item->saldo_normal}}">
-                                                    <option>Debit</option>
-                                                    <option>Kredit</option>
-                                                </select>
+                                                <label for="exampleFormControlInput1">Tanggal Lahir</label>
+                                                <input class="form-control" type="date" id="ttl" name="ttl" value="{{$item->ttl}}" />
                                             </div>
                                             <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Keterangan</label>
-                                                <input class="form-control" id="keterangan" name="keterangan" value="{{$item->keterangan}}" placeholder="Keterangan" />
+                                                <label for="exampleFormControlInput1">Alamat</label>
+                                                <input class="form-control" id="alamat" name="alamat" value="{{$item->alamat}}"  />
                                             </div>
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Agama</label>
+                                                <input class="form-control" id="agama" name="agama" value="{{$item->agama}}" />
+                                            </div>      
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Simpan</button>
-                                                <a href="{{url('/coa')}}" class="btn btn-danger">Batal</a>
-                                            </div>
+                                                <a href="{{url('/murid')}}" class="btn btn-danger">Batal</a>                                            </div>
                                         </form>
                                     </div>
                                 </div>

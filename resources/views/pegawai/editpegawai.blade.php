@@ -42,8 +42,15 @@
                                                 <input class="form-control" id="nama_pegawai" name="nama_pegawai" value="{{$item->nama_pegawai}}" placeholder="Nama pegawai" />
                                             </div>
                                             <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Jabatan</label>
-                                                <input class="form-control" id="jabatan_pegawai" name="jabatan_pegawai" value="{{$item->jabatan_pegawai}}" placeholder="Status" />
+                                            <label for="exampleFormControlSelect1">Jabatan</label>
+                                                <select class="form-control" id="jabatan_pegawai" name="jabatan_pegawai" >
+                                                <option disabled value>Pilih Jabatan</option>    
+                                                <option >{{$item->jabatan_pegawai}}</option>
+                                                <option>Kepala Sekolah</option>
+                                                    <option>Guru</option>
+                                                    <option>Staf</option>
+                                                    <option>Bendahara</option>
+                                                </select>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Pendidikan</label>
@@ -54,8 +61,14 @@
                                                 <input class="form-control" type="date" id="tanggal_masuk" name="tanggal_masuk" value="{{$item->tanggal_masuk}}" placeholder="Status" />
                                             </div>
                                             <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Status Kepegawaian</label>
-                                                <input class="form-control" id="status_kepegawaian" name="status_kepegawaian" value="{{$item->status_kepegawaian}}" placeholder="Status" />
+                                            <label for="exampleFormControlSelect1">Status Kepegawaian</label>
+                                                <select class="form-control" id="status_kepegawaian" name="status_kepegawaian" >
+                                                <option disabled value>Pilih Kepegawaian</option>   
+                                                <option >{{$item->status_kepegawaian}}</option>
+                                                <option>Pegawai Tetap</option>
+                                                    <option>GTT</option>
+                                                    <option>TTT</option>
+                                                </select>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Tanggal Penetapan Pegawai Tetap</label>

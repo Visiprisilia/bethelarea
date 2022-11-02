@@ -34,7 +34,7 @@
                                             @csrf
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Kode</label>
-                                                <input class="form-control" id="kode_kebijakan" name="kode_kebijakan" placeholder="Kode Kebijakan" />
+                                                <input class="form-control" id="kode_kebijakan" name="kode_kebijakan" />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">File Kebijakan</label>
@@ -42,7 +42,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Keterangan</label>
-                                                <input class="form-control" id="keterangan" name="keterangan" placeholder="Keterangan" />
+                                                <input class="form-control" id="keterangan" name="keterangan"  />
                                             </div>                                            
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Tambah</button>
