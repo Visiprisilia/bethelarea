@@ -13,13 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('murid', function (Blueprint $table) {
-            $table->string('nomor_induk')->primary();
+        Schema::create('pegawai', function (Blueprint $table) {
+            $table->string('niy')->primary();
             $table->string('nama')->nullable();
-            $table->string('jk')->nullable();
             $table->string('ttl')->nullable();
-            $table->string('alamat')->nullable();
             $table->string('agama')->nullable();
+            $table->string('pendidikan')->nullable();
+            $table->string('alamat')->nullable();
+            $table->string('tanggal_masuk')->nullable();
+            $table->string('status_kepegawaian')->nullable();
+            $table->string('tanggal_ppt')->nullable();
+            $table->string('keterangan')->nullable();
             $table->timestamps();
         });
     }

@@ -56,9 +56,15 @@
                                                 <label for="exampleFormControlInput1">Tujuan</label>
                                                 <input class="form-control" id="tujuan" name="tujuan" value="{{$item->tujuan}}" placeholder="Tujuan" />
                                             </div>
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Akun Biaya</label>
-                                                <input class="form-control" id="akun_biaya" name="akun_biaya" value="{{$item->akun_biaya}}" placeholder="Akun Biaya" />
+                                            <label for="exampleFormControlSelect1">Akun Biaya</label>
+                                                <select class="form-control select2" id="akun_kode" name="akun_kode" value="{{$item->pegawai_id"s>
+                                                    <option disabled value>Pilih Akun</option>
+                                                    <option value="{{ $item->akun_kode}}">{{$item->nama_akun}}</option>
+
+                                                    @foreach ($coa as $item)
+                                                    <option value="{{ $item->kode_akun}}">{{$item->nama_akun}}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Anggaran</label>

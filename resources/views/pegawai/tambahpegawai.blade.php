@@ -34,13 +34,13 @@
                                             @csrf
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Kode</label>
-                                                <input class="form-control" id="kode_pegawai" name="kode_pegawai"  />
+                                                <input class="form-control" id="niy" name="niy"  />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Nama</label>
-                                                <input class="form-control" id="nama_pegawai" name="nama_pegawai"  />
+                                                <input class="form-control" id="nama" name="nama"  />
                                             </div>
-                                            <div class="mb-3">
+                                            <!-- <div class="mb-3">
                                             <label for="exampleFormControlSelect1">Jabatan</label>
                                                 <select class="form-control" id="jabatan_pegawai" name="jabatan_pegawai">
                                                 <option disabled value>Pilih Jabatan</option>    
@@ -49,10 +49,22 @@
                                                     <option>Staf</option>
                                                     <option>Bendahara</option>
                                                 </select>
+                                            </div> -->
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">TTL</label>
+                                                <input class="form-control" type="date" id="ttl" name="ttl"  />
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Agama</label>
+                                                <input class="form-control" id="agama" name="agama"  />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Pendidikan</label>
                                                 <input class="form-control" id="pendidikan" name="pendidikan" />
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Alamat</label>
+                                                <input class="form-control" id="alamat" name="alamat" />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Tanggal Masuk</label>
@@ -70,6 +82,10 @@
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Tanggal Penetapan Pegawai Tetap</label>
                                                 <input class="form-control" type="date" id="tanggal_ppt" name="tanggal_ppt" />
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Keterangan</label>
+                                                <input class="form-control"  id="keterangan" name="keterangan" />
                                             </div>
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Tambah</button>

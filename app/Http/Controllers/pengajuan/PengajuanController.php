@@ -5,6 +5,7 @@ namespace App\Http\Controllers\pengajuan;
 use Illuminate\Http\Request;
 use App\Models\Pengajuan\Pengajuan;
 use App\Models\Pegawai\Pegawai;
+use App\Models\Coa\Coa;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 
@@ -12,14 +13,14 @@ class PengajuanController extends Controller
 {
     public function pengajuan()
     {
-	
 		$pengajuan = Pengajuan::with('pegawai');
         return view('pengajuan/pengajuan', compact('pengajuan'));
 		}
     public function tambahpengajuan()
 	{
 		$pegawai = Pegawai::all();
-		return view('pengajuan/tambahpengajuan', compact('pegawai'));
+		$coa = Coa::all();
+		return view('pengajuan/tambahpengajuan', compact('pegawai','coa'));
 	}
     public function simpanpengajuan(Request $request)
 	{
@@ -28,7 +29,7 @@ class PengajuanController extends Controller
 			'proker'=>$request->proker,
 			'pegawai_id'=>$request->pegawai_id,
 			'tujuan'=>$request->tujuan,
-			'akun_biaya'=>$request->akun_biaya,
+			'akun_kode'=>$request->akun_kode,
 			'anggaran'=>$request->anggaran,
 			'waktu'=>$request->waktu,	
 			'indikator'=>$request->indikator	
@@ -50,7 +51,7 @@ class PengajuanController extends Controller
 			'proker'=>$request->proker,
 			'pegawai_id'=>$request->pegawai_id,
 			'tujuan'=>$request->tujuan,
-			'akun_biaya'=>$request->akun_biaya,
+			'akun_kode'=>$request->akun_kode,
 			'anggaran'=>$request->anggaran,
 			'waktu'=>$request->waktu,
 			'indikator'=>$request->indikator		

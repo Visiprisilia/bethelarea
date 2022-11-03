@@ -20,37 +20,43 @@ class PegawaiController extends Controller
     public function simpanpegawai(Request $request)
 	{
 		Pegawai::create([
-			'kode_pegawai'=>$request->kode_pegawai,
-			'nama_pegawai'=>$request->nama_pegawai,
-			'jabatan_pegawai'=>$request->jabatan_pegawai,	
+			'niy'=>$request->niy,
+			'nama'=>$request->nama,
+			'ttl'=>$request->ttl,	
+			'agama'=>$request->agama,	
 			'pendidikan'=>$request->pendidikan,	
+			'alamat'=>$request->alamat,
 			'tanggal_masuk'=>$request->tanggal_masuk,
 			'status_kepegawaian'=>$request->status_kepegawaian,
-			'tanggal_ppt'=>$request->tanggal_ppt
+			'tanggal_ppt'=>$request->tanggal_ppt,
+			'keterangan'=>$request->keterangan
 			]);
 			return redirect('/pegawai')->with('status', 'Data berhasil ditambahkan');
 	}
-	public function editpegawai($kode_pegawai)
+	public function editpegawai($niy)
 	{
-		$pegawai = Pegawai::where('kode_pegawai', $kode_pegawai)->get();
+		$pegawai = Pegawai::where('niy', $niy)->get();
 		return view('pegawai/editpegawai', compact('pegawai'));
 	}
 	public function updatepegawai(Request $request)
 	{
-		$pegawai = Pegawai::where('kode_pegawai', $request->kode_pegawai)->update([
-			'kode_pegawai'=>$request->kode_pegawai,
-			'nama_pegawai'=>$request->nama_pegawai,
-			'jabatan_pegawai'=>$request->jabatan_pegawai,	
+		$pegawai = Pegawai::where('niy', $request->niy)->update([
+			'niy'=>$request->niy,
+			'nama'=>$request->nama,
+			'ttl'=>$request->ttl,	
+			'agama'=>$request->agama,	
 			'pendidikan'=>$request->pendidikan,	
+			'alamat'=>$request->alamat,
 			'tanggal_masuk'=>$request->tanggal_masuk,
 			'status_kepegawaian'=>$request->status_kepegawaian,
-			'tanggal_ppt'=>$request->tanggal_ppt
+			'tanggal_ppt'=>$request->tanggal_ppt,
+			'keterangan'=>$request->keterangan
 		]);
 		return redirect('/pegawai')->with('status', 'Data berhasil diubah');
 	}
-	public function hapuspegawai($kode_pegawai)
+	public function hapuspegawai($niy)
 	{
-		$pegawai = Pegawai::where('kode_pegawai', $kode_pegawai)->delete();
+		$pegawai = Pegawai::where('niy', $niy)->delete();
 		return redirect('/pegawai') -> with ('status', 'Data berhasil dihapus');
 	}
 }

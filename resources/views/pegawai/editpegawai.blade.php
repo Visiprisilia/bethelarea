@@ -31,39 +31,50 @@
                                 <div class="sbp-preview">
                                     <div class="sbp-preview-content">
                                     @foreach($pegawai as $item)
-                                    <form action="/updatepegawai/{{$item->kode_pegawai}}" method="post">
+                                    <form action="/updatepegawai/{{$item->niy}}" method="post">
                                             @csrf
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Kode</label>
-                                                <input class="form-control" type="hidden" id="kode_pegawai" name="kode_pegawai" value="{{$item->kode_pegawai}}" placeholder="Kode pegawai" />
+                                                <input class="form-control" id="niy" name="niy" value="{{$item->niy}}" />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Nama</label>
-                                                <input class="form-control" id="nama_pegawai" name="nama_pegawai" value="{{$item->nama_pegawai}}" placeholder="Nama pegawai" />
+                                                <input class="form-control" id="nama" name="nama" value="{{$item->nama}}"  />
                                             </div>
-                                            <div class="mb-3">
+                                            <!-- <div class="mb-3">
                                             <label for="exampleFormControlSelect1">Jabatan</label>
-                                                <select class="form-control" id="jabatan_pegawai" name="jabatan_pegawai" >
+                                                <select class="form-control" id="jabatan_pegawai" name="jabatan_pegawai">
                                                 <option disabled value>Pilih Jabatan</option>    
-                                                <option >{{$item->jabatan_pegawai}}</option>
                                                 <option>Kepala Sekolah</option>
                                                     <option>Guru</option>
                                                     <option>Staf</option>
                                                     <option>Bendahara</option>
                                                 </select>
+                                            </div> -->
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">TTL</label>
+                                                <input class="form-control" type="date" id="ttl" name="ttl" value="{{$item->ttl}}"  />
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Agama</label>
+                                                <input class="form-control" id="agama" name="agama" value="{{$item->agama}}"  />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Pendidikan</label>
-                                                <input class="form-control" id="pendidikan" name="pendidikan" value="{{$item->pendidikan}}" placeholder="Status" />
+                                                <input class="form-control" id="pendidikan" name="pendidikan" value="{{$item->pendidikan}}"  />
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Alamat</label>
+                                                <input class="form-control" id="alamat" name="alamat" value="{{$item->alamat}}" />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Tanggal Masuk</label>
-                                                <input class="form-control" type="date" id="tanggal_masuk" name="tanggal_masuk" value="{{$item->tanggal_masuk}}" placeholder="Status" />
+                                                <input class="form-control" type="date" id="tanggal_masuk" name="tanggal_masuk" value="{{$item->tanggal_masuk}}"  />
                                             </div>
                                             <div class="mb-3">
                                             <label for="exampleFormControlSelect1">Status Kepegawaian</label>
-                                                <select class="form-control" id="status_kepegawaian" name="status_kepegawaian" >
-                                                <option disabled value>Pilih Kepegawaian</option>   
+                                                <select class="form-control" id="status_kepegawaian" name="status_kepegawaian">
+                                                <option disabled value>Pilih Kepegawaian</option>  
                                                 <option >{{$item->status_kepegawaian}}</option>
                                                 <option>Pegawai Tetap</option>
                                                     <option>GTT</option>
@@ -72,7 +83,11 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Tanggal Penetapan Pegawai Tetap</label>
-                                                <input class="form-control" type="date" id="tanggal_ppt" name="tanggal_ppt" value="{{$item->tanggal_ppt}}" placeholder="Status" />
+                                                <input class="form-control" type="date" id="tanggal_ppt" name="tanggal_ppt" value="{{$item->tanggal_ppt}}"/>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Keterangan</label>
+                                                <input class="form-control"  id="keterangan" name="keterangan" value="{{$item->keterangan}}" />
                                             </div>
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Simpan</button>

@@ -22,10 +22,18 @@ class MuridController extends Controller
 		Murid::create([
 			'nomor_induk'=>$request->nomor_induk,
 			'nama'=>$request->nama,
-			'jk'=>$request->jk,	
 			'ttl'=>$request->ttl,	
+			'jk'=>$request->jk,	
 			'alamat'=>$request->alamat,
-			'agama'=>$request->agama
+			'agama'=>$request->agama,
+			'nama_ayah'=>$request->nama_ayah,
+			'nama_ibu'=>$request->nama_ibu,
+			'pekerjaan_ayah'=>$request->pekerjaan_ayah, 
+			'pekerjaan_ibu'=>$request->pekerjaan_ibu,
+			'pendidikan_ayah'=>$request->pendidikan_ayah, 
+			'pendidikan_ibu'=>$request->pendidikan_ibu, 
+			'anak_keberapa'=>$request->anak_keberapa, 
+			'no_akte'=>$request->no_akte
 			]);
 			return redirect('/murid')->with('status', 'Data berhasil ditambahkan');
 	}
@@ -39,10 +47,18 @@ class MuridController extends Controller
 		$murid = Murid::where('nomor_induk', $request->nomor_induk)->update([
 			'nomor_induk'=>$request->nomor_induk,
 			'nama'=>$request->nama,
-			'jk'=>$request->jk,	
 			'ttl'=>$request->ttl,	
+			'jk'=>$request->jk,	
 			'alamat'=>$request->alamat,
-			'agama'=>$request->agama
+			'agama'=>$request->agama,
+			'nama_ayah'=>$request->nama_ayah,
+			'nama_ibu'=>$request->nama_ibu,
+			'pekerjaan_ayah'=>$request->pekerjaan_ayah, 
+			'pekerjaan_ibu'=>$request->pekerjaan_ibu,
+			'pendidikan_ayah'=>$request->pendidikan_ayah, 
+			'pendidikan_ibu'=>$request->pendidikan_ibu, 
+			'anak_keberapa'=>$request->anak_keberapa, 
+			'no_akte'=>$request->no_akte
 		]);
 		return redirect('/murid')->with('status', 'Data berhasil diubah');
 	}

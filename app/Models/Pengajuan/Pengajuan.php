@@ -11,10 +11,13 @@ class Pengajuan extends Model
 
     protected $table = 'pengajuan';
     protected $primaryKey = 'kode_proker';
-    protected $fillable = ['kode_proker', 'proker', 'pegawai_id', 'tujuan', 'akun_biaya', 'anggaran', 'waktu', 'indikator' ];
+    protected $fillable = ['kode_proker', 'proker', 'pegawai_id', 'tujuan', 'akun_kode', 'anggaran', 'waktu', 'indikator' ];
     
-    public function pegawai()
+    public function Pegawai()
 	{
-		return $this->belongsTo(pegawai::class);
+		return $this->belongsTo(Pegawai::class);
 	}
+
+    
+
 }

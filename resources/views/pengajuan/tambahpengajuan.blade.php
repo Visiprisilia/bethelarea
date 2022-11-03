@@ -53,10 +53,14 @@
                                                 <label for="exampleFormControlInput1">Tujuan</label>
                                                 <input class="form-control" id="tujuan" name="tujuan" />
                                             </div>      
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Akun Biaya</label>
-                                                <input class="form-control" id="akun_biaya" name="akun_biaya" />
-                                            </div> 
+                                            <label for="exampleFormControlSelect1">Akun Biaya</label>
+                                                <select class="form-control select2" id="akun_kode" name="akun_kode">
+                                                    <option disabled value>Pilih Akun</option>
+                                                    @foreach ($coa as $item)
+                                                    <option value="{{ $item->kode_akun}}">{{$item->nama_akun}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Anggaran</label>
                                                 <input class="form-control" id="anggaran" name="anggaran"  />

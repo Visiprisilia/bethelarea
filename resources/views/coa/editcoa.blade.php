@@ -45,6 +45,7 @@
                                                 <label for="exampleFormControlSelect1">Kelompok Rekening</label>
                                                 <select class="form-control" id="kelompok_rek" name="kelompok_rek" value="{{$item->kelompok_rek}}">
                                                 <option disabled value>Pilih Kelompok Rekening</option>      
+                                                <option >{{$item->kelompok_rek}}</option>
                                                 <option>Aktiva</option>
                                                     <option>Utang</option>
                                                     <option>Biaya</option>
@@ -55,7 +56,8 @@
                                             <div class="mb-3">
                                                 <label for="exampleFormControlSelect1">Saldo Normal</label>
                                                 <select class="form-control" id="saldo_normal" name="saldo_normal" value="{{$item->saldo_normal}}">
-                                                    <option>Debit</option>
+                                                <option >{{$item->saldo_normal}}</option>
+                                                <option>Debit</option>
                                                     <option>Kredit</option>
                                                 </select>
                                             </div>

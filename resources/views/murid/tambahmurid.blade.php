@@ -39,6 +39,10 @@
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Nama</label>
                                                 <input class="form-control" id="nama" name="nama"  />
+                                            </div>                                
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Tanggal Lahir</label>
+                                                <input class="form-control" type="date" id="ttl" name="ttl" />
                                             </div>
                                             <div class="mb-3">
                                             <label for="exampleFormControlSelect1">Jenis Kelamin</label>
@@ -49,20 +53,48 @@
                                                 </select>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Tanggal Lahir</label>
-                                                <input class="form-control" type="date" id="ttl" name="ttl" />
-                                            </div>
-                                            <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Alamat</label>
                                                 <input class="form-control" id="alamat" name="alamat"  />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Agama</label>
                                                 <input class="form-control" id="agama" name="agama" />
-                                            </div>                                           
+                                            </div>  
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Nama Ayah</label>
+                                                <input class="form-control" id="nama_ayah" name="nama_ayah" />
+                                            </div> 
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Nama Ibu</label>
+                                                <input class="form-control" id="nama_ibu" name="nama_ibu" />
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Pekerjaan Ayah</label>
+                                                <input class="form-control" id="pekerjaan_ayah" name="pekerjaan_ayah" />
+                                            </div>      
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Pekerjaan Ibu</label>
+                                                <input class="form-control" id="pekerjaan_ibu" name="pekerjaan_ibu" />
+                                            </div> 
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Pekerjaan Terakhir Ayah</label>
+                                                <input class="form-control" id="pendidikan_ayah" name="pendidikan_ayah" />
+                                            </div>     
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Pekerjaan Terakhir Ibu</label>
+                                                <input class="form-control" id="pendidikan_ibu" name="pendidikan_ibu" />
+                                            </div> 
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Anak Ke berapa</label>
+                                                <input class="form-control" id="anak_keberapa" name="anak_keberapa" />
+                                            </div>   
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Nomor Akte Lahir</label>
+                                                <input class="form-control" id="no_akte" name="no_akte" />
+                                            </div>                                          
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Tambah</button>
-                                                <a href="{{url('/pegawai')}}" class="btn btn-danger">Batal</a>                                           
+                                                <a href="{{url('/murid')}}" class="btn btn-danger">Batal</a>                                           
                                              </div>
                                         </form>
                                     </div>
