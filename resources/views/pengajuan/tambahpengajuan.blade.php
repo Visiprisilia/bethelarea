@@ -45,7 +45,7 @@
                                                 <select class="form-control select2" id="pegawai_id" name="pegawai_id">
                                                     <option disabled value>Pilih Penanggung Jawab</option>
                                                     @foreach ($pegawai as $item)
-                                                    <option value="{{ $item->kode_pegawai}}">{{$item->nama_pegawai}}</option>
+                                                    <option value="{{ $item->niy}}">{{$item->nama}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>

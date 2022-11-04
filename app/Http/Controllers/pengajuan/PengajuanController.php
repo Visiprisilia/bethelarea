@@ -4,6 +4,7 @@ namespace App\Http\Controllers\pengajuan;
 
 use Illuminate\Http\Request;
 use App\Models\Pengajuan\Pengajuan;
+use App\Models\Pengajuan\Pegawaiid;
 use App\Models\Pegawai\Pegawai;
 use App\Models\Coa\Coa;
 use App\Http\Controllers\Controller;
@@ -13,7 +14,9 @@ class PengajuanController extends Controller
 {
     public function pengajuan()
     {
+		$pengajuan = Pengajuan::all();
 		$pengajuan = Pengajuan::with('pegawai');
+		$pegawai = Pegawai::all();
         return view('pengajuan/pengajuan', compact('pengajuan'));
 		}
     public function tambahpengajuan()

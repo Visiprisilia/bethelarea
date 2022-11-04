@@ -35,7 +35,7 @@
                             <td>{{ $loop->iteration}}</td>
                             <td>{{ $item->kode_proker}}</td>
                             <td>{{ $item->proker}}</td>
-                            <td>{{ $item->pegawai->nama_pegawai}}</td>
+                            <td>{{ $item->pegawai->nama}}</td>
                             <td>{{ $item->tujuan}}</td>                            
                             <td>{{ $item->coa->nama_akun}}</td>                            
                             <td>{{ $item->anggaran}}</td>                            

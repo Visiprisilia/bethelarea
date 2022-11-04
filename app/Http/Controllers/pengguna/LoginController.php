@@ -11,7 +11,7 @@ class LoginController extends Controller
 {
     public function postlogin(Request $request)
 	{
-	if (Auth::attempt($request->only('email','password'))){
+	if (Auth::attempt($request->only('nama_user','password'))){
 		return redirect('/dashboard');
 	}
 	return redirect('login');
@@ -33,11 +33,11 @@ class LoginController extends Controller
 	{
 		// dd($request->all());	
 		User::create([
-			'name'=>$request->name,
-			'level'=>'pegawai',
-			'email'=>$request->email,
+			'nama_user'=>$request->nama_user,
 			'password'=>bcrypt($request->password),
-			'remember_token'=> Str::random(60),
+			'level'=>'super admin',
+			'nama_lengkap'=>$request->nama_lengkap,			
+			
 
 			]);
 			return redirect('/dashboard');

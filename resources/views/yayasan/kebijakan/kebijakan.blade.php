@@ -19,6 +19,7 @@
                     <thead>
                         <tr>
                             <th>No</th>
+                            <th>Kode</th>
                             <th>File Kebijakan</th>
                             <th>Keterangan</th>                          
                             <th>Aksi</th>
@@ -29,6 +30,8 @@
                             <td>{{ $loop->iteration}}</td>
                             <td>{{ $item->kode_kebijakan}}</td>
                             <td>{{ $item->file_kebijakan}}</td>
+                            <td>{{ $item->keterangan}}</td>
+                            
                             <td>
                                 <a href="/editkebijakan/{{$item->kode_kebijakan}}"><i class="fas fa-edit" style="color:green"></i></a> |
                                 <a href="/hapuskebijakan/{{$item->kode_kebijakan}}"><i class="fas fa-trash-alt" style="color:red"></i></a>

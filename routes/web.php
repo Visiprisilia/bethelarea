@@ -31,6 +31,7 @@ Route::post('/simpanregistrasi', [LoginController::class,'simpanregistrasi']);
 Route::post('/postlogin', [LoginController::class,'postlogin']);
 Route::get('/logout', [LoginController::class,'logout']);
 
+
 Route::group(['middleware' => ['auth', 'ceklevel:super admin']], function(){
 // Dashboard -->
 Route::get('/dashboard', [DashboardController::class,'dashboard']);
