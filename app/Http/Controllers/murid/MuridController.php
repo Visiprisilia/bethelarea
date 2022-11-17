@@ -10,7 +10,7 @@ class MuridController extends Controller
 {
     public function murid()
     {
-        $murid = Murid::all();
+        $murid = Murid::orderBy('created_at','desc')->get();
         return view('murid/murid', compact('murid'));
     }
     public function tambahmurid()

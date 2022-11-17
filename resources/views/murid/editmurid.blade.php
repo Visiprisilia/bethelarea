@@ -35,7 +35,7 @@
                                             @csrf
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Nomor Induk</label>
-                                                <input class="form-control" id="nomor_induk" name="nomor_induk" value="{{$item->nomor_induk}}" />
+                                                <input class="form-control" id="nomor_induk" name="nomor_induk" disabled value="{{$item->nomor_induk}}" />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Nama</label>
@@ -79,11 +79,11 @@
                                                 <input class="form-control" id="pekerjaan_ibu" name="pekerjaan_ibu" value="{{$item->pekerjaan_ibu}}" />
                                             </div> 
                                             <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Pekerjaan Terakhir Ayah</label>
+                                                <label for="exampleFormControlInput1">Pendidikan Terakhir Ayah</label>
                                                 <input class="form-control" id="pendidikan_ayah" name="pendidikan_ayah" value="{{$item->pendidikan_ayah}}" />
                                             </div>     
                                             <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Pekerjaan Terakhir Ibu</label>
+                                                <label for="exampleFormControlInput1">Pendidikan Terakhir Ibu</label>
                                                 <input class="form-control" id="pendidikan_ibu" name="pendidikan_ibu" value="{{$item->pendidikan_ibu}}" />
                                             </div> 
                                             <div class="mb-3">

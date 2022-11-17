@@ -11,23 +11,45 @@ class UserController extends Controller
 {
     public function user()
     {
-        return view('user/user');
+        $user = User::orderBy('created_at','desc')->get();
+        return view('user/user', compact('user'));
     }
-   
-
-    public function editprofile($id)
+    public function tambahuser()
 	{
-		$user = User::findOrFail(Auth::id());
-		return view('pengguna/editprofile', compact('profile'));
+		return view('user/tambahuser');
 	}
-    public function updateprofile(Request $request)
-    {
-        $user = User::where('id', $request->id)->update([           
-            'name' => $request->name,           
-            'email' => $request->email,
-            'password' => $request->password
-        ]);
-        return redirect('/profile')->with('status', 'Data berhasil diubah');
-    }
-   
+    public function simpanuser(Request $request)
+	{
+		User::create([
+			'nama_pengguna'=>$request->nama_pengguna,
+			'nama_user'=>$request->nama_user,
+			'password'=>$request->password,
+			'level'=>$request->level,	
+            'last_login'=>$request->last_login,	
+			'status'=>$request->status	
+			]);
+			return redirect('/user')->with('status', 'Data berhasil ditambahkan');
+	}
+	public function edituser($id)
+	{
+		$user = User::where('id', $id)->get();
+		return view('user/edituser', compact('user'));
+	}
+	public function updateuser(Request $request)
+	{
+		$user = User::where('id', $request->id)->update([
+			'nama_pengguna'=>$request->nama_pengguna,
+			'nama_user'=>$request->nama_user,
+			'password'=>$request->password,
+			'level'=>$request->level,	
+            'last_login'=>$request->last_login,	
+			'status'=>$request->status	
+		]);
+		return redirect('/user')->with('status', 'Data berhasil diubah');
+	}
+	public function hapususer($id)
+	{
+		$user = User::where('id', $id)->delete();
+		return redirect('/user') -> with ('status', 'Data berhasil dihapus');
+	}
 }

@@ -77,11 +77,11 @@
                                                 <input class="form-control" id="pekerjaan_ibu" name="pekerjaan_ibu" />
                                             </div> 
                                             <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Pekerjaan Terakhir Ayah</label>
+                                                <label for="exampleFormControlInput1">Pendidikan Terakhir Ayah</label>
                                                 <input class="form-control" id="pendidikan_ayah" name="pendidikan_ayah" />
                                             </div>     
                                             <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Pekerjaan Terakhir Ibu</label>
+                                                <label for="exampleFormControlInput1">Pendidikan Terakhir Ibu</label>
                                                 <input class="form-control" id="pendidikan_ibu" name="pendidikan_ibu" />
                                             </div> 
                                             <div class="mb-3">

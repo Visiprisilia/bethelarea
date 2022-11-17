@@ -3,14 +3,16 @@
 namespace App\Http\Controllers\yayasan;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 use App\Models\Yayasan\Kebijakan;
 use App\Http\Controllers\Controller;
+
 
 class KebijakanController extends Controller
 {
     public function kebijakan()
     {
-        $kebijakan = Kebijakan::all();
+        $kebijakan = Kebijakan::orderBy('created_at','desc')->get();
         return view('yayasan/kebijakan/kebijakan', compact('kebijakan'));
     }
     public function tambahkebijakan()

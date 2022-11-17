@@ -35,7 +35,7 @@
                                             @csrf
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Kode</label>
-                                                <input class="form-control" id="niy" name="niy" value="{{$item->niy}}" />
+                                                <input class="form-control" id="niy"  name="niy" disabled value="{{$item->niy}}" />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Nama</label>

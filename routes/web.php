@@ -9,8 +9,13 @@ use App\Http\Controllers\coa\CoaController;
 use App\Http\Controllers\pegawai\PegawaiController;
 use App\Http\Controllers\murid\MuridController;
 use App\Http\Controllers\yayasan\KebijakanController;
-use App\Http\Controllers\pengajuan\PengajuanController;
+use App\Http\Controllers\programkerja\ProgramKerjaController;
 use App\Http\Controllers\unit\UnitController;
+use App\Http\Controllers\subunit\SubUnitController;
+use App\Http\Controllers\realisasi\KasMasukController;
+use App\Http\Controllers\realisasi\KasKeluarController;
+use App\Http\Controllers\bukubesar\BukuBesarController;
+use App\Http\Controllers\posisianggaran\PosisiAnggaranController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,8 +49,12 @@ Route::post('/updateperiode/{kode_periode}', [PeriodeController::class,'updatepe
 Route::get('/hapusperiode/{kode_periode}', [PeriodeController::class,'hapusperiode']);
 // user-->
 Route::get('/user', [UserController::class,'user']);
-// profile-->
-Route::get('/editprofile/{id}', [UserController::class,'editprofile']);
+Route::get('/tambahuser', [UserController::class,'tambahuser']);
+Route::post('/simpanuser', [UserController::class,'simpanuser']);
+Route::get('/edituser/{id}', [UserController::class,'edituser']);
+Route::post('/updateuser/{id}', [UserController::class,'updateuser']);
+Route::get('/hapususer/{id}', [UserController::class,'hapususer']);
+
 // coa -->
 Route::get('/coa', [CoaController::class,'coa']);
 Route::get('/tambahcoa', [CoaController::class,'tambahcoa']);
@@ -60,6 +69,13 @@ Route::post('/simpanunit', [UnitController::class,'simpanunit']);
 Route::get('/editunit/{kode_unit}', [UnitController::class,'editunit']);
 Route::post('/updateunit/{kode_unit}', [UnitController::class,'updateunit']);
 Route::get('/hapusunit/{kode_unit}', [UnitController::class,'hapusunit']);
+// sub unit -->
+Route::get('/subunit', [SubUnitController::class,'subunit']);
+Route::get('/tambahsubunit', [SubUnitController::class,'tambahsubunit']);
+Route::post('/simpansubunit', [SubUnitController::class,'simpansubunit']);
+Route::get('/editsubunit/{kode_subunit}', [SubUnitController::class,'editsubunit']);
+Route::post('/updatesubunit/{kode_subunit}', [SubUnitController::class,'updatesubunit']);
+Route::get('/hapussubunit/{kode_subunit}', [SubUnitController::class,'hapussubunit']);
 // pegawai -->
 Route::get('/pegawai', [PegawaiController::class,'pegawai']);
 Route::get('/tambahpegawai', [PegawaiController::class,'tambahpegawai']);
@@ -67,14 +83,13 @@ Route::post('/simpanpegawai', [PegawaiController::class,'simpanpegawai']);
 Route::get('/editpegawai/{kode_pegawai}', [PegawaiController::class,'editpegawai']);
 Route::post('/updatepegawai/{kode_pegawai}', [PegawaiController::class,'updatepegawai']);
 Route::get('/hapuspegawai/{kode_pegawai}', [PegawaiController::class,'hapuspegawai']);
-
 // murid -->
 Route::get('/murid', [MuridController::class,'murid']);
 Route::get('/tambahmurid', [MuridController::class,'tambahmurid']);
 Route::post('/simpanmurid', [MuridController::class,'simpanmurid']);
-Route::get('/editmurid/{nomor_murid}', [MuridController::class,'editmurid']);
-Route::post('/updatemurid/{nomor_murid}', [MuridController::class,'updatemurid']);
-Route::get('/hapusmurid/{nomor_murid}', [MuridController::class,'hapusmurid']);
+Route::get('/editmurid/{nomor_induk}', [MuridController::class,'editmurid']);
+Route::post('/updatemurid/{nomor_induk}', [MuridController::class,'updatemurid']);
+Route::get('/hapusmurid/{nomor_induk}', [MuridController::class,'hapusmurid']);
 Route::get('/cetakpdf', [MuridController::class,'cetakpdf']);
 
 });
@@ -91,11 +106,29 @@ Route::get('/hapuskebijakan/{kode_kebijakan}', [KebijakanController::class,'hapu
 });
 Route::group(['middleware' => ['auth', 'ceklevel:super admin,pegawai']], function(){
 Route::get('/dashboard', [DashboardController::class,'dashboard']);
-//pengajuan
-Route::get('/pengajuan', [PengajuanController::class,'pengajuan']);
-Route::get('/tambahpengajuan', [PengajuanController::class,'tambahpengajuan']);
-Route::post('/simpanpengajuan', [PengajuanController::class,'simpanpengajuan']);
-Route::get('/editpengajuan/{kode_pengajuan}', [PengajuanController::class,'editpengajuan']);
-Route::post('/updatepengajuan/{kode_pengajuan}', [PengajuanController::class,'updatepengajuan']);
-Route::get('/hapuspengajuan/{kode_pengajuan}', [PengajuanController::class,'hapuspengajuan']);    
+//Program Kerja
+Route::get('/programkerja', [ProgramKerjaController::class,'programkerja']);
+Route::get('/tambahprogramkerja', [ProgramKerjaController::class,'tambahprogramkerja']);
+Route::post('/simpanprogramkerja', [ProgramKerjaController::class,'simpanprogramkerja']);
+Route::get('/editprogramkerja/{kode_proker}', [ProgramKerjaController::class,'editprogramkerja']);
+Route::post('/updateprogramkerja/{kode_proker}', [ProgramKerjaController::class,'updateprogramkerja']);
+Route::get('/hapusprogramkerja/{kode_proker}', [ProgramKerjaController::class,'hapusprogramkerja']); 
+//Kas Masuk
+Route::get('/kasmasuk', [KasMasukController::class,'kasmasuk']);
+Route::get('/tambahkasmasuk', [KasMasukController::class,'tambahkasmasuk']);
+Route::post('/simpankasmasuk', [KasMasukController::class,'simpankasmasuk']);
+Route::get('/editkasmasuk/{no_bukti}', [KasMasukController::class,'editkasmasuk']);
+Route::post('/updatekasmasuk/{no_bukti}', [KasMasukController::class,'updatekasmasuk']);
+Route::get('/hapuskasmasuk/{no_bukti}', [KasMasukController::class,'hapuskasmasuk']); 
+//Kas Keluar
+Route::get('/kaskeluar', [KasKeluarController::class,'kaskeluar']);
+Route::get('/tambahkaskeluar', [KasKeluarController::class,'tambahkaskeluar']);
+Route::post('/simpankaskeluar', [KasKeluarController::class,'simpankaskeluar']);
+Route::get('/editkaskeluar/{no_bukti}', [KasKeluarController::class,'editkaskeluar']);
+Route::post('/updatekaskeluar/{no_bukti}', [KasKeluarController::class,'updatekaskeluar']);
+Route::get('/hapuskaskeluar/{no_bukti}', [KasKeluarController::class,'hapuskaskeluar']);    
+//Buku Besar
+Route::get('/bukubesar', [BukuBesarController::class,'bukubesar']);
+//Posisi Anggaran
+Route::get('/posisianggaran', [PosisiAnggaranController::class,'posisianggaran']);
     });

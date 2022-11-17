@@ -10,7 +10,7 @@ class PegawaiController extends Controller
 {
     public function pegawai()
     {
-        $pegawai = Pegawai::all();
+        $pegawai = Pegawai::orderBy('created_at','desc')->get();
         return view('pegawai/pegawai', compact('pegawai'));
     }
     public function tambahpegawai()

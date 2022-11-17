@@ -35,16 +35,13 @@
                                             @csrf
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Kode Unit</label>
-                                                <input class="form-control" type="hidden" id="kode_unit" name="kode_unit" value="{{$item->kode_unit}}" placeholder="Kode Unit" />
+                                                <input class="form-control" id="kode_unit" name="kode_unit" disabled value="{{$item->kode_unit}}" placeholder="Kode Unit" />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Nama Unit</label>
                                                 <input class="form-control" id="nama_unit" name="nama_unit" value="{{$item->nama_unit}}" placeholder="Nama Unit" />
                                             </div>
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Status</label>
-                                                <input class="form-control" id="status_unit" name="status_unit" value="{{$item->status_unit}}" placeholder="Status" />
-                                            </div>
+                                           
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Simpan</button>
                                                 <a href="{{url('/unit')}}" class="btn btn-danger">Batal</a>                                            </div>

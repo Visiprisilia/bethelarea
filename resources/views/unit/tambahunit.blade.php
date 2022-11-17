@@ -40,10 +40,7 @@
                                                 <label for="exampleFormControlInput1">Nama Unit</label>
                                                 <input class="form-control" id="nama_unit" name="nama_unit"  />
                                             </div>
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Status</label>
-                                                <input class="form-control" id="status_unit" name="status_unit"  />
-                                            </div>
+                                            
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Tambah</button>
                                                 <a href="{{url('/unit')}}" class="btn btn-danger">Kembali</a>

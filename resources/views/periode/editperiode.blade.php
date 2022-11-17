@@ -35,7 +35,7 @@
                                             @csrf
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Kode</label>
-                                                <input class="form-control" type="hidden" id="kode_periode" name="kode_periode" value="{{$item->kode_periode}}" placeholder="Kode periode" />
+                                                <input class="form-control" id="kode_periode" name="kode_periode" disabled value="{{$item->kode_periode}}" placeholder="Kode periode" />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Periode</label>
@@ -43,11 +43,11 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Awal Periode</label>
-                                                <input class="form-control" id="awal_periode" name="awal_periode" value="{{$item->awal_periode}}" placeholder="Awal Periode" />
+                                                <input class="form-control" type="date" id="awal_periode" name="awal_periode" value="{{$item->awal_periode}}" placeholder="Awal Periode" />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Akhir Periode</label>
-                                                <input class="form-control" id="akhir_periode" name="akhir_periode" value="{{$item->akhir_periode}}" placeholder="Akhir Periode" />
+                                                <input class="form-control" type="date" id="akhir_periode" name="akhir_periode" value="{{$item->akhir_periode}}" placeholder="Akhir Periode" />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Status</label>

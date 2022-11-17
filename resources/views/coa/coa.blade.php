@@ -36,7 +36,7 @@
                             <td>{{ $item->nama_akun}}</td>
                             <td>{{ $item->kelompok_rek}}</td>
                             <td>{{ $item->saldo_normal}}</td>
-                            <td>{{ $item->keterangan}}</td>
+                            <td>{{ $item->keterangan}}</td>      
                             <td>
                                 <a href="/editcoa/{{$item->kode_akun}}"><i class="fas fa-edit" style="color:green"></i></a> | 
                                 <a href="/hapuscoa/{{$item->kode_akun}}"><i class="fas fa-trash-alt" style="color:red"></i></a> 

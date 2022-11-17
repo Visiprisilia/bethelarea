@@ -10,7 +10,7 @@ class UnitController extends Controller
 {
     public function unit()
     {
-        $unit = Unit::all();
+        $unit = Unit::orderBy('created_at','desc')->get();
         return view('unit/unit', compact('unit'));
     }
     public function tambahunit()
@@ -21,8 +21,7 @@ class UnitController extends Controller
 	{
 		Unit::create([
 			'kode_unit'=>$request->kode_unit,
-			'nama_unit'=>$request->nama_unit,
-			'status_unit'=>$request->status_unit	
+			'nama_unit'=>$request->nama_unit	
 			]);
 			return redirect('/unit')->with('status', 'Data berhasil ditambahkan');
 	}
@@ -35,8 +34,7 @@ class UnitController extends Controller
 	{
 		$unit = Unit::where('kode_unit', $request->kode_unit)->update([
 			'kode_unit'=>$request->kode_unit,
-			'nama_unit'=>$request->nama_unit,
-			'status_unit'=>$request->status_unit
+			'nama_unit'=>$request->nama_unit
 		]);
 		return redirect('/unit')->with('status', 'Data berhasil diubah');
 	}

@@ -14,105 +14,70 @@
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
-    <!-- Nav Item - Dashboard -->
+    
     <li class="nav-item">
         <a class="nav-link" href="/dashboard">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
-    <!-- Heading -->
-    <!-- <div class="sidebar-heading">
-                Data Master
-            </div> -->
+ 
 
     <!-- Nav Item - Pages Collapse Menu -->
-    @if(auth()->user()->level=="super admin")
-    <!-- Nav Item - kebijakan -->
     <li class="nav-item">
-        <a class="nav-link" href="/kebijakan">
-            <i class="fas fa-solid fa-pen-nib"></i>
-            <span>Kebijakan Yayasan</span></a>
-    </li>
-    <!-- Nav Item - unit -->
-    <li class="nav-item">
-        <a class="nav-link" href="/unit">
-            <i class="fas fa-solid fa-landmark"></i>
-            <span>Unit</span></a>
-    </li>
-    <!-- Nav Item - periode -->
-    <li class="nav-item">
-        <a class="nav-link" href="/periode">
-            <i class="fas fa-solid fa-calendar"></i>
-            <span>Periode</span></a>
-    </li>
-    <!-- Nav Item - pegawai -->
-    <li class="nav-item">
-        <a class="nav-link" href="/pegawai">
-            <i class="fas fa-solid fa-users"></i>
-            <span>Pegawai</span></a>
-    </li>
-    <!-- Nav Item - pegawai -->
-    <li class="nav-item">
-        <a class="nav-link" href="/murid">
-            <i class="fas fa-solid fa-child"></i>
-            <span>Murid</span></a>
-    </li>
-    <!-- Nav Item - coa -->
-    <li class="nav-item">
-        <a class="nav-link" href="/coa">
-            <i class="fas fa-solid fa-book"></i>
-            <span>Chart Of Account</span></a>
-    </li>
-    
-           <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-regular fa-money-check"></i> 
-            <span>Program Kerja</span>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#datamaster" aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-solid fa-layer-group"></i> 
+            <span>Data Master</span>
         </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="datamaster" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Program Kerja:</h6>
-                <a class="collapse-item" href="/pengajuan">Pengajuan</a>
-                <a class="collapse-item" href="/validasi">Validasi</a>
-                <a class="collapse-item" href="/realisasi">Realisasi</a>
+                <h6 class="collapse-header">Data Master:</h6>
+                <a class="collapse-item" href="/kebijakan">Kebijakan Yayasan</a>
+                <a class="collapse-item" href="/subunit">Daftar Sub Unit</a>
+                <a class="collapse-item" href="/unit">Daftar Unit</a>
+                <a class="collapse-item" href="/periode">Daftar Periode</a>
+                <a class="collapse-item" href="/pegawai">Daftar Pegawai</a>
+                <a class="collapse-item" href="/murid">Daftar Murid</a>
+                <a class="collapse-item" href="/coa">Chart Of Accounts</a>
+                <a class="collapse-item" href="/user">User</a>
             </div>
         </div>
-    </li> 
-    <!-- Nav Item - anggaran -->
-    <li class="nav-item">
-        <a class="nav-link" href="/pengajuan">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Anggaran</span></a>
     </li>
-    <!-- Nav Item - user -->
+ 
     <li class="nav-item">
-        <a class="nav-link" href="/user">
-            <i class="fas fa-solid fa-user"></i>
-            <span>User</span></a>
+        <a class="nav-link" href="/programkerja">
+            <i class="fas fa-solid fa-window-restore"></i> 
+            <span>Program Kerja</span></a>
+    </li>
+   
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#realisasi" aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-regular fa-money-check"></i>
+            <span>Realisasi</span>
+        </a>
+        <div id="realisasi" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Realisasi:</h6>
+                <a class="collapse-item" href="/kasmasuk">Kas Masuk</a>
+                <a class="collapse-item" href="/kaskeluar">Kas Keluar</a>
+            </div>
+        </div>
     </li>
     
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-   
-    @elseif(auth()->user()->level=="yayasan")
-    <!-- Nav Item - kebijakan -->
+    
     <li class="nav-item">
-        <a class="nav-link" href="/kebijakan">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Kebijakan Yayasan</span></a>
+        <a class="nav-link" href="/bukubesar">
+            <i class="fas fa-sharp fa-solid fa-book"></i> 
+            <span>Buku Besar</span></a>
     </li>
-    @elseif(auth()->user()->level=="pegawai")
-    <!-- Nav Item - pengajuan -->
+
+    
+
     <li class="nav-item">
-        <a class="nav-link" href="/pengajuan">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Pengajuan</span></a>
+        <a class="nav-link" href="/posisianggaran">
+            <i class="fas fa-solid fa-file-contract"></i> 
+            <span>Posisi Anggaran</span></a>
     </li>
-    @endif
 
     <!-- Nav Item - Utilities Collapse Menu -->
     <!-- <li class="nav-item">

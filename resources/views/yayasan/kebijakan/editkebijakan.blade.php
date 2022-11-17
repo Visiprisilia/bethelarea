@@ -35,7 +35,7 @@
                                             @csrf
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Kode</label>
-                                                <input class="form-control" type="hidden" id="kode_kebijakan" name="kode_kebijakan" value="{{$item->kode_kebijakan}}" placeholder="Kode pegawai" />
+                                                <input class="form-control" id="kode_kebijakan" name="kode_kebijakan" disabled value="{{$item->kode_kebijakan}}" placeholder="Kode pegawai" />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">File Kebijakan</label>

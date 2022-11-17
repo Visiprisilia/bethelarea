@@ -21,7 +21,6 @@
                             <th>No</th>
                             <th>Kode Unit</th>
                             <th>Nama Unit</th>
-                            <th>Status</th>
                             <th>Aksi</th>
                         </tr>
                     <tbody>
@@ -30,7 +29,6 @@
                             <td>{{ $loop->iteration}}</td>
                             <td>{{ $item->kode_unit}}</td>
                             <td>{{ $item->nama_unit}}</td>
-                            <td>{{ $item->status_unit}}</td>
                             <td>
                                 <a href="/editunit/{{$item->kode_unit}}"><i class="fas fa-edit" style="color:green"></i></a> |
                                 <a href="/hapusunit/{{$item->kode_unit}}"><i class="fas fa-trash-alt" style="color:red"></i></a>

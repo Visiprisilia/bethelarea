@@ -25,57 +25,51 @@
                     <!-- Default Bootstrap Form Controls-->
                     <div id="default">
                         <div class="card mb-4">
-                            <div class="card-header">Pengajuan</div>
+                            <div class="card-header">Program Kerja</div>
                             <div class="card-body">
                                 <!-- Component Preview-->
                                 <div class="sbp-preview">
                                     <div class="sbp-preview-content">
-                                        <form action="/simpanpengajuan" method="post">
+                                        <form action="/simpanprogramkerja" method="post">
                                             @csrf
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Kode Program Kerja</label>
                                                 <input class="form-control" id="kode_proker" name="kode_proker"/>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Program Kerja</label>
-                                                <input class="form-control" id="proker" name="proker" />
+                                                <label for="exampleFormControlInput1">Nama Program Kerja</label>
+                                                <input class="form-control" id="nama_proker" name="nama_proker" />
                                             </div>
                                             <div class="mb-3">
                                             <label for="exampleFormControlSelect1">Penanggung Jawab</label>
-                                                <select class="form-control select2" id="pegawai_id" name="pegawai_id">
-                                                    <option disabled value>Pilih Penanggung Jawab</option>
-                                                    @foreach ($pegawai as $item)
-                                                    <option value="{{ $item->niy}}">{{$item->nama}}</option>
-                                                    @endforeach
-                                                </select>
+                                            <select class="form-control select2" id="pegawai_id" name="pegawai_id">
+                                                    
+                                                    </select>
                                             </div>
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Waktu</label>
+                                                <input class="form-control" type="date" id="waktu" name="waktu" />
+                                            </div>   
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Tujuan</label>
                                                 <input class="form-control" id="tujuan" name="tujuan" />
                                             </div>      
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Indikator Pencapaian</label>
+                                                <input class="form-control"  id="indikator" name="indikator" />
+                                            </div>  
                                             <label for="exampleFormControlSelect1">Akun Biaya</label>
                                                 <select class="form-control select2" id="akun_kode" name="akun_kode">
-                                                    <option disabled value>Pilih Akun</option>
-                                                    @foreach ($coa as $item)
-                                                    <option value="{{ $item->kode_akun}}">{{$item->nama_akun}}</option>
-                                                    @endforeach
+                                                    
                                                 </select>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Anggaran</label>
                                                 <input class="form-control" id="anggaran" name="anggaran"  />
-                                            </div> 
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Waktu</label>
-                                                <input class="form-control" type="date" id="waktu" name="waktu" />
-                                            </div>      
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Indikator Pencapaian</label>
-                                                <input class="form-control"  id="indikator" name="indikator" />
-                                            </div>                                                                                                                              
+                                            </div>                                                                                                                                                                 
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Tambah</button>
-                                                <a href="{{url('/pengajuan')}}" class="btn btn-danger">Batal</a>                                            </div>
+                                                <a href="{{url('/programkerja')}}" class="btn btn-danger">Batal</a>                                            </div>
                                         </form>
                                     </div>
                                 </div>

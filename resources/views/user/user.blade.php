@@ -10,7 +10,8 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+            <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
+            <a href="tambahuser" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i>Tambah Data</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">

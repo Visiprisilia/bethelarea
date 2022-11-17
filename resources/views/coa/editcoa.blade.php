@@ -35,7 +35,7 @@
                                             @csrf
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Kode Akun</label>
-                                                <input class="form-control" type="hidden" id="kode_akun" name="kode_akun" value="{{$item->kode_akun}}" placeholder="Kode Akun" />
+                                                <input class="form-control"  id="kode_akun" name="kode_akun" disabled value="{{$item->kode_akun}}" placeholder="Kode Akun" />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Nama Akun</label>
@@ -64,6 +64,14 @@
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Keterangan</label>
                                                 <input class="form-control" id="keterangan" name="keterangan" value="{{$item->keterangan}}" placeholder="Keterangan" />
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlSelect1">Status</label>
+                                                <select class="form-control" id="" name="" value="">
+                                                <option disabled value>Pilih Status</option>  
+                                                <option>Aktif</option>
+                                                    <option>Tidak Aktif</option>
+                                                </select>
                                             </div>
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Simpan</button>

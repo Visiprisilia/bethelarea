@@ -33,7 +33,7 @@
                                         <form action="/simpanpegawai" method="post">
                                             @csrf
                                             <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Kode</label>
+                                                <label for="exampleFormControlInput1">Nomor Induk Yayasan</label>
                                                 <input class="form-control" id="niy" name="niy"  />
                                             </div>
                                             <div class="mb-3">

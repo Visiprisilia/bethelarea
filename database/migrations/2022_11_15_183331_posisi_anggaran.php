@@ -13,10 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('unit', function (Blueprint $table) {
-            $table->string('kode_unit')->primary();
-            $table->string('nama_unit')->nullable();
-            $table->string('status_unit')->nullable();
+        Schema::create('posisi_anggaran', function (Blueprint $table) {
+            $table->string('kode_akun')->primary();
+            $table->string('nama_akun')->nullable();
+            $table->string('anggaran')->nullable();
+            $table->string('realisasi')->nullable();
+            $table->string('sisa')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('unit');
+        //
     }
 };

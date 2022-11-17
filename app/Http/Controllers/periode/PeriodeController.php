@@ -10,7 +10,7 @@ class PeriodeController extends Controller
 {
     public function periode()
     {
-        $periode = Periode::all();
+        $periode = Periode::orderBy('created_at','desc')->get();
         return view('periode/periode', compact('periode'));
     }
     public function tambahperiode()
