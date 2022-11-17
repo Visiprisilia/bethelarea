@@ -93,7 +93,15 @@
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Nomor Akte Lahir</label>
                                                 <input class="form-control" id="no_akte" name="no_akte" value="{{$item->no_akte}}" />
-                                            </div>                       
+                                            </div>           
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Foto Murid</label>
+                                                <input class="form-control" type="file" id="foto_murid" name="foto_murid" value="{{$item->foto_murid}}" />
+                                            </div>    
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">File Kartu Keluarga</label>
+                                                <input class="form-control" type="file" id="file_kk" name="file_kk" value="{{$item->foto_kk}}"/>
+                                            </div>               
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Simpan</button>
                                                 <a href="{{url('/murid')}}" class="btn btn-danger">Batal</a>                                            </div>

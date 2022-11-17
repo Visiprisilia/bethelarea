@@ -14,19 +14,19 @@
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
-    
+
     <li class="nav-item">
         <a class="nav-link" href="/dashboard">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
 
- 
+
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#datamaster" aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-solid fa-layer-group"></i> 
+            <i class="fas fa-solid fa-layer-group"></i>
             <span>Data Master</span>
         </a>
         <div id="datamaster" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -43,13 +43,22 @@
             </div>
         </div>
     </li>
- 
+
+
     <li class="nav-item">
-        <a class="nav-link" href="/programkerja">
-            <i class="fas fa-solid fa-window-restore"></i> 
-            <span>Program Kerja</span></a>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#proker" aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-solid fa-window-restore"></i>
+            <span>Program Kerja</span>
+        </a>
+        <div id="proker" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Proker dan Evaluasi:</h6>
+                <a class="collapse-item" href="/programkerja">Program Kerja</a>
+                <a class="collapse-item" href="/evaluasi">Evaluasi</a>
+            </div>
+        </div>
     </li>
-   
+
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#realisasi" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-regular fa-money-check"></i>
@@ -58,25 +67,41 @@
         <div id="realisasi" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Realisasi:</h6>
+                <a class="collapse-item" href="/kasbon">Pendaftaran Kas Bon</a>
                 <a class="collapse-item" href="/kasmasuk">Kas Masuk</a>
                 <a class="collapse-item" href="/kaskeluar">Kas Keluar</a>
             </div>
         </div>
     </li>
-    
-    
+
     <li class="nav-item">
-        <a class="nav-link" href="/bukubesar">
-            <i class="fas fa-sharp fa-solid fa-book"></i> 
-            <span>Buku Besar</span></a>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#bukubesar" aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-regular fa-book"></i>
+            <span>Buku Besar</span>
+        </a>
+        <div id="bukubesar" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Buku Besar:</h6>
+                <a class="collapse-item" href="/bukubesarkas">Buku Besar Kas</a>
+                <a class="collapse-item" href="/bukubesaranggaran">Buku Besar Anggaran</a>
+            </div>
+        </div>
     </li>
 
-    
 
     <li class="nav-item">
-        <a class="nav-link" href="/posisianggaran">
-            <i class="fas fa-solid fa-file-contract"></i> 
-            <span>Posisi Anggaran</span></a>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#laporan" aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-solid fa-money-bill"></i> 
+            <span>Laporan</span>
+        </a>
+        <div id="laporan" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Laporan:</h6>
+                <a class="collapse-item" href="/kasmasuk">Laporan Program Kerja</a>
+                <a class="collapse-item" href="/kaskeluar">Laporan Kas</a>
+                <a class="collapse-item" href="/kaskeluar">Laporan Laba Rugi</a>
+            </div>
+        </div>
     </li>
 
     <!-- Nav Item - Utilities Collapse Menu -->

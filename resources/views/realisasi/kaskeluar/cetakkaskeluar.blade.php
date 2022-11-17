@@ -62,8 +62,7 @@
                                                 <input class="form-control" id="kasir" name="kasir" value="{{$item->kasir}}"  />
                                             </div>           
                                             <div class="mb-3">
-                                                <button type="submit" class="btn btn-success">Simpan</button>
-                                                <a href="{{url('/pengajuan')}}" class="btn btn-danger">Batal</a>
+                                                <a href="{{url('/cetak')}}" class="btn btn-danger">Cetak</a>
                                             </div>
                                         </form>
                                     </div>

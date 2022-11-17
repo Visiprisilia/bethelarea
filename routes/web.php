@@ -10,12 +10,13 @@ use App\Http\Controllers\pegawai\PegawaiController;
 use App\Http\Controllers\murid\MuridController;
 use App\Http\Controllers\yayasan\KebijakanController;
 use App\Http\Controllers\programkerja\ProgramKerjaController;
+use App\Http\Controllers\programkerja\EvaluasiController;
 use App\Http\Controllers\unit\UnitController;
 use App\Http\Controllers\subunit\SubUnitController;
 use App\Http\Controllers\realisasi\KasMasukController;
 use App\Http\Controllers\realisasi\KasKeluarController;
-use App\Http\Controllers\bukubesar\BukuBesarController;
-use App\Http\Controllers\posisianggaran\PosisiAnggaranController;
+use App\Http\Controllers\bukubesar\BukuBesarKasController;
+use App\Http\Controllers\bukubesar\BukuBesarAnggaranController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -113,11 +114,20 @@ Route::post('/simpanprogramkerja', [ProgramKerjaController::class,'simpanprogram
 Route::get('/editprogramkerja/{kode_proker}', [ProgramKerjaController::class,'editprogramkerja']);
 Route::post('/updateprogramkerja/{kode_proker}', [ProgramKerjaController::class,'updateprogramkerja']);
 Route::get('/hapusprogramkerja/{kode_proker}', [ProgramKerjaController::class,'hapusprogramkerja']); 
+//Evaluasi
+Route::get('/evaluasi', [EvaluasiController::class,'evaluasi']);
+Route::get('/tambahevaluasi', [EvaluasiController::class,'tambahevaluasi']);
+Route::post('/simpanevaluasi', [EvaluasiController::class,'simpanevaluasi']);
+Route::get('/editevaluasi/{kode_proker}', [EvaluasiController::class,'editevaluasi']);
+Route::post('/updateevaluasi/{kode_proker}', [EvaluasiController::class,'updateevaluasi']);
+Route::get('/hapusevaluasi/{kode_proker}', [EvaluasiController::class,'hapusevaluasi']); 
 //Kas Masuk
 Route::get('/kasmasuk', [KasMasukController::class,'kasmasuk']);
 Route::get('/tambahkasmasuk', [KasMasukController::class,'tambahkasmasuk']);
 Route::post('/simpankasmasuk', [KasMasukController::class,'simpankasmasuk']);
 Route::get('/editkasmasuk/{no_bukti}', [KasMasukController::class,'editkasmasuk']);
+Route::get('/lihatkasmasuk/{no_bukti}', [KasMasukController::class,'lihatkasmasuk']);
+Route::get('/cetakkasmasuk', [KasMasukController::class,'cetakkasmasuk']);
 Route::post('/updatekasmasuk/{no_bukti}', [KasMasukController::class,'updatekasmasuk']);
 Route::get('/hapuskasmasuk/{no_bukti}', [KasMasukController::class,'hapuskasmasuk']); 
 //Kas Keluar
@@ -125,10 +135,12 @@ Route::get('/kaskeluar', [KasKeluarController::class,'kaskeluar']);
 Route::get('/tambahkaskeluar', [KasKeluarController::class,'tambahkaskeluar']);
 Route::post('/simpankaskeluar', [KasKeluarController::class,'simpankaskeluar']);
 Route::get('/editkaskeluar/{no_bukti}', [KasKeluarController::class,'editkaskeluar']);
+Route::get('/lihatkaskeluar/{no_bukti}', [KasKeluarController::class,'lihatkaskeluar']);
+Route::get('/cetakkaskeluar', [KasKeluarController::class,'cetakkaskeluar']);
 Route::post('/updatekaskeluar/{no_bukti}', [KasKeluarController::class,'updatekaskeluar']);
 Route::get('/hapuskaskeluar/{no_bukti}', [KasKeluarController::class,'hapuskaskeluar']);    
-//Buku Besar
-Route::get('/bukubesar', [BukuBesarController::class,'bukubesar']);
-//Posisi Anggaran
-Route::get('/posisianggaran', [PosisiAnggaranController::class,'posisianggaran']);
+//Buku Besar Kas
+Route::get('/bukubesarkas', [BukuBesarKasController::class,'bukubesarkas']);
+//Buku Besar Anggaran
+Route::get('/bukubesaranggaran', [BukuBesarAnggaranController::class,'bukubesaranggaran']);
     });

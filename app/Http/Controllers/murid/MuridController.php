@@ -33,7 +33,10 @@ class MuridController extends Controller
 			'pendidikan_ayah'=>$request->pendidikan_ayah, 
 			'pendidikan_ibu'=>$request->pendidikan_ibu, 
 			'anak_keberapa'=>$request->anak_keberapa, 
-			'no_akte'=>$request->no_akte
+			'no_akte'=>$request->no_akte,
+			'foto_murid'=>$request->foto_murid,
+			'file_kk'=>$request->file_kk
+
 			]);
 			return redirect('/murid')->with('status', 'Data berhasil ditambahkan');
 	}
@@ -58,7 +61,9 @@ class MuridController extends Controller
 			'pendidikan_ayah'=>$request->pendidikan_ayah, 
 			'pendidikan_ibu'=>$request->pendidikan_ibu, 
 			'anak_keberapa'=>$request->anak_keberapa, 
-			'no_akte'=>$request->no_akte
+			'no_akte'=>$request->no_akte,
+			'foto_murid'=>$request->foto_murid,
+			'file_kk'=>$request->file_kk
 		]);
 		return redirect('/murid')->with('status', 'Data berhasil diubah');
 	}

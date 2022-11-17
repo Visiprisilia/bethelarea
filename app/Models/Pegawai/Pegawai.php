@@ -12,10 +12,10 @@ class Pegawai extends Model
     protected $table = 'pegawai';
     protected $primaryKey = 'niy';
     protected $fillable = ['niy', 'nama', 'ttl', 'agama','pendidikan', 'alamat', 'tanggal_masuk', 
-    'status_kepegawaian', 'tanggal_ppt', 'surat_keterangan','status','tanggal_termin','keterangan'];
+    'status_kepegawaian', 'tanggal_ppt', 'file_suket','status','tanggal_termin','keterangan'];
 
-    public function pengajuan()
-	{
-		return $this->hasMany(Pengajuan::class);
-	}
+    // public function pengajuan()
+	// {
+	// 	return $this->hasMany(Pengajuan::class);
+	// }
 }

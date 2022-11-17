@@ -25,13 +25,13 @@
                     <!-- Default Bootstrap Form Controls-->
                     <div id="default">
                         <div class="card mb-4">
-                            <div class="card-header">Kas Keluar</div>
+                            <div class="card-header">Kas Masuk</div>
                             <div class="card-body">
                                 <!-- Component Preview-->
                                 <div class="sbp-preview">
                                     <div class="sbp-preview-content">
-                                        @foreach($kaskeluar as $item)
-                                        <form action="/updatekaskeluar/{{$item->no_bukti}}" method="post">
+                                        @foreach($kasmasuk as $item)
+                                        <form action="/updatekasmasuk/{{$item->no_bukti}}" method="post">
                                             @csrf
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">No Bukti</label>
@@ -39,31 +39,35 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Periode</label>
-                                                <input class="form-control" id="periode" name="periode"  value="{{$item->periode}}" />
+                                                <input class="form-control" id="periode" name="periode" disabled value="{{$item->periode}}" />
                                             </div>
                                             <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Tanggal</label>
-                                                <input class="form-control" type="date" id="tanggal_pencatatan" name="tanggal_pencatatan" value="{{$item->tanggal_pencatatan}}"/>
+                                                <label for="exampleFormControlInput1">Tanggal Pencatatan</label>
+                                                <input class="form-control" type="date" id="tanggal_pencatatan" name="tanggal_pencatatan" disabled value="{{$item->tanggal_pencatatan}}"/>
                                             </div>  
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Keterangan</label>
-                                                <input class="form-control" id="keterangan" name="keterangan" value="{{$item->keterangan}}"/>
+                                                <input class="form-control" id="keterangan" name="keterangan" disabled value="{{$item->keterangan}}"/>
                                             </div>      
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Akun</label>
-                                                <input class="form-control"  id="akun" name="akun" value="{{$item->akun}}"/>
+                                                <input class="form-control"  id="akun" name="akun" disabled value="{{$item->akun}}"/>
+                                            </div>                           
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Sumber</label>
+                                                <input class="form-control"  id="sumber" name="sumber" disabled value="{{$item->sumber}}"/>
                                             </div>                                             
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Jumlah</label>
-                                                <input class="form-control" id="jumlah" name="jumlah" value="{{$item->jumlah}}"  />
-                                            </div>  
+                                                <input class="form-control" id="jumlah" name="jumlah" disabled value="{{$item->jumlah}}"  />
+                                            </div>        
                                             <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Kasir</label>
-                                                <input class="form-control" id="kasir" name="kasir" value="{{$item->kasir}}"  />
-                                            </div>           
+                                                <label for="exampleFormControlInput1">Penerima</label>
+                                                <input class="form-control" id="kasir" name="kasir" disabled value="{{$item->kasir}}"  />
+                                            </div>      
                                             <div class="mb-3">
-                                                <button type="submit" class="btn btn-success">Simpan</button>
-                                                <a href="{{url('/pengajuan')}}" class="btn btn-danger">Batal</a>
+                                                <a href="{{url('/cetak')}}" class="btn btn-primary">Cetak</a>
+                                                <a href="{{url('/kasmasuk')}}" class="btn btn-danger">Batal</a>
                                             </div>
                                         </form>
                                     </div>

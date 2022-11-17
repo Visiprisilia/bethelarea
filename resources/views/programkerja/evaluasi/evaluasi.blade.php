@@ -1,0 +1,73 @@
+@extends('template')
+@section('container')
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Evaluasi Program Kerja</h1>
+
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
+            <a href="tambahevaluasi" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i>Tambah Data</a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Kode Program Kerja</th>
+                            <th>Periode</th>
+                            <th>Nama Program Kerja</th>
+                            <th>Penanggung Jawab</th>                                           
+                            <th>Tujuan</th>   
+                            <th>Akun Biaya</th>
+                            <th>Rencana Anggaran</th>                                                     
+                            <th>Realisasi Anggaran</th>                                                     
+                            <th>Rencana Waktu</th>                                                     
+                            <th>Realisasi Waktu</th>                                                     
+                            <th>Indikator Pencapaian</th>                                                     
+                            <th>Kinerja Pencapaian</th>                                                     
+                            <th>Faktor Pendorong</th>                                                     
+                            <th>Faktor Penghambat</th>                                                     
+                            <th>Tindak Lanjut</th>                                                     
+                            <th>Aksi</th>		
+                        </tr>
+                    <tbody>
+                        @foreach ($evaluasi as $item)
+                        <tr>
+                            <td>{{ $loop->iteration}}</td>
+                            <td>{{ $item->kode_proker}}</td>
+                            <td>{{ $item->periode}}</td>
+                            <td>{{ $item->nama_proker}}</td>
+                            <td>{{ $item->penanggungjawab}}</td>                                                         
+                            <td>{{ $item->tujuan}}</td>                            
+                            <td>{{ $item->akun_beban}}</td>                             
+                            <td>{{ $item->rencana_anggaran}}</td>                        
+                            <td>{{ $item->realisasi_anggaran}}</td>                        
+                            <td>{{ $item->rencana_waktu}}</td>                            
+                            <td>{{ $item->realisasi_waktu}}</td>                            
+                            <td>{{ $item->indikator_pencapaian}}</td>                            
+                            <td>{{ $item->kinerja_pencapaian}}</td>                            
+                            <td>{{ $item->faktor_pendorong}}</td>                            
+                            <td>{{ $item->faktor_penghambat}}</td>                            
+                            <td>{{ $item->tindaklanjut}}</td>                            
+                            <td>
+                                <a href="/editevaluasi/{{$item->kode_proker}}"><i class="fas fa-edit" style="color:green"></i></a> |
+                                <a href="/hapusevaluasi/{{$item->kode_proker}}"><i class="fas fa-trash-alt" style="color:red"></i></a>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->
+@endsection

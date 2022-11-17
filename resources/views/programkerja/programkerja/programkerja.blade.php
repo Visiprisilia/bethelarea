@@ -20,13 +20,16 @@
                         <tr>
                             <th>No</th>
                             <th>Kode Program Kerja</th>
+                            <th>Periode</th>
                             <th>Nama Program Kerja</th>
                             <th>Penanggung Jawab</th>
-                            <th>Waktu</th>                            
+                            <th>Waktu Mulai</th>                            
+                            <th>Waktu Selesai</th>                            
                             <th>Tujuan</th>   
                             <th>Indikator Pencapaian</th>                                                     
                             <th>Akun Biaya</th>                            
                             <th>Jumlah</th>                            
+                            <th>Keterangan</th>                            
                             <th>Aksi</th>
                         </tr>
                     <tbody>
@@ -34,13 +37,16 @@
                         <tr>
                             <td>{{ $loop->iteration}}</td>
                             <td>{{ $item->kode_proker}}</td>
+                            <td>{{ $item->periode}}</td>
                             <td>{{ $item->nama_proker}}</td>
-                            <td>{{ $item->pegawai_id}}</td>
-                            <td>{{ $item->waktu}}</td>                            
+                            <td>{{ $item->penanggungjawab}}</td>
+                            <td>{{ $item->waktu_mulai}}</td>                            
+                            <td>{{ $item->waktu_selesai}}</td>                            
                             <td>{{ $item->tujuan}}</td>                            
                             <td>{{ $item->indikator}}</td>                            
-                            <td>{{ $item->akun_kode}}</td>                            
+                            <td>{{ $item->akun}}</td>                            
                             <td>{{ $item->anggaran}}</td>                            
+                            <td>{{ $item->keterangan}}</td>                            
                             <td>
                                 <a href="/editprogramkerja/{{$item->kode_proker}}"><i class="fas fa-edit" style="color:green"></i></a> |
                                 <a href="/hapusprogramkerja/{{$item->kode_proker}}"><i class="fas fa-trash-alt" style="color:red"></i></a>

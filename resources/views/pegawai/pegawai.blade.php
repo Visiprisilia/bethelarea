@@ -28,6 +28,9 @@
                             <th>Tanggal Masuk</th>
                             <th>Status Kepegawaian</th>
                             <th>Tanggal Penetapan Pegawai Tetap</th>
+                            <th>Surat Keterangan</th>
+                            <th>Status</th>
+                            <th>Termin</th>
                             <th>Keterangan</th>
                             <th>Aksi</th>
                         </tr>
@@ -44,6 +47,9 @@
                             <td>{{ $item->tanggal_masuk}}</td>
                             <td>{{ $item->status_kepegawaian}}</td>
                             <td>{{ $item->tanggal_ppt}}</td>
+                            <td>{{ $item->file_suket}}</td>
+                            <td>{{ $item->status}}</td>
+                            <td>{{ $item->tanggal_termin}}</td>
                             <td>{{ $item->keterangan}}</td>
 
                             <td>

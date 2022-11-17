@@ -11,7 +11,8 @@ class ProgramKerja extends Model
 
     protected $table = 'program_kerja';
     protected $primaryKey = 'kode_proker';
-    protected $fillable = ['kode_proker', 'nama_proker', 'pegawai_id', 'waktu', 'tujuan',  'indikator', 'akun_kode', 'anggaran' ];
+    protected $fillable = ['kode_proker','periode','nama_proker', 'penanggungjawab', 'waktu_mulai','waktu_selesai',
+     'tujuan','indikator','akun','anggaran','keterangan' ];
     
     // public function Pegawaiid()
 	// {

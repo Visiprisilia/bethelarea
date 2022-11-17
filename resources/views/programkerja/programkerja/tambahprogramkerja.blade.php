@@ -34,42 +34,52 @@
                                             @csrf
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Kode Program Kerja</label>
-                                                <input class="form-control" id="kode_proker" name="kode_proker"/>
+                                                <input class="form-control" id="kode_proker" name="kode_proker" />
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Periode</label>
+                                                <input class="form-control" id="periode" name="periode" />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Nama Program Kerja</label>
                                                 <input class="form-control" id="nama_proker" name="nama_proker" />
                                             </div>
                                             <div class="mb-3">
-                                            <label for="exampleFormControlSelect1">Penanggung Jawab</label>
-                                            <select class="form-control select2" id="pegawai_id" name="pegawai_id">
-                                                    
-                                                    </select>
+                                                <label for="exampleFormControlInput1">Penanggung Jawab</label>
+                                                <input class="form-control" id="penanggungjawab" name="penanggungjawab" />
                                             </div>
                                             <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Waktu</label>
-                                                <input class="form-control" type="date" id="waktu" name="waktu" />
-                                            </div>   
+                                                <label for="exampleFormControlInput1">Waktu Mulai</label>
+                                                <input class="form-control" type="date" id="waktu_mulai" name="waktu_mulai" />
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Waktu Selesai</label>
+                                                <input class="form-control" type="date" id="waktu_selesai" name="waktu_selesai" />
+                                            </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Tujuan</label>
                                                 <input class="form-control" id="tujuan" name="tujuan" />
-                                            </div>      
+                                            </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Indikator Pencapaian</label>
-                                                <input class="form-control"  id="indikator" name="indikator" />
-                                            </div>  
-                                            <label for="exampleFormControlSelect1">Akun Biaya</label>
-                                                <select class="form-control select2" id="akun_kode" name="akun_kode">
-                                                    
-                                                </select>
+                                                <input class="form-control" id="indikator" name="indikator" />
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Akun Biaya</label>
+                                                <input class="form-control" id="akun" name="akun" />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Anggaran</label>
-                                                <input class="form-control" id="anggaran" name="anggaran"  />
-                                            </div>                                                                                                                                                                 
+                                                <input class="form-control" id="anggaran" name="anggaran" />
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Keterangan</label>
+                                                <input class="form-control" id="keterangan" name="keterangan" />
+                                            </div>
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Tambah</button>
-                                                <a href="{{url('/programkerja')}}" class="btn btn-danger">Batal</a>                                            </div>
+                                                <a href="{{url('/programkerja')}}" class="btn btn-danger">Batal</a>
+                                            </div>
                                         </form>
                                     </div>
                                 </div>

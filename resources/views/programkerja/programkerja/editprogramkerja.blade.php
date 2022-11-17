@@ -25,65 +25,66 @@
                     <!-- Default Bootstrap Form Controls-->
                     <div id="default">
                         <div class="card mb-4">
-                            <div class="card-header">Pegawai</div>
+                            <div class="card-header">Program Kerja</div>
                             <div class="card-body">
                                 <!-- Component Preview-->
                                 <div class="sbp-preview">
                                     <div class="sbp-preview-content">
-                                        @foreach($pengajuan as $item)
-                                        <form action="/updatepengajuan/{{$item->kode_proker}}" method="post">
+                                        @foreach($programkerja as $item)
+                                        <form action="/updateprogramkerja/{{$item->kode_proker}}" method="post">
                                             @csrf
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Kode Program Kerja</label>
                                                 <input class="form-control" type="hidden" id="kode_proker" name="kode_proker" disabled value="{{$item->kode_proker}}" placeholder="Kode Program Kerja" />
                                             </div>
                                             <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Periode</label>
+                                                <input class="form-control" id="periode" name="periode" value="{{$item->periode}}" />
+                                            </div>
+                                            <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Program Kerja</label>
                                                 <input class="form-control" id="proker" name="proker" value="{{$item->proker}}" placeholder="Program Kerja" />
                                             </div>
-                                            <div class="mb-3">
-                                            <label for="exampleFormControlSelect1">Penanggung Jawab</label>
-                                                <select class="form-control select2" id="pegawai_id" name="pegawai_id" value="{{$item->pegawai_id">
-                                                    <option disabled value>Pilih Penanggung Jawab</option>
-                                                    <option value="{{ $item->pegawai_id}}">{{$item->nama_pegawai}}</option>
 
-                                                    @foreach ($pegawai as $item)
-                                                    <option value="{{ $item->kode_pegawai}}">{{$item->nama_pegawai}}</option>
-                                                    @endforeach
-                                                </select>
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Penanggung Jawab</label>
+                                                <input class="form-control" id="penanggungjawab" name="penanggungjawab" value="{{$item->penanggungjawab}}" />
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Waktu Mulai</label>
+                                                <input class="form-control" type="date" id="waktu_mulai" name="waktu_mulai" value="{{$item->waktu_mulai}}" />
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Waktu Selesai</label>
+                                                <input class="form-control" type="date" id="waktu_selesai" name="waktu_selesai" value="{{$item->waktu_selesai}}" />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Tujuan</label>
-                                                <input class="form-control" id="tujuan" name="tujuan" value="{{$item->tujuan}}" placeholder="Tujuan" />
-                                            </div>
-                                            <label for="exampleFormControlSelect1">Akun Biaya</label>
-                                                <select class="form-control select2" id="akun_kode" name="akun_kode" value="{{$item->pegawai_id"s>
-                                                    <option disabled value>Pilih Akun</option>
-                                                    <option value="{{ $item->akun_kode}}">{{$item->nama_akun}}</option>
-
-                                                    @foreach ($coa as $item)
-                                                    <option value="{{ $item->kode_akun}}">{{$item->nama_akun}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Anggaran</label>
-                                                <input class="form-control" id="anggaran" name="anggaran" value="{{$item->anggaran}}" placeholder="Anggaran" />
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Waktu</label>
-                                                <input class="form-control" type="date" id="waktu" name="waktu" value="{{$item->waktu}}" />
+                                                <input class="form-control" id="tujuan" name="tujuan" value="{{$item->tujuan}}" />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Indikator Pencapaian</label>
                                                 <input class="form-control" id="indikator" name="indikator" value="{{$item->indikator}}" />
                                             </div>
-                                            <div class="mb-3">
-                                                <button type="submit" class="btn btn-success">Simpan</button>
-                                                <a href="{{url('/pengajuan')}}" class="btn btn-danger">Batal</a>
-                                            </div>
-                                        </form>
+                         
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput1">Akun Biaya</label>
+                                        <input class="form-control" id="akun" name="akun" value="{{$item->akun}}" />
                                     </div>
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput1">Anggaran</label>
+                                        <input class="form-control" id="anggaran" name="anggaran" value="{{$item->anggaran}}" />
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput1">Keterangan</label>
+                                        <input class="form-control" id="keterangan" name="keterangan" value="{{$item->keterangan}}" />
+                                    </div>
+                                    <div class="mb-3">
+                                        <button type="submit" class="btn btn-success">Simpan</button>
+                                        <a href="{{url('/programkerja')}}" class="btn btn-danger">Batal</a>
+                                    </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -91,7 +92,8 @@
                 </div>
             </div>
         </div>
-    </main>
+</div>
+</main>
 </div>
 @endforeach
 @endsection

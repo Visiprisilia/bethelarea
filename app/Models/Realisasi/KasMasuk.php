@@ -10,7 +10,7 @@ class KasMasuk extends Model
     use HasFactory;
     protected $table = 'kas_masuk';
     protected $primaryKey = 'no_bukti';
-    protected $fillable = ['no_bukti', 'tanggal','keterangan','akun','jumlah'];
+    protected $fillable = ['no_bukti','periode','tanggal_pencatatan','keterangan','akun','sumber','jumlah','kasir'];
  
 }
 

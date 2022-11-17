@@ -5,12 +5,12 @@ namespace App\Models\BukuBesar;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class BukuBesar extends Model
+class BukuBesarKas extends Model
 {
     use HasFactory;
-    protected $table = 'buku_besar';
+    protected $table = 'bukubesar_kas';
     protected $primaryKey = 'kode';
-    protected $fillable = ['kode', 'uraian','anggaran','realisasi','saldo'];
+    protected $fillable = ['kode', 'uraian','bertambah','berkurang','saldo'];
  
 }
 

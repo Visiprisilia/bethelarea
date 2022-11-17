@@ -21,10 +21,13 @@ class KasMasukController extends Controller
 	{
 		KasMasuk::create([
 			'no_bukti'=>$request->no_bukti,
-			'tanggal'=>$request->tanggal,
+			'periode'=>$request->periode,
+			'tanggal_pencatatan'=>$request->tanggal_pencatatan,
 			'keterangan'=>$request->keterangan,
 			'akun'=>$request->akun,
-			'jumlah'=>$request->jumlah
+			'sumber'=>$request->sumber,
+			'jumlah'=>$request->jumlah,
+			'kasir'=>$request->kasir
 
 			]);
 			return redirect('/kasmasuk')->with('status', 'Data berhasil ditambahkan');
@@ -38,12 +41,24 @@ class KasMasukController extends Controller
 	{
         $kasmasuk = KasMasuk::where('no_bukti', $request->no_bukti)->update([
 			'no_bukti'=>$request->no_bukti,
-			'tanggal'=>$request->tanggal,
+			'periode'=>$request->periode,
+			'tanggal_pencatatan'=>$request->tanggal_pencatatan,
 			'keterangan'=>$request->keterangan,
 			'akun'=>$request->akun,
-			'jumlah'=>$request->jumlah
+			'sumber'=>$request->sumber,
+			'jumlah'=>$request->jumlah,
+			'kasir'=>$request->kasir
 		]);
 		return redirect('/kasmasuk')->with('status', 'Data berhasil diubah');
+	}
+	public function lihatkasmasuk($no_bukti)
+	{
+		$kasmasuk = KasMasuk::where('no_bukti', $no_bukti)->get();
+		return view('realisasi/kasmasuk/lihatkasmasuk', compact('kasmasuk'));
+	}
+	public function cetakkasmasuk()
+	{
+		return view('realisasi/kasmasuk/cetakkasmasuk');
 	}
 	public function hapuskasmasuk($no_bukti)
 	{

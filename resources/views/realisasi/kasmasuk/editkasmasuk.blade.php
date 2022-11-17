@@ -38,8 +38,12 @@
                                                 <input class="form-control" id="no_bukti" name="no_bukti" disabled value="{{$item->no_bukti}}" />
                                             </div>
                                             <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Tanggal</label>
-                                                <input class="form-control" type="date" id="tanggal" name="tanggal" value="{{$item->tanggal}}"/>
+                                                <label for="exampleFormControlInput1">Periode</label>
+                                                <input class="form-control" id="periode" name="periode" value="{{$item->periode}}" />
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Tanggal Pencatatan</label>
+                                                <input class="form-control" type="date" id="tanggal_pencatatan" name="tanggal_pencatatan" value="{{$item->tanggal_pencatatan}}"/>
                                             </div>  
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Keterangan</label>
@@ -48,10 +52,18 @@
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Akun</label>
                                                 <input class="form-control"  id="akun" name="akun" value="{{$item->akun}}"/>
+                                            </div>                           
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Sumber</label>
+                                                <input class="form-control"  id="sumber" name="sumber" value="{{$item->sumber}}"/>
                                             </div>                                             
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Jumlah</label>
                                                 <input class="form-control" id="jumlah" name="jumlah" value="{{$item->jumlah}}"  />
+                                            </div>          
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Penerima</label>
+                                                <input class="form-control" id="kasir" name="kasir" value="{{$item->kasir}}"  />
                                             </div>           
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Simpan</button>

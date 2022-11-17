@@ -29,6 +29,9 @@ class PegawaiController extends Controller
 			'tanggal_masuk'=>$request->tanggal_masuk,
 			'status_kepegawaian'=>$request->status_kepegawaian,
 			'tanggal_ppt'=>$request->tanggal_ppt,
+			'file_suket'=>$request->file_suket,
+			'status'=>$request->status,
+			'tanggal_termin'=>$request->tanggal_termin,
 			'keterangan'=>$request->keterangan
 			]);
 			return redirect('/pegawai')->with('status', 'Data berhasil ditambahkan');
@@ -50,6 +53,9 @@ class PegawaiController extends Controller
 			'tanggal_masuk'=>$request->tanggal_masuk,
 			'status_kepegawaian'=>$request->status_kepegawaian,
 			'tanggal_ppt'=>$request->tanggal_ppt,
+			'file_suket'=>$request->file_suket,
+			'status'=>$request->status,
+			'tanggal_termin'=>$request->tanggal_termin,
 			'keterangan'=>$request->keterangan
 		]);
 		return redirect('/pegawai')->with('status', 'Data berhasil diubah');

@@ -84,6 +84,18 @@
                                                 <input class="form-control" type="date" id="tanggal_ppt" name="tanggal_ppt" />
                                             </div>
                                             <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Surat Keterangan</label>
+                                                <input class="form-control" type="file" id="file_suket" name="file_suket" />
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Status</label>
+                                                <input class="form-control"  id="status" name="status" />
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Tanggal Termin</label>
+                                                <input class="form-control"  type="date" id="tanggal_termin" name="tanggal_termin" />
+                                            </div>        
+                                            <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Keterangan</label>
                                                 <input class="form-control"  id="keterangan" name="keterangan" />
                                             </div>

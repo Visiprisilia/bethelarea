@@ -37,8 +37,12 @@
                                                 <input class="form-control" id="no_bukti" name="no_bukti"/>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Tanggal</label>
-                                                <input class="form-control" type="date" id="tanggal" name="tanggal" />
+                                                <label for="exampleFormControlInput1">Periode</label>
+                                                <input class="form-control" id="periode" name="periode"/>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Tanggal Pencatatan</label>
+                                                <input class="form-control" type="date" id="tanggal_pencatatan" name="tanggal_pencatatan" />
                                             </div>  
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Keterangan</label>
@@ -47,11 +51,19 @@
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Akun</label>
                                                 <input class="form-control"  id="akun" name="akun" />
+                                            </div>    
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Sumber</label>
+                                                <input class="form-control"  id="sumber" name="sumber" />
                                             </div>                                             
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Jumlah</label>
                                                 <input class="form-control" id="jumlah" name="jumlah"  />
-                                            </div>                                                                                                                                                                 
+                                            </div>            
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Penerima</label>
+                                                <input class="form-control" id="kasir" name="kasir"   />
+                                            </div>                                                                                                                                                        
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Tambah</button>
                                                 <a href="{{url('/kasmasuk')}}" class="btn btn-danger">Batal</a>                                            </div>

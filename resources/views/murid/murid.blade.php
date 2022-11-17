@@ -33,6 +33,8 @@
                             <th>Pendidikan Terakhir Ibu</th>
                             <th>Anak Ke Berapa</th>
                             <th>Nomor Akte Lahir</th>
+                            <th>Foto Murid</th>
+                            <th>File KK</th>
                             <th>Aksi</th>
                         </tr>  
                     <tbody>
@@ -53,6 +55,8 @@
                             <td>{{ $item->pendidikan_ibu}}</td>
                             <td>{{ $item->anak_keberapa}}</td>
                             <td>{{ $item->no_akte}}</td>
+                            <td>{{ $item->foto_murid}}</td>
+                            <td>{{ $item->file_kk}}</td>
                             <td>
                                 <a href="/editmurid/{{$item->nomor_induk}}"><i class="fas fa-edit" style="color:green"></i></a> |
                                 <a href="/hapusmurid/{{$item->nomor_induk}}"><i class="fas fa-trash-alt" style="color:red"></i></a>

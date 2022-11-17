@@ -91,6 +91,14 @@
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Nomor Akte Lahir</label>
                                                 <input class="form-control" id="no_akte" name="no_akte" />
+                                            </div> 
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Foto Murid</label>
+                                                <input class="form-control" type="file" id="foto_murid" name="foto_murid" />
+                                            </div>    
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">File Kartu Keluarga</label>
+                                                <input class="form-control" type="file" id="file_kk" name="file_kk" />
                                             </div>                                          
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Tambah</button>

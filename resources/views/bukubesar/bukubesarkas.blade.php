@@ -4,7 +4,7 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Buku Besar</h1>
+    <h1 class="h3 mb-2 text-gray-800">Buku Besar Kas</h1>
 
 
     <!-- DataTales Example -->
@@ -19,18 +19,18 @@
                             <th>No</th>
                             <th>Kode</th>
                             <th>Uraian</th>
-                            <th>Anggaran</th>
-                            <th>Realisasi</th>
+                            <th>Bertambah</th>
+                            <th>Berkurang</th>
                             <th>Saldo</th>
                         </tr>                      
                         <tbody>
-                        @foreach ($bukubesar as $item)
+                        @foreach ($bukubesarkas as $item)
                         <tr>
                             <td>{{ $loop->iteration}}</td>
                             <td>{{ $item->kode}}</td>
                             <td>{{ $item->uraian}}</td>
-                            <td>{{ $item->anggaran}}</td>
-                            <td>{{ $item->realisasi}}</td>
+                            <td>{{ $item->bertambah}}</td>
+                            <td>{{ $item->berkurang}}</td>
                             <td>{{ $item->saldo}}</td>      
                            
                         </tr>  
