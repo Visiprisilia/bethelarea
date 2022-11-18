@@ -5,6 +5,7 @@ namespace App\Http\Controllers\programkerja;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\ProgramKerja\ProgramKerja;
+use App\Models\Coa\Coa;
 use Illuminate\Support\Facades\DB;
 
 class ProgramKerjaController extends Controller
@@ -16,7 +17,8 @@ class ProgramKerjaController extends Controller
 		}
     public function tambahprogramkerja()
 	{
-		return view('programkerja/programkerja/tambahprogramkerja');
+		$coa = Coa::orderBy('created_at','desc')->get();
+		return view('programkerja/programkerja/tambahprogramkerja', ['coa'=>$coa]);
 	}
     public function simpanprogramkerja(Request $request)
 	{

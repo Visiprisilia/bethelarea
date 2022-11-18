@@ -25,6 +25,7 @@
                             <th>Keterangan</th>
                             <th>Akun</th>
                             <th>Jumlah</th>                              
+                            <th>Bukti Nota</th>                              
                             <th>Kasir</th>                              
                             <th>Aksi</th>
                         </tr>
@@ -38,6 +39,7 @@
                             <td>{{ $item->keterangan}}</td>
                             <td>{{ $item->akun}}</td>                            
                             <td>{{ $item->jumlah}}</td>                              
+                            <td>{{ $item->bukti}}</td>                              
                             <td>{{ $item->kasir}}</td>                              
                             <td>
                                 <a href="/editkaskeluar/{{$item->no_bukti}}"><i class="fas fa-edit" style="color:green"></i></a> |

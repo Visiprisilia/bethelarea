@@ -4,18 +4,21 @@ namespace App\Http\Controllers\subunit;
 
 use Illuminate\Http\Request;
 use App\Models\SubUnit\SubUnit;
+use App\Models\SubUnit\SubUnit\unitid;
+use App\Models\Unit\Unit;
 use App\Http\Controllers\Controller;
 
 class SubUnitController extends Controller
 {
     public function subunit()
     {
-        $subunit = SubUnit::orderBy('created_at','desc')->get();
+        $subunit = SubUnit::with('unit')->orderBy('created_at','desc')->get();
         return view('subunit/subunit', compact('subunit'));
     }
     public function tambahsubunit()
 	{
-		return view('subunit/tambahsubunit');
+		$unit = Unit::all();
+		return view('subunit/tambahsubunit', compact('unit'));
 	}
     public function simpansubunit(Request $request)
 	{

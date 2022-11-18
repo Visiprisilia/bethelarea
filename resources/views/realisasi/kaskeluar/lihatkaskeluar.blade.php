@@ -58,6 +58,10 @@
                                                 <input class="form-control" id="jumlah" name="jumlah" disabled value="{{$item->jumlah}}"  />
                                             </div>  
                                             <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Bukti</label>
+                                                <input class="form-control" id="bukti" name="bukti" disabled value="{{$item->bukti}}"  />
+                                            </div>  
+                                            <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Kasir</label>
                                                 <input class="form-control" id="kasir" name="kasir" disabled value="{{$item->kasir}}"  />
                                             </div>           

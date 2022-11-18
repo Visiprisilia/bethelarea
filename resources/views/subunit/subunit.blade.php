@@ -31,7 +31,7 @@
                             <td>{{ $loop->iteration}}</td>
                             <td>{{ $item->kode_subunit}}</td>
                             <td>{{ $item->nama_subunit}}</td>                         
-                            <td>{{ $item->unit_id}}</td>                         
+                            <td>{{ $item->unit->nama_unit}}</td>                         
                             <td>{{ $item->status}}</td>                         
                             <td>
                                 <a href="/editsubunit/{{$item->kode_subunit}}"><i class="fas fa-edit" style="color:green"></i></a> |

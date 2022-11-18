@@ -33,8 +33,8 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Data Master:</h6>
                 <a class="collapse-item" href="/kebijakan">Kebijakan Yayasan</a>
-                <a class="collapse-item" href="/subunit">Daftar Sub Unit</a>
                 <a class="collapse-item" href="/unit">Daftar Unit</a>
+                <a class="collapse-item" href="/subunit">Daftar Sub Unit</a>
                 <a class="collapse-item" href="/periode">Daftar Periode</a>
                 <a class="collapse-item" href="/pegawai">Daftar Pegawai</a>
                 <a class="collapse-item" href="/murid">Daftar Murid</a>
@@ -82,8 +82,9 @@
         <div id="bukubesar" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Buku Besar:</h6>
-                <a class="collapse-item" href="/bukubesarkas">Buku Besar Kas</a>
-                <a class="collapse-item" href="/bukubesaranggaran">Buku Besar Anggaran</a>
+                <a class="collapse-item" href="/bukubesarkas">BB Kas</a>
+                <a class="collapse-item" href="/bukubesaranggaran">BB Anggaran Pendapatan</a>
+                <a class="collapse-item" href="/bukubesaranggaran">BB Anggaran Biaya</a>
             </div>
         </div>
     </li>
@@ -97,9 +98,9 @@
         <div id="laporan" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Laporan:</h6>
-                <a class="collapse-item" href="/kasmasuk">Laporan Program Kerja</a>
-                <a class="collapse-item" href="/kaskeluar">Laporan Kas</a>
-                <a class="collapse-item" href="/kaskeluar">Laporan Laba Rugi</a>
+                <a class="collapse-item" href="/kaskeluar">Lap. Posisi Anggaran</a>
+                <a class="collapse-item" href="/kaskeluar">Lap. Kas</a>
+                <a class="collapse-item" href="/kaskeluar">Lap. Peng. Komprehensif</a>
             </div>
         </div>
     </li>

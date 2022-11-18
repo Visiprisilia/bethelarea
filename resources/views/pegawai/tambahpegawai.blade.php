@@ -34,11 +34,11 @@
                                             @csrf
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Nomor Induk Yayasan</label>
-                                                <input class="form-control" id="niy" name="niy"  />
+                                                <input class="form-control" id="niy" name="niy" placeholder="4 digit pertama tahun masuk 3 digit terakhir nomor urut. Contoh : 2022001"  />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Nama</label>
-                                                <input class="form-control" id="nama" name="nama"  />
+                                                <input class="form-control" id="nama" name="nama" placeholder="NAMA" />
                                             </div>
                                             <!-- <div class="mb-3">
                                             <label for="exampleFormControlSelect1">Jabatan</label>

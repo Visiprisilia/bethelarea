@@ -26,6 +26,7 @@ class KasKeluarController extends Controller
 			'keterangan'=>$request->keterangan,
 			'akun'=>$request->akun,
 			'jumlah'=>$request->jumlah,
+			'bukti'=>$request->bukti,
 			'kasir'=>$request->kasir
 
 
@@ -46,6 +47,7 @@ class KasKeluarController extends Controller
 			'keterangan'=>$request->keterangan,
 			'akun'=>$request->akun,
 			'jumlah'=>$request->jumlah,
+			'bukti'=>$request->bukti,
 			'kasir'=>$request->kasir
 		]);
 		return redirect('/kaskeluar')->with('status', 'Data berhasil diubah');

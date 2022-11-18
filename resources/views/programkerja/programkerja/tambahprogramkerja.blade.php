@@ -65,12 +65,25 @@
                                                 <input class="form-control" id="indikator" name="indikator" />
                                             </div>
                                             <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Akun Biaya</label>
-                                                <input class="form-control" id="akun" name="akun" />
+                                                <label for="exampleFormControlInput1">Akun</label> 
+                                                <button type="button" class="btn btn-primary ml-2" id="tambah">+</button>
+                                               <div id="selectakun">
+                                               <div class="form-group" id="akun">
+                                                   <select class="form-control select2 mb-1" style="width: 100%;"name="akun[]" >
+                                                    <option disabled value>Pilih Akun</option>
+                                                    @foreach ($coa as $item)
+                                                    <option value="{{ $item->kode_akun}}">{{$item->nama_akun}}</option>
+                                                    @endforeach
+                                                </select>
+                                                <div>
+                                                    <input type="text" class="form-control mb-1 jumlah"  name="jumlah[]" placeholder="Masukkan Jumlah">
+                                                </div>
+                                            </div>
+                                               </div>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Anggaran</label>
-                                                <input class="form-control" id="anggaran" name="anggaran" />
+                                                <input class="form-control" readonly id="anggaran" name="anggaran" />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Keterangan</label>
@@ -91,4 +104,5 @@
         </div>
     </main>
 </div>
+<script src="/proker/proker.js"></script>
 @endsection

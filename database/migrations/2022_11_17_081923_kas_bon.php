@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('kas_bon', function (Blueprint $table) {
             $table->string('kode')->primary();
-            $table->string('nama_akun')->nullable();
+            $table->string('tanggal')->nullable();
             $table->string('anggaran')->nullable();
             $table->string('realisasi')->nullable();
             $table->string('sisa')->nullable();

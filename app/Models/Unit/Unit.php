@@ -13,9 +13,9 @@ class Unit extends Model
     protected $fillable = ['kode_unit', 'nama_unit'];
 
        
-    public function SubUnit()
+    public function subunit()
 	{
-		return $this->belongsTo(SubUnit::class);
+		return $this->hasMany(SubUnit::class);
 	}
 
 }

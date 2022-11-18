@@ -56,6 +56,10 @@
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Jumlah</label>
                                                 <input class="form-control" id="jumlah" name="jumlah" value="{{$item->jumlah}}"  />
+                                            </div> 
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Bukti</label>
+                                                <input class="form-control" type="file" id="bukti" name="bukti" value="{{$item->bukti}}"  />
                                             </div>  
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Kasir</label>
@@ -63,7 +67,7 @@
                                             </div>           
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Simpan</button>
-                                                <a href="{{url('/pengajuan')}}" class="btn btn-danger">Batal</a>
+                                                <a href="{{url('/kaskeluar')}}" class="btn btn-danger">Batal</a>
                                             </div>
                                         </form>
                                     </div>

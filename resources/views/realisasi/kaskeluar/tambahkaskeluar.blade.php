@@ -55,6 +55,10 @@
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Jumlah</label>
                                                 <input class="form-control" id="jumlah" name="jumlah"  />
+                                            </div>  
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Bukti</label>
+                                                <input class="form-control" type="file" id="bukti" name="bukti"  />
                                             </div>   
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Kasir</label>

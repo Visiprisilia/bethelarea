@@ -2,6 +2,7 @@
 
 namespace App\Models\SubUnit;
 
+use App\Models\Unit\Unit;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,10 +13,10 @@ class SubUnit extends Model
     protected $primaryKey = 'kode_subunit';
     protected $fillable = ['kode_subunit', 'nama_subunit', 'unit_id', 'status'];
  
-    // public function unit()
-	// {
-	// 	return $this->hasMany(Unit::class);
-	// }
+    public function unit()
+	{
+		return $this->belongsTo(Unit::class);
+	}
 }
 
 

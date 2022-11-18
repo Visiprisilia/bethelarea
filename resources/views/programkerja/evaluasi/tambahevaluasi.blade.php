@@ -95,7 +95,7 @@
                                             
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Tambah</button>
-                                                <a href="{{url('/programkerja')}}" class="btn btn-danger">Batal</a>
+                                                <a href="{{url('/evaluasi')}}" class="btn btn-danger">Batal</a>
                                             </div>
                                         </form>
                                     </div>
