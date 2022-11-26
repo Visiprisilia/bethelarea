@@ -18,7 +18,6 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>No</th>
                             <th>No.Bukti</th>
                             <th>Periode</th>
                             <th>Tanggal Pencatatan</th>
@@ -32,7 +31,6 @@
                     <tbody>
                         @foreach ($kaskeluar as $item)
                         <tr>
-                            <td>{{ $loop->iteration}}</td>
                             <td>{{ $item->no_bukti}}</td>
                             <td>{{ $item->periode}}</td>
                             <td>{{ $item->tanggal_pencatatan}}</td>

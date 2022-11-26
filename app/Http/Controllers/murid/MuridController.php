@@ -21,7 +21,9 @@ class MuridController extends Controller
 	{ 
 		Murid::create([
 			'nomor_induk'=>$request->nomor_induk,
+			'nomor_isn'=>$request->nomor_isn,
 			'nama'=>$request->nama,
+			'tempat_lahir'=>$request->tempat_lahir,
 			'ttl'=>$request->ttl,	
 			'jk'=>$request->jk,	
 			'alamat'=>$request->alamat,
@@ -35,7 +37,9 @@ class MuridController extends Controller
 			'anak_keberapa'=>$request->anak_keberapa, 
 			'no_akte'=>$request->no_akte,
 			'foto_murid'=>$request->foto_murid,
-			'file_kk'=>$request->file_kk
+			'file_kk'=>$request->file_kk,
+			'kontak'=>$request->kontak
+
 
 			]);
 			return redirect('/murid')->with('status', 'Data berhasil ditambahkan');
@@ -49,7 +53,9 @@ class MuridController extends Controller
 	{
 		$murid = Murid::where('nomor_induk', $request->nomor_induk)->update([
 			'nomor_induk'=>$request->nomor_induk,
+			'nomor_isn'=>$request->nomor_isn,
 			'nama'=>$request->nama,
+			'tempat_lahir'=>$request->tempat_lahir,
 			'ttl'=>$request->ttl,	
 			'jk'=>$request->jk,	
 			'alamat'=>$request->alamat,
@@ -63,7 +69,8 @@ class MuridController extends Controller
 			'anak_keberapa'=>$request->anak_keberapa, 
 			'no_akte'=>$request->no_akte,
 			'foto_murid'=>$request->foto_murid,
-			'file_kk'=>$request->file_kk
+			'file_kk'=>$request->file_kk,
+			'kontak'=>$request->kontak
 		]);
 		return redirect('/murid')->with('status', 'Data berhasil diubah');
 	}

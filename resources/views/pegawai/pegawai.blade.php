@@ -15,12 +15,13 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="tablepegawai" width="100%" cellspacing="0">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
-                        <tr> 
+                        <tr>
                             <th>No</th>
                             <th>Nomor Induk Yayasan</th>
                             <th>Nama</th>
+                            <th>Tempat Lahir</th>
                             <th>TTL</th>
                             <th>Agama</th>
                             <th>Pendidikan</th>
@@ -40,6 +41,7 @@
                             <td>{{ $loop->iteration}}</td>
                             <td>{{ $item->niy}}</td>
                             <td>{{ $item->nama}}</td>
+                            <td>{{ $item->tempat_lahir}}</td>
                             <td>{{ $item->ttl}}</td>
                             <td>{{ $item->agama}}</td>
                             <td>{{ $item->pendidikan}}</td>
@@ -49,13 +51,13 @@
                             <td>{{ $item->tanggal_ppt}}</td>
                             <td>{{ $item->file_suket}}</td>
                             <td>{{ $item->status}}</td>
-                            <td>{{ $item->tanggal_termin}}</td>
+                            <td>{{ $item->tanggal_terminasi}}</td>
                             <td>{{ $item->keterangan}}</td>
 
                             <td>
                                 <a href="/editpegawai/{{$item->niy}}"><i class="fas fa-edit" style="color:green"></i></a> |
                                 <a href="/hapuspegawai/{{$item->niy}}"><i class="fas fa-trash-alt" style="color:red"></i></a>
-                            </td>
+                                </td>
                         </tr>
                         @endforeach
                     </tbody>

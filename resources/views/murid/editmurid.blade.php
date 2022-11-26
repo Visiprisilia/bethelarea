@@ -33,75 +33,108 @@
                                     @foreach($murid as $item)
                                     <form action="/updatemurid/{{$item->nomor_induk}}" method="post">
                                             @csrf
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Nomor Induk</label>
-                                                <input class="form-control" id="nomor_induk" name="nomor_induk" disabled value="{{$item->nomor_induk}}" />
+                                            <div class="row gx-3 mb-3">
+                                                <div class="col-md-4">
+                                                    <label class="mb-1" for="inputLastName">Nomor Induk Siswa</label>
+                                                    <input class="form-control" id="nomor_induk" name="nomor_induk" placeholder="Masukkan NIS" required value="{{$item->nomor_induk}}" />
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="mb-1" for="inputFirstName">Nomor Induk Siswa Nasional</label>
+                                                    <input class="form-control" id="nomor_isn" name="nomor_isn" placeholder="Masukkan NISN" required value="{{$item->nomor_isn}}" />
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="mb-1" for="inputLastName">Foto Murid</label>
+                                                    <input class="form-control" type="file" id="foto_murid" name="foto_murid" required value="{{$item->foto_murid}}" />
+                                                </div>
                                             </div>
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Nama</label>
-                                                <input class="form-control" id="nama" name="nama" value="{{$item->nama}}" />
-                                            </div>                                
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Tanggal Lahir</label>
-                                                <input class="form-control" type="date" id="ttl" name="ttl" value="{{$item->ttl}}" />
+                                            <div class="row gx-3 mb-3">
+                                                <div class="col-md-4">
+                                                    <label class="mb-1" for="inputLastName">Nama</label>
+                                                    <input class="form-control" id="nama" name="nama" placeholder="Masukkan Nama" required value="{{$item->nama}}"  />
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="mb-1" for="inputLastName">Tempat Lahir</label>
+                                                    <input class="form-control" id="tempat_lahir" name="tempat_lahir" placeholder="Masukkan Tempat Lahir" required value="{{$item->tempat_lahir}}" />
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="mb-1" for="inputFirstName">Tanggal Lahir</label>
+                                                    <input class="form-control" type="date" id="ttl" name="ttl" required value="{{$item->ttl}}" />
+                                                </div>
                                             </div>
-                                            <div class="mb-3">
-                                            <label for="exampleFormControlSelect1">Jenis Kelamin</label>
-                                                <select class="form-control" id="jk" name="jk">
-                                                <option disabled value>Pilih Jenis Kelamin</option>   
-                                                <option >{{$item->jk}}</option>
-                                                <option>Perempuan</option>
-                                                    <option>Laki-laki</option>
-                                                </select>
+                                            <div class="row gx-3 mb-3">
+                                                <div class="col-md-4">
+                                                    <label class="mb-1" for="inputFirstName">Jenis Kelamin</label>
+                                                    <select class="form-control" id="jk" name="jk" required value="{{$item->jk}}" >
+                                                        <option disabled value>Pilih Jenis Kelamin</option>
+                                                        <option>Perempuan</option>
+                                                        <option>Laki-laki</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="mb-1" for="inputLastName">Alamat</label>
+                                                    <input class="form-control" id="alamat" name="alamat" placeholder="Masukkan Alamat" required value="{{$item->alamat}}"  />
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="mb-1" for="inputFirstName">Agama</label>
+                                                    <select class="form-control" id="agama" name="agama" required value="{{$item->agama}}" >
+                                                        <option disabled value>Pilih Agama</option>
+                                                        <option>Kristen Protestan</option>
+                                                        <option>Katholik</option>
+                                                        <option>Islam</option>
+                                                        <option>Budha</option>
+                                                        <option>Hindu</option>
+                                                        <option>Konghucu</option>
+                                                    </select>
+                                                </div>
                                             </div>
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Alamat</label>
-                                                <input class="form-control" id="alamat" name="alamat" value="{{$item->alamat}}" />
+                                            <div class="row gx-3 mb-3">
+                                                <div class="col-md-4">
+                                                    <label class="mb-1" for="inputLastName">Nama Ayah</label>
+                                                    <input class="form-control" id="nama_ayah" name="nama_ayah" placeholder="Masukkan Nama Ayah" required value="{{$item->nama_ayah}}"  />
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="mb-1" for="inputLastName">Pekerjaan Ayah</label>
+                                                    <input class="form-control" id="pekerjaan_ayah" name="pekerjaan_ayah" placeholder="Masukkan Pekerjaan Ayah" required value="{{$item->pekerjaan_ayah}}" />
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="mb-1" for="inputLastName">Pendidikan Terakhir Ayah</label>
+                                                    <input class="form-control" id="pendidikan_ayah" name="pendidikan_ayah" placeholder="Masukkan Pendidikan Terakhir Ayah" required value="{{$item->pendidikan_ayah}}" />
+                                                </div>
                                             </div>
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Agama</label>
-                                                <input class="form-control" id="agama" name="agama" value="{{$item->agama}}"/>
-                                            </div>  
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Nama Ayah</label>
-                                                <input class="form-control" id="nama_ayah" name="nama_ayah" value="{{$item->nama_ayah}}" />
-                                            </div> 
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Nama Ibu</label>
-                                                <input class="form-control" id="nama_ibu" name="nama_ibu" value="{{$item->nama_ibu}}"/>
+                                            <div class="row gx-3 mb-3">
+                                                <div class="col-md-4">
+                                                    <label class="mb-1" for="inputFirstName">Nama Ibu</label>
+                                                    <input class="form-control" id="nama_ibu" name="nama_ibu" placeholder="Masukkan Nama Ibu" required value="{{$item->nama_ibu}}" />
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="mb-1" for="inputFirstName">Pekerjaan Ibu</label>
+                                                    <input class="form-control" id="pekerjaan_ibu" name="pekerjaan_ibu" placeholder="Masukkan Pekerjaan Ibu" required value="{{$item->pekerjaan_ibu}}" />
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="mb-1" for="inputFirstName">Pendidikan Terakhir Ibu</label>
+                                                    <input class="form-control" id="pendidikan_ibu" name="pendidikan_ibu" placeholder="Masukkan Pendidikan Terakhir Ibu" required value="{{$item->pendidikan_ibu}}" />
+                                                </div>
                                             </div>
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Pekerjaan Ayah</label>
-                                                <input class="form-control" id="pekerjaan_ayah" name="pekerjaan_ayah" value="{{$item->pekerjaan_ayah}}"/>
-                                            </div>      
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Pekerjaan Ibu</label>
-                                                <input class="form-control" id="pekerjaan_ibu" name="pekerjaan_ibu" value="{{$item->pekerjaan_ibu}}" />
-                                            </div> 
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Pendidikan Terakhir Ayah</label>
-                                                <input class="form-control" id="pendidikan_ayah" name="pendidikan_ayah" value="{{$item->pendidikan_ayah}}" />
-                                            </div>     
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Pendidikan Terakhir Ibu</label>
-                                                <input class="form-control" id="pendidikan_ibu" name="pendidikan_ibu" value="{{$item->pendidikan_ibu}}" />
-                                            </div> 
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Anak Ke berapa</label>
-                                                <input class="form-control" id="anak_keberapa" name="anak_keberapa" value="{{$item->anak_keberapa}}"/>
-                                            </div>   
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Nomor Akte Lahir</label>
-                                                <input class="form-control" id="no_akte" name="no_akte" value="{{$item->no_akte}}" />
-                                            </div>           
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Foto Murid</label>
-                                                <input class="form-control" type="file" id="foto_murid" name="foto_murid" value="{{$item->foto_murid}}" />
-                                            </div>    
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">File Kartu Keluarga</label>
-                                                <input class="form-control" type="file" id="file_kk" name="file_kk" value="{{$item->foto_kk}}"/>
-                                            </div>               
+                                            <div class="row gx-3 mb-3">
+                                                <div class="col-md-6">
+                                                    <label class="mb-1" for="inputLastName">Anak Ke berapa</label>
+                                                    <input class="form-control" id="anak_keberapa" name="anak_keberapa" placeholder="Masukkan Anak Ke berapa" required value="{{$item->anak_keberapa}}" />
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="mb-1" for="inputFirstName">Nomor Akte Lahir</label>
+                                                    <input class="form-control" id="no_akte" name="no_akte" placeholder="Masukkan Nomor Akte Lahir" required value="{{$item->no_akte}}" />
+                                                </div>
+                                            </div>
+                                            <div class="row gx-3 mb-3">
+                                            <div class="col-md-6">
+                                                    <label class="mb-1" for="inputFirstName">Nomor Kontak</label>
+                                                    <input class="form-control" id="kontak" name="kontak" placeholder="Masukkan Nomor Akte Lahir" required value="{{$item->kontak}}" />
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="mb-1" for="inputFirstName">Kartu Keluarga</label>
+                                                    <input class="form-control" type="file" id="file_kk" name="file_kk" required value="{{$item->file_kk}}" />
+                                                </div>
+                                            </div>              
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Simpan</button>
                                                 <a href="{{url('/murid')}}" class="btn btn-danger">Batal</a>                                            </div>

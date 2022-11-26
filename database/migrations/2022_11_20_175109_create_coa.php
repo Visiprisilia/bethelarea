@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('coa', function (Blueprint $table) {
             $table->string('kode_akun')->primary();
-            $table->string('nama_akun')->nullable();
+            $table->string('nama_akun')->unique();
+            $table->string('kelompok_rek')->nullable();
             $table->string('saldo_normal')->nullable();
             $table->string('keterangan')->nullable();
             $table->timestamps();

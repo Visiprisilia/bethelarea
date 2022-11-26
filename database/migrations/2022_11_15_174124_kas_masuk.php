@@ -15,14 +15,16 @@ return new class extends Migration
     {
         Schema::create('kas_masuk', function (Blueprint $table) {
             $table->string('no_bukti')->primary();
-            $table->string('tanggal')->nullable();
+            $table->string('periode')->nullable();
+            $table->string('tanggal_pencatatan')->nullable();
             $table->string('keterangan')->nullable();
             $table->string('akun')->nullable();
+            $table->string('sumber')->nullable();
             $table->string('jumlah')->nullable();
+            $table->string('kasir')->nullable();
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      *

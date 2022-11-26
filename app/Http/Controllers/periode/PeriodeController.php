@@ -18,9 +18,9 @@ class PeriodeController extends Controller
 		return view('periode/tambahperiode');
 	}
     public function simpanperiode(Request $request)
-	{
+	{ 
 		Periode::create([
-			'kode_periode'=>$request->kode_periode,
+			'kode_periode'=>$request->nama_periode,
 			'nama_periode'=>$request->nama_periode,
 			'awal_periode'=>$request->awal_periode,	
             'akhir_periode'=>$request->akhir_periode,	
@@ -36,7 +36,7 @@ class PeriodeController extends Controller
 	public function updateperiode(Request $request)
 	{
 		$periode = Periode::where('kode_periode', $request->kode_periode)->update([
-			'kode_periode'=>$request->kode_periode,
+			'kode_periode'=>$request->nama_periode,
 			'nama_periode'=>$request->nama_periode,
 			'awal_periode'=>$request->awal_periode,	
             'akhir_periode'=>$request->akhir_periode,	

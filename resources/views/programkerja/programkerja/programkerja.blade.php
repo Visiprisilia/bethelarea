@@ -26,8 +26,7 @@
                             <th>Waktu Mulai</th>                            
                             <th>Waktu Selesai</th>                            
                             <th>Tujuan</th>   
-                            <th>Indikator Pencapaian</th>                                                     
-                            <th>Akun Biaya</th>                            
+                            <th>Indikator Pencapaian</th>        
                             <th>Jumlah</th>                            
                             <th>Keterangan</th>                            
                             <th>Aksi</th>
@@ -39,17 +38,17 @@
                             <td>{{ $item->kode_proker}}</td>
                             <td>{{ $item->periode}}</td>
                             <td>{{ $item->nama_proker}}</td>
-                            <td>{{ $item->penanggungjawab}}</td>
+                            <td>{{ $item->nama}}</td>
                             <td>{{ $item->waktu_mulai}}</td>                            
                             <td>{{ $item->waktu_selesai}}</td>                            
                             <td>{{ $item->tujuan}}</td>                            
-                            <td>{{ $item->indikator}}</td>                            
-                            <td>{{ $item->akun}}</td>                            
+                            <td>{{ $item->indikator}}</td>           
                             <td>{{ $item->anggaran}}</td>                            
                             <td>{{ $item->keterangan}}</td>                            
                             <td>
                                 <a href="/editprogramkerja/{{$item->kode_proker}}"><i class="fas fa-edit" style="color:green"></i></a> |
                                 <a href="/hapusprogramkerja/{{$item->kode_proker}}"><i class="fas fa-trash-alt" style="color:red"></i></a>
+                                <a href="/lihatprogramkerja/{{$item->kode_proker}}"><i class="fas fa-eye" style="color:red"></i></a>
                             </td>
                         </tr>
                         @endforeach

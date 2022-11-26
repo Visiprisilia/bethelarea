@@ -15,9 +15,7 @@ return new class extends Migration
     {
         Schema::create('unit', function (Blueprint $table) {
         $table->string('kode_unit')->primary();
-        $table->string('nama_unit')->nullable();
-        $table->string('subunit_id')->nullable();
-        $table->string('status_unit')->nullable();
+        $table->string('nama_unit')->unique();
         $table->timestamps();
     });
     }

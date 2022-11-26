@@ -14,15 +14,17 @@ return new class extends Migration
     public function up()
     {
         Schema::create('kas_bon', function (Blueprint $table) {
-            $table->string('kode')->primary();
-            $table->string('tanggal')->nullable();
+            $table->string('no_bukti')->primary();
+            $table->string('periode')->nullable();
+            $table->string('tanggal_pengajuan')->nullable();
+            $table->string('proker')->nullable();
             $table->string('anggaran')->nullable();
-            $table->string('realisasi')->nullable();
-            $table->string('sisa')->nullable();
+            $table->string('penanggungjawab')->nullable();
+            $table->string('tanggal_ptj')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      *

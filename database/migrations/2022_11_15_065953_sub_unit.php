@@ -15,11 +15,12 @@ return new class extends Migration
     {
         Schema::create('sub_unit', function (Blueprint $table) {
             $table->string('kode_subunit')->primary();
-            $table->string('nama_subunit')->nullable();
+            $table->string('nama_subunit')->unique();
+            $table->string('unit_id')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      *

@@ -30,44 +30,57 @@
                                 <!-- Component Preview-->
                                 <div class="sbp-preview">
                                     <div class="sbp-preview-content">
-                                        @foreach($kasmasuk as $item)
-                                        <form action="/updatekasmasuk/{{$item->no_bukti}}" method="post">
+                                        @foreach($kasmasuk as $km)
+                                        <form action="/updatekasmasuk/{{$km->no_bukti}}" method="post">
                                             @csrf
                                             <div class="mb-3">
-                                                <label for="exampleFormControlInput1">No Bukti</label>
-                                                <input class="form-control" id="no_bukti" name="no_bukti" disabled value="{{$item->no_bukti}}" />
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Periode</label>
-                                                <input class="form-control" id="periode" name="periode" value="{{$item->periode}}" />
+                                            <label class="mb-1" for="inputLastName">Periode</label>
+                                                    <select class="form-control" id="periode" name="periode" value="{{$km->periode}}">
+                                                        <option  value>Pilih Periode</option>
+                                                        @foreach ($periode as $item)
+                                                        <option value="{{ $item->kode_periode}}">{{$item->nama_periode}}</option>
+                                                        @endforeach
+                                                    </select>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Tanggal Pencatatan</label>
-                                                <input class="form-control" type="date" id="tanggal_pencatatan" name="tanggal_pencatatan" value="{{$item->tanggal_pencatatan}}"/>
+                                                <input class="form-control" type="date" id="tanggal_pencatatan" name="tanggal_pencatatan" value="{{$km->tanggal_pencatatan}}" required />
                                             </div>  
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Keterangan</label>
-                                                <input class="form-control" id="keterangan" name="keterangan" value="{{$item->keterangan}}"/>
+                                                <input class="form-control" id="keterangan" name="keterangan" value="{{$km->keterangan}}" required/>
                                             </div>      
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Akun</label>
-                                                <input class="form-control"  id="akun" name="akun" value="{{$item->akun}}"/>
-                                            </div>                           
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Sumber</label>
-                                                <input class="form-control"  id="sumber" name="sumber" value="{{$item->sumber}}"/>
-                                            </div>                                             
-                                            <div class="mb-3">
+                                            <div class="row gx-3 mb-3">
+                                                <div class="col-md-4">
+                                                    <label class="mb-1" for="inputLastName">Akun</label>
+                                                    <select class="form-control" id="akuns" name="akuns" value="{{$km->akuns}}">
+                                                        <option  value>Pilih Akun</option>
+                                                        @foreach ($akun as $item)
+                                                        <option value="{{ $item->kode_akun}}">{{$item->nama_akun}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="mb-1" for="inputFirstName">Sumber</label>
+                                                    <input class="form-control" id="sumber" name="sumber" placeholder="Masukkan Sumber" value="{{$km->sumber}}"required />
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="mb-1" for="inputFirstName">Diterima dari :</label>
+                                                    <select class="form-control" id="kasir" name="kasir" value="{{$km->kasir}}">
+                                                        <option  value>Pilih Murid</option>
+                                                        @foreach ($murid as $item)
+                                                        <option value="{{ $item->nomor_induk}}">{{$item->nama}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>               
+                                            <div class="col-md-4">
                                                 <label for="exampleFormControlInput1">Jumlah</label>
-                                                <input class="form-control" id="jumlah" name="jumlah" value="{{$item->jumlah}}"  />
-                                            </div>          
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Penerima</label>
-                                                <input class="form-control" id="kasir" name="kasir" value="{{$item->kasir}}"  />
-                                            </div>           
+                                                <input class="form-control" id="jumlah" name="jumlah" value="{{$km->jumlah}}"  required />
+                                            </div>                                           
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Simpan</button>
-                                                <a href="{{url('/pengajuan')}}" class="btn btn-danger">Batal</a>
+                                                <a href="{{url('/kasmasuk')}}" class="btn btn-danger">Batal</a>
                                             </div>
                                         </form>
                                     </div>

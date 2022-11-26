@@ -11,8 +11,8 @@ class Pegawai extends Model
 
     protected $table = 'pegawai';
     protected $primaryKey = 'niy';
-    protected $fillable = ['niy', 'nama', 'ttl', 'agama','pendidikan', 'alamat', 'tanggal_masuk', 
-    'status_kepegawaian', 'tanggal_ppt', 'file_suket','status','tanggal_termin','keterangan'];
+    protected $fillable = ['niy', 'nama','tempat_lahir','ttl','jk', 'agama','pendidikan', 'alamat','penempatan','tanggal_masuk', 
+    'status_kepegawaian', 'tanggal_ppt', 'file_suket','status','tanggal_terminasi','foto_pegawai','file_ktp','keterangan'];
 
     // public function pengajuan()
 	// {

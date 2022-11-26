@@ -5,6 +5,8 @@ namespace App\Http\Controllers\programkerja;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\ProgramKerja\Evaluasi;
+use App\Models\ProgramKerja\ProgramKerja;
+use App\Models\Akuns;
 use Illuminate\Support\Facades\DB;
 use PhpParser\Node\Expr\Eval_;
 
@@ -17,7 +19,9 @@ class EvaluasiController extends Controller
 		}
     public function tambahevaluasi()
 	{
-		return view('programkerja/evaluasi/tambahevaluasi');
+		$evaluasi = Evaluasi::join("pegawai","evaluasi.penanggungjawab","=","pegawai.niy")->get();
+		$programkerja = ProgramKerja::orderBy('created_at','desc')->get();
+		return view('programkerja/evaluasi/tambahevaluasi', ['evaluasi'=>$evaluasi,'programkerja'=>$programkerja]);
 	}
     public function simpanevaluasi(Request $request)
 	{
@@ -66,6 +70,17 @@ class EvaluasiController extends Controller
             'tindaklanjut'=>$request->tindaklanjut	
 		]);
 		return redirect('/evaluasi')->with('status', 'Data berhasil diubah');
+	}
+	public function pilihprogramkerja(Request $request)
+	{
+		$kode =$request->kode;
+		$data =ProgramKerja::where("kode_proker",$kode)->first();
+		$data2 = Akuns::join("coa","akuns.kode_akun","=","coa.kode_akun")->where("kode_proker",$kode)->get();
+		return response()->json([
+			"programkerja"=>$data,
+			"akun"=>$data2,
+
+		]);
 	}
 	public function hapusevaluasi($kode_proker)
 	{

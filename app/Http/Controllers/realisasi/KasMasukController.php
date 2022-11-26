@@ -4,23 +4,38 @@ namespace App\Http\Controllers\realisasi;
 
 use Illuminate\Http\Request;
 use App\Models\Realisasi\KasMasuk;
+use Carbon\Carbon;
+use App\Models\Periode\Periode;
+use App\Models\Murid\Murid;
+use App\Models\Akuns;
+use App\Models\Pegawai\Pegawai;
+
 use App\Http\Controllers\Controller;
 
 class KasMasukController extends Controller
 {
     public function kasmasuk()
     {
+		$periode = Periode::orderBy('created_at','desc')->get();
+		$murid = Murid::orderBy('created_at','desc')->get();
+		$akun = Akuns::orderBy('created_at','desc')->get();
         $kasmasuk = KasMasuk::orderBy('created_at','desc')->get();
-        return view('realisasi/kasmasuk/kasmasuk', compact('kasmasuk'));
+        return view('realisasi/kasmasuk/kasmasuk', ['periode'=>$periode,'akun'=>$akun,'kasmasuk'=>$kasmasuk,'murid'=>$murid]);
     }
     public function tambahkasmasuk()
 	{
-		return view('realisasi/kasmasuk/tambahkasmasuk');
+		$periode = Periode::orderBy('created_at','desc')->get();
+		$murid = Murid::orderBy('created_at','desc')->get();
+		$akun = Akuns::join("coa","akuns.kode_akun","=","coa.kode_akun")->get();
+		return view('realisasi/kasmasuk/tambahkasmasuk',['periode'=>$periode,'akun'=>$akun,'murid'=>$murid]);
 	}
     public function simpankasmasuk(Request $request)
 	{
+		$tanggalhariini = Carbon::now()->format('Ymd');
+        $check = KasMasuk::count();
+		$no_bukti = "BKM".$tanggalhariini.$check+1;
 		KasMasuk::create([
-			'no_bukti'=>$request->no_bukti,
+			'no_bukti'=>$no_bukti,
 			'periode'=>$request->periode,
 			'tanggal_pencatatan'=>$request->tanggal_pencatatan,
 			'keterangan'=>$request->keterangan,
@@ -33,12 +48,18 @@ class KasMasukController extends Controller
 			return redirect('/kasmasuk')->with('status', 'Data berhasil ditambahkan');
 	}
 	public function editkasmasuk($no_bukti)
-	{
+	{	
+		$periode = Periode::orderBy('created_at','desc')->get();
+		$murid = Murid::orderBy('created_at','desc')->get();
+		$akun = Akuns::orderBy('created_at','desc')->get();
 		$kasmasuk = KasMasuk::where('no_bukti', $no_bukti)->get();
-		return view('realisasi/kasmasuk/editkasmasuk', compact('kasmasuk'));
+		return view('realisasi/kasmasuk/editkasmasuk',  ['periode'=>$periode,'akun'=>$akun,'kasmasuk'=>$kasmasuk,'murid'=>$murid]);
 	}
 	public function updatekasmasuk(Request $request)
 	{
+		$tanggalhariini = Carbon::now()->format('Ymd');
+        $check = KasMasuk::count();
+		$no_bukti = "BKM".$tanggalhariini.$check+1;
         $kasmasuk = KasMasuk::where('no_bukti', $request->no_bukti)->update([
 			'no_bukti'=>$request->no_bukti,
 			'periode'=>$request->periode,

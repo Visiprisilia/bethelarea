@@ -22,16 +22,21 @@ class PegawaiController extends Controller
 		Pegawai::create([
 			'niy'=>$request->niy,
 			'nama'=>$request->nama,
+			'tempat_lahir'=>$request->tempat_lahir,
 			'ttl'=>$request->ttl,	
+			'jk'=>$request->jk,	
 			'agama'=>$request->agama,	
 			'pendidikan'=>$request->pendidikan,	
 			'alamat'=>$request->alamat,
+			'penempatan'=>$request->penempatan,
 			'tanggal_masuk'=>$request->tanggal_masuk,
 			'status_kepegawaian'=>$request->status_kepegawaian,
 			'tanggal_ppt'=>$request->tanggal_ppt,
 			'file_suket'=>$request->file_suket,
 			'status'=>$request->status,
-			'tanggal_termin'=>$request->tanggal_termin,
+			'tanggal_terminasi'=>$request->tanggal_terminasi,
+			'foto_pegawai'=>$request->foto_pegawai,
+			'file_ktp'=>$request->file_ktp,
 			'keterangan'=>$request->keterangan
 			]);
 			return redirect('/pegawai')->with('status', 'Data berhasil ditambahkan');
@@ -46,16 +51,21 @@ class PegawaiController extends Controller
 		$pegawai = Pegawai::where('niy', $request->niy)->update([
 			'niy'=>$request->niy,
 			'nama'=>$request->nama,
+			'tempat_lahir'=>$request->tempat_lahir,
 			'ttl'=>$request->ttl,	
+			'jk'=>$request->jk,	
 			'agama'=>$request->agama,	
 			'pendidikan'=>$request->pendidikan,	
 			'alamat'=>$request->alamat,
+			'penempatan'=>$request->penempatan,
 			'tanggal_masuk'=>$request->tanggal_masuk,
 			'status_kepegawaian'=>$request->status_kepegawaian,
 			'tanggal_ppt'=>$request->tanggal_ppt,
 			'file_suket'=>$request->file_suket,
 			'status'=>$request->status,
-			'tanggal_termin'=>$request->tanggal_termin,
+			'tanggal_terminasi'=>$request->tanggal_terminasi,
+			'foto_pegawai'=>$request->foto_pegawai,
+			'file_ktp'=>$request->file_ktp,
 			'keterangan'=>$request->keterangan
 		]);
 		return redirect('/pegawai')->with('status', 'Data berhasil diubah');

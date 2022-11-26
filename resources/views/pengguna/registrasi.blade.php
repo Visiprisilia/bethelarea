@@ -24,7 +24,7 @@
                                     <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Masukkan Password">
                                 </div>                              
                                 <div class="form-group">
-                                    <input  class="form-control form-control-user" id="nama_lengkap" name="nama_lengkap" placeholder="Masukkan Nama Lengkap">
+                                    <input  class="form-control form-control-user" id="nama_pengguna" name="nama_pengguna" placeholder="Masukkan Nama Lengkap">
                                 </div>  
                                  <div class="mb-3">
                                             <button type="submit" class="btn btn-primary btn-user btn-block">Register Akun</button>
@@ -32,9 +32,7 @@
                                 <hr>
                             </form>
                             <hr>
-                            <div class="text-center">
-                                <a class="small" href="forgot-password.html">Forgot Password?</a>
-                            </div>
+                           
                             <div class="text-center">
                                 <a class="small" href="/bethelarea">Already have an account? Login!</a>
                             </div>

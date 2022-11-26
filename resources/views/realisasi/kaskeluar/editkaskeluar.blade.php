@@ -33,37 +33,39 @@
                                         @foreach($kaskeluar as $item)
                                         <form action="/updatekaskeluar/{{$item->no_bukti}}" method="post">
                                             @csrf
-                                            <div class="mb-3">
+                                            <!-- <div class="mb-3">
                                                 <label for="exampleFormControlInput1">No Bukti</label>
                                                 <input class="form-control" id="no_bukti" name="no_bukti" disabled value="{{$item->no_bukti}}" />
-                                            </div>
+                                            </div> -->
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Periode</label>
-                                                <input class="form-control" id="periode" name="periode"  value="{{$item->periode}}" />
+                                                <input class="form-control" id="periode" name="periode"  value="{{$item->periode}}"required/>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Tanggal</label>
-                                                <input class="form-control" type="date" id="tanggal_pencatatan" name="tanggal_pencatatan" value="{{$item->tanggal_pencatatan}}"/>
+                                                <input class="form-control" type="date" id="tanggal_pencatatan" name="tanggal_pencatatan" value="{{$item->tanggal_pencatatan}}" required/>
                                             </div>  
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Keterangan</label>
-                                                <input class="form-control" id="keterangan" name="keterangan" value="{{$item->keterangan}}"/>
+                                                <input class="form-control" id="keterangan" name="keterangan" value="{{$item->keterangan}}" required/>
                                             </div>      
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Akun</label>
-                                                <input class="form-control"  id="akun" name="akun" value="{{$item->akun}}"/>
-                                            </div>                                             
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Jumlah</label>
-                                                <input class="form-control" id="jumlah" name="jumlah" value="{{$item->jumlah}}"  />
-                                            </div> 
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Bukti</label>
-                                                <input class="form-control" type="file" id="bukti" name="bukti" value="{{$item->bukti}}"  />
+                                            <div class="row gx-3 mb-3">
+                                                <div class="col-md-4">
+                                                    <label class="mb-1" for="inputLastName">Akun</label>
+                                                    <input class="form-control" id="akun" name="akun" placeholder="Masukkan Akun" value="{{$item->akun}}" required />
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="mb-1" for="inputFirstName">Jumlah</label>
+                                                    <input class="form-control" id="jumlah" name="jumlah" placeholder="Masukkan Jumlah" value="{{$item->jumlah}}" required />
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="mb-1" for="inputFirstName">Bukti</label>
+                                                    <input class="form-control" type="file" id="bukti" name="bukti"  placeholder="Masukkan Jumlah" value="{{$item->bukti}}" required />
+                                                </div>
                                             </div>  
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Kasir</label>
-                                                <input class="form-control" id="kasir" name="kasir" value="{{$item->kasir}}"  />
+                                                <input class="form-control" id="kasir" name="kasir" value="{{$item->kasir}}" required />
                                             </div>           
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Simpan</button>

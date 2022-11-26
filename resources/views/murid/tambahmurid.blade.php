@@ -32,78 +32,113 @@
                                     <div class="sbp-preview-content">
                                         <form action="/simpanmurid" method="post">
                                             @csrf
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Nomor Induk</label>
-                                                <input class="form-control" id="nomor_induk" name="nomor_induk"  />
+                                            <div class="row gx-3 mb-3">
+                                                <div class="col-md-4">
+                                                    <label class="mb-1" for="inputLastName">Nomor Induk Siswa</label>
+                                                    <input class="form-control" id="nomor_induk" name="nomor_induk" placeholder="Masukkan NIS" required />
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="mb-1" for="inputFirstName">Nomor Induk Siswa Nasional</label>
+                                                    <input class="form-control" id="nomor_isn" name="nomor_isn" placeholder="Masukkan NISN" required />
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="mb-1" for="inputLastName">Foto Murid</label>
+                                                    <input class="form-control" type="file" id="foto_murid" name="foto_murid" required />
+                                                </div>
                                             </div>
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Nama</label>
-                                                <input class="form-control" id="nama" name="nama"  />
-                                            </div>                                
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Tanggal Lahir</label>
-                                                <input class="form-control" type="date" id="ttl" name="ttl" />
+                                            <div class="row gx-3 mb-3">
+                                                <div class="col-md-4">
+                                                    <label class="mb-1" for="inputLastName">Nama</label>
+                                                    <input class="form-control" id="nama" name="nama" placeholder="Masukkan Nama" required />
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="mb-1" for="inputLastName">Tempat Lahir</label>
+                                                    <input class="form-control" id="tempat_lahir" name="tempat_lahir" placeholder="Masukkan Tempat Lahir" required />
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="mb-1" for="inputFirstName">Tanggal Lahir</label>
+                                                    <input class="form-control" type="date" id="ttl" name="ttl" required />
+                                                </div>
                                             </div>
-                                            <div class="mb-3">
-                                            <label for="exampleFormControlSelect1">Jenis Kelamin</label>
-                                                <select class="form-control" id="jk" name="jk">
-                                                <option disabled value>Pilih Jenis Kelamin</option>   
-                                                <option>Perempuan</option>
-                                                    <option>Laki-laki</option>
-                                                </select>
+                                            <div class="row gx-3 mb-3">
+                                                <div class="col-md-4">
+                                                    <label class="mb-1" for="inputFirstName">Jenis Kelamin</label>
+                                                    <select class="form-control" id="jk" name="jk" required>
+                                                        <option  value>Pilih Jenis Kelamin</option>
+                                                        <option>Perempuan</option>
+                                                        <option>Laki-laki</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="mb-1" for="inputLastName">Alamat</label>
+                                                    <input class="form-control" id="alamat" name="alamat" placeholder="Masukkan Alamat" required />
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="mb-1" for="inputFirstName">Agama</label>
+                                                    <select class="form-control" id="agama" name="agama" required>
+                                                        <option  value>Pilih Agama</option>
+                                                        <option>Kristen Protestan</option>
+                                                        <option>Katholik</option>
+                                                        <option>Islam</option>
+                                                        <option>Budha</option>
+                                                        <option>Hindu</option>
+                                                        <option>Konghucu</option>
+                                                    </select>
+                                                </div>
                                             </div>
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Alamat</label>
-                                                <input class="form-control" id="alamat" name="alamat"  />
+                                            <div class="row gx-3 mb-3">
+                                                <div class="col-md-4">
+                                                    <label class="mb-1" for="inputLastName">Nama Ayah</label>
+                                                    <input class="form-control" id="nama_ayah" name="nama_ayah" placeholder="Masukkan Nama Ayah" required />
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="mb-1" for="inputLastName">Pekerjaan Ayah</label>
+                                                    <input class="form-control" id="pekerjaan_ayah" name="pekerjaan_ayah" placeholder="Masukkan Pekerjaan Ayah" required />
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="mb-1" for="inputLastName">Pendidikan Terakhir Ayah</label>
+                                                    <input class="form-control" id="pendidikan_ayah" name="pendidikan_ayah" placeholder="Masukkan Pendidikan Terakhir Ayah" required />
+                                                </div>
                                             </div>
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Agama</label>
-                                                <input class="form-control" id="agama" name="agama" />
-                                            </div>  
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Nama Ayah</label>
-                                                <input class="form-control" id="nama_ayah" name="nama_ayah" />
-                                            </div> 
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Nama Ibu</label>
-                                                <input class="form-control" id="nama_ibu" name="nama_ibu" />
+                                            <div class="row gx-3 mb-3">
+                                                <div class="col-md-4">
+                                                    <label class="mb-1" for="inputFirstName">Nama Ibu</label>
+                                                    <input class="form-control" id="nama_ibu" name="nama_ibu" placeholder="Masukkan Nama Ibu" required />
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="mb-1" for="inputFirstName">Pekerjaan Ibu</label>
+                                                    <input class="form-control" id="pekerjaan_ibu" name="pekerjaan_ibu" placeholder="Masukkan Pekerjaan Ibu" required />
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="mb-1" for="inputFirstName">Pendidikan Terakhir Ibu</label>
+                                                    <input class="form-control" id="pendidikan_ibu" name="pendidikan_ibu" placeholder="Masukkan Pendidikan Terakhir Ibu" required />
+                                                </div>
                                             </div>
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Pekerjaan Ayah</label>
-                                                <input class="form-control" id="pekerjaan_ayah" name="pekerjaan_ayah" />
-                                            </div>      
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Pekerjaan Ibu</label>
-                                                <input class="form-control" id="pekerjaan_ibu" name="pekerjaan_ibu" />
-                                            </div> 
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Pendidikan Terakhir Ayah</label>
-                                                <input class="form-control" id="pendidikan_ayah" name="pendidikan_ayah" />
-                                            </div>     
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Pendidikan Terakhir Ibu</label>
-                                                <input class="form-control" id="pendidikan_ibu" name="pendidikan_ibu" />
-                                            </div> 
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Anak Ke berapa</label>
-                                                <input class="form-control" id="anak_keberapa" name="anak_keberapa" />
-                                            </div>   
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Nomor Akte Lahir</label>
-                                                <input class="form-control" id="no_akte" name="no_akte" />
-                                            </div> 
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Foto Murid</label>
-                                                <input class="form-control" type="file" id="foto_murid" name="foto_murid" />
-                                            </div>    
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">File Kartu Keluarga</label>
-                                                <input class="form-control" type="file" id="file_kk" name="file_kk" />
-                                            </div>                                          
+                                            <div class="row gx-3 mb-3">
+                                                <div class="col-md-6">
+                                                    <label class="mb-1" for="inputLastName">Anak Ke berapa</label>
+                                                    <input class="form-control" id="anak_keberapa" name="anak_keberapa" placeholder="Masukkan Anak Ke berapa" required />
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="mb-1" for="inputFirstName">Nomor Akte Lahir</label>
+                                                    <input class="form-control" id="no_akte" name="no_akte" placeholder="Masukkan Nomor Akte Lahir" required />
+                                                </div>
+                                            </div>
+                                            <div class="row gx-3 mb-3">
+                                            <div class="col-md-6">
+                                                    <label class="mb-1" for="inputFirstName">Nomor Kontak</label>
+                                                    <input class="form-control" id="kontak" name="kontak" placeholder="Masukkan Nomor Kontak" required />
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="mb-1" for="inputFirstName">Kartu Keluarga</label>
+                                                    <input class="form-control" type="file" id="file_kk" name="file_kk" required />
+                                                </div>
+                                            </div>
+
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Tambah</button>
-                                                <a href="{{url('/murid')}}" class="btn btn-danger">Batal</a>                                           
-                                             </div>
+                                                <a href="{{url('/murid')}}" class="btn btn-danger">Batal</a>
+                                            </div>
                                         </form>
                                     </div>
                                 </div>

@@ -15,7 +15,9 @@ return new class extends Migration
     {
         Schema::create('murid', function (Blueprint $table) {
             $table->string('nomor_induk')->primary();
+            $table->string('nomor_isn')->unique();
             $table->string('nama')->nullable();
+            $table->string('tempat_lahir')->nullable();
             $table->string('ttl')->nullable();
             $table->string('jk')->nullable();
             $table->string('alamat')->nullable();
@@ -28,9 +30,13 @@ return new class extends Migration
             $table->string('pendidikan_ibu')->nullable();
             $table->string('anak_keberapa')->nullable();
             $table->string('no_akte')->nullable();
+            $table->string('foto_murid')->nullable();
+            $table->string('file_kk')->nullable();
+            $table->string('kontak')->nullable();
             $table->timestamps();
         });
-    }
+    
+}
 
     /**
      * Reverse the migrations.

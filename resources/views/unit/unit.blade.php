@@ -18,7 +18,6 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>No</th>
                             <th>Kode Unit</th>
                             <th>Nama Unit</th>
                             <th>Aksi</th>
@@ -26,7 +25,6 @@
                     <tbody>
                         @foreach ($unit as $item)
                         <tr>
-                            <td>{{ $loop->iteration}}</td>
                             <td>{{ $item->kode_unit}}</td>
                             <td>{{ $item->nama_unit}}</td>
                             <td>

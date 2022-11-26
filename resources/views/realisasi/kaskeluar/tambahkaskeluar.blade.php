@@ -32,37 +32,54 @@
                                     <div class="sbp-preview-content">
                                         <form action="/simpankaskeluar" method="post">
                                             @csrf
-                                            <div class="mb-3">
+                                            <!-- <div class="mb-3">
                                                 <label for="exampleFormControlInput1">No Bukti</label>
                                                 <input class="form-control" id="no_bukti" name="no_bukti"/>
-                                            </div>
+                                            </div> -->
                                             <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Periode</label>
-                                                <input class="form-control" id="periode" name="periode"/>
+                                            <label class="mb-1" for="inputLastName">Periode</label>
+                                                    <select class="form-control" id="periode" name="periode">
+                                                        <option  value>Pilih Periode</option>
+                                                        @foreach ($periode as $item)
+                                                        <option value="{{ $item->kode_periode}}">{{$item->nama_periode}}</option>
+                                                        @endforeach
+                                                    </select>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Tanggal</label>
-                                                <input class="form-control" type="date" id="tanggal_pencatatan" name="tanggal_pencatatan" />
+                                                <input class="form-control" type="date" id="tanggal_pencatatan" name="tanggal_pencatatan" required/>
                                             </div>  
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Keterangan</label>
-                                                <input class="form-control" id="keterangan" name="keterangan" />
+                                                <input class="form-control" id="keterangan" name="keterangan" required />
                                             </div>      
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Akun</label>
-                                                <input class="form-control"  id="akun" name="akun" />
-                                            </div>                                             
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Jumlah</label>
-                                                <input class="form-control" id="jumlah" name="jumlah"  />
-                                            </div>  
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Bukti</label>
-                                                <input class="form-control" type="file" id="bukti" name="bukti"  />
-                                            </div>   
+                                            <div class="row gx-3 mb-3">
+                                            <div class="col-md-4">
+                                                    <label class="mb-1" for="inputLastName">Akun</label>
+                                                    <select class="form-control" id="akuns" name="akuns">
+                                                        <option  value>Pilih Akun</option>
+                                                        @foreach ($akun as $item)
+                                                        <option value="{{ $item->kode_akun}}">{{$item->nama_akun}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="mb-1" for="inputFirstName">Jumlah</label>
+                                                    <input class="form-control" id="jumlah" name="jumlah" placeholder="Masukkan Jumlah" required />
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="mb-1" for="inputFirstName">Bukti</label>
+                                                    <input class="form-control" type="file" id="bukti" name="bukti"  placeholder="Masukkan Jumlah" required />
+                                                </div>
+                                            </div>     
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Kasir</label>
-                                                <input class="form-control" id="kasir" name="kasir"  />
+                                                <select class="form-control" id="penanggungjawab" name="penanggungjawab">
+                                                        <option  value>Pilih Pegawai</option>
+                                                        @foreach ($pegawai as $item)
+                                                        <option value="{{ $item->niy}}">{{$item->nama}}</option>
+                                                        @endforeach
+                                                    </select>
                                             </div>                                                                                                                                                                 
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Tambah</button>

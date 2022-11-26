@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('periode', function (Blueprint $table) {
             $table->string('kode_periode')->primary();
-            $table->string('nama_periode')->nullable();
+            $table->string('nama_periode')->unique();
             $table->string('awal_periode')->nullable();
             $table->string('akhir_periode')->nullable();
             $table->string('status')->nullable();

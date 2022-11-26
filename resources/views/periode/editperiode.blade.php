@@ -39,19 +39,25 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Periode</label>
-                                                <input class="form-control" id="nama_periode" name="nama_periode" value="{{$item->nama_periode}}" placeholder="Nama periode" />
+                                                <input class="form-control" id="nama_periode" name="nama_periode" value="{{$item->nama_periode}}" placeholder="Nama periode" required/>
                                             </div>
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Awal Periode</label>
-                                                <input class="form-control" type="date" id="awal_periode" name="awal_periode" value="{{$item->awal_periode}}" placeholder="Awal Periode" />
+                                            <div class="row gx-3 mb-3">
+                                                <div class="col-md-6">
+                                                    <label class="mb-1" for="inputFirstName">Awal Periode</label>
+                                                    <input class="form-control" type="date" id="awal_periode" name="awal_periode" value="{{$item->awal_periode}}" required />
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="mb-1" for="inputLastName">Akhir Periode</label>
+                                                    <input class="form-control"  type="date" id="akhir_periode" name="akhir_periode" value="{{$item->akhir_periode}}"  required/>
+                                                </div>
                                             </div>
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Akhir Periode</label>
-                                                <input class="form-control" type="date" id="akhir_periode" name="akhir_periode" value="{{$item->akhir_periode}}" placeholder="Akhir Periode" />
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Status</label>
-                                                <input class="form-control" id="stats" name="status" value="{{$item->status}}" placeholder="Status" />
+                                            <div class="md-3">
+                                                <label for="inputLastName">Status</label>
+                                                <select class="form-control" id="status" name="status" value="{{$item->status}}" required>
+                                                    <option disabled value>Pilih Status</option>
+                                                    <option>AKTIF</option>
+                                                    <option>NON AKTIF</option>
+                                                </select>
                                             </div>
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Simpan</button>

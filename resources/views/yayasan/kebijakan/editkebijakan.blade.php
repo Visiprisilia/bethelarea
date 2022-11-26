@@ -31,19 +31,19 @@
                                 <div class="sbp-preview">
                                     <div class="sbp-preview-content">
                                     @foreach($kebijakan as $item)
-                                    <form action="/updatekebijakan/{{$item->kode_kebijakan}}" method="post">
+                                    <form action="/updatekebijakan/{{$item->kode_kebijakan}}" method="post" enctype="multipart/form-data">
                                             @csrf
-                                            <div class="mb-3">
+                                            <!-- <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Kode</label>
                                                 <input class="form-control" id="kode_kebijakan" name="kode_kebijakan" disabled value="{{$item->kode_kebijakan}}" placeholder="Kode pegawai" />
-                                            </div>
+                                            </div> -->
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">File Kebijakan</label>
-                                                <input class="form-control" type="file" id="file_kebijakan" name="file_kebijakan" value="{{$item->file_kebijakan}}"/>
+                                                <input class="form-control" type="file" id="file_kebijakan" name="file_kebijakan" value="{{$item->file_kebijakan}}" required/>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Keterangan</label>
-                                                <input class="form-control" id="keterangan" name="keterangan" value="{{$item->keterangan}}" placeholder="Keterangan" />
+                                                <input class="form-control" id="keterangan" name="keterangan" value="{{$item->keterangan}}" required />
                                             </div>                                                                                    
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Simpan</button>

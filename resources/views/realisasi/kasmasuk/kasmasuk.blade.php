@@ -37,7 +37,7 @@
                             <td>{{ $item->periode}}</td>
                             <td>{{ $item->tanggal_pencatatan}}</td>
                             <td>{{ $item->keterangan}}</td>
-                            <td>{{ $item->akun}}</td>                            
+                            <td>{{ $item->nama_akun}}</td>                            
                             <td>{{ $item->sumber}}</td>                            
                             <td>{{ $item->jumlah}}</td>                              
                             <td>{{ $item->kasir}}</td>                              

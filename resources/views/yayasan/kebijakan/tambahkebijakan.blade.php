@@ -30,19 +30,19 @@
                                 <!-- Component Preview-->
                                 <div class="sbp-preview">
                                     <div class="sbp-preview-content">
-                                        <form action="/simpankebijakan" method="post">
+                                        <form action="/simpankebijakan" method="post" enctype="multipart/form-data">
                                             @csrf
-                                            <div class="mb-3">
+                                            <!-- <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Kode</label>
-                                                <input class="form-control" id="kode_kebijakan" name="kode_kebijakan" />
-                                            </div>
+                                                <input class="form-control" id="kode_kebijakan" name="kode_kebijakan" readonly />
+                                            </div> -->
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">File Kebijakan</label>
-                                                <input class="form-control" type="file" id="file_kebijakan" name="file_kebijakan" />
+                                                <input class="form-control" type="file" id="file_kebijakan" name="file_kebijakan" required/>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Keterangan</label>
-                                                <input class="form-control" id="keterangan" name="keterangan"  />
+                                                <input class="form-control" id="keterangan" name="keterangan" required />
                                             </div>                                            
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Tambah</button>

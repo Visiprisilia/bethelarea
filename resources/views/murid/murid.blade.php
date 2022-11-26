@@ -19,7 +19,8 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Nomor Induk</th>
+                            <th>Nomor Induk Siswa</th>
+                            <th>Nomor Induk Siswa Nasional</th>
                             <th>Nama</th>
                             <th>Tempat Tanggal Lahir</th>
                             <th>Jenis Kelamin</th>
@@ -35,6 +36,7 @@
                             <th>Nomor Akte Lahir</th>
                             <th>Foto Murid</th>
                             <th>File KK</th>
+                            <th>Kontak</th>
                             <th>Aksi</th>
                         </tr>  
                     <tbody>
@@ -42,6 +44,7 @@
                         <tr>
                             <td>{{ $loop->iteration}}</td>
                             <td>{{ $item->nomor_induk}}</td>
+                            <td>{{ $item->nomor_isn}}</td>
                             <td>{{ $item->nama}}</td>
                             <td>{{ $item->ttl}}</td>
                             <td>{{ $item->jk}}</td>
@@ -57,6 +60,7 @@
                             <td>{{ $item->no_akte}}</td>
                             <td>{{ $item->foto_murid}}</td>
                             <td>{{ $item->file_kk}}</td>
+                            <td>{{ $item->kontak}}</td>
                             <td>
                                 <a href="/editmurid/{{$item->nomor_induk}}"><i class="fas fa-edit" style="color:green"></i></a> |
                                 <a href="/hapusmurid/{{$item->nomor_induk}}"><i class="fas fa-trash-alt" style="color:red"></i></a>

@@ -18,7 +18,6 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>No</th>
                             <th>Kode</th>
                             <th>File Kebijakan</th>
                             <th>Keterangan</th>                          
@@ -27,14 +26,14 @@
                     <tbody>
                         @foreach ($kebijakan as $item)
                         <tr>
-                            <td>{{ $loop->iteration}}</td>
                             <td>{{ $item->kode_kebijakan}}</td>
                             <td>{{ $item->file_kebijakan}}</td>
                             <td>{{ $item->keterangan}}</td>
-                            
                             <td>
-                                <a href="/editkebijakan/{{$item->kode_kebijakan}}"><i class="fas fa-edit" style="color:green"></i></a> |
+                                <a href="/editkebijakan/{{$item->kode_kebijakan}}"><i class="fas fa-edit" style="color:green"></i></a> 
                                 <a href="/hapuskebijakan/{{$item->kode_kebijakan}}"><i class="fas fa-trash-alt" style="color:red"></i></a>
+                                <a href="kebijakan/{{($item->file_kebijakan) }}" download=""><i class="fas fa-download" style="color:orange"></i></a>
+                                <a href="kebijakan/{{($item->file_kebijakan) }}" download=""><i class="fas fa-eye" style="color:blue"></i></a>
                             </td>
                         </tr>
                         @endforeach

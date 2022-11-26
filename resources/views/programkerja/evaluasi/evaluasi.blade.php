@@ -18,9 +18,9 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>No</th>
-                            <th>Kode Program Kerja</th>
+                            <th>No</th>                        
                             <th>Periode</th>
+                            <th>Kode Program Kerja</th>
                             <th>Nama Program Kerja</th>
                             <th>Penanggung Jawab</th>                                           
                             <th>Tujuan</th>   
@@ -40,8 +40,8 @@
                         @foreach ($evaluasi as $item)
                         <tr>
                             <td>{{ $loop->iteration}}</td>
-                            <td>{{ $item->kode_proker}}</td>
                             <td>{{ $item->periode}}</td>
+                            <td>{{ $item->kode_proker}}</td>
                             <td>{{ $item->nama_proker}}</td>
                             <td>{{ $item->penanggungjawab}}</td>                                                         
                             <td>{{ $item->tujuan}}</td>                            

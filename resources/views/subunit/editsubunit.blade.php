@@ -30,15 +30,16 @@
                                 <!-- Component Preview-->
                                 <div class="sbp-preview">
                                     <div class="sbp-preview-content">
-                                        @foreach($subunit as $item)
-                                        <form action="/updatesubunit/{{$item->kode_subunit}}" method="post">
+                                        @foreach($subunit as $sub)
+                                        <form action="/updatesubunit/{{$sub->kode_subunit}}" method="post">
                                             @csrf
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Kode Sub Unit</label>
-                                                <input class="form-control" id="kode_subunit" name="kode_subunit" disabled value="{{$item->kode_subunit}}"  />
+                                                <input class="form-control" id="kode_subunit" name="kode_subunit" disabled value="{{$sub->kode_subunit}}" required  />
                                             </div>
                                             <div class="form-group">
-                                                <select class="form-control select2" style="width: 100%;"name="unit_id" id="unit_id">
+                                            <label for="inputLastName">Unit</label>
+                                                <select class="form-control select2" style="width: 100%;"name="unit_id" id="unit_id" value="{{$sub->unit_id}}" required>
                                                 <option disabled value>Pilih Unit</option>
                                                 @foreach ($unit as $item)
                                                 <option value="{{ $item->kode_unit}}">{{$item->nama_unit}}</option>
@@ -47,12 +48,16 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Nama Sub Unit</label>
-                                                <input class="form-control" id="nama_subunit" name="nama_subunit" value="{{$item->nama_subunit}}" />
+                                                <input class="form-control" id="nama_subunit" name="nama_subunit" value="{{$sub->nama_subunit}}" required />
                                             </div>
                                           
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Status</label>
-                                                <input class="form-control" id="status" name="status"  value="{{$item->status}}"/>
+                                            <div class="md-3">
+                                                <label for="inputLastName">Status</label>
+                                                <select class="form-control" id="status" name="status" value="{{$sub->status}}"required >
+                                                    <option disabled  value>Pilih Status</option>
+                                                    <option>AKTIF</option>
+                                                    <option>NON AKTIF</option>
+                                                </select>
                                             </div>
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Simpan</button>

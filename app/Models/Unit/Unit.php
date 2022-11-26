@@ -10,14 +10,6 @@ class Unit extends Model
     use HasFactory;
     protected $table = 'unit';
     protected $primaryKey = 'kode_unit';
+    
     protected $fillable = ['kode_unit', 'nama_unit'];
-
-       
-    public function subunit()
-	{
-		return $this->hasMany(SubUnit::class);
 	}
-
-}
-
-

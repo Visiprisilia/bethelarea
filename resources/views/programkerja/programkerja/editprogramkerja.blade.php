@@ -30,56 +30,68 @@
                                 <!-- Component Preview-->
                                 <div class="sbp-preview">
                                     <div class="sbp-preview-content">
-                                        @foreach($programkerja as $item)
-                                        <form action="/updateprogramkerja/{{$item->kode_proker}}" method="post">
+                                        @foreach($programkerja as $items)
+                                        
+                                        <form action="/updateprogramkerja/{{$items->kode_proker}}" method="post">
                                             @csrf
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Kode Program Kerja</label>
-                                                <input class="form-control" type="hidden" id="kode_proker" name="kode_proker" disabled value="{{$item->kode_proker}}" placeholder="Kode Program Kerja" />
+                                            <div class="row gx-3 mb-3">
+                                                <div class="col-md-6">
+                                                    <label class="mb-1" for="inputLastName">Periode</label>
+                                                    <select class="form-control" id="periode" name="periode" value="{{$items->periode}}">
+                                                        <option disabled value>Pilih Periode</option>
+                                                        @foreach ($periode as $item)
+                                                        <option value="{{ $item->kode_periode}}">{{$item->nama_periode}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
                                             </div>
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Periode</label>
-                                                <input class="form-control" id="periode" name="periode" value="{{$item->periode}}" />
+                                            <div class="row gx-3 mb-3">
+                                                <div class="col-md-6">
+                                                    <label class="mb-1" for="inputFirstName">Nama Program Kerja</label>
+                                                    <input class="form-control" type="text" id="nama_proker" name="nama_proker" value="{{$items->nama_proker}}" placeholder="Masukkan Nama Proker" required />
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="mb-1" for="inputLastName">Penanggung Jawab</label>
+                                                    <select class="form-control" id="penanggungjawab" name="penanggungjawab"value="{{$items->penanggung_jawab}}">
+                                                        <option disabled value>Pilih Periode</option>
+                                                        @foreach ($pegawai as $item)
+                                                        <option value="{{ $item->kode_pegawai}}">{{$item->nama}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
                                             </div>
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Program Kerja</label>
-                                                <input class="form-control" id="proker" name="proker" value="{{$item->proker}}" placeholder="Program Kerja" />
+                                            <div class="row gx-3 mb-3">
+                                                <div class="col-md-6">
+                                                    <label class="mb-1" for="inputFirstName">Waktu Mulai</label>
+                                                    <input class="form-control" type="date" id="waktu_mulai" name="waktu_mulai" value="{{$items->waktu_mulai}}" required />
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="mb-1" for="inputLastName">Waktu Selesai</label>
+                                                    <input class="form-control" type="date" id="waktu_selesai" name="waktu_selesai" value="{{$items->waktu_selesai}}" required />
+                                                </div>
+                                            </div>
+                                            <div class="row gx-3 mb-3">
+                                                <div class="col-md-6">
+                                                    <label class="mb-1" for="inputFirstName">Tujuan</label>
+                                                    <input class="form-control" id="tujuan" name="tujuan" value="{{$items->tujuan}}"required />
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="mb-1" for="inputLastName">Indikator Pencapaian</label>
+                                                    <input class="form-control" id="indikator" name="indikator" value="{{$items->indikator}}" required />
+                                                </div>
+                                            </div>
+                                            <div class="row gx-3 mb-3">
+                                              
+                                                <div class="col-md-6">
+                                                    <label for="exampleFormControlInput1">Anggaran</label>
+                                                    <input class="form-control" readonly id="anggaran" name="anggaran" value="{{$items->anggaran}}" required />
+                                                </div>
                                             </div>
 
                                             <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Penanggung Jawab</label>
-                                                <input class="form-control" id="penanggungjawab" name="penanggungjawab" value="{{$item->penanggungjawab}}" />
+                                                <label for="exampleFormControlInput1">Keterangan</label>
+                                                <input class="form-control" id="keterangan" name="keterangan" value="{{$items->keterangan}}" required />
                                             </div>
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Waktu Mulai</label>
-                                                <input class="form-control" type="date" id="waktu_mulai" name="waktu_mulai" value="{{$item->waktu_mulai}}" />
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Waktu Selesai</label>
-                                                <input class="form-control" type="date" id="waktu_selesai" name="waktu_selesai" value="{{$item->waktu_selesai}}" />
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Tujuan</label>
-                                                <input class="form-control" id="tujuan" name="tujuan" value="{{$item->tujuan}}" />
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Indikator Pencapaian</label>
-                                                <input class="form-control" id="indikator" name="indikator" value="{{$item->indikator}}" />
-                                            </div>
-                         
-                                    <div class="mb-3">
-                                        <label for="exampleFormControlInput1">Akun Biaya</label>
-                                        <input class="form-control" id="akun" name="akun" value="{{$item->akun}}" />
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="exampleFormControlInput1">Anggaran</label>
-                                        <input class="form-control" id="anggaran" name="anggaran" value="{{$item->anggaran}}" />
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label for="exampleFormControlInput1">Keterangan</label>
-                                        <input class="form-control" id="keterangan" name="keterangan" value="{{$item->keterangan}}" />
-                                    </div>
                                     <div class="mb-3">
                                         <button type="submit" class="btn btn-success">Simpan</button>
                                         <a href="{{url('/programkerja')}}" class="btn btn-danger">Batal</a>

@@ -32,67 +32,86 @@
                                     <div class="sbp-preview-content">
                                         <form action="/simpanevaluasi" method="post">
                                             @csrf
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Kode Program Kerja</label>
-                                                <input class="form-control" id="kode_proker" name="kode_proker" />
+                                            <div class="row gx-3 mb-3">
+                                                <div class="col-md-6">
+                                                    <label class="mb-1" for="inputLastName">Periode</label>
+                                                    <input class="form-control" id="periode" name="periode" placeholder="Periode" required />
+                                                </div>
+                                                <div class="col-md-6">
+                                                <label class="mb-1" for="inputLastName">Kode Program Kerja</label>
+                                                    <select class="form-control" id="kode_proker" name="kode_proker">
+                                                        <option value>Pilih Program Kerja</option>
+                                                        @foreach ($programkerja as $item)
+                                                        <option value="{{ $item->kode_proker}}">{{$item->nama_proker}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
                                             </div>
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Periode</label>
-                                                <input class="form-control" id="periode" name="periode" />
+                                            <div class="row gx-3 mb-3">
+                                                <div class="col-md-6">
+                                                    <label class="mb-1" for="inputLastName">Nama Program Kerja</label>
+                                                    <input class="form-control" readonly id="nama_proker" name="nama_proker" placeholder="Masukkan Nama Program Kerja" required />
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="mb-1" for="inputFirstName">Penanggung Jawab</label>
+                                                    <input class="form-control" readonly id="penanggungjawab" name="penanggungjawab" placeholder="Masukkan Penanggungjawab" required />
+                                                </div>
                                             </div>
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Nama Program Kerja</label>
-                                                <input class="form-control" id="nama_proker" name="nama_proker" />
+                                            <div class="row gx-3 mb-3">
+                                                <div class="col-md-6">
+                                                    <label class="mb-1" for="inputLastName">Tujuan</label>
+                                                    <input class="form-control" id="tujuan" readonly name="tujuan" placeholder="Masukkan Tujuan" required />
+                                                </div>
+                                                <div class="col-md-6" id="akunbeban">
+                                                    <label class="mb-1" for="inputFirstName">Akun Biaya</label>
+                                                 
+                                                </div>
                                             </div>
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Penanggung Jawab</label>
-                                                <input class="form-control" id="penanggungjawab" name="penanggungjawab" />
+                                            <div class="row gx-3 mb-3">
+                                                <div class="col-md-6">
+                                                    <label class="mb-1" for="inputLastName">Rencana Anggaran</label>
+                                                    <input class="form-control" readonly id="rencana_anggaran" name="rencana_anggaran" placeholder="Masukkan Rencana Anggaran" required />
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="mb-1" for="inputFirstName">Realisasi Anggaran</label>
+                                                    <input class="form-control" id="realisasi_anggaran" name="realisasi_anggaran" placeholder="Masukkan Realisasi Anggaran" required />
+                                                </div>
                                             </div>
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Tujuan</label>
-                                                <input class="form-control" id="tujuan" name="tujuan" />
+                                            <div class="row gx-3 mb-3">
+                                                <div class="col-md-6">
+                                                    <label class="mb-1" for="inputLastName">Rencana Waktu</label>
+                                                    <input class="form-control" readonly type="date" id="rencana_waktu" name="rencana_waktu" placeholder="Masukkan Rencana Waktu" required />
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="mb-1" for="inputFirstName">Realisasi Waktu</label>
+                                                    <input class="form-control" type="date" id="realisasi_waktu" name="realisasi_waktu" placeholder="Masukkan Realisasi Waktu" required />
+                                                </div>
                                             </div>
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Akun Biaya</label>
-                                                <input class="form-control" id="akun_beban" name="akun_beban" />
+                                            <div class="row gx-3 mb-3">
+                                                <div class="col-md-6">
+                                                    <label class="mb-1" for="inputLastName">Indikator Pencapaian</label>
+                                                    <input class="form-control" readonly id="indikator_pencapaian" name="indikator_pencapaian" placeholder="Masukkan Indikator Pencapaian" required />
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="mb-1" for="inputFirstName">Kinerja Pencapaian</label>
+                                                    <input class="form-control" id="kinerja_pencapaian" name="kinerja_pencapaian" placeholder="Masukkan Kinerja Pencapaian" required />
+                                                </div>
                                             </div>
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Rencana Anggaran</label>
-                                                <input class="form-control" id="rencana_anggaran" name="rencana_anggaran" />
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Realisasi Anggaran</label>
-                                                <input class="form-control" id="realisasi_anggaran" name="realisasi_anggaran" />
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Rencana Waktu</label>
-                                                <input class="form-control" id="rencana_waktu" name="rencana_waktu" />
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Realisasi Waktu</label>
-                                                <input class="form-control" id="realisasi_waktu" name="realisasi_waktu" />
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Indikator Pencapaian</label>
-                                                <input class="form-control" id="indikator_pencapaian" name="indikator_pencapaian" />
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Kinerja Pencapaian</label>
-                                                <input class="form-control" id="kinerja_pencapaian" name="kinerja_pencapaian" />
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Faktor Pendorong</label>
-                                                <input class="form-control" id="faktor_pendorong" name="faktor_pendorong" />
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Faktor Penghambat</label>
-                                                <input class="form-control" id="faktor_penghambat" name="faktor_penghambat" />
+                                            <div class="row gx-3 mb-3">
+                                                <div class="col-md-6">
+                                                    <label class="mb-1" for="inputLastName">Faktor Pendorong</label>
+                                                    <input class="form-control" id="faktor_pendorong" name="faktor_pendorong" placeholder="Masukkan Faktor Pendorong" required />
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="mb-1" for="inputFirstName">Faktor Penghambat</label>
+                                                    <input class="form-control" id="faktor_penghambat" name="faktor_penghambat" placeholder="Masukkan Faktor Penghambat" required />
+                                                </div>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Tindak Lanjut</label>
-                                                <input class="form-control" id="tindaklanjut" name="tindaklanjut" />
+                                                <input class="form-control" id="tindaklanjut" name="tindaklanjut" placeholder="Masukkan Faktor Penghambat"required />
                                             </div>
-                                            
+
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Tambah</button>
                                                 <a href="{{url('/evaluasi')}}" class="btn btn-danger">Batal</a>
@@ -108,4 +127,5 @@
         </div>
     </main>
 </div>
+<script src="/proker/evaluasi.js"></script>
 @endsection

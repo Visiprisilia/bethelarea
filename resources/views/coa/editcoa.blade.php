@@ -35,15 +35,15 @@
                                             @csrf
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Kode Akun</label>
-                                                <input class="form-control"  id="kode_akun" name="kode_akun" disabled value="{{$item->kode_akun}}" placeholder="Kode Akun" />
+                                                <input class="form-control"  id="kode_akun" name="kode_akun" disabled value="{{$item->kode_akun}}" placeholder="Kode Akun"required />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Nama Akun</label>
-                                                <input class="form-control" id="nama_akun" name="nama_akun" value="{{$item->nama_akun}}" placeholder="Nama Akun" />
+                                                <input class="form-control" id="nama_akun" name="nama_akun" value="{{$item->nama_akun}}" placeholder="Nama Akun"required />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlSelect1">Kelompok Rekening</label>
-                                                <select class="form-control" id="kelompok_rek" name="kelompok_rek" value="{{$item->kelompok_rek}}">
+                                                <select class="form-control" id="kelompok_rek" name="kelompok_rek" value="{{$item->kelompok_rek}}"required>
                                                 <option disabled value>Pilih Kelompok Rekening</option>      
                                                 <option >{{$item->kelompok_rek}}</option>
                                                 <option>Aktiva</option>
@@ -55,7 +55,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlSelect1">Saldo Normal</label>
-                                                <select class="form-control" id="saldo_normal" name="saldo_normal" value="{{$item->saldo_normal}}">
+                                                <select class="form-control" id="saldo_normal" name="saldo_normal" value="{{$item->saldo_normal}}"required>
                                                 <option >{{$item->saldo_normal}}</option>
                                                 <option>Debit</option>
                                                     <option>Kredit</option>
@@ -63,16 +63,16 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Keterangan</label>
-                                                <input class="form-control" id="keterangan" name="keterangan" value="{{$item->keterangan}}" placeholder="Keterangan" />
+                                                <input class="form-control" id="keterangan" name="keterangan" value="{{$item->keterangan}}" placeholder="Keterangan"required />
                                             </div>
-                                            <div class="mb-3">
+                                            <!-- <div class="mb-3">
                                                 <label for="exampleFormControlSelect1">Status</label>
-                                                <select class="form-control" id="" name="" value="">
+                                                <select class="form-control" id="status" name="" value=""requireds>
                                                 <option disabled value>Pilih Status</option>  
                                                 <option>Aktif</option>
                                                     <option>Tidak Aktif</option>
                                                 </select>
-                                            </div>
+                                            </div> -->
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Simpan</button>
                                                 <a href="{{url('/coa')}}" class="btn btn-danger">Batal</a>

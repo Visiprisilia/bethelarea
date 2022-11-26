@@ -13,18 +13,22 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pengajuan', function (Blueprint $table) {
+        Schema::create('program_kerja', function (Blueprint $table) {
             $table->string('kode_proker')->primary();
-            $table->string('proker')->nullable();
-            $table->string('pic')->nullable();
+            $table->string('periode')->nullable();
+            $table->string('nama_proker')->nullable();
+            $table->string('penanggungjawab')->nullable();
+            $table->string('waktu_mulai')->nullable();
+            $table->string('waktu_selesai')->nullable();
             $table->string('tujuan')->nullable();
-            $table->string('akunbiaya')->nullable();
+            $table->string('indikator')->nullable();
             $table->string('anggaran')->nullable();
-            $table->string('waktu')->nullable();
+            $table->string('keterangan')->nullable();
             $table->timestamps();
         });
     }
-
+   
+ 
     /**
      * Reverse the migrations.
      *
@@ -32,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('program_kerja');
     }
 };

@@ -10,6 +10,7 @@ class KasKeluar extends Model
     use HasFactory;
     protected $table = 'kas_keluar';
     protected $primaryKey = 'no_bukti';
+    public $incrementing = false;
     protected $fillable = ['no_bukti', 'periode','tanggal_pencatatan','keterangan','akun','jumlah','bukti','kasir'];
  
 }

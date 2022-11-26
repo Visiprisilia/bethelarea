@@ -14,7 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('evaluasi', function (Blueprint $table) {
-            $table->string('kode_proker')->primary();
+            $table->string('kode_evaluasi')->autoIncrement();
+            $table->string('kode_proker')->nullable();
+            $table->string('periode')->nullable();
             $table->string('nama_proker')->nullable();
             $table->string('penanggungjawab')->nullable();
             $table->string('tujuan')->nullable();
@@ -31,7 +33,6 @@ return new class extends Migration
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      *

@@ -13,14 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pengajuan', function (Blueprint $table) {
-            $table->string('kode_proker')->primary();
-            $table->string('proker')->nullable();
-            $table->string('pic')->nullable();
-            $table->string('tujuan')->nullable();
-            $table->string('akunbiaya')->nullable();
-            $table->string('anggaran')->nullable();
-            $table->string('waktu')->nullable();
+        Schema::create('bukubesar_kas', function (Blueprint $table) {
+            $table->string('kode_akun')->primary();
+            $table->string('uraian')->nullable();
+            $table->string('bertambah')->nullable();
+            $table->string('berkurang')->nullable();
+            $table->string('saldo')->nullable();
             $table->timestamps();
         });
     }
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('bukubesar_kas');
     }
 };
