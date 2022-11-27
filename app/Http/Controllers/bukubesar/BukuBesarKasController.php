@@ -40,10 +40,9 @@ class BukuBesarKasController extends Controller
                 "status" => "keluar"
             ];
         }
-        array_multisort($hasils, SORT_ASC, "tanggal_pencatatan");
-        // return $hasils;
-
-        return view('bukubesar/bukubesarkas', ['hasils' => $hasils]);
+        // // array_multisort($hasils, SORT_ASC, "tanggal_pencatatan");
+        // // return $hasils;
+        return view('bukubesar/bukubesarkas', ['hasil'=>$hasils]);
     }
 }
 

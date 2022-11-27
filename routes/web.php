@@ -17,7 +17,7 @@ use App\Http\Controllers\realisasi\KasMasukController;
 use App\Http\Controllers\realisasi\KasKeluarController;
 use App\Http\Controllers\realisasi\KasBonController;
 use App\Http\Controllers\bukubesar\BukuBesarKasController;
-use App\Http\Controllers\bukubesar\BukuBesarAnggaranController;
+use App\Http\Controllers\bukubesar\BukuBesarAnggaranPendapatanController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -156,6 +156,6 @@ Route::post('/updatekasbon/{no_bukti}', [KasBonController::class,'updatekasbon']
 Route::get('/hapuskasbon/{no_bukti}', [KasBonController::class,'hapuskasbon']);    
 //Buku Besar Kas
 Route::get('/bukubesarkas', [BukuBesarKasController::class,'bukubesarkas']);
-//Buku Besar Anggaran
-Route::get('/bukubesaranggaran', [BukuBesarAnggaranController::class,'bukubesaranggaran']);
+//Buku Besar Anggaran Pendapatan
+Route::get('/bukubesaranggaranpendapatan', [BukuBesarAnggaranPendapatanController::class,'bukubesaranggaranpendapatan']);
     });
