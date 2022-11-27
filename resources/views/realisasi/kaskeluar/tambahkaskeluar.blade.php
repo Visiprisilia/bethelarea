@@ -74,7 +74,7 @@
                                             </div>     
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Kasir</label>
-                                                <select class="form-control" id="penanggungjawab" name="penanggungjawab">
+                                                <select class="form-control" id="kasir" name="kasir">
                                                         <option  value>Pilih Pegawai</option>
                                                         @foreach ($pegawai as $item)
                                                         <option value="{{ $item->niy}}">{{$item->nama}}</option>

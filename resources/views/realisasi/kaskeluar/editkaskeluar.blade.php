@@ -30,43 +30,54 @@
                                 <!-- Component Preview-->
                                 <div class="sbp-preview">
                                     <div class="sbp-preview-content">
-                                        @foreach($kaskeluar as $item)
-                                        <form action="/updatekaskeluar/{{$item->no_bukti}}" method="post">
+                                        @foreach($kaskeluar as $kk)
+                                        <form action="/updatekaskeluar/{{$kk->no_bukti}}" method="post">
                                             @csrf
-                                            <!-- <div class="mb-3">
-                                                <label for="exampleFormControlInput1">No Bukti</label>
-                                                <input class="form-control" id="no_bukti" name="no_bukti" disabled value="{{$item->no_bukti}}" />
-                                            </div> -->
                                             <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Periode</label>
-                                                <input class="form-control" id="periode" name="periode"  value="{{$item->periode}}"required/>
+                                            <label class="mb-1" for="inputLastName">Periode</label>
+                                                    <select class="form-control" id="periode" name="periode" value="{{ $kk->periode}}">
+                                                        <option  value>Pilih Periode</option>
+                                                        @foreach ($periode as $item)
+                                                        <option value="{{ $item->kode_periode}}">{{$item->nama_periode}}</option>
+                                                        @endforeach
+                                                    </select>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Tanggal</label>
-                                                <input class="form-control" type="date" id="tanggal_pencatatan" name="tanggal_pencatatan" value="{{$item->tanggal_pencatatan}}" required/>
+                                                <input class="form-control" type="date" id="tanggal_pencatatan" name="tanggal_pencatatan" value="{{ $kk->tanggal_pencatatan}}" required/>
                                             </div>  
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Keterangan</label>
-                                                <input class="form-control" id="keterangan" name="keterangan" value="{{$item->keterangan}}" required/>
+                                                <input class="form-control" id="keterangan" name="keterangan" value="{{ $kk->keterangan}}" required />
                                             </div>      
                                             <div class="row gx-3 mb-3">
-                                                <div class="col-md-4">
+                                            <div class="col-md-4">
                                                     <label class="mb-1" for="inputLastName">Akun</label>
-                                                    <input class="form-control" id="akun" name="akun" placeholder="Masukkan Akun" value="{{$item->akun}}" required />
+                                                    <select class="form-control" id="akuns" name="akuns" value="{{ $kk->akuns}}">
+                                                        <option  value>Pilih Akun</option>
+                                                        @foreach ($akun as $item)
+                                                        <option value="{{ $item->kode_akun}}">{{$item->nama_akun}}</option>
+                                                        @endforeach
+                                                    </select>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputFirstName">Jumlah</label>
-                                                    <input class="form-control" id="jumlah" name="jumlah" placeholder="Masukkan Jumlah" value="{{$item->jumlah}}" required />
+                                                    <input class="form-control" id="jumlah" name="jumlah" placeholder="Masukkan Jumlah" value="{{ $kk->jumlah}}"  required />
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputFirstName">Bukti</label>
-                                                    <input class="form-control" type="file" id="bukti" name="bukti"  placeholder="Masukkan Jumlah" value="{{$item->bukti}}" required />
+                                                    <input class="form-control" type="file" id="bukti" name="bukti" value="{{ $kk->bukti}}" placeholder="Masukkan Jumlah" required />
                                                 </div>
-                                            </div>  
+                                            </div>     
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Kasir</label>
-                                                <input class="form-control" id="kasir" name="kasir" value="{{$item->kasir}}" required />
-                                            </div>           
+                                                <select class="form-control" id="kasir" name="kasir" value="{{ $kk->kasir}}">
+                                                        <option  value>Pilih Pegawai</option>
+                                                        @foreach ($pegawai as $item)
+                                                        <option value="{{ $item->niy}}">{{$item->nama}}</option>
+                                                        @endforeach
+                                                    </select>
+                                            </div>   
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Simpan</button>
                                                 <a href="{{url('/kaskeluar')}}" class="btn btn-danger">Batal</a>

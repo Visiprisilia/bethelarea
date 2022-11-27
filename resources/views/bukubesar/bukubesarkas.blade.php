@@ -24,8 +24,8 @@
                             <th>Saldo</th>
                         </tr>                      
                         <tbody>
-                            {{$hasil}}
-                        @foreach($hasil as $item)
+                            {{$hasils}}
+                        @foreach($hasils as $item)
                         <tr>
                             <td>{{ $loop->iteration}}</td>
                             <td>{{ $item->no_bukti}}</td>

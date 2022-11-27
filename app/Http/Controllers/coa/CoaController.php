@@ -26,6 +26,7 @@ class CoaController extends Controller
 			'saldo_normal'=>$request->saldo_normal,	
 			'keterangan'=>$request->keterangan	
 			]);
+			
 			return redirect('/coa')->with('success', 'Task Created Successfully!');
 	}
 	public function editcoa($kode_akun)
