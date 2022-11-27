@@ -26,7 +26,7 @@
                             <th>Akun</th>
                             <th>Sumber</th>
                             <th>Jumlah</th>                              
-                            <th>Penerima</th>                              
+                            <th>Diterima Dari</th>                              
                             <th>Aksi</th>
                         </tr>
                     <tbody>
@@ -37,10 +37,10 @@
                             <td>{{ $item->periode}}</td>
                             <td>{{ $item->tanggal_pencatatan}}</td>
                             <td>{{ $item->keterangan}}</td>
-                            <td>{{ $item->nama_akun}}</td>                            
+                            <td>{{ $item->akun}}</td>                            
                             <td>{{ $item->sumber}}</td>                            
                             <td>{{ $item->jumlah}}</td>                              
-                            <td>{{ $item->kasir}}</td>                              
+                            <td>{{ $item->nama}}</td>                              
                             <td>
                                 <a href="/editkasmasuk/{{$item->no_bukti}}"><i class="fas fa-edit" style="color:green"></i></a> |
                                 <a href="/hapuskasmasuk/{{$item->no_bukti}}"><i class="fas fa-trash-alt" style="color:red"></i></a> |

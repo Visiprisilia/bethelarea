@@ -51,9 +51,9 @@
                                                 <input class="form-control" id="keterangan" name="keterangan" value="{{$km->keterangan}}" required/>
                                             </div>      
                                             <div class="row gx-3 mb-3">
-                                                <div class="col-md-4">
+                                            <div class="col-md-4">
                                                     <label class="mb-1" for="inputLastName">Akun</label>
-                                                    <select class="form-control" id="akuns" name="akuns" value="{{$km->akuns}}">
+                                                    <select class="form-control" id="akun" name="akun">
                                                         <option  value>Pilih Akun</option>
                                                         @foreach ($akun as $item)
                                                         <option value="{{ $item->kode_akun}}">{{$item->nama_akun}}</option>

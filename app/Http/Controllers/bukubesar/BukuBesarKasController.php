@@ -13,7 +13,6 @@ class BukuBesarKasController extends Controller
     public function bukubesarkas()
     {
         $masuk = KasMasuk::all();
-
         $keluar = KasKeluar::all();
         $hasils = [];
         foreach($masuk as $m){
@@ -42,8 +41,8 @@ class BukuBesarKasController extends Controller
                 "status"=>"keluar"
             ];
         }
-        // array_multisort($hasils, SORT_ASC, "tanggal_pencatatan");
-        // return $hasils;
+        // // array_multisort($hasils, SORT_ASC, "tanggal_pencatatan");
+        // // return $hasils;
         return view('bukubesar/bukubesarkas', ['hasil'=>$hasils]);
     }
 }

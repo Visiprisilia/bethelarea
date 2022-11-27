@@ -17,10 +17,9 @@ class KasMasukController extends Controller
     public function kasmasuk()
     {
 		$periode = Periode::orderBy('created_at','desc')->get();
-		$murid = Murid::orderBy('created_at','desc')->get();
 		$akun = Akuns::orderBy('created_at','desc')->get();
-        $kasmasuk = KasMasuk::orderBy('created_at','desc')->get();
-        return view('realisasi/kasmasuk/kasmasuk', ['periode'=>$periode,'akun'=>$akun,'kasmasuk'=>$kasmasuk,'murid'=>$murid]);
+        $kasmasuk = KasMasuk::join("murid","kas_masuk.kasir","=","murid.nomor_induk")->get();
+        return view('realisasi/kasmasuk/kasmasuk', ['periode'=>$periode,'akun'=>$akun,'kasmasuk'=>$kasmasuk]);
     }
     public function tambahkasmasuk()
 	{
@@ -51,7 +50,7 @@ class KasMasukController extends Controller
 	{	
 		$periode = Periode::orderBy('created_at','desc')->get();
 		$murid = Murid::orderBy('created_at','desc')->get();
-		$akun = Akuns::orderBy('created_at','desc')->get();
+		$akun = Akuns::join("coa","akuns.kode_akun","=","coa.kode_akun")->get();
 		$kasmasuk = KasMasuk::where('no_bukti', $no_bukti)->get();
 		return view('realisasi/kasmasuk/editkasmasuk',  ['periode'=>$periode,'akun'=>$akun,'kasmasuk'=>$kasmasuk,'murid'=>$murid]);
 	}
