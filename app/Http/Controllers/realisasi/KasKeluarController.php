@@ -17,9 +17,10 @@ class KasKeluarController extends Controller
     {
 		$periode = Periode::orderBy('created_at','desc')->get();
 		$pegawai = Pegawai::orderBy('created_at','desc')->get();
-		$akun = Akuns::orderBy('created_at','desc')->get();
+		$akun = Akuns::join("coa","akuns.kode_akun","=","coa.kode_akun")->get();
+		$nama_akun = KasKeluar::join("coa","kas_keluar.akun","=","coa.kode_akun")->get();
         $kaskeluar = KasKeluar::orderBy('created_at','desc')->get();
-        return view('realisasi/kaskeluar/kaskeluar', ['periode'=>$periode,'pegawai'=>$pegawai,'akun'=>$akun,'kaskeluar'=>$kaskeluar,]);
+        return view('realisasi/kaskeluar/kaskeluar', ['periode'=>$periode,'pegawai'=>$pegawai,'akun'=>$akun,'kaskeluar'=>$kaskeluar,'nama_akun'=>$nama_akun]);
     }
     public function tambahkaskeluar()
 	{
