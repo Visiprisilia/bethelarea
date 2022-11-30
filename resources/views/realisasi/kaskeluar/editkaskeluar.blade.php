@@ -31,7 +31,7 @@
                                 <div class="sbp-preview">
                                     <div class="sbp-preview-content">
                                         @foreach($kaskeluar as $kk)
-                                        <form action="/updatekaskeluar/{{$kk->no_bukti}}" method="post">
+                                        <form action="/updatekaskeluar/{{$kk->no_bukti}}" method="post" enctype="multipart/form-data">
                                             @csrf
                                             <div class="mb-3">
                                             <label class="mb-1" for="inputLastName">Periode</label>
@@ -53,7 +53,7 @@
                                             <div class="row gx-3 mb-3">
                                             <div class="col-md-4">
                                                     <label class="mb-1" for="inputLastName">Akun</label>
-                                                    <select class="form-control" id="akuns" name="akuns" value="{{ $kk->akuns}}">
+                                                    <select class="form-control" id="akun" name="akun">
                                                         <option  value>Pilih Akun</option>
                                                         @foreach ($akun as $item)
                                                         <option value="{{ $item->kode_akun}}">{{$item->nama_akun}}</option>
@@ -70,13 +70,8 @@
                                                 </div>
                                             </div>     
                                             <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Kasir</label>
-                                                <select class="form-control" id="kasir" name="kasir" value="{{ $kk->kasir}}">
-                                                        <option  value>Pilih Pegawai</option>
-                                                        @foreach ($pegawai as $item)
-                                                        <option value="{{ $item->niy}}">{{$item->nama}}</option>
-                                                        @endforeach
-                                                    </select>
+                                                <label for="exampleFormControlInput1">Dibayar Kepada:</label>
+                                                <input class="form-control" id="kasir" name="kasir"  placeholder="Dibayar Kepada" value="{{ $kk->kasir}}"required />
                                             </div>   
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Simpan</button>

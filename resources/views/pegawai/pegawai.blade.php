@@ -26,9 +26,12 @@
                             <th>Agama</th>
                             <th>Pendidikan</th>
                             <th>Alamat</th>
+                            <th>Penempatan</th>
                             <th>Tanggal Masuk</th>
                             <th>Status Kepegawaian</th>
                             <th>Tanggal Penetapan Pegawai Tetap</th>
+                            <th>Foto Pegawai</th>
+                            <th>File KTP</th>
                             <th>Surat Keterangan</th>
                             <th>Status</th>
                             <th>Termin</th>
@@ -46,14 +49,16 @@
                             <td>{{ $item->agama}}</td>
                             <td>{{ $item->pendidikan}}</td>
                             <td>{{ $item->alamat}}</td>
+                            <td>{{ $item->penempatan}}</td>
                             <td>{{ $item->tanggal_masuk}}</td>
                             <td>{{ $item->status_kepegawaian}}</td>
                             <td>{{ $item->tanggal_ppt}}</td>
+                            <td>{{ $item->foto_pegawai}}</td>
+                            <td>{{ $item->file_ktp}}</td>
                             <td>{{ $item->file_suket}}</td>
                             <td>{{ $item->status}}</td>
                             <td>{{ $item->tanggal_terminasi}}</td>
                             <td>{{ $item->keterangan}}</td>
-
                             <td>
                                 <a href="/editpegawai/{{$item->niy}}"><i class="fas fa-edit" style="color:green"></i></a> |
                                 <a href="/hapuspegawai/{{$item->niy}}"><i class="fas fa-trash-alt" style="color:red"></i></a>

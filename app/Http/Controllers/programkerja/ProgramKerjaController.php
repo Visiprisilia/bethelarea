@@ -15,10 +15,11 @@ class ProgramKerjaController extends Controller
 {
     public function programkerja()
     {
+		$periode = Periode::orderBy('created_at','desc')->get();
 		$programkerja = ProgramKerja::join("pegawai","program_kerja.penanggungjawab","=","pegawai.niy")->get();
 		// $programkerja = ProgramKerja::orderBy('created_at','desc')->get();
 		// return $programkerja;
-        return view('programkerja/programkerja/programkerja', compact('programkerja'));
+        return view('programkerja/programkerja/programkerja', compact('programkerja', 'periode'));
 		}
     public function tambahprogramkerja()
 	{
@@ -97,6 +98,14 @@ class ProgramKerjaController extends Controller
         return view('programkerja/programkerja/lihatprogramkerja', compact('akun'));
 	
 	}
+	public function cetakprogramkerja()
+    {
+		$periode = Periode::orderBy('created_at','desc')->get();
+		$programkerja = ProgramKerja::join("pegawai","program_kerja.penanggungjawab","=","pegawai.niy")->get();
+		// $programkerja = ProgramKerja::orderBy('created_at','desc')->get();
+		// return $programkerja;
+        return view('programkerja/programkerja/cetakprogramkerja', compact('programkerja', 'periode'));
+		}
 	// public function editlihatprogramkerja($id)
 	// {
 	// 	$akun = Akuns::where('id', $id)->get();

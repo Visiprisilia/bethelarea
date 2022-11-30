@@ -30,7 +30,7 @@
                                 <!-- Component Preview-->
                                 <div class="sbp-preview">
                                     <div class="sbp-preview-content">
-                                        <form action="/simpanmurid" method="post">
+                                        <form action="/simpanmurid" method="post"  enctype="multipart/form-data">
                                             @csrf
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-4">

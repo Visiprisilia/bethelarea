@@ -4,12 +4,15 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Buku Besar Anggaran</h1>
+    <h1 class="h3 mb-2 text-gray-800">Laporan Kas</h1>
 
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
+        <form method='post' class="no-print" href="{{url('/laporankas')}}">Bulan <input type="number" class="no-print" name="bulan" id="bulan" min="1" max="12"> Tahun <input type="number" name="tahun" id="tahun" min="2021" max="2030"> <input type="submit" name="filterperiod" id="filterperiod" class="no-print" value="Tampilkan"> </form> <p></p>
+            <a href="cetaklaporankas" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print fa-sm text-white-50"></i>Cetak</a>
+       
         </div> 
         <div class="card-body">
             <div class="table-responsive">
@@ -18,15 +21,17 @@
                         <tr>
                             <th>No</th>
                             <th>Kode</th>
+                            <th>Tanggal Pencatatan</th>
                             <th>Keterangan</th>
                             <th>Jumlah</th>
                         </tr>                      
                         <tbody>
-                        @foreach ($bukubesaranggaran as $item)
+                        @foreach ($hasils as $item)
                         <tr>
                             <td>{{ $loop->iteration}}</td>
-                            <td>{{ $item->kode}}</td>
-                            <td>{{ $item->uraian}}</td>
+                            <td>{{ $item->no_bukti}}</td>
+                            <td>{{ $item->tanggal_pencatatan}}</td>
+                            <td>{{ $item->keterangan}}</td>
                             <td>{{ $item->jumlah}}</td>
                            
                         </tr>  

@@ -62,11 +62,11 @@
                                                 <input class="form-control" id="jumlah" name="jumlah" disabled value="{{$item->jumlah}}"  />
                                             </div>        
                                             <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Penerima</label>
-                                                <input class="form-control" id="kasir" name="kasir" disabled value="{{$item->kasir}}"  />
+                                                <label for="exampleFormControlInput1">Diterima dari:</label>
+                                                <input class="form-control" id="kasir" name="kasir" disabled value="{{$item->kasir}}" />
                                             </div>      
                                             <div class="mb-3">
-                                                <a href="{{url('/cetak')}}" class="btn btn-primary">Cetak</a>
+                                                <a href="{{url('/cetakkasmasuk')}}" class="btn btn-primary">Cetak</a>
                                                 <a href="{{url('/kasmasuk')}}" class="btn btn-danger">Batal</a>
                                             </div>
                                         </form>

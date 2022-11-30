@@ -31,7 +31,7 @@
                                 <div class="sbp-preview">
                                     <div class="sbp-preview-content">
                                         @foreach($pegawai as $item)
-                                        <form action="/updatepegawai/{{$item->niy}}" method="post">
+                                        <form action="/updatepegawai/{{$item->niy}}" method="post" enctype="multipart/form-data">
                                             @csrf
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-4">

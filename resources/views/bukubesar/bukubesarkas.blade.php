@@ -24,24 +24,18 @@
                             <th>Saldo</th>
                         </tr>                      
                         <tbody>
-                            {{$hasils}}
-                        @foreach($hasils as $item)
+                        @foreach ($bbkas as $item)
                         <tr>
                             <td>{{ $loop->iteration}}</td>
                             <td>{{ $item->no_bukti}}</td>
                             <td>{{ $item->keterangan}}</td>
-                            @if($item->status=="masuk")
                             <td>{{ $item->jumlah}}</td>
-                            <td>-</td>
-                            @else
-                            <td>-</td>
                             <td>{{ $item->jumlah}}</td>
-                            @endif
-                            <td>{{ $item->saldo}}</td>      
+                            <td>{{ $item->jumlah}}</td>
                            
                         </tr>  
                         @endforeach  
-                        </tbody>                
+                        </tbody>                 
                     </thead>
                 </table>
             </div>

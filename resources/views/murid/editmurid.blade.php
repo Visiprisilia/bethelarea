@@ -31,7 +31,7 @@
                                 <div class="sbp-preview">
                                     <div class="sbp-preview-content">
                                     @foreach($murid as $item)
-                                    <form action="/updatemurid/{{$item->nomor_induk}}" method="post">
+                                    <form action="/updatemurid/{{$item->nomor_induk}}" method="post"  enctype="multipart/form-data">
                                             @csrf
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-4">

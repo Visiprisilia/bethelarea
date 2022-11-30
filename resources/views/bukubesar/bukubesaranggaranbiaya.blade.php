@@ -23,13 +23,13 @@
                             <th>Saldo</th>
                         </tr>                      
                         <tbody>
-                        @foreach ($bukubesaranggaranbiaya as $item)
+                        @foreach ($bbbiaya as $item)
                         <tr>
                             <td>{{ $loop->iteration}}</td>
-                            <td>{{ $item->kode}}</td>
-                            <td>{{ $item->tanggal_pencatatan}}</td>
-                            <td>{{ $item->keterangan}}</td>
-                            <td>{{ $item->saldo}}</td>
+                            <td>{{ $item->kode_proker}}</td>
+                            <td>{{ $item->waktu_selesai}}</td>
+                            <td>{{ $item->nama_proker}}</td>
+                            <td>{{ $item->jumlah}}</td>
                            
                         </tr>  
                         @endforeach  

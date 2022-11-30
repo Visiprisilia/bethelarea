@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use App\Models\Yayasan\Kebijakan;
+Use Illuminate\Support\Facades\Storage;
+Use Symfony\Component\HttpFoundation\Response;
 use App\Http\Controllers\Controller;
 
 
@@ -69,4 +71,11 @@ class KebijakanController extends Controller
 		$kebijakan = Kebijakan::where('kode_kebijakan', $kode_kebijakan)->delete();
 		return redirect('/kebijakan') -> with ('status', 'Data berhasil dihapus');
 	}
+
+	public function download($kode_kebijakan)
+    {
+		$kebijakan = Kebijakan::where('kode_kebijakan', $kode_kebijakan)->first();
+        $destinationPath = 'assets/images/kebijakan/'.$kebijakan->file_kebijakan;
+        return Storage::download($destinationPath); 
+    }
 }

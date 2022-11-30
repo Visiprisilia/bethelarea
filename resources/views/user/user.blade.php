@@ -18,12 +18,28 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
+                            <th>No</th>
                             <th>Nama Pengguna</th>
                             <th>Username</th>
                             <th>Level</th>
                             <th>Last Login</th>
                             <th>Aksi</th>
                         </tr>
+                        <tbody>
+                        @foreach ($user as $item)
+                        <tr>
+                            <td>{{ $loop->iteration}}</td>
+                            <td>{{ $item->nama_pengguna}}</td>
+                            <td>{{ $item->nama_user}}</td>
+                            <td>{{ $item->level}}</td>
+                            <td>{{ $item->last_login}}</td>
+                            <td>
+                                <a href="/edituser/{{$item->id}}"><i class="fas fa-edit" style="color:green"></i></a> |
+                                <a href="/hapususer/{{$item->id}}"><i class="fas fa-trash-alt" style="color:red"></i></a>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
                     </thead>
                 </table>
             </div>

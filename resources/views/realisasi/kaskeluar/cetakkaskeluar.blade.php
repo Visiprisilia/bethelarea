@@ -1,79 +1,140 @@
-@extends('template')
-@section('container')
-<!-- Default Bootstrap Form Controls-->
-<div id="layoutSidenav_content">
-    <main>
-        <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
-            <div class="container-xl px-4">
-                <div class="page-header-content pt-4">
-                    <div class="row align-items-center justify-content-between">
-                        <div class="col-auto mt-4">
-                            <h1 class="page-header-title">
-                                <div class="page-header-icon"><i data-feather="edit-3"></i></div>
-                                Ubah Data
-                            </h1>
+<style type="text/css" media="all">
+    body {
+        color: #000;
+    }
 
-                        </div>
-                    </div>
+    table,
+    th,
+    tr {
+        text-align: center;
+    }
+
+    #wrapper {
+        max-width: 650px;
+        margin: 0 auto;
+        padding-top: 20px;
+    }
+
+    .btn {
+        margin-bottom: 5px;
+    }
+
+    .table {
+        border-radius: 3px;
+    }
+
+    .table th {
+        background: #f5f5f5;
+    }
+
+    .table th,
+    .table td {
+        vertical-align: middle !important;
+    }
+
+    h3 {
+        margin: 5px 0;
+    }
+
+    @media print {
+        .no-print {
+            display: none;
+        }
+
+        #wrapper {
+            max-width: 480px;
+            width: 100%;
+            min-width: 250px;
+            margin: 0 auto;
+        }
+    }
+
+    tfoot tr th:first-child {
+        text-align: right;
+    }
+</style>
+
+
+
+<section class='content'>
+    <div class='row'>
+        <div class='col-xs-12'>
+            <div class='box box-primary'>
+                <div class='box-header  with-border'>
+
                 </div>
-            </div>
-        </header>
-        <!-- Main page content-->
-        <div class="container-xl px-4 mt-n10">
-            <div class="row">
-                <div class="col-lg-9">
-                    <!-- Default Bootstrap Form Controls-->
-                    <div id="default">
-                        <div class="card mb-4">
-                            <div class="card-header">Kas Keluar</div>
-                            <div class="card-body">
-                                <!-- Component Preview-->
-                                <div class="sbp-preview">
-                                    <div class="sbp-preview-content">
+                <div id="print-area">
+                    <div class="box-body">
+                        <div id="wrapper">
+                            <div id="receiptData" style="width: auto; max-width: 580px; min-width: 250px; margin: 0 auto;">
+                                <div id="receipt-data">
+                                    <div>
+                                        <div style="text-align:center;">
                                         @foreach($kaskeluar as $item)
                                         <form action="/updatekaskeluar/{{$item->no_bukti}}" method="post">
                                             @csrf
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">No Bukti</label>
-                                                <input class="form-control" id="no_bukti" name="no_bukti" disabled value="{{$item->no_bukti}}" />
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Periode</label>
-                                                <input class="form-control" id="periode" name="periode"  value="{{$item->periode}}" />
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Tanggal</label>
-                                                <input class="form-control" type="date" id="tanggal_pencatatan" name="tanggal_pencatatan" value="{{$item->tanggal_pencatatan}}"/>
-                                            </div>  
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Keterangan</label>
-                                                <input class="form-control" id="keterangan" name="keterangan" value="{{$item->keterangan}}"/>
-                                            </div>      
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Akun</label>
-                                                <input class="form-control"  id="akun" name="akun" value="{{$item->akun}}"/>
-                                            </div>                                             
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Jumlah</label>
-                                                <input class="form-control" id="jumlah" name="jumlah" value="{{$item->jumlah}}"  />
-                                            </div>  
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Kasir</label>
-                                                <input class="form-control" id="kasir" name="kasir" value="{{$item->kasir}}"  />
-                                            </div>           
-                                            <div class="mb-3">
-                                                <a href="{{url('/cetak')}}" class="btn btn-danger">Cetak</a>
-                                            </div>
-                                        </form>
+                                                <h3 align="center" class='box-title'>BUKTI KAS KELUAR</h3>
+                                                <img src="{{asset('template/img/logo2.png') }}" style="max-width:100px;">
+                                                <br style="text-align:center;"><strong>YAYASAN BETHEL AREA</strong>
+                                                <br style="text-align:center;"><strong>Sekolah KB/TK "Satria Tunas Bangsa"</strong>
+                                                <br> Alamat: Jl Hasanudin No.3B, Mangunsari, Kec.Sidomukti,Kota Salatiga, Jawa Tengah <br>
+                                                <p></p>
+                                        </div>
+
+                                    </div>
+                                    <p>
+                                      <b>No Bukti : </b> {{ $item->no_bukti}} &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; <b>Tanggal : </b> {{$item->tanggal_pencatatan}} <br><br>
+                                       <b>Dibayar Untuk :</b> &nbsp;{{$item->kasir}}<p>
+                                       <b>Banyaknya Uang : </b> &nbsp;{{$item->jumlah}}<p>
+                                       <b>Untuk Pembayaran :</b> &nbsp;{{$item->keterangan}}<p>
+                                    </p>
+                                    <br>
+                                    <div style="clear:both;"></div>
+                                    <table class="table table-striped table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center" style="width: 60%; border-bottom: 2px solid #ddd;">Dikeluarkan Oleh</th>
+                                                <th class="text-center" style="width: 60%; border-bottom: 2px solid #ddd;">Diterima Oleh</th>
+                                            </tr>
+                                        <tbody>
+                                            <tr>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                            </tr>
+                                            <tr>
+                                                <th style="width: 60%; ">............</th>
+                                                <th style="width: 60%; ">............</th>
+                                            </tr>
+
+                                        </tbody>
+                                        </thead>
+                                        </tfoot>
+                                    </table>
+                                    @endforeach
+                                    <br><br><br><br>
+                                    <div class="well well-sm" style="margin-top:10px;">
+                                        <div style="text-align: left;">Catatan :</div>
                                     </div>
                                 </div>
+                                <div style="clear:both;"></div>
                             </div>
                         </div>
+
+                        <span class="pull-right col-xs-12">
+                            <input class="no-print" type="button" value="Cetak" onclick="window.print()">
+                            <input type="button" value="Kembali" onclick=self.history.back() class="no-print">
+
+
+                            <div style="clear:both;"></div>
                     </div>
                 </div>
             </div>
-        </div>
-    </main>
-</div>
-@endforeach
-@endsection
+        </div><!-- /.modal -->
+    </div><!-- /.modal -->
+    </div><!-- /.box-body -->
+    </div><!-- /.box -->
+</section><!-- /.content -->

@@ -30,12 +30,12 @@
                                 <!-- Component Preview-->
                                 <div class="sbp-preview">
                                     <div class="sbp-preview-content">
-                                        <form action="/simpanpegawai" method="post">
+                                        <form action="/simpanpegawai" method="post" enctype="multipart/form-data">
                                             @csrf
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputLastName">Nomor Induk Pegawai</label>
-                                                    <input class="form-control" id="niy" name="niy" placeholder="Masukkan Nomor Induk Pegawai" required/>
+                                                    <input class="form-control" id="niy" name="niy" placeholder="8 Digit pertama tahun bulan tanggal masuk, 2 digit nomor urut" required/>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputFirstName">Nama</label>
@@ -136,7 +136,7 @@
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Keterangan</label>
-                                                    <input class="form-control" id="keterangan" name="keterangan" required />
+                                                    <input class="form-control" id="keterangan" name="keterangan" placeholder="Masukkan Keterangan" required />
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">KTP</label>

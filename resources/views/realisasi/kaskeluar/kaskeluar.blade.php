@@ -25,7 +25,7 @@
                             <th>Akun</th>
                             <th>Jumlah</th>                              
                             <th>Bukti Nota</th>                              
-                            <th>Kasir</th>                              
+                            <th>Dibayar Kepada</th>                              
                             <th>Aksi</th>
                         </tr>
                     <tbody>

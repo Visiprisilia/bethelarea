@@ -83,8 +83,8 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Buku Besar:</h6>
                 <a class="collapse-item" href="/bukubesarkas">BB Kas</a>
-                <a class="collapse-item" href="/bukubesaranggaran">BB Anggaran Pendapatan</a>
-                <a class="collapse-item" href="/bukubesaranggaran">BB Anggaran Biaya</a>
+                <a class="collapse-item" href="/bukubesaranggaranpendapatan">BB Anggaran Pendapatan</a>
+                <a class="collapse-item" href="/bukubesaranggaranbiaya">BB Anggaran Biaya</a>
             </div>
         </div>
     </li>
@@ -98,9 +98,9 @@
         <div id="laporan" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Laporan:</h6>
-                <a class="collapse-item" href="/kaskeluar">Lap. Posisi Anggaran</a>
-                <a class="collapse-item" href="/kaskeluar">Lap. Kas</a>
-                <a class="collapse-item" href="/kaskeluar">Lap. Peng. Komprehensif</a>
+                <a class="collapse-item" href="/laporanposisianggaran">Lap. Posisi Anggaran</a>
+                <a class="collapse-item" href="/laporankas">Lap. Kas</a>
+                <a class="collapse-item" href="/laporanpengkomp">Lap. Peng. Komprehensif</a>
             </div>
         </div>
     </li>
