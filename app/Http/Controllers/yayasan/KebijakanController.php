@@ -40,7 +40,7 @@ class KebijakanController extends Controller
 			'file_kebijakan'=>$kebijakans,
 			'keterangan'=>$request->keterangan			
 			]);
-			return redirect('/kebijakan')->with('status', 'Data berhasil ditambahkan');
+			return redirect('/kebijakans')->with('status', 'Data berhasil ditambahkan');
 		
 	}
 	public function editkebijakan($kode_kebijakan)
@@ -63,19 +63,19 @@ class KebijakanController extends Controller
 			'file_kebijakan'=>$kebijakans,
 			'keterangan'=>$request->keterangan		
 		]);
-		return redirect('/kebijakan')->with('status', 'Data berhasil diubah');
+		return redirect('/kebijakans')->with('status', 'Data berhasil diubah');
 		
 	}
 	public function hapuskebijakan($kode_kebijakan)
 	{
 		$kebijakan = Kebijakan::where('kode_kebijakan', $kode_kebijakan)->delete();
-		return redirect('/kebijakan') -> with ('status', 'Data berhasil dihapus');
+		return redirect('/kebijakans') -> with ('status', 'Data berhasil dihapus');
 	}
 
 	public function download($kode_kebijakan)
     {
 		$kebijakan = Kebijakan::where('kode_kebijakan', $kode_kebijakan)->first();
         $destinationPath = 'assets/images/kebijakan/'.$kebijakan->file_kebijakan;
-        return Storage::download($destinationPath); 
+        return response()->download($destinationPath);  
     }
 }

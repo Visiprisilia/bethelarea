@@ -64,10 +64,14 @@
                                                     </select>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <label class="mb-1" for="inputFirstName">Sumber</label>
-                                                    <input class="form-control" id="sumber" name="sumber" placeholder="Masukkan Sumber" required />
+                                                <label class="mb-1" for="inputFirstName">Sumber</label>
+                                                    <select class="form-control" id="sumber" name="sumber">
+                                                        <option  value>Pilih Sumber</option>
+                                                        <option value="murid">Murid</option>
+                                                        <option value="yayasan">Yayasan</option>
+                                                    </select>
                                                 </div>
-                                                <div class="col-md-4">
+                                                <div class="col-md-4" id="murid" style="display: none;">
                                                     <label class="mb-1" for="inputFirstName">Diterima dari :</label>
                                                     <select class="form-control" id="kasir" name="kasir">
                                                         <option  value>Pilih Murid</option>
@@ -96,4 +100,12 @@
         </div>
     </main>
 </div>
+<script>
+    $(document).on('change','#sumber',function(){
+      var val=$('#sumber option').filter(':selected').val()=="murid"?  $('#murid').show():  $('#murid').hide();
+    
+      //   if(val=="murid"{})  
+      // alert(val);
+    })
+</script>
 @endsection

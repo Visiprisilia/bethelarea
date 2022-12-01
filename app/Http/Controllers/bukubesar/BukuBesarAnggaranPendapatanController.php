@@ -16,7 +16,7 @@ class BukuBesarAnggaranPendapatanController extends Controller
 		$akun = Akuns::orderBy('created_at','desc')->get();
         $bbpendapatan = ProgramKerja::join("akuns","program_kerja.kode_proker","=","akuns.kode_proker")
                             //  ->select('kode_akun','tanggal_pencatatan','keterangan','jumlah')
-                                ->where('kode_akun', 'like' , '5%')
+                                ->where('kode_akun', 'like' , '4%')
                                 ->get();
         return view('bukubesar/bukubesaranggaranpendapatan', ['bbpendapatan'=>$bbpendapatan,'akun'=>$akun,'periode'=>$periode]);
     }

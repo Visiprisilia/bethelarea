@@ -4,6 +4,7 @@ namespace App\Http\Controllers\coa;
 
 use Illuminate\Http\Request;
 use App\Models\Coa\Coa;
+use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 
 class CoaController extends Controller
@@ -19,6 +20,21 @@ class CoaController extends Controller
 	}
     public function simpancoa(Request $request)
 	{
+		$validator = Validator::make($request->all(), [	
+			'nama_akun' => 'unique:coa'
+		],[
+			"nama_akun.unique"=>"Data Tersebut Sudah Terdaftar"
+			
+		]);
+
+		if ($validator->fails()) {    
+			$message = $validator->errors()->getMessages();
+			$api = array(
+				'message' => $message
+			);
+			return redirect('/tambahcoa')->withErrors($validator);
+			// return $validator;
+		}
 		Coa::create([
 			'kode_akun'=>$request->kode_akun,
 			'nama_akun'=>$request->nama_akun,

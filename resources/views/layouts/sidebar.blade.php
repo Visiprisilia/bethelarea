@@ -32,7 +32,7 @@
         <div id="datamaster" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Data Master:</h6>
-                <a class="collapse-item" href="/kebijakan">Kebijakan Yayasan</a>
+                <a class="collapse-item" href="/kebijakans">Kebijakan Yayasan</a>
                 <a class="collapse-item" href="/unit">Daftar Unit</a>
                 <a class="collapse-item" href="/subunit">Daftar Sub Unit</a>
                 <a class="collapse-item" href="/periode">Daftar Periode</a>

@@ -49,7 +49,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:super admin']], function(){
 Route::get('/dashboard', [DashboardController::class,'dashboard']);
 
 //kebijakan
-Route::get('/kebijakan', [KebijakanController::class,'kebijakan']);
+Route::get('/kebijakans', [KebijakanController::class,'kebijakan']);
 Route::get('/tambahkebijakan', [KebijakanController::class,'tambahkebijakan']);
 Route::post('/simpankebijakan', [KebijakanController::class,'simpankebijakan']);
 Route::get('/editkebijakan/{kode_kebijakan}', [KebijakanController::class,'editkebijakan']);
@@ -149,7 +149,7 @@ Route::get('/tambahkasmasuk', [KasMasukController::class,'tambahkasmasuk']);
 Route::post('/simpankasmasuk', [KasMasukController::class,'simpankasmasuk']);
 Route::get('/editkasmasuk/{no_bukti}', [KasMasukController::class,'editkasmasuk']);
 Route::get('/lihatkasmasuk/{no_bukti}', [KasMasukController::class,'lihatkasmasuk']);
-Route::get('/cetakkasmasuk', [KasMasukController::class,'cetakkasmasuk']);
+Route::get('/cetakkasmasuk/{no_bukti}', [KasMasukController::class,'cetakkasmasuk']);
 Route::post('/updatekasmasuk/{no_bukti}', [KasMasukController::class,'updatekasmasuk']);
 Route::get('/hapuskasmasuk/{no_bukti}', [KasMasukController::class,'hapuskasmasuk']); 
 
@@ -159,7 +159,7 @@ Route::get('/tambahkaskeluar', [KasKeluarController::class,'tambahkaskeluar']);
 Route::post('/simpankaskeluar', [KasKeluarController::class,'simpankaskeluar']);
 Route::get('/editkaskeluar/{no_bukti}', [KasKeluarController::class,'editkaskeluar']);
 Route::get('/lihatkaskeluar/{no_bukti}', [KasKeluarController::class,'lihatkaskeluar']);
-Route::get('/cetakkaskeluar', [KasKeluarController::class,'cetakkaskeluar']);
+Route::get('/cetakkaskeluar/{no_bukti}', [KasKeluarController::class,'cetakkaskeluar']);
 Route::post('/updatekaskeluar/{no_bukti}', [KasKeluarController::class,'updatekaskeluar']);
 Route::get('/hapuskaskeluar/{no_bukti}', [KasKeluarController::class,'hapuskaskeluar']);
 

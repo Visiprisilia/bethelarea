@@ -70,9 +70,9 @@
                                 <div id="receipt-data">
                                     <div>
                                         <div style="text-align:center;">
-                                        @foreach($kaskeluar as $item)
-                                        <form action="/updatekaskeluar/{{$item->no_bukti}}" method="post">
-                                            @csrf
+                                            @foreach($kaskeluar as $item)
+                                            <form action="/updatekaskeluar/{{$item->no_bukti}}" method="post">
+                                                @csrf
                                                 <h3 align="center" class='box-title'>BUKTI KAS KELUAR</h3>
                                                 <img src="{{asset('template/img/logo2.png') }}" style="max-width:100px;">
                                                 <br style="text-align:center;"><strong>YAYASAN BETHEL AREA</strong>
@@ -83,10 +83,13 @@
 
                                     </div>
                                     <p>
-                                      <b>No Bukti : </b> {{ $item->no_bukti}} &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; <b>Tanggal : </b> {{$item->tanggal_pencatatan}} <br><br>
-                                       <b>Dibayar Untuk :</b> &nbsp;{{$item->kasir}}<p>
-                                       <b>Banyaknya Uang : </b> &nbsp;{{$item->jumlah}}<p>
-                                       <b>Untuk Pembayaran :</b> &nbsp;{{$item->keterangan}}<p>
+                                        <b>No Bukti : </b> {{ $item->no_bukti}} &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; <b>Tanggal : </b> {{$item->tanggal_pencatatan}} <br><br>
+                                        <b>Dibayar Untuk :</b> &nbsp;{{$item->kasir}}
+                                    <p>
+                                        <b>Banyaknya Uang : </b> &nbsp;{{$item->jumlah}}
+                                    <p>
+                                        <b>Untuk Pembayaran :</b> &nbsp;{{$item->keterangan}}
+                                    <p>
                                     </p>
                                     <br>
                                     <div style="clear:both;"></div>
@@ -128,13 +131,12 @@
                             <input class="no-print" type="button" value="Cetak" onclick="window.print()">
                             <input type="button" value="Kembali" onclick=self.history.back() class="no-print">
 
-
                             <div style="clear:both;"></div>
                     </div>
                 </div>
             </div>
-        </div><!-- /.modal -->
-    </div><!-- /.modal -->
-    </div><!-- /.box-body -->
-    </div><!-- /.box -->
-</section><!-- /.content -->
+        </div>
+    </div>
+    </div>
+    </div>
+</section>

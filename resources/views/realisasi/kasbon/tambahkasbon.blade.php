@@ -66,13 +66,8 @@
                                                     <input class="form-control" id="anggaran" name="anggaran" placeholder="Masukkan Anggaran" required />
                                                 </div>
                                                 <div class="col-md-4">
-                                                <label class="mb-1" for="inputLastName">Penanggung Jawab</label>
-                                                    <select class="form-control" id="penanggungjawab" name="penanggungjawab">
-                                                        <option  value>Pilih Penanggung Jawab</option>
-                                                        @foreach ($pegawai as $item)
-                                                        <option value="{{ $item->niy}}">{{$item->nama}}</option>
-                                                        @endforeach
-                                                    </select>
+                                                <label class="mb-1" for="inputFirstName">Penanggung Jawab</label>
+                                                    <input class="form-control" id="penanggungjawab" name="penanggungjawab" placeholder="Masukkan penanggung jawab" required />
                                                 </div>
                                             </div>     
                                             <div class="row gx-3 mb-3">

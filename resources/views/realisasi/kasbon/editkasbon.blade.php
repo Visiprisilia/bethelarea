@@ -30,8 +30,8 @@
                                 <!-- Component Preview-->
                                 <div class="sbp-preview">
                                     <div class="sbp-preview-content">
-                                        @foreach($kasbon as $item)
-                                        <form action="/updatekasbon/{{$item->no_bukti}}" method="post">
+                                        @foreach($kasbon as $kb)
+                                        <form action="/updatekasbon/{{$kb->no_bukti}}" method="post">
                                             @csrf
                                                            <!-- <div class="mb-3">
                                                 <label for="exampleFormControlInput1">No Bukti</label>
@@ -49,7 +49,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Tanggal Pengajuan</label>
-                                                    <input class="form-control"  type="date" id="tanggal_pengajuan" name="tanggal_pengajuan" value="{{$item->tanggal_pengajuan}}" required />
+                                                    <input class="form-control"  type="date" id="tanggal_pengajuan" name="tanggal_pengajuan" value="{{$kb->tanggal_pengajuan}}" required />
                                                 </div>
                                             </div>        
                                             <div class="row gx-3 mb-3">
@@ -64,26 +64,17 @@
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputFirstName">Anggaran</label>
-                                                    <input class="form-control" id="anggaran" name="anggaran" placeholder="Masukkan Anggaran" value="{{$item->anggaran}}"required />
+                                                    <input class="form-control" id="anggaran" name="anggaran" placeholder="Masukkan Anggaran" value="{{$kb->anggaran}}"required />
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputFirstName">Penanggung Jawab</label>
-                                                    <input class="form-control" id="penanggungjawab" name="penanggungjawab"  value="{{$item->penanggungjawab}}"  placeholder="Masukkan Penanggung Jawab" required />
+                                                    <input class="form-control" id="penanggungjawab" name="penanggungjawab"  value="{{$kb->penanggungjawab}}"  placeholder="Masukkan Penanggung Jawab" required />
                                                 </div>
                                             </div>     
-                                            <div class="row gx-3 mb-3">
-                                                <div class="col-md-6">
-                                                <label class="mb-1" for="inputLastName">Penanggung Jawab</label>
-                                                    <select class="form-control" id="penanggungjawab" name="penanggungjawab">
-                                                        <option disabled value>Pilih Periode</option>
-                                                        @foreach ($pegawai as $item)
-                                                        <option value="{{ $item->niy}}">{{$item->nama}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
+                                            <div class="row gx-3 mb-3">                                              
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Status</label>
-                                                    <input class="form-control" id="status" name="status" value="{{$item->status}}"  required />
+                                                    <input class="form-control" id="status" name="status" value="{{$kb->status}}"  required />
                                                 </div>
                                             </div>             
                                             <div class="mb-3">

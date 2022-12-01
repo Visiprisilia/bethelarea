@@ -41,8 +41,8 @@
                             <td>{{ $item->status}}</td>                              
                             <td>
                                 <a href="/editkasbon/{{$item->no_bukti}}"><i class="fas fa-edit" style="color:green"></i></a> |
-                                <a href="/hapuskasbon/{{$item->no_bukti}}"><i class="fas fa-trash-alt" style="color:red"></i></a> |
-                                <a href="/lihatkasbon/{{$item->no_bukti}}"><i class="fas fa-print" style="color:blue"></i></a>
+                                <a href="/hapuskasbon/{{$item->no_bukti}}"><i class="fas fa-trash-alt" style="color:red"></i></a> 
+                                <!-- <a href="/lihatkasbon/{{$item->no_bukti}}"><i class="fas fa-print" style="color:blue"></i></a> -->
                             </td>
                         </tr>
                         @endforeach

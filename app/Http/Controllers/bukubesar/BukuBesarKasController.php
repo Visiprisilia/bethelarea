@@ -14,8 +14,8 @@ class BukuBesarKasController extends Controller
     {
         $masuk = KasMasuk::all();
         $keluar = KasKeluar::all();
-        $masuk = DB::table('kas_masuk')->select('no_bukti','keterangan','jumlah',);
-        $keluar = DB::table('kas_keluar')->select('no_bukti','keterangan','jumlah');
+        $masuk = DB::table('kas_masuk')->select('no_bukti', 'keterangan','jumlah',);
+        $keluar = DB::table('kas_keluar')->select('no_bukti', 'keterangan','jumlah');
         $bbkas = $masuk->union($keluar)->get();
         return view('bukubesar/bukubesarkas', ['bbkas'=>$bbkas]);
       }
@@ -80,10 +80,10 @@ class BukuBesarKasController extends Controller
 //                         </tr>  
 //                         @endforeach   -->
 
-// SELECT km.akun, km.keterangan, km.jumlah, "" as 'bertambah' 
+// SELECT km.no_bukti, km.akun, km.keterangan, km.jumlah, "" as 'berkurang' 
 // FROM kas_masuk km 
 // UNION ALL 
-// SELECT kk.akun, kk.keterangan, "", kk.jumlah 
+// SELECT kk.no_bukti, kk.akun, kk.keterangan, "", kk.jumlah
 // FROM kas_keluar kk;
 // SELECT kas_masuk.jumlah as debit, kas_keluar.jumlah as kredit, 
 // kas_masuk.jumlah-kas_keluar.jumlah as total 

@@ -32,11 +32,12 @@
                             <td>{{ $item->no_bukti}}</td>
                             <td>{{ $item->tanggal_pencatatan}}</td>
                             <td>{{ $item->keterangan}}</td>
-                            <td>{{ $item->jumlah}}</td>
-                           
+                            <td>{{ $item->jumlah}}</td>                                                       
                         </tr>  
+                        
                         @endforeach  
-                        </tbody>                
+                        </tbody>     
+                       
                     </thead>
                 </table>
             </div>

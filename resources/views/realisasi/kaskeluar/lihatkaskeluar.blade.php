@@ -66,7 +66,7 @@
                                                 <input class="form-control" id="kasir" name="kasir" disabled value="{{$item->kasir}}"  />
                                             </div>           
                                             <div class="mb-3">
-                                                <a href="{{url('/cetakkaskeluar')}}" class="btn btn-primary">Cetak</a>
+                                                <a href="/cetakkaskeluar/{{$item->no_bukti}}" class="btn btn-primary">Cetak</a>
                                                 <a href="{{url('/kaskeluar')}}" class="btn btn-danger">Batal</a>
                                             </div>
                                         </form>

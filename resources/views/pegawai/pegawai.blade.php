@@ -36,6 +36,7 @@
                             <th>Status</th>
                             <th>Termin</th>
                             <th>Keterangan</th>
+                            <th>Tanggal Update</th>
                             <th>Aksi</th>
                         </tr>
                     <tbody>
@@ -59,6 +60,7 @@
                             <td>{{ $item->status}}</td>
                             <td>{{ $item->tanggal_terminasi}}</td>
                             <td>{{ $item->keterangan}}</td>
+                            <td>{{ $item->updated_at}}</td>
                             <td>
                                 <a href="/editpegawai/{{$item->niy}}"><i class="fas fa-edit" style="color:green"></i></a> |
                                 <a href="/hapuspegawai/{{$item->niy}}"><i class="fas fa-trash-alt" style="color:red"></i></a>

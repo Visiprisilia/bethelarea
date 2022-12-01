@@ -89,9 +89,9 @@ class KasKeluarController extends Controller
 		$kaskeluar = KasKeluar::where('no_bukti', $no_bukti)->get();
 		return view('realisasi/kaskeluar/lihatkaskeluar', compact('kaskeluar'));
 	}
-	public function cetakkaskeluar()
+	public function cetakkaskeluar($no_bukti)
 	{
-		$kaskeluar = KasKeluar::orderBy('created_at','desc')->get();
+		$kaskeluar = KasKeluar::where('no_bukti', $no_bukti)->get();
 		return view('realisasi/kaskeluar/cetakkaskeluar',compact('kaskeluar'));
 	}
 	public function hapuskaskeluar($no_bukti)

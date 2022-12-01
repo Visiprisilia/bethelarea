@@ -122,12 +122,12 @@
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Status</label>
                                                     <select class="form-control" id="status" name="status"required>
-                                                        <option  value>Pilih Status</option>
-                                                        <option>AKTIF</option>
-                                                        <option>NON AKTIF</option>
+                                                        <option value>Pilih Status</option>
+                                                        <option value="AKTIF">AKTIF</option>
+                                                        <option value="NON AKTIF">NON AKTIF</option>
                                                     </select>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-6" id="terminasi" style="display: none;">
                                                     <label class="mb-1" for="inputLastName">Tanggal Terminasi</label>
                                                     <input class="form-control" type="date"  id="tanggal_terminasi" name="tanggal_terminasi" required />
                                                 </div>
@@ -158,4 +158,12 @@
         </div>
     </main>
 </div>
+<script>
+    $(document).on('change','#status',function(){
+      var val=$('#status option').filter(':selected').val()=="NON AKTIF"?  $('#terminasi').show():  $('#terminasi').hide();
+    
+      //   if(val=="murid"{})  
+      // alert(val);
+    })
+</script>
 @endsection

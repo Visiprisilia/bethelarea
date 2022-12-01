@@ -32,7 +32,6 @@
                             <td>{{ $item->jumlah}}</td>
                             <td>{{ $item->jumlah}}</td>
                             <td>{{ $item->jumlah}}</td>
-                           
                         </tr>  
                         @endforeach  
                         </tbody>                 

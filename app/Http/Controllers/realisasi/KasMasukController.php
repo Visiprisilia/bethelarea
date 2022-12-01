@@ -77,10 +77,11 @@ class KasMasukController extends Controller
 		$kasmasuk = KasMasuk::where('no_bukti', $no_bukti)->get();
 		return view('realisasi/kasmasuk/lihatkasmasuk', compact('kasmasuk','murid'));
 	}
-	public function cetakkasmasuk()
+	public function cetakkasmasuk($no_bukti)
 	{
 		$murid = Murid::orderBy('created_at','desc')->get();
-		$kasmasuk = KasMasuk::join("murid","kas_masuk.kasir","=","murid.nomor_induk")->get();		
+		$kasmasuk = KasMasuk::join("murid","kas_masuk.kasir","=","murid.nomor_induk")
+		->where('no_bukti', $no_bukti)->get();		
 		return view('realisasi/kasmasuk/cetakkasmasuk',compact('kasmasuk','murid'));
 	}
 	public function hapuskasmasuk($no_bukti)

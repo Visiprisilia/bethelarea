@@ -15,7 +15,6 @@ class BukuBesarAnggaranBiayaController extends Controller
         $periode = Periode::orderBy('created_at','desc')->get();
 		$akun = Akuns::orderBy('created_at','desc')->get();
         $bbbiaya = ProgramKerja::join("akuns","program_kerja.kode_proker","=","akuns.kode_proker")
-                                //  ->select('kode_akun','tanggal_pencatatan','keterangan','jumlah')
                                  ->where('kode_akun', 'like' , '5%')
                                  ->get();
         return view('bukubesar/bukubesaranggaranbiaya', ['bbbiaya'=>$bbbiaya,'akun'=>$akun,'periode'=>$periode]);
