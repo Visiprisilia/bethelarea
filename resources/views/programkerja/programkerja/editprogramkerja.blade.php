@@ -81,7 +81,28 @@
                                                 </div>
                                             </div>
                                             <div class="row gx-3 mb-3">
-                                              
+                                                <!-- <div class="col-md-6">
+                                                    <label for="exampleFormControlInput1">Akun</label>
+                                                    <button type="button" class="btn btn-primary ml-2" id="tambah">+</button>
+                                                    <div id="selectakun">
+                                                        <div class="form-group" id="akun">
+                                                            <select class="form-control select2 mb-1" style="width: 100%;" name="akun[]" value="{{$items->akun}}">
+                                                                <option  value>Pilih Akun</option>
+                                                                @foreach ($coa as $item)
+                                                                <option value="{{ $item->kode_akun}}">{{$item->nama_akun}}</option>
+                                                                @endforeach
+                                                            </select>
+                                                            <div>
+                                                                <input type="text" class="form-control mb-1 jumlah" name="jumlah[]" placeholder="Masukkan Jumlah" required>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            <div class="row gx-3 mb-3"> -->
+                                            <div class="col-md-6">
+                                                    <label for="exampleFormControlInput1">Akun</label>
+                                                    <input class="form-control" readonly id="akun" name="akun" value="{{$items->akun}}" required />
+                                                </div>
                                                 <div class="col-md-6">
                                                     <label for="exampleFormControlInput1">Anggaran</label>
                                                     <input class="form-control" readonly id="anggaran" name="anggaran" value="{{$items->anggaran}}" required />
@@ -107,5 +128,7 @@
 </div>
 </main>
 </div>
+<script src="/proker/proker.js"></script>
+
 @endforeach
 @endsection

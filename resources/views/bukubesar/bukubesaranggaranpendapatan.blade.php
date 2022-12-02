@@ -18,9 +18,9 @@
                         <tr>
                             <th>No</th>
                             <th>Kode</th>
-                            <th>Tanggal Pencatatan</th>
-                            <th>Keterangan</th>
                             <th>Anggaran</th>
+                            <th>Realisasi</th>
+                            <th>Posisi Anggaran</th>
                         </tr>                      
                         <tbody>
                         @foreach ($bbpendapatan as $item)
