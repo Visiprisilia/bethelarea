@@ -84,7 +84,7 @@
                 <h6 class="collapse-header">Buku Besar:</h6>
                 <a class="collapse-item" href="/bukubesarkas">BB Kas</a>
                 <a class="collapse-item" href="/bukubesaranggaranpendapatan">BB Anggaran Pendapatan</a>
-                <!-- <a class="collapse-item" href="/bukubesaranggaranbiaya">BB Anggaran Biaya</a> -->
+                <a class="collapse-item" href="/bukubesaranggaranbiaya">BB Anggaran Biaya</a>
             </div>
         </div>
     </li>

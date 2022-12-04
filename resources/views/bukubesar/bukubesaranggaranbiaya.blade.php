@@ -18,22 +18,27 @@
                         <tr>
                             <th>No</th>
                             <th>Kode</th>
-                            <th>Tanggal Pencatatan</th>
-                            <th>Keterangan</th>
-                            <th>Saldo</th>
+                            <th>Anggaran</th>
+                            <th>Realisasi</th>
+                            <th>Posisi Anggaran</th>
                         </tr>                      
                         <tbody>
                         @foreach ($bbbiaya as $item)
                         <tr>
                             <td>{{ $loop->iteration}}</td>
-                            <td>{{ $item->kode_proker}}</td>
-                            <td>{{ $item->waktu_selesai}}</td>
-                            <td>{{ $item->nama_proker}}</td>
-                            <td>{{ $item->jumlah}}</td>
-                           
-                        </tr>  
+                            <td>{{ $item->kode}}</td>
+                            <td>{{ $item->anggaran}}</td>
+                            <td>{{ $item->realisasi}}</td>
+                            <td>{{$saldo = $saldo + $item->anggaran - $item->realisasi}}</td>
+                            </tr>  
                         @endforeach  
-                        </tbody>                
+                        </tbody> 
+                        <th>Total</th>                
+                        <th></th>          
+                        <th>{{$anggaran}}</th>                                           
+                        <th>{{$realisasi}}</th>                
+                        <th>{{$totalbbbiaya}}</th>                
+                        <th></th>                
                     </thead>
                 </table>
             </div>

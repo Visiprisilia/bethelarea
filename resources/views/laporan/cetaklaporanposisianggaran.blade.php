@@ -75,30 +75,25 @@
                                             <p style="text-align:center;"><strong>LAPORAN POSISI ANGGARAN</strong><br>
                                             <p></p>
                                         </div>
-                                        <form method='post' class="no-print" href="{{url('/laporanposisianggaran')}}">Bulan <input type="number" class="no-print" name="bulan" id="bulan" min="1" max="12"> Tahun <input type="number" name="tahun" id="tahun" min="2021" max="2030"> <input type="submit" name="filterperiod" id="filterperiod" class="no-print" value="Tampilkan"> </form>
+                                        <!-- <form method='post' class="no-print" href="{{url('/laporanposisianggaran')}}">Bulan <input type="number" class="no-print" name="bulan" id="bulan" min="1" max="12"> Tahun <input type="number" name="tahun" id="tahun" min="2021" max="2030"> <input type="submit" name="filterperiod" id="filterperiod" class="no-print" value="Tampilkan"> </form> -->
                                     </div>
                                     <table class="table align-items-center table-flush">
                                         <thead class="thead-light">
                                             <tr>
                                                 <th class="text-center" style="width: 20%; border-bottom: 2px solid #ddd;">No</th>
                                                 <th class="text-center" style="width: 20%; border-bottom: 2px solid #ddd;">Kode Akun</th>
-                                                <th class="text-center" style="width: 20%; border-bottom: 2px solid #ddd;">Tanggal Pencatatan</th>
                                                 <th class="text-center" style="width: 50%; border-bottom: 2px solid #ddd;">Nama Akun</th>
                                                 <th class="text-center" style="width: 50%; border-bottom: 2px solid #ddd;">Anggaran</th>
-                                                <th class="text-center" style="width: 50%; border-bottom: 2px solid #ddd;">Realisasi</th>
-                                                <th class="text-center" style="width: 50%; border-bottom: 2px solid #ddd;">Sisa</th>
+                                                <th class="text-center" style="width: 50%; border-bottom: 2px solid #ddd;">Posisi Anggaran</th>
                                             </tr>
                                         <tbody>
                                             @foreach ($laporanpa as $item)
                                             <tr>
                                                 <td>{{ $loop->iteration}}</td>
                                                 <td>{{ $item->kode_akun}}</td>
-                                                <td>{{ $item->tanggal_pencatatan}}</td>
                                                 <td>{{ $item->nama_akun}}</td>
                                                 <td>{{ $item->anggaran}}</td>
-                                                <td>{{ $item->realisasi}}</td>
-                                                <td>{{ $item->sisa}}</td>
-
+                                                <td>{{ $item->posisi_anggaran}}</td>
                                             </tr>
                                             @endforeach
                                         </tbody>

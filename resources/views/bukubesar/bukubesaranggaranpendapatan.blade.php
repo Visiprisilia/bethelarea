@@ -26,14 +26,19 @@
                         @foreach ($bbpendapatan as $item)
                         <tr>
                             <td>{{ $loop->iteration}}</td>
-                            <td>{{ $item->kode_proker}}</td>
-                            <td>{{ $item->waktu_selesai}}</td>
-                            <td>{{ $item->nama_proker}}</td>
-                            <td>{{ $item->jumlah}}</td>
-                           
+                            <td>{{ $item->kode}}</td>
+                            <td>{{ $item->anggaran}}</td>
+                            <td>{{ $item->realisasi}}</td>
+                            <td>{{$saldo = $saldo + $item->anggaran - $item->realisasi}}</td>
                         </tr>  
                         @endforeach  
-                        </tbody>                
+                        </tbody> 
+                        <th>Total</th>                
+                        <th></th>          
+                        <th>{{$anggaran}}</th>                                           
+                        <th>{{$realisasi}}</th>                
+                        <th>{{$totalbbpendapatan}}</th>                
+                        <th></th>                
                     </thead>
                 </table>
             </div>

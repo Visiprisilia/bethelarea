@@ -10,36 +10,49 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-        </div> 
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Kode</th>
-                            <th>Uraian</th>
-                            <th>Bertambah</th>
-                            <th>Berkurang</th>
-                            <th>Saldo</th>
-                        </tr>                      
-                        <tbody>
-                        @foreach ($bbkas as $item)
-                        <tr>
-                            <td>{{ $loop->iteration}}</td>
-                            <td>{{ $item->no_bukti}}</td>
-                            <td>{{ $item->keterangan}}</td>
-                            <td>{{ $item->jumlah}}</td>
-                            <td>{{ $item->jumlah}}</td>
-                            <td>{{ $item->jumlah}}</td>
-                        </tr>  
-                        @endforeach  
-                        </tbody>                 
-                    </thead>
-                </table>
-            </div>
+            <a href="cetaklaporankas" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print fa-sm text-white-50"></i>Cetak</a>
+            <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="periode" require name="periode">
+                <option value>Pilih Periode</option>
+                @foreach ($periode as $item)
+                <option value="{{ $item->kode_periode}}">{{$item->nama_periode}}</option>
+                @endforeach
+            </select>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Kode</th>
+                        <th>Uraian</th>
+                        <th>Bertambah</th>
+                        <th>Berkurang</th>
+                        <th>Saldo</th>
+                    </tr>
+                <tbody>
+                    @foreach ($bbkas as $item)
+                    <tr>
+                        <td>{{ $loop->iteration}}</td>
+                        <td>{{ $item->kode}}</td>
+                        <td>{{ $item->keterangan}}</td>
+                        <td>{{ $item->bertambah}}</td>
+                        <td>{{ $item->berkurang}}</td>
+                        <td>{{$saldo = $saldo + $item->bertambah - $item->berkurang}}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+                <th>Total</th>
+                <th></th>
+                <th></th>
+                <th>{{$tambah}}</th>
+                <th>{{$kurang}}</th>
+                <th>{{$totalbbkas}}</th>
+                </thead>
+            </table>
         </div>
     </div>
+</div>
 
 </div>
 <!-- /.container-fluid

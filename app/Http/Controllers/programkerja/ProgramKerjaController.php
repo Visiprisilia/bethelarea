@@ -53,6 +53,7 @@ class ProgramKerjaController extends Controller
 			$data = [
 				'kode_proker'=>$kode_proker,
 				'kode_akun'=>$i,
+				'periode'=>$periode,
 				'jumlah'=>$request->jumlah[$no_jumlah],
 			];
 			$no_jumlah++;

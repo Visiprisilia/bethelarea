@@ -55,9 +55,9 @@
                                                 <option  value>Pilih Kelompok Rekening</option>    
                                                 <option>Aktiva</option>
                                                     <option>Utang</option>
+                                                    <option>Biaya</option>
                                                     <option>Modal</option>
                                                     <option>Pendapatan</option>
-                                                    <option>Biaya</option>
                                                 </select>
                                             </div>
                                             <div class="mb-3">

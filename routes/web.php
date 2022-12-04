@@ -165,6 +165,7 @@ Route::get('/hapuskaskeluar/{no_bukti}', [KasKeluarController::class,'hapuskaske
 
 //Buku Besar Kas
 Route::get('/bukubesarkas', [BukuBesarKasController::class,'bukubesarkas']);
+Route::get('/cariperiodebbk', [BukuBesarKasController::class,'cariperiodebbk']);
 
 //Buku Besar Anggaran Pendapatan
 Route::get('/bukubesaranggaranpendapatan', [BukuBesarAnggaranPendapatanController::class,'bukubesaranggaranpendapatan']);

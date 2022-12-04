@@ -18,6 +18,7 @@ return new class extends Migration
             $table->id();
             $table->string('kode_proker')->nullable();
             $table->string('kode_akun')->nullable();
+            $table->string('periode')->nullable();
             $table->string('jumlah')->nullable();
             $table->timestamps();
             $table->foreign('kode_proker')->references('kode_proker')->on('program_kerja')->onDelete('cascade');

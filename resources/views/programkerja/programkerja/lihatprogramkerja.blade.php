@@ -20,6 +20,7 @@
                         <tr>
                             <th>No</th>
                             <th>Kode Program Kerja</th>
+                            <th>Periode</th>
                             <th>Nama Akun</th>            
                             <th>Jumlah</th>      
                         </tr>
@@ -28,6 +29,7 @@
                         <tr>
                             <td>{{ $loop->iteration}}</td>
                             <td>{{ $item->kode_proker}}</td>
+                            <td>{{ $item->periode}}</td>
                             <td>{{ $item->nama_akun}}</td>
                             <td>{{ $item->jumlah}}</td>
                          

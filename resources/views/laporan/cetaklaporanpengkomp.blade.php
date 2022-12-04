@@ -75,34 +75,21 @@
                                             <p style="text-align:center;"><strong>LAPORAN PENGHASILAN KOMPREHENSIF</strong><br>
                                             <p></p>
                                         </div>
-                                        <form method='post' class="no-print" href="{{url('/laporankas')}}">Bulan <input type="number" class="no-print" name="bulan" id="bulan" min="1" max="12"> Tahun <input type="number" name="tahun" id="tahun" min="2021" max="2030"> <input type="submit" name="filterperiod" id="filterperiod" class="no-print" value="Tampilkan"> </form>
+                                        <!-- <form method='post' class="no-print" href="{{url('/laporankas')}}">Bulan <input type="number" class="no-print" name="bulan" id="bulan" min="1" max="12"> Tahun <input type="number" name="tahun" id="tahun" min="2021" max="2030"> <input type="submit" name="filterperiod" id="filterperiod" class="no-print" value="Tampilkan"> </form> -->
                                     </div>
-                                    <table class="table align-items-center table-flush">
-                                        <thead class="thead-light">
-                                            <tr>
-                                                <th class="text-center" style="width: 20%; border-bottom: 2px solid #ddd;">No</th>
-                                                <th class="text-center" style="width: 20%; border-bottom: 2px solid #ddd;">Kode</th>
-                                                <th class="text-center" style="width: 50%; border-bottom: 2px solid #ddd;">Tanggal Pencatatan</th>
-                                                <th class="text-center" style="width: 50%; border-bottom: 2px solid #ddd;">Pendapatan</th>
-                                                <th class="text-center" style="width: 50%; border-bottom: 2px solid #ddd;">Biaya</th>
-                                                <th class="text-center" style="width: 50%; border-bottom: 2px solid #ddd;">Saldo</th>
-                                            </tr>
-                                        <tbody>
-                                            @foreach ($laporanpk as $item)
-                                            <tr>
-                                                <td>{{ $loop->iteration}}</td>
-                                                <td>{{ $item->kode}}</td>
-                                                <td>{{ $item->tanggal_pencatatan}}</td>
-                                                <td>{{ $item->uraian}}</td>
-                                                <td>{{ $item->jumlah}}</td>
-                                                <td>{{ $item->saldo}}</td>
+                                    Pendapatan <br>
+                                           Pendaftaran Murid Baru : <br>
+                                           Sumbangan OTM : <br>
 
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                        </thead>
-                                        </tbody>
-                                    </table><br><br><br><br><br>
+                                           <br>
+                                           Biaya<br>                                   
+                                           Biaya Minum Rapat : <br>
+                                           Biaya ATK : <br>
+                                           Biaya Gaji : <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>                            
                                     <input class="no-print" type="button" value="Cetak" onclick="window.print()">
                                     <input type="button" value="Kembali" onclick=self.history.back() class="no-print">
                                 </div>
