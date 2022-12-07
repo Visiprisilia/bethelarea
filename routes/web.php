@@ -18,6 +18,7 @@ use App\Http\Controllers\realisasi\KasKeluarController;
 use App\Http\Controllers\realisasi\KasBonController;
 use App\Http\Controllers\bukubesar\BukuBesarKasController;
 use App\Http\Controllers\bukubesar\BukuBesarAnggaranPendapatanController;
+use App\Http\Controllers\bukubesar\BukuBesarAnggaranController;
 use App\Http\Controllers\bukubesar\BukuBesarAnggaranBiayaController;
 use App\Http\Controllers\laporan\LaporanKasController;
 use App\Http\Controllers\laporan\LaporanPAController;
@@ -43,7 +44,7 @@ Route::post('/postlogin', [LoginController::class,'postlogin']);
 Route::get('/logout', [LoginController::class,'logout']);
 
 
-Route::group(['middleware' => ['auth', 'ceklevel:super admin']], function(){
+// Route::group(['middleware' => ['auth', 'ceklevel:super admin, yayasan, unit']], function(){
 
 // Dashboard -->
 Route::get('/dashboard', [DashboardController::class,'dashboard']);
@@ -79,7 +80,6 @@ Route::post('/simpanperiode', [PeriodeController::class,'simpanperiode']);
 Route::get('/editperiode/{kode_periode}', [PeriodeController::class,'editperiode']);
 Route::post('/updateperiode/{kode_periode}', [PeriodeController::class,'updateperiode']);
 Route::get('/hapusperiode/{kode_periode}', [PeriodeController::class,'hapusperiode']);
-
 // pegawai -->
 Route::get('/pegawai', [PegawaiController::class,'pegawai']);
 Route::get('/tambahpegawai', [PegawaiController::class,'tambahpegawai']);
@@ -127,9 +127,9 @@ Route::get('/cetakprogramkerja', [ProgramKerjaController::class,'cetakprogramker
 Route::get('/evaluasi', [EvaluasiController::class,'evaluasi']);
 Route::get('/tambahevaluasi', [EvaluasiController::class,'tambahevaluasi']);
 Route::post('/simpanevaluasi', [EvaluasiController::class,'simpanevaluasi']);
-Route::get('/editevaluasi/{kode_proker}', [EvaluasiController::class,'editevaluasi']);
-Route::post('/updateevaluasi/{kode_proker}', [EvaluasiController::class,'updateevaluasi']);
-Route::get('/hapusevaluasi/{kode_proker}', [EvaluasiController::class,'hapusevaluasi']); 
+Route::get('/editevaluasi/{kode_evaluasi}', [EvaluasiController::class,'editevaluasi']);
+Route::post('/updateevaluasi/{kode_evaluasi}', [EvaluasiController::class,'updateevaluasi']);
+Route::get('/hapusevaluasi/{kode_evaluasi}', [EvaluasiController::class,'hapusevaluasi']); 
 Route::get('/pilihprogramkerja', [EvaluasiController::class,'pilihprogramkerja']); 
 Route::get('/akunbiaya', [EvaluasiController::class,'akunbiaya']); 
 
@@ -165,7 +165,11 @@ Route::get('/hapuskaskeluar/{no_bukti}', [KasKeluarController::class,'hapuskaske
 
 //Buku Besar Kas
 Route::get('/bukubesarkas', [BukuBesarKasController::class,'bukubesarkas']);
-Route::get('/cariperiodebbk', [BukuBesarKasController::class,'cariperiodebbk']);
+Route::get('/kas', [BukuBesarKasController::class,'kas']);
+
+//Buku Besar Anggaran 
+Route::get('/bukubesaranggaran', [BukuBesarAnggaranController::class,'bukubesaranggaran']);
+Route::get('/anggaran', [BukuBesarAnggaranController::class,'anggaran']);
 
 //Buku Besar Anggaran Pendapatan
 Route::get('/bukubesaranggaranpendapatan', [BukuBesarAnggaranPendapatanController::class,'bukubesaranggaranpendapatan']);
@@ -175,15 +179,19 @@ Route::get('/bukubesaranggaranbiaya', [BukuBesarAnggaranBiayaController::class,'
 
 //Laporan Kas
 Route::get('/laporankas', [LaporanKasController::class,'laporankas']);
+Route::get('/viewlk', [LaporanKasController::class,'viewlk']);
 Route::get('/cetaklaporankas', [LaporanKasController::class,'cetaklaporankas']);
+Route::get('/viewcetaklk', [LaporanKasController::class,'viewcetaklk']);
 
 //Laporan Posisi Anggaran
 Route::get('/laporanposisianggaran', [LaporanPAController::class,'laporanposisianggaran']);
+Route::get('/viewlpa', [LaporanPAController::class,'viewlpa']);
 Route::get('/cetaklaporanposisianggaran', [LaporanPAController::class,'cetaklaporanposisianggaran']);
+Route::get('/viewcetaklpa', [LaporanPAController::class,'viewcetaklpa']);
 
 
 //Laporan Penghasilan Komprehensif
 Route::get('/laporanpengkomp', [LaporanPKController::class,'laporanpengkomp']);
+Route::get('/viewlpk', [LaporanPKController::class,'viewlpk']);
 Route::get('/cetaklaporanpengkomp', [LaporanPKController::class,'cetaklaporanpengkomp']);
 
-});

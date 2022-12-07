@@ -12,7 +12,7 @@ class Evaluasi extends Model
     protected $table = 'evaluasi';
     protected $primaryKey = 'kode_proker';
     public $incrementing = false;
-    protected $fillable = ['kode_proker','periode','nama_proker', 'penanggungjawab','tujuan','akun_beban',
+    protected $fillable = ['kode_evaluasi','kode_proker','periode','nama_proker', 'penanggungjawab','tujuan','akun_beban',
     'rencana_anggaran','realisasi_anggaran','rencana_waktu','realisasi_waktu','indikator_pencapaian', 'kinerja_pencapaian',
     'faktor_pendorong','faktor_penghambat','tindaklanjut'];
     

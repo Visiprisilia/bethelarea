@@ -25,7 +25,11 @@ class EvaluasiController extends Controller
 	}
     public function simpanevaluasi(Request $request)
 	{
+		$kode_proker = $request->kode_proker;
+        $check = Evaluasi::count();
+		$kode_evaluasi = "Evaluasi".$kode_proker.$check+1;
 		Evaluasi::create([
+			'kode_evaluasi'=>$kode_evaluasi,
 			'kode_proker'=>$request->kode_proker,
 			'periode'=>$request->periode,
 			'nama_proker'=>$request->nama_proker,
@@ -52,8 +56,12 @@ class EvaluasiController extends Controller
 	}
 	public function updateevaluasi(Request $request)
 	{
+		$kode_proker = $request->kode_proker;
+        $check = Evaluasi::count();
+		$kode_evaluasi = "Evaluasi".$kode_proker.$check+1;
 		$evaluasi = Evaluasi::where('kode_proker', $request->kode_proker)->update([
-            'kode_proker'=>$request->kode_proker,
+			'kode_evaluasi'=>$kode_evaluasi,
+			'kode_proker'=>$request->kode_proker,
 			'periode'=>$request->periode,
 			'nama_proker'=>$request->nama_proker,
 			'penanggungjawab'=>$request->penanggungjawab,

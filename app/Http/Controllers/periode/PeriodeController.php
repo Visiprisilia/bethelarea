@@ -26,7 +26,7 @@ class PeriodeController extends Controller
             'akhir_periode'=>$request->akhir_periode,	
 			'status'=>$request->status	
 			]);
-			return redirect('/periode')->with('status', 'Data berhasil ditambahkan');
+			return redirect('/periode')->with(['success' => 'Pesan Berhasil']);
 	}
 	public function editperiode($kode_periode)
 	{

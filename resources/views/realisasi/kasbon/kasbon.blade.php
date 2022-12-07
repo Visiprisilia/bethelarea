@@ -1,6 +1,7 @@
 @extends('template')
 @section('container')
 <!-- Begin Page Content -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <div class="container-fluid">
 
     <!-- Page Heading -->
@@ -41,7 +42,8 @@
                             <td>{{ $item->status}}</td>                              
                             <td>
                                 <a href="/editkasbon/{{$item->no_bukti}}"><i class="fas fa-edit" style="color:green"></i></a> |
-                                <a href="/hapuskasbon/{{$item->no_bukti}}"><i class="fas fa-trash-alt" style="color:red"></i></a> 
+                                <!-- <a href="/hapuskasbon/{{$item->no_bukti}}" onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a>  -->
+                                <a href="#" id="bon" data-id="{{$item->no_bukti}}" ><i class="fas fa-trash-alt" style="color:red"></i></a>
                                 <!-- <a href="/lihatkasbon/{{$item->no_bukti}}"><i class="fas fa-print" style="color:blue"></i></a> -->
                             </td>
                         </tr>
@@ -54,5 +56,28 @@
     </div>
 
 </div>
+<script>
+    $('#bon').click( function(){
+        var anak_keberapa = $(this).attr('data-id')
+        swal({
+            title: "Yakin?",
+            text: "Data Anda akan dihapus!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                window.location = "/hapuskasbon/"+kb+""
+                swal("Data berhasil dihapus!", {
+                    icon: "success",
+                });
+            } else {
+                swal("Data batal dihapus");
+            }
+        });
+    });
+    
+</script>
 <!-- /.container-fluid -->
 @endsection

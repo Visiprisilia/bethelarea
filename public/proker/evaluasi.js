@@ -16,7 +16,7 @@ $(document).on("change","#kode_proker",function(){
             $("#indikator_pencapaian").val(data.programkerja.indikator);
             $.each(data.akun,function(x,i){
       
-                $("#akunbeban").append('<input class="form-control" id="akun_beban" name="akun_beban" value="'+i.nama_akun+'" placeholder="Masukkan Akun Biaya" required />');
+                $("#akunbeban").append('<input class="form-control" id="akun_beban" name="akun_beban" readonly name="akun_beban"  value="'+i.nama_akun+'" placeholder="Masukkan Akun Biaya" required />');
                 
             })
         }

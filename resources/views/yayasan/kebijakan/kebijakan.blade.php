@@ -1,6 +1,7 @@
 @extends('template')
 @section('container')
 <!-- Begin Page Content -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <div class="container-fluid">
 
     <!-- Page Heading -->
@@ -20,7 +21,7 @@
                         <tr>
                             <th>Kode</th>
                             <th>File Kebijakan</th>
-                            <th>Keterangan</th>                          
+                            <th>Keterangan</th>
                             <th>Aksi</th>
                         </tr>
                     <tbody>
@@ -30,10 +31,11 @@
                             <td>{{ $item->file_kebijakan}}</td>
                             <td>{{ $item->keterangan}}</td>
                             <td>
-                                <a href="/editkebijakan/{{$item->kode_kebijakan}}"><i class="fas fa-edit" style="color:green"></i></a> 
-                                <a href="/hapuskebijakan/{{$item->kode_kebijakan}}"><i class="fas fa-trash-alt" style="color:red"></i></a>
+                                <a href="/editkebijakan/{{$item->kode_kebijakan}}"><i class="fas fa-edit" style="color:green"></i></a>
+                                <!-- <a href="/hapuskebijakan/{{$item->kode_kebijakan}}" onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a> -->
+                                <a href="#" id="delete" data-id="{{$item->kode_kebijakan}}" ><i class="fas fa-trash-alt" style="color:red"></i></a>
+                                <!-- <a href="#" class="btn btn-danger delete" data-id="{{$item->kode_kebijakan}}">delete</a> -->
                                 <a href="/download/{{($item->kode_kebijakan) }}" download=""><i class="fas fa-download" style="color:orange"></i></a>
-                                <!-- <a href="kebijakan/{{($item->file_kebijakan) }}" download=""><i class="fas fa-eye" style="color:blue"></i></a> -->
                             </td>
                         </tr>
                         @endforeach
@@ -46,4 +48,27 @@
 
 </div>
 <!-- /.container-fluid -->
+<script>
+    $('#delete').click( function(){
+        var kebijakanid = $(this).attr('data-id')
+        swal({
+            title: "Yakin?",
+            text: "Data Anda akan dihapus!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                window.location = "/hapuskebijakan/"+kebijakanid+""
+                swal("Data berhasil dihapus!", {
+                    icon: "success",
+                });
+            } else {
+                swal("Data batal dihapus");
+            }
+        });
+    });
+    
+</script>
 @endsection

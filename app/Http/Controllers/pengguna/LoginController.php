@@ -14,7 +14,7 @@ class LoginController extends Controller
 	if (Auth::attempt($request->only('nama_user','password'))){
 		return redirect('/dashboard');
 	}
-	return redirect('login');
+	return redirect('bethelarea');
 	}
 
 	public function logout (Request $request)
@@ -35,7 +35,7 @@ class LoginController extends Controller
 		User::create([
 			'nama_user'=>$request->nama_user,
 			'password'=>bcrypt($request->password),
-			'level'=>'super admin',
+			'level'=>$request->level,
 			'nama_pengguna'=>$request->nama_pengguna,			
 			
 

@@ -1,6 +1,7 @@
 @extends('template')
 @section('container')
 <!-- Begin Page Content -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <div class="container-fluid">
 
     <!-- Page Heading -->
@@ -18,7 +19,7 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>No</th>                        
+                            <th>No</th>                                    
                             <th>Periode</th>
                             <th>Kode Program Kerja</th>
                             <th>Nama Program Kerja</th>
@@ -57,7 +58,9 @@
                             <td>{{ $item->tindaklanjut}}</td>                            
                             <td>
                                 <a href="/editevaluasi/{{$item->kode_proker}}"><i class="fas fa-edit" style="color:green"></i></a> |
-                                <a href="/hapusevaluasi/{{$item->kode_proker}}"><i class="fas fa-trash-alt" style="color:red"></i></a>
+                                <!-- <a href="/hapusevaluasi/{{$item->kode_proker}}" onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a> -->
+                                <a href="#" id="eval" data-id="{{$item->kode_proker}}" ><i class="fas fa-trash-alt" style="color:red"></i></a>
+
                             </td>
                         </tr>
                         @endforeach
@@ -70,4 +73,27 @@
 
 </div>
 <!-- /.container-fluid -->
+<script>
+    $('#eval').click( function(){
+        var ev = $(this).attr('data-id')
+        swal({
+            title: "Yakin?",
+            text: "Data Anda akan dihapus!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                window.location = "/hapusevaluasi/"+ev+""
+                swal("Data berhasil dihapus!", {
+                    icon: "success",
+                });
+            } else {
+                swal("Data batal dihapus");
+            }
+        });
+    });
+    
+</script>
 @endsection

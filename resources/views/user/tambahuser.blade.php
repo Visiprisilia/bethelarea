@@ -42,7 +42,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Password</label>
-                                                <input class="form-control" id="password" name="password"  />
+                                                <input class="form-control" type="password" id="password" name="password"  />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Level</label>

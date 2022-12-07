@@ -12,8 +12,10 @@ use App\Http\Controllers\Controller;
 
 
 class KebijakanController extends Controller
+
 {
-    public function kebijakan()
+	
+	public function kebijakan()
     {
         $kebijakan = Kebijakan::orderBy('created_at','desc')->get();
         return view('yayasan/kebijakan/kebijakan', compact('kebijakan'));

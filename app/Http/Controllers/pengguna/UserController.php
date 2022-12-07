@@ -23,7 +23,7 @@ class UserController extends Controller
 		User::create([
 			'nama_pengguna'=>$request->nama_pengguna,
 			'nama_user'=>$request->nama_user,
-			'password'=>$request->password,
+			'password'=>bcrypt($request->password),
 			'level'=>$request->level,	
             'last_login'=>$request->last_login,	
 			'status'=>$request->status	
@@ -40,7 +40,7 @@ class UserController extends Controller
 		$user = User::where('id', $request->id)->update([
 			'nama_pengguna'=>$request->nama_pengguna,
 			'nama_user'=>$request->nama_user,
-			'password'=>$request->password,
+			'password'=>bcrypt($request->password),
 			'level'=>$request->level,	
             'last_login'=>$request->last_login,	
 			'status'=>$request->status	

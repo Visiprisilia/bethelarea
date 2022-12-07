@@ -3,28 +3,34 @@
 namespace App\Http\Controllers\laporan;
 
 use Illuminate\Http\Request;
-use App\Models\Realisasi\KasKeluar;
-use App\Models\Realisasi\KasMasuk;
+use App\Models\Laporan\LaporanPengKomp;
+use App\Models\Periode\Periode;
+use App\Models\Akuns;
+use App\Models\Coa\Coa;
 use App\Http\Controllers\Controller;
 
 class LaporanPKController extends Controller
 {
     public function laporanpengkomp()
     {
-        $kasmasuk = KasMasuk::orderBy('created_at','desc')->get();
-		$kaskeluar = KasKeluar::orderBy('created_at','desc')->get();
-        // $kasmasuk = KasMasuk::join("murid","kas_masuk.kasir","=","murid.nomor_induk")->get();
-        // $bbpendapatan = ProgramKerja::orderBy('created_at','desc')->get();
-        $laporanpk= KasMasuk::join("kas_keluar","kas_masuk.no_bukti","=","kas_keluar.no_bukti")->get();
-        return view('laporan/laporanpengkomp', ['laporanpk'=>$laporanpk,'kaskeluar'=>$kaskeluar,'kasmasuk'=>$kasmasuk]);
+        $lappk = Periode::orderBy('created_at', 'desc')->get();
+       
+        return view('laporan/laporanpengkomp', ['lappk' => $lappk]);
     }
-    public function cetaklaporanpengkomp()
+    public function viewlpk(Request $request)
     {
-        $kasmasuk = KasMasuk::orderBy('created_at','desc')->get();
-		$kaskeluar = KasKeluar::orderBy('created_at','desc')->get();
-        // $kasmasuk = KasMasuk::join("murid","kas_masuk.kasir","=","murid.nomor_induk")->get();
-        // $bbpendapatan = ProgramKerja::orderBy('created_at','desc')->get();
-        $laporanpk= KasMasuk::join("kas_keluar","kas_masuk.no_bukti","=","kas_keluar.no_bukti")->get();
-        return view('laporan/cetaklaporanpengkomp', ['laporanpk'=>$laporanpk,'kaskeluar'=>$kaskeluar,'kasmasuk'=>$kasmasuk]);
+        $id = $request->id;
+        $periode = Periode::orderBy('created_at', 'desc')->get();
+        $lappk = LaporanPengKomp::where('periode', $id)->get();
+        $biaya = LaporanPengKomp::where('akun', 'LIKE', '5%','AND','periode', $id)->get();
+        $pendapatan = LaporanPengKomp::where('akun', 'LIKE', '4%','AND','periode', $id)->get();
+        $totalpendap = LaporanPengKomp::where('akun', 'LIKE', '4%','AND','periode', $id)->sum('realisasi');
+        $totalbiaya = LaporanPengKomp::where('akun', 'LIKE', '5%','AND','periode', $id)->sum('realisasi');
+        $total = $totalpendap - $totalbiaya;
+        
+        return view('laporan/viewlpk', ['lappk' => $lappk,'periode'=>$periode,'biaya'=>$biaya,'pendapatan'=>$pendapatan,
+        'totalpendap'=>$totalpendap, 'totalbiaya'=>$totalbiaya,'total'=>$total]);
     }
+    
+
 }

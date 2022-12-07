@@ -60,7 +60,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Akun Biaya</label>
-                                                    <input class="form-control" id="akun_beban" name="akun_beban" placeholder="Masukkan Akun Biaya" value="{{$item->akun_beban}}" required />
+                                                    <input class="form-control" id="akun_beban" name="akun_beban" placeholder="Masukkan Akun Biaya" readonly value="{{$item->akun_beban}}" required />
                                                 </div>
                                             </div>
                                             <div class="row gx-3 mb-3">

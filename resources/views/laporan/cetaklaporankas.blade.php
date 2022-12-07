@@ -75,12 +75,18 @@
                                             <p style="text-align:center;"><strong>LAPORAN KAS</strong><br>
                                             <p></p>
                                         </div>
-                                        <!-- <form method='post' class="no-print" href="{{url('/laporankas')}}">Bulan <input type="number" class="no-print" name="bulan" id="bulan" min="1" max="12"> Tahun <input type="number" name="tahun" id="tahun" min="2021" max="2030"> <input type="submit" name="filterperiod" id="filterperiod" class="no-print" value="Tampilkan"> </form> -->
-                                    </div>
-                                    Jumlah Kas Masuk : Rp. {{$tambah}}<br>
-                                    Jumlah Kas Keluar : Rp. {{$kurang}}<br>
+                                      Periode :  <select class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" id="laporankas" require name="laporankas">
+                                            <option value>Pilih Periode</option>
+                                            @foreach ($laporankas as $item)
+                                            <option value="{{ $item->kode_periode}}">{{$item->nama_periode}}</option>
+                                            @endforeach
+                                        </select>
+                                        </select>
+                                    </div>  <br>
+                                    Jumlah Kas Masuk : Rp. <br>
+                                    Jumlah Kas Keluar : Rp.<br>
                                     --------------------------------------<br>
-                                    Total Kas : Rp. {{$totalkas}}<br>
+                                    Total Kas : Rp. <br>
                                     <br>
                                     <br>
                                     <br>
@@ -93,3 +99,18 @@
                         </div>
                     </div>
                 </div>
+                <script>
+    $(document).on('change', '#laporankas', function() {
+        var id = $(this).val();
+        $.ajax({
+            url: "/viewcetaklk",
+            data: {
+                id: id
+            },
+            method: "get",
+            success: function(data) {
+                $('#tablelk').html(data);
+            }
+        })
+    })
+</script>

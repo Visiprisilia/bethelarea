@@ -41,7 +41,8 @@
                             <td>{{ $item->kasir}}</td>                              
                             <td>
                                 <a href="/editkaskeluar/{{$item->no_bukti}}"><i class="fas fa-edit" style="color:green"></i></a> |
-                                <a href="/hapuskaskeluar/{{$item->no_bukti}}"><i class="fas fa-trash-alt" style="color:red"></i></a> |
+                                <!-- <a href="/hapuskaskeluar/{{$item->no_bukti}}" onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a> | -->
+                                <a href="#" id="kk" data-id="{{$item->no_bukti}}" ><i class="fas fa-trash-alt" style="color:red"></i></a>
                                 <a href="/lihatkaskeluar/{{$item->no_bukti}}"><i class="fas fa-print" style="color:blue"></i></a>
                             </td>
                         </tr>
@@ -54,5 +55,28 @@
     </div>
 
 </div>
+<script>
+    $('#kk').click( function(){
+        var kaskel = $(this).attr('data-id')
+        swal({
+            title: "Yakin?",
+            text: "Data Anda akan dihapus!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                window.location = "/hapuskaskeluar/"+kaskel+""
+                swal("Data berhasil dihapus!", {
+                    icon: "success",
+                });
+            } else {
+                swal("Data batal dihapus");
+            }
+        });
+    });
+    
+</script>
 <!-- /.container-fluid -->
 @endsection

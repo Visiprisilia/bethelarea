@@ -1,6 +1,7 @@
 @extends('template')
 @section('container')
 <!-- Begin Page Content -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <div class="container-fluid">
 
     <!-- Page Heading -->
@@ -39,7 +40,9 @@
                             <td>{{ $item->keterangan}}</td>      
                             <td>
                                 <a href="/editcoa/{{$item->kode_akun}}"><i class="fas fa-edit" style="color:green"></i></a> | 
-                                <a href="/hapuscoa/{{$item->kode_akun}}"><i class="fas fa-trash-alt" style="color:red"></i></a> 
+                                <!-- <a href="/hapuscoa/{{$item->kode_akun}}" onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a>  -->
+                                <a href="#" id="hapus" data-id="{{$item->kode_akun}}" ><i class="fas fa-trash-alt" style="color:red"></i></a>
+
                             </td>
                         </tr>  
                         @endforeach  
@@ -51,7 +54,28 @@
     </div>
 
 </div>
-<!-- /.container-fluid
-@include('sweetalert::alert') -->
-
+<!-- /.container-fluid -->
+<script>
+    $('#hapus').click( function(){
+        var akun = $(this).attr('data-id')
+        swal({
+            title: "Yakin?",
+            text: "Data Anda akan dihapus!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                window.location = "/hapusakun/"+akun+""
+                swal("Data berhasil dihapus!", {
+                    icon: "success",
+                });
+            } else {
+                swal("Data batal dihapus");
+            }
+        });
+    });
+    
+</script>
 @endsection
