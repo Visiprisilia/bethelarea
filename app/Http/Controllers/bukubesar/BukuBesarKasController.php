@@ -22,7 +22,7 @@ class BukuBesarKasController extends Controller
         $id=$request->id;
         $jlh =0;
         $periode = Periode::orderBy('created_at','desc')->get();
-        $bbkas = BukuBesarKas::orderBy('tgl','desc')->where('periode',$id)->get();  
+        $bbkas = BukuBesarKas::orderBy('tgl','asc')->where('periode',$id)->get();  
         $tambah = BukuBesarKas::where('periode',$id)->sum('bertambah');
         $kurang = BukuBesarKas::where('periode',$id)->sum('berkurang');
         $saldo = ($jlh = $jlh + (int)'bertambah' - (int)'berkurang');

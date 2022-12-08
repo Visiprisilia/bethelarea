@@ -16,7 +16,7 @@
                         <td>{{ $item->keterangan}}</td>
                         <td>{{ $item->bertambah}}</td>
                         <td>{{ $item->berkurang}}</td>
-                      
+                        <td>{{$saldo = $saldo + $item->bertambah - $item->berkurang}}</td>
                     </tr>
                     @endforeach
                 </tbody>
