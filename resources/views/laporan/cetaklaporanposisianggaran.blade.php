@@ -104,6 +104,7 @@
                         </div>
                     </div>
                 </div>
+                <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
  <script>
     $(document).on('change', '#lappa', function() {
         var id = $(this).val();

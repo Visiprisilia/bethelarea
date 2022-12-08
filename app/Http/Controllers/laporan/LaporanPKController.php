@@ -31,6 +31,26 @@ class LaporanPKController extends Controller
         return view('laporan/viewlpk', ['lappk' => $lappk,'periode'=>$periode,'biaya'=>$biaya,'pendapatan'=>$pendapatan,
         'totalpendap'=>$totalpendap, 'totalbiaya'=>$totalbiaya,'total'=>$total]);
     }
+    public function cetaklaporanpengkomp()
+    {
+        $lappk = Periode::orderBy('created_at', 'desc')->get();
+       
+        return view('laporan/cetaklaporanpengkomp', ['lappk' => $lappk]);
+    }
+    public function viewcetaklpk(Request $request)
+    {
+        $id = $request->id;
+        $periode = Periode::orderBy('created_at', 'desc')->get();
+        $lappk = LaporanPengKomp::where('periode', $id)->get();
+        $pendapatan = LaporanPengKomp::where('akun', 'LIKE', '4%')->where('periode', $id)->get();
+        $biaya = LaporanPengKomp::where('akun', 'LIKE', '5%')->where('periode', $id)->get();
+        $totalpendap = LaporanPengKomp::where('akun', 'LIKE', '4%')->where('periode', $id)->sum('realisasi');
+        $totalbiaya = LaporanPengKomp::where('akun', 'LIKE', '5%')->where('periode', $id)->sum('realisasi');
+        $total = $totalpendap - $totalbiaya;
+        
+        return view('laporan/viewcetaklpk', ['lappk' => $lappk,'periode'=>$periode,'biaya'=>$biaya,'pendapatan'=>$pendapatan,
+        'totalpendap'=>$totalpendap, 'totalbiaya'=>$totalbiaya,'total'=>$total]);
+    }
     
 
 }

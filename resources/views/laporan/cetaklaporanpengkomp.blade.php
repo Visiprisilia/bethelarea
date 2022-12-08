@@ -75,21 +75,22 @@
                                             <p style="text-align:center;"><strong>LAPORAN PENGHASILAN KOMPREHENSIF</strong><br>
                                             <p></p>
                                         </div>
-                                        <!-- <form method='post' class="no-print" href="{{url('/laporankas')}}">Bulan <input type="number" class="no-print" name="bulan" id="bulan" min="1" max="12"> Tahun <input type="number" name="tahun" id="tahun" min="2021" max="2030"> <input type="submit" name="filterperiod" id="filterperiod" class="no-print" value="Tampilkan"> </form> -->
                                     </div>
-                                    Pendapatan <br>
-                                           Pendaftaran Murid Baru : <br>
-                                           Sumbangan OTM : <br>
+                                    Periode :   <select class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" id="lappk" require name="lappk">
+                                        <option value>Pilih Periode</option>
+                                        @foreach ($lappk as $item)
+                                        <option value="{{ $item->kode_periode}}">{{$item->nama_periode}}</option>
+                                        @endforeach
+                                    </select>
+                                    <div class="table-responsive" id="tablecetaklpk">
+                                        <table class="table align-items-center table-flush">
+                                            <thead class="thead-light">
+                                                <br>
+                                              
 
-                                           <br>
-                                           Biaya<br>                                   
-                                           Biaya Minum Rapat : <br>
-                                           Biaya ATK : <br>
-                                           Biaya Gaji : <br>
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <br>                            
+                                            </thead>
+                                            </tbody>
+                                        </table><br>
                                     <input class="no-print" type="button" value="Cetak" onclick="window.print()">
                                     <input type="button" value="Kembali" onclick=self.history.back() class="no-print">
                                 </div>
@@ -98,3 +99,19 @@
                         </div>
                     </div>
                 </div>
+                <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+                <script>
+                    $(document).on('change', '#lappk', function() {
+                        var id = $(this).val();
+                        $.ajax({
+                            url: "/viewcetaklpk",
+                            data: {
+                                id: id
+                            },
+                            method: "get",
+                            success: function(data) {
+                                $('#tablecetaklpk').html(data);
+                            }
+                        })
+                    })
+                </script>

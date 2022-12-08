@@ -11,7 +11,7 @@
         @foreach ($lappa as $item)
         <tr>
             <td>{{ $loop->iteration}}</td>
-            <td>{{ $item->kode_akun}}</td>
+            <td>{{ $item->akun}}</td>
             <td>{{ $item->nama_akun}}</td>
             <td>{{ $item->anggaran}}</td>
             <td>{{ $item->posisi_anggaran}}</td>

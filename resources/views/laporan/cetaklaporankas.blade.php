@@ -75,42 +75,47 @@
                                             <p style="text-align:center;"><strong>LAPORAN KAS</strong><br>
                                             <p></p>
                                         </div>
-                                      Periode :  <select class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" id="laporankas" require name="laporankas">
+                                        Periode : <select class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" id="laporankas" require name="laporankas">
                                             <option value>Pilih Periode</option>
                                             @foreach ($laporankas as $item)
                                             <option value="{{ $item->kode_periode}}">{{$item->nama_periode}}</option>
                                             @endforeach
                                         </select>
-                                        </select>
-                                    </div>  <br>
-                                    Jumlah Kas Masuk : Rp. <br>
-                                    Jumlah Kas Keluar : Rp.<br>
-                                    --------------------------------------<br>
-                                    Total Kas : Rp. <br>
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <input class="no-print" type="button" value="Cetak" onclick="window.print()">
-                                    <input type="button" value="Kembali" onclick=self.history.back() class="no-print">
+                                    </div>
+                                    <div class="table-responsive" id="tablecetaklk">
+                                        <table class="table align-items-center table-flush">
+                                            <thead class="thead-light">
+                                                <br>
+                                                Jumlah Kas Masuk : Rp. <br>
+                                                Jumlah Kas Keluar : Rp.<br>
+                                                --------------------------------------<br>
+                                                Total Kas : Rp. <br>
+
+                                            </thead>
+                                            </tbody>
+                                        </table><br><br><br><br><br>
+
+                                        <input class="no-print" type="button" value="Cetak" onclick="window.print()">
+                                        <input type="button" value="Kembali" onclick=self.history.back() class="no-print">
+                                    </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
+                <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
                 <script>
-    $(document).on('change', '#laporankas', function() {
-        var id = $(this).val();
-        $.ajax({
-            url: "/viewcetaklk",
-            data: {
-                id: id
-            },
-            method: "get",
-            success: function(data) {
-                $('#tablelk').html(data);
-            }
-        })
-    })
-</script>
+                    $(document).on('change', '#laporankas', function() {
+                        var id = $(this).val();
+                        $.ajax({
+                            url: "/viewcetaklk",
+                            data: {
+                                id: id
+                            },
+                            method: "get",
+                            success: function(data) {
+                                $('#tablecetaklk').html(data);
+                            }
+                        })
+                    })
+                </script>

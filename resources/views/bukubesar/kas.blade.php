@@ -16,15 +16,10 @@
                         <td>{{ $item->keterangan}}</td>
                         <td>{{ $item->bertambah}}</td>
                         <td>{{ $item->berkurang}}</td>
-                        <td>{{$saldo = $saldo + $item->bertambah - $item->berkurang}}</td>
+                      
                     </tr>
                     @endforeach
                 </tbody>
-                <th>Total</th>
-                <th></th>
-                <th></th>
-                <th>{{$tambah}}</th>
-                <th>{{$kurang}}</th>
-                <th>{{$totalbbkas}}</th>
+                
                 </thead>
             </table>

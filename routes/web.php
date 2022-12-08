@@ -195,4 +195,5 @@ Route::get('/viewcetaklpa', [LaporanPAController::class,'viewcetaklpa']);
 Route::get('/laporanpengkomp', [LaporanPKController::class,'laporanpengkomp']);
 Route::get('/viewlpk', [LaporanPKController::class,'viewlpk']);
 Route::get('/cetaklaporanpengkomp', [LaporanPKController::class,'cetaklaporanpengkomp']);
+Route::get('/viewcetaklpk', [LaporanPKController::class,'viewcetaklpk']);
 

@@ -21,8 +21,8 @@ class BukuBesarAnggaranController extends Controller
 
     public function anggaran(Request $request)
     {
-        $id=$request->id;
         $jlh = 0;
+        $id=$request->id;
         $bbanggaran = BukuBesarAnggaran::orderBy('tgl', 'asc')->where('akun',$id)->get();   
         $anggaran = BukuBesarAnggaran::where('akun',$id)->sum('anggaran');
         $realisasi = BukuBesarAnggaran::where('akun',$id)->sum('realisasi');
