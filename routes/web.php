@@ -115,6 +115,7 @@ Route::get('/hapususer/{id}', [UserController::class,'hapususer']);
 
 //Program Kerja
 Route::get('/programkerja', [ProgramKerjaController::class,'programkerja']);
+Route::get('/viewprogramkerja', [ProgramKerjaController::class,'viewprogramkerja']);
 Route::get('/tambahprogramkerja', [ProgramKerjaController::class,'tambahprogramkerja']);
 Route::post('/simpanprogramkerja', [ProgramKerjaController::class,'simpanprogramkerja']);
 Route::get('/editprogramkerja/{kode_proker}', [ProgramKerjaController::class,'editprogramkerja']);

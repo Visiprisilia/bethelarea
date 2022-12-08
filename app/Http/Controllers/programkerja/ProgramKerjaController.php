@@ -21,6 +21,13 @@ class ProgramKerjaController extends Controller
 		// return $programkerja;
         return view('programkerja/programkerja/programkerja', compact('programkerja', 'periode'));
 		}
+		public function viewprogramkerja(Request $request)
+		{
+			$id = $request->id;
+			$periode = Periode::orderBy('created_at', 'desc')->get();
+			$programkerja = ProgramKerja::join("pegawai","program_kerja.penanggungjawab","=","pegawai.niy")->where('periode', $id)->get();
+			return view('programkerja/programkerja/viewprogramkerja', compact('programkerja', 'periode'));
+			}
     public function tambahprogramkerja()
 	{
 		$periode = Periode::orderBy('created_at','desc')->get();
