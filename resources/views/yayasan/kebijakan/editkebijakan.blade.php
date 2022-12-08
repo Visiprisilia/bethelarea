@@ -47,7 +47,7 @@
                                             </div>                                                                                    
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Simpan</button>
-                                                <a href="{{url('/kebijakan')}}" class="btn btn-danger">Batal</a>                                            </div>
+                                                <a href="{{url('/kebijakans')}}" class="btn btn-danger">Batal</a>                                            </div>
                                         </form>
                                     </div>
                                 </div>

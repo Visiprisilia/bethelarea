@@ -22,10 +22,10 @@ class LaporanPKController extends Controller
         $id = $request->id;
         $periode = Periode::orderBy('created_at', 'desc')->get();
         $lappk = LaporanPengKomp::where('periode', $id)->get();
-        $biaya = LaporanPengKomp::where('akun', 'LIKE', '5%','AND','periode', $id)->get();
-        $pendapatan = LaporanPengKomp::where('akun', 'LIKE', '4%','AND','periode', $id)->get();
-        $totalpendap = LaporanPengKomp::where('akun', 'LIKE', '4%','AND','periode', $id)->sum('realisasi');
-        $totalbiaya = LaporanPengKomp::where('akun', 'LIKE', '5%','AND','periode', $id)->sum('realisasi');
+        $pendapatan = LaporanPengKomp::where('akun', 'LIKE', '4%')->where('periode', $id)->get();
+        $biaya = LaporanPengKomp::where('akun', 'LIKE', '5%')->where('periode', $id)->get();
+        $totalpendap = LaporanPengKomp::where('akun', 'LIKE', '4%')->where('periode', $id)->sum('realisasi');
+        $totalbiaya = LaporanPengKomp::where('akun', 'LIKE', '5%')->where('periode', $id)->sum('realisasi');
         $total = $totalpendap - $totalbiaya;
         
         return view('laporan/viewlpk', ['lappk' => $lappk,'periode'=>$periode,'biaya'=>$biaya,'pendapatan'=>$pendapatan,
