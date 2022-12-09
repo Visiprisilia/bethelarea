@@ -14,9 +14,9 @@
                         <td>{{ $loop->iteration}}</td>
                         <td>{{ $item->kode}}</td>
                         <td>{{ $item->keterangan}}</td>
-                        <td>{{ $item->bertambah}}</td>
-                        <td>{{ $item->berkurang}}</td>
-                        <td>{{$saldo = $saldo + $item->bertambah - $item->berkurang}}</td>
+                        <td>{{Str::rupiah ($item->bertambah)}}</td>
+                        <td>{{Str::rupiah ($item->berkurang)}}</td>
+                        <td>{{Str::rupiah($saldo = $saldo + $item->bertambah - $item->berkurang)}}</td>
                     </tr>
                     @endforeach
                 </tbody>

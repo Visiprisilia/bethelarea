@@ -40,7 +40,7 @@
                             <td>{{ $item->keterangan}}</td>
                             <td>{{ $item->akun}}</td>                            
                             <td>{{ $item->sumber}}</td>                            
-                            <td>{{ $item->jumlah}}</td>                              
+                            <td>{{Str::rupiah ($item->jumlah)}}</td>                              
                             <td>{{ $item->nama}}</td>                              
                             <td>
                                 <a href="/editkasmasuk/{{$item->no_bukti}}"><i class="fas fa-edit" style="color:green"></i></a> |

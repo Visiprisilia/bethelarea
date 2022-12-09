@@ -82,41 +82,41 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="table-responsive" id="tablecetaklpa">
-                                    <table class="table align-items-center table-flush" >
-                                        <thead class="thead-light">
-                                            <tr>
-                                                <th class="text-center" style="width: 20%; border-bottom: 2px solid #ddd;">No</th>
-                                                <th class="text-center" style="width: 20%; border-bottom: 2px solid #ddd;">Kode Akun</th>
-                                                <th class="text-center" style="width: 50%; border-bottom: 2px solid #ddd;">Nama Akun</th>
-                                                <th class="text-center" style="width: 50%; border-bottom: 2px solid #ddd;">Anggaran</th>
-                                                <th class="text-center" style="width: 50%; border-bottom: 2px solid #ddd;">Posisi Anggaran</th>
-                                            </tr>
-                                        <tbody>
-                                        </tbody>
-                                        </thead>
-                                        </tbody>
-                                    </table><br><br><br><br><br>
-                                    <input class="no-print" type="button" value="Cetak" onclick="window.print()">
-                                    <input type="button" value="Kembali" onclick=self.history.back() class="no-print">
+                                    <div class="card-body">
+                                    <div class="table-responsive" id="tablecetaklpa">                                       
+                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th>No</th>
+                                                    <th>Kode Akun</th>
+                                                    <th>Nama Akun</th>
+                                                    <th>Anggaran</th>
+                                                    <th>Posisi Anggaran</th>
+                                                </tr>
+                                            <tbody>
+                                            </tbody>
+                                            </thead>
+                                        </table><br><br><br>
+                                        <input class="no-print" type="button" value="Cetak" onclick="window.print()">
+                                        <input type="button" value="Kembali" onclick=self.history.back() class="no-print">
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
- <script>
-    $(document).on('change', '#lappa', function() {
-        var id = $(this).val();
-        $.ajax({
-            url: "/viewcetaklpa",
-            data: {
-                id: id
-            },
-            method: "get",
-            success: function(data) {
-                $('#tablecetaklpa').html(data);
-            }
-        })
-    })
-</script>
+                    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+                    <script>
+                        $(document).on('change', '#lappa', function() {
+                            var id = $(this).val();
+                            $.ajax({
+                                url: "/viewcetaklpa",
+                                data: {
+                                    id: id
+                                },
+                                method: "get",
+                                success: function(data) {
+                                    $('#tablecetaklpa').html(data);
+                                }
+                            })
+                        })
+                    </script>

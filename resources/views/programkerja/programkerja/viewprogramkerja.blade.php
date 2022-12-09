@@ -26,7 +26,7 @@
         <td>{{ $item->waktu_selesai}}</td>
         <td>{{ $item->tujuan}}</td>
         <td>{{ $item->indikator}}</td>
-        <td>{{ $item->anggaran}}</td>
+        <td>{{Str::rupiah ($item->anggaran)}}</td>
         <td>{{ $item->keterangan}}</td>
         <td>
             <a href="/editprogramkerja/{{$item->kode_proker}}"><i class="fas fa-edit" style="color:green"></i></a> |

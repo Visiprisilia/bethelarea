@@ -36,7 +36,7 @@
                             <td>{{ $item->periode}}</td>
                             <td>{{ $item->tanggal_pengajuan}}</td>
                             <td>{{ $item->proker}}</td>
-                            <td>{{ $item->anggaran}}</td>                            
+                            <td>{{ Str::rupiah($item->anggaran)}}</td>                            
                             <td>{{ $item->penanggungjawab}}</td>                              
                             <td>{{ $item->tanggal_ptj}}</td>                              
                             <td>{{ $item->status}}</td>                              

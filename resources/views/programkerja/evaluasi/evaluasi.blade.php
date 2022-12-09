@@ -47,8 +47,8 @@
                             <td>{{ $item->penanggungjawab}}</td>                                                         
                             <td>{{ $item->tujuan}}</td>                            
                             <td>{{ $item->akun_beban}}</td>                             
-                            <td>{{ $item->rencana_anggaran}}</td>                        
-                            <td>{{ $item->realisasi_anggaran}}</td>                        
+                            <td>{{Str::rupiah ($item->rencana_anggaran)}}</td>                        
+                            <td>{{Str::rupiah ($item->realisasi_anggaran)}}</td>                        
                             <td>{{ $item->rencana_waktu}}</td>                            
                             <td>{{ $item->realisasi_waktu}}</td>                            
                             <td>{{ $item->indikator_pencapaian}}</td>                            

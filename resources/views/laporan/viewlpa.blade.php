@@ -13,8 +13,8 @@
         <td>{{ $loop->iteration}}</td>
         <td>{{ $item->akun}}</td>
         <td>{{ $item->nama_akun}}</td>
-        <td>{{ $item->anggaran}}</td>
-        <td>{{ $item->posisi_anggaran}}</td>
+        <td>{{Str::rupiah($item->anggaran)}}</td>
+        <td>{{Str::rupiah($item->posisi_anggaran)}}</td>
 
     </tr>
     @endforeach

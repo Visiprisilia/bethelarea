@@ -36,7 +36,7 @@
                             <td>{{ $item->tanggal_pencatatan}}</td>
                             <td>{{ $item->keterangan}}</td>
                             <td>{{ $item->akun}}</td>                            
-                            <td>{{ $item->jumlah}}</td>                              
+                            <td>{{ Str::rupiah($item->jumlah)}}</td>                              
                             <td>{{ $item->bukti}}</td>                              
                             <td>{{ $item->kasir}}</td>                              
                             <td>

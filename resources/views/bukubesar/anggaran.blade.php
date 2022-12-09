@@ -12,17 +12,17 @@
     <tr>
         <td>{{ $loop->iteration}}</td>
         <td>{{ $item->kode}}</td>
-        <td>{{ $item->anggaran}}</td>
-        <td>{{ $item->realisasi}}</td>
-        <td>{{$saldo = $saldo + $item->anggaran - $item->realisasi}}</td>
+        <td>{{Str::rupiah ($item->anggaran)}}</td>
+        <td>{{Str::rupiah ($item->realisasi)}}</td>
+        <td>{{Str::rupiah ($saldo = $saldo + $item->anggaran - $item->realisasi)}}</td>
         </tr>  
     @endforeach  
     </tbody> 
     <th>Total</th>                
     <th></th>          
-    <th>{{$anggaran}}</th>                                           
-    <th>{{$realisasi}}</th>                
-    <th>{{$total}}</th>                
+    <th>{{Str::rupiah($anggaran)}}</th>                                           
+    <th>{{Str::rupiah($realisasi)}}</th>                
+    <th>{{Str::rupiah($total)}}</th>                
     <th></th>                
 </thead>
 </table>

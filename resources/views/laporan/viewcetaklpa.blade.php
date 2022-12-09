@@ -1,11 +1,11 @@
-<table class="table align-items-center table-flush">
-    <thead class="thead-light">
+<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+    <thead>
         <tr>
-            <th class="text-center" style="width: 20%; border-bottom: 2px solid #ddd;">No</th>
-            <th class="text-center" style="width: 20%; border-bottom: 2px solid #ddd;">Kode Akun</th>
-            <th class="text-center" style="width: 50%; border-bottom: 2px solid #ddd;">Nama Akun</th>
-            <th class="text-center" style="width: 50%; border-bottom: 2px solid #ddd;">Anggaran</th>
-            <th class="text-center" style="width: 50%; border-bottom: 2px solid #ddd;">Posisi Anggaran</th>
+            <th>No</th>
+            <th>Kode Akun</th>
+            <th>Nama Akun</th>
+            <th>Anggaran</th>
+            <th>Posisi Anggaran</th>
         </tr>
     <tbody>
         @foreach ($lappa as $item)
@@ -13,13 +13,12 @@
             <td>{{ $loop->iteration}}</td>
             <td>{{ $item->akun}}</td>
             <td>{{ $item->nama_akun}}</td>
-            <td>{{ $item->anggaran}}</td>
-            <td>{{ $item->posisi_anggaran}}</td>
+            <td>{{ Str::rupiah($item->anggaran)}}</td>
+            <td>{{ Str::rupiah($item->posisi_anggaran)}}</td>
         </tr>
         @endforeach
     </tbody>
     </thead>
-    </tbody>
-</table><br><br><br><br><br>
+</table><br><br><br>
 <input class="no-print" type="button" value="Cetak" onclick="window.print()">
 <input type="button" value="Kembali" onclick=self.history.back() class="no-print">
