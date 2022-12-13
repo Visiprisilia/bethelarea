@@ -58,7 +58,7 @@
                                                     <label class="mb-1" for="inputLastName">Akun</label>
                                                     <select class="form-control" id="akun" name="akun">
                                                         <option  value>Pilih Akun</option>
-                                                        @foreach ($akun as $item)
+                                                        @foreach ($coa as $item)
                                                         <option value="{{ $item->kode_akun}}">{{$item->nama_akun}}</option>
                                                         @endforeach
                                                     </select>

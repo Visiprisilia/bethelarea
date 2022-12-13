@@ -20,9 +20,10 @@ class KasBonController extends Controller
     }
     public function tambahkasbon()
 	{
-		$periode = Periode::orderBy('created_at','desc')->get();
-		$pegawai = Pegawai::orderBy('created_at','desc')->get();
-		$programkerja = ProgramKerja::orderBy('created_at','desc')->get();
+		$periode = Periode::where('status', 'LIKE', 'AKTIF')->get();
+		$pegawai = Pegawai::where('status', 'LIKE', 'AKTIF')->get();
+		// $programkerja = ProgramKerja::orderBy('created_at','desc')->get();
+		$programkerja = ProgramKerja::join("periode","program_kerja.periode","=","periode.kode_periode")->where('status', 'LIKE', 'AKTIF')->get();
 		return view('realisasi/kasbon/tambahkasbon', ['periode'=>$periode,'pegawai'=>$pegawai,'programkerja'=>$programkerja]);
 	}
     public function simpankasbon(Request $request)
@@ -46,8 +47,8 @@ class KasBonController extends Controller
 	}
 	public function editkasbon($no_bukti)
 	{
-		$periode = Periode::orderBy('created_at','desc')->get();
-		$pegawai = Pegawai::orderBy('created_at','desc')->get();
+		$periode = Periode::where('status', 'LIKE', 'AKTIF')->get();
+		$pegawai = Pegawai::where('status', 'LIKE', 'AKTIF')->get();
 		$programkerja = ProgramKerja::orderBy('created_at','desc')->get();
 		$kasbon = KasBon::where('no_bukti', $no_bukti)->get();
 		return view('realisasi/kasbon/editkasbon',  ['kasbon'=>$kasbon,'periode'=>$periode,'pegawai'=>$pegawai,'programkerja'=>$programkerja]);

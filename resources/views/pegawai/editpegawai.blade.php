@@ -122,7 +122,7 @@
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Status</label>
-                                                    <select class="form-control" id="status" name="status" value="{{$item->status}}" required>
+                                                    <select class="form-control" id="status" name="status" value="{{$item->status}}" >
                                                     <option value>Pilih Status</option>
                                                         <option value="AKTIF">AKTIF</option>
                                                         <option value="NON AKTIF">NON AKTIF</option>
@@ -130,7 +130,7 @@
                                                 </div>
                                                 <div class="col-md-6" id="terminasi" style="display: none;">
                                                     <label class="mb-1" for="inputLastName">Tanggal Terminasi</label>
-                                                    <input class="form-control" type="date"  id="tanggal_terminasi" name="tanggal_terminasi" value="{{$item->tanggal_terminasi}}" required />
+                                                    <input class="form-control" type="date"  id="tanggal_terminasi" name="tanggal_terminasi" value="{{$item->tanggal_terminasi}}"  />
                                                 </div>
                                             </div>
 

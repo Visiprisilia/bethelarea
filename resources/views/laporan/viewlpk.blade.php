@@ -17,7 +17,8 @@
     <th>Total Pendapatan</th>
     <th></th>
     <th></th>
-    <th>{{$totalpendap}}</th>
+    <th>{{Str::rupiah ($totalpendap)}}</th>
+   
     <tbody>
         <th>Biaya</th>
         @foreach ($biaya as $item)
@@ -32,7 +33,7 @@
     <th></th>
     <th>{{Str::rupiah($totalbiaya)}}</th>
     <tbody>
-        <th>Surplus/Devisit</th>
+        <th>Surplus(Defisit)</th>
         <th></th>
         <th></th>
         <th>{{Str::rupiah($total)}}</th>

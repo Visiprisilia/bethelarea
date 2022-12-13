@@ -21,13 +21,13 @@
         <td>{{ $item->kode_proker}}</td>
         <td>{{ $item->periode}}</td>
         <td>{{ $item->nama_proker}}</td>
-        <td>{{ $item->nama}}</td>
+        <td>{{ $item->penanggungjawab}}</td>
         <td>{{ $item->waktu_mulai}}</td>
         <td>{{ $item->waktu_selesai}}</td>
         <td>{{ $item->tujuan}}</td>
         <td>{{ $item->indikator}}</td>
         <td>{{Str::rupiah ($item->anggaran)}}</td>
-        <td>{{ $item->keterangan}}</td>
+        <td>{{ $item->keterangan_proker}}</td>
         <td>
             <a href="/editprogramkerja/{{$item->kode_proker}}"><i class="fas fa-edit" style="color:green"></i></a> |
             <!-- <a href="/hapusprogramkerja/{{$item->kode_proker}}"onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a> -->

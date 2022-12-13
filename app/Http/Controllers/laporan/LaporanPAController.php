@@ -20,7 +20,10 @@ class LaporanPAController extends Controller
         $id = $request->id;
         $periode = Periode::orderBy('created_at', 'desc')->get();
         $lapposisianggaran = LaporanPosisiAnggaran::where('periode', $id)->get();
-        return view('laporan/viewlpa', ['lapposisianggaran' => $lapposisianggaran,'periode'=>$periode]);
+        $anggarans = LaporanPosisiAnggaran::where('periode',$id)->sum('anggaran');
+        $posisianggarans = LaporanPosisiAnggaran::where('periode',$id)->sum('posisi_anggaran');
+        return view('laporan/viewlpa', ['lapposisianggaran' => $lapposisianggaran,'periode'=>$periode,'anggarans'=>$anggarans,
+        'posisianggarans'=>$posisianggarans]);
     }
     public function cetaklaporanposisianggaran()
     {
@@ -32,7 +35,10 @@ class LaporanPAController extends Controller
         $id = $request->id;
         $periode = Periode::orderBy('created_at', 'desc')->get();
         $lappa = LaporanPosisiAnggaran::where('periode', $id)->get();
-        return view('laporan/viewcetaklpa', ['lappa' => $lappa,'periode'=>$periode]);
+        $anggarans = LaporanPosisiAnggaran::where('periode',$id)->sum('anggaran');
+        $posisianggarans = LaporanPosisiAnggaran::where('periode',$id)->sum('posisi_anggaran');
+        return view('laporan/viewcetaklpa', ['lappa' => $lappa,'periode'=>$periode,'anggarans'=>$anggarans,
+        'posisianggarans'=>$posisianggarans]);
     }
 }
 

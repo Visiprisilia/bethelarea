@@ -33,7 +33,7 @@
                                            Jumlah Kas Masuk : <br>
                                            Jumlah Kas Keluar : <br>
                                            -------------------------------<br>
-                                           Total Kas : <br>                               
+                                           Saldo Kas : <br>                               
                                       
                                     </div>
                                 </div>

@@ -7,6 +7,7 @@ use App\Models\Realisasi\KasKeluar;
 use App\Models\Periode\Periode;
 use App\Models\Pegawai\Pegawai;
 use App\Models\Akuns;
+use App\Models\Coa\Coa;
 use Carbon\Carbon;
 use App\Http\Controllers\Controller;
 
@@ -18,14 +19,18 @@ class KasKeluarController extends Controller
 		$periode = Periode::orderBy('created_at','desc')->get();
 		$pegawai = Pegawai::orderBy('created_at','desc')->get();
 		$akun = Akuns::join("coa","akuns.kode_akun","=","coa.kode_akun")->get();
+		// $coa = Coa::orderBy('created_at','desc')->get();
         $kaskeluar = KasKeluar::orderBy('created_at','desc')->get();
         return view('realisasi/kaskeluar/kaskeluar', ['periode'=>$periode,'pegawai'=>$pegawai,'akun'=>$akun,'kaskeluar'=>$kaskeluar]);
     }
     public function tambahkaskeluar()
 	{
-		$periode = Periode::orderBy('created_at','desc')->get();
-		$pegawai = Pegawai::orderBy('created_at','desc')->get();
-		$akun = Akuns::join("coa","akuns.kode_akun","=","coa.kode_akun")->get();
+		$periode = Periode::where('status', 'LIKE', 'AKTIF')->get();
+		$pegawai = Pegawai::where('status', 'LIKE', 'AKTIF')->get();
+		// $akun = Akuns::orderBy('created_at','desc')->get();
+		$akun = Akuns::join("periode","akuns.periode","=","periode.kode_periode")->where('status', 'LIKE', 'AKTIF')->get();
+		// $akun = Akuns::join("coa","akuns.kode_akun","=","coa.kode_akun")->get();
+		// $coa = Coa::orderBy('created_at','desc')->get();
 		return view('realisasi/kaskeluar/tambahkaskeluar', ['periode'=>$periode,'akun'=>$akun,'pegawai'=>$pegawai]);
 	}
     public function simpankaskeluar(Request $request)
@@ -46,7 +51,9 @@ class KasKeluarController extends Controller
 			'tanggal_pencatatan'=>$request->tanggal_pencatatan,
 			'keterangan'=>$request->keterangan,
 			'akun'=>$request->akun,
+			'prokers'=>$request->prokers,
 			'jumlah'=>$request->jumlah,
+			'anggaran'=>$request->anggaran,
 			'bukti'=>$buktis,
 			'kasir'=>$request->kasir
 
@@ -56,8 +63,8 @@ class KasKeluarController extends Controller
 	}
 	public function editkaskeluar($no_bukti)
 	{
-		$periode = Periode::orderBy('created_at','desc')->get();
-		$pegawai = Pegawai::orderBy('created_at','desc')->get();
+		$periode = Periode::where('status', 'LIKE', 'AKTIF')->get();
+		$pegawai = Pegawai::where('status', 'LIKE', 'AKTIF')->get();
 		$akun = Akuns::join("coa","akuns.kode_akun","=","coa.kode_akun")->get();
 		$kaskeluar = KasKeluar::where('no_bukti', $no_bukti)->get();
 		return view('realisasi/kaskeluar/editkaskeluar', ['periode'=>$periode,'pegawai'=>$pegawai,'akun'=>$akun,'kaskeluar'=>$kaskeluar,]);
@@ -78,7 +85,9 @@ class KasKeluarController extends Controller
 			'tanggal_pencatatan'=>$request->tanggal_pencatatan,
 			'keterangan'=>$request->keterangan,
 			'akun'=>$request->akun,
+			'prokers'=>$request->prokers,
 			'jumlah'=>$request->jumlah,
+			'anggaran'=>$request->anggaran,
 			'bukti'=>$buktis,
 			'kasir'=>$request->kasir
 		]);
@@ -98,5 +107,14 @@ class KasKeluarController extends Controller
 	{
         $kaskeluar = KasKeluar::where('no_bukti', $no_bukti)->delete();
 		return redirect('/kaskeluar') -> with ('status', 'Data berhasil dihapus');
+	}
+	public function pilihproker(Request $request)
+	{
+		$kode =$request->kode;
+		$data =Akuns::where("kode_proker",$kode)->first();
+		return response()->json([
+			"proker"=>$data,
+
+		]);
 	}
 }

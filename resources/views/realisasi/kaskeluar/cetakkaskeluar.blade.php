@@ -73,31 +73,39 @@
                                             @foreach($kaskeluar as $item)
                                             <form action="/updatekaskeluar/{{$item->no_bukti}}" method="post">
                                                 @csrf
-                                                <h3 align="center" class='box-title'>BUKTI KAS KELUAR</h3>
-                                                <img src="{{asset('template/img/logo2.png') }}" style="max-width:100px;">
+                                                <img align="bottom" src="{{asset('template/img/logo2.png') }}" style="max-width:100px;">
                                                 <br style="text-align:center;"><strong>YAYASAN BETHEL AREA</strong>
                                                 <br style="text-align:center;"><strong>Sekolah KB/TK "Satria Tunas Bangsa"</strong>
                                                 <br> Alamat: Jl Hasanudin No.3B, Mangunsari, Kec.Sidomukti,Kota Salatiga, Jawa Tengah <br>
-                                                <p></p>
+                                                ------------------------------------------------------------------------------------------
+                                                <p style="text-align:center;"><strong>BUKTI KAS KELUAR</strong><br><br>
+
                                         </div>
 
                                     </div>
                                     <p>
-                                        <b>No Bukti : </b> {{ $item->no_bukti}} &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; <b>Tanggal : </b> {{$item->tanggal_pencatatan}} <br><br>
-                                        <b>Dibayar Untuk :</b> &nbsp;{{$item->kasir}}
+                                        <b>No. Bukti &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</b>&nbsp;{{ $item->no_bukti}}&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; <b>Tanggal : </b> {{$item->tanggal_pencatatan}} <br><br>
+                                        <b>Dibayar Untuk &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</b>&nbsp;{{$item->kasir}}
                                     <p>
-                                        <b>Banyaknya Uang : </b> &nbsp;{{$item->jumlah}}
+                                        <b>Banyaknya Uang &nbsp;&nbsp;&nbsp;&nbsp;:</b>&nbsp;{{Str::rupiah($item->jumlah)}}
                                     <p>
-                                        <b>Untuk Pembayaran :</b> &nbsp;{{$item->keterangan}}
+                                        <b>Terbilang &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</b>{{Terbilang::angka($item->jumlah)}}rupiah
+                                    <p>
+                                    <p>
+                                        <b>Untuk Pembayaran :</b>&nbsp;{{$item->keterangan}}
                                     <p>
                                     </p>
+                                    <div style="text-align:center;">
+                                        -----------------------------------------------------------------------------------------
+                                    </div>
                                     <br>
+
                                     <div style="clear:both;"></div>
-                                    <table class="table table-striped table-condensed">
+                                    <table>
                                         <thead>
                                             <tr>
-                                                <th class="text-center" style="width: 60%; border-bottom: 2px solid #ddd;">Dikeluarkan Oleh</th>
-                                                <th class="text-center" style="width: 60%; border-bottom: 2px solid #ddd;">Diterima Oleh</th>
+                                                <th>Dikeluarkan Oleh</th>
+                                                <th>Diterima Oleh</th>
                                             </tr>
                                         <tbody>
                                             <tr>
@@ -118,7 +126,7 @@
                                         </tfoot>
                                     </table>
                                     @endforeach
-                                    <br><br><br><br>
+                                    <br><br>
                                     <div class="well well-sm" style="margin-top:10px;">
                                         <div style="text-align: left;">Catatan :</div>
                                     </div>
@@ -140,3 +148,20 @@
     </div>
     </div>
 </section>
+<script src="jquery-1.11.2.min.js"></script>
+<script src="jquery.mask.min.js"></script>
+<script src="terbilang.js"></script>
+<script type="text/javascript">
+    function inputTerbilang() {
+        //membuat inputan otomatis jadi mata uang
+        $('.mata-uang').mask('0.000.000.000', {
+            reverse: true
+        });
+
+        //mengambil data uang yang akan dirubah jadi terbilang
+        var input = document.getElementById("terbilang-input").value.replace(/\./g, "");
+
+        //menampilkan hasil dari terbilang
+        document.getElementById("terbilang-output").value = terbilang(input).replace(/  +/g, ' ');
+    }
+</script>

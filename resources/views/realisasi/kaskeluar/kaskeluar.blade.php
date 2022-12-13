@@ -23,6 +23,7 @@
                             <th>Tanggal Pencatatan</th>
                             <th>Keterangan</th>
                             <th>Akun</th>
+                            <th>Program Kerja</th>
                             <th>Jumlah</th>                              
                             <th>Bukti Nota</th>                              
                             <th>Dibayar Kepada</th>                              
@@ -36,6 +37,7 @@
                             <td>{{ $item->tanggal_pencatatan}}</td>
                             <td>{{ $item->keterangan}}</td>
                             <td>{{ $item->akun}}</td>                            
+                            <td>{{ $item->prokers}}</td>                            
                             <td>{{ Str::rupiah($item->jumlah)}}</td>                              
                             <td>{{ $item->bukti}}</td>                              
                             <td>{{ $item->kasir}}</td>                              

@@ -41,7 +41,7 @@
                             <td>{{ $item->akun}}</td>                            
                             <td>{{ $item->sumber}}</td>                            
                             <td>{{Str::rupiah ($item->jumlah)}}</td>                              
-                            <td>{{ $item->nama}}</td>                              
+                            <td>{{ $item->kasir}}</td>                              
                             <td>
                                 <a href="/editkasmasuk/{{$item->no_bukti}}"><i class="fas fa-edit" style="color:green"></i></a> |
                                 <!-- <a href="/hapuskasmasuk/{{$item->no_bukti}}" onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a> | -->

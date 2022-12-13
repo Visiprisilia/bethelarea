@@ -16,6 +16,12 @@
                 <option value="{{ $item->kode_akun}}">{{$item->kode_akun}}-{{$item->nama_akun}}</option>
                 @endforeach
             </select>
+            <!-- <select class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" id="bbanggaran2" require name="bbanggaran2">
+                <option value>Pilih Periode</option>
+                @foreach ($bbanggaran2 as $item)
+                <option value="{{ $item->kode_periode}}">{{$item->nama_periode}}</option>
+                @endforeach
+            </select> -->
         </div>
 
         <div class="card-body">
@@ -45,6 +51,21 @@
             url: "/anggaran",
             data: {
                 id: id
+            },
+            method: "get",
+            success: function(data) {
+                $('#table').html(data);
+            }
+        })
+    })
+</script>
+<script>
+    $(document).on('change', '#bbanggaran2', function() {
+        var kode = $(this).val();
+        $.ajax({
+            url: "/anggaran",
+            data: {
+                kode: kode
             },
             method: "get",
             success: function(data) {

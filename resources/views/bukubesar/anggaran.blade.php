@@ -23,6 +23,6 @@
     <th>{{Str::rupiah($anggaran)}}</th>                                           
     <th>{{Str::rupiah($realisasi)}}</th>                
     <th>{{Str::rupiah($total)}}</th>                
-    <th></th>                
+                  
 </thead>
 </table>

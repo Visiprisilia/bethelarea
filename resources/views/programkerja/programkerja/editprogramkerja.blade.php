@@ -35,27 +35,31 @@
                                         <form action="/updateprogramkerja/{{$items->kode_proker}}" method="post">
                                             @csrf
                                             <div class="row gx-3 mb-3">
-                                                <div class="col-md-6">
+                                                <div class="col-md-8">
                                                     <label class="mb-1" for="inputLastName">Periode</label>
-                                                    <select class="form-control" id="periode" name="periode" value="{{$items->periode}}">
-                                                        <option disabled value>Pilih Periode</option>
+                                                    <select class="form-control" id="periode" require name="periode">
+                                                        <option  value>Pilih Periode</option>
                                                         @foreach ($periode as $item)
                                                         <option value="{{ $item->kode_periode}}">{{$item->nama_periode}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
+                                                <!-- <div class="col-md-6">
+                                                    <label class="mb-1" for="inputFirstName">Kode Program Kerja</label>
+                                                    <input class="form-control" id="kode_proker" name="kode_proker" placeholder="Masukkan Kode Proker" required />
+                                                </div> -->
                                             </div>
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Nama Program Kerja</label>
-                                                    <input class="form-control" type="text" id="nama_proker" name="nama_proker" value="{{$items->nama_proker}}" placeholder="Masukkan Nama Proker" required />
+                                                    <input class="form-control" id="nama_proker" name="nama_proker" placeholder="Masukkan Nama Proker" value="{{ $items->nama_proker}}" required />
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputLastName">Penanggung Jawab</label>
-                                                    <select class="form-control" id="penanggungjawab" name="penanggungjawab"value="{{$items->penanggung_jawab}}">
-                                                        <option disabled value>Pilih Periode</option>
+                                                    <select class="form-control" id="penanggungjawab" name="penanggungjawab">
+                                                        <option  value>Pilih Penanggung Jawab</option>
                                                         @foreach ($pegawai as $item)
-                                                        <option value="{{ $item->kode_pegawai}}">{{$item->nama}}</option>
+                                                        <option value="{{ $item->niy}}">{{$item->nama}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -63,21 +67,21 @@
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Waktu Mulai</label>
-                                                    <input class="form-control" type="date" id="waktu_mulai" name="waktu_mulai" value="{{$items->waktu_mulai}}" required />
+                                                    <input class="form-control" type="date" id="waktu_mulai" name="waktu_mulai" value="{{ $items->waktu_mulai}}" required />
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputLastName">Waktu Selesai</label>
-                                                    <input class="form-control" type="date" id="waktu_selesai" name="waktu_selesai" value="{{$items->waktu_selesai}}" required />
+                                                    <input class="form-control" type="date" id="waktu_selesai" name="waktu_selesai" value="{{ $items->waktu_selesai}}" required />
                                                 </div>
                                             </div>
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Tujuan</label>
-                                                    <input class="form-control" id="tujuan" name="tujuan" value="{{$items->tujuan}}"required />
+                                                    <input class="form-control" id="tujuan" name="tujuan" value="{{ $items->tujuan}}" required />
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputLastName">Indikator Pencapaian</label>
-                                                    <input class="form-control" id="indikator" name="indikator" value="{{$items->indikator}}" required />
+                                                    <input class="form-control" id="indikator" name="indikator" value="{{ $items->indikator}}" required />
                                                 </div>
                                             </div>
                                             <div class="row gx-3 mb-3">
@@ -85,8 +89,8 @@
                                                     <label for="exampleFormControlInput1">Akun</label>
                                                     <button type="button" class="btn btn-primary ml-2" id="tambah">+</button>
                                                     <div id="selectakun">
-                                                        <div class="form-group" id="akun">
-                                                            <select class="form-control select2 mb-1" style="width: 100%;" name="akun[]" value="{{$items->akun}}">
+                                                        <div class="form-group" id="akun" name="akun">
+                                                            <select class="form-control select2 mb-1" style="width: 100%;" name="akun[]">
                                                                 <option  value>Pilih Akun</option>
                                                                 @foreach ($coa as $item)
                                                                 <option value="{{ $item->kode_akun}}">{{$item->nama_akun}}</option>
@@ -97,21 +101,16 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            <div class="row gx-3 mb-3"> -->
-                                            <div class="col-md-6">
-                                                    <label for="exampleFormControlInput1">Akun</label>
-                                                    <input class="form-control" readonly id="akun" name="akun" value="{{$items->akun}}" required />
-                                                </div>
+                                                </div> -->
                                                 <div class="col-md-6">
                                                     <label for="exampleFormControlInput1">Anggaran</label>
-                                                    <input class="form-control" readonly id="anggaran" name="anggaran" value="{{$items->anggaran}}" required />
+                                                    <input class="form-control" readonly id="anggaran" name="anggaran" value="{{ $items->anggaran}}"required />
                                                 </div>
                                             </div>
 
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Keterangan</label>
-                                                <input class="form-control" id="keterangan" name="keterangan" value="{{$items->keterangan}}" required />
+                                                <input class="form-control" id="keterangan_proker" name="keterangan_proker" value="{{ $items->keterangan_proker}}"  required />
                                             </div>
                                     <div class="mb-3">
                                         <button type="submit" class="btn btn-success">Simpan</button>

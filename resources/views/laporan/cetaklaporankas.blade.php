@@ -3,11 +3,7 @@
         color: #000;
     }
 
-    table,
-    th,
-    tr {
-        text-align: center;
-    }
+  
 
     #wrapper {
         max-width: 650px;
@@ -67,6 +63,7 @@
                                 <div id="receipt-data">
                                     <div>
                                         <div style="text-align:center;">
+                                        <img align="bottom" src="{{asset('template/img/logo2.png') }}" style="max-width:100px;">
                                             <h3>Yayasan Bethel Area</h3>
                                             <h3>Sekolah KB/TK "Satria Tunas Bangsa"</h3>
                                             <div class="h6 text-white mb-0">Alamat: Jl Hasanudin No.3B, Mangunsari, Kec.Sidomukti,Kota Salatiga, Jawa Tengah </div>
@@ -74,22 +71,22 @@
 
                                             <p style="text-align:center;"><strong>LAPORAN KAS</strong><br>
                                             <p></p>
-                                        </div>
+                                        </div></div>
                                         Periode : <select class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" id="laporankas" require name="laporankas">
                                             <option value>Pilih Periode</option>
                                             @foreach ($laporankas as $item)
                                             <option value="{{ $item->kode_periode}}">{{$item->nama_periode}}</option>
                                             @endforeach
-                                        </select>
-                                    </div>
+                                        </select><br><br>
+                                    
                                     <div class="table-responsive" id="tablecetaklk">
-                                        <table class="table align-items-center table-flush">
-                                            <thead class="thead-light">
+                                        <table>
+                                            <thead>
                                                 <br>
-                                                Jumlah Kas Masuk : Rp. <br>
+                                                <!-- Jumlah Kas Masuk : Rp. <br>
                                                 Jumlah Kas Keluar : Rp.<br>
                                                 --------------------------------------<br>
-                                                Total Kas : Rp. <br>
+                                                Saldo Kas : Rp. <br> -->
 
                                             </thead>
                                             </tbody>

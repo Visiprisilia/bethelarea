@@ -16,7 +16,8 @@ class BukuBesarAnggaranController extends Controller
     {
       
         $bbanggaran = Coa::orderBy('created_at', 'asc')->get();       
-        return view('bukubesar/bukubesaranggaran', ['bbanggaran' => $bbanggaran]);
+        $bbanggaran2 = Periode::orderBy('created_at', 'asc')->get();       
+        return view('bukubesar/bukubesaranggaran', ['bbanggaran' => $bbanggaran, 'bbanggaran2'=>$bbanggaran2]);
     }
 
     public function anggaran(Request $request)

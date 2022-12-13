@@ -87,7 +87,7 @@
                                                     <label for="exampleFormControlInput1">Akun</label>
                                                     <button type="button" class="btn btn-primary ml-2" id="tambah">+</button>
                                                     <div id="selectakun">
-                                                        <div class="form-group" id="akun">
+                                                        <div class="form-group" id="akun" name="akun">
                                                             <select class="form-control select2 mb-1" style="width: 100%;" name="akun[]">
                                                                 <option  value>Pilih Akun</option>
                                                                 @foreach ($coa as $item)
@@ -108,7 +108,7 @@
 
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Keterangan</label>
-                                                <input class="form-control" id="keterangan" name="keterangan" required />
+                                                <input class="form-control" id="keterangan_proker" name="keterangan_proker"  required />
                                             </div>
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Tambah</button>

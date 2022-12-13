@@ -11,22 +11,27 @@ use App\Models\Akuns;
 use App\Models\Pegawai\Pegawai;
 
 use App\Http\Controllers\Controller;
+use App\Models\Coa\Coa;
 
 class KasMasukController extends Controller
 {
     public function kasmasuk()
     {
 		$periode = Periode::orderBy('created_at','desc')->get();
-		$akun = Akuns::join("coa","akuns.kode_akun","=","coa.kode_akun")->get();
-		$kasmasuk = KasMasuk::join("murid","kas_masuk.kasir","=","murid.nomor_induk")->get();
-        return view('realisasi/kasmasuk/kasmasuk', ['periode'=>$periode,'akun'=>$akun,'kasmasuk'=>$kasmasuk]);
+		// $akun = Akuns::join("coa","akuns.kode_akun","=","coa.kode_akun")->get();
+		$coa = Coa::orderBy('created_at','desc')->get();
+		$kasmasuk = KasMasuk::orderBy('created_at','desc')->get();
+		// $kasmasuk = KasMasuk::join("murid","kas_masuk.kasir","=","murid.nomor_induk")->get();
+		// $kasmasuk = KasMasuk::join("murid","kas_masuk.no_bukti","=","murid.nomor_induk")->get();
+        return view('realisasi/kasmasuk/kasmasuk', ['periode'=>$periode,'coa'=>$coa,'kasmasuk'=>$kasmasuk]);
     }
     public function tambahkasmasuk()
 	{
-		$periode = Periode::orderBy('created_at','desc')->get();
+		$periode = Periode::where('status', 'LIKE', 'AKTIF')->get();
 		$murid = Murid::orderBy('created_at','desc')->get();
-		$akun = Akuns::join("coa","akuns.kode_akun","=","coa.kode_akun")->get();
-		return view('realisasi/kasmasuk/tambahkasmasuk',['periode'=>$periode,'akun'=>$akun,'murid'=>$murid]);
+		// $akun = Akuns::join("coa","akuns.kode_akun","=","coa.kode_akun")->get();
+		$coa = Coa::orderBy('created_at','desc')->get();
+		return view('realisasi/kasmasuk/tambahkasmasuk',['periode'=>$periode,'coa'=>$coa,'murid'=>$murid]);
 	}
     public function simpankasmasuk(Request $request)
 	{
@@ -48,7 +53,7 @@ class KasMasukController extends Controller
 	}
 	public function editkasmasuk($no_bukti)
 	{	
-		$periode = Periode::orderBy('created_at','desc')->get();
+		$periode = Periode::where('status', 'LIKE', 'AKTIF')->get();
 		$murid = Murid::orderBy('created_at','desc')->get();
 		$akun = Akuns::join("coa","akuns.kode_akun","=","coa.kode_akun")->get();
 		$kasmasuk = KasMasuk::where('no_bukti', $no_bukti)->get();
@@ -80,8 +85,9 @@ class KasMasukController extends Controller
 	public function cetakkasmasuk($no_bukti)
 	{
 		$murid = Murid::orderBy('created_at','desc')->get();
-		$kasmasuk = KasMasuk::join("murid","kas_masuk.kasir","=","murid.nomor_induk")
-		->where('no_bukti', $no_bukti)->get();		
+		$kasmasuk = KasMasuk::where('no_bukti', $no_bukti)->get();
+		// $kasmasuk = KasMasuk::join("murid","kas_masuk.kasir","=","murid.nomor_induk")
+		// ->where('no_bukti', $no_bukti)->get();		
 		return view('realisasi/kasmasuk/cetakkasmasuk',compact('kasmasuk','murid'));
 	}
 	public function hapuskasmasuk($no_bukti)
@@ -89,4 +95,5 @@ class KasMasukController extends Controller
         $kasmasuk = KasMasuk::where('no_bukti', $no_bukti)->delete();
 		return redirect('/kasmasuk') -> with ('status', 'Data berhasil dihapus');
 	}
+	
 }

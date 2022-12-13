@@ -42,7 +42,7 @@
                                                     <select class="form-control" id="kode_proker" name="kode_proker">
                                                         <option value>Pilih Program Kerja</option>
                                                         @foreach ($programkerja as $item)
-                                                        <option value="{{ $item->kode_proker}}">{{$item->nama_proker}}</option>
+                                                        <option value="{{ $item->kode_proker}}">{{$item->kode_proker}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -71,15 +71,18 @@
                                                     <label class="mb-1" for="inputLastName">Rencana Anggaran</label>
                                                     <input class="form-control" readonly id="rencana_anggaran" name="rencana_anggaran"  required />
                                                 </div>
-                                                <div class="col-md-6">
+                                               <div class="col-md-6" id="realisasianggaran">
                                                     <label class="mb-1" for="inputFirstName">Realisasi Anggaran</label>
-                                                    <input class="form-control" id="realisasi_anggaran" name="realisasi_anggaran" required />
                                                 </div>
+                                                <!-- <div class="col-md-6">
+                                                    <label class="mb-1" for="inputFirstName">Realisasi Anggaran</label>
+                                                    <input class="form-control" readonly id="realisasi_anggaran" name="realisasi_anggaran" required />
+                                                </div> -->
                                             </div>
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputLastName">Rencana Waktu</label>
-                                                    <input class="form-control" readonly type="date" id="rencana_waktu" name="rencana_waktu"  required />
+                                                    <input class="form-control" readonly type="date" id="rencana_waktu" name="rencana_waktu"required />
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Realisasi Waktu</label>

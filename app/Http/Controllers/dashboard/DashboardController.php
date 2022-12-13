@@ -6,20 +6,23 @@ use Illuminate\Http\Request;
 use App\Models\ProgramKerja\ProgramKerja;
 use App\Models\Periode\Periode;
 use App\Models\BukuBesar\BukuBesarAnggaran;
+use App\Models\Laporan\LaporanPosisiAnggaran;
 use App\Models\Akuns;
 use App\Http\Controllers\Controller;
 
 class DashboardController extends Controller
 {
-    public function dashboard()
+    public function dashboard(Request $request)
     {
-        $jlh = 0;
-        $bbanggaran = BukuBesarAnggaran::orderBy('tgl', 'asc')->get();
-        $anggaran = BukuBesarAnggaran::sum('anggaran');
-        $realisasi = BukuBesarAnggaran::sum('realisasi');
-        $saldo = ($jlh = $jlh + (int)'anggaran' - (int)'realisasi');
-        $total = $anggaran - $realisasi;
-        return view('dashboard/dashboard', ['bbanggaran' => $bbanggaran,'anggaran'=>$anggaran,'realisasi'=>$realisasi,'saldo'=>$saldo, 
-        'total'=>$total]);
+        $id = $request->id;
+        $periode = Periode::orderBy('created_at', 'desc')->get();
+        $lapposisianggaran = LaporanPosisiAnggaran::where('periode', $id)->get();
+        $anggarans = LaporanPosisiAnggaran::join("periode","lapposisianggaran.periode", "=", "periode.kode_periode")->where('status', 'LIKE', 'AKTIF')->sum('anggaran');
+        $posisianggarans = LaporanPosisiAnggaran::join("periode","lapposisianggaran.periode", "=", "periode.kode_periode")->where('status', 'LIKE', 'AKTIF')->sum('posisi_anggaran');
+
+        return view('dashboard/dashboard', [
+            'lapposisianggaran' => $lapposisianggaran, 'periode' => $periode, 'anggarans' => $anggarans,
+            'posisianggarans' => $posisianggarans
+        ]);
     }
 }

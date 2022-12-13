@@ -5,6 +5,6 @@
               Jumlah Kas Masuk : {{Str::rupiah($tambah)}}<br>
               Jumlah Kas Keluar :{{Str::rupiah($kurang)}} <br>
               -------------------------------<br>
-              Total Kas :  {{Str::rupiah($totalkas)}}<br>
+              Saldo Kas :  {{Str::rupiah($totalkas)}}<br>
        </div>
 </div>

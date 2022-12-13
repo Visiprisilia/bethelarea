@@ -16,19 +16,22 @@ class ProgramKerjaController extends Controller
     public function programkerja()
     {
 		$programkerja = Periode::orderBy('created_at','desc')->get();
-        return view('programkerja/programkerja/programkerja', compact('programkerja'));
+		$coa = Coa::orderBy('created_at','desc')->get();
+        return view('programkerja/programkerja/programkerja', compact('programkerja','coa'));
 		}
 		public function viewprogramkerja(Request $request)
 		{
 			$id = $request->id;
 			$periode = Periode::orderBy('created_at', 'desc')->get();
-			$programkerja = ProgramKerja::join("pegawai","program_kerja.penanggungjawab","=","pegawai.niy")->where('periode', $id)->get();
-			return view('programkerja/programkerja/viewprogramkerja', ['programkerja' => $programkerja,'periode'=>$periode]);
+			$pegawai = Pegawai::orderBy('created_at', 'desc')->get();
+			$programkerja = programkerja::orderBy('created_at', 'desc')->where('periode', $id)->get();
+			// $programkerja = ProgramKerja::join("pegawai","program_kerja.penanggungjawab","=","pegawai.niy")->where('periode', $id)->get();
+			return view('programkerja/programkerja/viewprogramkerja', ['programkerja' => $programkerja,'periode'=>$periode,'pegawai'=>$pegawai]);
 			}
     public function tambahprogramkerja()
 	{
-		$periode = Periode::orderBy('created_at','desc')->get();
-		$pegawai = Pegawai::orderBy('created_at','desc')->get();
+		$periode = Periode::where('status', 'LIKE', 'AKTIF')->get();
+		$pegawai = Pegawai::where('status', 'LIKE', 'AKTIF')->get();
 		$coa = Coa::orderBy('created_at','desc')->get();
 		return view('programkerja/programkerja/tambahprogramkerja', ['coa'=>$coa,'periode'=>$periode,'pegawai'=>$pegawai]);
 	}
@@ -49,7 +52,7 @@ class ProgramKerjaController extends Controller
 			'tujuan'=>$request->tujuan,
 			'indikator'=>$request->indikator,	
 			'anggaran'=>$request->anggaran,						
-			'keterangan'=>$request->keterangan						
+			'keterangan_proker'=>$request->keterangan_proker						
 			];
 		ProgramKerja::create($data_proker);
 		$no_jumlah=0;
@@ -68,8 +71,8 @@ class ProgramKerjaController extends Controller
 	}
 	public function editprogramkerja($kode_proker)
 	{
-		$periode = Periode::orderBy('created_at','desc')->get();
-		$pegawai = Pegawai::orderBy('created_at','desc')->get();
+		$periode = Periode::where('status', 'LIKE', 'AKTIF')->get();
+		$pegawai = Pegawai::where('status', 'LIKE', 'AKTIF')->get();
 		$coa = Coa::orderBy('created_at','desc')->get();
 		$programkerja = ProgramKerja::where('kode_proker', $kode_proker)->get();
 		// return $programkerja;
@@ -77,19 +80,16 @@ class ProgramKerjaController extends Controller
 	}
 	public function updateprogramkerja(Request $request)
 	{
-
+		
 		$programkerja = ProgramKerja::where('kode_proker', $request->kode_proker)->update([
-			'kode_proker'=>$request->kode_proker,
-			'periode'=>$request->periode,
 			'nama_proker'=>$request->nama_proker,
 			'penanggungjawab'=>$request->penanggungjawab,
 			'waktu_mulai'=>$request->waktu_mulai,	
 			'waktu_selesai'=>$request->waktu_selesai,	
 			'tujuan'=>$request->tujuan,
 			'indikator'=>$request->indikator,	
-			'akun'=>$request->akun,
 			'anggaran'=>$request->anggaran,						
-			'keterangan'=>$request->keterangan	
+			'keterangan_proker'=>$request->keterangan_proker		
 		]);
 		return redirect('/programkerja')->with('status', 'Data berhasil diubah');
 	}

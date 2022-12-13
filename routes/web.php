@@ -163,6 +163,7 @@ Route::get('/lihatkaskeluar/{no_bukti}', [KasKeluarController::class,'lihatkaske
 Route::get('/cetakkaskeluar/{no_bukti}', [KasKeluarController::class,'cetakkaskeluar']);
 Route::post('/updatekaskeluar/{no_bukti}', [KasKeluarController::class,'updatekaskeluar']);
 Route::get('/hapuskaskeluar/{no_bukti}', [KasKeluarController::class,'hapuskaskeluar']);
+Route::get('/pilihproker', [KasKeluarController::class,'pilihproker']); 
 
 //Buku Besar Kas
 Route::get('/bukubesarkas', [BukuBesarKasController::class,'bukubesarkas']);

@@ -3,11 +3,7 @@
         color: #000;
     }
 
-    table,
-    th,
-    tr {
-        text-align: center;
-    }
+  
 
     #wrapper {
         max-width: 650px;
@@ -67,13 +63,14 @@
                                 <div id="receipt-data">
                                     <div>
                                         <div style="text-align:center;">
+                                        <img align="bottom" src="{{asset('template/img/logo2.png') }}" style="max-width:100px;">
                                             <h3>Yayasan Bethel Area</h3>
                                             <h3>Sekolah KB/TK "Satria Tunas Bangsa"</h3>
                                             <div class="h6 text-white mb-0">Alamat: Jl Hasanudin No.3B, Mangunsari, Kec.Sidomukti,Kota Salatiga, Jawa Tengah </div>
                                             <div class="h6 text-white mb-0">----------------------------------------------------------------------------------------------------------</div>
 
                                             <p style="text-align:center;"><strong>LAPORAN PENGHASILAN KOMPREHENSIF</strong><br>
-                                            <p></p>
+                                            <p></p></p>
                                         </div>
                                     </div>
                                     Periode :   <select class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" id="lappk" require name="lappk">
@@ -81,10 +78,10 @@
                                         @foreach ($lappk as $item)
                                         <option value="{{ $item->kode_periode}}">{{$item->nama_periode}}</option>
                                         @endforeach
-                                    </select>
+                                    </select><br><br>
                                     <div class="table-responsive" id="tablecetaklpk">
-                                        <table class="table align-items-center table-flush">
-                                            <thead class="thead-light">
+                                        <table>
+                                            <thead>
                                                 <br>
                                               
 

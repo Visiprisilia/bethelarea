@@ -70,31 +70,42 @@
                                 <div id="receipt-data">
                                     <div>
                                         <div style="text-align:center;">
-                                            @foreach($kasmasuk as $km)
-                                            <form action="/updatekasmasuk/{{$km->no_bukti}}" method="post">
+                                            @foreach($kasmasuk as $item)
+                                            <form action="/updatekasmasuk/{{$item->no_bukti}}" method="post">
                                                 @csrf
-                                                <h3 align="center" class='box-title'>BUKTI KAS MASUK</h3>
                                                 <img src="{{asset('template/img/logo2.png') }}" style="max-width:100px;">
+                                                                                     
                                                 <br style="text-align:center;"><strong>YAYASAN BETHEL AREA</strong>
                                                 <br style="text-align:center;"><strong>Sekolah KB/TK "Satria Tunas Bangsa"</strong>
                                                 <br> Alamat: Jl Hasanudin No.3B, Mangunsari, Kec.Sidomukti,Kota Salatiga, Jawa Tengah <br>
-                                                <p></p>
+                                                ------------------------------------------------------------------------------------------
+                                                <p style="text-align:center;"><strong>BUKTI KAS MASUK</strong><br><br>
                                         </div>
 
                                     </div>
                                     <p>
-                                      <b>No Bukti : </b> {{ $km->no_bukti}} &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; <b>Tanggal : </b> {{$km->tanggal_pencatatan}} <br><br>
-                                       <b>Sudah Terima dari :</b> &nbsp;{{$km->nama}}<p>
-                                       <b>Banyaknya Uang : </b> &nbsp;{{$km->jumlah}}<p>
-                                       <b>Untuk Pembayaran :</b> &nbsp;{{$km->keterangan}}<p>
+                                        <b>No. Bukti &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</b>&nbsp;{{ $item->no_bukti}}&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; <b>Tanggal : </b> {{$item->tanggal_pencatatan}} <br><br>
+                                        <b>Sudah Terima dari &nbsp;:</b>&nbsp;{{$item->kasir}}
+                                    <p>
+                                        <b>Banyaknya Uang &nbsp;&nbsp;&nbsp;&nbsp;:</b>&nbsp;{{Str::rupiah($item->jumlah)}}
+                                        <p>
+                                        <b>Terbilang &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</b>{{Terbilang::angka($item->jumlah)}}rupiah
+                                    <p>
+                                        <p>
+                                        <b>Untuk Pembayaran :</b>&nbsp;{{$item->keterangan}}
+                                    <p>
                                     </p>
+                                    <div style="text-align:center;">
+                                    -----------------------------------------------------------------------------------------
+                                    </div>
                                     <br>
+
                                     <div style="clear:both;"></div>
-                                    <table class="table table-striped table-condensed">
+                                    <table>
                                         <thead>
                                             <tr>
-                                                <th class="text-center" style="width: 60%; border-bottom: 2px solid #ddd;">Diterima Oleh</th>
-                                                <th class="text-center" style="width: 60%; border-bottom: 2px solid #ddd;">Disetor Oleh</th>
+                                                <th>Dikeluarkan Oleh</th>
+                                                <th>Diterima Oleh</th>
                                             </tr>
                                         <tbody>
                                             <tr>
@@ -115,7 +126,7 @@
                                         </tfoot>
                                     </table>
                                     @endforeach
-                                    <br><br><br><br>
+                                    <br><br>
                                     <div class="well well-sm" style="margin-top:10px;">
                                         <div style="text-align: left;">Catatan :</div>
                                     </div>
@@ -123,7 +134,7 @@
                                 <div style="clear:both;"></div>
                             </div>
                         </div>
-
+                        <br><br><br><br>
                         <span class="pull-right col-xs-12">
                             <input class="no-print" type="button" value="Cetak" onclick="window.print()">
                             <input type="button" value="Kembali" onclick=self.history.back() class="no-print">

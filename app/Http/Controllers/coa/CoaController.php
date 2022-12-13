@@ -11,7 +11,7 @@ class CoaController extends Controller
 {
     public function coa()
     {
-        $coa = Coa::orderBy('created_at','desc')->get();
+        $coa = Coa::orderBy('created_at','asc')->get();
         return view('coa/coa', compact('coa'));
     }
     public function tambahcoa()

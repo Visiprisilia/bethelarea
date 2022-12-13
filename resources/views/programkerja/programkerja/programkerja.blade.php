@@ -32,6 +32,7 @@
                             <th>Periode</th>
                             <th>Nama Program Kerja</th>
                             <th>Penanggung Jawab</th>
+                            <th>Akun</th>
                             <th>Waktu Mulai</th>
                             <th>Waktu Selesai</th>
                             <th>Tujuan</th>

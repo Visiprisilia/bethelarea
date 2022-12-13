@@ -57,7 +57,7 @@
                                                     <select class="form-control" id="proker" name="proker">
                                                         <option  value>Pilih Program Kerja</option>
                                                         @foreach ($programkerja as $item)
-                                                        <option value="{{ $item->kode_proker}}">{{$item->nama_proker}}</option>
+                                                        <option value="{{ $item->kode_proker}}">{{$item->kode_proker}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>

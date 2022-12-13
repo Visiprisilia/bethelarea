@@ -54,28 +54,40 @@
                                                 <input class="form-control" id="keterangan" name="keterangan" placeholder="Masukkan Keterangan" required  />
                                             </div>      
                                             <div class="row gx-3 mb-3">
-                                            <div class="col-md-4">
-                                                    <label class="mb-1" for="inputLastName">Akun</label>
-                                                    <select class="form-control" id="akun" name="akun">
-                                                        <option  value>Pilih Akun</option>
+                                            <div class="col-md-6">
+                                                    <label class="mb-1" for="inputLastName">Program Kerja</label>
+                                                    <select class="form-control" id="prokers" name="prokers">
+                                                        <option  value>Pilih Program Kerja</option>
                                                         @foreach ($akun as $item)
-                                                        <option value="{{ $item->kode_akun}}">{{$item->nama_akun}}</option>
+                                                        <option value="{{ $item->kode_proker}}">{{$item->kode_proker}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
-                                                <div class="col-md-4">
+                                                <div class="col-md-6">
+                                                    <label class="mb-1" for="inputFirstName">Akun</label>
+                                                    <input class="form-control" readonly id="akun" name="akun"  required />
+                                                </div></div>
+                                                <div class="row gx-3 mb-3">
+                                                <div class="col-md-6">
+                                                    <label class="mb-1" for="inputFirstName">Anggaran</label>
+                                                    <input class="form-control" readonly id="anggaran" name="anggaran"  required />
+                                                </div>
+                                                <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Jumlah</label>
                                                     <input class="form-control" id="jumlah" name="jumlah" placeholder="Masukkan Jumlah" required />
                                                 </div>
-                                                <div class="col-md-4">
+                                                </div>
+                                            
+                                            <div class="row gx-3 mb-3">
+                                            <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Bukti</label>
                                                     <input class="form-control" type="file" id="bukti" name="bukti"  placeholder="Masukkan Jumlah" required />
                                                 </div>
-                                            </div>     
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Dibayar Kepada:</label>
+                                                <div class="col-md-6">
+                                                <label class="mb-1" for="inputFirstName">Dibayar Kepada :</label>
                                                 <input class="form-control" id="kasir" name="kasir"  placeholder="Dibayar Kepada" required />
-                                            </div>                                                                                                                                                                 
+                                            </div>        
+                                         </div>                                                                                                                                                        
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Tambah</button>
                                                 <a href="{{url('/kaskeluar')}}" class="btn btn-danger">Batal</a>                                            </div>
@@ -90,4 +102,6 @@
         </div>
     </main>
 </div>
+<script src="/proker/kaskeluar.js"></script>
+
 @endsection

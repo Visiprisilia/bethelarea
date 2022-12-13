@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\ProgramKerja\Evaluasi;
 use App\Models\ProgramKerja\ProgramKerja;
 use App\Models\Akuns;
+use App\Models\Realisasi\KasKeluar;
 use Illuminate\Support\Facades\DB;
 use PhpParser\Node\Expr\Eval_;
 
@@ -20,7 +21,8 @@ class EvaluasiController extends Controller
     public function tambahevaluasi()
 	{
 		$evaluasi = Evaluasi::join("pegawai","evaluasi.penanggungjawab","=","pegawai.niy")->get();
-		$programkerja = ProgramKerja::orderBy('created_at','desc')->get();
+		// $programkerja = ProgramKerja::orderBy('created_at','desc')->get();
+		$programkerja = ProgramKerja::join("periode","program_kerja.periode","=","periode.kode_periode")->where('status', 'LIKE', 'AKTIF')->get();
 		return view('programkerja/evaluasi/tambahevaluasi', ['evaluasi'=>$evaluasi,'programkerja'=>$programkerja]);
 	}
     public function simpanevaluasi(Request $request)
@@ -84,9 +86,11 @@ class EvaluasiController extends Controller
 		$kode =$request->kode;
 		$data =ProgramKerja::where("kode_proker",$kode)->first();
 		$data2 = Akuns::join("coa","akuns.kode_akun","=","coa.kode_akun")->where("kode_proker",$kode)->get();
+		$data3 =KasKeluar::where("prokers",$kode)->get();
 		return response()->json([
 			"programkerja"=>$data,
 			"akun"=>$data2,
+			"kaskeluar"=>$data3,
 
 		]);
 	}

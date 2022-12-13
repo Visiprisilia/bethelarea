@@ -18,6 +18,11 @@
 
     </tr>
     @endforeach
-</tbody>
-</thead>
+    </tbody>
+    <th>Total</th>
+    <th></th>
+    <th></th>
+    <th>{{Str::rupiah($anggarans)}}</th>
+    <th>{{Str::rupiah($posisianggarans)}}</th>
+    </thead>
 </table>
