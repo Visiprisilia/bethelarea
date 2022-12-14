@@ -10,7 +10,7 @@ use App\Models\Akuns;
 use App\Models\Coa\Coa;
 use Carbon\Carbon;
 use App\Http\Controllers\Controller;
-
+use App\Models\Realisasi\KasBon;
 
 class KasKeluarController extends Controller
 {
@@ -27,16 +27,18 @@ class KasKeluarController extends Controller
 	{
 		$periode = Periode::where('status', 'LIKE', 'AKTIF')->get();
 		$pegawai = Pegawai::where('status', 'LIKE', 'AKTIF')->get();
+		$kasbon = KasBon::where('status_bon', 'LIKE', 'Sudah Dipertanggungjawabkan')->get();	
 		// $akun = Akuns::orderBy('created_at','desc')->get();
 		$akun = Akuns::join("periode","akuns.periode","=","periode.kode_periode")->where('status', 'LIKE', 'AKTIF')->get();
 		// $akun = Akuns::join("coa","akuns.kode_akun","=","coa.kode_akun")->get();
 		// $coa = Coa::orderBy('created_at','desc')->get();
-		return view('realisasi/kaskeluar/tambahkaskeluar', ['periode'=>$periode,'akun'=>$akun,'pegawai'=>$pegawai]);
+		return view('realisasi/kaskeluar/tambahkaskeluar', ['periode'=>$periode,'akun'=>$akun,'pegawai'=>$pegawai,'kasbon'=>$kasbon]);
 	}
     public function simpankaskeluar(Request $request)
 	{
 		
 		$tanggalhariini = Carbon::now()->format('Ymd');
+		$tanggalhariinis = Carbon::now()->format('Y-m-d');
         $check = KasKeluar::count();
 		$bukti = $request->bukti ;		
 		$no_bukti = 'BKK'.$tanggalhariini.$check + 1;		
@@ -48,7 +50,7 @@ class KasKeluarController extends Controller
 		KasKeluar::create([
 			'no_bukti'=>$no_bukti,
 			'periode'=>$request->periode,
-			'tanggal_pencatatan'=>$request->tanggal_pencatatan,
+			'tanggal_pencatatan'=>$tanggalhariinis,
 			'keterangan'=>$request->keterangan,
 			'akun'=>$request->akun,
 			'prokers'=>$request->prokers,
@@ -65,13 +67,15 @@ class KasKeluarController extends Controller
 	{
 		$periode = Periode::where('status', 'LIKE', 'AKTIF')->get();
 		$pegawai = Pegawai::where('status', 'LIKE', 'AKTIF')->get();
+		$kasbon = KasBon::where('status_bon', 'LIKE', 'Sudah')->get();
 		$akun = Akuns::join("coa","akuns.kode_akun","=","coa.kode_akun")->get();
 		$kaskeluar = KasKeluar::where('no_bukti', $no_bukti)->get();
-		return view('realisasi/kaskeluar/editkaskeluar', ['periode'=>$periode,'pegawai'=>$pegawai,'akun'=>$akun,'kaskeluar'=>$kaskeluar,]);
+		return view('realisasi/kaskeluar/editkaskeluar', ['periode'=>$periode,'pegawai'=>$pegawai,'akun'=>$akun,'kaskeluar'=>$kaskeluar,'kasbon'=>$kasbon]);
 	}
 	public function updatekaskeluar(Request $request)
 	{	
 		$tanggalhariini = Carbon::now()->format('Ymd');
+		$tanggalhariinis = Carbon::now()->format('Y-m-d');
         $check = KasKeluar::count();
 		$bukti = $request->bukti ;		
 		$no_bukti = 'BKK'.$tanggalhariini.$check + 1;		
@@ -82,7 +86,7 @@ class KasKeluarController extends Controller
 		$kaskeluar = KasKeluar::where('no_bukti', $request->no_bukti)->update([
 			'no_bukti'=>$request->no_bukti,
 			'periode'=>$request->periode,
-			'tanggal_pencatatan'=>$request->tanggal_pencatatan,
+			'tanggal_pencatatan'=>$tanggalhariinis,
 			'keterangan'=>$request->keterangan,
 			'akun'=>$request->akun,
 			'prokers'=>$request->prokers,
@@ -114,6 +118,15 @@ class KasKeluarController extends Controller
 		$data =Akuns::where("kode_proker",$kode)->first();
 		return response()->json([
 			"proker"=>$data,
+
+		]);
+	}
+	public function pilihbon(Request $request)
+	{
+		$no =$request->no;
+		$data =KasBon::where("no_buktibon",$no)->first();
+		return response()->json([
+			"bon"=>$data,
 
 		]);
 	}

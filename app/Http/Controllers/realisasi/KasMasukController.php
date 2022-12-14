@@ -36,12 +36,13 @@ class KasMasukController extends Controller
     public function simpankasmasuk(Request $request)
 	{
 		$tanggalhariini = Carbon::now()->format('Ymd');
+		$tanggalhariinis = Carbon::now()->format('Y-m-d');
         $check = KasMasuk::count();
 		$no_bukti = "BKM".$tanggalhariini.$check+1;
 		KasMasuk::create([
 			'no_bukti'=>$no_bukti,
 			'periode'=>$request->periode,
-			'tanggal_pencatatan'=>$request->tanggal_pencatatan,
+			'tanggal_pencatatan'=>$tanggalhariinis,
 			'keterangan'=>$request->keterangan,
 			'akun'=>$request->akun,
 			'sumber'=>$request->sumber,
@@ -62,12 +63,13 @@ class KasMasukController extends Controller
 	public function updatekasmasuk(Request $request)
 	{
 		$tanggalhariini = Carbon::now()->format('Ymd');
+		$tanggalhariinis = Carbon::now()->format('Y-m-d');
         $check = KasMasuk::count();
 		$no_bukti = "BKM".$tanggalhariini.$check+1;
         $kasmasuk = KasMasuk::where('no_bukti', $request->no_bukti)->update([
 			'no_bukti'=>$request->no_bukti,
 			'periode'=>$request->periode,
-			'tanggal_pencatatan'=>$request->tanggal_pencatatan,
+			'tanggal_pencatatan'=>$tanggalhariinis,
 			'keterangan'=>$request->keterangan,
 			'akun'=>$request->akun,
 			'sumber'=>$request->sumber,

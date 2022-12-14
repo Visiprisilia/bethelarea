@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Laporan\LaporanPosisiAnggaran;
 use App\Models\ProgramKerja\ProgramKerja;
 use App\Models\Periode\Periode;
+use Carbon\Carbon;
 use App\Http\Controllers\Controller;
 
 class LaporanPAController extends Controller
@@ -17,7 +18,7 @@ class LaporanPAController extends Controller
     }
     public function viewlpa(Request $request)
     {
-        $id = $request->id;
+        $id = $request->id;     
         $periode = Periode::orderBy('created_at', 'desc')->get();
         $lapposisianggaran = LaporanPosisiAnggaran::where('periode', $id)->get();
         $anggarans = LaporanPosisiAnggaran::where('periode',$id)->sum('anggaran');
@@ -33,12 +34,13 @@ class LaporanPAController extends Controller
     public function viewcetaklpa(Request $request)
     {
         $id = $request->id;
+        $tanggalhariini = Carbon::now()->isoFormat('D MMMM Y');
         $periode = Periode::orderBy('created_at', 'desc')->get();
         $lappa = LaporanPosisiAnggaran::where('periode', $id)->get();
         $anggarans = LaporanPosisiAnggaran::where('periode',$id)->sum('anggaran');
         $posisianggarans = LaporanPosisiAnggaran::where('periode',$id)->sum('posisi_anggaran');
         return view('laporan/viewcetaklpa', ['lappa' => $lappa,'periode'=>$periode,'anggarans'=>$anggarans,
-        'posisianggarans'=>$posisianggarans]);
+        'posisianggarans'=>$posisianggarans,'tanggalhariini'=>$tanggalhariini]);
     }
 }
 

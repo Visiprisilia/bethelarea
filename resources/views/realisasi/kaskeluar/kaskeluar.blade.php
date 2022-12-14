@@ -43,8 +43,8 @@
                             <td>{{ $item->kasir}}</td>                              
                             <td>
                                 <a href="/editkaskeluar/{{$item->no_bukti}}"><i class="fas fa-edit" style="color:green"></i></a> |
-                                <!-- <a href="/hapuskaskeluar/{{$item->no_bukti}}" onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a> | -->
-                                <a href="#" id="kk" data-id="{{$item->no_bukti}}" ><i class="fas fa-trash-alt" style="color:red"></i></a>
+                                <a href="/hapuskaskeluar/{{$item->no_bukti}}" onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a> |
+                                <!-- <a href="#" id="kk" data-id="{{$item->no_bukti}}" ><i class="fas fa-trash-alt" style="color:red"></i></a> -->
                                 <a href="/lihatkaskeluar/{{$item->no_bukti}}"><i class="fas fa-print" style="color:blue"></i></a>
                             </td>
                         </tr>

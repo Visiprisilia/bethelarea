@@ -138,11 +138,13 @@ Route::get('/akunbiaya', [EvaluasiController::class,'akunbiaya']);
 Route::get('/kasbon', [KasBonController::class,'kasbon']);
 Route::get('/tambahkasbon', [KasBonController::class,'tambahkasbon']);
 Route::post('/simpankasbon', [KasBonController::class,'simpankasbon']);
-Route::get('/editkasbon/{no_bukti}', [KasBonController::class,'editkasbon']);
-Route::get('/lihatkasbon/{no_bukti}', [KasBonController::class,'lihatkasbon']);
+Route::get('/editkasbon/{no_buktibon}', [KasBonController::class,'editkasbon']);
+Route::get('/lihatkasbon/{no_buktibon}', [KasBonController::class,'lihatkasbon']);
 Route::get('/cetakkasbon', [KasBonController::class,'cetakkasbon']);
-Route::post('/updatekasbon/{no_bukti}', [KasBonController::class,'updatekasbon']);
-Route::get('/hapuskasbon/{no_bukti}', [KasBonController::class,'hapuskasbon']);    
+Route::post('/updatekasbon/{no_buktibon}', [KasBonController::class,'updatekasbon']);
+Route::get('/hapuskasbon/{no_buktibon}', [KasBonController::class,'hapuskasbon']); 
+Route::get('/pilihprokerbon', [KasBonController::class,'pilihprokerbon']); 
+
 
 //Kas Masuk
 Route::get('/kasmasuk', [KasMasukController::class,'kasmasuk']);
@@ -164,14 +166,17 @@ Route::get('/cetakkaskeluar/{no_bukti}', [KasKeluarController::class,'cetakkaske
 Route::post('/updatekaskeluar/{no_bukti}', [KasKeluarController::class,'updatekaskeluar']);
 Route::get('/hapuskaskeluar/{no_bukti}', [KasKeluarController::class,'hapuskaskeluar']);
 Route::get('/pilihproker', [KasKeluarController::class,'pilihproker']); 
+Route::get('/pilihbon', [KasKeluarController::class,'pilihbon']); 
 
 //Buku Besar Kas
 Route::get('/bukubesarkas', [BukuBesarKasController::class,'bukubesarkas']);
 Route::get('/kas', [BukuBesarKasController::class,'kas']);
+Route::get('/lihatkas/{kode}', [BukuBesarKasController::class,'lihatkas']);
 
 //Buku Besar Anggaran 
 Route::get('/bukubesaranggaran', [BukuBesarAnggaranController::class,'bukubesaranggaran']);
 Route::get('/anggaran', [BukuBesarAnggaranController::class,'anggaran']);
+
 
 //Buku Besar Anggaran Pendapatan
 Route::get('/bukubesaranggaranpendapatan', [BukuBesarAnggaranPendapatanController::class,'bukubesaranggaranpendapatan']);

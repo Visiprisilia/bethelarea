@@ -58,8 +58,8 @@
                             <td>{{ $item->tindaklanjut}}</td>                            
                             <td>
                                 <a href="/editevaluasi/{{$item->kode_proker}}"><i class="fas fa-edit" style="color:green"></i></a> |
-                                <!-- <a href="/hapusevaluasi/{{$item->kode_proker}}" onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a> -->
-                                <a href="#" id="eval" data-id="{{$item->kode_proker}}" ><i class="fas fa-trash-alt" style="color:red"></i></a>
+                                <a href="/hapusevaluasi/{{$item->kode_proker}}" onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a>
+                                <!-- <a href="#" id="eval" data-id="{{$item->kode_proker}}" ><i class="fas fa-trash-alt" style="color:red"></i></a> -->
 
                             </td>
                         </tr>

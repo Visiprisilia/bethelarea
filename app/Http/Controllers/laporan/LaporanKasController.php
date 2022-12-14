@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\BukuBesar\BukuBesarKas;
 use App\Models\Periode\Periode;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class LaporanKasController extends Controller
@@ -33,11 +34,12 @@ class LaporanKasController extends Controller
     public function viewcetaklk(Request $request)
     {
         $id=$request->id;
+        $tanggalhariini = Carbon::now()->isoFormat('D MMMM Y');
         $periode = Periode::orderBy('created_at','desc')->get();
         $laporankas = BukuBesarKas::orderBy('tgl','desc')->where('periode',$id)->get();  
         $tambah = BukuBesarKas::where('periode',$id)->sum('bertambah');
         $kurang = BukuBesarKas::where('periode',$id)->sum('berkurang');
         $totalkas = $tambah-$kurang;
-        return view('laporan/viewcetaklk', ['laporankas'=>$laporankas,'tambah'=>$tambah,'kurang'=>$kurang,'totalkas'=>$totalkas,'periode'=>$periode]);
+        return view('laporan/viewcetaklk', ['laporankas'=>$laporankas,'tambah'=>$tambah,'kurang'=>$kurang,'totalkas'=>$totalkas,'periode'=>$periode,'tanggalhariini'=>$tanggalhariini]);
     }
 }

@@ -11,11 +11,12 @@
     <tbody>
         @foreach ($bbkas as $item)
         <tr>
+         <!-- echo anchor('admin/orders/view/'. $order->id,$order->order_number); -->
             <td>{{ $loop->iteration}}</td>
-            <td>{{ $item->kode}}</td>
+            <td><a href="/lihatkas/{{$item->no_bukti}}">{{ $item->no_bukti}}</td>
             <td>{{ $item->keterangan}}</td>
-            <td>{{Str::rupiah ($item->bertambah)}}</td>
-            <td>{{Str::rupiah ($item->berkurang)}}</td>
+            <td>{{Str::rupiah($item->bertambah)}}</td>
+            <td>{{Str::rupiah($item->berkurang)}}</td>
             <td>{{Str::rupiah($saldo = $saldo + $item->bertambah - $item->berkurang)}}</td>
         </tr>
         @endforeach

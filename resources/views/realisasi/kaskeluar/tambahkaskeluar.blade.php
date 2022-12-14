@@ -37,6 +37,15 @@
                                                 <input class="form-control" id="no_bukti" name="no_bukti"/>
                                             </div> -->
                                             <div class="mb-3">
+                                                    <label class="mb-1" for="inputLastName">Kas Bon</label>
+                                                    <select class="form-control" id="bons" name="bons">
+                                                        <option  value>Pilih Kas Bon</option>
+                                                        @foreach ($kasbon as $item)
+                                                        <option value="{{ $item->no_buktibon}}">{{$item->no_buktibon}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            <div class="mb-3">
                                             <label class="mb-1" for="inputLastName">Periode</label>
                                                     <select class="form-control" id="periode" name="periode">
                                                         <option  value>Pilih Periode</option>
@@ -45,10 +54,10 @@
                                                         @endforeach
                                                     </select>
                                             </div>
-                                            <div class="mb-3">
+                                            <!-- <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Tanggal</label>
                                                 <input class="form-control" type="date" id="tanggal_pencatatan" name="tanggal_pencatatan" required/>
-                                            </div>  
+                                            </div>   -->
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Keterangan</label>
                                                 <input class="form-control" id="keterangan" name="keterangan" placeholder="Masukkan Keterangan" required  />

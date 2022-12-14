@@ -10,7 +10,7 @@
                         <div class="col-auto mt-4">
                             <h1 class="page-header-title">
                                 <div class="page-header-icon"><i data-feather="edit-3"></i></div>
-                                Ubah Data
+                                Lihat Data
                             </h1>
 
                         </div>
@@ -68,6 +68,7 @@
                                             <div class="mb-3">
                                                 <a href="/cetakkasmasuk/{{$item->no_bukti}}"  class="btn btn-primary">Cetak</a>
                                                 <a href="{{url('/kasmasuk')}}" class="btn btn-danger">Batal</a>
+                                                <input type="button" value="Kembali" onclick=self.history.back() class="btn btn-success">
                                             </div>
                                         </form>
                                     </div>

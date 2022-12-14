@@ -6,31 +6,57 @@ use Illuminate\Http\Request;
 use App\Models\Realisasi\KasMasuk;
 use App\Models\Realisasi\KasKeluar;
 use App\Models\Periode\Periode;
+use App\Models\Murid\Murid;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Models\BukuBesar\BukuBesarKas;
 
 class BukuBesarKasController extends Controller
 {
-    public function bukubesarkas()
-    {
-        $bbkas = Periode::orderBy('created_at','desc')->get();
-       
-        return view('bukubesar/bukubesarkas', ['bbkas'=>$bbkas ]);
-      }
-      public function kas(Request $request){
-        $id=$request->id;
-        $jlh =0;
-        $periode = Periode::orderBy('created_at','desc')->get();
-        $bbkas = BukuBesarKas::orderBy('tgl','asc')->where('periode',$id)->get();  
-        $tambah = BukuBesarKas::where('periode',$id)->sum('bertambah');
-        $kurang = BukuBesarKas::where('periode',$id)->sum('berkurang');
-        $saldo = ($jlh = $jlh + (int)'bertambah' - (int)'berkurang');
-        $totalbbkas = $tambah-$kurang;
-        return view('bukubesar/kas', ['bbkas'=>$bbkas, 'tambah'=>$tambah, 'kurang'=>$kurang, 'totalbbkas'=>$totalbbkas, 
-        'saldo'=>$saldo,'periode'=>$periode ]);
-      }
+  public function bukubesarkas()
+  {
+    $bbkas = Periode::orderBy('created_at', 'desc')->get();
+
+    return view('bukubesar/bukubesarkas', ['bbkas' => $bbkas]);
   }
+  public function kas(Request $request)
+  {
+    $id = $request->id;
+    $jlh = 0;
+    $periode = Periode::orderBy('created_at', 'desc')->get();
+    $bbkas = BukuBesarKas::orderBy('tgl', 'asc')->where('periode', $id)->get();
+    $tambah = BukuBesarKas::where('periode', $id)->sum('bertambah');
+    $kurang = BukuBesarKas::where('periode', $id)->sum('berkurang');
+    $saldo = ($jlh = $jlh + (int)'bertambah' - (int)'berkurang');
+    $totalbbkas = $tambah - $kurang;
+    return view('bukubesar/kas', [
+      'bbkas' => $bbkas, 'tambah' => $tambah, 'kurang' => $kurang, 'totalbbkas' => $totalbbkas,
+      'saldo' => $saldo, 'periode' => $periode
+    ]);
+  }
+  public function lihatkas($no_bukti)
+  {
+    $kasmasuk = KasMasuk::where('no_bukti', $no_bukti)->where('no_bukti','LIKE','BKM%')->get();
+    $kaskeluar = KasKeluar::where('no_bukti', $no_bukti)->where('no_bukti','LIKE','BKK%')->get();
+    $kas = $kasmasuk&&$kaskeluar;
+    if ($kas = $kasmasuk) {
+      return view('realisasi/kasmasuk/lihatkasmasuk', compact('kasmasuk'));
+    } else{
+        return view('realisasi/kaskeluar/lihatkaskeluar', compact('kaskeluar'));    
+    }
+  }
+}
+    // // alert($kas); 
+    // $kasmasuk = KasMasuk::where('no_bukti', $no_bukti)->where('no_bukti', 'LIKE', 'BKM%')->get();
+    // $kaskeluar = KasKeluar::where('no_bukti', $no_bukti)->where('no_bukti', 'LIKE', 'BKK%')->get();
+    // $kas = $kasmasuk && $kaskeluar;
+    // switch ($kas) {
+    //   case $kasmasuk:
+    //     return view('realisasi/kasmasuk/lihatkasmasuk', compact('kasmasuk'));
+    //     break;
+    //   case $kaskeluar:
+    //     return view('realisasi/kaskeluar/lihatkaskeluar', compact('kaskeluar'));
+    //     break;
 //   public function bukubesaranggaran()
 //   {
     

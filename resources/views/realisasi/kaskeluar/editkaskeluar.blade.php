@@ -42,10 +42,10 @@
                                                         @endforeach
                                                     </select>
                                             </div>
-                                            <div class="mb-3">
+                                            <!-- <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Tanggal</label>
                                                 <input class="form-control" type="date" id="tanggal_pencatatan" name="tanggal_pencatatan" value="{{ $kk->tanggal_pencatatan}}" required/>
-                                            </div>  
+                                            </div>   -->
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Keterangan</label>
                                                 <input class="form-control" id="keterangan" name="keterangan" value="{{ $kk->keterangan}}" required />

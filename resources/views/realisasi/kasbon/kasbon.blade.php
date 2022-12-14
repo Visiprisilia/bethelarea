@@ -22,8 +22,11 @@
                             <th>No.Bukti</th>
                             <th>Periode</th>
                             <th>Tanggal Pengajuan</th>
+                            <th>Keterangan</th>
                             <th>Program Kerja</th>
+                            <th>Akun</th>
                             <th>Anggaran</th>
+                            <th>Jumlah</th>
                             <th>Penanggung Jawab</th>                              
                             <th>Tanggal Pertanggungjawaban</th>                              
                             <th>Status</th>                              
@@ -32,18 +35,21 @@
                     <tbody>
                         @foreach ($kasbon as $item)
                         <tr>
-                            <td>{{ $item->no_bukti}}</td>
-                            <td>{{ $item->periode}}</td>
+                            <td>{{ $item->no_buktibon}}</td>
+                            <td>{{ $item->periode_bon}}</td>
                             <td>{{ $item->tanggal_pengajuan}}</td>
-                            <td>{{ $item->proker}}</td>
-                            <td>{{ Str::rupiah($item->anggaran)}}</td>                            
-                            <td>{{ $item->penanggungjawab}}</td>                              
+                            <td>{{ $item->keterangan_bon}}</td>
+                            <td>{{ $item->proker_bon}}</td>
+                            <td>{{ $item->akun_bon}}</td>
+                            <td>{{ Str::rupiah($item->anggaran_bon)}}</td>                            
+                            <td>{{ Str::rupiah($item->jumlah_bon)}}</td>                            
+                            <td>{{ $item->penanggungjawab_bon}}</td>                              
                             <td>{{ $item->tanggal_ptj}}</td>                              
-                            <td>{{ $item->status}}</td>                              
+                            <td>{{ $item->status_bon}}</td>                              
                             <td>
-                                <a href="/editkasbon/{{$item->no_bukti}}"><i class="fas fa-edit" style="color:green"></i></a> |
-                                <!-- <a href="/hapuskasbon/{{$item->no_bukti}}" onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a>  -->
-                                <a href="#" id="bon" data-id="{{$item->no_bukti}}" ><i class="fas fa-trash-alt" style="color:red"></i></a>
+                                <a href="/editkasbon/{{$item->no_buktibon}}"><i class="fas fa-edit" style="color:green"></i></a> |
+                                <a href="/hapuskasbon/{{$item->no_buktibon}}" onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a> 
+                                <!-- <a href="#" id="bon" data-id="{{$item->no_buktibon}}" ><i class="fas fa-trash-alt" style="color:red"></i></a> -->
                                 <!-- <a href="/lihatkasbon/{{$item->no_bukti}}"><i class="fas fa-print" style="color:blue"></i></a> -->
                             </td>
                         </tr>

@@ -10,11 +10,11 @@ class BukuBesarKas extends Model
     use HasFactory;
     protected $table = 'bbkas';
     public $incrementing = false;
-    protected $fillable = ['kode', 'tanggal','periode','akun','keterangan','bertambah','berkurang','tgl'];
+    protected $fillable = ['no_bukti', 'tanggal','periode','akun','keterangan','bertambah','berkurang','tgl'];
  
 }
 // CREATE or REPLACE VIEW bbkas as 
-// SELECT km.no_bukti kode, km.tanggal_pencatatan tanggal, km.periode, km.akun, km.keterangan, km.jumlah bertambah, 0 as 'berkurang',km.created_at tgl
+// SELECT km.no_bukti, km.tanggal_pencatatan tanggal, km.periode, km.akun, km.keterangan, km.jumlah bertambah, 0 as 'berkurang',km.created_at tgl
 // FROM kas_masuk km 
 // UNION ALL 
 // SELECT kk.no_bukti, kk.tanggal_pencatatan, kk.periode, kk.akun, kk.keterangan, 0, kk.jumlah, kk.created_at
