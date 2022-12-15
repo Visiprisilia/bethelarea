@@ -72,48 +72,25 @@
                                             <div class="h6 text-white mb-0">Alamat: Jl Hasanudin No.3B, Mangunsari, Kec.Sidomukti,Kota Salatiga, Jawa Tengah </div>
                                             <div class="h6 text-white mb-0">----------------------------------------------------------------------------------------------------------</div>
 
-                                            <p style="text-align:center;"><strong>LAPORAN POSISI ANGGARAN</strong><br>
+                                            <p style="text-align:center;"><strong>PROGRAM KERJA</strong><br>
                                             <p></p>
                                         </div>
-                                        <!-- <form method='post' class="no-print" href="{{url('/laporanposisianggaran')}}">Metode Bayar <input type="" name="txtmetode" id="txtmetode"> <input type="submit" name="filtermetode" id="filtermetode" value="Tampilkan"> </form> -->
-
                                     </div>
-                                    <table class="table align-items-center table-flush">
-                                        <thead class="thead-light">
-                                            <tr>
-                                                <th class="text-center" style="width: 20%; border-bottom: 2px solid #ddd;">No</th>
-                                                <th class="text-center" style="width: 20%; border-bottom: 2px solid #ddd;">Kode Program Kerja</th>
-                                                <th class="text-center" style="width: 20%; border-bottom: 2px solid #ddd;">Periode</th>
-                                                <th class="text-center" style="width: 50%; border-bottom: 2px solid #ddd;">Nama Program Kerja</th>
-                                                <th class="text-center" style="width: 50%; border-bottom: 2px solid #ddd;">Penanggung Jawab</th>
-                                                <th class="text-center" style="width: 50%; border-bottom: 2px solid #ddd;">Waktu Mulai</th>
-                                                <th class="text-center" style="width: 50%; border-bottom: 2px solid #ddd;">Waktu Selesai</th>
-                                                <th class="text-center" style="width: 50%; border-bottom: 2px solid #ddd;">Tujuan</th>
-                                                <th class="text-center" style="width: 50%; border-bottom: 2px solid #ddd;">Indikator Pencapaian</th>
-                                                <th class="text-center" style="width: 50%; border-bottom: 2px solid #ddd;">Jumlah</th>
-                                                <th class="text-center" style="width: 50%; border-bottom: 2px solid #ddd;">Keterangan</th>
-                                            </tr>
-                                        <tbody>
-                                            @foreach ($programkerja as $item)
-                                            <tr>
-                                                <td>{{ $loop->iteration}}</td>
-                                                <td>{{ $item->kode_proker}}</td>
-                                                <td>{{ $item->periode}}</td>
-                                                <td>{{ $item->nama_proker}}</td>
-                                                <td>{{ $item->nama}}</td>
-                                                <td>{{ $item->waktu_mulai}}</td>
-                                                <td>{{ $item->waktu_selesai}}</td>
-                                                <td>{{ $item->tujuan}}</td>
-                                                <td>{{ $item->indikator}}</td>
-                                                <td>{{ $item->anggaran}}</td>
-                                                <td>{{ $item->keterangan}}</td>
+                                    <select class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" id="programkerja" name="programkerja">
+                                        <option value>Pilih Periode</option>
+                                        @foreach ($programkerja as $item)
+                                        <option value="{{ $item->kode_periode}}">{{$item->nama_periode}}</option>
+                                        @endforeach
+                                    </select>
+                                    <div class="table-responsive" id="tablecetakproker">
+                                        <table>
+                                            <thead>
+                                                <br>
+                                                
 
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                        </thead>
-                                        </tbody>
-                                    </table><br><br><br><br><br>
+                                            </thead>
+                                            </tbody>
+                                        </table><br><br><br><br><br>
                                     <input class="no-print" type="button" value="Cetak" onclick="window.print()">
                                     <input type="button" value="Kembali" onclick=self.history.back() class="no-print">
                                 </div>
@@ -122,3 +99,19 @@
                         </div>
                     </div>
                 </div>
+                <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+                <script>
+                    $(document).on('change', '#programkerja', function() {
+                        var id = $(this).val();
+                        $.ajax({
+                            url: "/viewcetakprogramkerja",
+                            data: {
+                                id: id
+                            },
+                            method: "get",
+                            success: function(data) {
+                                $('#tablecetakproker').html(data);
+                            }
+                        })
+                    })
+                </script>

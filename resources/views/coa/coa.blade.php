@@ -40,8 +40,8 @@
                             <td>{{ $item->keterangan}}</td>      
                             <td>
                                 <a href="/editcoa/{{$item->kode_akun}}"><i class="fas fa-edit" style="color:green"></i></a> | 
-                                <!-- <a href="/hapuscoa/{{$item->kode_akun}}" onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a>  -->
-                                <a href="#" id="hapus" data-id="{{$item->kode_akun}}" ><i class="fas fa-trash-alt" style="color:red"></i></a>
+                                <a href="/hapuscoa/{{$item->kode_akun}}" onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a> 
+                                <!-- <a href="#" id="hapus" data-id="{{$item->kode_akun}}" ><i class="fas fa-trash-alt" style="color:red"></i></a> -->
 
                             </td>
                         </tr>  

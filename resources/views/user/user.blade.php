@@ -36,8 +36,8 @@
                             <td>{{ $item->last_login}}</td>
                             <td>
                                 <a href="/edituser/{{$item->id}}"><i class="fas fa-edit" style="color:green"></i></a> |
-                                <!-- <a href="/hapususer/{{$item->id}}" onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a> -->
-                                <a href="#" id="del" data-id="{{$item->id}}" ><i class="fas fa-trash-alt" style="color:red"></i></a>
+                                <a href="/hapususer/{{$item->id}}" onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a>
+                                <!-- <a href="#" id="del" data-id="{{$item->id}}" ><i class="fas fa-trash-alt" style="color:red"></i></a> -->
                             </td>
                         </tr>
                         @endforeach

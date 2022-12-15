@@ -32,8 +32,8 @@
                             <td>{{ $item->keterangan}}</td>
                             <td>
                                 <a href="/editkebijakan/{{$item->kode_kebijakan}}"><i class="fas fa-edit" style="color:green"></i></a>
-                                <!-- <a href="/hapuskebijakan/{{$item->kode_kebijakan}}" onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a> -->
-                                <a id="delete" data-id="/hapuskebijakan/{{$item->kode_kebijakan}}" ><i class="fas fa-trash-alt" style="color:red"></i></a>
+                                <a href="/hapuskebijakan/{{$item->kode_kebijakan}}" onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a>
+                                <!-- <a id="delete" data-id="/hapuskebijakan/{{$item->kode_kebijakan}}" ><i class="fas fa-trash-alt" style="color:red"></i></a> -->
                                 <!-- <a href="#" class="btn btn-danger delete" data-id="{{$item->kode_kebijakan}}">delete</a> -->
                                 <a href="/download/{{($item->kode_kebijakan) }}" download=""><i class="fas fa-download" style="color:orange"></i></a>
                             </td>

@@ -36,8 +36,8 @@
                             <td>{{ $item->status}}</td>                      
                             <td>
                                 <a href="/editsubunit/{{$item->kode_subunit}}"><i class="fas fa-edit" style="color:green"></i></a> |
-                                <!-- <a href="/hapussubunit/{{$item->kode_subunit}}"onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a> -->
-                                <a href="#" id="hapus" data-id="{{$item->kode_subunit}}" ><i class="fas fa-trash-alt" style="color:red"></i></a>
+                                <a href="/hapussubunit/{{$item->kode_subunit}}"onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a>
+                                <!-- <a href="#" id="hapus" data-id="{{$item->kode_subunit}}" ><i class="fas fa-trash-alt" style="color:red"></i></a> -->
 
                             </td>
                         </tr>

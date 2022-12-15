@@ -123,6 +123,7 @@ Route::post('/updateprogramkerja/{kode_proker}', [ProgramKerjaController::class,
 Route::get('/hapusprogramkerja/{kode_proker}', [ProgramKerjaController::class,'hapusprogramkerja']); 
 Route::get('/lihatprogramkerja/{kode_proker}', [ProgramKerjaController::class,'lihatprogramkerja']); 
 Route::get('/cetakprogramkerja', [ProgramKerjaController::class,'cetakprogramkerja']); 
+Route::get('/viewcetakprogramkerja', [ProgramKerjaController::class,'viewcetakprogramkerja']); 
 
 //Evaluasi
 Route::get('/evaluasi', [EvaluasiController::class,'evaluasi']);
@@ -171,7 +172,7 @@ Route::get('/pilihbon', [KasKeluarController::class,'pilihbon']);
 //Buku Besar Kas
 Route::get('/bukubesarkas', [BukuBesarKasController::class,'bukubesarkas']);
 Route::get('/kas', [BukuBesarKasController::class,'kas']);
-Route::get('/lihatkas/{kode}', [BukuBesarKasController::class,'lihatkas']);
+Route::get('/lihatkas/{no_bukti}', [BukuBesarKasController::class,'lihatkas']);
 
 //Buku Besar Anggaran 
 Route::get('/bukubesaranggaran', [BukuBesarAnggaranController::class,'bukubesaranggaran']);

@@ -37,7 +37,7 @@
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-8">
                                                     <label class="mb-1" for="inputLastName">Periode</label>
-                                                    <select class="form-control" id="periode" require name="periode">
+                                                    <select class="form-control" id="periode" require name="periode"  value="{{ $items->periode}}">
                                                         <option  value>Pilih Periode</option>
                                                         @foreach ($periode as $item)
                                                         <option value="{{ $item->kode_periode}}">{{$item->nama_periode}}</option>
@@ -56,7 +56,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputLastName">Penanggung Jawab</label>
-                                                    <select class="form-control" id="penanggungjawab" name="penanggungjawab">
+                                                    <select class="form-control" id="penanggungjawab" name="penanggungjawab" value="{{ $items->penanggungjawab}}">
                                                         <option  value>Pilih Penanggung Jawab</option>
                                                         @foreach ($pegawai as $item)
                                                         <option value="{{ $item->niy}}">{{$item->nama}}</option>

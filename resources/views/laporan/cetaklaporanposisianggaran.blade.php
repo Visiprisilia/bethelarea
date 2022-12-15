@@ -80,10 +80,10 @@ border-collapse: collapse;
                                 <div id="receipt-data">
                                     <div>
                                         <div style="text-align:center;">
-                                        <img align="bottom" src="{{asset('template/img/logo2.png') }}" style="max-width:100px;">
+                                        <img align="bottom" src="{{asset('template/img/logo4.png') }}" style="max-width:100px;">
                                             <h3>Yayasan Bethel Area</h3>
                                             <h3>Sekolah KB/TK "Satria Tunas Bangsa"</h3>
-                                            <div class="h6 text-white mb-0">Alamat: Jl Hasanudin No.3B, Mangunsari, Kec.Sidomukti,Kota Salatiga, Jawa Tengah </div>
+                                            <div class="h6 text-white mb-0">Alamat: Jl Hasanudin No.3B, Mangunsari, Kec.Sidomukti, Kota Salatiga, Jawa Tengah </div>
                                             <div class="h6 text-white mb-0">----------------------------------------------------------------------------------------------------------</div>
 
                                             <p style="text-align:center;"><strong>LAPORAN POSISI ANGGARAN</strong><br>

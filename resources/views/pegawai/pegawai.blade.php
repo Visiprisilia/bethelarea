@@ -65,8 +65,8 @@
                             <td>{{ $item->updated_at}}</td>
                             <td>
                                 <a href="/editpegawai/{{$item->niy}}"><i class="fas fa-edit" style="color:green"></i></a> |
-                                <!-- <a href="/hapuspegawai/{{$item->niy}}" onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a> -->
-                                <a href="#" id="cut" data-id="{{$item->niy}}" ><i class="fas fa-trash-alt" style="color:red"></i></a>
+                                <a href="/hapuspegawai/{{$item->niy}}" onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a>
+                                <!-- <a href="#" id="cut" data-id="{{$item->niy}}" ><i class="fas fa-trash-alt" style="color:red"></i></a> -->
                                 </td>
                         </tr>
                         @endforeach

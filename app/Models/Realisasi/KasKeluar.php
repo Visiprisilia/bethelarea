@@ -11,7 +11,7 @@ class KasKeluar extends Model
     protected $table = 'kas_keluar';
     protected $primaryKey = 'no_bukti';
     public $incrementing = false;
-    protected $fillable = ['no_bukti', 'periode','tanggal_pencatatan','keterangan','akun','prokers','jumlah','anggaran','bukti','kasir'];
+    protected $fillable = ['no_bukti', 'periode','tanggal_pencatatan','keterangan','akun','prokers','jumlah','anggaran','bukti','penanggungjawab','kasir'];
  
 }
 

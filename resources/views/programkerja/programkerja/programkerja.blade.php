@@ -20,7 +20,6 @@
                 <option value="{{ $item->kode_periode}}">{{$item->nama_periode}}</option>
                 @endforeach
             </select>
-            </select>
         </div>
         <div class="card-body">
             <div class="table-responsive" id="tableproker">

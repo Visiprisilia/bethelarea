@@ -9,6 +9,7 @@ $(document).on("change","#prokers",function(){
         success:function(data){
             $("#anggaran").val(data.proker.jumlah);
             $("#akun").val(data.proker.kode_akun);
+            $("#penanggungjawab").val(data.proker.penanggungjawab);
         
         }
     })

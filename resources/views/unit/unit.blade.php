@@ -30,8 +30,8 @@
                             <td>{{ $item->nama_unit}}</td>
                             <td>
                                 <a href="/editunit/{{$item->kode_unit}}"><i class="fas fa-edit" style="color:green"></i></a> |
-                                <!-- <a href="/hapusunit/{{$item->kode_unit}}" onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a> -->
-                                <a href="#" id="cutunit" data-id="{{$item->kode_unit}}" ><i class="fas fa-trash-alt" style="color:red"></i></a>
+                                <a href="/hapusunit/{{$item->kode_unit}}" onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a>
+                                <!-- <a href="#" id="cutunit" data-id="{{$item->kode_unit}}" ><i class="fas fa-trash-alt" style="color:red"></i></a> -->
                             </td>
                         </tr>
                         @endforeach

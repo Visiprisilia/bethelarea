@@ -27,6 +27,5 @@
     <th>{{Str::rupiah($tambah)}}</th>
     <th>{{Str::rupiah($kurang)}}</th>
     <th>{{Str::rupiah($totalbbkas)}}</th>
-    <th></th>
     </thead>
 </table>

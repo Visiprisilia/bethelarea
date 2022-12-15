@@ -57,6 +57,7 @@ class KasKeluarController extends Controller
 			'jumlah'=>$request->jumlah,
 			'anggaran'=>$request->anggaran,
 			'bukti'=>$buktis,
+			'penanggungjawab'=>$request->penanggungjawab,
 			'kasir'=>$request->kasir
 
 
@@ -68,7 +69,9 @@ class KasKeluarController extends Controller
 		$periode = Periode::where('status', 'LIKE', 'AKTIF')->get();
 		$pegawai = Pegawai::where('status', 'LIKE', 'AKTIF')->get();
 		$kasbon = KasBon::where('status_bon', 'LIKE', 'Sudah')->get();
-		$akun = Akuns::join("coa","akuns.kode_akun","=","coa.kode_akun")->get();
+		$akun = Akuns::join("periode","akuns.periode","=","periode.kode_periode")->where('status', 'LIKE', 'AKTIF')->get();
+
+		// $akun = Akuns::join("coa","akuns.kode_akun","=","coa.kode_akun")->get();
 		$kaskeluar = KasKeluar::where('no_bukti', $no_bukti)->get();
 		return view('realisasi/kaskeluar/editkaskeluar', ['periode'=>$periode,'pegawai'=>$pegawai,'akun'=>$akun,'kaskeluar'=>$kaskeluar,'kasbon'=>$kasbon]);
 	}
@@ -93,6 +96,7 @@ class KasKeluarController extends Controller
 			'jumlah'=>$request->jumlah,
 			'anggaran'=>$request->anggaran,
 			'bukti'=>$buktis,
+			'penanggungjawab'=>$request->penanggungjawab,
 			'kasir'=>$request->kasir
 		]);
 		return redirect('/kaskeluar')->with('status', 'Data berhasil diubah');

@@ -64,8 +64,8 @@
                             <td>{{ $item->kontak}}</td>
                             <td>
                                 <a href="/editmurid/{{$item->nomor_induk}}"><i class="fas fa-edit" style="color:green"></i></a> |
-                                <!-- <a href="/hapusmurid/{{$item->nomor_induk}}" onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a> -->
-                                <a href="#" id="del" data-id="{{$item->nomor_induk}}" ><i class="fas fa-trash-alt" style="color:red"></i></a>
+                                <a href="/hapusmurid/{{$item->nomor_induk}}" onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a>
+                                <!-- <a href="#" id="del" data-id="{{$item->nomor_induk}}" ><i class="fas fa-trash-alt" style="color:red"></i></a> -->
                             </td>
                         </tr>
                         @endforeach

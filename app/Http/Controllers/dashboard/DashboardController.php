@@ -19,13 +19,14 @@ class DashboardController extends Controller
         $id = $request->id;
         $tanggalhariini = Carbon::now()->isoFormat('dddd, D MMMM Y');
         $periode = Periode::orderBy('created_at', 'desc')->get();
+        $periodess = Periode::orderBy('created_at', 'desc')->where('status', 'LIKE', 'AKTIF')->first();
         $lapposisianggaran = LaporanPosisiAnggaran::where('periode', $id)->get();
         $anggarans = LaporanPosisiAnggaran::join("periode","lapposisianggaran.periode", "=", "periode.kode_periode")->where('status', 'LIKE', 'AKTIF')->sum('anggaran');
         $posisianggarans = LaporanPosisiAnggaran::join("periode","lapposisianggaran.periode", "=", "periode.kode_periode")->where('status', 'LIKE', 'AKTIF')->sum('posisi_anggaran');
 
         return view('dashboard/dashboard', [
             'lapposisianggaran' => $lapposisianggaran, 'periode' => $periode, 'anggarans' => $anggarans,
-            'posisianggarans' => $posisianggarans, 'tanggalhariini'=>$tanggalhariini 
+            'posisianggarans' => $posisianggarans, 'tanggalhariini'=>$tanggalhariini, 'periodess'=>$periodess
         ]);
     }
 }

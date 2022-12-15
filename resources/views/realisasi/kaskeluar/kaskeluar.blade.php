@@ -27,6 +27,7 @@
                             <th>Jumlah</th>                              
                             <th>Bukti Nota</th>                              
                             <th>Dibayar Kepada</th>                              
+                            <th>Penanggung Jawab</th>                              
                             <th>Aksi</th>
                         </tr>
                     <tbody>
@@ -41,6 +42,7 @@
                             <td>{{ Str::rupiah($item->jumlah)}}</td>                              
                             <td>{{ $item->bukti}}</td>                              
                             <td>{{ $item->kasir}}</td>                              
+                            <td>{{ $item->penanggungjawab}}</td>                              
                             <td>
                                 <a href="/editkaskeluar/{{$item->no_bukti}}"><i class="fas fa-edit" style="color:green"></i></a> |
                                 <a href="/hapuskaskeluar/{{$item->no_bukti}}" onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a> |

@@ -33,8 +33,8 @@
                             <td>{{ $item->status}}</td>
                             <td>
                                 <a href="/editperiode/{{$item->kode_periode}}"><i class="fas fa-edit" style="color:green"></i></a> |
-                                <!-- <a href="/hapusperiode/{{$item->kode_periode}}" onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a> -->
-                                <a href="#" id="hapuss" data-id="{{$item->kode_periode}}" ><i class="fas fa-trash-alt" style="color:red"></i></a>
+                                <a href="/hapusperiode/{{$item->kode_periode}}" onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a>
+                                <!-- <a href="#" id="hapuss" data-id="{{$item->kode_periode}}" ><i class="fas fa-trash-alt" style="color:red"></i></a> -->
                             </td>
                         </tr>
                         @endforeach

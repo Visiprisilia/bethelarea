@@ -8,9 +8,10 @@
         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
       <b><h5>{{$tanggalhariini}}</h5></b> 
     </div>
-
+<h4><b>Periode &nbsp;{{$periodess->nama_periode}}</b></h4>
     <!-- Content Row -->
     <div class="row">
+     
 
         <!-- Earnings (Monthly) Card Example -->
         <!-- <div class="col-xl-3 col-md-6 mb-4">

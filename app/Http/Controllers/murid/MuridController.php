@@ -96,6 +96,7 @@ class MuridController extends Controller
 			'foto_murid'=>$fotos,
 			'file_kk'=>$kk,
 			'kontak'=>$request->kontak
+
 		]);
 		return redirect('/murid')->with('status', 'Data berhasil diubah');
 	}

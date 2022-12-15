@@ -93,6 +93,10 @@
                                                     <input class="form-control" type="file" id="bukti" name="bukti"  placeholder="Masukkan Jumlah" required />
                                                 </div>
                                                 <div class="col-md-6">
+                                                <label class="mb-1" for="inputFirstName">Penanggung Jawab :</label>
+                                                <input class="form-control" readonly id="penanggungjawab" name="penanggungjawab"  placeholder="Penanggung jawab" required />
+                                            </div>
+                                            <div class="col-md-6">
                                                 <label class="mb-1" for="inputFirstName">Dibayar Kepada :</label>
                                                 <input class="form-control" id="kasir" name="kasir"  placeholder="Dibayar Kepada" required />
                                             </div>        

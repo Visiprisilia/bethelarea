@@ -73,7 +73,7 @@
                                             @foreach($kaskeluar as $item)
                                             <form action="/updatekaskeluar/{{$item->no_bukti}}" method="post">
                                                 @csrf
-                                                <img align="bottom" src="{{asset('template/img/logo2.png') }}" style="max-width:100px;">
+                                                <img align="bottom" src="{{asset('template/img/logo4.png') }}" style="max-width:100px;">
                                                 <br style="text-align:center;"><strong>YAYASAN BETHEL AREA</strong>
                                                 <br style="text-align:center;"><strong>Sekolah KB/TK "Satria Tunas Bangsa"</strong>
                                                 <br> Alamat: Jl Hasanudin No.3B, Mangunsari, Kec.Sidomukti,Kota Salatiga, Jawa Tengah <br>

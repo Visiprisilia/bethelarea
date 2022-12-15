@@ -73,7 +73,7 @@
                                             @foreach($kasmasuk as $item)
                                             <form action="/updatekasmasuk/{{$item->no_bukti}}" method="post">
                                                 @csrf
-                                                <img src="{{asset('template/img/logo2.png') }}" style="max-width:100px;">
+                                                <img src="{{asset('template/img/logo4.png') }}" style="max-width:100px;">
                                                                                      
                                                 <br style="text-align:center;"><strong>YAYASAN BETHEL AREA</strong>
                                                 <br style="text-align:center;"><strong>Sekolah KB/TK "Satria Tunas Bangsa"</strong>
