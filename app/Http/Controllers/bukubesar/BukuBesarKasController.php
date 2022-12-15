@@ -38,25 +38,29 @@ class BukuBesarKasController extends Controller
   {
     $kasmasuk = KasMasuk::where('no_bukti', $no_bukti)->where('no_bukti','LIKE','BKM%')->get();
     $kaskeluar = KasKeluar::where('no_bukti', $no_bukti)->where('no_bukti','LIKE','BKK%')->get();
-    $kas = $kasmasuk&&$kaskeluar;
-    if ($kas = $kasmasuk) {
+
+    if (count ($kaskeluar)==0) {
       return view('realisasi/kasmasuk/lihatkasmasuk', compact('kasmasuk'));
     } else{
         return view('realisasi/kaskeluar/lihatkaskeluar', compact('kaskeluar'));    
     }
   }
 }
-    // // alert($kas); 
-    // $kasmasuk = KasMasuk::where('no_bukti', $no_bukti)->where('no_bukti', 'LIKE', 'BKM%')->get();
-    // $kaskeluar = KasKeluar::where('no_bukti', $no_bukti)->where('no_bukti', 'LIKE', 'BKK%')->get();
-    // $kas = $kasmasuk && $kaskeluar;
-    // switch ($kas) {
-    //   case $kasmasuk:
-    //     return view('realisasi/kasmasuk/lihatkasmasuk', compact('kasmasuk'));
-    //     break;
-    //   case $kaskeluar:
-    //     return view('realisasi/kaskeluar/lihatkaskeluar', compact('kaskeluar'));
-    //     break;
+// public function lihatkas($no_bukti)
+//   {
+//     // // alert($kas); 
+//     // $kasmasuk = KasMasuk::where('no_bukti', $no_bukti)->where('no_bukti', 'LIKE', 'BKM%')->get();
+//     // $kaskeluar = KasKeluar::where('no_bukti', $no_bukti)->where('no_bukti', 'LIKE', 'BKK%')->get();
+//     // $kas = $kasmasuk && $kaskeluar;
+//     // switch ($kas) {
+//     //   case $kasmasuk:
+//     //     return view('realisasi/kasmasuk/lihatkasmasuk', compact('kasmasuk'));
+//     //     break;
+//     //   case $kaskeluar:
+//     //     return view('realisasi/kaskeluar/lihatkaskeluar', compact('kaskeluar'));
+//     //     break; }
+//   }
+// }
 //   public function bukubesaranggaran()
 //   {
     

@@ -82,19 +82,19 @@
                                                     <label class="mb-1" for="inputFirstName">Penanggung Jawab</label>
                                                     <input class="form-control" id="penanggungjawab_bon" name="penanggungjawab_bon" placeholder="Masukkan penanggung jawab" required />
                                                 </div>
-                                                <div class="col-md-6">
+                                                <!-- <div class="col-md-6">
                                                     <label class="mb-1" for="inputLastName">Tanggal Pertanggungjawaban</label>
                                                     <input class="form-control" type="date" id="tanggal_ptj" name="tanggal_ptj" placeholder="Masukkan Proker" required />
-                                                </div>
+                                                </div> -->
                                             </div>
-                                            <div class="mb-3">
+                                            <!-- <div class="mb-3">
                                             <label for="inputLastName">Status</label>
                                                 <select class="form-control" id="status_bon" name="status_bon" required>
                                                     <option  value>Pilih Status</option>
                                                     <option>Sudah Dipertanggungjawabkan</option>
                                                     <option>Belum Dipertanggungjawabkan</option>
                                                 </select>                                              
-                                            </div>
+                                            </div> -->
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Tambah</button>
                                                 <a href="{{url('/kasbon')}}" class="btn btn-danger">Batal</a>

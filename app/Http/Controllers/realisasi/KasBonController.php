@@ -42,11 +42,13 @@ class KasBonController extends Controller
 			'akun_bon'=>$request->akun_bon, 
 			'anggaran_bon'=>$request->anggaran_bon,
 			'jumlah_bon'=>$request->jumlah_bon,
+			'jumlah_ptj'=>$request->jumlah_ptj,
 			'penanggungjawab_bon'=>$request->penanggungjawab_bon,
 			'tanggal_ptj'=>$request->tanggal_ptj,
-			'status_bon'=>$request->status_bon
+			'status_bon'=>'Belum Dipertanggungjawabkan'
 
-
+//$check = Periode kolom counter_proker +1, sesuai dengan $periode
+//setelah menambah proker, ubah di tabel periode untuk kolom counter_proker =+1 sesuai dengan $periode
 			]);
 			return redirect('/kasbon')->with('status', 'Data berhasil ditambahkan');
 	}
@@ -74,6 +76,7 @@ class KasBonController extends Controller
 			'akun_bon'=>$request->akun_bon, 
 			'anggaran_bon'=>$request->anggaran_bon,
 			'jumlah_bon'=>$request->jumlah_bon,
+			'jumlah_ptj'=>$request->jumlah_ptj,
 			'penanggungjawab_bon'=>$request->penanggungjawab_bon,
 			'tanggal_ptj'=>$request->tanggal_ptj,
 			'status_bon'=>$request->status_bon

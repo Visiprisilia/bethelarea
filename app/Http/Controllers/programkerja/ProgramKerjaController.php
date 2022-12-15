@@ -42,7 +42,8 @@ class ProgramKerjaController extends Controller
 		$kode_akun = $request->akun;
 		$check = ProgramKerja::count();
 		$kode_proker = 'PROKER' . $periode . $check + 1;
-
+//$check = Periode kolom counter_proker +1, sesuai dengan $periode
+//setelah menambah proker, ubah di tabel periode untuk kolom counter_proker =+1 sesuai dengan $periode
 		$data_proker = [
 			'kode_proker' => $kode_proker,
 			'periode' => $periode,

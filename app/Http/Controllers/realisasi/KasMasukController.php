@@ -48,7 +48,9 @@ class KasMasukController extends Controller
 			'sumber'=>$request->sumber,
 			'jumlah'=>$request->jumlah,
 			'kasir'=>$request->kasir
-
+	//$check = Periode kolom counter_kk +1, sesuai dengan $periode
+//setelah menambah km, ubah di tabel periode untuk kolom counter_kk =+1 sesuai dengan $periode
+ 
 			]);
 			return redirect('/kasmasuk')->with('status', 'Data berhasil ditambahkan');
 	}

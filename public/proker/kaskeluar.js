@@ -15,7 +15,7 @@ $(document).on("change","#prokers",function(){
     })
     // alert(kode);
 })
-$(document).on("change","#bons",function(){
+$(document).on("change","#no_buktibon",function(){
     var no = $(this).val();
     $.ajax({
         url:"/pilihbon",
@@ -30,7 +30,7 @@ $(document).on("change","#bons",function(){
             $("#akun").val(data.bon.akun_bon);
             $("#anggaran").val(data.bon.anggaran_bon);
             $("#jumlah").val(data.bon.jumlah_bon);
-            $("#kasir").val(data.bon.penanggungjawab_bon);
+            $("#penanggungjawab").val(data.bon.penanggungjawab_bon);
         
         }
 

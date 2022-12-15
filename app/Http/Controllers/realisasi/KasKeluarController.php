@@ -27,7 +27,7 @@ class KasKeluarController extends Controller
 	{
 		$periode = Periode::where('status', 'LIKE', 'AKTIF')->get();
 		$pegawai = Pegawai::where('status', 'LIKE', 'AKTIF')->get();
-		$kasbon = KasBon::where('status_bon', 'LIKE', 'Sudah Dipertanggungjawabkan')->get();	
+		$kasbon = KasBon::where('status_bon', 'LIKE', 'Belum Dipertanggungjawabkan')->get();	
 		// $akun = Akuns::orderBy('created_at','desc')->get();
 		$akun = Akuns::join("periode","akuns.periode","=","periode.kode_periode")->where('status', 'LIKE', 'AKTIF')->get();
 		// $akun = Akuns::join("coa","akuns.kode_akun","=","coa.kode_akun")->get();
@@ -45,8 +45,12 @@ class KasKeluarController extends Controller
 		$destinationPath = 'assets/images/kaskeluar/';
 		$buktis = 'BKK_'.$no_bukti.'.'.$bukti->getClientOriginalExtension();
 		$bukti->move($destinationPath, $buktis);
+		$no_buktibon = $request->no_buktibon;
 
-		
+		//$check = Periode kolom counter_kk +1, sesuai dengan $periode
+//setelah menambah kk, ubah di tabel periode untuk kolom counter_kk =+1 sesuai dengan $periode
+//catat bukti kas bon jika ada 
+
 		KasKeluar::create([
 			'no_bukti'=>$no_bukti,
 			'periode'=>$request->periode,
@@ -54,14 +58,23 @@ class KasKeluarController extends Controller
 			'keterangan'=>$request->keterangan,
 			'akun'=>$request->akun,
 			'prokers'=>$request->prokers,
-			'jumlah'=>$request->jumlah,
 			'anggaran'=>$request->anggaran,
+			'jumlah'=>$request->jumlah,
 			'bukti'=>$buktis,
 			'penanggungjawab'=>$request->penanggungjawab,
-			'kasir'=>$request->kasir
-
-
+			'kasir'=>$request->kasir,
+			'no_buktibon'=>$request->no_buktibon
 			]);
+			if ($no_buktibon != null) {				
+				$kasbon = KasBon::where('no_buktibon', $request->no_buktibon)->update([
+					'jumlah_ptj'=>$request->jumlah,
+					'status_bon'=>'Sudah Dipertanggungjawabkan',
+					'tanggal_ptj'=>$tanggalhariinis,
+				]);
+			}
+			//jika kas bon !=null 
+			//update untuk table kas bon pada kolom jumlah_ptj sesuai dengan bukti kas bon
+			//rumus jumlah_ptj=jumlah_ptj+jumlah kk
 			return redirect('/kaskeluar')->with('status', 'Data berhasil ditambahkan');
 	}
 	public function editkaskeluar($no_bukti)
@@ -97,7 +110,8 @@ class KasKeluarController extends Controller
 			'anggaran'=>$request->anggaran,
 			'bukti'=>$buktis,
 			'penanggungjawab'=>$request->penanggungjawab,
-			'kasir'=>$request->kasir
+			'kasir'=>$request->kasir,
+			'no_buktibon'=>$request->no_buktibon
 		]);
 		return redirect('/kaskeluar')->with('status', 'Data berhasil diubah');
 	}

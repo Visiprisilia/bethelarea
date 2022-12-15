@@ -27,6 +27,7 @@
                             <th>Akun</th>
                             <th>Anggaran</th>
                             <th>Jumlah</th>
+                            <th>Jumlah Pertanggungjawaban</th>
                             <th>Penanggung Jawab</th>                              
                             <th>Tanggal Pertanggungjawaban</th>                              
                             <th>Status</th>                              
@@ -43,6 +44,7 @@
                             <td>{{ $item->akun_bon}}</td>
                             <td>{{ Str::rupiah($item->anggaran_bon)}}</td>                            
                             <td>{{ Str::rupiah($item->jumlah_bon)}}</td>                            
+                            <td>{{ Str::rupiah($item->jumlah_ptj)}}</td>                            
                             <td>{{ $item->penanggungjawab_bon}}</td>                              
                             <td>{{ $item->tanggal_ptj}}</td>                              
                             <td>{{ $item->status_bon}}</td>                              
