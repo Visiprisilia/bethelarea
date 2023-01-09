@@ -5,7 +5,7 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Daftar Pengguna</h1>
+    <h1 class="h3 mb-2 text-gray-800">Daftar User</h1>
 
 
     <!-- DataTales Example -->
@@ -20,7 +20,7 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Nama Pengguna</th>
+                            <th>Nama Lengkap</th>
                             <th>Username</th>
                             <th>Level</th>
                             <th>Last Login</th>
@@ -30,7 +30,7 @@
                         @foreach ($user as $item)
                         <tr>
                             <td>{{ $loop->iteration}}</td>
-                            <td>{{ $item->nama_pengguna}}</td>
+                            <td>{{ $item->nama_lengkap}}</td>
                             <td>{{ $item->nama_user}}</td>
                             <td>{{ $item->level}}</td>
                             <td>{{ $item->last_login}}</td>

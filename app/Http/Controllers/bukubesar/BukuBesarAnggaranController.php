@@ -24,9 +24,14 @@ class BukuBesarAnggaranController extends Controller
     {
         $jlh = 0;
         $id=$request->id;
-        $bbanggaran = BukuBesarAnggaran::orderBy('tgl', 'asc')->where('akun',$id)->get();   
-        $anggaran = BukuBesarAnggaran::where('akun',$id)->sum('anggaran');
-        $realisasi = BukuBesarAnggaran::where('akun',$id)->sum('realisasi');
+        $kode=$request->id;
+        $bbanggaran = BukuBesarAnggaran::orderBy('tgl', 'asc')->where('akun',$id)->orWhere('periode',$kode)->get();   
+        $anggaran = BukuBesarAnggaran::where('akun',$id)->orWhere('periode',$kode)->sum('anggaran');
+        $realisasi = BukuBesarAnggaran::where('akun',$id)->orWhere('periode',$kode)->sum('realisasi');
+        // $bbanggaran = BukuBesarAnggaran::orderBy('tgl','asc')->where([['akun',$id],['periode',$kode]])->get();  
+        // $anggaran = BukuBesarAnggaran::where([['akun',$id],['periode',$kode]])->sum('anggaran');
+        // $realisasi = BukuBesarAnggaran::where([['akun',$id],['periode',$kode]])->sum('realisasi');
+  
         $saldo = ($jlh = $jlh + (int)'anggaran' - (int)'realisasi');
         $total = $anggaran - $realisasi;
         return view('bukubesar/anggaran', ['bbanggaran'=>$bbanggaran,'anggaran'=>$anggaran,'realisasi'=>$realisasi,'saldo'=>$saldo,

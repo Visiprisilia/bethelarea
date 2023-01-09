@@ -31,11 +31,21 @@ class KasBonController extends Controller
 	{
 		$tanggalhariini = Carbon::now()->format('Ymd');
 		$tanggalhariinis = Carbon::now()->format('Y-m-d');
-        $check = KasBon::count();
-		$no_buktibon = 'BKB'.$tanggalhariini.$check + 1;;
+        // $check = KasBon::count();
+		// $no_buktibon = 'BKB'.$tanggalhariini.$check + 1;;
+		$periode = $request->periode;
+
+		$ambilkb = Periode::where('kode_periode',$periode)->get();
+		$check = 0;
+		foreach ($ambilkb as $kb) {
+			
+			$check = $kb->counter_kb;
+		}
+		$no_buktibon = 'BKB' . $tanggalhariini . $check + 1;
+		
 		KasBon::create([
 			'no_buktibon'=>$no_buktibon,
-			'periode_bon'=>$request->periode_bon,
+			'periode'=>$request->periode,
 			'tanggal_pengajuan'=>$tanggalhariinis,	
 			'keterangan_bon'=>$request->keterangan_bon, 
 			'proker_bon'=>$request->proker_bon, 
@@ -50,6 +60,7 @@ class KasBonController extends Controller
 //$check = Periode kolom counter_proker +1, sesuai dengan $periode
 //setelah menambah proker, ubah di tabel periode untuk kolom counter_proker =+1 sesuai dengan $periode
 			]);
+			Periode::where('kode_periode', $periode)->update(['counter_kb'=>$check+1]);
 			return redirect('/kasbon')->with('status', 'Data berhasil ditambahkan');
 	}
 	public function editkasbon($no_buktibon)
@@ -69,7 +80,7 @@ class KasBonController extends Controller
 		$no_buktibon = 'BKB'.$tanggalhariini.$check + 1;;
         $kasbon = KasBon::where('no_buktibon', $request->no_buktibon)->update([
 			'no_buktibon'=>$no_buktibon,
-			'periode_bon'=>$request->periode_bon,
+			'periode'=>$request->periode,
 			'tanggal_pengajuan'=>$tanggalhariinis,	
 			'keterangan_bon'=>$request->keterangan_bon, 
 			'proker_bon'=>$request->proker_bon, 

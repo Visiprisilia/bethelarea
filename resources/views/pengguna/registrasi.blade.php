@@ -32,7 +32,7 @@
                                             <input class="form-control form-control-user" id="level" name="level" placeholder="Masukkan Level">
                                         </div>
                                         <div class="form-group">
-                                            <input class="form-control form-control-user" id="nama_pengguna" name="nama_pengguna" placeholder="Masukkan Nama Lengkap">
+                                            <input class="form-control form-control-user" id="nama_lengkap" name="nama_lengkap" placeholder="Masukkan Nama Lengkap">
                                         </div>
                                         <div class="mb-3">
                                             <button type="submit" class="btn btn-facebook btn-user btn-block">Register Akun</button>

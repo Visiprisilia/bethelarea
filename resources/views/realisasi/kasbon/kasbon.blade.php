@@ -29,15 +29,15 @@
                             <th>Jumlah</th>
                             <th>Jumlah Pertanggungjawaban</th>
                             <th>Penanggung Jawab</th>                              
-                            <th>Tanggal Pertanggungjawaban</th>                              
                             <th>Status</th>                              
+                            <th>Tanggal Pertanggungjawaban</th>                              
                             <th>Aksi</th>
                         </tr>
                     <tbody>
                         @foreach ($kasbon as $item)
                         <tr>
                             <td>{{ $item->no_buktibon}}</td>
-                            <td>{{ $item->periode_bon}}</td>
+                            <td>{{ $item->periode}}</td>
                             <td>{{ $item->tanggal_pengajuan}}</td>
                             <td>{{ $item->keterangan_bon}}</td>
                             <td>{{ $item->proker_bon}}</td>
@@ -46,8 +46,8 @@
                             <td>{{ Str::rupiah($item->jumlah_bon)}}</td>                            
                             <td>{{ Str::rupiah($item->jumlah_ptj)}}</td>                            
                             <td>{{ $item->penanggungjawab_bon}}</td>                              
-                            <td>{{ $item->tanggal_ptj}}</td>                              
                             <td>{{ $item->status_bon}}</td>                              
+                            <td>{{ $item->tanggal_ptj}}</td>                              
                             <td>
                                 <a href="/editkasbon/{{$item->no_buktibon}}"><i class="fas fa-edit" style="color:green"></i></a> |
                                 <a href="/hapuskasbon/{{$item->no_buktibon}}" onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a> 

@@ -13,9 +13,20 @@
         <div class="card-header py-3">
             <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
             <a href="tambahkasmasuk" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i>Tambah Data</a>
+            <!-- <select class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" id="kasmasuk" require name="kasmasuk">
+                <option value>Pilih Periode</option>
+                @foreach ($kasmasuk as $item)
+                <option value="{{ $item->kode_periode}}">{{$item->nama_periode}}</option>
+                @endforeach
+            </select> -->
+            <select class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" id="kasmasuk" require name="kasmasuk">
+                <option value>Pilih Sumber</option>
+                <option value="murid">Murid</option>
+                <option value="yayasan">Yayasan</option>
+            </select>
         </div>
         <div class="card-body">
-            <div class="table-responsive">
+            <div class="table-responsive" id="tablekasmasuk">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
@@ -26,30 +37,11 @@
                             <th>Keterangan</th>
                             <th>Akun</th>
                             <th>Sumber</th>
-                            <th>Jumlah</th>                              
-                            <th>Diterima Dari</th>                              
+                            <th>Jumlah</th>
+                            <th>Diterima Dari</th>
                             <th>Aksi</th>
                         </tr>
                     <tbody>
-                        @foreach ($kasmasuk as $item)
-                        <tr>
-                            <td>{{ $loop->iteration}}</td>
-                            <td>{{ $item->no_bukti}}</td>
-                            <td>{{ $item->periode}}</td>
-                            <td>{{ $item->tanggal_pencatatan}}</td>
-                            <td>{{ $item->keterangan}}</td>
-                            <td>{{ $item->akun}}</td>                            
-                            <td>{{ $item->sumber}}</td>                            
-                            <td>{{Str::rupiah ($item->jumlah)}}</td>                              
-                            <td>{{ $item->kasir}}</td>                              
-                            <td>
-                                <a href="/editkasmasuk/{{$item->no_bukti}}"><i class="fas fa-edit" style="color:green"></i></a> |
-                                <a href="/hapuskasmasuk/{{$item->no_bukti}}" onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a> |
-                                <!-- <a href="#" id="del" data-id="{{$item->no_bukti}}" ><i class="fas fa-trash-alt" style="color:red"></i></a> -->
-                                <a href="/lihatkasmasuk/{{$item->no_bukti}}"><i class="fas fa-print" style="color:blue"></i></a>
-                            </td>
-                        </tr>
-                        @endforeach
                     </tbody>
                     </thead>
                 </table>
@@ -59,27 +51,34 @@
 
 </div>
 <!-- /.container-fluid -->
-<script>
-    $('#del').click( function(){
-        var km = $(this).attr('data-id')
-        swal({
-            title: "Yakin?",
-            text: "Data Anda akan dihapus!",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-        })
-        .then((willDelete) => {
-            if (willDelete) {
-                window.location = "/hapuskasmasuk/"+km+""
-                swal("Data berhasil dihapus!", {
-                    icon: "success",
-                });
-            } else {
-                swal("Data batal dihapus");
+<!-- <script>
+    $(document).on('change', '#kasmasuk', function() {
+        var id = $(this).val();
+        $.ajax({
+            url: "/sumberkasmasuk",
+            data: {
+                id: id
+            },
+            method: "get",
+            success: function(data) {
+                $('#tablekasmasuk').html(data);
             }
-        });
-    });
-    
+        })
+    })
+</script> -->
+<script>
+    $(document).on('change', '#kasmasuk', function() {
+        var id = $(this).val();
+        $.ajax({
+            url: "/sumberkasmasuk",
+            data: {
+                id: id
+            },
+            method: "get",
+            success: function(data) {
+                $('#tablekasmasuk').html(data);
+            }
+        })
+    })
 </script>
 @endsection

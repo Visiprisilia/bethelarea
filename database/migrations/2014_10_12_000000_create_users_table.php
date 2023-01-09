@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('nama_user')->nullable();
             $table->string('password')->nullable();
             $table->string('level')->nullable();
-            $table->string('nama_pengguna')->nullable();
+            $table->string('nama_lengkap')->nullable();
             $table->string('last_login')->nullable();
             $table->string('status')->nullable();
             $table->string('attempts')->nullable();

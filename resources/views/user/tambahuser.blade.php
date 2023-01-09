@@ -33,8 +33,8 @@
                                         <form action="/simpanuser" method="post">
                                             @csrf                                           
                                             <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Nama Pengguna</label>
-                                                <input class="form-control" id="nama_pengguna" name="nama_pengguna"  />
+                                                <label for="exampleFormControlInput1">Nama Lengkap</label>
+                                                <input class="form-control" id="nama_lengkap" name="nama_lengkap"  />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Username</label>

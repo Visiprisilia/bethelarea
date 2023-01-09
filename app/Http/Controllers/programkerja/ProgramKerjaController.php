@@ -39,9 +39,15 @@ class ProgramKerjaController extends Controller
 	{
 		$periode = $request->periode;
 		$penanggungjawab = $request->penanggungjawab;
-		$kode_akun = $request->akun;
-		$check = ProgramKerja::count();
+		$kode_akun = $request->akun;		
+		$ambilcp = Periode::where('kode_periode',$periode)->get();
+		$check = 0;
+		foreach ($ambilcp as $cp) {
+			
+			$check = $cp->counter_proker;
+		}
 		$kode_proker = 'PROKER' . $periode . $check + 1;
+
 //$check = Periode kolom counter_proker +1, sesuai dengan $periode
 //setelah menambah proker, ubah di tabel periode untuk kolom counter_proker =+1 sesuai dengan $periode
 		$data_proker = [
@@ -70,6 +76,8 @@ class ProgramKerjaController extends Controller
 			Akuns::create($data);
 			// return $periode;
 		}
+		   Periode::where('kode_periode', $periode)->update(['counter_proker'=>$check+1]);
+
 		return redirect('/programkerja')->with('status', 'Data berhasil ditambahkan');
 	}
 	public function editprogramkerja($kode_proker)

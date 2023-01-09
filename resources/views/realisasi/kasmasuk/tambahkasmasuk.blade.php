@@ -65,10 +65,11 @@
                                                 </div>
                                                 <div class="col-md-4">
                                                 <label class="mb-1" for="inputFirstName">Sumber</label>
-                                                    <select class="form-control" id="sumber" name="sumber">
+                                                <select class="form-control" id="sumber" name="sumber">
                                                         <option  value>Pilih Sumber</option>
-                                                        <option value="murid">Murid</option>
-                                                        <option value="yayasan">Yayasan</option>
+                                                        @foreach ($sumber as $item)
+                                                        <option value="{{ $item->id_sumber}}">{{$item->nama_sumber}}</option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                                 <div class="col-md-4" id="murid" style="display: none;">
@@ -102,7 +103,7 @@
 </div>
 <script>
     $(document).on('change','#sumber',function(){
-      var val=$('#sumber option').filter(':selected').val()=="murid"?  $('#murid').show():  $('#murid').hide();
+      var val=$('#sumber option').filter(':selected').val()=="1"?  $('#murid').show():  $('#murid').hide();
     
       //   if(val=="murid"{})  
       // alert(val);

@@ -21,7 +21,7 @@ class UserController extends Controller
     public function simpanuser(Request $request)
 	{
 		User::create([
-			'nama_pengguna'=>$request->nama_pengguna,
+			'nama_lengkap'=>$request->nama_lengkap,
 			'nama_user'=>$request->nama_user,
 			'password'=>bcrypt($request->password),
 			'level'=>$request->level,	
@@ -38,7 +38,7 @@ class UserController extends Controller
 	public function updateuser(Request $request)
 	{
 		$user = User::where('id', $request->id)->update([
-			'nama_pengguna'=>$request->nama_pengguna,
+			'nama_lengkap'=>$request->nama_lengkap,
 			'nama_user'=>$request->nama_user,
 			'password'=>bcrypt($request->password),
 			'level'=>$request->level,	

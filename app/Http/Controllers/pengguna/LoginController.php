@@ -36,7 +36,7 @@ class LoginController extends Controller
 			'nama_user'=>$request->nama_user,
 			'password'=>bcrypt($request->password),
 			'level'=>$request->level,
-			'nama_pengguna'=>$request->nama_pengguna,			
+			'nama_lengkap'=>$request->nama_lengkap,			
 			
 
 			]);

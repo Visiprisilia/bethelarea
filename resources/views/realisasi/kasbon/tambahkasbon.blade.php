@@ -38,7 +38,7 @@
                                             </div> -->
                                             <div class="mb-3">
                                                 <label class="mb-1" for="inputLastName">Periode</label>
-                                                <select class="form-control" id="periode_bon" name="periode_bon">
+                                                <select class="form-control" id="periode" name="periode">
                                                     <option value>Pilih Periode</option>
                                                     @foreach ($periode as $item)
                                                     <option value="{{ $item->kode_periode}}">{{$item->nama_periode}}</option>

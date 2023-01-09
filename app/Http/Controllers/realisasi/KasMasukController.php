@@ -4,6 +4,7 @@ namespace App\Http\Controllers\realisasi;
 
 use Illuminate\Http\Request;
 use App\Models\Realisasi\KasMasuk;
+use App\Models\Realisasi\Sumber;
 use Carbon\Carbon;
 use App\Models\Periode\Periode;
 use App\Models\Murid\Murid;
@@ -17,28 +18,45 @@ class KasMasukController extends Controller
 {
     public function kasmasuk()
     {
+		// $periode = Periode::orderBy('created_at','desc')->get();
+		// $coa = Coa::orderBy('created_at','desc')->get();
+		// $kasmasuk = KasMasuk::orderBy('created_at','desc')->get();
+		$kasmasuk = Periode::orderBy('created_at','desc')->get();
+        return view('realisasi/kasmasuk/kasmasuk', ['kasmasuk'=>$kasmasuk]);
+    }
+	public function sumberkasmasuk(Request $request)
+    {
+		$id = $request->id;
 		$periode = Periode::orderBy('created_at','desc')->get();
-		// $akun = Akuns::join("coa","akuns.kode_akun","=","coa.kode_akun")->get();
 		$coa = Coa::orderBy('created_at','desc')->get();
-		$kasmasuk = KasMasuk::orderBy('created_at','desc')->get();
-		// $kasmasuk = KasMasuk::join("murid","kas_masuk.kasir","=","murid.nomor_induk")->get();
-		// $kasmasuk = KasMasuk::join("murid","kas_masuk.no_bukti","=","murid.nomor_induk")->get();
-        return view('realisasi/kasmasuk/kasmasuk', ['periode'=>$periode,'coa'=>$coa,'kasmasuk'=>$kasmasuk]);
+		$kasmasuk = KasMasuk::orderBy('created_at','desc')->where('sumber',$id)->get();
+		// $kasmasuk = KasMasuk::join("murid","kas_masuk.kasir","=","murid.nomor_induk")->where('sumber',$id)->get();
+        return view('realisasi/kasmasuk/sumberkasmasuk', ['periode'=>$periode,'coa'=>$coa,'kasmasuk'=>$kasmasuk]);
     }
     public function tambahkasmasuk()
 	{
 		$periode = Periode::where('status', 'LIKE', 'AKTIF')->get();
 		$murid = Murid::orderBy('created_at','desc')->get();
+		$sumber = Sumber::orderBy('created_at','desc')->get();
 		// $akun = Akuns::join("coa","akuns.kode_akun","=","coa.kode_akun")->get();
 		$coa = Coa::orderBy('created_at','desc')->get();
-		return view('realisasi/kasmasuk/tambahkasmasuk',['periode'=>$periode,'coa'=>$coa,'murid'=>$murid]);
+		return view('realisasi/kasmasuk/tambahkasmasuk',['periode'=>$periode,'coa'=>$coa,'murid'=>$murid,'sumber'=>$sumber]);
 	}
     public function simpankasmasuk(Request $request)
 	{
 		$tanggalhariini = Carbon::now()->format('Ymd');
 		$tanggalhariinis = Carbon::now()->format('Y-m-d');
-        $check = KasMasuk::count();
-		$no_bukti = "BKM".$tanggalhariini.$check+1;
+        // // $check = KasMasuk::count();
+		// $check = KasMasuk::count();
+		// $no_bukti = 'BKM'.$tanggalhariini.$check + 1;	
+		$periode = $request->periode;
+		$ambilkm = Periode::where('kode_periode',$periode)->get();
+		$check = 0;
+		foreach ($ambilkm as $km) {
+			
+			$check = $km->counter_km;
+		}
+		$no_bukti = 'BKM' . $tanggalhariini . $check + 1;
 		KasMasuk::create([
 			'no_bukti'=>$no_bukti,
 			'periode'=>$request->periode,
@@ -49,9 +67,10 @@ class KasMasukController extends Controller
 			'jumlah'=>$request->jumlah,
 			'kasir'=>$request->kasir
 	//$check = Periode kolom counter_kk +1, sesuai dengan $periode
-//setelah menambah km, ubah di tabel periode untuk kolom counter_kk =+1 sesuai dengan $periode
+//setelah menambah km, ubah di tabel periode untuk kolom counter_km =+1 sesuai dengan $periode
  
 			]);
+			Periode::where('kode_periode', $periode)->update(['counter_km'=>$check+1]);
 			return redirect('/kasmasuk')->with('status', 'Data berhasil ditambahkan');
 	}
 	public function editkasmasuk($no_bukti)

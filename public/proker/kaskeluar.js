@@ -21,10 +21,10 @@ $(document).on("change","#no_buktibon",function(){
         url:"/pilihbon",
         method:"get",
         data:{
-            no:no
+            no:no 
         },
         success:function(data){
-            $("#periode").val(data.bon.periode_bon);
+            $("#periode").val(data.bon.periode);
             $("#keterangan").val(data.bon.keterangan_bon);
             $("#prokers").val(data.bon.proker_bon);
             $("#akun").val(data.bon.akun_bon);

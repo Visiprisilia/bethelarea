@@ -12,5 +12,5 @@ class Periode extends Model
     protected $table = 'periode';
     protected $primaryKey = 'kode_periode';
     public $incrementing = false;
-    protected $fillable = ['kode_periode', 'nama_periode', 'awal_periode', 'akhir_periode', 'status'];
+    protected $fillable = ['kode_periode', 'nama_periode', 'awal_periode', 'akhir_periode', 'status','counter_proker','counter_kk','counter_km','counter_kb'];
 }

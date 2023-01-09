@@ -34,8 +34,8 @@
                                         <form action="/updateuser/{{$item->id}}" method="post">
                                             @csrf
                                             <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Nama Pengguna</label>
-                                                <input class="form-control" id="nama_pengguna" name="nama_pengguna" value="{{$item->nama_pengguna}}"  />
+                                                <label for="exampleFormControlInput1">Nama Lengkap</label>
+                                                <input class="form-control" id="nama_lengkap" name="nama_lengkap" value="{{$item->nama_lengkap}}"  />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Username</label>
@@ -55,7 +55,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Simpan</button>
-                                                <a href="{{url('/unit')}}" class="btn btn-danger">Batal</a>                                            </div>
+                                                <a href="{{url('/user')}}" class="btn btn-danger">Batal</a>                                            </div>
                                         </form>
                                     </div>
                                 </div>

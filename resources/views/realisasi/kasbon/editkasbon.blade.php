@@ -39,7 +39,7 @@
                                             </div> -->
                                             <div class="mb-3">
                                                 <label class="mb-1" for="inputLastName">Periode</label>
-                                                <select class="form-control" id="periode_bon" name="periode_bon">
+                                                <select class="form-control" id="periode" name="periode">
                                                     <option value>Pilih Periode</option>
                                                     @foreach ($periode as $item)
                                                     <option value="{{ $item->kode_periode}}">{{$item->nama_periode}}</option>
@@ -84,7 +84,7 @@
                                                     <label class="mb-1" for="inputFirstName">Penanggung Jawab</label>
                                                     <input class="form-control" id="penanggungjawab_bon" name="penanggungjawab_bon" value="{{ $itemss->penanggungjawab_bon}}" placeholder="Masukkan penanggung jawab" required />
                                                 </div>
-                                                <div class="col-md-6">
+                                                <!-- <div class="col-md-6">
                                                     <label class="mb-1" for="inputLastName">Tanggal Pertanggungjawaban</label>
                                                     <input class="form-control" type="date" id="tanggal_ptj" name="tanggal_ptj" value="{{ $itemss->tanggal_ptj}}" placeholder="Masukkan Proker" required />
                                                 </div>
@@ -96,7 +96,7 @@
                                                     <option>Sudah Dipertanggungjawabkan</option>
                                                     <option>Belum Dipertanggungjawabkan</option>
                                                 </select>
-                                            </div>
+                                            </div> --></div>
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Simpan</button>
                                                 <a href="{{url('/kasbon')}}" class="btn btn-danger">Batal</a>

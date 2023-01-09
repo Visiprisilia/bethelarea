@@ -156,6 +156,7 @@ Route::get('/lihatkasmasuk/{no_bukti}', [KasMasukController::class,'lihatkasmasu
 Route::get('/cetakkasmasuk/{no_bukti}', [KasMasukController::class,'cetakkasmasuk']);
 Route::post('/updatekasmasuk/{no_bukti}', [KasMasukController::class,'updatekasmasuk']);
 Route::get('/hapuskasmasuk/{no_bukti}', [KasMasukController::class,'hapuskasmasuk']); 
+Route::get('/sumberkasmasuk', [KasMasukController::class,'sumberkasmasuk']); 
 
 //Kas Keluar
 Route::get('/kaskeluar', [KasKeluarController::class,'kaskeluar']);

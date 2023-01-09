@@ -31,7 +31,7 @@
                             <td>{{ $item->kode_proker}}</td>
                             <td>{{ $item->periode}}</td>
                             <td>{{ $item->nama_akun}}</td>
-                            <td>{{ $item->jumlah}}</td>
+                            <td>{{Str::rupiah ($item->jumlah)}}</td>
                          
                         </tr>
                         @endforeach

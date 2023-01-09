@@ -105,7 +105,7 @@
                                         <thead>
                                             <tr>
                                                 <th>Dikeluarkan Oleh</th>
-                                                <th>Diterima Oleh</th>
+                                                <!-- <th>Diterima Oleh</th> -->
                                             </tr>
                                         <tbody>
                                             <tr>
@@ -118,7 +118,7 @@
                                             </tr>
                                             <tr>
                                                 <th style="width: 60%; ">............</th>
-                                                <th style="width: 60%; ">............</th>
+                                                <!-- <th style="width: 60%; ">............</th> -->
                                             </tr>
 
                                         </tbody>

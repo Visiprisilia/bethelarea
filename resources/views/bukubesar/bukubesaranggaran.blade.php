@@ -16,12 +16,13 @@
                 <option value="{{ $item->kode_akun}}">{{$item->kode_akun}}-{{$item->nama_akun}}</option>
                 @endforeach
             </select>
-            <!-- <select class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" id="bbanggaran2" require name="bbanggaran2">
-                <option value>Pilih Periode</option>
+            <select class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" id="bbanggaran" require name="bbanggaran">
+                <option value>Pilih Akun</option>
                 @foreach ($bbanggaran2 as $item)
-                <option value="{{ $item->kode_periode}}">{{$item->nama_periode}}</option>
+                <option value="{{ $item->kode_periode}}">{{$item->kode_periode}}</option>
                 @endforeach
-            </select> -->
+            </select>
+       
         </div>
 
         <div class="card-body">
@@ -74,6 +75,4 @@
         })
     })
 </script>
-<!-- /.container-fluid
-@include('sweetalert::alert') -->
 @endsection

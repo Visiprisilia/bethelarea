@@ -11,7 +11,7 @@ class KasBon extends Model
     protected $table = 'kas_bon';
     protected $primaryKey = 'no_buktibon';
     public $incrementing = false;
-    protected $fillable = ['no_buktibon', 'periode_bon','tanggal_pengajuan','keterangan_bon','proker_bon','akun_bon','anggaran_bon','jumlah_bon','penanggungjawab_bon','tanggal_ptj','status_bon'];
+    protected $fillable = ['no_buktibon', 'periode','tanggal_pengajuan','keterangan_bon','proker_bon','akun_bon','anggaran_bon','jumlah_bon','penanggungjawab_bon','tanggal_ptj','status_bon'];
  
 }
 

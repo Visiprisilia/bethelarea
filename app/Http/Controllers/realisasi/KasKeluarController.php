@@ -40,13 +40,23 @@ class KasKeluarController extends Controller
 		$tanggalhariini = Carbon::now()->format('Ymd');
 		$tanggalhariinis = Carbon::now()->format('Y-m-d');
         $check = KasKeluar::count();
-		$bukti = $request->bukti ;		
-		$no_bukti = 'BKK'.$tanggalhariini.$check + 1;		
+		$bukti = $request->bukti; 		
+		// $no_bukti = 'BKK'.$tanggalhariini.$check + 1;	
+		$periode = $request->periode;
+		$ambilkk = Periode::where('kode_periode',$periode)->get();
+		$check = 0;
+		foreach ($ambilkk as $kk) {
+			
+			$check = $kk->counter_kk;
+		}
+		$no_bukti = 'BKK' . $tanggalhariini . $check + 1;
+		
+
 		$destinationPath = 'assets/images/kaskeluar/';
 		$buktis = 'BKK_'.$no_bukti.'.'.$bukti->getClientOriginalExtension();
 		$bukti->move($destinationPath, $buktis);
 		$no_buktibon = $request->no_buktibon;
-
+		
 		//$check = Periode kolom counter_kk +1, sesuai dengan $periode
 //setelah menambah kk, ubah di tabel periode untuk kolom counter_kk =+1 sesuai dengan $periode
 //catat bukti kas bon jika ada 
@@ -75,6 +85,7 @@ class KasKeluarController extends Controller
 			//jika kas bon !=null 
 			//update untuk table kas bon pada kolom jumlah_ptj sesuai dengan bukti kas bon
 			//rumus jumlah_ptj=jumlah_ptj+jumlah kk
+			Periode::where('kode_periode', $periode)->update(['counter_kk'=>$check+1]);
 			return redirect('/kaskeluar')->with('status', 'Data berhasil ditambahkan');
 	}
 	public function editkaskeluar($no_bukti)
