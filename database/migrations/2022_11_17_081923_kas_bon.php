@@ -14,14 +14,18 @@ return new class extends Migration
     public function up()
     {
         Schema::create('kas_bon', function (Blueprint $table) {
-            $table->string('no_bukti')->primary();
+            $table->string('no_buktibon')->primary();
             $table->string('periode')->nullable();
             $table->string('tanggal_pengajuan')->nullable();
-            $table->string('proker')->nullable();
-            $table->string('anggaran')->nullable();
-            $table->string('penanggungjawab')->nullable();
+            $table->string('keterangan_bon')->nullable();
+            $table->string('proker_bon')->nullable();
+            $table->string('akun_bon')->nullable();
+            $table->string('anggaran_bon')->nullable();
+            $table->string('jumlah_bon')->nullable();
+            $table->string('jumlah_ptj')->nullable();
+            $table->string('penanggungjawab_bon')->nullable();
             $table->string('tanggal_ptj')->nullable();
-            $table->string('status')->nullable();
+            $table->string('status_bon')->nullable();
             $table->timestamps();
         });
     }

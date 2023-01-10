@@ -19,6 +19,10 @@ return new class extends Migration
             $table->string('awal_periode')->nullable();
             $table->string('akhir_periode')->nullable();
             $table->string('status')->nullable();
+            $table->integer('counter_proker')->nullable();
+            $table->integer('counter_kk')->nullable();
+            $table->integer('counter_km')->nullable();
+            $table->integer('counter_kb')->nullable();
             $table->timestamps();
         });
     }
