@@ -9,13 +9,23 @@ use Illuminate\Support\Str;
 
 class LoginController extends Controller
 {
-    public function postlogin(Request $request)
-	{
-	if (Auth::attempt($request->only('nama_user','password'))){
-		return redirect('/dashboard');
-	}
-	return redirect('bethelarea');
-	}
+   
+	public function postlogin(Request $request)
+    {
+        // cek form validation
+        $this->validate($request, [
+            'nama_user' => 'required',
+            'password' => 'required'
+        ]);
+
+        // cek apakah email dan password benar
+        if (auth()->attempt(request(['nama_user', 'password']))) {
+            return redirect('/dashboard');
+        }
+
+        // jika salah, kembali ke halaman login
+        return redirect()->back()->with('error', 'Username atau Password Anda salah!');
+    }
 
 	public function logout (Request $request)
 	{

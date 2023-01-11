@@ -59,7 +59,7 @@
                                                     <select class="form-control" id="akun" name="akun">
                                                         <option  value>Pilih Akun</option>
                                                         @foreach ($coa as $item)
-                                                        <option value="{{ $item->kode_akun}}">{{$item->nama_akun}}</option>
+                                                        <option value="{{ $item->kode_akun}}">{{ $item->kode_akun}}  {{$item->nama_akun}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>

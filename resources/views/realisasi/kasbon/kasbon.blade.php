@@ -49,7 +49,7 @@
                             <td>{{ $item->status_bon}}</td>                              
                             <td>{{ $item->tanggal_ptj}}</td>                              
                             <td>
-                                <a href="/editkasbon/{{$item->no_buktibon}}"><i class="fas fa-edit" style="color:green"></i></a> |
+                                <!-- <a href="/editkasbon/{{$item->no_buktibon}}"><i class="fas fa-edit" style="color:green"></i></a> | -->
                                 <a href="/hapuskasbon/{{$item->no_buktibon}}" onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a> 
                                 <!-- <a href="#" id="bon" data-id="{{$item->no_buktibon}}" ><i class="fas fa-trash-alt" style="color:red"></i></a> -->
                                 <!-- <a href="/lihatkasbon/{{$item->no_bukti}}"><i class="fas fa-print" style="color:blue"></i></a> -->

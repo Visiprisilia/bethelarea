@@ -18,17 +18,21 @@
                             <div class="col-lg-12">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Selamat Datang</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">Selamat Datang!</h1>
                                     </div>
                                     <form action="/postlogin" method="post" class="user">
-                                    @csrf
+                                        @csrf
                                         <div class="form-group">
                                             <input type="text" class="form-control form-control-user" id="nama_user" name="nama_user" placeholder="Masukkan Username">
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Masukkan Password">
                                         </div>
-                                      
+                                        @if (session('error'))
+                                        <div class="text text-danger">
+                                            {{ session('error') }}
+                                        </div>
+                                        @endif
                                         <div class="mb-3">
                                             <button type="submit" class="btn btn-primary btn-user btn-block">Masuk</button>
                                         </div>
@@ -36,19 +40,19 @@
                                     <!-- <div class="text-center">
                                         <a class="small" href="forgot-password.html">Forgot Password?</a>
                                     </div> -->
-                                    <div class="form-group">                                                                               
-                                        <a href="/registrasi" class="btn btn-google btn-user btn-block">
-                                           Registrasi Akun
+                                    <div class="mb-3">
+                                        <a href="/registrasi" class="btn btn-danger btn-user btn-block">
+                                            Registrasi Akun
                                         </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
 
             </div>
 
         </div>
-
-    </div>
-    @endsection
+        @endsection

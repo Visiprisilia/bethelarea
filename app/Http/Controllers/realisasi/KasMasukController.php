@@ -29,8 +29,8 @@ class KasMasukController extends Controller
 		$id = $request->id;
 		$periode = Periode::orderBy('created_at','desc')->get();
 		$coa = Coa::orderBy('created_at','desc')->get();
-		$kasmasuk = KasMasuk::orderBy('created_at','desc')->where('sumber',$id)->get();
-		// $kasmasuk = KasMasuk::join("murid","kas_masuk.kasir","=","murid.nomor_induk")->where('sumber',$id)->get();
+		// $kasmasuk = KasMasuk::orderBy('created_at','desc')->where('sumber',$id)->get();
+		$kasmasuk = KasMasuk::leftjoin("murid","kas_masuk.kasir","=","murid.nomor_induk")->where('sumber',$id)->get();
         return view('realisasi/kasmasuk/sumberkasmasuk', ['periode'=>$periode,'coa'=>$coa,'kasmasuk'=>$kasmasuk]);
     }
     public function tambahkasmasuk()

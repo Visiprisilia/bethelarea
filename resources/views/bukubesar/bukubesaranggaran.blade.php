@@ -17,7 +17,7 @@
                 @endforeach
             </select>
             <select class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" id="bbanggaran" require name="bbanggaran">
-                <option value>Pilih Akun</option>
+                <option value>Pilih Periode</option>
                 @foreach ($bbanggaran2 as $item)
                 <option value="{{ $item->kode_periode}}">{{$item->kode_periode}}</option>
                 @endforeach

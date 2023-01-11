@@ -11,21 +11,19 @@ Use Symfony\Component\HttpFoundation\Response;
 use App\Http\Controllers\Controller;
 
 
+
 class KebijakanController extends Controller
 
 {
-	
+   
 	public function kebijakan()
     {
         $kebijakan = Kebijakan::orderBy('created_at','desc')->get();
         return view('yayasan/kebijakan/kebijakan', compact('kebijakan'));
     }
     public function tambahkebijakan()
-	{
-		
+	{		
 		return view('yayasan/kebijakan/tambahkebijakan');
-
-		
 	}
     public function simpankebijakan(Request $request)
 	{  
