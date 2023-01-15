@@ -60,7 +60,8 @@ class ProgramKerjaController extends Controller
 			'tujuan' => $request->tujuan,
 			'indikator' => $request->indikator,
 			'anggaran' => $request->anggaran,
-			'keterangan_proker' => $request->keterangan_proker
+			'keterangan_proker' => $request->keterangan_proker,
+			'status_proker'=>'Menunggu Konfirmasi'
 		];
 		ProgramKerja::create($data_proker);
 		$no_jumlah = 0;

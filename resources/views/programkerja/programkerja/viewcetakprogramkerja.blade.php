@@ -12,6 +12,7 @@
         <th>Indikator Pencapaian</th>
         <th>Jumlah</th>
         <th>Keterangan</th>
+        <th>Status</th>
     </tr>
 <tbody>
     @foreach ($programkerja as $item)
@@ -27,6 +28,7 @@
         <td>{{ $item->indikator}}</td>
         <td>{{Str::rupiah ($item->anggaran)}}</td>
         <td>{{ $item->keterangan_proker}}</td>
+        <td>{{ $item->status_proker}}</td>
        
     </tr>
     @endforeach

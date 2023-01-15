@@ -22,57 +22,57 @@
                 <option value="{{ $item->kode_periode}}">{{$item->kode_periode}}</option>
                 @endforeach
             </select>
-       
-        </div>
+                <button type="submit" class="btn btn-success">Cari</button>            
+            </div>
 
-        <div class="card-body">
-            <div class="table-responsive" id="table">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Kode</th>
-                            <th>Anggaran</th>
-                            <th>Realisasi</th>
-                            <th>Posisi Anggaran</th>
-                        </tr>
-                    <tbody>                     
-                    </tbody>
-                    </thead>
-                </table>
+            <div class="card-body">
+                <div class="table-responsive" id="table">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Kode</th>
+                                <th>Anggaran</th>
+                                <th>Realisasi</th>
+                                <th>Posisi Anggaran</th>
+                            </tr>
+                        <tbody>
+                        </tbody>
+                        </thead>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
 
-</div>
-<script>
-    $(document).on('change', '#bbanggaran', function() {
-        var id = $(this).val();
-        $.ajax({
-            url: "/anggaran",
-            data: {
-                id: id
-            },
-            method: "get",
-            success: function(data) {
-                $('#table').html(data);
-            }
+    </div>
+    <script>
+        $(document).on('change', '#bbanggaran', function() {
+            var id = $(this).val();
+            $.ajax({
+                url: "/anggaran",
+                data: {
+                    id: id
+                },
+                method: "get",
+                success: function(data) {
+                    $('#table').html(data);
+                }
+            })
         })
-    })
-</script>
-<script>
-    $(document).on('change', '#bbanggaran2', function() {
-        var kode = $(this).val();
-        $.ajax({
-            url: "/anggaran",
-            data: {
-                kode: kode
-            },
-            method: "get",
-            success: function(data) {
-                $('#table').html(data);
-            }
+    </script>
+    <script>
+        $(document).on('change', '#bbanggaran2', function() {
+            var kode = $(this).val();
+            $.ajax({
+                url: "/anggaran",
+                data: {
+                    kode: kode
+                },
+                method: "get",
+                success: function(data) {
+                    $('#table').html(data);
+                }
+            })
         })
-    })
-</script>
-@endsection
+    </script>
+    @endsection

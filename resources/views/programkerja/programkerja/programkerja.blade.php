@@ -50,6 +50,7 @@
                             <th>Indikator Pencapaian</th>
                             <th>Jumlah</th>
                             <th>Keterangan</th>
+                            <th>Status</th>
                             <th>Aksi</th>
                         </tr>
                     <tbody>

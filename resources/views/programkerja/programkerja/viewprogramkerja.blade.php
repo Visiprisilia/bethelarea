@@ -12,8 +12,9 @@
         <th>Indikator Pencapaian</th>
         <th>Jumlah</th>
         <th>Keterangan</th>
+        <th>Status</th>
         @if (auth()->user()->level=="unit")
-        <th>Aksi</th>
+        <th>Aksi</th> 
         @endif
     </tr>
 <tbody>
@@ -30,6 +31,7 @@
         <td>{{ $item->indikator}}</td>
         <td>{{Str::rupiah ($item->anggaran)}}</td>
         <td>{{ $item->keterangan_proker}}</td>
+        <td>{{ $item->status_proker}}</td>
         @if (auth()->user()->level=="unit")
         <td>
             <a href="/editprogramkerja/{{$item->kode_proker}}"><i class="fas fa-edit" style="color:green"></i></a> |

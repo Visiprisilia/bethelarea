@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('indikator')->nullable();
             $table->string('anggaran')->nullable();
             $table->string('keterangan_proker')->nullable();
+            $table->string('status_proker')->nullable();
             $table->timestamps();
         });
     }

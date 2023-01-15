@@ -13,10 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('sumber', function (Blueprint $table) {
-            $table->string('id_sumber')->primary();
-            $table->string('nama_sumber')->nullable();
-            $table->timestamps();
+        Schema::table('kebijakan', function (Blueprint $table) {
+            $table->softDeletes();
         });
     }
 
@@ -27,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sumber');
+        Schema::table('kebijakan', function (Blueprint $table) {
+            $table->dropColumn('deteled_at');
+        });
     }
 };

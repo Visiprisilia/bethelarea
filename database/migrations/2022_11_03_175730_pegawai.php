@@ -33,6 +33,7 @@ return new class extends Migration
             $table->string('file_ktp')->nullable();
             $table->string('keterangan')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
     /**
