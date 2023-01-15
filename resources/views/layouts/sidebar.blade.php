@@ -40,7 +40,9 @@
                 <a class="collapse-item" href="/pegawai">Daftar Pegawai</a>
                 <a class="collapse-item" href="/murid">Daftar Murid</a>
                 <a class="collapse-item" href="/coa">Chart Of Accounts</a>
+                @if (auth()->user()->level=="super admin")
                 <a class="collapse-item" href="/user">User</a>
+                @endif
             </div>
         </div>
     </li>
@@ -61,6 +63,7 @@
     </li>
 
     <li class="nav-item">
+
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#realisasi" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-regular fa-money-check"></i>
             <span>Realisasi</span>
@@ -73,6 +76,7 @@
                 <a class="collapse-item" href="/kaskeluar">Kas Keluar</a>
             </div>
         </div>
+       
     </li>
 
     <li class="nav-item">

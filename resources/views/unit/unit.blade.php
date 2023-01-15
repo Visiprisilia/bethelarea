@@ -11,12 +11,19 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
+        @if (auth()->user()->level=="super admin")
             <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
             <a href="tambahunit" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i>Tambah Data</a>
+        @endif
         </div>
         @if (session('error'))
         <div class="alert alert-danger">
             {{ session('error') }}
+        </div>
+        @endif
+        @if (session('status'))
+        <div class="alert alert-danger">
+            {{ session('status') }}
         </div>
         @endif
         <div class="card-body">
@@ -26,18 +33,22 @@
                         <tr>
                             <th>Kode Unit</th>
                             <th>Nama Unit</th>
+                            @if (auth()->user()->level=="super admin")
                             <th>Aksi</th>
+                            @endif
                         </tr>
                     <tbody>
                         @foreach ($unit as $item)
                         <tr>
                             <td>{{ $item->kode_unit}}</td>
                             <td>{{ $item->nama_unit}}</td>
+                            @if (auth()->user()->level=="super admin")
                             <td>
                                 <a href="/editunit/{{$item->kode_unit}}"><i class="fas fa-edit" style="color:green"></i></a> |
                                 <a href="/hapusunit/{{$item->kode_unit}}" onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a>
                                 <!-- <a href="#" id="cutunit" data-id="{{$item->kode_unit}}" ><i class="fas fa-trash-alt" style="color:red"></i></a> -->
                             </td>
+                            @endif
                         </tr>
                         @endforeach
                     </tbody>

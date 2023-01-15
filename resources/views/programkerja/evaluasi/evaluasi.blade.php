@@ -11,9 +11,21 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
+        @if (auth()->user()->level=="unit")
             <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
             <a href="tambahevaluasi" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i>Tambah Data</a>
+        @endif
         </div>
+        @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+        @endif
+        @if (session('status'))
+        <div class="alert alert-danger">
+            {{ session('status') }}
+        </div>
+        @endif
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -34,8 +46,10 @@
                             <th>Kinerja Pencapaian</th>                                                     
                             <th>Faktor Pendorong</th>                                                     
                             <th>Faktor Penghambat</th>                                                     
-                            <th>Tindak Lanjut</th>                                                     
+                            <th>Tindak Lanjut</th>
+                            @if (auth()->user()->level=="unit")                                                     
                             <th>Aksi</th>		
+                            @endif
                         </tr>
                     <tbody>
                         @foreach ($evaluasi as $item)
@@ -56,12 +70,13 @@
                             <td>{{ $item->faktor_pendorong}}</td>                            
                             <td>{{ $item->faktor_penghambat}}</td>                            
                             <td>{{ $item->tindaklanjut}}</td>                            
+                            @if (auth()->user()->level=="unit")
                             <td>
                                 <a href="/editevaluasi/{{$item->kode_proker}}"><i class="fas fa-edit" style="color:green"></i></a> |
                                 <a href="/hapusevaluasi/{{$item->kode_proker}}" onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a>
                                 <!-- <a href="#" id="eval" data-id="{{$item->kode_proker}}" ><i class="fas fa-trash-alt" style="color:red"></i></a> -->
-
                             </td>
+                            @endif
                         </tr>
                         @endforeach
                     </tbody>

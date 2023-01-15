@@ -12,10 +12,22 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
+            @if (auth()->user()->level=="super admin")
             <a href="tambahcoa" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i>Tambah Data</a>
             <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-upload fa-sm text-white-50"></i> Import Data</a> -->
             <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Export Data</a> -->
+        @endif
         </div> 
+        @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+        @endif
+        @if (session('status'))
+        <div class="alert alert-danger">
+            {{ session('status') }}
+        </div>
+        @endif
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -27,7 +39,9 @@
                             <th>Kelompok Rekening</th>
                             <th>Saldo Normal</th>
                             <th>Keterangan</th>
+                            @if (auth()->user()->level=="super admin")
                             <th>Aksi</th>
+                            @endif
                         </tr>                      
                         <tbody>
                         @foreach ($coa as $item)
@@ -38,12 +52,13 @@
                             <td>{{ $item->kelompok_rek}}</td>
                             <td>{{ $item->saldo_normal}}</td>
                             <td>{{ $item->keterangan}}</td>      
+                            @if (auth()->user()->level=="super admin")
                             <td>
                                 <a href="/editcoa/{{$item->kode_akun}}"><i class="fas fa-edit" style="color:green"></i></a> | 
                                 <a href="/hapuscoa/{{$item->kode_akun}}" onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a> 
                                 <!-- <a href="#" id="hapus" data-id="{{$item->kode_akun}}" ><i class="fas fa-trash-alt" style="color:red"></i></a> -->
-
                             </td>
+                            @endif
                         </tr>  
                         @endforeach  
                         </tbody>                

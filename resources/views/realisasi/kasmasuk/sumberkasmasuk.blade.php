@@ -9,8 +9,10 @@
                             <th>Akun</th>
                             <th>Sumber</th>
                             <th>Jumlah</th>                              
-                            <th>Diterima Dari</th>                              
+                            <th>Diterima Dari</th>    
+                            @if (auth()->user()->level=="unit")                          
                             <th>Aksi</th>
+                            @endif
                         </tr>
                     <tbody>
                         @foreach ($kasmasuk as $item)
@@ -24,12 +26,14 @@
                             <td>{{ $item->sumber}}</td>                            
                             <td>{{Str::rupiah ($item->jumlah)}}</td>                              
                             <td>{{ $item->nama}}</td>                              
+                            @if (auth()->user()->level=="unit")
                             <td>
                                 <!-- <a href="/editkasmasuk/{{$item->no_bukti}}"><i class="fas fa-edit" style="color:green"></i></a> | -->
                                 <a href="/hapuskasmasuk/{{$item->no_bukti}}" onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a> |
                                 <!-- <a href="#" id="del" data-id="{{$item->no_bukti}}" ><i class="fas fa-trash-alt" style="color:red"></i></a> -->
                                 <a href="/lihatkasmasuk/{{$item->no_bukti}}"><i class="fas fa-print" style="color:blue"></i></a>
                             </td>
+                            @endif
                         </tr>
                         @endforeach
                     </tbody>

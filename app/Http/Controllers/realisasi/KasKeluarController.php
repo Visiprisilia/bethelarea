@@ -9,6 +9,7 @@ use App\Models\Pegawai\Pegawai;
 use App\Models\Akuns;
 use App\Models\Coa\Coa;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 use App\Models\Realisasi\KasBon;
 
@@ -57,12 +58,26 @@ class KasKeluarController extends Controller
 		$buktis = 'BKK_' . $no_bukti . '.' . $bukti->getClientOriginalExtension();
 		$bukti->move($destinationPath, $buktis);
 		$no_buktibon = $request->no_buktibon;
-		$jumlah = $request->jumlah;
-		$anggaran = $request->anggaran;
 
 		//$check = Periode kolom counter_kk +1, sesuai dengan $periode
 		//setelah menambah kk, ubah di tabel periode untuk kolom counter_kk =+1 sesuai dengan $periode
 		//catat bukti kas bon jika ada 
+		
+		$validator = Validator::make($request->all(), [	
+			'jumlah' => 'lte:anggaran'
+		],[
+			"jumlah.lte"=>"Jumlah harus bernilai kurang dari atau sama dengan Anggaran"
+			
+		]);
+
+		if ($validator->fails()) {    
+			$message = $validator->errors()->getMessages();
+			$api = array(
+				'message' => $message
+			);
+			return redirect('/tambahkaskeluar')->withErrors($validator);
+			// return $validator;
+		}
 
 		KasKeluar::create([
 			'no_bukti' => $no_bukti,
@@ -89,9 +104,7 @@ class KasKeluarController extends Controller
 		//update untuk table kas bon pada kolom jumlah_ptj sesuai dengan bukti kas bon
 		//rumus jumlah_ptj=jumlah_ptj+jumlah kk
 		Periode::where('kode_periode', $periode)->update(['counter_kk' => $check + 1]);
-		if ($jumlah <= $anggaran){
-			
-		}
+	
 		return redirect('/kaskeluar')->with('status', 'Data berhasil ditambahkan');
 	}
 	public function editkaskeluar($no_bukti)

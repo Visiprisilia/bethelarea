@@ -40,11 +40,11 @@
                                     <!-- <div class="text-center">
                                         <a class="small" href="forgot-password.html">Forgot Password?</a>
                                     </div> -->
-                                    <div class="mb-3">
+                                    <!-- <div class="mb-3">
                                         <a href="/registrasi" class="btn btn-danger btn-user btn-block">
                                             Registrasi Akun
                                         </a>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>

@@ -12,9 +12,21 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
+            @if (auth()->user()->level=="super admin")
             <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
             <a href="tambahpegawai" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i>Tambah Data</a>
+            @endif
         </div>
+        @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+        @endif
+        @if (session('status'))
+        <div class="alert alert-danger">
+            {{ session('status') }}
+        </div>
+        @endif
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -39,7 +51,9 @@
                             <th>Termin</th>
                             <th>Keterangan</th>
                             <th>Tanggal Update</th>
+                            @if (auth()->user()->level=="super admin")
                             <th>Aksi</th>
+                            @endif
                         </tr>
                     <tbody>
                         @foreach ($pegawai as $item)
@@ -63,11 +77,13 @@
                             <td>{{ $item->tanggal_terminasi}}</td>
                             <td>{{ $item->keterangan}}</td>
                             <td>{{ $item->updated_at}}</td>
+                            @if (auth()->user()->level=="super admin")
                             <td>
                                 <a href="/editpegawai/{{$item->niy}}"><i class="fas fa-edit" style="color:green"></i></a> |
                                 <a href="/hapuspegawai/{{$item->niy}}" onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a>
                                 <!-- <a href="#" id="cut" data-id="{{$item->niy}}" ><i class="fas fa-trash-alt" style="color:red"></i></a> -->
-                                </td>
+                            </td>
+                            @endif
                         </tr>
                         @endforeach
                     </tbody>
@@ -80,26 +96,25 @@
 </div>
 <!-- /.container-fluid -->
 <script>
-    $('#cut').click( function(){
+    $('#cut').click(function() {
         var kodepeg = $(this).attr('data-id')
         swal({
-            title: "Yakin?",
-            text: "Data Anda akan dihapus!",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-        })
-        .then((willDelete) => {
-            if (willDelete) {
-                window.location = "/hapuspegawai/"+kodepeg+""
-                swal("Data berhasil dihapus!", {
-                    icon: "success",
-                });
-            } else {
-                swal("Data batal dihapus");
-            }
-        });
+                title: "Yakin?",
+                text: "Data Anda akan dihapus!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    window.location = "/hapuspegawai/" + kodepeg + ""
+                    swal("Data berhasil dihapus!", {
+                        icon: "success",
+                    });
+                } else {
+                    swal("Data batal dihapus");
+                }
+            });
     });
-    
 </script>
 @endsection
