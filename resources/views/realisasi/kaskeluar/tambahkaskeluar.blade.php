@@ -74,7 +74,7 @@
                                                     <label class="mb-1" for="inputLastName">Program Kerja</label>
                                                     <select class="form-control" id="prokers" name="prokers">
                                                         <option  value>Pilih Program Kerja</option>
-                                                        @foreach ($akun as $item)
+                                                        @foreach ($programkerja as $item)
                                                         <option value="{{ $item->kode_proker}}">{{$item->kode_proker}}</option>
                                                         @endforeach
                                                     </select>

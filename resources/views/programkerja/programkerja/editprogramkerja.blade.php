@@ -85,7 +85,7 @@
                                                 </div>
                                             </div>
                                             <div class="row gx-3 mb-3">
-                                                <!-- <div class="col-md-6">
+                                                <div class="col-md-6">
                                                     <label for="exampleFormControlInput1">Akun</label>
                                                     <button type="button" class="btn btn-primary ml-2" id="tambah">+</button>
                                                     <div id="selectakun">
@@ -101,10 +101,10 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div> -->
+                                                </div>
                                                 <div class="col-md-6">
                                                     <label for="exampleFormControlInput1">Anggaran</label>
-                                                    <input class="form-control" readonly id="anggaran" name="anggaran" value="{{ $items->anggaran}}"required />
+                                                    <input class="form-control" readonly id="anggaran" name="anggaran" required />
                                                 </div>
                                             </div>
 
@@ -128,6 +128,7 @@
 </main>
 </div>
 <script src="/proker/proker.js"></script>
+
 
 @endforeach
 @endsection

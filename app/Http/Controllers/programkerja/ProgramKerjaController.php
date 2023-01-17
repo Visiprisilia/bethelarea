@@ -26,7 +26,8 @@ class ProgramKerjaController extends Controller
 		$pegawai = Pegawai::orderBy('created_at', 'desc')->get();
 		// $programkerja = programkerja::orderBy('created_at', 'desc')->where('periode', $id)->get();
 		$programkerja = ProgramKerja::join("pegawai","program_kerja.penanggungjawab","=","pegawai.niy")->where('periode', $id)->get();
-		return view('programkerja/programkerja/viewprogramkerja', ['programkerja' => $programkerja, 'periode' => $periode, 'pegawai' => $pegawai]);
+		return view('programkerja/programkerja/viewprogramkerja', ['programkerja' => $programkerja, 'periode' => $periode, 
+		'pegawai' => $pegawai]);
 	}
 	public function tambahprogramkerja()
 	{
@@ -110,6 +111,17 @@ class ProgramKerjaController extends Controller
 		$programkerja = ProgramKerja::where('kode_proker', $kode_proker)->delete();
 		return redirect('/programkerja')->with('status', 'Data berhasil dihapus');
 	}
+	
+	public function lihatproker($kode_proker)
+	{
+		$programkerja = ProgramKerja::where('kode_proker', $kode_proker)->get();
+		$periode = Periode::orderBy('created_at', 'desc')->get();
+		$pegawai = Pegawai::orderBy('created_at', 'desc')->get();
+		$coa = Coa::orderBy('created_at', 'desc')->get();
+		return view('programkerja/programkerja/lihatproker', compact('programkerja','periode','pegawai','coa'));
+	}
+
+	//lihat program kerja di table akun
 	public function lihatprogramkerja($kode_proker)
 	{
 		$akun = Akuns::join("coa", "akuns.kode_akun", "=", "coa.kode_akun")->where('kode_proker', $kode_proker)->orderBy('akuns.created_at', 'desc')->get();

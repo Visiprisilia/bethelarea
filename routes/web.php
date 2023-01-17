@@ -120,9 +120,11 @@ Route::post('/simpanprogramkerja', [ProgramKerjaController::class,'simpanprogram
 Route::get('/editprogramkerja/{kode_proker}', [ProgramKerjaController::class,'editprogramkerja'])->middleware('auth', 'ceklevel:unit');
 Route::post('/updateprogramkerja/{kode_proker}', [ProgramKerjaController::class,'updateprogramkerja'])->middleware('auth', 'ceklevel:unit');
 Route::get('/hapusprogramkerja/{kode_proker}', [ProgramKerjaController::class,'hapusprogramkerja'])->middleware('auth', 'ceklevel:unit');
-Route::get('/lihatprogramkerja/{kode_proker}', [ProgramKerjaController::class,'lihatprogramkerja']);
+Route::get('/lihatproker/{kode_proker}', [ProgramKerjaController::class,'lihatproker']);
 Route::get('/cetakprogramkerja', [ProgramKerjaController::class,'cetakprogramkerja']);
 Route::get('/viewcetakprogramkerja', [ProgramKerjaController::class,'viewcetakprogramkerja']);
+//lihat di table akuns
+Route::get('/lihatprogramkerja/{kode_proker}', [ProgramKerjaController::class,'lihatprogramkerja'])->middleware('auth', 'ceklevel:unit');
 
 //Evaluasi
 Route::get('/evaluasi', [EvaluasiController::class,'evaluasi']);

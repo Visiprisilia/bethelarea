@@ -12,6 +12,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 use App\Models\Realisasi\KasBon;
+use App\Models\ProgramKerja\ProgramKerja;
 
 class KasKeluarController extends Controller
 {
@@ -32,9 +33,9 @@ class KasKeluarController extends Controller
 		$kasbon = KasBon::where('status_bon', 'LIKE', 'Belum Dipertanggungjawabkan')->get();
 		// $akun = Akuns::orderBy('created_at','desc')->get();
 		$akun = Akuns::join("periode", "akuns.periode", "=", "periode.kode_periode")->where('status', 'LIKE', 'AKTIF')->get();
-		// $akun = Akuns::join("coa","akuns.kode_akun","=","coa.kode_akun")->get();
-		// $coa = Coa::orderBy('created_at','desc')->get();
-		return view('realisasi/kaskeluar/tambahkaskeluar', ['periode' => $periode, 'akun' => $akun, 'pegawai' => $pegawai, 'kasbon' => $kasbon]);
+		$programkerja = programkerja::orderBy('created_at', 'desc')->where('status_proker', 'LIKE', 'Konfirmasi')->get();
+		return view('realisasi/kaskeluar/tambahkaskeluar', ['periode' => $periode, 'akun' => $akun, 'pegawai' => $pegawai, 
+		'kasbon' => $kasbon, 'programkerja' => $programkerja]);
 	}
 	public function simpankaskeluar(Request $request)
 	{

@@ -16,6 +16,9 @@
         @if (auth()->user()->level=="unit")
         <th>Aksi</th> 
         @endif
+        @if (auth()->user()->level=="yayasan")
+        <th>Konfirmasi</th> 
+        @endif
     </tr>
 <tbody>
     @foreach ($programkerja as $item)
@@ -37,7 +40,12 @@
             <a href="/editprogramkerja/{{$item->kode_proker}}"><i class="fas fa-edit" style="color:green"></i></a> |
             <a href="/hapusprogramkerja/{{$item->kode_proker}}"onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a>
             <!-- <a href="#" id="prok" data-id="{{$item->kode_proker}}" ><i class="fas fa-trash-alt" style="color:red"></i></a> -->
-            <a href="/lihatprogramkerja/{{$item->kode_proker}}"><i class="fas fa-eye" style="color:red"></i></a>
+            <a href="/lihatprogramkerja/{{$item->kode_proker}}"><i class="fas fa-eye" style="color:red"></i></a>          
+        </td>
+        @endif
+        @if (auth()->user()->level=="yayasan")
+        <td>
+        <a href="/lihatproker/{{$item->kode_proker}}"><i class="fas fa-pen" style="color:red"></i></a>
         </td>
         @endif
     </tr>
