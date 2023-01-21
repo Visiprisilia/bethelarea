@@ -1,5 +1,13 @@
 @extends('template')
 @section('container')
+
+@if($errors->any())
+   <ul class="alert alert-danger">
+      @foreach($errors->all() as $error)
+         <li> {{$error}} </li>
+      @endforeach
+   </ul>
+@endif
 <!-- Default Bootstrap Form Controls-->
 <div id="layoutSidenav_content">
     <main>
@@ -34,11 +42,11 @@
                                             @csrf
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Kode Sub Unit</label>
-                                                <input class="form-control" id="kode_subunit" name="kode_subunit" required />
+                                                <input class="form-control" id="kode_subunit" name="kode_subunit"  />
                                             </div>
                                             <div class="form-group">
                                             <label class="mb-1" for="inputLastName">Unit</label>
-                                                <select class="form-control select2" style="width: 100%;"name="unit_id" id="unit_id" required>
+                                                <select class="form-control select2" style="width: 100%;"name="unit_id" id="unit_id" >
                                                 <option  value>Pilih Unit</option>
                                                 @foreach ($unit as $item)
                                                 <option value="{{ $item->kode_unit}}">{{$item->nama_unit}}</option>
@@ -47,12 +55,12 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Nama Sub Unit</label>
-                                                <input class="form-control" id="nama_subunit" name="nama_subunit" required />
+                                                <input class="form-control" id="nama_subunit" name="nama_subunit"  />
                                             </div>
                                            
                                             <div class="md-3">
                                                 <label for="inputLastName">Status</label>
-                                                <select class="form-control" id="status" name="status" required>
+                                                <select class="form-control" id="status" name="status" >
                                                     <option  value>Pilih Status</option>
                                                     <option>AKTIF</option>
                                                     <option>NON AKTIF</option>

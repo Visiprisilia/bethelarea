@@ -1,6 +1,13 @@
 @extends('template')
 @section('container')
 <!-- Default Bootstrap Form Controls-->
+@if($errors->any())
+   <ul class="alert alert-danger">
+      @foreach($errors->all() as $error)
+         <li> {{$error}} </li>
+      @endforeach
+   </ul>
+@endif
 <div id="layoutSidenav_content">
     <main>
         <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
@@ -38,21 +45,21 @@
                                             </div> -->
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Periode</label>
-                                                <input class="form-control" id="nama_periode" name="nama_periode" required />
+                                                <input class="form-control" id="nama_periode" name="nama_periode" placeholder="Masukkan Periode (Cth : 2020-2021)" />
                                             </div>
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Awal Periode</label>
-                                                    <input class="form-control" type="date" id="awal_periode" name="awal_periode" required />
+                                                    <input class="form-control" type="date" id="awal_periode" name="awal_periode"  />
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputLastName">Akhir Periode</label>
-                                                    <input class="form-control"  type="date" id="akhir_periode" name="akhir_periode"required />
+                                                    <input class="form-control"  type="date" id="akhir_periode" name="akhir_periode" />
                                                 </div>
                                             </div>
                                             <div class="md-3">
                                                 <label for="inputLastName">Status</label>
-                                                <select class="form-control" id="status" name="status" required>
+                                                <select class="form-control" id="status" name="status" >
                                                     <option  value>Pilih Status</option>
                                                     <option>AKTIF</option>
                                                     <option>NON AKTIF</option>

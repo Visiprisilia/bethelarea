@@ -55,13 +55,17 @@
                                             </div>      
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-4">
-                                                    <label class="mb-1" for="inputLastName">Akun</label>
-                                                    <select class="form-control" id="akun" name="akun">
-                                                        <option  value>Pilih Akun</option>
-                                                        @foreach ($coa as $item)
-                                                        <option value="{{ $item->kode_akun}}">{{ $item->kode_akun}}  {{$item->nama_akun}}</option>
+                                                <label class="mb-1" for="inputLastName">Program Kerja</label>
+                                                    <select class="form-control" id="progja" name="progja">
+                                                        <option  value>Pilih Program Kerja</option>
+                                                        @foreach ($programkerja as $item)
+                                                        <option value="{{ $item->kode_proker}}">{{$item->kode_proker}}</option>
                                                         @endforeach
                                                     </select>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="mb-1" for="inputFirstName">Akun</label>
+                                                    <input class="form-control" readonly id="akun" name="akun"  required />
                                                 </div>
                                                 <div class="col-md-4">
                                                 <label class="mb-1" for="inputFirstName">Sumber</label>
@@ -101,6 +105,8 @@
         </div>
     </main>
 </div>
+<script src="/proker/kasmasuk.js"></script>
+
 <script>
     $(document).on('change','#sumber',function(){
       var val=$('#sumber option').filter(':selected').val()=="1"?  $('#murid').show():  $('#murid').hide();

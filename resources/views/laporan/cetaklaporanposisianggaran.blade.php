@@ -1,3 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+ 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+<div id="print-area">
+    <style type="text/css">
+        table tr td,
+        table tr th {
+            font-size: 11pt;
+        }
+    </style>
+    <center>
+        <img align="bottom" src="{{asset('template/img/logo4.png') }}" style="max-width:100px;">
+        <h6>Yayasan Bethel Area</h6>
+        <h6>Sekolah KB/TK "Satria Tunas Bangsa"</h6>
+        <h6>Alamat: Jl Hasanudin No.3B, Mangunsari, Kec.Sidomukti, Kota Salatiga, Jawa Tengah </h6> <br>
+        <p style="text-align:center;"><strong>LAPORAN POSISI ANGGARAN</strong><br>
+    </center>
+    Periode : <select class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" id="lappa" require name="lappa">
+        <option value>Pilih Periode</option>
+        @foreach ($lappa as $item)
+        <option value="{{ $item->kode_periode}}">{{$item->nama_periode}}</option>
+        @endforeach
+    </select><br><br>
+    <table class='table table-bordered' id="tablecetaklpa">
+        <thead>
+        <tr>
+            <th>No</th>
+            <th>Kode Akun</th>
+            <th>Nama Akun</th>
+            <th>Anggaran</th>
+            <th>Posisi Anggaran</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
+
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script>
+    $(document).on('change', '#lappa', function() {
+        var id = $(this).val();
+        $.ajax({
+            url: "/viewcetaklpa",
+            data: {
+                id: id
+            },
+            method: "get",
+            success: function(data) {
+                $('#tablecetaklpa').html(data);
+            }
+        })
+    })
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- <style type="text/css" media="all">
     body {
         color: #000;
@@ -36,38 +117,13 @@
         text-align: right;
     }
 </style> -->
-
-<style>
-h2,h1,h3{ padding:0;margin:0;}
-h1 {font-size:22px;font-weight:bold}
-h2 {font-size:22px;font-weight:normal}
-#wrapper {width:750px;
-margin:0 auto;font-size:15px; align-items: center;}
-#ol {margin:0}
-#header {clear:both;text-align:center;}
-#garis1{border-top:solid 1px #fff;border-right:1px solid #fff}
-#garis2 {border-bottom:1px solid #000}
-#g4{border-right:1px solid #000}
-#table {font-family: Verdana, Arial, Helvetica, sans-serif;
-font-size: 10pt;border-width: 1px;
-border-style: solid;border-color: #fff;
-border-collapse: collapse; margin: 10px 0px; }
-#table td{padding: 0.5em;}
-th{ text-align: center;
-padding: 0.5em;border-width: 1px;
-border-style: solid;border-color: #000;
-border-collapse: collapse;}
-td{padding: 0.5em;
-vertical-align: top;
-border-width: 1px;
-border-style: solid;
-border-color: #000;
-border-collapse: collapse;
-} @media print {
-        .no-print {
-            display: none;
-        }}
-</style>
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<style type="text/css">
+		table tr td,
+		table tr th{
+			font-size: 9pt;
+		}
+	</style>
 <section class='content'>
     <div class='row'>
         <div class='col-xs-12'>
@@ -134,4 +190,4 @@ border-collapse: collapse;
                                 }
                             })
                         })
-                    </script>
+                    </script> -->

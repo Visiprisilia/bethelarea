@@ -43,15 +43,15 @@
                                             @csrf
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Kode Akun</label>
-                                                <input class="form-control" id="kode_akun" name="kode_akun" required/>
+                                                <input class="form-control" id="kode_akun" name="kode_akun" />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Nama Akun</label>
-                                                <input class="form-control" id="nama_akun" name="nama_akun" required/>
+                                                <input class="form-control" id="nama_akun" name="nama_akun" />
                                             </div>                                         
                                             <div class="mb-3">
                                                 <label for="exampleFormControlSelect1">Kelompok Rekening</label>
-                                                <select class="form-control" id="kelompok_rek" name="kelompok_rek" required>
+                                                <select class="form-control" id="kelompok_rek" name="kelompok_rek" >
                                                 <option  value>Pilih Kelompok Rekening</option>    
                                                 <option>Aktiva</option>
                                                     <option>Utang</option>
@@ -62,7 +62,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlSelect1">Saldo Normal</label>
-                                                <select class="form-control" id="saldo_normal" name="saldo_normal" required>
+                                                <select class="form-control" id="saldo_normal" name="saldo_normal" >
                                                 <option  value>Pilih Kelompok Rekening</option>  
                                                     <option>Debit</option>
                                                     <option>Kredit</option>
@@ -70,7 +70,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Keterangan</label>
-                                                <input class="form-control" id="keterangan" name="keterangan" required/>
+                                                <input class="form-control" id="keterangan" name="keterangan" />
                                             </div>
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Tambah</button>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\periode;
 
 use Illuminate\Http\Request;
 use App\Models\Periode\Periode;
+use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 
 class PeriodeController extends Controller
@@ -19,6 +20,28 @@ class PeriodeController extends Controller
 	}
     public function simpanperiode(Request $request)
 	{ 
+		$validator = Validator::make($request->all(), [	
+			'nama_periode' => 'required|unique:periode',
+			'awal_periode' => 'required',
+			'akhir_periode' => 'required',
+			'status' => 'required',
+		],[
+			"nama_periode.required"=>"Nama periode tidak boleh kosong",
+			"nama_periode.unique"=>"Data Tersebut Sudah Terdaftar",
+			"awal_periode.required"=>"Awal periode tidak boleh kosong",
+			"akhir_periode.required"=>"Akhir periode tidak boleh kosong",
+			"status.required"=>"Status tidak boleh kosong"
+			
+		]);
+
+		if ($validator->fails()) {    
+			$message = $validator->errors()->getMessages();
+			$api = array(
+				'message' => $message
+			);
+			return redirect('/tambahperiode')->withErrors($validator);
+			
+		}
 		Periode::create([
 			'kode_periode'=>$request->nama_periode,
 			'nama_periode'=>$request->nama_periode,

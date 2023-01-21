@@ -1,5 +1,12 @@
 @extends('template')
 @section('container')
+@if($errors->any())
+   <ul class="alert alert-danger">
+      @foreach($errors->all() as $error)
+         <li> {{$error}} </li>
+      @endforeach
+   </ul>
+@endif
 <!-- Default Bootstrap Form Controls-->
 <div id="layoutSidenav_content">
     <main>
@@ -35,11 +42,11 @@
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputLastName">Nomor Induk Siswa</label>
-                                                    <input class="form-control" id="nomor_induk" name="nomor_induk" placeholder="Masukkan NIS" required />
+                                                    <input class="form-control" id="nomor_induk" name="nomor_induk" placeholder="Masukkan NIS"  />
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputFirstName">Nomor Induk Siswa Nasional</label>
-                                                    <input class="form-control" id="nomor_isn" name="nomor_isn" placeholder="Masukkan NISN" required />
+                                                    <input class="form-control" id="nomor_isn" name="nomor_isn" placeholder="Masukkan NISN"  />
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputLastName">Foto Murid</label>
@@ -49,21 +56,21 @@
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputLastName">Nama</label>
-                                                    <input class="form-control" id="nama" name="nama" placeholder="Masukkan Nama" required />
+                                                    <input class="form-control" id="nama" name="nama" placeholder="Masukkan Nama"  />
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputLastName">Tempat Lahir</label>
-                                                    <input class="form-control" id="tempat_lahir" name="tempat_lahir" placeholder="Masukkan Tempat Lahir" required />
+                                                    <input class="form-control" id="tempat_lahir" name="tempat_lahir" placeholder="Masukkan Tempat Lahir"  />
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputFirstName">Tanggal Lahir</label>
-                                                    <input class="form-control" type="date" id="ttl" name="ttl" required />
+                                                    <input class="form-control" type="date" id="ttl" name="ttl"  />
                                                 </div>
                                             </div>
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputFirstName">Jenis Kelamin</label>
-                                                    <select class="form-control" id="jk" name="jk" required>
+                                                    <select class="form-control" id="jk" name="jk" >
                                                         <option  value>Pilih Jenis Kelamin</option>
                                                         <option>Perempuan</option>
                                                         <option>Laki-laki</option>
@@ -71,11 +78,11 @@
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputLastName">Alamat</label>
-                                                    <input class="form-control" id="alamat" name="alamat" placeholder="Masukkan Alamat" required />
+                                                    <input class="form-control" id="alamat" name="alamat" placeholder="Masukkan Alamat"  />
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputFirstName">Agama</label>
-                                                    <select class="form-control" id="agama" name="agama" required>
+                                                    <select class="form-control" id="agama" name="agama" >
                                                         <option  value>Pilih Agama</option>
                                                         <option>Kristen Protestan</option>
                                                         <option>Katholik</option>
@@ -89,45 +96,45 @@
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputLastName">Nama Ayah</label>
-                                                    <input class="form-control" id="nama_ayah" name="nama_ayah" placeholder="Masukkan Nama Ayah" required />
+                                                    <input class="form-control" id="nama_ayah" name="nama_ayah" placeholder="Masukkan Nama Ayah"  />
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputLastName">Pekerjaan Ayah</label>
-                                                    <input class="form-control" id="pekerjaan_ayah" name="pekerjaan_ayah" placeholder="Masukkan Pekerjaan Ayah" required />
+                                                    <input class="form-control" id="pekerjaan_ayah" name="pekerjaan_ayah" placeholder="Masukkan Pekerjaan Ayah"  />
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputLastName">Pendidikan Terakhir Ayah</label>
-                                                    <input class="form-control" id="pendidikan_ayah" name="pendidikan_ayah" placeholder="Masukkan Pendidikan Terakhir Ayah" required />
+                                                    <input class="form-control" id="pendidikan_ayah" name="pendidikan_ayah" placeholder="Masukkan Pendidikan Terakhir Ayah"  />
                                                 </div>
                                             </div>
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputFirstName">Nama Ibu</label>
-                                                    <input class="form-control" id="nama_ibu" name="nama_ibu" placeholder="Masukkan Nama Ibu" required />
+                                                    <input class="form-control" id="nama_ibu" name="nama_ibu" placeholder="Masukkan Nama Ibu"  />
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputFirstName">Pekerjaan Ibu</label>
-                                                    <input class="form-control" id="pekerjaan_ibu" name="pekerjaan_ibu" placeholder="Masukkan Pekerjaan Ibu" required />
+                                                    <input class="form-control" id="pekerjaan_ibu" name="pekerjaan_ibu" placeholder="Masukkan Pekerjaan Ibu"  />
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputFirstName">Pendidikan Terakhir Ibu</label>
-                                                    <input class="form-control" id="pendidikan_ibu" name="pendidikan_ibu" placeholder="Masukkan Pendidikan Terakhir Ibu" required />
+                                                    <input class="form-control" id="pendidikan_ibu" name="pendidikan_ibu" placeholder="Masukkan Pendidikan Terakhir Ibu"  />
                                                 </div>
                                             </div>
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputLastName">Anak Ke berapa</label>
-                                                    <input class="form-control" id="anak_keberapa" name="anak_keberapa" placeholder="Masukkan Anak Ke berapa" required />
+                                                    <input class="form-control" id="anak_keberapa" name="anak_keberapa" placeholder="Masukkan Anak Ke berapa"  />
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Nomor Akte Lahir</label>
-                                                    <input class="form-control" id="no_akte" name="no_akte" placeholder="Masukkan Nomor Akte Lahir" required />
+                                                    <input class="form-control" id="no_akte" name="no_akte" placeholder="Masukkan Nomor Akte Lahir"  />
                                                 </div>
                                             </div>
                                             <div class="row gx-3 mb-3">
                                             <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Nomor Kontak</label>
-                                                    <input class="form-control" id="kontak" name="kontak" placeholder="Masukkan Nomor Kontak" required />
+                                                    <input class="form-control" id="kontak" name="kontak" placeholder="Masukkan Nomor Kontak"  />
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Kartu Keluarga</label>

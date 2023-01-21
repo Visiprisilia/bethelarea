@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use App\Models\Yayasan\Kebijakan;
+use Illuminate\Support\Facades\Validator;
 Use Illuminate\Support\Facades\Storage;
 Use Symfony\Component\HttpFoundation\Response;
 use App\Http\Controllers\Controller;
@@ -27,6 +28,23 @@ class KebijakanController extends Controller
 	}
     public function simpankebijakan(Request $request)
 	{  
+		$validator = Validator::make($request->all(), [	
+			'file_kebijakan' => 'required',
+			'keterangan' => 'required'
+		],[
+			"file_kebijakan.required"=>"Anda belum mengupload file kebijakan",
+			"keterangan.required"=>"Keterangan tidak boleh kosong"
+			
+		]);
+
+		if ($validator->fails()) {    
+			$message = $validator->errors()->getMessages();
+			$api = array(
+				'message' => $message
+			);
+			return redirect('/tambahkebijakan')->withErrors($validator);
+			
+		}
 		$tanggalhariini = Carbon::now()->format('Ymd');
         $check = Kebijakan::count();
 		$kode_kebijakan = $tanggalhariini. $check + 1;
@@ -34,7 +52,8 @@ class KebijakanController extends Controller
 		$destinationPath = 'assets/images/kebijakan/';
 		$kebijakans = 'kebijakan_'.$kode_kebijakan.$check.'.'.$file_kebijakan->getClientOriginalExtension();
 		$file_kebijakan->move($destinationPath, $kebijakans);
-		
+					
+	
 		Kebijakan::create([
 			'kode_kebijakan'=>$kode_kebijakan,
 			'file_kebijakan'=>$kebijakans,

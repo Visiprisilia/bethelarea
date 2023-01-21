@@ -87,9 +87,21 @@ class ProgramKerjaController extends Controller
 		$periode = Periode::where('status', 'LIKE', 'AKTIF')->get();
 		$pegawai = Pegawai::where('status', 'LIKE', 'AKTIF')->get();
 		$coa = Coa::orderBy('created_at', 'desc')->get();
-		$programkerja = ProgramKerja::where('kode_proker', $kode_proker)->get();
+
+		$dataproker = ProgramKerja::where('kode_proker', $kode_proker)->get();
+		$programkerja = ProgramKerja::where('kode_proker', $kode_proker)->where('status_proker','!=','Konfirmasi')->get();
 		// return $programkerja;
+		foreach($dataproker as $row){
+			$status_proker=$row[
+				'status_proker'
+			];
+		}
+
+		if ($status_proker != 'Konfirmasi') {
 		return view('programkerja/programkerja/editprogramkerja',  ['programkerja' => $programkerja, 'coa' => $coa, 'periode' => $periode, 'pegawai' => $pegawai]);
+		} else{
+			return redirect('/programkerja')->with('status', 'Data tidak bisa diubah');    			
+			}
 	}
 	public function updateprogramkerja(Request $request)
 	{
@@ -102,14 +114,27 @@ class ProgramKerjaController extends Controller
 			'tujuan' => $request->tujuan,
 			'indikator' => $request->indikator,
 			'anggaran' => $request->anggaran,
-			'keterangan_proker' => $request->keterangan_proker
+			'keterangan_proker' => $request->keterangan_proker,
+			'status_proker'=>'Menunggu Konfirmasi'
 		]);
 		return redirect('/programkerja')->with('status', 'Data berhasil diubah');
 	}
 	public function hapusprogramkerja($kode_proker)
 	{
-		$programkerja = ProgramKerja::where('kode_proker', $kode_proker)->delete();
-		return redirect('/programkerja')->with('status', 'Data berhasil dihapus');
+		$dataproker = ProgramKerja::where('kode_proker', $kode_proker)->get();
+		$programkerja = ProgramKerja::where('kode_proker', $kode_proker)->where('status_proker','!=','Konfirmasi')->delete();
+		foreach($dataproker as $row){
+			$status_proker=$row[
+				'status_proker'
+			];
+		}
+
+		if ($status_proker != 'Konfirmasi') {
+			return redirect('/programkerja')->with('status', 'Data berhasil dihapus');
+		} else{
+			return redirect('/programkerja')->with('status', 'Data tidak bisa dihapus');    			
+			}
+
 	}
 	
 	public function lihatproker($kode_proker)
@@ -118,7 +143,14 @@ class ProgramKerjaController extends Controller
 		$periode = Periode::orderBy('created_at', 'desc')->get();
 		$pegawai = Pegawai::orderBy('created_at', 'desc')->get();
 		$coa = Coa::orderBy('created_at', 'desc')->get();
+	
 		return view('programkerja/programkerja/lihatproker', compact('programkerja','periode','pegawai','coa'));
+	}
+	public function konfirmasi(Request $request)
+	{	
+		$programkerja = ProgramKerja::where('kode_proker', $request->kode_proker)->update([
+			'status_proker' => $request->status_proker]);
+		return redirect('/programkerja')->with('status', 'Data berhasil diubah');
 	}
 
 	//lihat program kerja di table akun

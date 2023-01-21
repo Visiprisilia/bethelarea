@@ -17,12 +17,13 @@ class LaporanPAController extends Controller
         return view('laporan/laporanposisianggaran', ['lapposisianggaran' => $lapposisianggaran]);
     }
     public function viewlpa(Request $request)
-    {
+    {   $jlh = 0; 
         $id = $request->id;     
         $periode = Periode::orderBy('created_at', 'desc')->get();
         $lapposisianggaran = LaporanPosisiAnggaran::where('periode', $id)->get();
         $anggarans = LaporanPosisiAnggaran::where('periode',$id)->sum('anggaran');
         $posisianggarans = LaporanPosisiAnggaran::where('periode',$id)->sum('posisi_anggaran');
+      
         return view('laporan/viewlpa', ['lapposisianggaran' => $lapposisianggaran,'periode'=>$periode,'anggarans'=>$anggarans,
         'posisianggarans'=>$posisianggarans]);
     }

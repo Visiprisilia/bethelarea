@@ -32,7 +32,7 @@
                                     <div class="sbp-preview-content">
                                         @foreach($programkerja as $items)
 
-                                        <form action="/lihatproker/{{$items->kode_proker}}" method="post">
+                                        <form action="/konfirmasi/{{$items->kode_proker}}" method="post">
                                             @csrf
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Periode</label>
@@ -92,7 +92,7 @@
 
                                             <div class="mb-3">
                                                 <input type="button" value="Kembali" onclick=self.history.back() class="btn btn-success">
-
+                                                <button type="submit" class="btn btn-success">Simpan</button>
                                             </div>
                                         </form>
                                     </div>

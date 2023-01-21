@@ -39,11 +39,11 @@
                                             </div> -->
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">File Kebijakan</label>
-                                                <input class="form-control" type="file" id="file_kebijakan" name="file_kebijakan" value="{{$item->file_kebijakan}}" required/>
+                                                <input class="form-control" type="file" id="file_kebijakan" name="file_kebijakan" value="{{$item->file_kebijakan}}" />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Keterangan</label>
-                                                <input class="form-control" id="keterangan" name="keterangan" value="{{$item->keterangan}}" required />
+                                                <input class="form-control" id="keterangan" name="keterangan" value="{{$item->keterangan}}"  />
                                             </div>                                                                                    
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Simpan</button>

@@ -21,10 +21,18 @@ class CoaController extends Controller
     public function simpancoa(Request $request)
 	{
 		$validator = Validator::make($request->all(), [	
-			'nama_akun' => 'unique:coa'
+			'kode_akun' => 'required|unique:coa|numeric',
+			'nama_akun' => 'required|unique:coa',
+			'kelompok_rek' => 'required',
+			'saldo_normal' => 'required'
 		],[
-			"nama_akun.unique"=>"Data Tersebut Sudah Terdaftar"
-			
+			"kode_akun.required"=>"Kode akun tidak boleh kosong",
+			"kode_akun.unique"=>"Kode akun tersebut sudah terdaftar",
+			"kode_akun.numeric"=>"Kode akun harus berupa angka",
+			"nama_akun.required"=>"Nama akun tidak boleh kosong",
+			"nama_akun.unique"=>"Nama akun tersebut sudah terdaftar",
+			"kelompok_rek.required"=>"Kelompok rekening tidak boleh kosong",
+			"saldo_normal.required"=>"Saldo normal tidak boleh kosong"
 		]);
 
 		if ($validator->fails()) {    

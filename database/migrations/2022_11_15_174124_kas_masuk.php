@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('periode')->nullable();
             $table->string('tanggal_pencatatan')->nullable();
             $table->string('keterangan')->nullable();
+            $table->string('progja')->nullable();
             $table->string('akun')->nullable();
             $table->string('sumber')->nullable();
             $table->string('jumlah')->nullable();

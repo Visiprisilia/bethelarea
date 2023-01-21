@@ -121,6 +121,7 @@ Route::get('/editprogramkerja/{kode_proker}', [ProgramKerjaController::class,'ed
 Route::post('/updateprogramkerja/{kode_proker}', [ProgramKerjaController::class,'updateprogramkerja'])->middleware('auth', 'ceklevel:unit');
 Route::get('/hapusprogramkerja/{kode_proker}', [ProgramKerjaController::class,'hapusprogramkerja'])->middleware('auth', 'ceklevel:unit');
 Route::get('/lihatproker/{kode_proker}', [ProgramKerjaController::class,'lihatproker']);
+Route::post('/konfirmasi/{kode_proker}', [ProgramKerjaController::class,'konfirmasi']);
 Route::get('/cetakprogramkerja', [ProgramKerjaController::class,'cetakprogramkerja']);
 Route::get('/viewcetakprogramkerja', [ProgramKerjaController::class,'viewcetakprogramkerja']);
 //lihat di table akuns
@@ -158,6 +159,8 @@ Route::get('/cetakkasmasuk/{no_bukti}', [KasMasukController::class,'cetakkasmasu
 Route::post('/updatekasmasuk/{no_bukti}', [KasMasukController::class,'updatekasmasuk'])->middleware('auth', 'ceklevel:unit');
 Route::get('/hapuskasmasuk/{no_bukti}', [KasMasukController::class,'hapuskasmasuk'])->middleware('auth', 'ceklevel:unit');
 Route::get('/sumberkasmasuk', [KasMasukController::class,'sumberkasmasuk']);
+Route::get('/pilihprokerkm', [KasKeluarController::class,'pilihprokerkm'])->middleware('auth', 'ceklevel:unit');
+
 
 //Kas Keluar
 Route::get('/kaskeluar', [KasKeluarController::class,'kaskeluar']);

@@ -9,6 +9,8 @@ use Carbon\Carbon;
 use App\Models\Periode\Periode;
 use App\Models\Murid\Murid;
 use App\Models\Akuns;
+use App\Models\ProgramKerja\ProgramKerja;
+
 use App\Models\Pegawai\Pegawai;
 
 use App\Http\Controllers\Controller;
@@ -39,8 +41,13 @@ class KasMasukController extends Controller
 		$murid = Murid::orderBy('created_at','desc')->get();
 		$sumber = Sumber::orderBy('created_at','desc')->get();
 		// $akun = Akuns::join("coa","akuns.kode_akun","=","coa.kode_akun")->get();
-		$coa = Coa::orderBy('created_at','desc')->get();
-		return view('realisasi/kasmasuk/tambahkasmasuk',['periode'=>$periode,'coa'=>$coa,'murid'=>$murid,'sumber'=>$sumber]);
+		// $coa = Coa::orderBy('created_at','desc')->get();
+		// $coa = Coa::leftjoin("akuns", "coa.kode_akun", "=", "akuns.kode_akun")->get();
+		$programkerja = programkerja::join("periode", "program_kerja.periode", "=", "periode.kode_periode")->where('status_proker', 'LIKE', 'Konfirmasi')->where('status', 'LIKE', 'AKTIF')->get();
+
+		// $programkerja = programkerja::join("periode", "program_kerja.periode", "=", "periode.kode_periode")->where('status_proker', 'LIKE', 'Konfirmasi')->where('status', 'LIKE', 'AKTIF')->get();
+
+		return view('realisasi/kasmasuk/tambahkasmasuk',['periode'=>$periode,'programkerja'=>$programkerja,'murid'=>$murid,'sumber'=>$sumber]);
 	}
     public function simpankasmasuk(Request $request)
 	{
@@ -62,6 +69,7 @@ class KasMasukController extends Controller
 			'periode'=>$request->periode,
 			'tanggal_pencatatan'=>$tanggalhariinis,
 			'keterangan'=>$request->keterangan,
+			'progja'=>$request->progja,
 			'akun'=>$request->akun,
 			'sumber'=>$request->sumber,
 			'jumlah'=>$request->jumlah,
@@ -92,6 +100,7 @@ class KasMasukController extends Controller
 			'periode'=>$request->periode,
 			'tanggal_pencatatan'=>$tanggalhariinis,
 			'keterangan'=>$request->keterangan,
+			'progja'=>$request->progja,
 			'akun'=>$request->akun,
 			'sumber'=>$request->sumber,
 			'jumlah'=>$request->jumlah,
@@ -118,5 +127,13 @@ class KasMasukController extends Controller
         $kasmasuk = KasMasuk::where('no_bukti', $no_bukti)->delete();
 		return redirect('/kasmasuk') -> with ('status', 'Data berhasil dihapus');
 	}
-	
+	public function pilihprokerkm(Request $request)
+	{
+		$kode = $request->kode;
+		$data = Akuns::where("kode_proker", $kode)->first();
+		return response()->json([
+			"progja" => $data,
+
+		]);
+	}
 }

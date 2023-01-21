@@ -1,6 +1,13 @@
 @extends('template')
 @section('container')
 <!-- Default Bootstrap Form Controls-->
+@if($errors->any())
+   <ul class="alert alert-danger">
+      @foreach($errors->all() as $error)
+         <li> {{$error}} </li>
+      @endforeach
+   </ul>
+@endif
 <div id="layoutSidenav_content">
     <main>
         <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
@@ -35,22 +42,22 @@
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputLastName">Nomor Induk Pegawai</label>
-                                                    <input class="form-control" id="niy" name="niy" placeholder="8 Digit pertama tahun bulan tanggal masuk, 2 digit nomor urut" required/>
+                                                    <input class="form-control" id="niy" name="niy" placeholder="8 Digit pertama tahun bulan tanggal masuk, 2 digit nomor urut" />
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputFirstName">Nama</label>
-                                                    <input class="form-control" id="nama" name="nama" placeholder="Masukkan Nama" required/>
+                                                    <input class="form-control" id="nama" name="nama" placeholder="Masukkan Nama" />
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputFirstName">Foto Pegawai</label>
-                                                    <input class="form-control" type="file" id="foto_pegawai" name="foto_pegawai" required />
+                                                    <input class="form-control" type="file" id="foto_pegawai" name="foto_pegawai"  />
                                                 </div>
                                             </div>
 
                                             <div class="row gx-3 mb-3">
                                             <div class="col-md-4">
                                                     <label class="mb-1" for="inputFirstName">Jenis Kelamin</label>
-                                                    <select class="form-control" id="jk" name="jk" required>
+                                                    <select class="form-control" id="jk" name="jk" >
                                                         <option  value>Pilih Jenis Kelamin</option>
                                                         <option>Perempuan</option>
                                                         <option>Laki-laki</option>
@@ -58,21 +65,21 @@
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputLastName">Tempat Lahir</label>
-                                                    <input class="form-control" id="tempat_lahir"  name="tempat_lahir" placeholder="Masukkan Tempat Lahir"required />
+                                                    <input class="form-control" id="tempat_lahir"  name="tempat_lahir" placeholder="Masukkan Tempat Lahir" />
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputLastName">TTL</label>
-                                                    <input class="form-control" id="ttl" type="date" name="ttl" required />
+                                                    <input class="form-control" id="ttl" type="date" name="ttl"  />
                                                 </div>
                                             </div>
                                             <div class="row gx-3 mb-3">
                                             <div class="col-md-4">
                                                     <label class="mb-1" for="inputLastName">Alamat</label>
-                                                    <input class="form-control" id="alamat" name="alamat" placeholder="Masukkan Alamat" required/>
+                                                    <input class="form-control" id="alamat" name="alamat" placeholder="Masukkan Alamat" />
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputFirstName">Agama</label>
-                                                    <select class="form-control" id="agama" name="agama" required>
+                                                    <select class="form-control" id="agama" name="agama" >
                                                         <option  value>Pilih Agama</option>
                                                         <option>Kristen Protestan</option>
                                                         <option>Katholik</option>
@@ -80,13 +87,13 @@
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputLastName">Pendidikan</label>
-                                                    <input class="form-control" id="pendidikan" name="pendidikan" placeholder="Masukkan Pendidikan" required />
+                                                    <input class="form-control" id="pendidikan" name="pendidikan" placeholder="Masukkan Pendidikan"  />
                                                 </div>
                                             </div>
                                             <div class="row gx-3 mb-3">
                                             <div class="col-md-4">
                                                     <label class="mb-1" for="inputFirstName">Penempatan</label>
-                                                    <select class="form-control" id="penempatan" name="penempatan"required>
+                                                    <select class="form-control" id="penempatan" name="penempatan">
                                                         <option  value>Pilih Penempatan</option>
                                                         <option>PAUD</option>
                                                         <option>Kelompok Bermain</option>
@@ -95,11 +102,11 @@
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputFirstName">Tanggal Masuk</label>
-                                                    <input class="form-control" type="date" id="tanggal_masuk" name="tanggal_masuk" placeholder=""required />
+                                                    <input class="form-control" type="date" id="tanggal_masuk" name="tanggal_masuk" placeholder="" />
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputLastName">Status Kepegawaian</label>
-                                                    <select class="form-control" id="status_kepegawaian" name="status_kepegawaian"required>
+                                                    <select class="form-control" id="status_kepegawaian" name="status_kepegawaian">
                                                         <option  value>Pilih Status Kepegawaian</option>
                                                         <option>Guru Tetap</option>
                                                         <option>Guru Tidak Tetap</option>
@@ -111,11 +118,11 @@
                                                 <div class="row gx-3 mb-3">
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Tanggal Penetapan Pegawai Tetap</label>
-                                                    <input class="form-control" type="date" id="tanggal_ppt" name="tanggal_ppt" required />
+                                                    <input class="form-control" type="date" id="tanggal_ppt" name="tanggal_ppt"  />
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputLastName">Surat Keterangan</label>
-                                                    <input class="form-control" type="file"  id="file_suket" name="file_suket" required />
+                                                    <input class="form-control" type="file"  id="file_suket" name="file_suket"  />
                                                 </div>
                                             </div>
                                             <div class="row gx-3 mb-3">
@@ -136,11 +143,11 @@
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Keterangan</label>
-                                                    <input class="form-control" id="keterangan" name="keterangan" placeholder="Masukkan Keterangan" required />
+                                                    <input class="form-control" id="keterangan" name="keterangan" placeholder="Masukkan Keterangan"  />
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">KTP</label>
-                                                    <input class="form-control" type="file" id="file_ktp" name="file_ktp" required />
+                                                    <input class="form-control" type="file" id="file_ktp" name="file_ktp"  />
                                                 </div>
                                             </div>
                                                 <div class="col-mb-3">

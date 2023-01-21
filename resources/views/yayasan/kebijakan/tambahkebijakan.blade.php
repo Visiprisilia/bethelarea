@@ -1,5 +1,12 @@
 @extends('template')
 @section('container')
+@if($errors->any())
+   <ul class="alert alert-danger">
+      @foreach($errors->all() as $error)
+         <li> {{$error}} </li>
+      @endforeach
+   </ul>
+@endif
 <!-- Default Bootstrap Form Controls-->
 <div id="layoutSidenav_content">
     <main>
@@ -38,11 +45,11 @@
                                             </div> -->
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">File Kebijakan</label>
-                                                <input class="form-control" type="file" id="file_kebijakan" name="file_kebijakan" required/>
+                                                <input class="form-control" type="file" id="file_kebijakan" name="file_kebijakan" />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Keterangan</label>
-                                                <input class="form-control" id="keterangan" name="keterangan" required />
+                                                <input class="form-control" id="keterangan" name="keterangan"  />
                                             </div>                                            
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Tambah</button>

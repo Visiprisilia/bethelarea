@@ -1,57 +1,62 @@
-<style type="text/css" media="all">
-    body {
-        color: #000;
-    }
+<!DOCTYPE html>
+<html>
 
-  
+<head>
 
-    #wrapper {
-        max-width: 650px;
-        margin: 0 auto;
-        padding-top: 20px;
-    }
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
 
-    .btn {
-        margin-bottom: 5px;
-    }
+<body>
+    <div id="print-area">
+        <style type="text/css">
+            table tr td,
+            table tr th {
+                font-size: 11pt;
+            }
+        </style>
+        <center>
+            <img align="bottom" src="{{asset('template/img/logo4.png') }}" style="max-width:100px;">
+            <h6>Yayasan Bethel Area</h6>
+            <h6>Sekolah KB/TK "Satria Tunas Bangsa"</h6>
+            <h6>Alamat: Jl Hasanudin No.3B, Mangunsari, Kec.Sidomukti, Kota Salatiga, Jawa Tengah </h6> <br>
+            <p style="text-align:center;"><strong>LAPORAN KAS</strong><br>
+        </center>
+        Periode : <select class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" id="laporankas" require name="laporankas">
+            <option value>Pilih Periode</option>
+            @foreach ($laporankas as $item)
+            <option value="{{ $item->kode_periode}}">{{$item->nama_periode}}</option>
+            @endforeach
+        </select><br><br>
+        <table class='table table-bordered' id="tablecetaklk">
+            <table>
+                <tbody>
+                </tbody>
+            </table>
+            <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+                <script>
+                    $(document).on('change', '#laporankas', function() {
+                        var id = $(this).val();
+                        $.ajax({
+                            url: "/viewcetaklk",
+                            data: {
+                                id: id
+                            },
+                            method: "get",
+                            success: function(data) {
+                                $('#tablecetaklk').html(data);
+                            }
+                        })
+                    })
+                </script> 
 
-    .table {
-        border-radius: 3px;
-    }
-
-    .table th {
-        background: #f5f5f5;
-    }
-
-    .table th,
-    .table td {
-        vertical-align: middle !important;
-    }
-
-    h3 {
-        margin: 5px 0;
-    }
-
-    @media print {
-        .no-print {
-            display: none;
-        }
-
-        #wrapper {
-            max-width: 480px;
-            width: 100%;
-            min-width: 600px;
-            margin: 0 auto;
-        }
-    }
-
-    tfoot tr th:first-child {
-        text-align: right;
-    }
-</style>
 
 
-<section class='content'>
+
+
+
+
+
+            <!-- <section class='content'>
     <div class='row'>
         <div class='col-xs-12'>
             <div class='box box-primary'>
@@ -82,12 +87,12 @@
                                     <div class="table-responsive" id="tablecetaklk">
                                         <table>
                                             <thead>
-                                                <br>
-                                                <!-- Jumlah Kas Masuk : Rp. <br>
+                                                <br> -->
+            <!-- Jumlah Kas Masuk : Rp. <br>
                                                 Jumlah Kas Keluar : Rp.<br>
                                                 --------------------------------------<br>
                                                 Saldo Kas : Rp. <br> -->
-
+            <!-- 
                                             </thead>
                                             </tbody>
                                         </table><br><br><br><br><br>
@@ -115,4 +120,4 @@
                             }
                         })
                     })
-                </script>
+                </script> -->

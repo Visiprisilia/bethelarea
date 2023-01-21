@@ -5,6 +5,7 @@ namespace App\Http\Controllers\subunit;
 use Illuminate\Http\Request;
 use App\Models\Unit\Unit;
 use App\Models\SubUnit\SubUnit;
+use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 
 class SubUnitController extends Controller
@@ -22,6 +23,30 @@ class SubUnitController extends Controller
 	}
     public function simpansubunit(Request $request)
 	{
+		$validator = Validator::make($request->all(), [	
+			'kode_subunit' => 'required|numeric|unique:sub_unit',
+			'unit_id' => 'required',
+			'nama_subunit' => 'required|unique:sub_unit',
+			'status' => 'required',
+		],[
+			"kode_subunit.required"=>"Kode sub unit tidak boleh kosong",
+			"kode_subunit.numeric"=>"Kode sub unit harus berupa angka",
+			"kode_subunit.unique"=>"Data Tersebut Sudah Terdaftar",
+			"unit_id.required"=>"Unit tidak boleh kosong",
+			"nama_subunit.required"=>"Nama sub unit tidak boleh kosong",
+			"nama_subunit.unique"=>"Data Tersebut Sudah Terdaftar",
+			"status.required"=>"Status tidak boleh kosong"
+			
+		]);
+
+		if ($validator->fails()) {    
+			$message = $validator->errors()->getMessages();
+			$api = array(
+				'message' => $message
+			);
+			return redirect('/tambahsubunit')->withErrors($validator);
+			
+		}
 		SubUnit::create([
 			'kode_subunit'=>$request->kode_subunit,
 			'nama_subunit'=>$request->nama_subunit,

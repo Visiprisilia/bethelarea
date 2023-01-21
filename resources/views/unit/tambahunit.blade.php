@@ -1,6 +1,13 @@
 @extends('template')
 @section('container')
 <!-- Default Bootstrap Form Controls-->
+@if($errors->any())
+   <ul class="alert alert-danger">
+      @foreach($errors->all() as $error)
+         <li> {{$error}} </li>
+      @endforeach
+   </ul>
+@endif
 <div id="layoutSidenav_content">
     <main>
         <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
@@ -34,11 +41,11 @@
                                             @csrf
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Kode Unit</label>
-                                                <input class="form-control" id="kode_unit" name="kode_unit" required />
+                                                <input class="form-control" id="kode_unit" name="kode_unit"  />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Nama Unit</label>
-                                                <input class="form-control" id="nama_unit" name="nama_unit" required />
+                                                <input class="form-control" id="nama_unit" name="nama_unit"  />
                                             </div>
                                             
                                             <div class="mb-3">

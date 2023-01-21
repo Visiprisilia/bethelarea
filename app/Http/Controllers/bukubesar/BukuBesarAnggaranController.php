@@ -37,6 +37,12 @@ class BukuBesarAnggaranController extends Controller
         //     $realisasi = BukuBesarAnggaran::where('akun', $request->akun)->sum('realisasi');
         //     $total = ($anggaran - $realisasi);
         // }
+        // if ($request->periode !=null) {
+        //     $bbanggaran = BukuBesarAnggaran::Where('periode', $request->periode)->get();
+        //     $anggaran = BukuBesarAnggaran::where('periode', $request->periode)->sum('anggaran');
+        //     $realisasi = BukuBesarAnggaran::where('periode', $request->periode)->sum('realisasi');
+        //     $total = ($anggaran - $realisasi);
+        // }
         return view('bukubesar/bukubesaranggaran', ['bbanggaran'=>$bbanggaran, 'periode' => $periode, 'coa' => $coa, 'anggaran'=>$anggaran,'realisasi'=>$realisasi,'saldo'=>$saldo,'total'=>$total]);
     }
    

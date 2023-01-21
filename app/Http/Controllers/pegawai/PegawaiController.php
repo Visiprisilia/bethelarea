@@ -4,6 +4,7 @@ namespace App\Http\Controllers\pegawai;
 
 use Illuminate\Http\Request;
 use App\Models\Pegawai\Pegawai;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Collection;
 use App\Http\Controllers\Controller;
 
@@ -19,7 +20,52 @@ class PegawaiController extends Controller
 		return view('pegawai/tambahpegawai');
 	}
     public function simpanpegawai(Request $request)
-	{
+	{			
+		$validator = Validator::make($request->all(), [	
+			'niy' => 'required|numeric|max:11|min:11|unique:pegawai',
+			'nama' => 'required',
+			'tempat_lahir' => 'required',
+			'ttl' => 'required',
+			'jk' => 'required',
+			'agama' => 'required',
+			'penempatan' => 'required',
+			'tanggal_masuk' => 'required',
+			'status_kepegawaian' => 'required',
+			'tanggal_ppt' => 'required',
+			'file_suket' => 'required',
+			'status' => 'required',
+			'foto_pegawai' => 'required',
+			'file_ktp' => 'required'
+		],[
+			"niy.required"=>"Nomor Induk Pegawai tidak boleh kosong",
+			"niy.numeric"=>"Nomor Induk Pegawai harus berupa angka",
+			"niy.max"=>"Nomor Induk Pegawai tidak boleh lebih dari 11 karakter",
+			"niy.min"=>"Nomor Induk Pegawai tidak boleh kurang dari 11 karakter",
+			"niy.unique"=>"Data Tersebut Sudah Terdaftar",
+			"nama.required"=>"Nama tidak boleh kosong",
+			"tempat_lahir.required"=>"Tempat Lahir tidak boleh kosong",
+			"ttl.required"=>"Tempat Tanggal Lahir tidak boleh kosong",
+			"jk.required"=>"Data Jenis kelamin tidak boleh kosong",
+			"agama.required"=>"Agama tidak boleh kosong",
+			"penempatan.required"=>"Penempatan tidak boleh kosong",
+			"tanggal_masuk.required"=>"Tanggal masuk tidak boleh kosong",
+			"status_kepegawaian.required"=>"Status kepegawaian tidak boleh kosong",
+			"tanggal_ppt.required"=>"Tanggal Penempatan Pegawai Tetap tidak boleh kosong",
+			"file_suket.required"=>"Anda belum mengupload Surat Keterangan",
+			"status.required"=>"Status tidak boleh kosong",
+			"foto_pegawai.required"=>"Anda belum mengupload foto pegawai",
+			"file_ktp.required"=>"Anda belum mengupload file KTP"
+			
+		]);
+
+		if ($validator->fails()) {    
+			$message = $validator->errors()->getMessages();
+			$api = array(
+				'message' => $message
+			);
+			return redirect('/tambahpegawai')->withErrors($validator);
+			
+		}
 		$foto_pegawai = $request->foto_pegawai;			
 		$niy = $request->niy;			
 		$file_suket = $request->file_suket;			
