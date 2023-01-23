@@ -7,7 +7,7 @@ $(document).on("change","#progja",function(){
             kode:kode
         },
         success:function(data){
-            $("#akun").val(data.proker.kode_akun);
+            $("#akun").val(data.progja.kode_akun);
         
         }
     })

@@ -62,7 +62,7 @@ class ProgramKerjaController extends Controller
 			'indikator' => $request->indikator,
 			'anggaran' => $request->anggaran,
 			'keterangan_proker' => $request->keterangan_proker,
-			'status_proker'=>'Menunggu Konfirmasi'
+			'status_proker'=>'Menunggu Persetujuan'
 		];
 		ProgramKerja::create($data_proker);
 		$no_jumlah = 0;
@@ -89,7 +89,7 @@ class ProgramKerjaController extends Controller
 		$coa = Coa::orderBy('created_at', 'desc')->get();
 
 		$dataproker = ProgramKerja::where('kode_proker', $kode_proker)->get();
-		$programkerja = ProgramKerja::where('kode_proker', $kode_proker)->where('status_proker','!=','Konfirmasi')->get();
+		$programkerja = ProgramKerja::where('kode_proker', $kode_proker)->where('status_proker','!=','Disetujui')->get();
 		// return $programkerja;
 		foreach($dataproker as $row){
 			$status_proker=$row[
@@ -97,7 +97,7 @@ class ProgramKerjaController extends Controller
 			];
 		}
 
-		if ($status_proker != 'Konfirmasi') {
+		if ($status_proker != 'Disetujui') {
 		return view('programkerja/programkerja/editprogramkerja',  ['programkerja' => $programkerja, 'coa' => $coa, 'periode' => $periode, 'pegawai' => $pegawai]);
 		} else{
 			return redirect('/programkerja')->with('status', 'Data tidak bisa diubah');    			
@@ -115,21 +115,21 @@ class ProgramKerjaController extends Controller
 			'indikator' => $request->indikator,
 			'anggaran' => $request->anggaran,
 			'keterangan_proker' => $request->keterangan_proker,
-			'status_proker'=>'Menunggu Konfirmasi'
+			'status_proker'=>'Menunggu Persetujuan'
 		]);
 		return redirect('/programkerja')->with('status', 'Data berhasil diubah');
 	}
 	public function hapusprogramkerja($kode_proker)
 	{
 		$dataproker = ProgramKerja::where('kode_proker', $kode_proker)->get();
-		$programkerja = ProgramKerja::where('kode_proker', $kode_proker)->where('status_proker','!=','Konfirmasi')->delete();
+		$programkerja = ProgramKerja::where('kode_proker', $kode_proker)->where('status_proker','!=','Disetujui')->delete();
 		foreach($dataproker as $row){
 			$status_proker=$row[
 				'status_proker'
 			];
 		}
 
-		if ($status_proker != 'Konfirmasi') {
+		if ($status_proker != 'Disetujui') {
 			return redirect('/programkerja')->with('status', 'Data berhasil dihapus');
 		} else{
 			return redirect('/programkerja')->with('status', 'Data tidak bisa dihapus');    			

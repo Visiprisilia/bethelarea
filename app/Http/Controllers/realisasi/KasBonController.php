@@ -24,7 +24,8 @@ class KasBonController extends Controller
 		$periode = Periode::where('status', 'LIKE', 'AKTIF')->get();
 		$pegawai = Pegawai::where('status', 'LIKE', 'AKTIF')->get();
 		// $programkerja = ProgramKerja::orderBy('created_at','desc')->get();
-		$programkerja = ProgramKerja::join("periode","program_kerja.periode","=","periode.kode_periode")->where('status', 'LIKE', 'AKTIF')->get();
+		$programkerja = programkerja::join("periode", "program_kerja.periode", "=", "periode.kode_periode")->where('status_proker', 'LIKE', 'Disetujui')->where('status', 'LIKE', 'AKTIF')->get();
+		// $programkerja = ProgramKerja::join("periode","program_kerja.periode","=","periode.kode_periode")->where('status', 'LIKE', 'AKTIF')->get();
 		return view('realisasi/kasbon/tambahkasbon', ['periode'=>$periode,'pegawai'=>$pegawai,'programkerja'=>$programkerja]);
 	}
     public function simpankasbon(Request $request)

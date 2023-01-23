@@ -43,7 +43,7 @@ class KasMasukController extends Controller
 		// $akun = Akuns::join("coa","akuns.kode_akun","=","coa.kode_akun")->get();
 		// $coa = Coa::orderBy('created_at','desc')->get();
 		// $coa = Coa::leftjoin("akuns", "coa.kode_akun", "=", "akuns.kode_akun")->get();
-		$programkerja = programkerja::join("periode", "program_kerja.periode", "=", "periode.kode_periode")->where('status_proker', 'LIKE', 'Konfirmasi')->where('status', 'LIKE', 'AKTIF')->get();
+		$programkerja = programkerja::join("periode", "program_kerja.periode", "=", "periode.kode_periode")->where('status_proker', 'LIKE', 'Disetujui')->where('status', 'LIKE', 'AKTIF')->get();
 
 		// $programkerja = programkerja::join("periode", "program_kerja.periode", "=", "periode.kode_periode")->where('status_proker', 'LIKE', 'Konfirmasi')->where('status', 'LIKE', 'AKTIF')->get();
 

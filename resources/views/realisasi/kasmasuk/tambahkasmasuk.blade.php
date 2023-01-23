@@ -65,7 +65,7 @@
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputFirstName">Akun</label>
-                                                    <input class="form-control" readonly id="akun" name="akun"  required />
+                                                    <input class="form-control" readonly id="akun" name="akun" required />
                                                 </div>
                                                 <div class="col-md-4">
                                                 <label class="mb-1" for="inputFirstName">Sumber</label>

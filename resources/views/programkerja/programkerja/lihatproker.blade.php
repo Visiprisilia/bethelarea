@@ -84,8 +84,8 @@
                                             <div class="mb-3">
                                                 <label class="mb-1" for="inputLastName">Status</label>
                                                 <select class="form-control" id="status_proker" name="status_proker">
-                                                    <option value="Konfirmasi">Konfirmasi</option>
-                                                    <option value="Tolak">Tolak</option>
+                                                    <option value="Disetujui">Disetujui</option>
+                                                    <option value="Revisi">Revisi</option>
                                                 </select>
                                             </div>
 

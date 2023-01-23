@@ -11,7 +11,7 @@ class KasMasuk extends Model
     protected $table = 'kas_masuk';
     protected $primaryKey = 'no_bukti';
     public $incrementing = false;
-    protected $fillable = ['no_bukti','periode','tanggal_pencatatan','keterangan','akun','sumber','jumlah','kasir'];
+    protected $fillable = ['no_bukti','periode','tanggal_pencatatan','keterangan','progja','akun','sumber','jumlah','kasir'];
  
 }
 

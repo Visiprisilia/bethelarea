@@ -159,7 +159,7 @@ Route::get('/cetakkasmasuk/{no_bukti}', [KasMasukController::class,'cetakkasmasu
 Route::post('/updatekasmasuk/{no_bukti}', [KasMasukController::class,'updatekasmasuk'])->middleware('auth', 'ceklevel:unit');
 Route::get('/hapuskasmasuk/{no_bukti}', [KasMasukController::class,'hapuskasmasuk'])->middleware('auth', 'ceklevel:unit');
 Route::get('/sumberkasmasuk', [KasMasukController::class,'sumberkasmasuk']);
-Route::get('/pilihprokerkm', [KasKeluarController::class,'pilihprokerkm'])->middleware('auth', 'ceklevel:unit');
+Route::get('/pilihprokerkm', [KasMasukController::class,'pilihprokerkm'])->middleware('auth', 'ceklevel:unit');
 
 
 //Kas Keluar
