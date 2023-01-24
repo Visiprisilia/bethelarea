@@ -7,6 +7,7 @@ use App\Models\Realisasi\KasBon;
 use App\Models\ProgramKerja\ProgramKerja;
 use App\Models\Periode\Periode;
 use App\Models\Akuns;
+use Illuminate\Support\Facades\Validator;
 use App\Models\Pegawai\Pegawai;
 use Carbon\Carbon;
 use App\Http\Controllers\Controller;
@@ -24,8 +25,11 @@ class KasBonController extends Controller
 		$periode = Periode::where('status', 'LIKE', 'AKTIF')->get();
 		$pegawai = Pegawai::where('status', 'LIKE', 'AKTIF')->get();
 		// $programkerja = ProgramKerja::orderBy('created_at','desc')->get();
-		$programkerja = programkerja::join("periode", "program_kerja.periode", "=", "periode.kode_periode")->where('status_proker', 'LIKE', 'Disetujui')->where('status', 'LIKE', 'AKTIF')->get();
+		// $programkerja = programkerja::join("periode", "program_kerja.periode", "=", "periode.kode_periode")->where('status_proker', 'LIKE', 'Disetujui')->where('status', 'LIKE', 'AKTIF')->get();
 		// $programkerja = ProgramKerja::join("periode","program_kerja.periode","=","periode.kode_periode")->where('status', 'LIKE', 'AKTIF')->get();
+		$programkerja = programkerja::join("periode", "program_kerja.periode", "=", "periode.kode_periode")
+		->join("akuns", "program_kerja.kode_proker", "=", "akuns.kode_proker")
+		->where('status_proker', 'LIKE', 'Disetujui')->where('status', 'LIKE', 'AKTIF')->where('kode_akun', 'LIKE', '5%')->get();
 		return view('realisasi/kasbon/tambahkasbon', ['periode'=>$periode,'pegawai'=>$pegawai,'programkerja'=>$programkerja]);
 	}
     public function simpankasbon(Request $request)
@@ -43,7 +47,22 @@ class KasBonController extends Controller
 			$check = $kb->counter_kb;
 		}
 		$no_buktibon = 'BKB' . $tanggalhariini . $check + 1;
-		
+				
+		$validator = Validator::make($request->all(), [	
+			'jumlah_bon' => 'lte:anggaran_bon'
+		],[
+			"jumlah_bon.lte"=>"Jumlah harus bernilai kurang dari atau sama dengan Anggaran"
+			
+		]);
+
+		if ($validator->fails()) {    
+			$message = $validator->errors()->getMessages();
+			$api = array(
+				'message' => $message
+			);
+			return redirect('/tambahkasbon')->withErrors($validator);
+			
+		}
 		KasBon::create([
 			'no_buktibon'=>$no_buktibon,
 			'periode'=>$request->periode,

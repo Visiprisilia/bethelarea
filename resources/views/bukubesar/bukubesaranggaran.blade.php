@@ -29,10 +29,10 @@
                 </div>
             </form>
         </div>
-       @if ($request->periode && $request->akun){ 
-        Nama Akun : {{$coas->nama_akun}} <br> Periode : {{$periodes->nama_periode}}}
-        @endif
-
+      
+        &nbsp; Nama Akun : {{$coas->nama_akun}} <br> 
+        &nbsp; Periode : {{$periodes->nama_periode}}
+      
         <div class="card-body">
             <div class="table-responsive" id="table">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

@@ -10,13 +10,13 @@ class BukuBesarAnggaran extends Model
     use HasFactory;
     protected $table = 'bbanggaran';
     public $incrementing = false;
-    protected $fillable = ['kode', 'akun', 'nama_akun', 'periode', 'anggaran','realisasi','tgl'];
+    protected $fillable = ['kode', 'akun', 'nama', 'periode', 'anggaran','realisasi','tgl'];
  
 }
 
 
 // CREATE or REPLACE VIEW bbanggaran as 
-// SELECT a.kode_proker kode, a.kode_akun akun, c.nama_akun, a.periode, a.jumlah anggaran, 0 as 'realisasi', a.created_at tgl
+// SELECT a.kode_proker kode, a.kode_akun akun, c.nama_akun nama, a.periode, a.jumlah anggaran, 0 as 'realisasi', a.created_at tgl
 // FROM akuns a join coa c on a.kode_akun=c.kode_akun
 // UNION ALL 
 // SELECT km.no_bukti, km.akun, c.nama_akun, km.periode, 0, km.jumlah, km.created_at 

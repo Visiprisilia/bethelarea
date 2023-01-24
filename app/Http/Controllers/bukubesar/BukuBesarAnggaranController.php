@@ -19,9 +19,9 @@ class BukuBesarAnggaranController extends Controller
         $anggaran = BukuBesarAnggaran::sum('anggaran');
         $realisasi = BukuBesarAnggaran::sum('realisasi');
         $coa = Coa::orderBy('created_at', 'asc')->get();
-        $coas = Coa::orderBy('created_at', 'asc')->get()->first();
+        $coas = BukuBesarAnggaran::orderBy('tgl', 'asc')->get()->first();
         $periode = Periode::orderBy('created_at', 'asc')->get();
-        $periodes = Periode::orderBy('created_at', 'asc')->get()->first();
+        $periodes = BukuBesarAnggaran::orderBy('tgl', 'asc')->get()->first();
         $jlh = 0;      
       
            
