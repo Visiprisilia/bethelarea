@@ -1,6 +1,13 @@
 @extends('template')
 @section('container')
 <!-- Default Bootstrap Form Controls-->
+@if($errors->any())
+   <ul class="alert alert-danger">
+      @foreach($errors->all() as $error)
+         <li> {{$error}} </li>
+      @endforeach
+   </ul>
+@endif
 <div id="layoutSidenav_content">
     <main>
         <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
@@ -10,7 +17,7 @@
                         <div class="col-auto mt-4">
                             <h1 class="page-header-title">
                                 <div class="page-header-icon"><i data-feather="edit-3"></i></div>
-                                Ubah Data
+                                Tambah Data
                             </h1>
 
                         </div>
@@ -25,26 +32,27 @@
                     <!-- Default Bootstrap Form Controls-->
                     <div id="default">
                         <div class="card mb-4">
-                            <div class="card-header">Unit</div>
+                            <div class="card-header">Sumber</div>
                             <div class="card-body">
                                 <!-- Component Preview-->
                                 <div class="sbp-preview">
                                     <div class="sbp-preview-content">
-                                        @foreach($unit as $item)
-                                        <form action="/updateunit/{{$item->kode_unit}}" method="post">
+                                        <form action="/simpansumber" method="post">
                                             @csrf
                                             <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Kode Unit</label>
-                                                <input class="form-control" id="kode_unit" name="kode_unit" disabled value="{{$item->kode_unit}}" placeholder="Kode Unit" required />
+                                                <label for="exampleFormControlInput1">Kode Sumber</label>
+                                                <input class="form-control" id="id_sumber" name="id_sumber"  />
                                             </div>
                                             <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Nama Unit</label>
-                                                <input class="form-control" id="nama_unit" name="nama_unit" value="{{$item->nama_unit}}" placeholder="Nama Unit" required />
+                                                <label for="exampleFormControlInput1">Nama Sumber</label>
+                                                <input class="form-control" id="nama_sumber" name="nama_sumber"  />
                                             </div>
-                                           
+                                            
                                             <div class="mb-3">
-                                                <button type="submit" class="btn btn-success">Simpan</button>
-                                                <a href="{{url('/unit')}}" class="btn btn-danger">Batal</a></div>
+                                                <button type="submit" class="btn btn-success">Tambah</button>
+                                                <a href="{{url('/sumber')}}" class="btn btn-danger">Kembali</a>
+                                            </div>
+
                                         </form>
                                     </div>
                                 </div>
@@ -56,5 +64,4 @@
         </div>
     </main>
 </div>
-@endforeach
 @endsection

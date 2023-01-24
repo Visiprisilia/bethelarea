@@ -6,7 +6,6 @@
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">Buku Besar Anggaran</h1>
 
-
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -15,7 +14,7 @@
                     <select class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" id="akun" name="akun">
                         <option value>Pilih Akun</option>
                         @foreach ($coa as $item)
-                        <option value="{{ $item->kode_akun}}">{{$item->kode_akun}}-{{$item->nama_akun}}</option>
+                        <option value="{{ $item->kode_akun}}">{{$item->kode_akun}}-{{$item->nama_akun}}</option>                     
                         @endforeach
                     </select>
                     <select class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" id="periode" name="periode">
@@ -25,11 +24,15 @@
                         @endforeach
                     </select>
                     <div class="input-group-append">
-                        <button class="btn btn-secondary" type="submit">Search</button>
+                        <button class="btn btn-secondary" type="submit">Cari</button>
                     </div>
                 </div>
             </form>
         </div>
+       @if ($request->periode && $request->akun){ 
+        Nama Akun : {{$coas->nama_akun}} <br> Periode : {{$periodes->nama_periode}}}
+        @endif
+
         <div class="card-body">
             <div class="table-responsive" id="table">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -42,7 +45,7 @@
                             <th>Posisi Anggaran</th>
                         </tr>
                     <tbody>
-                        @foreach ($bbanggaran as $item)
+                        @foreach ($bbanggaran as $item)                        
                         <tr>
                             <td>{{ $loop->iteration}}</td>
                             <td>{{ $item->kode}}</td>
@@ -96,3 +99,4 @@
     })
 </script> -->
 @endsection
+

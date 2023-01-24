@@ -22,7 +22,7 @@ class PegawaiController extends Controller
     public function simpanpegawai(Request $request)
 	{			
 		$validator = Validator::make($request->all(), [	
-			'niy' => 'required|numeric|max:11|min:11|unique:pegawai',
+			'niy' => 'required|numeric|min:11|unique:pegawai',
 			'nama' => 'required',
 			'tempat_lahir' => 'required',
 			'ttl' => 'required',
@@ -39,7 +39,7 @@ class PegawaiController extends Controller
 		],[
 			"niy.required"=>"Nomor Induk Pegawai tidak boleh kosong",
 			"niy.numeric"=>"Nomor Induk Pegawai harus berupa angka",
-			"niy.max"=>"Nomor Induk Pegawai tidak boleh lebih dari 11 karakter",
+			// "niy.max"=>"Nomor Induk Pegawai tidak boleh lebih dari 11 karakter",
 			"niy.min"=>"Nomor Induk Pegawai tidak boleh kurang dari 11 karakter",
 			"niy.unique"=>"Data Tersebut Sudah Terdaftar",
 			"nama.required"=>"Nama tidak boleh kosong",

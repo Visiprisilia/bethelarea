@@ -19,13 +19,18 @@ class BukuBesarAnggaranController extends Controller
         $anggaran = BukuBesarAnggaran::sum('anggaran');
         $realisasi = BukuBesarAnggaran::sum('realisasi');
         $coa = Coa::orderBy('created_at', 'asc')->get();
+        $coas = Coa::orderBy('created_at', 'asc')->get()->first();
         $periode = Periode::orderBy('created_at', 'asc')->get();
+        $periodes = Periode::orderBy('created_at', 'asc')->get()->first();
         $jlh = 0;      
+      
            
         $saldo = ($jlh = $jlh + (int)'anggaran' - (int)'realisasi');
         $total = ($anggaran - $realisasi);
         if($request->periode && $request->akun) {
-            $bbanggaran = BukuBesarAnggaran::Where('periode', $request->periode)->Where('akun', $request->akun)->get();
+            $coas = Coa::Where('kode_akun', $request->akun)->get()->first();
+            $periodes = Periode::Where('kode_periode', $request->periode)->get()->first();
+            $bbanggaran = BukuBesarAnggaran::Where('periode', $request->periode)->Where('akun', $request->akun)->get();    
             $anggaran = BukuBesarAnggaran::where('periode', $request->periode)->Where('akun', $request->akun)->sum('anggaran');
             $realisasi = BukuBesarAnggaran::where('periode', $request->periode)->Where('akun', $request->akun)->sum('realisasi');
             $saldo = ($jlh = $jlh + (int)'anggaran' - (int)'realisasi');
@@ -43,11 +48,11 @@ class BukuBesarAnggaranController extends Controller
         //     $realisasi = BukuBesarAnggaran::where('periode', $request->periode)->sum('realisasi');
         //     $total = ($anggaran - $realisasi);
         // }
-        return view('bukubesar/bukubesaranggaran', ['bbanggaran'=>$bbanggaran, 'periode' => $periode, 'coa' => $coa, 'anggaran'=>$anggaran,'realisasi'=>$realisasi,'saldo'=>$saldo,'total'=>$total]);
+        return view('bukubesar/bukubesaranggaran', ['bbanggaran'=>$bbanggaran, 'periode' => $periode, 'coa' => $coa, 'periodes' => $periodes, 'coas' => $coas, 
+        'anggaran'=>$anggaran,'realisasi'=>$realisasi,'saldo'=>$saldo,'total'=>$total]);
     }
    
 }
-
 
 
 
@@ -91,7 +96,6 @@ class BukuBesarAnggaranController extends Controller
 //     return view('bukubesar/anggaran', ['bbanggaran'=>$bbanggaran, 'periode' => $periode, 'coa' => $coa, 'anggaran'=>$anggaran,'realisasi'=>$realisasi,'saldo'=>$saldo,'total'=>$total]);
 // }
 
-
 //     public function anggaran(Request $request)
 //     {
 //         $jlh = 0;
@@ -106,3 +110,4 @@ class BukuBesarAnggaranController extends Controller
 //         return view('bukubesar/anggaran', ['bbanggaran'=>$bbanggaran,'anggaran'=>$anggaran,'realisasi'=>$realisasi,'saldo'=>$saldo,
 //         'total'=>$total]);
 //     }
+

@@ -33,7 +33,9 @@ class KasKeluarController extends Controller
 		$kasbon = KasBon::where('status_bon', 'LIKE', 'Belum Dipertanggungjawabkan')->get();
 		// $akun = Akuns::orderBy('created_at','desc')->get();
 		$akun = Akuns::join("periode", "akuns.periode", "=", "periode.kode_periode")->where('status', 'LIKE', 'AKTIF')->get();
-		$programkerja = programkerja::join("periode", "program_kerja.periode", "=", "periode.kode_periode")->where('status_proker', 'LIKE', 'Disetujui')->where('status', 'LIKE', 'AKTIF')->get();
+		$programkerja = programkerja::join("periode", "program_kerja.periode", "=", "periode.kode_periode")
+		->join("akuns", "program_kerja.kode_proker", "=", "akuns.kode_proker")
+		->where('status_proker', 'LIKE', 'Disetujui')->where('status', 'LIKE', 'AKTIF')->where('kode_akun', 'LIKE', '5%')->get();
 		return view('realisasi/kaskeluar/tambahkaskeluar', ['periode' => $periode, 'akun' => $akun, 'pegawai' => $pegawai, 
 		'kasbon' => $kasbon, 'programkerja' => $programkerja]);
 	}

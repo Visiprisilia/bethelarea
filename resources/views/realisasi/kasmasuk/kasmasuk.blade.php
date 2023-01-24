@@ -22,10 +22,11 @@
                 @endforeach
             </select> --> 
             @endif
-            <select class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" id="kasmasuk" require name="kasmasuk">
+            <select class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" id="kasmasuk" name="kasmasuk">
                 <option value>Pilih Sumber</option>
-                <option value="murid">Murid</option>
-                <option value="yayasan">Yayasan</option>
+                @foreach ($sumber as $item)
+                <option value="{{ $item->id_sumber}}">{{$item->nama_sumber}}</option>
+                @endforeach
             </select>
         </div>
         @if (session('error'))

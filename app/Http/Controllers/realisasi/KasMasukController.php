@@ -23,17 +23,19 @@ class KasMasukController extends Controller
 		// $periode = Periode::orderBy('created_at','desc')->get();
 		// $coa = Coa::orderBy('created_at','desc')->get();
 		// $kasmasuk = KasMasuk::orderBy('created_at','desc')->get();
+		$sumber = Sumber::orderBy('created_at','desc')->get();
 		$kasmasuk = Periode::orderBy('created_at','desc')->get();
-        return view('realisasi/kasmasuk/kasmasuk', ['kasmasuk'=>$kasmasuk]);
+        return view('realisasi/kasmasuk/kasmasuk', ['kasmasuk'=>$kasmasuk,'sumber'=>$sumber]);
     }
 	public function sumberkasmasuk(Request $request)
     {
 		$id = $request->id;
 		$periode = Periode::orderBy('created_at','desc')->get();
 		$coa = Coa::orderBy('created_at','desc')->get();
+		$sumber = Sumber::orderBy('created_at','desc')->get();
 		// $kasmasuk = KasMasuk::orderBy('created_at','desc')->where('sumber',$id)->get();
 		$kasmasuk = KasMasuk::leftjoin("murid","kas_masuk.kasir","=","murid.nomor_induk")->where('sumber',$id)->get();
-        return view('realisasi/kasmasuk/sumberkasmasuk', ['periode'=>$periode,'coa'=>$coa,'kasmasuk'=>$kasmasuk]);
+        return view('realisasi/kasmasuk/sumberkasmasuk', ['periode'=>$periode,'coa'=>$coa,'kasmasuk'=>$kasmasuk,'sumber'=>$sumber]);
     }
     public function tambahkasmasuk()
 	{
@@ -43,8 +45,10 @@ class KasMasukController extends Controller
 		// $akun = Akuns::join("coa","akuns.kode_akun","=","coa.kode_akun")->get();
 		// $coa = Coa::orderBy('created_at','desc')->get();
 		// $coa = Coa::leftjoin("akuns", "coa.kode_akun", "=", "akuns.kode_akun")->get();
-		$programkerja = programkerja::join("periode", "program_kerja.periode", "=", "periode.kode_periode")->where('status_proker', 'LIKE', 'Disetujui')->where('status', 'LIKE', 'AKTIF')->get();
-
+		// $programkerja = programkerja::join("periode", "program_kerja.periode", "=", "periode.kode_periode")->where('status_proker', 'LIKE', 'Disetujui')->where('status', 'LIKE', 'AKTIF')->get();
+		$programkerja = programkerja::join("periode", "program_kerja.periode", "=", "periode.kode_periode")
+		->join("akuns", "program_kerja.kode_proker", "=", "akuns.kode_proker")
+		->where('status_proker', 'LIKE', 'Disetujui')->where('status', 'LIKE', 'AKTIF')->where('kode_akun', 'LIKE', '4%')->get();
 		// $programkerja = programkerja::join("periode", "program_kerja.periode", "=", "periode.kode_periode")->where('status_proker', 'LIKE', 'Konfirmasi')->where('status', 'LIKE', 'AKTIF')->get();
 
 		return view('realisasi/kasmasuk/tambahkasmasuk',['periode'=>$periode,'programkerja'=>$programkerja,'murid'=>$murid,'sumber'=>$sumber]);
