@@ -50,6 +50,7 @@
                             <th>Jumlah</th>
                             <th>Keterangan</th>
                             <th>Status</th>
+                            <th>Catatan</th>
                             <th>Aksi</th>
                         </tr>
                     <tbody>

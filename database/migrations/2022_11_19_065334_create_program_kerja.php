@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('anggaran')->nullable();
             $table->string('keterangan_proker')->nullable();
             $table->string('status_proker')->nullable();
+            $table->string('catatan')->nullable();
             $table->timestamps();
         });
     }

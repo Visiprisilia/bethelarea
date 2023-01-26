@@ -13,6 +13,7 @@
         <th>Jumlah</th>
         <th>Keterangan</th>
         <th>Status</th>
+        <th>Catatan</th>
     </tr>
 <tbody>
     @foreach ($programkerja as $item)
@@ -29,6 +30,7 @@
         <td>{{Str::rupiah ($item->anggaran)}}</td>
         <td>{{ $item->keterangan_proker}}</td>
         <td>{{ $item->status_proker}}</td>
+        <td>{{ $item->catatan}}</td>
        
     </tr>
     @endforeach

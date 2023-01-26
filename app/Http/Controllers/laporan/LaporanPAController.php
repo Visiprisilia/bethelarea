@@ -23,9 +23,10 @@ class LaporanPAController extends Controller
         $lapposisianggaran = LaporanPosisiAnggaran::where('periode', $id)->get();
         $anggarans = LaporanPosisiAnggaran::where('periode',$id)->sum('anggaran');
         $posisianggarans = LaporanPosisiAnggaran::where('periode',$id)->sum('posisi_anggaran');
+        $realisasis = LaporanPosisiAnggaran::where('periode',$id)->sum('realisasi');
       
         return view('laporan/viewlpa', ['lapposisianggaran' => $lapposisianggaran,'periode'=>$periode,'anggarans'=>$anggarans,
-        'posisianggarans'=>$posisianggarans]);
+        'posisianggarans'=>$posisianggarans, 'realisasis'=>$realisasis]);
     }
     public function cetaklaporanposisianggaran()
     {

@@ -23,10 +23,11 @@ class DashboardController extends Controller
         $lapposisianggaran = LaporanPosisiAnggaran::where('periode', $id)->get();
         $anggarans = LaporanPosisiAnggaran::join("periode","lapposisianggaran.periode", "=", "periode.kode_periode")->where('status', 'LIKE', 'AKTIF')->sum('anggaran');
         $posisianggarans = LaporanPosisiAnggaran::join("periode","lapposisianggaran.periode", "=", "periode.kode_periode")->where('status', 'LIKE', 'AKTIF')->sum('posisi_anggaran');
+        $realisasis = LaporanPosisiAnggaran::join("periode","lapposisianggaran.periode", "=", "periode.kode_periode")->where('status', 'LIKE', 'AKTIF')->sum('realisasi');
 
         return view('dashboard/dashboard', [
             'lapposisianggaran' => $lapposisianggaran, 'periode' => $periode, 'anggarans' => $anggarans,
-            'posisianggarans' => $posisianggarans, 'tanggalhariini'=>$tanggalhariini, 'periodess'=>$periodess
+            'posisianggarans' => $posisianggarans, 'tanggalhariini'=>$tanggalhariini, 'periodess'=>$periodess, 'realisasis'=>$realisasis
         ]);
     }
 }

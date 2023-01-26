@@ -13,6 +13,7 @@
         <th>Jumlah</th>
         <th>Keterangan</th>
         <th>Status</th>
+        <th>Catatan</th>
         @if (auth()->user()->level=="unit")
         <th>Aksi</th> 
         @endif
@@ -35,6 +36,7 @@
         <td>{{Str::rupiah ($item->anggaran)}}</td>
         <td>{{ $item->keterangan_proker}}</td>
         <td>{{ $item->status_proker}}</td>
+        <td>{{ $item->catatan}}</td>
         @if (auth()->user()->level=="unit")
         <td>
             <a href="/editprogramkerja/{{$item->kode_proker}}"><i class="fas fa-edit" style="color:green"></i></a> |

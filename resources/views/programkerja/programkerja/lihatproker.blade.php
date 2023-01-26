@@ -81,15 +81,20 @@
                                                     <input class="form-control" id="keterangan_proker" name="keterangan_proker" disabled value="{{ $items->keterangan_proker}}" />
                                                 </div>
                                             </div>
-                                            <div class="mb-3">
-                                                <label class="mb-1" for="inputLastName">Status</label>
+                                            <div class="row gx-3 mb-3">
+                                            <div class="col-md-6">
+                                                <label class="mb-1" for="inputFirstName">Status</label>
                                                 <select class="form-control" id="status_proker" name="status_proker">
-                                                    <option value="Disetujui">Disetujui</option>
-                                                    <option value="Revisi">Revisi</option>
-                                                </select>
+                                                        <option  value>Pilih Status</option>
+                                                        <option value="Disetujui">Disetujui</option>
+                                                        <option value="Revisi">Revisi</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6" id="cat" style="display: none;">
+                                                    <label class="mb-1" for="inputFirstName">Catatan</label>
+                                                    <input class="form-control" id="catatan" name="catatan" />
+                                                </div>
                                             </div>
-
-
                                             <div class="mb-3">
                                                 <input type="button" value="Kembali" onclick=self.history.back() class="btn btn-success">
                                                 <button type="submit" class="btn btn-success">Simpan</button>
@@ -107,6 +112,13 @@
 </div>
 <script src="/proker/proker.js"></script>
 
-
+<script>
+    $(document).on('change','#status_proker',function(){
+      var val=$('#status_proker option').filter(':selected').val()=="Revisi"?  $('#cat').show():  $('#cat').hide();
+    
+      //   if(val=="murid"{})  
+      // alert(val);
+    })
+</script>
 @endforeach
 @endsection
