@@ -75,6 +75,16 @@ class MuridController extends Controller
 			"kontak.required"=>"Kontak tidak boleh kosong"
 			
 		]);
+
+		if ($validator->fails()) {    
+			$message = $validator->errors()->getMessages();
+			$api = array(
+				'message' => $message
+			);
+			return redirect('/tambahmurid')->withErrors($validator);
+			
+		}
+
 		$foto_murid = $request->foto_murid;			
 		$nomor_induk = $request->nomor_induk;			
 		$file_kk = $request->file_kk;			

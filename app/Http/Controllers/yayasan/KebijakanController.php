@@ -69,6 +69,23 @@ class KebijakanController extends Controller
 	}
 	public function updatekebijakan(Request $request)
 	{
+		// $validator = Validator::make($request->all(), [	
+		// 	'file_kebijakan' => 'required',
+		// 	'keterangan' => 'required'
+		// ],[
+		// 	"file_kebijakan.required"=>"Anda belum mengupload file kebijakan",
+		// 	"keterangan.required"=>"Keterangan tidak boleh kosong"
+			
+		// ]);
+
+		// if ($validator->fails()) {    
+		// 	$message = $validator->errors()->getMessages();
+		// 	$api = array(
+		// 		'message' => $message
+		// 	);
+		// 	return redirect('/editkebijakan/{{$item->kode_kebijakan}}')->withErrors($validator);
+			
+		// }
 		$tanggalhariini = Carbon::now()->format('Ymd');
         $check = Kebijakan::count();
 		$kode_kebijakan = $tanggalhariini. $check + 1;

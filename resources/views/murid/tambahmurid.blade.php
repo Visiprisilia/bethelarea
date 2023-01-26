@@ -50,7 +50,7 @@
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputLastName">Foto Murid</label>
-                                                    <input class="form-control" type="file" id="foto_murid" name="foto_murid" required />
+                                                    <input class="form-control" type="file" id="foto_murid" name="foto_murid"  />
                                                 </div>
                                             </div>
                                             <div class="row gx-3 mb-3">
@@ -138,7 +138,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Kartu Keluarga</label>
-                                                    <input class="form-control" type="file" id="file_kk" name="file_kk" required />
+                                                    <input class="form-control" type="file" id="file_kk" name="file_kk"  />
                                                 </div>
                                             </div>
 

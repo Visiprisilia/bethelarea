@@ -23,6 +23,7 @@ $(document).on("change","#kode_proker",function(){
             $.each(data.kaskeluar,function(x,i){
       
                 $("#realisasianggaran").append('<input class="form-control" id="realisasi_anggaran" name="realisasi_anggaran" readonly name="realisasi_anggaran"  value="'+i.jumlah+'" placeholder="Masukkan Akun Biaya" required />');
+                $("#realisasiwaktu").append('<input class="form-control" id="realisasi_waktu" name="realisasi_waktu" readonly name="realisasi_waktu" type="date"  value="'+i.tanggal_pencatatan+'" placeholder="Masukkan Akun Biaya" required />');
                 
             })
         }

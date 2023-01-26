@@ -5,6 +5,7 @@ namespace App\Http\Controllers\programkerja;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\ProgramKerja\Evaluasi;
+use Illuminate\Support\Facades\Validator;
 use App\Models\ProgramKerja\ProgramKerja;
 use App\Models\Akuns;
 use App\Models\Realisasi\KasKeluar;
@@ -27,6 +28,50 @@ class EvaluasiController extends Controller
 	}
     public function simpanevaluasi(Request $request)
 	{
+		$validator = Validator::make($request->all(), [	
+									
+			'kode_proker'=>'required',
+			'periode'=>'required',
+			'nama_proker'=>'required',
+			'penanggungjawab'=>'required',
+			'tujuan'=>'required',
+            'akun_beban'=>'required',		
+            'rencana_anggaran'=>'required',		
+            'realisasi_anggaran'=>'required',		
+            'rencana_waktu'=>'required',		
+            'realisasi_waktu'=>'required',		
+            'indikator_pencapaian'=>'required',
+			'kinerja_pencapaian' => 'required',
+			'faktor_pendorong' => 'required',
+			'faktor_penghambat' => 'required',
+			'tindaklanjut' => 'required'
+		],[		
+			"kode_proker.required"=>"Kode Program Kerja tidak boleh kosong",
+			"periode.required"=>"Periode tidak boleh kosong",
+			"nama_proker.required"=>"Nama Program Kerja tidak boleh kosong",
+			"penanggungjawab.required"=>"Penanggungjawab tidak boleh kosong",
+			"tujuan.required"=>"Tujuan tidak boleh kosong",
+			"akun_beban.required"=>"Akun Beban tidak boleh kosong",
+			"rencana_anggaran.required"=>"Rencana Anggaran tidak boleh kosong",
+			"realisasi_anggaran.required"=>"Realisasi Anggaran tidak boleh kosong",
+			"rencana_waktu.required"=>"Rencana Waktu tidak boleh kosong",
+			"realisasi_waktu.required"=>"Realisasi Waktu tidak boleh kosong",
+			"indikator_pencapaian.required"=>"Indikator tidak boleh kosong",
+			"kinerja_pencapaian.required"=>"Kinerja Pencapaian tidak boleh kosong",
+			"faktor_pendorong.required"=>"Faktor Pendorong tidak boleh kosong",
+			"faktor_penghambat.required"=>"Faktor Penghambat tidak boleh kosong",
+			"tindaklanjut.required"=>"Tindaklanjut tidak boleh kosong",
+			
+		]);
+
+		if ($validator->fails()) {    
+			$message = $validator->errors()->getMessages();
+			$api = array(
+				'message' => $message
+			);
+			return redirect('/tambahevaluasi')->withErrors($validator);
+			
+		}
 		$kode_proker = $request->kode_proker;
         $check = Evaluasi::count();
 		$kode_evaluasi = "Evaluasi".$kode_proker.$check+1;

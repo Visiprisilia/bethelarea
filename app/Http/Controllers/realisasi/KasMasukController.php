@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use App\Models\Periode\Periode;
 use App\Models\Murid\Murid;
 use App\Models\Akuns;
+use Illuminate\Support\Facades\Validator;
 use App\Models\ProgramKerja\ProgramKerja;
 
 use App\Models\Pegawai\Pegawai;
@@ -55,6 +56,33 @@ class KasMasukController extends Controller
 	}
     public function simpankasmasuk(Request $request)
 	{
+		$validator = Validator::make($request->all(), [			
+		
+			'periode' => 'required',
+			'keterangan' => 'required',
+			'progja' => 'required',
+			'akun' => 'required',
+			'sumber' => 'required',
+			'jumlah' => 'required|numeric'
+
+		],[
+			"periode.required"=>"Periode tidak boleh kosong",
+			"keterangan.required"=>"Keterangan tidak boleh kosong",
+			"progja.required"=>"Program kerja tidak boleh kosong",
+			"akun.required"=>"Akun tidak boleh kosong",
+			"sumber.required"=>"Sumber tidak boleh kosong",
+			"jumlah.required"=>"Jumlah tidak boleh kosong",
+			"jumlah.numeric"=>"Jumlah arus berupa nilai rupiah"
+		]);
+
+		if ($validator->fails()) {    
+			$message = $validator->errors()->getMessages();
+			$api = array(
+				'message' => $message
+			);
+			return redirect('/tambahkasmasuk')->withErrors($validator);
+			
+		}
 		$tanggalhariini = Carbon::now()->format('Ymd');
 		$tanggalhariinis = Carbon::now()->format('Y-m-d');
         // // $check = KasMasuk::count();

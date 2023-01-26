@@ -49,10 +49,25 @@ class KasBonController extends Controller
 		$no_buktibon = 'BKB' . $tanggalhariini . $check + 1;
 				
 		$validator = Validator::make($request->all(), [	
-			'jumlah_bon' => 'lte:anggaran_bon'
+			'jumlah_bon' => 'lte:anggaran_bon|numeric',
+			'periode' => 'required',
+			'keterangan' => 'required',
+			'proker_bon' => 'required',
+			'akun_bon' => 'required',
+			'anggaran_bon' => 'required',
+			'jumlah_bon' => 'required',
+			'penanggungjawab_bon' => 'required',
+
 		],[
-			"jumlah_bon.lte"=>"Jumlah harus bernilai kurang dari atau sama dengan Anggaran"
-			
+			"jumlah_bon.lte"=>"Jumlah harus bernilai kurang dari atau sama dengan Anggaran",
+			"jumlah_bon.numeric"=>"Jumlah harus berupa nilai rupiah",
+			"periode.required"=>"Periode tidak boleh kosong",
+			"keterangan.required"=>"Keterangan tidak boleh kosong",
+			"proker_bon.required"=>"Program kerja tidak boleh kosong",
+			"akun_bon.required"=>"Akun tidak boleh kosong",
+			"anggaran_bon.required"=>"Anggaran tidak boleh kosong",
+			"jumlah_bon.required"=>"Jumlah tidak boleh kosong",
+			"penanggungjawab_bon.required"=>"Penanggungjawab tidak boleh kosong",
 		]);
 
 		if ($validator->fails()) {    

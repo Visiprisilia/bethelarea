@@ -1,6 +1,13 @@
 @extends('template')
 @section('container')
 <!-- Default Bootstrap Form Controls-->
+@if($errors->any())
+   <ul class="alert alert-danger">
+      @foreach($errors->all() as $error)
+         <li> {{$error}} </li>
+      @endforeach
+   </ul>
+@endif
 <div id="layoutSidenav_content">
     <main>
         <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
@@ -47,11 +54,11 @@
                                             </div>
                                             <!-- <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Tanggal Pencatatan</label>
-                                                <input class="form-control" type="date" id="tanggal_pencatatan" name="tanggal_pencatatan" required />
+                                                <input class="form-control" type="date" id="tanggal_pencatatan" name="tanggal_pencatatan"  />
                                             </div>   -->
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Keterangan</label>
-                                                <input class="form-control" id="keterangan" name="keterangan" required/>
+                                                <input class="form-control" id="keterangan" name="keterangan" />
                                             </div>      
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-4">
@@ -65,7 +72,7 @@
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputFirstName">Akun</label>
-                                                    <input class="form-control" readonly id="akun" name="akun" required />
+                                                    <input class="form-control" readonly id="akun" name="akun"  />
                                                 </div>
                                                 <div class="col-md-4">
                                                 <label class="mb-1" for="inputFirstName">Sumber</label>
@@ -88,7 +95,7 @@
                                             </div>               
                                             <div class="col-md-4">
                                                 <label for="exampleFormControlInput1">Jumlah</label>
-                                                <input class="form-control" id="jumlah" name="jumlah"  required />
+                                                <input class="form-control" id="jumlah" name="jumlah"   />
                                             </div>                                                                                                                                                   
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Tambah</button>

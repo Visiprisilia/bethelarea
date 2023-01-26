@@ -1,6 +1,13 @@
 @extends('template')
 @section('container')
 <!-- Default Bootstrap Form Controls-->
+@if($errors->any())
+   <ul class="alert alert-danger">
+      @foreach($errors->all() as $error)
+         <li> {{$error}} </li>
+      @endforeach
+   </ul>
+@endif
 <div id="layoutSidenav_content">
     <main>
         <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
@@ -35,7 +42,7 @@
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputLastName">Periode</label>
-                                                    <input class="form-control" id="periode" readonly id="nama_proker" name="periode" placeholder="Periode" required />
+                                                    <input class="form-control" id="periode" readonly id="nama_proker" name="periode" placeholder="Periode"  />
                                                 </div>
                                                 <div class="col-md-6">
                                                 <label class="mb-1" for="inputLastName">Kode Program Kerja</label>
@@ -50,17 +57,17 @@
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputLastName">Nama Program Kerja</label>
-                                                    <input class="form-control" readonly id="nama_proker" name="nama_proker"  required />
+                                                    <input class="form-control" readonly id="nama_proker" name="nama_proker"   />
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Penanggung Jawab</label>
-                                                    <input class="form-control" readonly id="penanggungjawab" name="penanggungjawab"  required />
+                                                    <input class="form-control" readonly id="penanggungjawab" name="penanggungjawab"   />
                                                 </div>
                                             </div>
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputLastName">Tujuan</label>
-                                                    <input class="form-control" id="tujuan" readonly name="tujuan" required />
+                                                    <input class="form-control" id="tujuan" readonly name="tujuan"  />
                                                 </div>
                                                 <div class="col-md-6" id="akunbeban">
                                                     <label class="mb-1" for="inputFirstName">Akun Biaya</label>
@@ -69,49 +76,49 @@
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputLastName">Rencana Anggaran</label>
-                                                    <input class="form-control" readonly id="rencana_anggaran" name="rencana_anggaran"  required />
+                                                    <input class="form-control" readonly id="rencana_anggaran" name="rencana_anggaran"   />
                                                 </div>
                                                <div class="col-md-6" id="realisasianggaran">
                                                     <label class="mb-1" for="inputFirstName">Realisasi Anggaran</label>
                                                 </div>
                                                 <!-- <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Realisasi Anggaran</label>
-                                                    <input class="form-control" readonly id="realisasi_anggaran" name="realisasi_anggaran" required />
+                                                    <input class="form-control" readonly id="realisasi_anggaran" name="realisasi_anggaran"  />
                                                 </div> -->
                                             </div>
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputLastName">Rencana Waktu</label>
-                                                    <input class="form-control" readonly type="date" id="rencana_waktu" name="rencana_waktu"required />
+                                                    <input class="form-control" readonly type="date" id="rencana_waktu" name="rencana_waktu" />
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-6" id="realisasiwaktu">
                                                     <label class="mb-1" for="inputFirstName">Realisasi Waktu</label>
-                                                    <input class="form-control" type="date" id="realisasi_waktu" name="realisasi_waktu" required />
+                                                    <!-- <input class="form-control" type="date" readonly id="realisasi_waktu" name="realisasi_waktu"  /> -->
                                                 </div>
                                             </div>
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputLastName">Indikator Pencapaian</label>
-                                                    <input class="form-control" readonly id="indikator_pencapaian" name="indikator_pencapaian" required />
+                                                    <input class="form-control" readonly id="indikator_pencapaian" name="indikator_pencapaian"  />
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Kinerja Pencapaian</label>
-                                                    <input class="form-control" id="kinerja_pencapaian" name="kinerja_pencapaian" placeholder="Masukkan Kinerja Pencapaian" required />
+                                                    <input class="form-control" id="kinerja_pencapaian" name="kinerja_pencapaian" placeholder="Masukkan Kinerja Pencapaian"  />
                                                 </div>
                                             </div>
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputLastName">Faktor Pendorong</label>
-                                                    <input class="form-control" id="faktor_pendorong" name="faktor_pendorong" placeholder="Masukkan Faktor Pendorong" required />
+                                                    <input class="form-control" id="faktor_pendorong" name="faktor_pendorong" placeholder="Masukkan Faktor Pendorong"  />
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Faktor Penghambat</label>
-                                                    <input class="form-control" id="faktor_penghambat" name="faktor_penghambat" placeholder="Masukkan Faktor Penghambat" required />
+                                                    <input class="form-control" id="faktor_penghambat" name="faktor_penghambat" placeholder="Masukkan Faktor Penghambat"  />
                                                 </div>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Tindak Lanjut</label>
-                                                <input class="form-control" id="tindaklanjut" name="tindaklanjut" placeholder="Masukkan Faktor Penghambat"required />
+                                                <input class="form-control" id="tindaklanjut" name="tindaklanjut" placeholder="Masukkan Faktor Penghambat" />
                                             </div>
 
                                             <div class="mb-3">

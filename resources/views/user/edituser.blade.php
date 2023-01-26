@@ -35,23 +35,23 @@
                                             @csrf
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Nama Lengkap</label>
-                                                <input class="form-control" id="nama_lengkap" name="nama_lengkap" value="{{$item->nama_lengkap}}"  />
+                                                <input class="form-control" id="nama_lengkap" name="nama_lengkap" value="{{$item->nama_lengkap}}" required />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Username</label>
-                                                <input class="form-control" id="nama_user" name="nama_user" value="{{$item->nama_user}}"    />
+                                                <input class="form-control" id="nama_user" name="nama_user" value="{{$item->nama_user}}" required   />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Password</label>
-                                                <input class="form-control" id="password" name="password" value="{{$item->password}}"   />
+                                                <input class="form-control" id="password" name="password" value="{{$item->password}}"required   />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Level</label>
-                                                <input class="form-control" id="level" name="level" value="{{$item->level}}"   />
+                                                <input class="form-control" id="level" name="level" value="{{$item->level}}" required  />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Status</label>
-                                                <input class="form-control" id="status" name="status" value="{{$item->status}}"   />
+                                                <input class="form-control" id="status" name="status" value="{{$item->status}}" required  />
                                             </div>
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Simpan</button>

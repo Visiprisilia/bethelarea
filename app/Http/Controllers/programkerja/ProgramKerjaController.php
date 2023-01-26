@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Akuns;
 use App\Models\ProgramKerja\ProgramKerja;
 use App\Models\Periode\Periode;
+use Illuminate\Support\Facades\Validator;
 use App\Models\Coa\Coa;
 use App\Models\Pegawai\Pegawai;
 use Illuminate\Support\Facades\DB;
@@ -37,7 +38,40 @@ class ProgramKerjaController extends Controller
 		return view('programkerja/programkerja/tambahprogramkerja', ['coa' => $coa, 'periode' => $periode, 'pegawai' => $pegawai]);
 	}
 	public function simpanprogramkerja(Request $request)
-	{
+	{	
+				
+		$validator = Validator::make($request->all(), [	
+			
+			'periode'=>'required',
+			'nama_proker' => 'required',
+			'penanggungjawab' => 'required',
+			'waktu_mulai' => 'required',
+			'waktu_selesai' => 'required',
+			'tujuan' => 'required',
+			'indikator' => 'required',
+			'anggaran' => 'required',
+			'keterangan_proker' => 'required'
+		],[		
+			"periode.required"=>"Periode tidak boleh kosong",
+			"nama_proker.required"=>"Nama Program Kerja tidak boleh kosong",
+			"penanggungjawab.required"=>"Penanggung Jawab tidak boleh kosong",
+			"waktu_mulai.required"=>"Waktu Mulai tidak boleh kosong",
+			"waktu_selesai.required"=>"Waktu Selesai tidak boleh kosong",
+			"tujuan.required"=>"Tujuan tidak boleh kosong",
+			"indikator.required"=>"Indikator tidak boleh kosong",
+			"anggaran.required"=>"Anggaran tidak boleh kosong",
+			"keterangan_proker.required"=>"Keterangan tidak boleh kosong"
+			
+		]);
+
+		if ($validator->fails()) {    
+			$message = $validator->errors()->getMessages();
+			$api = array(
+				'message' => $message
+			);
+			return redirect('/tambahprogramkerja')->withErrors($validator);
+			
+		}
 		$periode = $request->periode;
 		$penanggungjawab = $request->penanggungjawab;
 		$kode_akun = $request->akun;		

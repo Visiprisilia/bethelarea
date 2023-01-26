@@ -10,7 +10,7 @@
                         <div class="col-auto mt-4">
                             <h1 class="page-header-title">
                                 <div class="page-header-icon"><i data-feather="edit-3"></i></div>
-                                Ubah Data
+                                Tambah Data
                             </h1>
 
                         </div>
@@ -25,19 +25,32 @@
                     <!-- Default Bootstrap Form Controls-->
                     <div id="default">
                         <div class="card mb-4">
-                            <div class="card-header">Program Kerja</div>
+                            <div class="card-header">Amandemen Program Kerja</div>
                             <div class="card-body">
                                 <!-- Component Preview-->
                                 <div class="sbp-preview">
                                     <div class="sbp-preview-content">
-                                        @foreach($programkerja as $items)
-                                        
-                                        <form action="/updateprogramkerja/{{$items->kode_proker}}" method="post">
+                                        <form action="/simpanprogramkerja" method="post">
                                             @csrf
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-8">
+                                                    <label class="mb-1" for="inputLastName">Ubah Program Kerja</label>
+                                                    <select class="form-control" id="periode" require name="periode">
+                                                        <option  value>Pilih Proker</option>
+                                                        @foreach ($programkerja as $item)
+                                                        <option value="{{ $item->kode_proker}}">{{$item->kode_proker}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <!-- <div class="col-md-6">
+                                                    <label class="mb-1" for="inputFirstName">Kode Program Kerja</label>
+                                                    <input class="form-control" id="kode_proker" name="kode_proker" placeholder="Masukkan Kode Proker" required />
+                                                </div> -->
+                                            </div>
+                                            <div class="row gx-3 mb-3">
+                                                <div class="col-md-8">
                                                     <label class="mb-1" for="inputLastName">Periode</label>
-                                                    <select class="form-control" id="periode" require name="periode"  value="{{ $items->periode}}" required>
+                                                    <select class="form-control" id="periode" require name="periode">
                                                         <option  value>Pilih Periode</option>
                                                         @foreach ($periode as $item)
                                                         <option value="{{ $item->kode_periode}}">{{$item->nama_periode}}</option>
@@ -52,11 +65,11 @@
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Nama Program Kerja</label>
-                                                    <input class="form-control" id="nama_proker" name="nama_proker" placeholder="Masukkan Nama Proker" value="{{ $items->nama_proker}}" required />
+                                                    <input class="form-control" id="nama_proker" name="nama_proker" placeholder="Masukkan Nama Proker" required />
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputLastName">Penanggung Jawab</label>
-                                                    <select class="form-control" id="penanggungjawab" name="penanggungjawab" value="{{ $items->penanggungjawab}}" required>
+                                                    <select class="form-control" id="penanggungjawab" name="penanggungjawab">
                                                         <option  value>Pilih Penanggung Jawab</option>
                                                         @foreach ($pegawai as $item)
                                                         <option value="{{ $item->niy}}">{{$item->nama}}</option>
@@ -67,21 +80,21 @@
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Waktu Mulai</label>
-                                                    <input class="form-control" type="date" id="waktu_mulai" name="waktu_mulai" value="{{ $items->waktu_mulai}}" required />
+                                                    <input class="form-control" type="date" id="waktu_mulai" name="waktu_mulai" required />
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputLastName">Waktu Selesai</label>
-                                                    <input class="form-control" type="date" id="waktu_selesai" name="waktu_selesai" value="{{ $items->waktu_selesai}}" required />
+                                                    <input class="form-control" type="date" id="waktu_selesai" name="waktu_selesai" required />
                                                 </div>
                                             </div>
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Tujuan</label>
-                                                    <input class="form-control" id="tujuan" name="tujuan" value="{{ $items->tujuan}}" required />
+                                                    <input class="form-control" id="tujuan" name="tujuan" required />
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputLastName">Indikator Pencapaian</label>
-                                                    <input class="form-control" id="indikator" name="indikator" value="{{ $items->indikator}}" required />
+                                                    <input class="form-control" id="indikator" name="indikator" required />
                                                 </div>
                                             </div>
                                             <div class="row gx-3 mb-3">
@@ -89,7 +102,7 @@
                                                     <label for="exampleFormControlInput1">Akun</label>
                                                     <button type="button" class="btn btn-primary ml-2" id="tambah">+</button>
                                                     <div id="selectakun">
-                                                        <div class="form-group" id="akun" name="akun" required  >
+                                                        <div class="form-group" id="akun" name="akun">
                                                             <select class="form-control select2 mb-1" style="width: 100%;" name="akun[]">
                                                                 <option  value>Pilih Akun</option>
                                                                 @foreach ($coa as $item)
@@ -104,19 +117,20 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label for="exampleFormControlInput1">Anggaran</label>
-                                                    <input class="form-control" readonly id="anggaran" name="anggaran" value="{{ $items->anggaran}}"  required />
+                                                    <input class="form-control" readonly id="anggaran" name="anggaran" required />
                                                 </div>
                                             </div>
 
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Keterangan</label>
-                                                <input class="form-control" id="keterangan_proker" name="keterangan_proker" value="{{ $items->keterangan_proker}}"  required />
+                                                <input class="form-control" id="keterangan_proker" name="keterangan_proker"  required />
                                             </div>
-                                    <div class="mb-3">
-                                        <button type="submit" class="btn btn-success">Simpan</button>
-                                        <a href="{{url('/programkerja')}}" class="btn btn-danger">Batal</a>
+                                            <div class="mb-3">
+                                                <button type="submit" class="btn btn-success">Tambah</button>
+                                                <a href="{{url('/programkerja')}}" class="btn btn-danger">Batal</a>
+                                            </div>
+                                        </form>
                                     </div>
-                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -124,11 +138,8 @@
                 </div>
             </div>
         </div>
-</div>
-</main>
+    </main>
 </div>
 <script src="/proker/proker.js"></script>
-
-
-@endforeach
+<script src="/proker/amandemen.js"></script>
 @endsection

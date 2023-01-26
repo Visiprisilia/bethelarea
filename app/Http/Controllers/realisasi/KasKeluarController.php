@@ -42,6 +42,42 @@ class KasKeluarController extends Controller
 	public function simpankaskeluar(Request $request)
 	{
 
+			
+		$validator = Validator::make($request->all(), [	
+			'jumlah' => 'lte:anggaran|numeric',
+			'periode'=> 'required',
+			'keterangan'=> 'required',
+			'akun'=> 'required',
+			'prokers'=> 'required',
+			'anggaran'=> 'required',
+			'jumlah'=> 'required',
+			'bukti'=> 'required',
+			'penanggungjawab'=> 'required',
+			'kasir'=> 'required',
+		],[
+			"jumlah.lte"=>"Jumlah harus bernilai kurang dari atau sama dengan Anggaran",
+			"jumlah.numeric"=>"Jumlah arus berupa nilai rupiah",
+			"periode.required"=>"Periode tidak boleh kosong",
+			"keterangan.required"=>"Keterangan tidak boleh kosong",
+			"akun.required"=>"Akun tidak boleh kosong",
+			"prokers.required"=>"Program Kerja tidak boleh kosong",
+			"anggaran.required"=>"Anggaran tidak boleh kosong",
+			"jumlah.required"=>"Jumlah tidak boleh kosong",
+			"bukti.required"=>"Anda belum mengupload bukti",
+			"penanggungjawab.required"=>"Penanggungjawab tidak boleh kosong",
+			"kasir.required"=>"Akan dibayar kepada siapa?",
+			
+		]);
+
+		if ($validator->fails()) {    
+			$message = $validator->errors()->getMessages();
+			$api = array(
+				'message' => $message
+			);
+			return redirect('/tambahkaskeluar')->withErrors($validator);
+			
+		}
+
 		$tanggalhariini = Carbon::now()->format('Ymd');
 		$tanggalhariinis = Carbon::now()->format('Y-m-d');
 		$check = KasKeluar::count();
@@ -65,22 +101,7 @@ class KasKeluarController extends Controller
 		//$check = Periode kolom counter_kk +1, sesuai dengan $periode
 		//setelah menambah kk, ubah di tabel periode untuk kolom counter_kk =+1 sesuai dengan $periode
 		//catat bukti kas bon jika ada 
-		
-		$validator = Validator::make($request->all(), [	
-			'jumlah' => 'lte:anggaran'
-		],[
-			"jumlah.lte"=>"Jumlah harus bernilai kurang dari atau sama dengan Anggaran"
-			
-		]);
-
-		if ($validator->fails()) {    
-			$message = $validator->errors()->getMessages();
-			$api = array(
-				'message' => $message
-			);
-			return redirect('/tambahkaskeluar')->withErrors($validator);
-			
-		}
+	
 
 		KasKeluar::create([
 			'no_bukti' => $no_bukti,

@@ -67,7 +67,7 @@
                                             </div>   -->
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Keterangan</label>
-                                                <input class="form-control" id="keterangan" name="keterangan" placeholder="Masukkan Keterangan" required  />
+                                                <input class="form-control" id="keterangan" name="keterangan" placeholder="Masukkan Keterangan"   />
                                             </div>      
                                             <div class="row gx-3 mb-3">
                                             <div class="col-md-6">
@@ -81,31 +81,31 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Akun</label>
-                                                    <input class="form-control" readonly id="akun" name="akun"  required />
+                                                    <input class="form-control" readonly id="akun" name="akun"   />
                                                 </div></div>
                                                 <div class="row gx-3 mb-3">
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Anggaran</label>
-                                                    <input class="form-control" readonly id="anggaran" name="anggaran"  required />
+                                                    <input class="form-control" readonly id="anggaran" name="anggaran"   />
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Jumlah</label>
-                                                    <input class="form-control" id="jumlah" name="jumlah" placeholder="Masukkan Jumlah" required />
+                                                    <input class="form-control" id="jumlah" name="jumlah" placeholder="Masukkan Jumlah"  />
                                                 </div>
                                                 </div>
                                             
                                             <div class="row gx-3 mb-3">
                                             <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Bukti</label>
-                                                    <input class="form-control" type="file" id="bukti" name="bukti"  placeholder="Masukkan Jumlah" required />
+                                                    <input class="form-control" type="file" id="bukti" name="bukti"  placeholder="Masukkan Jumlah"  />
                                                 </div>
                                                 <div class="col-md-6">
                                                 <label class="mb-1" for="inputFirstName">Penanggung Jawab :</label>
-                                                <input class="form-control" readonly id="penanggungjawab" name="penanggungjawab"  placeholder="Penanggung jawab" required />
+                                                <input class="form-control" readonly id="penanggungjawab" name="penanggungjawab"  placeholder="Penanggung jawab"  />
                                             </div>
                                             <div class="col-md-6">
                                                 <label class="mb-1" for="inputFirstName">Dibayar Kepada :</label>
-                                                <input class="form-control" id="kasir" name="kasir"  placeholder="Dibayar Kepada" required />
+                                                <input class="form-control" id="kasir" name="kasir"  placeholder="Dibayar Kepada"  />
                                             </div>        
                                          </div>                                                                                                                                                        
                                             <div class="mb-3">

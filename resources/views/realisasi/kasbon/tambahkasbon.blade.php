@@ -58,7 +58,7 @@
                                                 </div> -->
                                             <div class="mb-3">
                                                 <label class="mb-1" for="inputFirstName">Keterangan</label>
-                                                <input class="form-control" id="keterangan_bon" name="keterangan_bon" required />
+                                                <input class="form-control" id="keterangan_bon" name="keterangan_bon"  />
                                             </div>
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-6">
@@ -72,22 +72,22 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Akun</label>
-                                                    <input class="form-control" readonly id="akun_bon" name="akun_bon" placeholder="Masukkan Akun" required />
+                                                    <input class="form-control" readonly id="akun_bon" name="akun_bon" placeholder="Masukkan Akun"  />
                                                 </div></div>
                                                 <div class="row gx-3 mb-3">
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Anggaran</label>
-                                                    <input class="form-control" readonly id="anggaran_bon" name="anggaran_bon" placeholder="Masukkan Anggaran" required />
+                                                    <input class="form-control" readonly id="anggaran_bon" name="anggaran_bon" placeholder="Masukkan Anggaran"  />
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Jumlah</label>
-                                                    <input class="form-control" id="jumlah_bon" name="jumlah_bon" placeholder="Masukkan Jumlah" required />
+                                                    <input class="form-control" id="jumlah_bon" name="jumlah_bon" placeholder="Masukkan Jumlah"  />
                                                 </div>
                                             </div>
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Penanggung Jawab</label>
-                                                    <input class="form-control" id="penanggungjawab_bon" name="penanggungjawab_bon" placeholder="Masukkan penanggung jawab" required />
+                                                    <input class="form-control" id="penanggungjawab_bon" name="penanggungjawab_bon" placeholder="Masukkan penanggung jawab"  />
                                                 </div>
                                                 <!-- <div class="col-md-6">
                                                     <label class="mb-1" for="inputLastName">Tanggal Pertanggungjawaban</label>

@@ -10,6 +10,7 @@ use App\Http\Controllers\pegawai\PegawaiController;
 use App\Http\Controllers\murid\MuridController;
 use App\Http\Controllers\yayasan\KebijakanController;
 use App\Http\Controllers\programkerja\ProgramKerjaController;
+use App\Http\Controllers\programkerja\AmandemenController;
 use App\Http\Controllers\programkerja\EvaluasiController;
 use App\Http\Controllers\unit\UnitController;
 use App\Http\Controllers\sumber\SumberController;
@@ -145,6 +146,14 @@ Route::post('/updateevaluasi/{kode_evaluasi}', [EvaluasiController::class,'updat
 Route::get('/hapusevaluasi/{kode_evaluasi}', [EvaluasiController::class,'hapusevaluasi'])->middleware('auth', 'ceklevel:unit');
 Route::get('/pilihprogramkerja', [EvaluasiController::class,'pilihprogramkerja'])->middleware('auth', 'ceklevel:unit');
 Route::get('/akunbiaya', [EvaluasiController::class,'akunbiaya'])->middleware('auth', 'ceklevel:unit');
+
+//Amandemen
+Route::get('/amandemen', [AmandemenController::class,'amandemen']);
+Route::get('/tambahamandemen', [AmandemenController::class,'tambahamandemen'])->middleware('auth', 'ceklevel:unit');
+Route::post('/simpanamandemen', [AmandemenController::class,'simpanamandemen'])->middleware('auth', 'ceklevel:unit');
+Route::post('/viewamandemen', [AmandemenController::class,'viewamandemen'])->middleware('auth', 'ceklevel:unit');
+
+
 
 //Kas bon
 Route::get('/kasbon', [KasBonController::class,'kasbon']);

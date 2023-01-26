@@ -1,6 +1,13 @@
 @extends('template')
 @section('container')
 <!-- Default Bootstrap Form Controls-->
+@if($errors->any())
+   <ul class="alert alert-danger">
+      @foreach($errors->all() as $error)
+         <li> {{$error}} </li>
+      @endforeach
+   </ul>
+@endif
 <div id="layoutSidenav_content">
     <main>
         <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
@@ -35,7 +42,7 @@
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-8">
                                                     <label class="mb-1" for="inputLastName">Periode</label>
-                                                    <select class="form-control" id="periode" require name="periode">
+                                                    <select class="form-control" id="periode"  name="periode">
                                                         <option  value>Pilih Periode</option>
                                                         @foreach ($periode as $item)
                                                         <option value="{{ $item->kode_periode}}">{{$item->nama_periode}}</option>
@@ -44,13 +51,13 @@
                                                 </div>
                                                 <!-- <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Kode Program Kerja</label>
-                                                    <input class="form-control" id="kode_proker" name="kode_proker" placeholder="Masukkan Kode Proker" required />
+                                                    <input class="form-control" id="kode_proker" name="kode_proker" placeholder="Masukkan Kode Proker"  />
                                                 </div> -->
                                             </div>
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Nama Program Kerja</label>
-                                                    <input class="form-control" id="nama_proker" name="nama_proker" placeholder="Masukkan Nama Proker" required />
+                                                    <input class="form-control" id="nama_proker" name="nama_proker" placeholder="Masukkan Nama Proker"  />
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputLastName">Penanggung Jawab</label>
@@ -65,21 +72,21 @@
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Waktu Mulai</label>
-                                                    <input class="form-control" type="date" id="waktu_mulai" name="waktu_mulai" required />
+                                                    <input class="form-control" type="date" id="waktu_mulai" name="waktu_mulai"  />
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputLastName">Waktu Selesai</label>
-                                                    <input class="form-control" type="date" id="waktu_selesai" name="waktu_selesai" required />
+                                                    <input class="form-control" type="date" id="waktu_selesai" name="waktu_selesai"  />
                                                 </div>
                                             </div>
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Tujuan</label>
-                                                    <input class="form-control" id="tujuan" name="tujuan" required />
+                                                    <input class="form-control" id="tujuan" name="tujuan"  />
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputLastName">Indikator Pencapaian</label>
-                                                    <input class="form-control" id="indikator" name="indikator" required />
+                                                    <input class="form-control" id="indikator" name="indikator"  />
                                                 </div>
                                             </div>
                                             <div class="row gx-3 mb-3">
@@ -95,20 +102,20 @@
                                                                 @endforeach
                                                             </select>
                                                             <div>
-                                                                <input type="text" class="form-control mb-1 jumlah" name="jumlah[]" placeholder="Masukkan Jumlah" required>
+                                                                <input type="text" class="form-control mb-1 jumlah" name="jumlah[]" placeholder="Masukkan Jumlah" >
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label for="exampleFormControlInput1">Anggaran</label>
-                                                    <input class="form-control" readonly id="anggaran" name="anggaran" required />
+                                                    <input class="form-control" readonly id="anggaran" name="anggaran"  />
                                                 </div>
                                             </div>
 
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Keterangan</label>
-                                                <input class="form-control" id="keterangan_proker" name="keterangan_proker"  required />
+                                                <input class="form-control" id="keterangan_proker" name="keterangan_proker"   />
                                             </div>
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Tambah</button>
