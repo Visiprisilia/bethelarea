@@ -11,6 +11,7 @@ use App\Models\Coa\Coa;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
+use App\Models\Laporan\LaporanPosisiAnggaran;
 use App\Models\Realisasi\KasBon;
 use App\Models\ProgramKerja\ProgramKerja;
 
@@ -187,9 +188,12 @@ class KasKeluarController extends Controller
 	public function pilihproker(Request $request)
 	{
 		$kode = $request->kode;
-		$data = Akuns::where("kode_proker", $kode)->first();
+		$data = Akuns::where("id", $kode)->first();
+		$data2 =LaporanPosisiAnggaran::where("akun",$kode)->get();
+		// $data = Akuns::join("lapposisianggaran", "akuns.jumlah", "=", "lapposisianggaran.posisi_anggaran")->where("kode_proker", $kode)->first();
 		return response()->json([
-			"proker" => $data,
+			"proker"=>$data,
+			"lappa"=>$data2
 
 		]);
 	}

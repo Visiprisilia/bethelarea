@@ -9,5 +9,6 @@ class Akuns extends Model
 {
     use HasFactory;
     protected $table = 'akuns';
-    protected $fillable = ['kode_proker', 'kode_akun','penanggungjawab','periode','jumlah'];
+    protected $primaryKey = 'id';
+    protected $fillable = ['id','kode_proker', 'kode_akun','penanggungjawab','periode','jumlah'];
 }

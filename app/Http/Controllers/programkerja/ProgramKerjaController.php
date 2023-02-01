@@ -23,10 +23,10 @@ class ProgramKerjaController extends Controller
 	public function viewprogramkerja(Request $request)
 	{
 		$id = $request->id;
-		$periode = Periode::orderBy('created_at', 'desc')->get();
+		$periode = Periode::orderBy('created_at', 'desc')->get(); 
 		$pegawai = Pegawai::orderBy('created_at', 'desc')->get();
 		// $programkerja = programkerja::orderBy('created_at', 'desc')->where('periode', $id)->get();
-		$programkerja = ProgramKerja::join("pegawai","program_kerja.penanggungjawab","=","pegawai.niy")->where('periode', $id)->get();
+		$programkerja = ProgramKerja::join("pegawai","program_kerja.penanggungjawab","=","pegawai.niy")->where('anggaran','!=',0)->where('periode', $id)->get();
 		return view('programkerja/programkerja/viewprogramkerja', ['programkerja' => $programkerja, 'periode' => $periode, 
 		'pegawai' => $pegawai]);
 	}
@@ -153,6 +153,12 @@ class ProgramKerjaController extends Controller
 			'keterangan_proker' => $request->keterangan_proker,
 			'status_proker'=>'Menunggu Persetujuan'
 		]);
+		$no_jumlah=0;
+		$programkerja = Akuns::where('kode_proker', $request->kode_proker)->update([
+			'jumlah' => $request->jumlah[$no_jumlah],			
+			'kode_akun' => $request->kode_akun,			
+		]);
+		
 		return redirect('/programkerja')->with('status', 'Data berhasil diubah');
 	}
 	public function hapusprogramkerja($kode_proker)

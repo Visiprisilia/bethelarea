@@ -41,6 +41,7 @@
                                             <label for="inputLastName">Unit</label>
                                                 <select class="form-control select2" style="width: 100%;"name="unit_id" id="unit_id" value="{{$sub->unit_id}}" required>
                                                 <option disabled value>Pilih Unit</option>
+                                                <option >{{$unit->nama_unit}}</option>
                                                 @foreach ($unit as $item)
                                                 <option value="{{ $item->kode_unit}}">{{$item->nama_unit}}</option>
                                                 @endforeach

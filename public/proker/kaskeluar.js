@@ -7,10 +7,15 @@ $(document).on("change","#prokers",function(){
             kode:kode
         },
         success:function(data){
-            $("#anggaran").val(data.proker.jumlah);
             $("#akun").val(data.proker.kode_akun);
+            $("#anggaran").val(data.proker.jumlah);
             $("#penanggungjawab").val(data.proker.penanggungjawab);
-        
+           
+            // $.each(data.proker,function(x,i){
+      
+            //     $("#anggaran").append('<input class="form-control" id="anggaran" name="anggaran" readonly name="anggaran"  value="'+i.kode_akun+'" placeholder="Masukkan Akun Biaya" required />');
+                
+            // })
         }
     })
     // alert(kode);

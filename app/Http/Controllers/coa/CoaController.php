@@ -11,7 +11,7 @@ class CoaController extends Controller
 {
     public function coa()
     {
-        $coa = Coa::orderBy('created_at','asc')->get();
+        $coa = Coa::orderBy('kode_akun','asc')->get();
         return view('coa/coa', compact('coa'));
     }
     public function tambahcoa()
@@ -51,7 +51,7 @@ class CoaController extends Controller
 			'keterangan'=>$request->keterangan	
 			]);
 			
-			return redirect('/coa')->with('success', 'Task Created Successfully!');
+			return redirect('/coa')->with('status', 'Data berhasil ditambahkan!');
 	}
 	public function editcoa($kode_akun)
 	{

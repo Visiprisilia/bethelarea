@@ -58,8 +58,8 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Proker dan Evaluasi:</h6>
                 <a class="collapse-item" href="/programkerja">Program Kerja</a>
-                <a class="collapse-item" href="/evaluasi">Evaluasi</a>
                 <a class="collapse-item" href="/amandemen">Amandemen Program Kerja</a>
+                <a class="collapse-item" href="/evaluasi">Evaluasi</a>
             </div>
         </div>
     </li>

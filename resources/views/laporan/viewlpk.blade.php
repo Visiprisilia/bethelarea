@@ -9,7 +9,7 @@
         <th>Pendapatan</th>
         @foreach ($pendapatan as $item)
         <tr>
-            <td>{{ $item->nama_akun}}</td>
+            <td>{{ $item->nama}}</td>
             <td>{{Str::rupiah ($item->realisasi)}}</td>
         </tr>
         @endforeach
@@ -23,7 +23,7 @@
         <th>Biaya</th>
         @foreach ($biaya as $item)
         <tr>
-            <td>{{ $item->nama_akun}}</td>
+            <td>{{ $item->nama}}</td>
             <td>{{Str::rupiah ($item->realisasi)}}</td>
         </tr>
         @endforeach

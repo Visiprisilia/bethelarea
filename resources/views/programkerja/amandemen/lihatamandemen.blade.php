@@ -10,7 +10,7 @@
                         <div class="col-auto mt-4">
                             <h1 class="page-header-title">
                                 <div class="page-header-icon"><i data-feather="edit-3"></i></div>
-                                Konfirmasi Program Kerja
+                                Konfirmasi Amandemen Program Kerja
                             </h1>
 
                         </div>
@@ -25,14 +25,14 @@
                     <!-- Default Bootstrap Form Controls-->
                     <div id="default">
                         <div class="card mb-4">
-                            <div class="card-header">Program Kerja</div>
+                            <div class="card-header">Amandemen Program Kerja</div>
                             <div class="card-body">
                                 <!-- Component Preview-->
                                 <div class="sbp-preview">
                                     <div class="sbp-preview-content">
-                                        @foreach($programkerja as $items)
+                                        @foreach($amandemen as $items)
 
-                                        <form action="/konfirmasi/{{$items->kode_proker}}" method="post">
+                                        <form action="/konfirmasiamandemen/{{$items->id_amandemen}}" method="post">
                                             @csrf
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Periode</label>
@@ -74,17 +74,17 @@
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-6">
                                                     <label for="exampleFormControlInput1">Anggaran</label>
-                                                    <input class="form-control" readonly id="anggaran" name="anggaran" disabled value="{{ $items->anggaran}}" />
+                                                    <input class="form-control" readonly id="anggaran_amandemen" name="anggaran_amandemen" disabled value="{{ $items->anggaran_amandemen}}" />
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label for="exampleFormControlInput1">Keterangan</label>
-                                                    <input class="form-control" id="keterangan_proker" name="keterangan_proker" disabled value="{{ $items->keterangan_proker}}" />
+                                                    <input class="form-control" id="keterangan_amandemen" name="keterangan_amandemen" disabled value="{{ $items->keterangan_amandemen}}" />
                                                 </div>
                                             </div>
                                             <div class="row gx-3 mb-3">
                                             <div class="col-md-6">
                                                 <label class="mb-1" for="inputFirstName">Status</label>
-                                                <select class="form-control" id="status_proker" name="status_proker" required>
+                                                <select class="form-control" id="status_amandemen" name="status_amandemen">
                                                         <option  value>Pilih Status</option>
                                                         <option value="Disetujui">Disetujui</option>
                                                         <option value="Revisi">Revisi</option>
@@ -92,7 +92,7 @@
                                                 </div>
                                                 <div class="col-md-6" id="cat" style="display: none;">
                                                     <label class="mb-1" for="inputFirstName">Catatan</label>
-                                                    <input class="form-control" id="catatan" name="catatan" placeholder="Masukkan Catatan"  />
+                                                    <input class="form-control" id="catatan_amandemen" name="catatan_amandemen" />
                                                 </div>
                                             </div>
                                             <div class="mb-3">
@@ -113,8 +113,8 @@
 <script src="/proker/proker.js"></script>
 
 <script>
-    $(document).on('change','#status_proker',function(){
-      var val=$('#status_proker option').filter(':selected').val()=="Revisi"?  $('#cat').show():  $('#cat').hide();
+    $(document).on('change','#status_amandemen',function(){
+      var val=$('#status_amandemen option').filter(':selected').val()=="Revisi"?  $('#cat').show():  $('#cat').hide();
     
       //   if(val=="murid"{})  
       // alert(val);

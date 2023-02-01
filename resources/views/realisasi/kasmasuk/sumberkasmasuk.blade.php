@@ -1,3 +1,12 @@
+
+<!-- <style type="text/css" media="all">.dataTables_wrapper {
+    font-family: tahoma;
+    font-size: 10px;
+    position: relative;
+    clear: both;
+    *zoom: 1;
+    zoom: 1;
+}</style> -->
 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
@@ -23,7 +32,7 @@
                             <td>{{ $item->tanggal_pencatatan}}</td>
                             <td>{{ $item->keterangan}}</td>
                             <td>{{ $item->akun}}</td>                            
-                            <td>{{ $item->sumber}}</td>                            
+                            <td>{{ $item->nama_sumber}}</td>                            
                             <td>{{Str::rupiah ($item->jumlah)}}</td>                              
                             <td>{{ $item->nama}}</td>                              
                             @if (auth()->user()->level=="unit")

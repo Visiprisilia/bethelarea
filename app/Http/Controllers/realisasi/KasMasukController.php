@@ -35,7 +35,9 @@ class KasMasukController extends Controller
 		$coa = Coa::orderBy('created_at','desc')->get();
 		$sumber = Sumber::orderBy('created_at','desc')->get();
 		// $kasmasuk = KasMasuk::orderBy('created_at','desc')->where('sumber',$id)->get();
-		$kasmasuk = KasMasuk::leftjoin("murid","kas_masuk.kasir","=","murid.nomor_induk")->where('sumber',$id)->get();
+		$kasmasuk = KasMasuk::leftjoin("murid","kas_masuk.kasir","=","murid.nomor_induk")
+		->join("sumber","kas_masuk.sumber","=","sumber.id_sumber")
+		->where('sumber',$id)->get();
         return view('realisasi/kasmasuk/sumberkasmasuk', ['periode'=>$periode,'coa'=>$coa,'kasmasuk'=>$kasmasuk,'sumber'=>$sumber]);
     }
     public function tambahkasmasuk()
@@ -49,7 +51,7 @@ class KasMasukController extends Controller
 		// $programkerja = programkerja::join("periode", "program_kerja.periode", "=", "periode.kode_periode")->where('status_proker', 'LIKE', 'Disetujui')->where('status', 'LIKE', 'AKTIF')->get();
 		$programkerja = programkerja::join("periode", "program_kerja.periode", "=", "periode.kode_periode")
 		->join("akuns", "program_kerja.kode_proker", "=", "akuns.kode_proker")
-		->where('status_proker', 'LIKE', 'Disetujui')->where('status', 'LIKE', 'AKTIF')->where('kode_akun', 'LIKE', '4%')->get();
+		->where('status_proker', 'LIKE', 'Disetujui')->where('status', 'LIKE', 'AKTIF')->where('kode_akun', 'LIKE', '4%')->where('status_amandemens', '!=', 'Amandemen')->get();
 		// $programkerja = programkerja::join("periode", "program_kerja.periode", "=", "periode.kode_periode")->where('status_proker', 'LIKE', 'Konfirmasi')->where('status', 'LIKE', 'AKTIF')->get();
 
 		return view('realisasi/kasmasuk/tambahkasmasuk',['periode'=>$periode,'programkerja'=>$programkerja,'murid'=>$murid,'sumber'=>$sumber]);

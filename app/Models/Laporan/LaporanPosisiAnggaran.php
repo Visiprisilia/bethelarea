@@ -10,7 +10,7 @@ class LaporanPosisiAnggaran extends Model
     use HasFactory;
     protected $table = 'lapposisianggaran';
     public $incrementing = false;
-    protected $fillable = ['akun', 'nama', 'periode', 'anggaran','realisasi','posisi_anggaran'];
+    protected $fillable = ['kode','akun', 'nama', 'periode', 'anggaran','realisasi','posisi_anggaran'];
  
 }
 // CREATE or REPLACE VIEW lapposisianggaran as 

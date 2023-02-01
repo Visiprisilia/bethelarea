@@ -10,7 +10,7 @@
                         <div class="col-auto mt-4">
                             <h1 class="page-header-title">
                                 <div class="page-header-icon"><i data-feather="edit-3"></i></div>
-                                Tambah Data
+                                Amandemen
                             </h1>
 
                         </div>
@@ -30,32 +30,27 @@
                                 <!-- Component Preview-->
                                 <div class="sbp-preview">
                                     <div class="sbp-preview-content">
-                                        <form action="/simpantambahamandemen" method="post">
+                                        <form action="/simpanamandemen" method="post">
                                             @csrf
-                                            <!-- <div class="row gx-3 mb-3">
+                                            <div class="row gx-3 mb-3">
                                                 <div class="col-md-8">
                                                     <label class="mb-1" for="inputLastName">Ubah Program Kerja</label>
                                                     <select class="form-control" id="kode_prokeramandemen" require name="kode_prokeramandemen">
-                                                        <option  value>Pilih Proker</option>
+                                                        <option value>Pilih Proker</option>
                                                         @foreach ($amandemen as $item)
                                                         <option value="{{ $item->kode_proker}}">{{$item->kode_proker}}</option>
                                                         @endforeach
                                                     </select>
-                                                </div> -->
+                                                </div>
                                                 <!-- <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Kode Program Kerja</label>
                                                     <input class="form-control" id="kode_proker" name="kode_proker" placeholder="Masukkan Kode Proker" required />
                                                 </div> -->
-                                            <!-- </div> -->
+                                            </div>
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-8">
                                                     <label class="mb-1" for="inputLastName">Periode</label>
-                                                    <select class="form-control" id="periode_amandemen" require name="periode_amandemen">
-                                                        <option  value>Pilih Periode</option>
-                                                        @foreach ($periode as $item)
-                                                        <option value="{{ $item->kode_periode}}">{{$item->nama_periode}}</option>
-                                                        @endforeach
-                                                    </select>
+                                                    <input class="form-control" readonly id="periode_amandemen" require name="periode_amandemen">
                                                 </div>
                                                 <!-- <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Kode Program Kerja</label>
@@ -65,65 +60,57 @@
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Nama Program Kerja</label>
-                                                    <input class="form-control" id="nama_proker" name="nama_proker" placeholder="Masukkan Nama Proker" required />
+                                                    <input class="form-control" readonly id="nama_proker" name="nama_proker" required />
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputLastName">Penanggung Jawab</label>
-                                                    <select class="form-control" id="penanggungjawab" name="penanggungjawab">
-                                                        <option  value>Pilih Penanggung Jawab</option>
-                                                        @foreach ($pegawai as $item)
-                                                        <option value="{{ $item->niy}}">{{$item->nama}}</option>
-                                                        @endforeach
-                                                    </select>
+                                                    <input class="form-control" readonly id="penanggungjawab" name="penanggungjawab">
                                                 </div>
                                             </div>
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Waktu Mulai</label>
-                                                    <input class="form-control" type="date" id="waktu_mulai" name="waktu_mulai" required />
+                                                    <input class="form-control" readonly type="date" id="waktu_mulai" name="waktu_mulai" required />
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputLastName">Waktu Selesai</label>
-                                                    <input class="form-control" type="date" id="waktu_selesai" name="waktu_selesai" required />
+                                                    <input class="form-control" readonly type="date" id="waktu_selesai" name="waktu_selesai" required />
                                                 </div>
                                             </div>
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Tujuan</label>
-                                                    <input class="form-control" id="tujuan" name="tujuan" required />
+                                                    <input class="form-control" readonly id="tujuan" name="tujuan" required />
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputLastName">Indikator Pencapaian</label>
-                                                    <input class="form-control" id="indikator" name="indikator" required />
+                                                    <input class="form-control" readonly id="indikator" name="indikator" required />
                                                 </div>
                                             </div>
                                             <div class="row gx-3 mb-3">
-                                                <div class="col-md-6">
+                                                <div class="col-md-4">
                                                     <label for="exampleFormControlInput1">Akun</label>
-                                                    <button type="button" class="btn btn-primary ml-2" id="tambah">+</button>
-                                                    <div id="selectakun">
                                                         <div class="form-group" id="akun" name="akun">
-                                                            <select class="form-control select2 mb-1" style="width: 100%;" name="akun[]">
-                                                                <option  value>Pilih Akun</option>
-                                                                @foreach ($coa as $item)
-                                                                <option value="{{ $item->kode_akun}}">{{$item->nama_akun}}</option>
-                                                                @endforeach
-                                                            </select>
-                                                            <div>
-                                                                <input type="text" class="form-control mb-1 jumlah" name="jumlah[]" placeholder="Masukkan Jumlah" required>
-                                                            </div>
-                                                        </div>
+                                                                                                                       
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-4">
                                                     <label for="exampleFormControlInput1">Anggaran</label>
-                                                    <input class="form-control"  id="anggaran_amandemen" name="anggaran_amandemen" required />
-                                                </div>
+                                                        <div class="form-group" id="jumlah" name="jumlah">
+                                                                                                                       
+                                                    </div>
+                                                </div>    
+                                                <div class="col-md-4">
+                                                    <label for="exampleFormControlInput1">Ubah Anggaran</label>
+                                                        <div class="form-group" id="anggaran_amandemen" name="anggaran_amandemen">
+                                                                                                                       
+                                                    </div>
+                                                </div>                                              
                                             </div>
 
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Keterangan</label>
-                                                <input class="form-control" id="keterangan_amandemen" name="keterangan_amandemen"  required />
+                                                <input class="form-control" id="keterangan_amandemen" name="keterangan_amandemen" required />
                                             </div>
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Tambah</button>

@@ -2,6 +2,17 @@
 @section('container')
 <!-- Begin Page Content -->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<!-- <style type="text/css" media="all">
+    .dataTables_wrapper {
+        font-family: tahoma;
+        font-size: 12px;
+        position: relative;
+        clear: both;
+        *zoom: 1;
+        zoom: 1;
+    }
+</style> -->
 <div class="container-fluid">
 
     <!-- Page Heading -->
@@ -10,7 +21,7 @@
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
-    
+
         <div class="card-header py-3">
             <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
             @if (auth()->user()->level=="unit")
@@ -20,7 +31,7 @@
                 @foreach ($kasmasuk as $item)
                 <option value="{{ $item->kode_periode}}">{{$item->nama_periode}}</option>
                 @endforeach
-            </select> --> 
+            </select> -->
             @endif
             <select class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" id="kasmasuk" name="kasmasuk">
                 <option value>Pilih Sumber</option>

@@ -46,7 +46,8 @@
                                             </div> -->
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">File Kebijakan</label>
-                                                <input class="form-control" type="file" id="file_kebijakan" name="file_kebijakan" value="{{$item->file_kebijakan}}" required/>
+                                                <input class="form-control" type="file" id="file_kebijakan" name="file_kebijakan" value="{{asset('assets/images/kebijakan/'.$item->file_kebijakan)}}"
+                                                 required/>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Keterangan</label>

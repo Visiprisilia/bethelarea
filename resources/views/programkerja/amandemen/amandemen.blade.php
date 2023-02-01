@@ -13,12 +13,13 @@
         <div class="card-header py-3">
         @if (auth()->user()->level=="unit")
             <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
-            <a href="tambahamandemen" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i>Tambah/Ubah Proker</a>
+            <a href="tambahamandemen" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i>Tambah Proker</a>
+            <a href="ubahamandemen" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i>Ubah Proker</a>
             <a href="cetakamandemen" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print fa-sm text-white-50"></i>Cetak</a>
            @endif
             <select class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" id="amandemen" name="amandemen">
                 <option value>Pilih Periode</option>
-                @foreach ($programkerja as $item)
+                @foreach ($amandemen as $item)
                 <option value="{{ $item->kode_periode}}">{{$item->nama_periode}}</option>
                 @endforeach
             </select>
