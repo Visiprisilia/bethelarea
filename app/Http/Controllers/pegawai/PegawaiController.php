@@ -101,7 +101,7 @@ class PegawaiController extends Controller
 			'tanggal_terminasi'=>$request->tanggal_terminasi,
 			'foto_pegawai'=>$fotos,
 			'file_ktp'=>$ktp,
-			'keterangan'=>$request->keterangan
+			'keterangan_pegawai'=>$request->keterangan_pegawai
 			]);
 			return redirect('/pegawai')->with('status', 'Data berhasil ditambahkan');
 	}
@@ -146,7 +146,7 @@ class PegawaiController extends Controller
 			'tanggal_terminasi'=>$request->tanggal_terminasi,
 			'foto_pegawai'=>$fotos,
 			'file_ktp'=>$ktp,
-			'keterangan'=>$request->keterangan
+			'keterangan_pegawai'=>$request->keterangan_pegawai
 		]);
 		return redirect('/pegawai')->with('status', 'Data berhasil diubah');
 	}

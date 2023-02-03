@@ -164,7 +164,7 @@ class KasMasukController extends Controller
 	public function pilihprokerkm(Request $request)
 	{
 		$kode = $request->kode;
-		$data = Akuns::where("kode_proker", $kode)->first();
+		$data = Akuns::where("kode_proker", $kode)->where('status_amandemens','!=','Amandemen')->first();
 		return response()->json([
 			"progja" => $data,
 

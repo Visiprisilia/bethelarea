@@ -8,14 +8,14 @@ $(document).on("change","#prokers",function(){
         },
         success:function(data){
             $("#akun").val(data.proker.kode_akun);
-            $("#anggaran").val(data.proker.jumlah);
+            // $("#anggaran").val(data.proker.jumlah);
             $("#penanggungjawab").val(data.proker.penanggungjawab);
            
-            // $.each(data.proker,function(x,i){
+            $.each(data.lappa,function(x,i){
       
-            //     $("#anggaran").append('<input class="form-control" id="anggaran" name="anggaran" readonly name="anggaran"  value="'+i.kode_akun+'" placeholder="Masukkan Akun Biaya" required />');
+                $("#anggaran").append('<input class="form-control" id="anggaran" name="anggaran" readonly name="anggaran" value="'+i.posisi_anggaran+'" placeholder="Masukkan Akun Biaya" required />');
                 
-            // })
+            })
         }
     })
     // alert(kode);

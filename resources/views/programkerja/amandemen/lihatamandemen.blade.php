@@ -32,7 +32,7 @@
                                     <div class="sbp-preview-content">
                                         @foreach($amandemen as $items)
 
-                                        <form action="/konfirmasiamandemen/{{$items->id_amandemen}}" method="post">
+                                        <form action="/konfirmasiamandemen/{{$items->kode_prokeramandemen}}" method="post">
                                             @csrf
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Periode</label>
@@ -92,7 +92,7 @@
                                                 </div>
                                                 <div class="col-md-6" id="cat" style="display: none;">
                                                     <label class="mb-1" for="inputFirstName">Catatan</label>
-                                                    <input class="form-control" id="catatan_amandemen" name="catatan_amandemen" />
+                                                    <input class="form-control" id="catatan_amandemen" name="catatan_amandemen" placeholder="Masukkan Catatan" />
                                                 </div>
                                             </div>
                                             <div class="mb-3">

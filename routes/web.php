@@ -153,10 +153,13 @@ Route::get('/tambahamandemen', [AmandemenController::class,'tambahamandemen'])->
 Route::get('/ubahamandemen', [AmandemenController::class,'ubahamandemen'])->middleware('auth', 'ceklevel:unit');
 Route::post('/simpanamandemen', [AmandemenController::class,'simpanamandemen'])->middleware('auth', 'ceklevel:unit');
 Route::post('/simpantambahamandemen', [AmandemenController::class,'simpantambahamandemen'])->middleware('auth', 'ceklevel:unit');
-Route::post('/konfirmasiamandemen/{id_amandemen}', [AmandemenController::class,'konfirmasiamandemen']);
+Route::post('/konfirmasiamandemen/{kode_prokeramandemen}', [AmandemenController::class,'konfirmasiamandemen']);
+Route::get('/editamandemen/{kode_prokeramandemen}', [AmandemenController::class,'editamandemen']);
+Route::post('/updateamandemen/{kode_prokeramandemen}', [AmandemenController::class,'updateamandemen']);
+Route::get('/hapusamandemen/{kode_prokeramandemen}', [AmandemenController::class,'hapusamandemen']);
 Route::get('/viewamandemen', [AmandemenController::class,'viewamandemen']);
 Route::get('/pilihamandemen', [AmandemenController::class,'pilihamandemen']);
-Route::get('/lihatamandemen/{id_amandemen}', [AmandemenController::class,'lihatamandemen']);
+Route::get('/lihatamandemen/{kode_prokeramandemen}', [AmandemenController::class,'lihatamandemen']);
 
 
 

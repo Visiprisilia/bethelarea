@@ -14,10 +14,10 @@ class BukuBesarAnggaran extends Model
  
 }
 
-
 // CREATE or REPLACE VIEW bbanggaran as 
 // SELECT a.kode_proker kode, a.kode_akun akun, c.nama_akun nama, a.periode, a.jumlah anggaran, 0 as 'realisasi', a.created_at tgl
 // FROM akuns a join coa c on a.kode_akun=c.kode_akun
+// WHERE persetujuan_proker LIKE "Disetujui" OR persetujuan_amandemen LIKE "Disetujui" AND status_amandemens NOT LIKE "Amandemen"
 // UNION ALL 
 // SELECT km.no_bukti, km.akun, c.nama_akun, km.periode, 0, km.jumlah, km.created_at 
 // FROM kas_masuk km join coa c on km.akun=c.kode_akun

@@ -88,24 +88,50 @@
                                                 </div>
                                             </div>
                                             <div class="row gx-3 mb-3">
-                                                <div class="col-md-4">
+                                                <div class="col-md-6">
                                                     <label for="exampleFormControlInput1">Akun</label>
-                                                        <div class="form-group" id="akun" name="akun">
+                                                        <div class="form-group" id="akunss" name="akunss">
                                                                                                                        
                                                     </div>
                                                 </div>
-                                                <div class="col-md-4">
+                                                <div class="col-md-6">
                                                     <label for="exampleFormControlInput1">Anggaran</label>
                                                         <div class="form-group" id="jumlah" name="jumlah">
                                                                                                                        
                                                     </div>
-                                                </div>    
-                                                <div class="col-md-4">
-                                                    <label for="exampleFormControlInput1">Ubah Anggaran</label>
-                                                        <div class="form-group" id="anggaran_amandemen" name="anggaran_amandemen">
+                                                </div>                                                                                                                                        
+                                                <!-- <div class="col-md-4">
+                                                    <label for="exampleFormControlInput1">Jumlah Anggaran</label>
+                                                        <div class="form-control" readonly id="anggaran" name="anggaran">
                                                                                                                        
                                                     </div>
-                                                </div>                                              
+                                                </div>       -->
+                                              
+                                            </div>
+                                            
+                                           <b> Ubah Anggaran</b>
+                                            <div class="row gx-3 mb-3">
+                                                <div class="col-md-6">
+                                                    <label for="exampleFormControlInput1">Akun</label>
+                                                    <button type="button" class="btn btn-primary ml-2" id="tambah">+</button>
+                                                    <div id="selectakun">
+                                                        <div class="form-group" id="akun" name="akun">
+                                                            <select class="form-control select2 mb-1" style="width: 100%;" name="akun[]">
+                                                                <option  value>Pilih Akun</option>
+                                                                @foreach ($coa as $item)
+                                                                <option value="{{ $item->kode_akun}}">{{$item->kode_akun}} - {{$item->nama_akun}}</option>
+                                                                @endforeach
+                                                            </select>
+                                                            <div>
+                                                                <input type="text" class="form-control mb-1 jumlah" name="jumlah[]" placeholder="Masukkan Jumlah" required>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="exampleFormControlInput1">Anggaran</label>
+                                                    <input class="form-control"  id="anggaran_amandemen" name="anggaran_amandemen" required />
+                                                </div>
                                             </div>
 
                                             <div class="mb-3">

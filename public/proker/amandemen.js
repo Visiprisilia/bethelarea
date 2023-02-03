@@ -10,6 +10,7 @@ $(document).on("change","#kode_prokeramandemen",function(){
             $("#periode_amandemen").val(data.ubah.periode);
             $("#nama_proker").val(data.ubah.nama_proker);
             $("#penanggungjawab").val(data.ubah.penanggungjawab);
+            $("#anggaran").val(data.ubah.anggaran);
             $("#waktu_mulai").val(data.ubah.waktu_mulai);
             $("#waktu_selesai").val(data.ubah.waktu_selesai);
             $("#tujuan").val(data.ubah.tujuan);
@@ -18,12 +19,19 @@ $(document).on("change","#kode_prokeramandemen",function(){
 
             $.each(data.akun,function(x,i){
       
-                $("#akun").append('<input class="form-control" id="akun" name="akun" readonly name="akun"  value="'+i.nama_akun+'" placeholder="Masukkan Akun Biaya" required />');
+                $("#akunss").append('<input class="form-control" id="akunss" name="akunss" readonly name="akunss"  value="'+i.kode_akun+'" placeholder="Masukkan Akun Biaya" required />');
                 $("#jumlah").append('<input class="form-control" id="jumlah" name="jumlah" readonly name="jumlah"  value="'+i.jumlah+'" placeholder="Masukkan Akun Biaya" required />');
-                $("#anggaran_amandemen").append('<input class="form-control" id="anggaran_amandemen" name="anggaran_amandemen" name="anggaran_amandemen"  required />');
                 
                 
             })
+            
+            $.each(data.ubah,function(x,i){
+      
+                $("#anggaran").append('<input class="form-control" id="anggaran" name="anggaran" readonly name="anggaran"  value="'+i.anggaran+'" placeholder="Masukkan Akun Biaya" required />');
+                
+                
+            })
+
         }
     })
     // alert(kode);

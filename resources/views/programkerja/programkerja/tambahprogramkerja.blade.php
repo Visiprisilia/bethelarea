@@ -98,7 +98,7 @@
                                                             <select class="form-control select2 mb-1" style="width: 100%;" name="akun[]">
                                                                 <option  value>Pilih Akun</option>
                                                                 @foreach ($coa as $item)
-                                                                <option value="{{ $item->kode_akun}}">{{$item->nama_akun}}</option>
+                                                                <option value="{{ $item->kode_akun}}">{{ $item->kode_akun}} - {{$item->nama_akun}}</option>
                                                                 @endforeach
                                                             </select>
                                                             <div>

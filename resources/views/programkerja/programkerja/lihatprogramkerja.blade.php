@@ -23,6 +23,7 @@
                             <th>Periode</th>
                             <th>Nama Akun</th>            
                             <th>Jumlah</th>      
+                            <th>Status</th>      
                         </tr>
                     <tbody>
                         @foreach ($akun as $item)
@@ -32,6 +33,7 @@
                             <td>{{ $item->periode}}</td>
                             <td>{{ $item->nama_akun}}</td>
                             <td>{{Str::rupiah ($item->jumlah)}}</td>
+                            <td>{{ $item->status_amandemens}}</td>
                          
                         </tr>
                         @endforeach

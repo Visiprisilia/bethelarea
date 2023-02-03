@@ -36,7 +36,14 @@ class KasKeluarController extends Controller
 		$akun = Akuns::join("periode", "akuns.periode", "=", "periode.kode_periode")->where('status', 'LIKE', 'AKTIF')->get();
 		$programkerja = programkerja::join("periode", "program_kerja.periode", "=", "periode.kode_periode")
 		->join("akuns", "program_kerja.kode_proker", "=", "akuns.kode_proker")
-		->where('status_proker', 'LIKE', 'Disetujui')->where('status', 'LIKE', 'AKTIF')->where('kode_akun', 'LIKE', '5%')->get();
+		// ->join("amandemen","akuns.kode_proker","=","amandemen.kode_prokeramandemen")
+		->where('persetujuan_proker', 'LIKE', 'Disetujui')//proker
+		->orwhere('persetujuan_amandemen', 'LIKE', 'Disetujui')//proker
+		->where('status', 'LIKE', 'AKTIF')//periode
+		->where('kode_akun', 'LIKE', '5%')//coa
+		->where('status_amandemens','!=','Amandemen')//table akuns
+		// ->where('status_amandemen','LIKE','Disetujui')//table amandemen
+		->get();
 		return view('realisasi/kaskeluar/tambahkaskeluar', ['periode' => $periode, 'akun' => $akun, 'pegawai' => $pegawai, 
 		'kasbon' => $kasbon, 'programkerja' => $programkerja]);
 	}
@@ -188,9 +195,9 @@ class KasKeluarController extends Controller
 	public function pilihproker(Request $request)
 	{
 		$kode = $request->kode;
-		$data = Akuns::where("id", $kode)->first();
-		$data2 =LaporanPosisiAnggaran::where("akun",$kode)->get();
-		// $data = Akuns::join("lapposisianggaran", "akuns.jumlah", "=", "lapposisianggaran.posisi_anggaran")->where("kode_proker", $kode)->first();
+		$data = Akuns::where("kode_proker", $request->kode)->where('status_amandemens','!=','Amandemen')->first();
+		// $data2 =LaporanPosisiAnggaran::where("akun",$kode)->get();
+		$data2 = Akuns::join("lapposisianggaran", "akuns.kode_akun", "=", "lapposisianggaran.akun")->where("kode_proker", $kode)->where("status_amandemens","!=","Amandemen")->get();
 		return response()->json([
 			"proker"=>$data,
 			"lappa"=>$data2
