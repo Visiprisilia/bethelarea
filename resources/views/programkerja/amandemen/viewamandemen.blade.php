@@ -40,9 +40,9 @@
         @if (auth()->user()->level=="unit")
        <td>
             <a href="/editamandemen/{{$item->kode_prokeramandemen}}"><i class="fas fa-edit" style="color:green"></i></a> |
-            <a href="/hapusamandemen/{{$item->kode_prokeramandemen}}"onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a>
-            <!-- <a href="#" id="prok" data-id="{{$item->kode_proker}}" ><i class="fas fa-trash-alt" style="color:red"></i></a>
-            <a href="/lihatprogramkerja/{{$item->kode_proker}}"><i class="fas fa-eye" style="color:red"></i></a>           -->
+            <!-- <a href="/hapusamandemen/{{$item->kode_prokeramandemen}}"onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a> -->
+            <!-- <a href="#" id="prok" data-id="{{$item->kode_proker}}" ><i class="fas fa-trash-alt" style="color:red"></i></a> -->
+            <a href="/lihatamandemens/{{$item->kode_prokeramandemen}}"><i class="fas fa-eye" style="color:red"></i></a>           
         </td> 
         @endif
         @if (auth()->user()->level=="yayasan")

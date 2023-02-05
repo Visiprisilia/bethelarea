@@ -84,26 +84,22 @@
                                                     <input class="form-control" id="indikator" name="indikator" value="{{ $items->indikator}}" required />
                                                 </div>
                                             </div>
-                                            @foreach($akun as $akuns)
+                                            @foreach($akun as $akunss)
                                             <div class="row gx-3 mb-3">
-                                                    <input class="form-control" readonly id="id" name="id" value="{{ $akuns->id}}" hidden required />                                               
+                                                    <input class="form-control" hidden readonly id="id" name="id" value="{{ $akunss->id}}"  required />                                                                                                                         
                                                 <div class="col-md-6">
                                                     <label for="exampleFormControlInput1">Akun</label>
-                                                    <input class="form-control" readonly id="kode_akun" name="kode_akun" value="{{ $akuns->kode_akun}}" required />
+                                                    <input class="form-control" readonly id="kode_akun" name="kode_akun" value="{{ $akunss->kode_akun}}" required />
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label for="exampleFormControlInput1">Anggaran</label>
-                                                    <input class="form-control" id="jumlah" name="jumlah" value="{{ $akuns->jumlah}}" required />
+                                                    <input class="form-control" id="jumlah[]" name="jumlah[]" value="{{ $akunss->jumlah}}" required />
                                                 </div></div>
                                                 @endforeach
                                                 <div class="row gx-3 mb-3">
                                                 <div class="col-md-6">
                                                     <label for="exampleFormControlInput1">Jumlah Anggaran</label>
                                                     <input class="form-control" id="anggaran" name="anggaran" value="{{ $items->anggaran}}" required />
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label for="exampleFormControlInput1">Jumlah Anggaran</label>
-                                                    <input class="form-control" id="anggaranss" name="anggaranss"required />
                                                 </div>
                                             </div>
 

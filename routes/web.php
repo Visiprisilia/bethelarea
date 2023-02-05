@@ -160,7 +160,7 @@ Route::get('/hapusamandemen/{kode_prokeramandemen}', [AmandemenController::class
 Route::get('/viewamandemen', [AmandemenController::class,'viewamandemen']);
 Route::get('/pilihamandemen', [AmandemenController::class,'pilihamandemen']);
 Route::get('/lihatamandemen/{kode_prokeramandemen}', [AmandemenController::class,'lihatamandemen']);
-
+Route::get('/lihatamandemens/{kode_prokeramandemen}', [AmandemenController::class,'lihatamandemens']);
 
 
 

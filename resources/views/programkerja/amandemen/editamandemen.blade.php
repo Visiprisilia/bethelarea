@@ -89,10 +89,8 @@
                                             </div>                                     
                                             @foreach($akun as $akuns)
                                             <div class="row gx-3 mb-3">
-                                            <div class="col-md-6">
-                                                    <label for="exampleFormControlInput1">ID</label>
-                                                    <input class="form-control" readonly id="id" name="id" value="{{ $akuns->id}}" required />
-                                                </div>
+                                                    <input class="form-control" hidden readonly id="id" name="id" value="{{ $akuns->id}}" required />
+                                                
                                                 <div class="col-md-6">
                                                     <label for="exampleFormControlInput1">Akun</label>
                                                     <input class="form-control" readonly id="kode_akun" name="kode_akun" value="{{ $akuns->kode_akun}}" required />
@@ -106,7 +104,7 @@
                                                 <div class="row gx-3 mb-3">
                                                 <div class="col-md-6">
                                                     <label for="exampleFormControlInput1">Jumlah Anggaran</label>
-                                                    <input class="form-control" id="anggaran_amandemen" name="anggaran_amandemen" readonly value="{{ $items->anggaran_amandemen}}" required />
+                                                    <input class="form-control" id="anggaran_amandemen" name="anggaran_amandemen"  value="{{ $items->anggaran_amandemen}}" required />
                                                 </div>
                                             </div>
 

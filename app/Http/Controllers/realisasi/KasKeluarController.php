@@ -37,11 +37,11 @@ class KasKeluarController extends Controller
 		$programkerja = programkerja::join("periode", "program_kerja.periode", "=", "periode.kode_periode")
 		->join("akuns", "program_kerja.kode_proker", "=", "akuns.kode_proker")
 		// ->join("amandemen","akuns.kode_proker","=","amandemen.kode_prokeramandemen")
+		->where('status_amandemens','!=','Amandemen')//table akuns
 		->where('persetujuan_proker', 'LIKE', 'Disetujui')//proker
 		->orwhere('persetujuan_amandemen', 'LIKE', 'Disetujui')//proker
 		->where('status', 'LIKE', 'AKTIF')//periode
 		->where('kode_akun', 'LIKE', '5%')//coa
-		->where('status_amandemens','!=','Amandemen')//table akuns
 		// ->where('status_amandemen','LIKE','Disetujui')//table amandemen
 		->get();
 		return view('realisasi/kaskeluar/tambahkaskeluar', ['periode' => $periode, 'akun' => $akun, 'pegawai' => $pegawai, 
@@ -52,13 +52,12 @@ class KasKeluarController extends Controller
 
 			
 		$validator = Validator::make($request->all(), [	
-			'jumlah' => 'lte:anggaran|numeric',
+			'jumlah' => 'lte:anggaran|numeric|required',
 			'periode'=> 'required',
 			'keterangan'=> 'required',
 			'akun'=> 'required',
 			'prokers'=> 'required',
-			'anggaran'=> 'required',
-			'jumlah'=> 'required',
+			'anggaran'=> 'required',		
 			'bukti'=> 'required',
 			'penanggungjawab'=> 'required',
 			'kasir'=> 'required',

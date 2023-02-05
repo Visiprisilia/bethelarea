@@ -54,7 +54,12 @@ class AmandemenController extends Controller
 		$coa = Coa::orderBy('created_at', 'desc')->get();
 		$amandemen = programkerja::join("periode", "program_kerja.periode", "=", "periode.kode_periode")
 			->join("akuns", "program_kerja.kode_proker", "=", "akuns.kode_proker")
-			->where('status_proker', 'LIKE', 'Disetujui')->where('status', 'LIKE', 'AKTIF')->where('status_amandemens', '!=', 'Amandemen')->where('anggaran','!=',0)->get();
+			->where('status_pa', 'LIKE', 'proker')
+			->where('status', 'LIKE', 'AKTIF')
+			->where('persetujuan_proker', 'LIKE', 'Disetujui')
+			->where('status_amandemens', '!=', 'Amandemen')
+			->where('anggaran','!=',0)->get();
+			// ->groupBy("akuns.kode_proker") ->get();
 		return view('programkerja/amandemen/ubahamandemen', [
 			'coa' => $coa, 'periode' => $periode, 'pegawai' => $pegawai,
 			'amandemen' => $amandemen
@@ -141,7 +146,7 @@ class AmandemenController extends Controller
 		$kode_prokeramandemen = $request->kode_prokeramandemen;
 		$tanggalhariinis = Carbon::now()->format('Y-m-d');
 		$check = Amandemen::count();
-		$id_amandemen = $check + 1;
+		$id_amandemen = $check + 2;
 		Amandemen::create([
 			'id_amandemen' => $id_amandemen,
 			'kode_prokeramandemen' => $request->kode_prokeramandemen,
@@ -152,14 +157,7 @@ class AmandemenController extends Controller
 			'keterangan_amandemen' => $request->keterangan_amandemen,
 			'catatan_amandemen' => $request->catatan_amandemen,
 		]);
-		// $kode_akun = $request->kode_akun;
-		// Akuns::create([
-		// 	'kode_proker' => $kode_prokeramandemen,
-		// 		'kode_akun' => $request->akun,
-		// 		'penanggungjawab' => $request->penanggungjawab,
-		// 		'periode' => $request->periode_amandemen,
-		// 		'jumlah' => $request->anggaran_amandemen,
-		// ]);
+	
 		$kode_akun = $request->akun;
 		$no_jumlah = 0;
 		foreach ($kode_akun as $i) {
@@ -176,25 +174,6 @@ class AmandemenController extends Controller
 			// return $periode;
 		}
 
-		// $kode_akun = $request->kode_akun;
-		// $no_jumlah = 0;
-		// foreach ($kode_akun as $i) {
-		// 	$data = [
-		// 		'kode_proker' => $kode_prokeramandemen,
-		// 		'kode_akun' => $i,
-		// 		'penanggungjawab' => 'tes',
-		// 		'periode' => $request->periode_amandemen,
-		// 		'jumlah' => $request->jumlah[$no_jumlah],
-		// 	];
-		// 	$no_jumlah++;
-		// 	Akuns::create($data);
-		// 	// return $periode;
-		// }
-
-		// $akuns = Akuns::where('kode_proker', $request->kode_proker)->update([
-		// 	'status_amandemens' => 'Amandemen'
-			
-		// ]);
 		return redirect('/amandemen')->with('status', 'Data berhasil ditambahkan');
 
 	}
@@ -208,6 +187,16 @@ class AmandemenController extends Controller
 		$coa = Coa::orderBy('created_at', 'desc')->get();
 
 		return view('programkerja/amandemen/lihatamandemen', compact('amandemen', 'periode', 'pegawai', 'coa'));
+	}
+//lihat table akuns
+	public function lihatamandemens($kode_prokeramandemen)
+	{
+		$akun = Akuns::join("coa", "akuns.kode_akun", "=", "coa.kode_akun")->where('kode_proker', $kode_prokeramandemen)
+		// ->where('status_amandemens','!=','Amandemen')
+		// ->where('status_pa','=','proker')	
+		->orderBy('akuns.created_at', 'desc')->get();
+
+		return view('programkerja/amandemen/lihatamandemens', compact('akun'));
 	}
 
 	public function konfirmasiamandemen(Request $request)

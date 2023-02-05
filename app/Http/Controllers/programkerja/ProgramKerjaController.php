@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\Coa\Coa;
 use App\Models\Pegawai\Pegawai;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rules\Unique;
+use Illuminate\Validation\Rule;
 
 class ProgramKerjaController extends Controller
 {
@@ -39,11 +41,23 @@ class ProgramKerjaController extends Controller
 	}
 	public function simpanprogramkerja(Request $request)
 	{	
-				
+		// $validator = Validator::make($request->all(), [				
+		// 	'kode_akun'=>'unique:akuns'	
+		// ],[		
+		// 	"kode_akun.unique"=>"Kode akun tersebut sudah di anggarkan",			
+		// ]);
+
+		// if ($validator->fails()) {    
+		// 	$message = $validator->errors()->getMessages();
+		// 	$api = array(
+		// 		'message' => $message
+		// 	);
+		// 	return redirect('/tambahprogramkerja')->withErrors($validator);			
+		// }
 		$validator = Validator::make($request->all(), [	
 			
 			'periode'=>'required',
-			'kode_akun'=>'unique:akuns',			
+			'kode_akun'=> 'unique:akuns',			
 			'nama_proker' => 'required',
 			'penanggungjawab' => 'required',
 			'waktu_mulai' => 'required',
@@ -102,8 +116,9 @@ class ProgramKerjaController extends Controller
 			
 
 		];
+		
 		ProgramKerja::create($data_proker);
-
+	
 		$no_jumlah = 0;
 		foreach ($kode_akun as $i) {
 			$data = [
@@ -158,7 +173,7 @@ class ProgramKerjaController extends Controller
 			'keterangan_proker' => $request->keterangan_proker,
 			'status_proker'=>'Menunggu Persetujuan'
 		]);
-	
+		
 		$akun = Akuns::where('id', $request->id)->update([
 			'jumlah' => $request->jumlah,			
 			'kode_akun' => $request->kode_akun,			
