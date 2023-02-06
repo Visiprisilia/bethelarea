@@ -75,9 +75,13 @@
                                                     <input class="form-control" readonly id="akun_bon" name="akun_bon" placeholder="Masukkan Akun"  />
                                                 </div></div>
                                                 <div class="row gx-3 mb-3">
-                                                <div class="col-md-6">
+                                                <!-- <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Anggaran</label>
                                                     <input class="form-control" readonly id="anggaran_bon" name="anggaran_bon" placeholder="Masukkan Anggaran"  />
+                                                </div> -->
+                                                <div class="col-md-6" id="anggaran_bon">
+                                                    <label class="mb-1" for="inputFirstName">Anggaran</label>
+                                                    <!-- <input class="form-control" readonly id="anggaran" name="anggaran"   /> -->
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Jumlah</label>

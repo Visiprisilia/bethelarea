@@ -8,7 +8,7 @@ $(document).on("change","#prokers",function(){
         },
         success:function(data){
             $("#akun").val(data.proker.kode_akun);
-            // $("#anggaran").val(data.proker.jumlah);
+            $("#id").val(data.proker.id);
             $("#penanggungjawab").val(data.proker.penanggungjawab);
            
             $.each(data.lappa,function(x,i){
@@ -37,6 +37,11 @@ $(document).on("change","#no_buktibon",function(){
             $("#jumlah").val(data.bon.jumlah_bon);
             $("#penanggungjawab").val(data.bon.penanggungjawab_bon);
         
+            $.each(data.bon,function(x,i){
+      
+                $("#anggaran").append('<input class="form-control" id="anggaran" name="anggaran" readonly name="anggaran" value="'+i.anggaran_bon+'" placeholder="Masukkan Akun Biaya" required />');
+                
+            })
         }
 
     })

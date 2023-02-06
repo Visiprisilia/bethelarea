@@ -77,9 +77,6 @@ class AmandemenController extends Controller
 		}
 		$kode_proker = 'PROKER' . $periode_amandemen . $check + 1;
 
-		// $check = Periode kolom counter_proker +1, sesuai dengan $periode
-		//setelah menambah proker, ubah di tabel periode untuk kolom counter_proker =+1 sesuai dengan $periode
-
 		$data_amandemen = [
 			'kode_proker' => $kode_proker,
 			'periode' => $request->periode_amandemen,
@@ -120,8 +117,16 @@ class AmandemenController extends Controller
 		$kode_prokeramandemen = 'PROKER' . $periode_amandemen . $check + 1;
 
 		$tanggalhariinis = Carbon::now()->format('Y-m-d');
-		$checks = Amandemen::count();
-		$id_amandemen = $checks + 1;
+		// $checks = Amandemen::count();
+		// $id_amandemen = $checks + 1;
+		$periode_amandemen = $request->periode_amandemen;
+		$ambilca = Periode::where('kode_periode', $periode_amandemen)->get();
+		$check = 0;
+		foreach ($ambilca as $ca) {
+
+			$check = $ca->counter_amandemen;
+		}
+		$id_amandemen = $check + 1;
 		Amandemen::create([
 			'id_amandemen' => $id_amandemen,
 			'kode_prokeramandemen' => $kode_prokeramandemen,
@@ -133,6 +138,7 @@ class AmandemenController extends Controller
 			'catatan_amandemen' => $request->catatan_amandemen,
 		]);
 		   Periode::where('kode_periode', $periode_amandemen)->update(['counter_proker'=>$check+1]);
+		   Periode::where('kode_periode', $periode_amandemen)->update(['counter_amandemen'=>$check+1]);
 
 		return redirect('/amandemen')->with('status', 'Data berhasil ditambahkan');
 	}
@@ -145,8 +151,16 @@ class AmandemenController extends Controller
 			// echo($akun);
 		$kode_prokeramandemen = $request->kode_prokeramandemen;
 		$tanggalhariinis = Carbon::now()->format('Y-m-d');
-		$check = Amandemen::count();
-		$id_amandemen = $check + 2;
+		// $check = Amandemen::count();
+		// $id_amandemen = $check + 3;
+		$periode_amandemen = $request->periode_amandemen;
+		$ambilca = Periode::where('kode_periode', $periode_amandemen)->get();
+		$check = 0;
+		foreach ($ambilca as $ca) {
+
+			$check = $ca->counter_amandemen;
+		}
+		$id_amandemen = $check + 1;
 		Amandemen::create([
 			'id_amandemen' => $id_amandemen,
 			'kode_prokeramandemen' => $request->kode_prokeramandemen,
@@ -173,6 +187,7 @@ class AmandemenController extends Controller
 			Akuns::create($data);
 			// return $periode;
 		}
+		Periode::where('kode_periode', $periode_amandemen)->update(['counter_amandemen'=>$check+1]);
 
 		return redirect('/amandemen')->with('status', 'Data berhasil ditambahkan');
 

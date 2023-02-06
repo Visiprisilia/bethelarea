@@ -79,10 +79,15 @@
                                                         @endforeach
                                                     </select>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-4">
                                                     <label class="mb-1" for="inputFirstName">Akun</label>
                                                     <input class="form-control" readonly id="akun" name="akun"   />
-                                                </div></div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <label class="mb-1" for="inputFirstName">ID</label>
+                                                    <input class="form-control" readonly id="id" name="id"   />
+                                                </div>                                              
+                                            </div>
                                                 <div class="row gx-3 mb-3">
                                                 <div class="col-md-6" id="anggaran">
                                                     <label class="mb-1" for="inputFirstName">Anggaran</label>
