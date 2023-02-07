@@ -145,9 +145,9 @@ class AmandemenController extends Controller
 	public function simpanamandemen(Request $request)
 	{
 			
-		$akun = Akuns::where('kode_proker', $request->kode_prokeramandemen)->update([
-			'status_amandemens' =>'Amandemen',
-			]);
+		// $akun = Akuns::where('kode_proker', $request->kode_prokeramandemen)->update([
+		// 	'status_amandemens' =>'Amandemen',
+		// 	]);
 			// echo($akun);
 		$kode_prokeramandemen = $request->kode_prokeramandemen;
 		$tanggalhariinis = Carbon::now()->format('Y-m-d');
@@ -216,12 +216,16 @@ class AmandemenController extends Controller
 
 	public function konfirmasiamandemen(Request $request)
 	{
+		$akun = Akuns::where('kode_proker', $request->kode_prokeramandemen)->where('status_pa','=','proker')->update([
+				'status_amandemens' =>'Amandemen',
+				]);
 		$amandemen = Amandemen::where('kode_prokeramandemen', $request->kode_prokeramandemen)->update([
 			'status_amandemen' => $request->status_amandemen,
 			'catatan_amandemen' => $request->catatan_amandemen
 		]);
 		$akun = Akuns::where('kode_proker', $request->kode_prokeramandemen)->where('status_pa','=','Amandemen')->update([
 			'persetujuan_amandemen' => $request->status_amandemen,
+			// 'status_amandemens' =>'Amandemen'
 		]);
 		return redirect('/amandemen')->with('status', 'Data berhasil diubah');
 	}

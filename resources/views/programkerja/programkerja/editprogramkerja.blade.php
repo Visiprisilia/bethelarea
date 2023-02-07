@@ -84,18 +84,26 @@
                                                     <input class="form-control" id="indikator" name="indikator" value="{{ $items->indikator}}" required />
                                                 </div>
                                             </div>
+                                            <?php $j=1;
+
+                                            ?>
+
                                             @foreach($akun as $akunss)
                                             <div class="row gx-3 mb-3">
-                                                    <input class="form-control" hidden readonly id="id" name="id" value="{{ $akunss->id}}"  required />                                                                                                                         
+                                                    <input class="form-control" hidden readonly id="id<?=$j?>" name="id<?=$j?>" value="{{ $akunss->id}}"  required />                                                                                                                         
                                                 <div class="col-md-6">
                                                     <label for="exampleFormControlInput1">Akun</label>
-                                                    <input class="form-control" readonly id="kode_akun" name="kode_akun" value="{{ $akunss->kode_akun}}" required />
+                                                    <input class="form-control" readonly id="kode_akun<?=$j?>" name="kode_akun<?=$j?>" value="{{ $akunss->kode_akun}}" required />
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label for="exampleFormControlInput1">Anggaran</label>
-                                                    <input class="form-control" id="jumlah[]" name="jumlah[]" value="{{ $akunss->jumlah}}" required />
+                                                    <input class="form-control" id="jumlah<?=$j?>" name="jumlah<?=$j?>" value="{{ $akunss->jumlah}}" required onblur="hitung_totalanggaran()"/>
                                                 </div></div>
+                                                <?php $j++;
+                                                ?>
+
                                                 @endforeach
+                                                <input class="form-control" hidden readonly id="jumlahbaris" name="jumlahbaris" value="<?=$j-1?>"  required />                                                                                                                         
                                                 <div class="row gx-3 mb-3">
                                                 <div class="col-md-6">
                                                     <label for="exampleFormControlInput1">Jumlah Anggaran</label>
@@ -123,7 +131,16 @@
     </main>
 </div>
 <script src="/proker/proker.js"></script>
-
-
 @endforeach
+<script>
+
+    function hitung_totalanggaran(){
+        var jumlahbaris= document.getElementById('jumlahbaris').value;
+        var totalanggaran = 0;
+        for(var i=1 ; i<=parseInt(jumlahbaris);i++){
+            totalanggaran += parseInt(document.getElementById('jumlah'+i).value);
+        }
+        document.getElementById('anggaran').value=totalanggaran;
+    } 
+</script>
 @endsection

@@ -79,13 +79,13 @@
                                                         @endforeach
                                                     </select>
                                                 </div>
-                                                <div class="col-md-4">
+                                                <div class="col-md-4" id="akun">
                                                     <label class="mb-1" for="inputFirstName">Akun</label>
-                                                    <input class="form-control" readonly id="akun" name="akun"   />
+                                                    <!-- <input class="form-control" readonly id="akun" name="akun"   /> -->
                                                 </div>
-                                                <div class="col-md-2">
+                                                <div class="col-md-2" id="id">
                                                     <label class="mb-1" for="inputFirstName">ID</label>
-                                                    <input class="form-control" readonly id="id" name="id"   />
+                                                    <!-- <input class="form-control" readonly id="id" name="id"   /> -->
                                                 </div>                                              
                                             </div>
                                                 <div class="row gx-3 mb-3">

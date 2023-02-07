@@ -25,12 +25,14 @@ class ProgramKerjaController extends Controller
 	public function viewprogramkerja(Request $request)
 	{
 		$id = $request->id;
-		$periode = Periode::orderBy('created_at', 'desc')->get(); 
+		$periode = Periode::orderBy('created_at', 'desc')->get();
 		$pegawai = Pegawai::orderBy('created_at', 'desc')->get();
 		// $programkerja = programkerja::orderBy('created_at', 'desc')->where('periode', $id)->get();
-		$programkerja = ProgramKerja::join("pegawai","program_kerja.penanggungjawab","=","pegawai.niy")->where('anggaran','!=',0)->where('periode', $id)->get();
-		return view('programkerja/programkerja/viewprogramkerja', ['programkerja' => $programkerja, 'periode' => $periode, 
-		'pegawai' => $pegawai]);
+		$programkerja = ProgramKerja::join("pegawai", "program_kerja.penanggungjawab", "=", "pegawai.niy")->where('anggaran', '!=', 0)->where('periode', $id)->get();
+		return view('programkerja/programkerja/viewprogramkerja', [
+			'programkerja' => $programkerja, 'periode' => $periode,
+			'pegawai' => $pegawai
+		]);
 	}
 	public function tambahprogramkerja()
 	{
@@ -40,7 +42,7 @@ class ProgramKerjaController extends Controller
 		return view('programkerja/programkerja/tambahprogramkerja', ['coa' => $coa, 'periode' => $periode, 'pegawai' => $pegawai]);
 	}
 	public function simpanprogramkerja(Request $request)
-	{	
+	{
 		// $validator = Validator::make($request->all(), [				
 		// 	'kode_akun'=>'unique:akuns'	
 		// ],[		
@@ -54,10 +56,10 @@ class ProgramKerjaController extends Controller
 		// 	);
 		// 	return redirect('/tambahprogramkerja')->withErrors($validator);			
 		// }
-		$validator = Validator::make($request->all(), [	
-			
-			'periode'=>'required',
-			'kode_akun'=> 'unique:akuns',			
+		$validator = Validator::make($request->all(), [
+
+			'periode' => 'required',
+			'kode_akun' => 'unique:akuns',
 			'nama_proker' => 'required',
 			'penanggungjawab' => 'required',
 			'waktu_mulai' => 'required',
@@ -66,41 +68,40 @@ class ProgramKerjaController extends Controller
 			'indikator' => 'required',
 			'anggaran' => 'required',
 			'keterangan_proker' => 'required'
-		],[		
-			"kode_akun.unique"=>"Kode akun tersebut sudah di anggarkan",
-			"periode.required"=>"Periode tidak boleh kosong",
-			"nama_proker.required"=>"Nama Program Kerja tidak boleh kosong",
-			"penanggungjawab.required"=>"Penanggung Jawab tidak boleh kosong",
-			"waktu_mulai.required"=>"Waktu Mulai tidak boleh kosong",
-			"waktu_selesai.required"=>"Waktu Selesai tidak boleh kosong",
-			"tujuan.required"=>"Tujuan tidak boleh kosong",
-			"indikator.required"=>"Indikator tidak boleh kosong",
-			"anggaran.required"=>"Anggaran tidak boleh kosong",
-			"keterangan_proker.required"=>"Keterangan tidak boleh kosong"
-			
+		], [
+			"kode_akun.unique" => "Kode akun tersebut sudah di anggarkan",
+			"periode.required" => "Periode tidak boleh kosong",
+			"nama_proker.required" => "Nama Program Kerja tidak boleh kosong",
+			"penanggungjawab.required" => "Penanggung Jawab tidak boleh kosong",
+			"waktu_mulai.required" => "Waktu Mulai tidak boleh kosong",
+			"waktu_selesai.required" => "Waktu Selesai tidak boleh kosong",
+			"tujuan.required" => "Tujuan tidak boleh kosong",
+			"indikator.required" => "Indikator tidak boleh kosong",
+			"anggaran.required" => "Anggaran tidak boleh kosong",
+			"keterangan_proker.required" => "Keterangan tidak boleh kosong"
+
 		]);
 
-		if ($validator->fails()) {    
+		if ($validator->fails()) {
 			$message = $validator->errors()->getMessages();
 			$api = array(
 				'message' => $message
 			);
 			return redirect('/tambahprogramkerja')->withErrors($validator);
-			
-		}
+				}
 		$periode = $request->periode;
 		$penanggungjawab = $request->penanggungjawab;
-		$kode_akun = $request->akun;		
-		$ambilcp = Periode::where('kode_periode',$periode)->get();
+		$kode_akun = $request->akun;
+		$ambilcp = Periode::where('kode_periode', $periode)->get();
 		$check = 0;
 		foreach ($ambilcp as $cp) {
-			
+
 			$check = $cp->counter_proker;
 		}
 		$kode_proker = 'PROKER' . $periode . $check + 1;
 
-//$check = Periode kolom counter_proker +1, sesuai dengan $periode
-//setelah menambah proker, ubah di tabel periode untuk kolom counter_proker =+1 sesuai dengan $periode
+		//$check = Periode kolom counter_proker +1, sesuai dengan $periode
+		//setelah menambah proker, ubah di tabel periode untuk kolom counter_proker =+1 sesuai dengan $periode
 		$data_proker = [
 			'kode_proker' => $kode_proker,
 			'periode' => $periode,
@@ -112,13 +113,13 @@ class ProgramKerjaController extends Controller
 			'indikator' => $request->indikator,
 			'anggaran' => $request->anggaran,
 			'keterangan_proker' => $request->keterangan_proker,
-			'status_proker'=>'Menunggu Persetujuan'
-			
+			'status_proker' => 'Menunggu Persetujuan'
+
 
 		];
-		
+
 		ProgramKerja::create($data_proker);
-	
+
 		$no_jumlah = 0;
 		foreach ($kode_akun as $i) {
 			$data = [
@@ -129,11 +130,11 @@ class ProgramKerjaController extends Controller
 				'jumlah' => $request->jumlah[$no_jumlah],
 			];
 			$no_jumlah++;
-			
+
 			Akuns::create($data);
 			// return $periode;
 		}
-		   Periode::where('kode_periode', $periode)->update(['counter_proker'=>$check+1]);
+		Periode::where('kode_periode', $periode)->update(['counter_proker' => $check + 1]);
 
 		return redirect('/programkerja')->with('status', 'Data berhasil ditambahkan');
 	}
@@ -145,77 +146,77 @@ class ProgramKerjaController extends Controller
 
 		$dataproker = ProgramKerja::where('kode_proker', $kode_proker)->get();
 		$programkerja = ProgramKerja::where('kode_proker', $kode_proker)->get();
-		$akun = Akuns::where('kode_proker', $kode_proker)->where('status_amandemens','!=','Amandemen')->get();
+		$akun = Akuns::where('kode_proker', $kode_proker)->where('status_amandemens', '!=', 'Amandemen')->get();
 		// return $programkerja;
-		foreach($dataproker as $row){
-			$status_proker=$row[
-				'status_proker'
-			];
+		foreach ($dataproker as $row) {
+			$status_proker = $row['status_proker'];
 		}
 
-		if ($status_proker =='Revisi') {
+		if ($status_proker == 'Revisi') {
 			return view('programkerja/programkerja/editprogramkerja',  ['programkerja' => $programkerja, 'akun' => $akun, 'coa' => $coa, 'periode' => $periode, 'pegawai' => $pegawai]);
-		} else{
-			return redirect('/programkerja')->with('status', 'Data tidak bisa diubah');    			
-			}
+		} else {
+			return redirect('/programkerja')->with('status', 'Data tidak bisa diubah');
+		}
 	}
 	public function updateprogramkerja(Request $request)
 	{
+		// var_dump($request);
+			$programkerja = ProgramKerja::where('kode_proker', $request->kode_proker)->update([
+				'nama_proker' => $request->nama_proker,
+				'penanggungjawab' => $request->penanggungjawab,
+				'waktu_mulai' => $request->waktu_mulai,
+				'waktu_selesai' => $request->waktu_selesai,
+				'tujuan' => $request->tujuan,
+				'indikator' => $request->indikator,
+				'anggaran' => $request->anggaran,
+				'keterangan_proker' => $request->keterangan_proker,
+				'status_proker'=>'Menunggu Persetujuan'
+			]);
 
-		$programkerja = ProgramKerja::where('kode_proker', $request->kode_proker)->update([
-			'nama_proker' => $request->nama_proker,
-			'penanggungjawab' => $request->penanggungjawab,
-			'waktu_mulai' => $request->waktu_mulai,
-			'waktu_selesai' => $request->waktu_selesai,
-			'tujuan' => $request->tujuan,
-			'indikator' => $request->indikator,
-			'anggaran' => $request->anggaran,
-			'keterangan_proker' => $request->keterangan_proker,
-			'status_proker'=>'Menunggu Persetujuan'
-		]);
-		
-		$akun = Akuns::where('id', $request->id)->update([
-			'jumlah' => $request->jumlah,			
-			'kode_akun' => $request->kode_akun,			
-		]);
-		
-		
+		for ($i = 1; $i <= $request->jumlahbaris; $i++) {
+			$idnya = 'id' . $i;
+			$jumlahnya = 'jumlah' . $i;
+			$kodeakunnya = 'kode_akun' . $i;
+			$akun = Akuns::where('id', $request->string($idnya)->trim())->update([
+				'jumlah' => $request->string($jumlahnya)->trim(),
+				'kode_akun' => $request->string($kodeakunnya)->trim(),
+			]);
+		}
+
+
 		return redirect('/programkerja')->with('status', 'Data berhasil diubah');
 	}
 	public function hapusprogramkerja($kode_proker)
 	{
 		$dataproker = ProgramKerja::where('kode_proker', $kode_proker)->get();
-		$programkerja = ProgramKerja::where('kode_proker', $kode_proker)->where('status_proker','=','Revisi')->delete();
-		foreach($dataproker as $row){
-			$status_proker=$row[
-				'status_proker'
-			];
+		$programkerja = ProgramKerja::where('kode_proker', $kode_proker)->where('status_proker', '=', 'Revisi')->delete();
+		foreach ($dataproker as $row) {
+			$status_proker = $row['status_proker'];
 		}
 
 		if ($status_proker == 'Revisi') {
 			return redirect('/programkerja')->with('status', 'Data berhasil dihapus');
-		} else{
-			return redirect('/programkerja')->with('status', 'Data tidak bisa dihapus');    			
-			}
-
+		} else {
+			return redirect('/programkerja')->with('status', 'Data tidak bisa dihapus');
+		}
 	}
-	
+
 	public function lihatproker($kode_proker)
 	{
 		$programkerja = ProgramKerja::where('kode_proker', $kode_proker)->get();
 		$periode = Periode::orderBy('created_at', 'desc')->get();
 		$pegawai = Pegawai::orderBy('created_at', 'desc')->get();
 		$coa = Coa::orderBy('created_at', 'desc')->get();
-	
-		return view('programkerja/programkerja/lihatproker', compact('programkerja','periode','pegawai','coa'));
+
+		return view('programkerja/programkerja/lihatproker', compact('programkerja', 'periode', 'pegawai', 'coa'));
 	}
 	public function konfirmasi(Request $request)
-	{	
+	{
 		$programkerja = ProgramKerja::where('kode_proker', $request->kode_proker)->update([
 			'status_proker' => $request->status_proker,
-			'catatan'=>$request->catatan
+			'catatan' => $request->catatan
 		]);
-		$akun = Akuns::where('kode_proker', $request->kode_proker)->where('status_pa','=','proker')->update([
+		$akun = Akuns::where('kode_proker', $request->kode_proker)->where('status_pa', '=', 'proker')->update([
 			'persetujuan_proker' => $request->status_proker,
 		]);
 		return redirect('/programkerja')->with('status', 'Data berhasil diubah');
@@ -225,9 +226,9 @@ class ProgramKerjaController extends Controller
 	public function lihatprogramkerja($kode_proker)
 	{
 		$akun = Akuns::join("coa", "akuns.kode_akun", "=", "coa.kode_akun")->where('kode_proker', $kode_proker)
-		// ->where('status_amandemens','!=','Amandemen')
-		// ->where('status_pa','=','proker')	
-		->orderBy('akuns.created_at', 'desc')->get();
+			// ->where('status_amandemens','!=','Amandemen')
+			// ->where('status_pa','=','proker')	
+			->orderBy('akuns.created_at', 'desc')->get();
 		return view('programkerja/programkerja/lihatprogramkerja', compact('akun'));
 	}
 	public function cetakprogramkerja()
