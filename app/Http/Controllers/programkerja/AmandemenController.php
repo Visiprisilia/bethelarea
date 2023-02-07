@@ -216,13 +216,13 @@ class AmandemenController extends Controller
 
 	public function konfirmasiamandemen(Request $request)
 	{
-		$akun = Akuns::where('kode_proker', $request->kode_prokeramandemen)->where('status_pa','=','proker')->update([
-				'status_amandemens' =>'Amandemen',
-				]);
 		$amandemen = Amandemen::where('kode_prokeramandemen', $request->kode_prokeramandemen)->update([
 			'status_amandemen' => $request->status_amandemen,
 			'catatan_amandemen' => $request->catatan_amandemen
 		]);
+		$akun = Akuns::where('kode_proker', $request->kode_prokeramandemen)->where('status_pa','=','proker')->update([
+				'status_amandemens' =>'Amandemen',
+				]);
 		$akun = Akuns::where('kode_proker', $request->kode_prokeramandemen)->where('status_pa','=','Amandemen')->update([
 			'persetujuan_amandemen' => $request->status_amandemen,
 			// 'status_amandemens' =>'Amandemen'
@@ -260,11 +260,22 @@ class AmandemenController extends Controller
 	{
 		$amandemen = Amandemen::where('kode_prokeramandemen', $request->kode_prokeramandemen)->update([
 			'anggaran_amandemen' => $request->anggaran_amandemen,			
+			'status_amandemen' => 'Menunggu Persetujuan',			
 		]);
-		$akun= Akuns::where('id', $request->id)->update([
-			'jumlah' => $request->jumlah,			
-			'kode_akun' => $request->kode_akun,				
-		]);
+		for ($i = 1; $i <= $request->jumlahbaris; $i++) {
+			$idnya = 'id' . $i;
+			$jumlahnya = 'jumlah' . $i;
+			$kodeakunnya = 'kode_akun' . $i;
+			$akun = Akuns::where('id', $request->string($idnya)->trim())->update([
+				'jumlah' => $request->string($jumlahnya)->trim(),
+				'kode_akun' => $request->string($kodeakunnya)->trim(),
+			]);
+		}
+		// $akun= Akuns::where('id', $request->id)->update([
+		// 	'jumlah' => $request->jumlah,			
+		// 	'kode_akun' => $request->kode_akun,				
+		// ]);
+	
 		return redirect('/amandemen')->with('status', 'Data berhasil diubah');
 	}
 

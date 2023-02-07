@@ -79,20 +79,33 @@
                                                         @endforeach
                                                     </select>
                                                 </div>
-                                                <div class="col-md-4" id="akun">
+                                                <!-- <div class="col-md-6" >
+                                                    <label class="mb-1" for="inputLastName">Akun</label>
+                                                    <select class="form-control" id="akun" name="akun">
+                                                        <option  value>Pilih Akun</option>
+                                                        @foreach ($akun as $item)
+                                                        <option value="{{ $item->kode_akun}}">{{$item->kode_akun}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div> -->
+                                                <div class="col-md-6" id="akun">
                                                     <label class="mb-1" for="inputFirstName">Akun</label>
                                                     <!-- <input class="form-control" readonly id="akun" name="akun"   /> -->
                                                 </div>
-                                                <div class="col-md-2" id="id">
-                                                    <label class="mb-1" for="inputFirstName">ID</label>
+                                                <!-- <div class="col-md-4" id="namaakun"> -->
+                                                    <!-- <label class="mb-1" for="inputFirstName">Nama Akun</label> -->
                                                     <!-- <input class="form-control" readonly id="id" name="id"   /> -->
-                                                </div>                                              
+                                                <!-- </div>                                               -->
                                             </div>
                                                 <div class="row gx-3 mb-3">
                                                 <div class="col-md-6" id="anggaran">
                                                     <label class="mb-1" for="inputFirstName">Anggaran</label>
                                                     <!-- <input class="form-control" readonly id="anggaran" name="anggaran"   /> -->
                                                 </div>
+                                                <!-- <div class="col-md-6" >
+                                                    <label class="mb-1" for="inputFirstName">Anggaran</label>
+                                                    <input class="form-control" readonly id="anggaran" name="anggaran"   />
+                                                </div> -->
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Jumlah</label>
                                                     <input class="form-control" id="jumlah" name="jumlah" placeholder="Masukkan Jumlah"  />
@@ -128,5 +141,10 @@
     </main>
 </div>
 <script src="/proker/kaskeluar.js"></script>
+<script>
+    $(document).ready(function(){
+        
+    })
+    </script>
 
 @endsection

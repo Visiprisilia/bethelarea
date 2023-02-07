@@ -86,25 +86,31 @@
                                                     <label class="mb-1" for="inputLastName">Indikator Pencapaian</label>
                                                     <input class="form-control" id="indikator" name="indikator" value="{{ $items->indikator}}" readonly />
                                                 </div>
-                                            </div>                                     
+                                            </div>
+                                            <?php $j = 1;
+
+                                            ?>
                                             @foreach($akun as $akuns)
                                             <div class="row gx-3 mb-3">
-                                                    <input class="form-control" hidden readonly id="id" name="id" value="{{ $akuns->id}}" required />
-                                                
+                                                <input class="form-control" hidden readonly id="id<?=$j?>" name="id<?=$j?>" value="{{ $akuns->id}}" required />
+
                                                 <div class="col-md-6">
                                                     <label for="exampleFormControlInput1">Akun</label>
-                                                    <input class="form-control" readonly id="kode_akun" name="kode_akun" value="{{ $akuns->kode_akun}}" required />
+                                                    <input class="form-control" readonly id="kode_akun<?=$j?>" name="kode_akun<?=$j?>" value="{{ $akuns->kode_akun}}" required />
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label for="exampleFormControlInput1">Anggaran</label>
-                                                    <input class="form-control" id="jumlah" name="jumlah" value="{{ $akuns->jumlah}}" required />
+                                                    <input class="form-control" id="jumlah<?=$j?>" name="jumlah<?=$j?>" value="{{ $akuns->jumlah}}" required required onblur="hitung_totalanggaran()" />
                                                 </div>
                                             </div>
-                                                @endforeach
-                                                <div class="row gx-3 mb-3">
+                                            <?php $j++;
+                                                ?>
+                                            @endforeach
+                                            <input class="form-control" hidden readonly id="jumlahbaris" name="jumlahbaris" value="<?=$j-1?>"  required />                                                                                                                         
+                                            <div class="row gx-3 mb-3">
                                                 <div class="col-md-6">
                                                     <label for="exampleFormControlInput1">Jumlah Anggaran</label>
-                                                    <input class="form-control" id="anggaran_amandemen" name="anggaran_amandemen"  value="{{ $items->anggaran_amandemen}}" required />
+                                                    <input class="form-control" id="anggaran_amandemen" name="anggaran_amandemen" value="{{ $items->anggaran_amandemen}}" required />
                                                 </div>
                                             </div>
 
@@ -137,6 +143,16 @@
         //   if(val=="murid"{})  
         // alert(val);
     })
+</script>
+<script>
+    function hitung_totalanggaran(){
+        var jumlahbaris= document.getElementById('jumlahbaris').value;
+        var totalanggaran = 0;
+        for(var i=1 ; i<=parseInt(jumlahbaris);i++){
+            totalanggaran += parseInt(document.getElementById('jumlah'+i).value);
+        }
+        document.getElementById('anggaran_amandemen').value=totalanggaran;
+    } 
 </script>
 @endforeach
 @endsection

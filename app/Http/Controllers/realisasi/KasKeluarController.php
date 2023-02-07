@@ -14,6 +14,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Laporan\LaporanPosisiAnggaran;
 use App\Models\Realisasi\KasBon;
 use App\Models\ProgramKerja\ProgramKerja;
+use App\Models\ProgramKerja\Anggaran;
 
 class KasKeluarController extends Controller
 {
@@ -33,7 +34,9 @@ class KasKeluarController extends Controller
 		$pegawai = Pegawai::where('status', 'LIKE', 'AKTIF')->get();
 		$kasbon = KasBon::where('status_bon', 'LIKE', 'Belum Dipertanggungjawabkan')->get();
 		// $akun = Akuns::orderBy('created_at','desc')->get();
-		$akun = Akuns::join("periode", "akuns.periode", "=", "periode.kode_periode")->where('status', 'LIKE', 'AKTIF')->get();
+		$akun = Akuns::join("periode", "akuns.periode", "=", "periode.kode_periode")
+		->join("coa", "akuns.kode_akun", "=", "coa.kode_akun")
+		->where('status', 'LIKE', 'AKTIF')->get();
 		$programkerja = programkerja::join("periode", "program_kerja.periode", "=", "periode.kode_periode")
 		->join("akuns", "program_kerja.kode_proker", "=", "akuns.kode_proker")
 		// ->join("amandemen","akuns.kode_proker","=","amandemen.kode_prokeramandemen")
@@ -44,6 +47,11 @@ class KasKeluarController extends Controller
 		->where('kode_akun', 'LIKE', '5%')//coa
 		// ->where('status_amandemen','LIKE','Disetujui')//table amandemen
 		->get();
+		// $programkerja = Anggaran::join("periode", "anggaran.periode", "=", "periode.kode_periode")
+		// ->where('status_proker', 'LIKE', 'Disetujui')
+		// ->orwhere('status_amandemen', 'LIKE', 'Disetujui')
+		// // ->where('anggaran', '!=',0)		
+		// ->get();
 		return view('realisasi/kaskeluar/tambahkaskeluar', ['periode' => $periode, 'akun' => $akun, 'pegawai' => $pegawai, 
 		'kasbon' => $kasbon, 'programkerja' => $programkerja]);
 	}
@@ -191,12 +199,29 @@ class KasKeluarController extends Controller
 		$kaskeluar = KasKeluar::where('no_bukti', $no_bukti)->delete();
 		return redirect('/kaskeluar')->with('status', 'Data berhasil dihapus');
 	}
+	//yg dipakai
 	public function pilihproker(Request $request)
 	{
 		$kode = $request->kode;
 		$data = Akuns::where("kode_proker", $request->kode)->where('status_amandemens','!=','Amandemen')->first();
 		// $data2 =LaporanPosisiAnggaran::where("akun",$kode)->get();
-		$data2 = Akuns::join("lapposisianggaran", "akuns.kode_akun", "=", "lapposisianggaran.akun")->where("kode_proker", $kode)->where("status_amandemens","!=","Amandemen")->get();
+		$data2 = Akuns::join("lapposisianggaran", "akuns.kode_akun", "=", "lapposisianggaran.akun")
+		->join("coa", "akuns.kode_akun", "=", "coa.kode_akun")->where("kode_proker", $kode)
+		->where("status_amandemens","!=","Amandemen")->get();
+		return response()->json([
+			"proker"=>$data,
+			"lappa"=>$data2
+
+		]);
+	}
+	public function pilihakun(Request $request)
+	{
+		$kode = $request->kode;
+		$data = Akuns::where("kode_akun", $request->kode)->where('status_amandemens','!=','Amandemen')->first();
+		// $data2 =LaporanPosisiAnggaran::where("akun",$kode)->get();
+		$data2 = Akuns::join("lapposisianggaran", "akuns.kode_akun", "=", "lapposisianggaran.akun")
+		->join("coa", "akuns.kode_akun", "=", "coa.kode_akun")
+		->where("akun", $kode)->where("status_amandemens","!=","Amandemen")->get();
 		return response()->json([
 			"proker"=>$data,
 			"lappa"=>$data2
@@ -207,9 +232,16 @@ class KasKeluarController extends Controller
 	{
 		$no = $request->no;
 		$data = KasBon::where("no_buktibon", $no)->first();
+		$data2 = KasBon::where("no_buktibon", $no)->get();
+		$data3 = KasBon::where("no_buktibon", $no)->get();
 		return response()->json([
 			"bon" => $data,
+			"coba"=>$data2,
+			"coba2"=>$data3,
 
 		]);
 	}
+	
+
+
 }

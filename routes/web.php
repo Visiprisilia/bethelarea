@@ -199,6 +199,7 @@ Route::get('/cetakkaskeluar/{no_bukti}', [KasKeluarController::class,'cetakkaske
 Route::post('/updatekaskeluar/{no_bukti}', [KasKeluarController::class,'updatekaskeluar'])->middleware('auth', 'ceklevel:unit');
 Route::get('/hapuskaskeluar/{no_bukti}', [KasKeluarController::class,'hapuskaskeluar'])->middleware('auth', 'ceklevel:unit');
 Route::get('/pilihproker', [KasKeluarController::class,'pilihproker'])->middleware('auth', 'ceklevel:unit');
+Route::get('/pilihakun/{kode_akun}', [KasKeluarController::class,'pilihakun'])->middleware('auth', 'ceklevel:unit');
 Route::get('/pilihbon', [KasKeluarController::class,'pilihbon'])->middleware('auth', 'ceklevel:unit'); 
 
 //Buku Besar Kas
