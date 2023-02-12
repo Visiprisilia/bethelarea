@@ -1,37 +1,36 @@
-<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-    <thead>
-        <tr>
-            <th>No</th>
-            <th>Kode Program Kerja</th>
-            <th>Periode</th>
-            <th>Nama Program Kerja</th>
-            <th>Penanggung Jawab</th>
-            <th>Waktu Mulai</th>
-            <th>Waktu Selesai</th>
-            <th>Tujuan</th>
-            <th>Indikator Pencapaian</th>
-            <th>Keterangan</th>
-            <th>Jumlah</th>
-        </tr>
-    <tbody>
-        @foreach ($programkerja as $item)
-        <tr>
-            <td>{{ $loop->iteration}}</td>
-            <td>{{ $item->kode_proker}}</td>
-            <td>{{ $item->periode}}</td>
-            <td>{{ $item->nama_proker}}</td>
-            <td>{{ $item->nama}}</td>
-            <td>{{ $item->waktu_mulai}}</td>
-            <td>{{ $item->waktu_selesai}}</td>
-            <td>{{ $item->tujuan}}</td>
-            <td>{{ $item->indikator}}</td>
-            <td>{{ $item->keterangan_proker}}</td>
-            <td>{{Str::rupiah ($item->anggaran)}}</td>
-
-        </tr>
-        @endforeach
-    </tbody>
-    <th>Total</th>
+<table class="table table-bordered" id="tableamandemen" width="100%" cellspacing="0">
+<thead>
+    <tr>
+        <th>No</th>
+        <th>Kode Program Kerja</th>
+        <th>Periode</th>
+        <th>Nama Program Kerja</th>
+        <th>Penanggung Jawab</th>
+        <th>Waktu Mulai</th>
+        <th>Waktu Selesai</th>
+        <th>Tujuan</th>
+        <th>Indikator Pencapaian</th>
+        <th>Keterangan</th>
+        <th>Jumlah</th>
+    </tr>
+<tbody>
+    @foreach ($amandemen as $item)
+    <tr>
+        <td>{{ $loop->iteration}}</td>
+        <td>{{ $item->kode_proker}}</td>
+        <td>{{ $item->periode}}</td>
+        <td>{{ $item->nama_proker}}</td>
+        <td>{{ $item->nama}}</td>
+        <td>{{ $item->waktu_mulai}}</td>
+        <td>{{ $item->waktu_selesai}}</td>
+        <td>{{ $item->tujuan}}</td>
+        <td>{{ $item->indikator}}</td>
+        <td>{{ $item->keterangan_amandemen}}</td>
+        <td>{{Str::rupiah ($item->anggaran_amandemen)}}</td>
+    </tr>
+    @endforeach
+</tbody>
+<th>Total</th>
     <th></th>
     <th></th>
     <th></th>
@@ -42,8 +41,7 @@
     <th></th>
     <th></th>
     <th>{{Str::rupiah ($jumlah)}}</th>
-    </thead>
-    </thead>
+</thead>
 </table>
 <center>
     &emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b> Salatiga,</b> {{$tanggalhariini}} &nbsp;<br><br>

@@ -10,6 +10,7 @@ use App\Models\Periode\Periode;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Coa\Coa;
 use App\Models\Pegawai\Pegawai;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules\Unique;
 use Illuminate\Validation\Rule;
@@ -28,9 +29,14 @@ class ProgramKerjaController extends Controller
 		$periode = Periode::orderBy('created_at', 'desc')->get();
 		$pegawai = Pegawai::orderBy('created_at', 'desc')->get();
 		// $programkerja = programkerja::orderBy('created_at', 'desc')->where('periode', $id)->get();
-		$programkerja = ProgramKerja::join("pegawai", "program_kerja.penanggungjawab", "=", "pegawai.niy")->where('anggaran', '!=', 0)->where('periode', $id)->get();
+		$programkerja = ProgramKerja::join("pegawai", "program_kerja.penanggungjawab", "=", "pegawai.niy")
+		->where('anggaran', '!=', 0)
+		->where('periode', $id)
+		->orderBy('program_kerja.created_at','asc')
+		->get();
 		return view('programkerja/programkerja/viewprogramkerja', [
-			'programkerja' => $programkerja, 'periode' => $periode,
+			'programkerja' => $programkerja, 
+			'periode' => $periode,
 			'pegawai' => $pegawai
 		]);
 	}
@@ -38,7 +44,7 @@ class ProgramKerjaController extends Controller
 	{
 		$periode = Periode::where('status', 'LIKE', 'AKTIF')->get();
 		$pegawai = Pegawai::where('status', 'LIKE', 'AKTIF')->get();
-		$coa = Coa::orderBy('created_at', 'desc')->get();
+		$coa = Coa::orderBy('kode_akun', 'asc')->get();
 		return view('programkerja/programkerja/tambahprogramkerja', ['coa' => $coa, 'periode' => $periode, 'pegawai' => $pegawai]);
 	}
 	public function simpanprogramkerja(Request $request)
@@ -113,11 +119,9 @@ class ProgramKerjaController extends Controller
 			'indikator' => $request->indikator,
 			'anggaran' => $request->anggaran,
 			'keterangan_proker' => $request->keterangan_proker,
+			'pob' => $request->pob,
 			'status_proker' => 'Menunggu Persetujuan'
-
-
 		];
-
 		ProgramKerja::create($data_proker);
 
 		$no_jumlah = 0;
@@ -134,7 +138,9 @@ class ProgramKerjaController extends Controller
 			Akuns::create($data);
 			// return $periode;
 		}
+
 		Periode::where('kode_periode', $periode)->update(['counter_proker' => $check + 1]);
+
 
 		return redirect('/programkerja')->with('status', 'Data berhasil ditambahkan');
 	}
@@ -142,7 +148,7 @@ class ProgramKerjaController extends Controller
 	{
 		$periode = Periode::where('status', 'LIKE', 'AKTIF')->get();
 		$pegawai = Pegawai::where('status', 'LIKE', 'AKTIF')->get();
-		$coa = Coa::orderBy('created_at', 'desc')->get();
+		$coa = Coa::orderBy('created_at', 'asc')->get();
 
 		$dataproker = ProgramKerja::where('kode_proker', $kode_proker)->get();
 		$programkerja = ProgramKerja::where('kode_proker', $kode_proker)->get();
@@ -234,16 +240,59 @@ class ProgramKerjaController extends Controller
 	public function cetakprogramkerja()
 	{
 		$programkerja = Periode::orderBy('created_at', 'desc')->get();
+		$tanggalhariini = Carbon::now()->isoFormat('D MMMM Y');
 		$coa = Coa::orderBy('created_at', 'desc')->get();
-		return view('programkerja/programkerja/cetakprogramkerja', compact('programkerja', 'coa'));
+		return view('programkerja/programkerja/cetakprogramkerja', compact('programkerja', 'coa','tanggalhariini'));
+	}
+	public function cetakprogramkerjapendapatan()
+	{
+		$programkerja = Periode::orderBy('created_at', 'desc')->get();
+		$tanggalhariini = Carbon::now()->isoFormat('D MMMM Y');
+		$coa = Coa::orderBy('created_at', 'desc')->get();
+		return view('programkerja/programkerja/cetakprogramkerjapendapatan', compact('programkerja', 'coa','tanggalhariini'));
 	}
 	public function viewcetakprogramkerja(Request $request)
 	{
 		$id = $request->id;
+		$tanggalhariini = Carbon::now()->isoFormat('D MMMM Y');
+		$jumlah = programkerja::where('periode',$id)
+		->where('anggaran','!=',0)
+		->where('pob','like','biaya')
+		->where('status_proker','like','Disetujui')
+		->sum('anggaran');
 		$periode = Periode::orderBy('created_at', 'desc')->get();
 		$pegawai = Pegawai::orderBy('created_at', 'desc')->get();
-		$programkerja = programkerja::orderBy('created_at', 'desc')->where('periode', $id)->get();
+		$programkerja = programkerja::join("pegawai","program_kerja.penanggungjawab","=","pegawai.niy")
+		->orderBy('program_kerja.created_at', 'asc')
+		->where('periode', $id)
+		->where('anggaran','!=',0)
+		->where('status_proker','like','Disetujui')
+		->where('pob','like','biaya')
+		->get();
 		// $programkerja = ProgramKerja::join("pegawai","program_kerja.penanggungjawab","=","pegawai.niy")->where('periode', $id)->get();
-		return view('programkerja/programkerja/viewcetakprogramkerja', ['programkerja' => $programkerja, 'periode' => $periode, 'pegawai' => $pegawai]);
+		return view('programkerja/programkerja/viewcetakprogramkerja', ['programkerja' => $programkerja, 
+		'periode' => $periode, 'pegawai' => $pegawai, 'tanggalhariini'=>$tanggalhariini,'jumlah'=>$jumlah]);
+	}
+	public function viewcetakprogramkerjapendapatan(Request $request)
+	{
+		$id = $request->id;
+		$tanggalhariini = Carbon::now()->isoFormat('D MMMM Y');
+		$jumlah = programkerja::where('periode',$id)
+		->where('anggaran','!=',0)
+		->where('pob','like','pendapatan')
+		->where('status_proker','like','Disetujui')
+		->sum('anggaran');
+		$periode = Periode::orderBy('created_at', 'desc')->get();
+		$pegawai = Pegawai::orderBy('created_at', 'desc')->get();
+		$programkerja = programkerja::join("pegawai","program_kerja.penanggungjawab","=","pegawai.niy")
+		->orderBy('program_kerja.created_at', 'asc')
+		->where('periode', $id)
+		->where('anggaran','!=',0)
+		->where('status_proker','like','Disetujui')
+		->where('pob','like','pendapatan')
+		->get();
+		// $programkerja = ProgramKerja::join("pegawai","program_kerja.penanggungjawab","=","pegawai.niy")->where('periode', $id)->get();
+		return view('programkerja/programkerja/viewcetakprogramkerjapendapatan', ['programkerja' => $programkerja, 
+		'periode' => $periode, 'pegawai' => $pegawai, 'tanggalhariini'=>$tanggalhariini,'jumlah'=>$jumlah]);
 	}
 }

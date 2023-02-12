@@ -96,7 +96,7 @@
                                                 </div>
                                             </div>
                                             <div class="mb-3">
-                                                <input type="button" value="Kembali" onclick=self.history.back() class="btn btn-success">
+                                                <input type="button" value="Kembali" onclick=self.history.back() class="btn btn-danger">
                                                 <button type="submit" class="btn btn-success">Simpan</button>
                                             </div>
                                         </form>

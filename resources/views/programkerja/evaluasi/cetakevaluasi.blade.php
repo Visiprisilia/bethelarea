@@ -19,17 +19,17 @@
             <h6>Yayasan Bethel Area</h6>
             <h6>Sekolah KB/TK "Satria Tunas Bangsa"</h6>
             <h6>Alamat: Jl Hasanudin No.3B, Mangunsari, Kec.Sidomukti, Kota Salatiga, Jawa Tengah </h6> <br>
-            <p style="text-align:center;"><strong>PROGRAM KERJA ANGGARAN BIAYA</strong><br>
+            <p style="text-align:center;"><strong>PROGRAM KERJA</strong><br>
         </center>
-        Periode : <select class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" id="programkerja" name="programkerja">
+        Periode : <select class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" id="evaluasi" name="evaluasi">
             <option value>Pilih Periode</option>
-            @foreach ($programkerja as $item)
+            @foreach ($evaluasi as $item)
             <option value="{{ $item->kode_periode}}">{{$item->nama_periode}}</option>
             @endforeach
         </select>
 
 
-        <div class="table-responsive" id="tablecetakproker">
+        <div class="table-responsive" id="tablecetakevaluasi">
             <table>
                 <thead>
                     <br>
@@ -40,16 +40,16 @@
             </table>
             <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
             <script>
-                $(document).on('change', '#programkerja', function() {
+                $(document).on('change', '#evaluasi', function() {
                     var id = $(this).val();
                     $.ajax({
-                        url: "/viewcetakprogramkerja",
+                        url: "/viewcetakevaluasi",
                         data: {
                             id: id
                         },
                         method: "get",
                         success: function(data) {
-                            $('#tablecetakproker').html(data);
+                            $('#tablecetakevaluasi').html(data);
                         }
                     })
                 })

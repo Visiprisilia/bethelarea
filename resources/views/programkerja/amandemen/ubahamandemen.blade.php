@@ -102,7 +102,7 @@
                                                 </div>                                                                                                                                        
                                                 <!-- <div class="col-md-4">
                                                     <label for="exampleFormControlInput1">Jumlah Anggaran</label>
-                                                        <div class="form-control" readonly id="anggaran" name="anggaran">
+                                                        <div class="form-group" readonly id="anggaran" name="anggaran">
                                                                                                                        
                                                     </div>
                                                 </div>       -->

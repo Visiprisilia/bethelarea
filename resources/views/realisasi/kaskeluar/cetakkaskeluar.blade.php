@@ -85,14 +85,14 @@
                                     </div>
                                     <p>
                                         <b>No. Bukti &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</b>&nbsp;{{ $item->no_bukti}}&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; <b>Tanggal : </b> {{$item->tanggal_pencatatan}} <br><br>
-                                        <b>Dibayar Untuk &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</b>&nbsp;{{$item->kasir}}
+                                        <b>Dibayar Kepada &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</b>&nbsp;{{$item->kasir}}
                                     <p>
-                                        <b>Banyaknya Uang &nbsp;&nbsp;&nbsp;&nbsp;:</b>&nbsp;{{Str::rupiah($item->jumlah)}}
+                                        <b>Keterangan &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</b>&nbsp;{{$item->keterangan}}
+                                        <p>
+                                        <b>Jumlah  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</b>&nbsp;{{Str::rupiah($item->jumlah)}}
                                     <p>
                                         <b>Terbilang &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</b>{{Terbilang::angka($item->jumlah)}}rupiah
                                     <p>
-                                    <p>
-                                        <b>Untuk Pembayaran :</b>&nbsp;{{$item->keterangan}}
                                     <p>
                                     </p>
                                     <div style="text-align:center;">
@@ -102,10 +102,12 @@
 
                                     <div style="clear:both;"></div>
                                     <table>
-                                        <thead>
+                                    <thead>
                                             <tr>
+                                               
+                                                <th>Disetujui Oleh</th>
                                                 <th>Dikeluarkan Oleh</th>
-                                                <!-- <th>Diterima Oleh</th> -->
+                                                <th>Diterima Oleh</th>
                                             </tr>
                                         <tbody>
                                             <tr>
@@ -117,8 +119,10 @@
                                                 <th></th>
                                             </tr>
                                             <tr>
-                                                <th style="width: 60%; ">............</th>
-                                                <!-- <th style="width: 60%; ">............</th> -->
+                                                <th style="width: 30%; ">............</th>
+                                                <th style="width: 50%; ">............</th>
+                                                <th style="width: 40%; ">............</th>
+                                                
                                             </tr>
 
                                         </tbody>

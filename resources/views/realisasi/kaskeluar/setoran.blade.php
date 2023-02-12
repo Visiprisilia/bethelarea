@@ -32,26 +32,13 @@
                     <!-- Default Bootstrap Form Controls-->
                     <div id="default">
                         <div class="card mb-4">
-                            <div class="card-header">Kas Keluar</div>
+                            <div class="card-header">Setoran</div>
                             <div class="card-body">
                                 <!-- Component Preview-->
                                 <div class="sbp-preview">
                                     <div class="sbp-preview-content">
-                                        <form action="/simpankaskeluar" method="post" enctype="multipart/form-data">
-                                            @csrf
-                                            <!-- <div class="mb-3">
-                                                <label for="exampleFormControlInput1">No Bukti</label>
-                                                <input class="form-control" id="no_bukti" name="no_bukti"/>
-                                            </div> -->
-                                            <div class="mb-3">
-                                                    <label class="mb-1" for="inputLastName">Kas Bon</label>
-                                                    <select class="form-control" id="no_buktibon" name="no_buktibon">
-                                                        <option  value>Pilih Kas Bon</option>
-                                                        @foreach ($kasbon as $item)
-                                                        <option value="{{ $item->no_buktibon}}">{{$item->no_buktibon}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
+                                        <form action="/simpansetoran" method="post" enctype="multipart/form-data">
+                                            @csrf                                         
                                             <div class="mb-3">
                                             <label class="mb-1" for="inputLastName">Periode</label>
                                                     <select class="form-control" id="periode" name="periode">
@@ -69,40 +56,9 @@
                                                 <label for="exampleFormControlInput1">Keterangan</label>
                                                 <input class="form-control" id="keterangan" name="keterangan" placeholder="Masukkan Keterangan"   />
                                             </div>      
-                                            <div class="row gx-3 mb-3">
-                                            <div class="col-md-6">
-                                                    <label class="mb-1" for="inputLastName">Program Kerja</label>
-                                                    <select class="form-control" id="prokers" name="prokers">
-                                                        <option  value>Pilih Program Kerja</option>
-                                                        @foreach ($programkerja as $item)
-                                                        <option value="{{ $item->kode_proker}}">{{$item->kode_proker}} - {{$item->nama_proker}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-6" >
-                                                    <label class="mb-1" for="inputLastName">Akun</label>
-                                                    <select class="form-control" id="akun" name="akun">
-                                                        <option  value>Pilih Akun</option>
-                                                        @foreach ($akun as $item)
-                                                        <option value="{{ $item->kode_akun}}">{{$item->kode_proker}} - {{$item->kode_akun}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>                                              
-                                            </div>
-                                                <div class="row gx-3 mb-3">
-                                                <div class="col-md-6" id="anggaran">
-                                                    <label class="mb-1" for="inputFirstName">Anggaran</label>
-                                                    <!-- <input class="form-control" readonly id="anggaran" name="anggaran"   /> -->
-                                                </div>
-                                                <!-- <div class="col-md-6" >
-                                                    <label class="mb-1" for="inputFirstName">Anggaran</label>
-                                                    <input class="form-control" readonly id="anggaran" name="anggaran"   />
-                                                </div> -->
-                                                <div class="col-md-6">
-                                                    <label class="mb-1" for="inputFirstName">Jumlah</label>
-                                                    <input class="form-control" id="jumlah" name="jumlah" placeholder="Masukkan Jumlah"  />
-                                                </div>
-                                                </div>
+                                        
+                                               
+                                                
                                             
                                             <div class="row gx-3 mb-3">
                                             <div class="col-md-6">
@@ -110,13 +66,17 @@
                                                     <input class="form-control" type="file" id="bukti" name="bukti"  placeholder="Masukkan Jumlah"  />
                                                 </div>
                                                 <div class="col-md-6">
+                                                    <label class="mb-1" for="inputFirstName">Jumlah</label>
+                                                    <input class="form-control" id="jumlah" name="jumlah" placeholder="Masukkan Jumlah"  />
+                                                </div>
+                                                <!-- <div class="col-md-6">
                                                 <label class="mb-1" for="inputFirstName">Penanggung Jawab :</label>
                                                 <input class="form-control" readonly id="penanggungjawab" name="penanggungjawab"  placeholder="Penanggung jawab"  />
-                                            </div>
-                                            <div class="col-md-6">
+                                            </div> -->
+                                            <!-- <div class="col-md-6">
                                                 <label class="mb-1" for="inputFirstName">Dibayar Kepada :</label>
                                                 <input class="form-control" id="kasir" name="kasir"  placeholder="Dibayar Kepada"  />
-                                            </div>        
+                                            </div>         -->
                                          </div>                                                                                                                                                        
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Tambah</button>

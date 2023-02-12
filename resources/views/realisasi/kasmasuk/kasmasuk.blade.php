@@ -26,6 +26,8 @@
             <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
             @if (auth()->user()->level=="unit")
             <a href="tambahkasmasuk" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i>Tambah Data</a>
+            <a href="tambahmutasi" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i>Mutasi</a>
+            <a href="cetakrekapan" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"></i>Cetak Kas Masuk Murid</a>
             <!-- <select class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" id="kasmasuk" require name="kasmasuk">
                 <option value>Pilih Periode</option>
                 @foreach ($kasmasuk as $item)
@@ -60,10 +62,10 @@
                             <th>Periode</th>
                             <th>Tanggal Pencatatan</th>
                             <th>Keterangan</th>
-                            <th>Akun</th>
+                            <!-- <th>Akun</th> -->
                             <th>Sumber</th>
                             <th>Jumlah</th>
-                            <th>Diterima Dari</th>
+                            <!-- <th>Diterima Dari</th> -->
                             <th>Aksi</th>
                         </tr>
                     <tbody>

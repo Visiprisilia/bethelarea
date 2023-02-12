@@ -13,7 +13,7 @@ class ProgramKerja extends Model
     protected $primaryKey = 'kode_proker';
     public $incrementing = false;
     protected $fillable = ['kode_proker','periode','nama_proker', 'penanggungjawab', 'waktu_mulai','waktu_selesai',
-     'tujuan','indikator','akun','anggaran','keterangan_proker','status_proker','catatan'];
+     'tujuan','indikator','akun','anggaran','keterangan_proker','status_proker','catatan','pob'];
     
     // public function Pegawaiid()
 	// {

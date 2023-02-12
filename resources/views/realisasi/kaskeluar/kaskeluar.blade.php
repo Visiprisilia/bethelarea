@@ -13,7 +13,9 @@
             <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
             @if (auth()->user()->level=="unit")
             <a href="tambahkaskeluar" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i>Tambah Data</a>
-        @endif
+            <a href="setoran" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i>Setoran</a>
+
+            @endif
         </div>
         @if (session('error'))
         <div class="alert alert-danger">
@@ -34,13 +36,12 @@
                             <th>Periode</th>
                             <th>Tanggal Pencatatan</th>
                             <th>Keterangan</th>
-                            <th>Akun</th>
-                            <th>Program Kerja</th>
                             <th>Jumlah</th>                              
-                            <th>Bukti Nota</th>                              
-                            <th>Dibayar Kepada</th>                              
-                            <th>Penanggung Jawab</th>      
+                            <th>Bukti Nota</th>          
                             @if (auth()->user()->level=="unit")                        
+                            <th>Aksi</th>
+                            @endif
+                            @if (auth()->user()->level=="yayasan")                        
                             <th>Aksi</th>
                             @endif
                         </tr>
@@ -50,19 +51,22 @@
                             <td>{{ $item->no_bukti}}</td>
                             <td>{{ $item->periode}}</td>
                             <td>{{ $item->tanggal_pencatatan}}</td>
-                            <td>{{ $item->keterangan}}</td>
-                            <td>{{ $item->akun}}</td>                            
-                            <td>{{ $item->prokers}}</td>                            
+                            <td>{{ $item->keterangan}}</td>                       
                             <td>{{ Str::rupiah($item->jumlah)}}</td>                              
-                            <td>{{ $item->bukti}}</td>                              
-                            <td>{{ $item->kasir}}</td>                              
-                            <td>{{ $item->nama}}</td> 
+                            <td>{{ $item->bukti}}</td>      
                             @if (auth()->user()->level=="unit")                             
                             <td>
                                 <!-- <a href="/editkaskeluar/{{$item->no_bukti}}"><i class="fas fa-edit" style="color:green"></i></a> | -->
                                 <a href="/hapuskaskeluar/{{$item->no_bukti}}" onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a> |
                                 <!-- <a href="#" id="kk" data-id="{{$item->no_bukti}}" ><i class="fas fa-trash-alt" style="color:red"></i></a> -->
                                 <a href="/lihatkaskeluar/{{$item->no_bukti}}"><i class="fas fa-print" style="color:blue"></i></a>
+                                <a href="/downloadbkk/{{($item->no_bukti) }}" download=""><i class="fas fa-download" style="color:orange"></i></a>
+
+                            </td>
+                            @endif 
+                            @if (auth()->user()->level=="yayasan")                             
+                            <td>
+                               <a href="/downloadbkk/{{($item->no_bukti) }}" download=""><i class="fas fa-download" style="color:orange"></i></a>
                             </td>
                             @endif                            
                         </tr>

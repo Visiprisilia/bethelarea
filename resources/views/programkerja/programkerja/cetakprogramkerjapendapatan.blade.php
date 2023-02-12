@@ -19,7 +19,7 @@
             <h6>Yayasan Bethel Area</h6>
             <h6>Sekolah KB/TK "Satria Tunas Bangsa"</h6>
             <h6>Alamat: Jl Hasanudin No.3B, Mangunsari, Kec.Sidomukti, Kota Salatiga, Jawa Tengah </h6> <br>
-            <p style="text-align:center;"><strong>PROGRAM KERJA ANGGARAN BIAYA</strong><br>
+            <p style="text-align:center;"><strong>PROGRAM KERJA ANGGARAN PENDAPATAN</strong><br>
         </center>
         Periode : <select class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" id="programkerja" name="programkerja">
             <option value>Pilih Periode</option>
@@ -29,7 +29,7 @@
         </select>
 
 
-        <div class="table-responsive" id="tablecetakproker">
+        <div class="table-responsive" id="tablecetakprokerpendapatan">
             <table>
                 <thead>
                     <br>
@@ -43,13 +43,13 @@
                 $(document).on('change', '#programkerja', function() {
                     var id = $(this).val();
                     $.ajax({
-                        url: "/viewcetakprogramkerja",
+                        url: "/viewcetakprogramkerjapendapatan",
                         data: {
                             id: id
                         },
                         method: "get",
                         success: function(data) {
-                            $('#tablecetakproker').html(data);
+                            $('#tablecetakprokerpendapatan').html(data);
                         }
                     })
                 })

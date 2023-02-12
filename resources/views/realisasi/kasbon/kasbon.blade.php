@@ -59,7 +59,7 @@
                             <td>{{ Str::rupiah($item->anggaran_bon)}}</td>                            
                             <td>{{ Str::rupiah($item->jumlah_bon)}}</td>                            
                             <td>{{ Str::rupiah($item->jumlah_ptj)}}</td>                            
-                            <td>{{ $item->penanggungjawab_bon}}</td>                              
+                            <td>{{ $item->nama}}</td>                              
                             <td>{{ $item->status_bon}}</td>                              
                             <td>{{ $item->tanggal_ptj}}</td>      
                             @if (auth()->user()->level=="unit")                        

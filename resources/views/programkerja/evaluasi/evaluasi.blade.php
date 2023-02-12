@@ -14,7 +14,15 @@
         @if (auth()->user()->level=="unit")
             <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
             <a href="tambahevaluasi" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i>Tambah Data</a>
-        @endif
+            <a href="cetakevaluasi" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print fa-sm text-white-50"></i>Cetak</a>
+
+            @endif
+        <select class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" id="evaluasi" name="evaluasi">
+                <option value>Pilih Periode</option>
+                @foreach ($evaluasi as $item)
+                <option value="{{ $item->kode_periode}}">{{$item->nama_periode}}</option>
+                @endforeach
+            </select>
         </div>
         @if (session('error'))
         <div class="alert alert-danger">
@@ -27,7 +35,7 @@
         </div>
         @endif
         <div class="card-body">
-            <div class="table-responsive">
+            <div class="table-responsive" id="tableevaluasi">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
@@ -47,38 +55,9 @@
                             <th>Faktor Pendorong</th>                                                     
                             <th>Faktor Penghambat</th>                                                     
                             <th>Tindak Lanjut</th>
-                            @if (auth()->user()->level=="unit")                                                     
                             <th>Aksi</th>		
-                            @endif
                         </tr>
-                    <tbody>
-                        @foreach ($evaluasi as $item)
-                        <tr>
-                            <td>{{ $loop->iteration}}</td>
-                            <td>{{ $item->periode}}</td>
-                            <td>{{ $item->kode_proker}}</td>
-                            <td>{{ $item->nama_proker}}</td>
-                            <td>{{ $item->penanggungjawab}}</td>                                                         
-                            <td>{{ $item->tujuan}}</td>                            
-                            <td>{{ $item->akun_beban}}</td>                             
-                            <td>{{Str::rupiah ($item->rencana_anggaran)}}</td>                        
-                            <td>{{Str::rupiah ($item->realisasi_anggaran)}}</td>                        
-                            <td>{{ $item->rencana_waktu}}</td>                            
-                            <td>{{ $item->realisasi_waktu}}</td>                            
-                            <td>{{ $item->indikator_pencapaian}}</td>                            
-                            <td>{{ $item->kinerja_pencapaian}}</td>                            
-                            <td>{{ $item->faktor_pendorong}}</td>                            
-                            <td>{{ $item->faktor_penghambat}}</td>                            
-                            <td>{{ $item->tindaklanjut}}</td>                            
-                            @if (auth()->user()->level=="unit")
-                            <td>
-                                <a href="/editevaluasi/{{$item->kode_proker}}"><i class="fas fa-edit" style="color:green"></i></a> |
-                                <a href="/hapusevaluasi/{{$item->kode_proker}}" onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a>
-                                <!-- <a href="#" id="eval" data-id="{{$item->kode_proker}}" ><i class="fas fa-trash-alt" style="color:red"></i></a> -->
-                            </td>
-                            @endif
-                        </tr>
-                        @endforeach
+                    <tbody>                      
                     </tbody>
                     </thead>
                 </table>
@@ -87,28 +66,20 @@
     </div>
 
 </div>
-<!-- /.container-fluid -->
+
 <script>
-    $('#eval').click( function(){
-        var ev = $(this).attr('data-id')
-        swal({
-            title: "Yakin?",
-            text: "Data Anda akan dihapus!",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-        })
-        .then((willDelete) => {
-            if (willDelete) {
-                window.location = "/hapusevaluasi/"+ev+""
-                swal("Data berhasil dihapus!", {
-                    icon: "success",
-                });
-            } else {
-                swal("Data batal dihapus");
+    $(document).on('change', '#evaluasi', function() {
+        var id = $(this).val();
+        $.ajax({
+            url: "/viewevaluasi",
+            data: {
+                id: id
+            },
+            method: "get",
+            success: function(data) {
+                $('#tableevaluasi').html(data);
             }
-        });
-    });
-    
+        })
+    })
 </script>
 @endsection

@@ -66,27 +66,27 @@
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputLastName">Rencana Anggaran</label>
-                                                    <input class="form-control" id="rencana_anggaran" name="rencana_anggaran" placeholder="Masukkan Rencana Anggaran" value="{{$item->rencana_anggaran}}"required />
+                                                    <input class="form-control" id="rencana_anggaran" readonly name="rencana_anggaran" placeholder="Masukkan Rencana Anggaran" value="{{$item->rencana_anggaran}}"required />
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Realisasi Anggaran</label>
-                                                    <input class="form-control" id="realisasi_anggaran" name="realisasi_anggaran" placeholder="Masukkan Realisasi Anggaran" value="{{$item->realisasi_anggaran}}"required />
+                                                    <input class="form-control" id="realisasi_anggaran" readonly name="realisasi_anggaran" placeholder="Masukkan Realisasi Anggaran" value="{{$item->realisasi_anggaran}}"required />
                                                 </div>
                                             </div>
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputLastName">Rencana Waktu</label>
-                                                    <input class="form-control" type="date" id="rencana_waktu" name="rencana_waktu" placeholder="Masukkan Rencana Waktu" value="{{$item->rencana_waktu}}"required />
+                                                    <input class="form-control" type="date" id="rencana_waktu" readonly name="rencana_waktu" placeholder="Masukkan Rencana Waktu" value="{{$item->rencana_waktu}}"required />
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Realisasi Waktu</label>
-                                                    <input class="form-control" type="date" id="realisasi_waktu" name="realisasi_waktu" placeholder="Masukkan Realisasi Waktu" value="{{$item->realisasi_waktu}}"required />
+                                                    <input class="form-control" type="date" id="realisasi_waktu" readonly name="realisasi_waktu" placeholder="Masukkan Realisasi Waktu" value="{{$item->realisasi_waktu}}"required />
                                                 </div>
                                             </div>
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputLastName">Indikator Pencapaian</label>
-                                                    <input class="form-control" id="indikator_pencapaian" name="indikator_pencapaian" placeholder="Masukkan Indikator Pencapaian" value="{{$item->indikator_pencapaian}}"required />
+                                                    <input class="form-control" id="indikator_pencapaian" name="indikator_pencapaian" readonly placeholder="Masukkan Indikator Pencapaian" value="{{$item->indikator_pencapaian}}"required />
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Kinerja Pencapaian</label>

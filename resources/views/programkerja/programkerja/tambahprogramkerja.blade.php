@@ -40,7 +40,15 @@
                                         <form action="/simpanprogramkerja" method="post">
                                             @csrf
                                             <div class="row gx-3 mb-3">
-                                                <div class="col-md-8">
+                                                <div class="col-md-6">
+                                                    <label class="mb-1" for="inputLastName">Program Kerja</label>
+                                                    <select class="form-control" id="pob"  name="pob">
+                                                        <option  value>Pilih Program Kerja Anggaran</option>                                              
+                                                        <option value="pendapatan">Anggaran Pendapatan</option>
+                                                        <option value="biaya">Anggaran Biaya</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6">
                                                     <label class="mb-1" for="inputLastName">Periode</label>
                                                     <select class="form-control" id="periode"  name="periode">
                                                         <option  value>Pilih Periode</option>

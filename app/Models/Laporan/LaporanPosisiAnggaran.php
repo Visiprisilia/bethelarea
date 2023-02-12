@@ -24,6 +24,7 @@ class LaporanPosisiAnggaran extends Model
 // select akun, nama, periode, sum(anggaran)anggaran, sum(realisasi)realisasi, sum(anggaran)-sum(realisasi) posisi_anggaran 
 // from
 // bbanggaran
+// WHERE posisi >=0
 // group by akun, nama, periode;
 
 // CREATE or REPLACE VIEW lapposisianggaran as 

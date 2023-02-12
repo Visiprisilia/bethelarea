@@ -18,7 +18,7 @@ class BukuBesarAnggaranController extends Controller
         $bbanggaran = BukuBesarAnggaran::orderBy('tgl', 'asc')->get();
         $anggaran = BukuBesarAnggaran::sum('anggaran');
         $realisasi = BukuBesarAnggaran::sum('realisasi');
-        $coa = Coa::orderBy('created_at', 'asc')->get();
+        $coa = Coa::orderBy('kode_akun', 'asc')->get();
         $coas = BukuBesarAnggaran::orderBy('tgl', 'asc')->get()->first();
         $periode = Periode::orderBy('created_at', 'asc')->get();
         $periodes = BukuBesarAnggaran::orderBy('tgl', 'asc')->get()->first();
@@ -30,7 +30,7 @@ class BukuBesarAnggaranController extends Controller
         if($request->periode && $request->akun) {
             $coas = Coa::Where('kode_akun', $request->akun)->get()->first();
             $periodes = Periode::Where('kode_periode', $request->periode)->get()->first();
-            $bbanggaran = BukuBesarAnggaran::Where('periode', $request->periode)->Where('akun', $request->akun)->get();    
+            $bbanggaran = BukuBesarAnggaran::orderBy('tgl', 'asc')->Where('periode', $request->periode)->Where('akun', $request->akun)->get();    
             $anggaran = BukuBesarAnggaran::where('periode', $request->periode)->Where('akun', $request->akun)->sum('anggaran');
             $realisasi = BukuBesarAnggaran::where('periode', $request->periode)->Where('akun', $request->akun)->sum('realisasi');
             $saldo = ($jlh = $jlh + (int)'anggaran' - (int)'realisasi');

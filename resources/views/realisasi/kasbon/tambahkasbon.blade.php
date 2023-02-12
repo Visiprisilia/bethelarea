@@ -70,10 +70,19 @@
                                                         @endforeach
                                                     </select>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-6" >
+                                                    <label class="mb-1" for="inputLastName">Akun</label>
+                                                    <select class="form-control" id="akun_bon" name="akun_bon">
+                                                        <option  value>Pilih Akun</option>
+                                                        @foreach ($akun as $item)
+                                                        <option value="{{ $item->kode_akun}}">{{$item->kode_proker}} - {{$item->kode_akun}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div></div>
+                                                <!-- <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Akun</label>
                                                     <input class="form-control" readonly id="akun_bon" name="akun_bon"  />
-                                                </div></div>
+                                                </div></div> -->
                                                 <div class="row gx-3 mb-3">
                                                 <!-- <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Anggaran</label>
