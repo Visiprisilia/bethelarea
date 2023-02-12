@@ -182,6 +182,10 @@ class EvaluasiController extends Controller
 		$tanggalhariini = Carbon::now()->isoFormat('D MMMM Y');
 		$periode = Periode::orderBy('created_at', 'desc')->get();
 		$pegawai = Pegawai::orderBy('created_at', 'desc')->get();
+		$rencana = Evaluasi::where('periode',$id)
+		->sum('rencana_anggaran');
+		$realisasi = Evaluasi::where('periode',$id)
+		->sum('realisasi_anggaran');
 		$evaluasi = Evaluasi::join("pegawai", "evaluasi.penanggungjawab", "=", "pegawai.niy")	
 		->where('periode', $id)
 		->orderBy('evaluasi.created_at','asc')
@@ -190,7 +194,9 @@ class EvaluasiController extends Controller
 			'evaluasi' => $evaluasi, 
 			'periode' => $periode,
 			'pegawai' => $pegawai,
-			'tanggalhariini'=>$tanggalhariini
+			'tanggalhariini'=>$tanggalhariini,
+			'rencana'=>$rencana,
+			'realisasi'=>$realisasi
 		]);
 	}
 }

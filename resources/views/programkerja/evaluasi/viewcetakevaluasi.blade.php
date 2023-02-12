@@ -41,6 +41,22 @@
     </tr>
     @endforeach
 </tbody>
+<th>Total</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th>{{Str::rupiah ($rencana)}}</th>
+    <th>{{Str::rupiah ($realisasi)}}</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
 </thead>
 </table>
 <center>

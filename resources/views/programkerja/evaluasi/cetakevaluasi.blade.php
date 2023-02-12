@@ -19,7 +19,7 @@
             <h6>Yayasan Bethel Area</h6>
             <h6>Sekolah KB/TK "Satria Tunas Bangsa"</h6>
             <h6>Alamat: Jl Hasanudin No.3B, Mangunsari, Kec.Sidomukti, Kota Salatiga, Jawa Tengah </h6> <br>
-            <p style="text-align:center;"><strong>PROGRAM KERJA</strong><br>
+            <p style="text-align:center;"><strong>EVALUASI PROGRAM KERJA</strong><br>
         </center>
         Periode : <select class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" id="evaluasi" name="evaluasi">
             <option value>Pilih Periode</option>
