@@ -48,7 +48,7 @@ class CoaController extends Controller
 			'nama_akun'=>$request->nama_akun,
 			'kelompok_rek'=>$request->kelompok_rek,
 			'saldo_normal'=>$request->saldo_normal,	
-			'keterangan'=>$request->keterangan	
+			'keterangan_coa'=>$request->keterangan_coa	
 			]);
 			
 			return redirect('/coa')->with('status', 'Data berhasil ditambahkan!');
@@ -65,7 +65,7 @@ class CoaController extends Controller
 			'nama_akun'=>$request->nama_akun,
 			'kelompok_rek'=>$request->kelompok_rek,
 			'saldo_normal'=>$request->saldo_normal,	
-			'keterangan'=>$request->keterangan	
+			'keterangan_coa'=>$request->keterangan_coa	
 		]);
 		return redirect('/coa')->with('status', 'Data berhasil diubah');
 	}

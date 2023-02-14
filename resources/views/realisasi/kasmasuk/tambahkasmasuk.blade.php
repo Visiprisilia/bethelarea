@@ -93,6 +93,10 @@
                                                         @endforeach
                                                     </select>
                                                 </div>
+                                                <div class="col-md-4" id="donatur" style="display: none;">
+                                                <label for="exampleFormControlInput1">Nama Donatur</label>
+                                                <input class="form-control" id="nama_donatur" name="nama_donatur" />
+                                            </div>
                                             </div>
                                             <div class="row gx-3 mb-3">
                                             <div class="col-md-6">
@@ -124,6 +128,14 @@
 <script>
     $(document).on('change', '#sumber', function() {
         var val = $('#sumber option').filter(':selected').val() == "1" ? $('#murid').show() : $('#murid').hide();
+
+        //   if(val=="murid"{})  
+        // alert(val);
+    })
+</script>
+<script>
+    $(document).on('change', '#sumber', function() {
+        var val = $('#sumber option').filter(':selected').val() == "3" ? $('#donatur').show() : $('#donatur').hide();
 
         //   if(val=="murid"{})  
         // alert(val);

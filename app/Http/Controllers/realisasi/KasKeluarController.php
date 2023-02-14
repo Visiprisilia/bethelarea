@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 use App\Models\Laporan\LaporanPosisiAnggaran;
 use App\Models\Realisasi\KasBon;
+use App\Models\BukuBesar\BukuBesarKas;
 use App\Models\ProgramKerja\ProgramKerja;
 use App\Models\ProgramKerja\Anggaran;
 
@@ -33,6 +34,10 @@ class KasKeluarController extends Controller
 		$periode = Periode::where('status', 'LIKE', 'AKTIF')->get();
 		$pegawai = Pegawai::where('status', 'LIKE', 'AKTIF')->get();
 		$kasbon = KasBon::where('status_bon', 'LIKE', 'Belum Dipertanggungjawabkan')->get();
+		$laporankas = BukuBesarKas::orderBy('tgl','desc')->get();  
+        $tambah = BukuBesarKas::sum('bertambah');
+        $kurang = BukuBesarKas::sum('berkurang');
+        $totalkas = $tambah-$kurang;
 		// $akun = Akuns::orderBy('created_at','desc')->get();
 		$akun = Akuns::join("periode", "akuns.periode", "=", "periode.kode_periode")
 		->join("coa", "akuns.kode_akun", "=", "coa.kode_akun")
@@ -52,14 +57,21 @@ class KasKeluarController extends Controller
 		// ->where('kode_akun', 'LIKE', '5%')//coa
 		// // ->where('status_amandemen','LIKE','Disetujui')//table amandemen
 		// ->get();
-		$programkerja = Anggaran::join("periode", "anggaran.periode", "=", "periode.kode_periode")
+
+		// $programkerja = Anggaran::join("periode", "anggaran.periode", "=", "periode.kode_periode")
 		// ->where('kode_akun', 'LIKE', '5%')//coa
-		->where('status_proker', 'LIKE', 'Disetujui')
-		->orwhere('status_amandemen', 'LIKE', 'Disetujui')
+		// ->where('status_proker', 'LIKE', 'Disetujui')
+		// ->orwhere('status_amandemen', 'LIKE', 'Disetujui')
 		// ->where('anggaran', '!=',0)		
+
+		$programkerja = programkerja::join("periode", "program_kerja.periode", "=", "periode.kode_periode")
+		->join("akuns", "program_kerja.kode_proker", "=", "akuns.kode_proker")
+		->where('kode_akun', 'LIKE', '5%')//coa
+		->where('persetujuan_proker', 'LIKE', 'Disetujui')//proker
+		->orwhere('persetujuan_amandemen', 'LIKE', 'Disetujui')//proker
 		->get();
 		return view('realisasi/kaskeluar/tambahkaskeluar', ['periode' => $periode, 'akun' => $akun, 'pegawai' => $pegawai, 
-		'kasbon' => $kasbon, 'programkerja' => $programkerja]);
+		'kasbon' => $kasbon, 'programkerja' => $programkerja, 'totalkas'=>$totalkas]);
 	}
 		public function setoran()
 	{
@@ -94,10 +106,8 @@ class KasKeluarController extends Controller
 	}
 	public function simpankaskeluar(Request $request)
 	{
-
-			
 		$validator = Validator::make($request->all(), [	
-			'jumlah' => 'lte:anggaran|numeric|required',
+			'jumlah' => 'lte:anggaran|lte:totalkas|numeric|required',
 			'periode'=> 'required',
 			'keterangan'=> 'required',
 			'akun'=> 'required',
@@ -107,8 +117,8 @@ class KasKeluarController extends Controller
 			'penanggungjawab'=> 'required',
 			'kasir'=> 'required',
 		],[
-			"jumlah.lte"=>"Jumlah harus bernilai kurang dari atau sama dengan Anggaran",
-			"jumlah.numeric"=>"Jumlah arus berupa nilai rupiah",
+			"jumlah.lte"=>"Jumlah harus bernilai kurang dari atau sama dengan Saldo Kas dan Anggaran",
+			"jumlah.numeric"=>"Jumlah harus berupa nilai rupiah",
 			"periode.required"=>"Periode tidak boleh kosong",
 			"keterangan.required"=>"Keterangan tidak boleh kosong",
 			"akun.required"=>"Akun tidak boleh kosong",
@@ -167,6 +177,7 @@ class KasKeluarController extends Controller
 			'bukti' => $buktis,
 			'penanggungjawab' => $request->penanggungjawab,
 			'kasir' => $request->kasir,
+			'totalkas' => $request->totalkas,
 			'no_buktibon' => $request->no_buktibon
 		]);
 		if ($no_buktibon != null) {
@@ -258,6 +269,7 @@ class KasKeluarController extends Controller
 			'bukti' => $buktis,
 			'penanggungjawab' => '20100401003',
 			'kasir' => 'Neny Widijawati',
+			'totalkas' => NULL,
 			'no_buktibon' =>0
 		]);
 		if ($no_buktibon != null) {
@@ -315,7 +327,8 @@ class KasKeluarController extends Controller
 	}
 	public function lihatkaskeluar($no_bukti)
 	{
-		$kaskeluar = KasKeluar::where('no_bukti', $no_bukti)->get();
+		$kaskeluar = KasKeluar::join("coa","kas_keluar.akun","=","coa.kode_akun")
+		->where('no_bukti', $no_bukti)->get();
 		return view('realisasi/kaskeluar/lihatkaskeluar', compact('kaskeluar'));
 	}
 	public function cetakkaskeluar($no_bukti)
@@ -346,11 +359,17 @@ class KasKeluarController extends Controller
 	public function pilihakun(Request $request)
 	{
 		$kode = $request->kode;
-		$data = Akuns::where("kode_akun", $request->kode)->where('status_amandemens','!=','Amandemen')->first();
+		$data = Akuns::where("kode_akun", $request->kode)
+		->where('status_amandemens','!=','Amandemen')->first();
 		// $data2 =LaporanPosisiAnggaran::where("akun",$kode)->get();
 		$data2 = Akuns::join("lapposisianggaran", "akuns.kode_akun", "=", "lapposisianggaran.akun")
 		->join("coa", "akuns.kode_akun", "=", "coa.kode_akun")
 		->where("akun", $kode)->where("status_amandemens","!=","Amandemen")->get();
+		// $data2 = BukuBesarKas::orderBy('tgl','desc')->where('periode',$kode)->get();  
+		// $laporankas = BukuBesarKas::orderBy('tgl','desc')->get();  
+        // $tambah = BukuBesarKas::sum('bertambah');
+        // $kurang = BukuBesarKas::sum('berkurang');
+        // $totalkas = $tambah-$kurang;
 		return response()->json([
 			"proker"=>$data,
 			"lappa"=>$data2

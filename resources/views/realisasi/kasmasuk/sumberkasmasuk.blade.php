@@ -15,10 +15,10 @@
                             <th>Periode</th>
                             <th>Tanggal Pencatatan</th>
                             <th>Keterangan</th>
-                            <!-- <th>Akun</th> -->
-                            <th>Sumber</th>
+                            <th>Nama</th>                    
                             <th>Jumlah</th>                              
                             <th>Diterima Dari</th>    
+                            <!-- <th>Status</th>     -->
                             @if (auth()->user()->level=="unit")                          
                             <th>Aksi</th>
                             @endif
@@ -31,10 +31,10 @@
                             <td>{{ $item->periode}}</td>
                             <td>{{ $item->tanggal_pencatatan}}</td>
                             <td>{{ $item->keterangan}}</td>
-                            <!-- <td>{{ $item->akun}}</td>                             -->
-                            <td>{{ $item->nama_sumber}}</td>                            
+                            <td>{{$item->kasir}}{{$item->nama_donatur}}{{$item->yayasans}}</td>                            
                             <td>{{Str::rupiah ($item->jumlah)}}</td>                              
                             <td>{{ $item->diterimadari}}</td>                              
+                            <!-- <td>{{ $item->status_setoran}}</td>                               -->
                             @if (auth()->user()->level=="unit")
                             <td>
                                 <!-- <a href="/editkasmasuk/{{$item->no_bukti}}"><i class="fas fa-edit" style="color:green"></i></a> | -->

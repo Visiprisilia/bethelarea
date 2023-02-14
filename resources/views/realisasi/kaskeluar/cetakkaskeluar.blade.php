@@ -84,14 +84,14 @@
 
                                     </div>
                                     <p>
-                                        <b>No. Bukti &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</b>&nbsp;{{ $item->no_bukti}}&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; <b>Tanggal : </b> {{$item->tanggal_pencatatan}} <br><br>
+                                        <b>No. Bukti &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</b>&nbsp;{{ $item->no_bukti}}&emsp;&emsp;&emsp;&emsp;&emsp;<b>Tanggal : </b> {{$item->tanggal_pencatatan}} <br><br>
                                         <b>Dibayar Kepada &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</b>&nbsp;{{$item->kasir}}
                                     <p>
                                         <b>Keterangan &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</b>&nbsp;{{$item->keterangan}}
                                         <p>
                                         <b>Jumlah  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</b>&nbsp;{{Str::rupiah($item->jumlah)}}
                                     <p>
-                                        <b>Terbilang &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</b>{{Terbilang::angka($item->jumlah)}}rupiah
+                                        <b>Terbilang &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</b>{{Terbilang::angka($item->jumlah)}}Rupiah
                                     <p>
                                     <p>
                                     </p>
@@ -102,27 +102,40 @@
 
                                     <div style="clear:both;"></div>
                                     <table>
-                                    <thead>
-                                            <tr>
-                                               
-                                                <th>Disetujui Oleh</th>
-                                                <th>Dikeluarkan Oleh</th>
-                                                <th>Diterima Oleh</th>
+                                        <thead>
+                                            <tr>                                               
+                                                <th>Disetujui Oleh <br>Kepala Sekolah</th>                                                                                          
+                                                <th>Dikeluarkan Oleh <br> Bendahara Sekolah</th>                                          
+                                                <th>Diterima Oleh</th>                                                                                          
+                                                                                                                                    
                                             </tr>
                                         <tbody>
                                             <tr>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
+                                                <th></th>                                           
                                             </tr>
+                                            <tr></tr>
+                                            <tr></tr>
+                                            <tr></tr>
+                                            <tr></tr>
+                                            <tr></tr>
+                                            <tr></tr>
+                                            <tr></tr>
+                                            <tr></tr>
+                                            <tr></tr>
+                                            <tr></tr>
+                                            <tr></tr>
+                                            <tr></tr>
+                                            <tr></tr>
+                                            <tr></tr>
+                                            <tr></tr>
+                                            <tr></tr>
+                                            <tr></tr>
+                                     
                                             <tr>
-                                                <th style="width: 30%; ">............</th>
-                                                <th style="width: 50%; ">............</th>
-                                                <th style="width: 40%; ">............</th>
-                                                
+                                                <th style="width: 30%; ">Arum Widuri, S.Pd</th>
+                                                <th style="width: 50%; ">Sri Harmini, S.Pd</th>
+                                                <th style="width: 40%; ">{{$item->kasir}}</th>
+
                                             </tr>
 
                                         </tbody>
@@ -131,9 +144,9 @@
                                     </table>
                                     @endforeach
                                     <br><br>
-                                    <div class="well well-sm" style="margin-top:10px;">
+                                    <!-- <div class="well well-sm" style="margin-top:10px;">
                                         <div style="text-align: left;">Catatan :</div>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div style="clear:both;"></div>
                             </div>

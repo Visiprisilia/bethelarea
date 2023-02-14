@@ -194,9 +194,14 @@ Route::post('/updatekasmasuk/{no_bukti}', [KasMasukController::class,'updatekasm
 Route::get('/hapuskasmasuk/{no_bukti}', [KasMasukController::class,'hapuskasmasuk'])->middleware('auth', 'ceklevel:unit');
 Route::get('/sumberkasmasuk', [KasMasukController::class,'sumberkasmasuk']);
 Route::get('/pilihprokerkm', [KasMasukController::class,'pilihprokerkm'])->middleware('auth', 'ceklevel:unit');
+Route::get('/cetakkasmurid', [KasMasukController::class,'cetakkasmurid']);
+Route::get('/cetakkasmurid', [KasMasukController::class,'cetakkasmurid']);
+Route::get('/cetaksementara', [KasMasukController::class,'cetaksementara']);
 Route::get('/cetakrekapan', [KasMasukController::class,'cetakrekapan']);
 Route::get('/viewcetakrekapan', [KasMasukController::class,'viewcetakrekapan']);
 Route::post('/filter', [KasMasukController::class,'filter'])->middleware('auth', 'ceklevel:unit');
+Route::post('/simpanidsetoran/{no_bukti}', [KasMasukController::class,'simpanidsetoran'])->middleware('auth', 'ceklevel:unit');
+Route::post('/simpanstatus/{id_setoran}', [KasMasukController::class,'simpanstatus'])->middleware('auth', 'ceklevel:unit');
 
 //Kas Keluar
 Route::get('/kaskeluar', [KasKeluarController::class,'kaskeluar']);

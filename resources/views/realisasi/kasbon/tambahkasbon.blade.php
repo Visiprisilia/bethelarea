@@ -88,11 +88,15 @@
                                                     <label class="mb-1" for="inputFirstName">Anggaran</label>
                                                     <input class="form-control" readonly id="anggaran_bon" name="anggaran_bon" placeholder="Masukkan Anggaran"  />
                                                 </div> -->
-                                                <div class="col-md-6" id="anggaran_bon">
+                                                <div class="col-md-4">
+                                                        <label class="mb-1" for="inputFirstName">Saldo Kas</label>
+                                                        <input class="form-control" readonly id="totalkas" name="totalkas" value="{{$totalkas}}"  />
+                                                    </div>
+                                                <div class="col-md-4" id="anggaran_bon">
                                                     <label class="mb-1" for="inputFirstName">Anggaran</label>
                                                     <!-- <input class="form-control" readonly id="anggaran" name="anggaran"   /> -->
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-4">
                                                     <label class="mb-1" for="inputFirstName">Jumlah</label>
                                                     <input class="form-control" id="jumlah_bon" name="jumlah_bon" placeholder="Masukkan Jumlah"  />
                                                 </div>

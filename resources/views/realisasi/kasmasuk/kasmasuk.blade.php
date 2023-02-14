@@ -27,7 +27,8 @@
             @if (auth()->user()->level=="unit")
             <a href="tambahkasmasuk" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i>Tambah Data</a>
             <a href="tambahmutasi" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i>Mutasi</a>
-            <a href="cetakrekapan" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"></i>Cetak Kas Masuk Murid</a>
+            <a href="cetakkasmurid" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"></i>Cetak Kas Masuk Murid</a>
+            <a href="cetaksementara" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"></i>Cetak Setoran Kas Masuk Murid</a>
             <!-- <select class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" id="kasmasuk" require name="kasmasuk">
                 <option value>Pilih Periode</option>
                 @foreach ($kasmasuk as $item)
@@ -57,16 +58,17 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>No</th>
+                        <th>No</th>
                             <th>No.Bukti</th>
                             <th>Periode</th>
                             <th>Tanggal Pencatatan</th>
                             <th>Keterangan</th>
-                            <!-- <th>Akun</th> -->
-                            <th>Sumber</th>
-                            <th>Jumlah</th>
-                            <!-- <th>Diterima Dari</th> -->
+                            <th>Nama</th>                    
+                            <th>Jumlah</th>                              
+                            <th>Diterima Dari</th>    
+                            @if (auth()->user()->level=="unit")                          
                             <th>Aksi</th>
+                            @endif
                         </tr>
                     <tbody>
                     </tbody>

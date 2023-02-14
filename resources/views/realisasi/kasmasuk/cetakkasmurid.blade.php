@@ -21,28 +21,33 @@
             <h6>Alamat: Jl Hasanudin No.3B, Mangunsari, Kec.Sidomukti, Kota Salatiga, Jawa Tengah </h6> <br>
             <p style="text-align:center;"><strong>REKAPAN KAS MASUK MURID</strong><br>
         </center>
-  
+        <!-- <select class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" id="rekap" name="rekap">
+                <option value>Pilih Sumber</option>
+                @foreach ($sumber as $item)
+                <option value="{{ $item->id_sumber}}">{{$item->nama_sumber}}</option>
+                @endforeach
+            </select> -->
         <div id="print-area">
-            <form action="/simpanstatus/{id_setoran}" method="post">                                         
+            <form action="/filter" method="post">                                         
                 @csrf
-                <!-- <div class="container">
+                <div class="container">
                     <div class="row">
                         <div class="container-fluid">
                             <div class="form-group row">
                                 <label for="date" class="col-form-label col-sm-2">Mulai tanggal</label>
                                 <div class="col-sm-3">
-                                    <input type="text" class="form-control input-sm" id="tgl_mulai" name="tgl_mulai" required />
+                                    <input type="date" class="form-control input-sm" id="tgl_mulai" name="tgl_mulai" required />
                                 </div>
                                 <label for="date" class="col-form-label col-sm-2">Selesai tanggal</label>
                                 <div class="col-sm-3">
-                                    <input type="text" class="form-control input-sm" id="tgl_selesai" name="tgl_selesai" required />
+                                    <input type="date" class="form-control input-sm" id="tgl_selesai" name="tgl_selesai" required />
                                 </div>
                                 <div class="col-sm-2">
                                     <button type="submit" name="filter" title="filter" class="btn btn-success">Filter</button>
                                 </div>
                             </div>
                         </div>
-                    </div> -->
+                    </div>
             <br>
 
             <!-- Periode : <select class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" id="laporankas" require name="laporankas"> -->
@@ -58,7 +63,7 @@
                         <!-- <th>Akun</th> -->
                         <!-- <th>Sumber</th> -->
                         <th>Jumlah</th>
-                        <!-- <th>id</th> -->
+                        <th>Status</th>
                     </tr>
                 <tbody>
                     @foreach ($kasmasuk as $item)
@@ -72,7 +77,7 @@
                         <!-- <td>{{ $item->akun}}</td>                             -->
                         <!-- <td>{{ $item->nama_sumber}}</td>                             -->
                         <td>{{Str::rupiah ($item->jumlah)}}</td>
-                        <!-- <td>{{ $item->id_setoran}}</td>                             -->
+                        <td>{{ $item->status_setoran}}</td>                            
 
                     </tr>
                     @endforeach
@@ -103,7 +108,7 @@
     <span class="pull-right col-xs-12">
         <input class="no-print" type="button" value="Cetak" onclick="window.print()">
         <!-- <input type="button" value="Kembali" onclick=self.history.back() class="no-print"> -->
-        <button type="submit" class="btn btn-success">Setor</button>
+        <!-- <button type="submit" class="btn btn-success">Cetak</button> -->
         <a href="{{url('/kasmasuk')}}" class="btn">Kembali</a>
 
         <div style="clear:both;"></div>

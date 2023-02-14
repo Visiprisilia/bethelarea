@@ -90,7 +90,11 @@
                                                 </div>                                              
                                             </div>
                                                 <div class="row gx-3 mb-3">
-                                                <div class="col-md-6" id="anggaran">
+                                                    <div class="col-md-4">
+                                                        <label class="mb-1" for="inputFirstName">Saldo Kas</label>
+                                                        <input class="form-control" readonly id="totalkas" name="totalkas" value="{{$totalkas}}"  />
+                                                    </div>
+                                                <div class="col-md-4" id="anggaran">
                                                     <label class="mb-1" for="inputFirstName">Anggaran</label>
                                                     <!-- <input class="form-control" readonly id="anggaran" name="anggaran"   /> -->
                                                 </div>
@@ -98,7 +102,7 @@
                                                     <label class="mb-1" for="inputFirstName">Anggaran</label>
                                                     <input class="form-control" readonly id="anggaran" name="anggaran"   />
                                                 </div> -->
-                                                <div class="col-md-6">
+                                                <div class="col-md-4">
                                                     <label class="mb-1" for="inputFirstName">Jumlah</label>
                                                     <input class="form-control" id="jumlah" name="jumlah" placeholder="Masukkan Jumlah"  />
                                                 </div>
@@ -112,7 +116,8 @@
                                                 <div class="col-md-6">
                                                 <label class="mb-1" for="inputFirstName">Penanggung Jawab :</label>
                                                 <input class="form-control" readonly id="penanggungjawab" name="penanggungjawab"  placeholder="Penanggung jawab"  />
-                                            </div>
+                                            </div></div>
+                                            <div class="row gx-3 mb-3">
                                             <div class="col-md-6">
                                                 <label class="mb-1" for="inputFirstName">Dibayar Kepada :</label>
                                                 <input class="form-control" id="kasir" name="kasir"  placeholder="Dibayar Kepada"  />

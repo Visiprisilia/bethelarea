@@ -51,11 +51,11 @@
                                             </div>      
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Akun</label>
-                                                <input class="form-control"  id="akun" name="akun" disabled value="{{$item->akun}}"/>
+                                                <input class="form-control"  id="akun" name="akun" disabled value="{{$item->nama_akun}}"/>
                                             </div>                           
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Sumber</label>
-                                                <input class="form-control"  id="sumber" name="sumber" disabled value="{{$item->sumber}}"/>
+                                                <input class="form-control"  id="sumber" name="sumber" disabled value="{{$item->nama_sumber}}"/>
                                             </div>                                             
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Jumlah</label>
@@ -63,7 +63,7 @@
                                             </div>        
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Diterima dari:</label>
-                                                <input class="form-control" id="diterimadari" name="diterimadari" disabled value="{{$item->diterimadari}}" />
+                                                <input class="form-control" id="diterimadari" name="diterimadari" disabled value="{{$item->kasir}}{{$item->nama_donatur}}{{$item->yayasans}}" />
                                             </div>      
                                             <div class="mb-3">
                                                 <a href="/cetakkasmasuk/{{$item->no_bukti}}"  class="btn btn-primary">Cetak</a>

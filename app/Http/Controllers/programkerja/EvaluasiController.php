@@ -155,7 +155,9 @@ class EvaluasiController extends Controller
 	public function pilihprogramkerja(Request $request)
 	{
 		$kode = $request->kode;
-		$data = ProgramKerja::where("kode_proker", $kode)->first();
+		$data = ProgramKerja::where("kode_proker", $kode)
+		->where('status_proker','like','Disetujui')
+		->first();
 		$data2 = Akuns::join("coa", "akuns.kode_akun", "=", "coa.kode_akun")->where("kode_proker", $kode)->get();
 		$data3 = KasKeluar::where("prokers", $kode)->get();
 		return response()->json([

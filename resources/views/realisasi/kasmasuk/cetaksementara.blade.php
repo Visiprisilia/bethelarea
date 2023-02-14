@@ -14,16 +14,16 @@
                 font-size: 11pt;
             }
         </style>
-        <center>
-            <img align="bottom" src="{{asset('template/img/logo4.png') }}" style="max-width:100px;">
+       <center>
+            <!-- <img align="bottom" src="{{asset('template/img/logo4.png') }}" style="max-width:100px;">
             <h6>Yayasan Bethel Area</h6>
             <h6>Sekolah KB/TK "Satria Tunas Bangsa"</h6>
-            <h6>Alamat: Jl Hasanudin No.3B, Mangunsari, Kec.Sidomukti, Kota Salatiga, Jawa Tengah </h6> <br>
-            <p style="text-align:center;"><strong>REKAPAN KAS MASUK MURID</strong><br>
+            <h6>Alamat: Jl Hasanudin No.3B, Mangunsari, Kec.Sidomukti, Kota Salatiga, Jawa Tengah </h6> <br> -->
+            <p style="text-align:center;"><strong>REKAPAN KAS MASUK MURID YANG BELUM DISETOR</strong><br>
         </center>
-  
-        <div id="print-area">
-            <form action="/simpanstatus/{id_setoran}" method="post">                                         
+        
+            <div id="print-area">
+            <form action="/simpanidsetoran/{no_bukti}" method="post">                                         
                 @csrf
                 <!-- <div class="container">
                     <div class="row">
@@ -43,6 +43,7 @@
                             </div>
                         </div>
                     </div> -->
+          
             <br>
 
             <!-- Periode : <select class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" id="laporankas" require name="laporankas"> -->
@@ -58,7 +59,6 @@
                         <!-- <th>Akun</th> -->
                         <!-- <th>Sumber</th> -->
                         <th>Jumlah</th>
-                        <!-- <th>id</th> -->
                     </tr>
                 <tbody>
                     @foreach ($kasmasuk as $item)
@@ -72,7 +72,6 @@
                         <!-- <td>{{ $item->akun}}</td>                             -->
                         <!-- <td>{{ $item->nama_sumber}}</td>                             -->
                         <td>{{Str::rupiah ($item->jumlah)}}</td>
-                        <!-- <td>{{ $item->id_setoran}}</td>                             -->
 
                     </tr>
                     @endforeach
@@ -90,23 +89,22 @@
             <div style="clear:both;"></div>
         </div>
     </div>
+   
 <br>
 <br>
 
 
 <center>
-    &emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b> Salatiga,</b> {{$tanggalhariini}} &nbsp;<br><br>
-    <b>&emsp;&nbsp;&nbsp;&emsp;Membuat&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Menyetujui&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>Mengetahui&emsp;&nbsp;&emsp;&emsp;&emsp;&nbsp;</b></b></b><br />
-    <b>&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bagian Administrasi&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Kepala Sekolah&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>Bendahara Yayasan&emsp;&nbsp;&emsp;&emsp;&emsp;&nbsp;&emsp;</b></b></b><br /><br><br><br>
-    &emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Astrid Wulan Dessianti, S.Pd&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;Arum Widuri, S.Pd&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Neny Widijawati, S.Pd&emsp;&nbsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;<br /><br><br><br>
-</center>
-    <span class="pull-right col-xs-12">
-        <input class="no-print" type="button" value="Cetak" onclick="window.print()">
+<span class="pull-right col-xs-12">
+        <!-- <input class="no-print" type="button" value="Cetak" onclick="window.print()"> -->
         <!-- <input type="button" value="Kembali" onclick=self.history.back() class="no-print"> -->
+        <!-- <button type="submit" class="btn btn-success">Cetak</button> -->
         <button type="submit" class="btn btn-success">Setor</button>
         <a href="{{url('/kasmasuk')}}" class="btn">Kembali</a>
 
         <div style="clear:both;"></div>
         </div>
     </span>
-    </form> 
+   </center>
+   </form> 
+    

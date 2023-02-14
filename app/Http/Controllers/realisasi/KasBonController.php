@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\Pegawai\Pegawai;
 use App\Models\ProgramKerja\Anggaran;
 use Carbon\Carbon;
+use App\Models\BukuBesar\BukuBesarKas;
 use App\Http\Controllers\Controller;
 
 
@@ -26,6 +27,10 @@ class KasBonController extends Controller
 	{
 		$periode = Periode::where('status', 'LIKE', 'AKTIF')->get();
 		$pegawai = Pegawai::where('status', 'LIKE', 'AKTIF')->get();
+		$laporankas = BukuBesarKas::orderBy('tgl','desc')->get();  
+        $tambah = BukuBesarKas::sum('bertambah');
+        $kurang = BukuBesarKas::sum('berkurang');
+        $totalkas = $tambah-$kurang;
 		$akun = Akuns::join("periode", "akuns.periode", "=", "periode.kode_periode")
 		->join("coa", "akuns.kode_akun", "=", "coa.kode_akun")
 		->where('status', 'LIKE', 'AKTIF')
@@ -57,7 +62,8 @@ class KasBonController extends Controller
 		// ->where('anggaran', '!=',0)		
 		// ->orderBy('anggaran', 'asc')
 		->get();
-		return view('realisasi/kasbon/tambahkasbon', ['periode'=>$periode,'pegawai'=>$pegawai,'programkerja'=>$programkerja,'akun'=>$akun]);
+		return view('realisasi/kasbon/tambahkasbon', ['periode'=>$periode,'pegawai'=>$pegawai,'programkerja'=>$programkerja,
+		'akun'=>$akun,'totalkas'=>$totalkas]);
 	}
     public function simpankasbon(Request $request)
 	{
@@ -76,24 +82,23 @@ class KasBonController extends Controller
 		$no_buktibon = 'BKB' . $tanggalhariini . $check + 1;
 				
 		$validator = Validator::make($request->all(), [	
-			'jumlah_bon' => 'lte:anggaran_bon|numeric',
+			'jumlah_bon' => 'lte:anggaran_bon|numeric|required',
 			'periode' => 'required',
 			'keterangan_bon' => 'required',
 			'proker_bon' => 'required',
 			'akun_bon' => 'required',
 			'anggaran_bon' => 'required',
-			'jumlah_bon' => 'required',
 			'penanggungjawab_bon' => 'required',
 
 		],[
 			"jumlah_bon.lte"=>"Jumlah harus bernilai kurang dari atau sama dengan Anggaran",
 			"jumlah_bon.numeric"=>"Jumlah harus berupa nilai rupiah",
+			"jumlah_bon.required"=>"Jumlah tidak boleh kosong",
 			"periode.required"=>"Periode tidak boleh kosong",
 			"keterangan_bon.required"=>"Keterangan tidak boleh kosong",
 			"proker_bon.required"=>"Program kerja tidak boleh kosong",
 			"akun_bon.required"=>"Akun tidak boleh kosong",
 			"anggaran_bon.required"=>"Anggaran tidak boleh kosong",
-			"jumlah_bon.required"=>"Jumlah tidak boleh kosong",
 			"penanggungjawab_bon.required"=>"Penanggungjawab tidak boleh kosong",
 		]);
 

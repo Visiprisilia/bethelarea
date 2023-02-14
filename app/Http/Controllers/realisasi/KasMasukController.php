@@ -11,9 +11,7 @@ use App\Models\Murid\Murid;
 use App\Models\Akuns;
 use Illuminate\Support\Facades\Validator;
 use App\Models\ProgramKerja\ProgramKerja;
-
 use App\Models\Pegawai\Pegawai;
-
 use App\Http\Controllers\Controller;
 use App\Models\Coa\Coa;
 
@@ -41,7 +39,7 @@ class KasMasukController extends Controller
         return view('realisasi/kasmasuk/sumberkasmasuk', ['periode'=>$periode,'coa'=>$coa,'kasmasuk'=>$kasmasuk,'sumber'=>$sumber]);
     }
 	//cetak rekapan kas masuk murid
-	public function cetakrekapan()
+	public function cetakkasmurid()
     {
 		
 		//untuk tampilan cetak
@@ -51,18 +49,19 @@ class KasMasukController extends Controller
 		$sumber = Sumber::orderBy('created_at','desc')->get();
 		$kasmasuk = KasMasuk::leftjoin("murid","kas_masuk.kasir","=","murid.nomor_induk")
 		->join("sumber","kas_masuk.sumber","=","sumber.id_sumber")
-		->where('sumber','=',1)->orderBy('kas_masuk.created_at','asc')->get();
+		->where('sumber','=',1)
+		->orderBy('kas_masuk.created_at','asc')->get();
 		
 		//untuk jumlah
 		$jumlahs = KasMasuk::leftjoin("murid","kas_masuk.kasir","=","murid.nomor_induk")
 		->join("sumber","kas_masuk.sumber","=","sumber.id_sumber")
-		->where('sumber','=',1)->sum('jumlah');
+		->where('sumber','=',1)
+		->sum('jumlah');
 		
-
-
-        return view('realisasi/kasmasuk/cetakrekapan', ['kasmasuk'=>$kasmasuk,'sumber'=>$sumber,'jumlahs'=>$jumlahs,'tanggalhariini'=>$tanggalhariini]);
+        return view('realisasi/kasmasuk/cetakkasmurid', ['kasmasuk'=>$kasmasuk,'sumber'=>$sumber,'jumlahs'=>$jumlahs,
+		'tanggalhariini'=>$tanggalhariini]);
     }
-		//filter scetak rekapan kas masuk murid
+	//filter scetak rekapan kas masuk murid
 	public function filter(Request $request)
 	{
 		$tgl_mulai = $request->input('tgl_mulai');
@@ -85,9 +84,78 @@ class KasMasukController extends Controller
 		->where('tanggal_pencatatan','<=',$tgl_selesai)
 		->where('sumber','=',1)->sum('jumlah');
 		
-		return view('realisasi/kasmasuk/cetakrekapan', ['kasmasuk'=>$kasmasuk,'sumber'=>$sumber, 'jumlahs'=>$jumlahs, 'mulai'=>$mulai,'tanggalhariini'=>$tanggalhariini]);
+		return view('realisasi/kasmasuk/cetakkasmurid', ['kasmasuk'=>$kasmasuk,'sumber'=>$sumber, 'jumlahs'=>$jumlahs, 'mulai'=>$mulai,'tanggalhariini'=>$tanggalhariini]);
 
 	}
+	public function cetakrekapan()
+    {
+		
+		//untuk tampilan cetak
+		$tanggalhariini = Carbon::now()->isoFormat('D MMMM Y');
+		$periode = Periode::orderBy('created_at','desc')->get();
+		$coa = Coa::orderBy('created_at','desc')->get();
+		$sumber = Sumber::orderBy('created_at','desc')->get();
+		$kasmasuk = KasMasuk::leftjoin("murid","kas_masuk.kasir","=","murid.nomor_induk")
+		->join("sumber","kas_masuk.sumber","=","sumber.id_sumber")
+		->where('sumber','=',1)
+		->where('status_setoran','=','Belum Disetor')
+		->orderBy('kas_masuk.created_at','asc')->get();
+		
+		//untuk jumlah
+		$jumlahs = KasMasuk::leftjoin("murid","kas_masuk.kasir","=","murid.nomor_induk")
+		->join("sumber","kas_masuk.sumber","=","sumber.id_sumber")
+		->where('sumber','=',1)
+		->where('status_setoran','=','Belum Disetor')
+		->sum('jumlah');
+		
+        return view('realisasi/kasmasuk/cetakrekapan', ['kasmasuk'=>$kasmasuk,'sumber'=>$sumber,'jumlahs'=>$jumlahs,
+		'tanggalhariini'=>$tanggalhariini]);
+    }
+	public function cetaksementara()
+    {
+		
+		//untuk tampilan cetak
+		$tanggalhariini = Carbon::now()->isoFormat('D MMMM Y');
+		$periode = Periode::orderBy('created_at','desc')->get();
+		$coa = Coa::orderBy('created_at','desc')->get();
+		$sumber = Sumber::orderBy('created_at','desc')->get();
+		$kasmasuk = KasMasuk::leftjoin("murid","kas_masuk.kasir","=","murid.nomor_induk")
+		->join("sumber","kas_masuk.sumber","=","sumber.id_sumber")
+		->where('sumber','=',1)
+		->where('status_setoran','=','Belum Disetor')
+		->orderBy('kas_masuk.created_at','asc')->get();
+		
+		//untuk jumlah
+		$jumlahs = KasMasuk::leftjoin("murid","kas_masuk.kasir","=","murid.nomor_induk")
+		->join("sumber","kas_masuk.sumber","=","sumber.id_sumber")
+		->where('sumber','=',1)
+		->where('status_setoran','=','Belum Disetor')
+		->sum('jumlah');
+		
+        return view('realisasi/kasmasuk/cetaksementara', ['kasmasuk'=>$kasmasuk,'sumber'=>$sumber,'jumlahs'=>$jumlahs,
+		'tanggalhariini'=>$tanggalhariini]);
+    }
+	public function simpanidsetoran(Request $request)
+	{
+		$check = 0;
+		$no_bukti = $request->no_bukti;
+		KasMasuk::where('no_bukti', '!=',NULL)
+		->join("sumber","kas_masuk.sumber","=","sumber.id_sumber")
+		->where('sumber','=',1)
+		->where('status_setoran','=','Belum Disetor')
+		->update(['id_setoran' => $check + 1]);
+		return redirect('/cetakrekapan')->with('status', 'Data berhasil ditambahkan');
+	}
+	
+	public function simpanstatus(Request $request)
+	{
+		$check = 0;
+		$id_setoran = $request->id_setoran;
+		$kasmasuk=KasMasuk::where('id_setoran','!=', 0)->update(['status_setoran' => 'Sudah Disetor']);
+		return redirect('/kasmasuk');
+		// ->with('status', 'Data berhasil ditambahkan');
+	}
+	
 	//tidak dipakai
 	public function viewcetakrekapan(Request $request)
     {
@@ -143,6 +211,7 @@ class KasMasukController extends Controller
 			// 'akun' => 'required',
 			'diterimadari'=>'required',
 			'sumber' => 'required',
+			// 'nama_donatur' => 'required',
 			'jumlah' => 'required|numeric'
 
 		],[
@@ -151,6 +220,7 @@ class KasMasukController extends Controller
 			// "progja.required"=>"Program kerja tidak boleh kosong",
 			// "akun.required"=>"Akun tidak boleh kosong",
 			"diterimadari.required"=>"Diterima dari siapa?",
+			// "nama_donatur.required"=>"Nama Donatur tidak boleh kosong?",
 			"sumber.required"=>"Sumber tidak boleh kosong",
 			"jumlah.required"=>"Jumlah tidak boleh kosong",
 			"jumlah.numeric"=>"Jumlah arus berupa nilai rupiah"
@@ -187,7 +257,8 @@ class KasMasukController extends Controller
 			'akun'=>$request->akun,
 			'sumber'=>$request->sumber,
 			'jumlah'=>$request->jumlah,
-			'kasir'=>$request->kasir
+			'kasir'=>$request->kasir,
+			'nama_donatur'=>$request->nama_donatur,
 	//$check = Periode kolom counter_kk +1, sesuai dengan $periode
 //setelah menambah km, ubah di tabel periode untuk kolom counter_km =+1 sesuai dengan $periode
  
@@ -242,8 +313,10 @@ class KasMasukController extends Controller
 			'akun'=>'421001',
 			'sumber'=>2,
 			'jumlah'=>$request->jumlah,
-			'kasir'=>0,
+			'kasir'=>NULL,
 			'diterimadari'=>'Neny Widijawati',
+			'nama_donatur'=>NULL,
+			'yayasans'=>'Neny Widijawati'
 	//$check = Periode kolom counter_kk +1, sesuai dengan $periode
 //setelah menambah km, ubah di tabel periode untuk kolom counter_km =+1 sesuai dengan $periode
  
@@ -281,16 +354,19 @@ class KasMasukController extends Controller
 	public function lihatkasmasuk($no_bukti)
 	{
 		$murid = Murid::orderBy('created_at','desc')->get();
-		$kasmasuk = KasMasuk::where('no_bukti', $no_bukti)->get();
+		$kasmasuk = KasMasuk::join("sumber","kas_masuk.sumber","=","sumber.id_sumber")
+		->join("coa","kas_masuk.akun","=","coa.kode_akun")
+		->where('no_bukti', $no_bukti)->get();
 		return view('realisasi/kasmasuk/lihatkasmasuk', compact('kasmasuk','murid'));
 	}
 	public function cetakkasmasuk($no_bukti)
 	{
 		$murid = Murid::orderBy('created_at','desc')->get();
 		$kasmasuk = KasMasuk::where('no_bukti', $no_bukti)->get();
+		$sumber = Sumber::orderBy('created_at','desc')->get();
 		// $kasmasuk = KasMasuk::join("murid","kas_masuk.kasir","=","murid.nomor_induk")
 		// ->where('no_bukti', $no_bukti)->get();		
-		return view('realisasi/kasmasuk/cetakkasmasuk',compact('kasmasuk','murid'));
+		return view('realisasi/kasmasuk/cetakkasmasuk',compact('kasmasuk','murid','sumber'));
 	}
 	public function hapuskasmasuk($no_bukti)
 	{

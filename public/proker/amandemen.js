@@ -19,7 +19,7 @@ $(document).on("change","#kode_prokeramandemen",function(){
 
             $.each(data.akun,function(x,i){
       
-                $("#akunss").append('<input class="form-control" id="akunss" name="akunss" readonly name="akunss"  value="'+i.kode_akun+'" placeholder="Masukkan Akun Biaya" required />');
+                $("#akunss").append('<input class="form-control" id="akunss" name="akunss" readonly name="akunss"  value="'+i.kode_akun+' - '+i.nama_akun+'" placeholder="Masukkan Akun Biaya" required />');
                 $("#jumlah").append('<input class="form-control" id="jumlah" name="jumlah" readonly name="jumlah"  value="'+i.jumlah+'" placeholder="Masukkan Akun Biaya" required />');
                 
                 

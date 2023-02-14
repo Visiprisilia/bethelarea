@@ -51,7 +51,7 @@
                             <td>{{ $item->nama_akun}}</td>
                             <td>{{ $item->kelompok_rek}}</td>
                             <td>{{ $item->saldo_normal}}</td>
-                            <td>{{ $item->keterangan}}</td>      
+                            <td>{{ $item->keterangan_coa}}</td>      
                             @if (auth()->user()->level=="super admin")
                             <td>
                                 <a href="/editcoa/{{$item->kode_akun}}"><i class="fas fa-edit" style="color:green"></i></a> | 

@@ -84,14 +84,23 @@
 
                                     </div>
                                     <p>
-                                        <b>No. Bukti &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</b>&nbsp;{{ $item->no_bukti}}&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; <b>Tanggal : </b> {{$item->tanggal_pencatatan}} <br><br>
-                                        <b>Diterima dari &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</b>&nbsp;{{$item->diterimadari}}
+                                        <b>No. Bukti &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</b>&nbsp;{{ $item->no_bukti}}&emsp;&emsp;&emsp;&emsp;&emsp;<b>Tanggal : </b> {{$item->tanggal_pencatatan}} <br><br>
+                                        <b>Diterima dari &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</b>&nbsp;{{$item->kasir}}{{$item->nama_donatur}}{{$item->yayasans}}
+                                       <?php  
+                                    //    $id_sumber = $request->id_sumber;
+                                    //    if ($id_sumber = 1) {
+                                    //     $item->kasir;
+                                    // }else if($id_sumber = 2){
+                                    //     $item->diterimadari;
+                                    // }else{
+                                    // $item->diterimadari ;}
+                                    ?>
                                     <p>
                                         <b>Keterangan &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :</b>&nbsp;{{$item->keterangan}}
                                         <p>
                                         <b>Jumlah &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;:</b>&nbsp;{{Str::rupiah($item->jumlah)}}
                                         <p>
-                                        <b>Terbilang &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</b>{{Terbilang::angka($item->jumlah)}}rupiah
+                                        <b>Terbilang &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</b>{{Terbilang::angka($item->jumlah)}}Rupiah
                                     <p>
                                     <p>
                                     </p>
@@ -103,26 +112,39 @@
                                     <div style="clear:both;"></div>
                                     <table>
                                         <thead>
-                                            <tr>
-                                               
-                                                <th>Diketahui Oleh</th>
-                                                <th>Dibayar Oleh</th>
-                                                <th>Diterima Oleh</th>
+                                            <tr>                                               
+                                                <th>Diketahui Oleh <br>Kepala Sekolah</th>                                                                                          
+                                                <th>Diterima Oleh <br> Bagian Administrasi</th>                                          
+                                                <th>Dibayar Oleh</th>                                                                                          
+                                                                                                                                    
                                             </tr>
                                         <tbody>
                                             <tr>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
+                                                <th></th>                                           
                                             </tr>
+                                            <tr></tr>
+                                            <tr></tr>
+                                            <tr></tr>
+                                            <tr></tr>
+                                            <tr></tr>
+                                            <tr></tr>
+                                            <tr></tr>
+                                            <tr></tr>
+                                            <tr></tr>
+                                            <tr></tr>
+                                            <tr></tr>
+                                            <tr></tr>
+                                            <tr></tr>
+                                            <tr></tr>
+                                            <tr></tr>
+                                            <tr></tr>
+                                            <tr></tr>
+                                     
                                             <tr>
-                                                <th style="width: 30%; ">............</th>
-                                                <th style="width: 50%; ">............</th>
-                                                <th style="width: 40%; ">............</th>
-                                                
+                                                <th style="width: 30%; ">Arum Widuri, S.Pd</th>
+                                                <th style="width: 50%; ">Astrid Dessianti, S.Pd</th>
+                                                <th style="width: 40%; ">{{$item->diterimadari}}</th>
+
                                             </tr>
 
                                         </tbody>
@@ -131,9 +153,9 @@
                                     </table>
                                     @endforeach
                                     <br><br>
-                                    <div class="well well-sm" style="margin-top:10px;">
+                                    <!-- <div class="well well-sm" style="margin-top:10px;">
                                         <div style="text-align: left;">Catatan :</div>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div style="clear:both;"></div>
                             </div>

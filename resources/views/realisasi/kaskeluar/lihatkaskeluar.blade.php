@@ -51,7 +51,7 @@
                                             </div>      
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Akun</label>
-                                                <input class="form-control"  id="akun" name="akun"disabled value="{{$item->akun}}"/>
+                                                <input class="form-control"  id="akun" name="akun"disabled value="{{$item->nama_akun}}"/>
                                             </div>                                             
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Jumlah</label>
