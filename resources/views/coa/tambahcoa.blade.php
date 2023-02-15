@@ -43,11 +43,11 @@
                                             @csrf
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Kode Akun</label>
-                                                <input class="form-control" id="kode_akun" name="kode_akun" />
+                                                <input class="form-control" id="kode_akun" name="kode_akun" placeholder="Masukkan Kode Akun" />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Nama Akun</label>
-                                                <input class="form-control" id="nama_akun" name="nama_akun" />
+                                                <input class="form-control" id="nama_akun" name="nama_akun" placeholder="Masukkan Nama Akun" />
                                             </div>                                         
                                             <div class="mb-3">
                                                 <label for="exampleFormControlSelect1">Kelompok Rekening</label>
@@ -70,7 +70,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Keterangan</label>
-                                                <input class="form-control" id="keterangan_coa" name="keterangan_coa" />
+                                                <input class="form-control" id="keterangan_coa" name="keterangan_coa" placeholder="Masukkan Keterangan" />
                                             </div>
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Tambah</button>

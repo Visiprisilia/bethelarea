@@ -21,7 +21,6 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 <a>Buku Besar Anggaran</a></div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{Str::rupiah ($anggarans)}}</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -38,8 +37,8 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                    <a>Anggaran</a></div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{Str::rupiah ($anggarans)}}</div>                            </div>
+                                    <a>Kas Masuk</a></div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{Str::rupiah ($tambah)}}</div>                            </div>
                             <div class="col-auto">
                                 <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
                             </div>
@@ -54,9 +53,9 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                    <a>Realisasi Anggaran</a>
+                                    <a>Kas Keluar</a>
                                 </div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{Str::rupiah ($realisasis)}}</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{Str::rupiah ($kurang)}}</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -71,9 +70,9 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                    <a>Posisi Anggaran</a>
+                                    <a>Saldo Kas</a>
                                 </div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{Str::rupiah ($posisianggarans)}}</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{Str::rupiah ($totalkas)}}</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>

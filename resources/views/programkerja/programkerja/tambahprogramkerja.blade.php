@@ -90,11 +90,11 @@
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Tujuan</label>
-                                                    <input class="form-control" id="tujuan" name="tujuan"  />
+                                                    <input class="form-control" id="tujuan" name="tujuan" placeholder="Masukkan Tujuan"  />
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputLastName">Indikator Pencapaian</label>
-                                                    <input class="form-control" id="indikator" name="indikator"  />
+                                                    <input class="form-control" id="indikator" name="indikator" placeholder="Masukkan Indikator"  />
                                                 </div>
                                             </div>
                                             <div class="row gx-3 mb-3">
@@ -123,7 +123,7 @@
 
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Keterangan</label>
-                                                <input class="form-control" id="keterangan_proker" name="keterangan_proker"   />
+                                                <input class="form-control" id="keterangan_proker" name="keterangan_proker" placeholder="Masukkan Keterangan"   />
                                             </div>
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Tambah</button>

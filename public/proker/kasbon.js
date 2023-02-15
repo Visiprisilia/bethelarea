@@ -22,7 +22,7 @@
 $(document).on("change","#akun_bon",function(){
     var kode = $(this).val();
     $.ajax({
-        url:"/pilihprokerbonakun",
+        url:"/pilihprokerbonakuns",
         method:"get",
         data:{
             kode:kode

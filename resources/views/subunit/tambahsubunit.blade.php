@@ -42,7 +42,7 @@
                                             @csrf
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Kode Sub Unit</label>
-                                                <input class="form-control" id="kode_subunit" name="kode_subunit"  />
+                                                <input class="form-control" id="kode_subunit" name="kode_subunit" placeholder="Masukkan Kode Sub Unit; Digit pertama untuk Kode Unit, digit kedua untuk Kode Sub Unit (Cth : 1.1) "  />
                                             </div>
                                             <div class="form-group">
                                             <label class="mb-1" for="inputLastName">Unit</label>
@@ -55,10 +55,10 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Nama Sub Unit</label>
-                                                <input class="form-control" id="nama_subunit" name="nama_subunit"  />
+                                                <input class="form-control" id="nama_subunit" name="nama_subunit" placeholder="Masukkan Nama Sub Unit"  />
                                             </div>
                                            
-                                            <div class="md-3">
+                                            <div class="mb-3">
                                                 <label for="inputLastName">Status</label>
                                                 <select class="form-control" id="status" name="status" >
                                                     <option  value>Pilih Status</option>

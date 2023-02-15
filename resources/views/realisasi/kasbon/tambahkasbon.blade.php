@@ -1,5 +1,8 @@
 @extends('template')
 @section('container')
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 @if($errors->any())
    <ul class="alert alert-danger">
       @foreach($errors->all() as $error)
@@ -58,25 +61,25 @@
                                                 </div> -->
                                             <div class="mb-3">
                                                 <label class="mb-1" for="inputFirstName">Keterangan</label>
-                                                <input class="form-control" id="keterangan_bon" name="keterangan_bon"  />
+                                                <input class="form-control" id="keterangan_bon" name="keterangan_bon" placeholder="Masukkan Keterangan" />
                                             </div>
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputLastName">Program Kerja</label>
-                                                    <select class="form-control" id="proker_bon" name="proker_bon">
-                                                        <option value>Pilih Program Kerja</option>
+                                                    <select class="form-select" id="proker_bon" name="proker_bon">
+                                                        <!-- <option value>Pilih Program Kerja</option>
                                                         @foreach ($programkerja as $item)
                                                         <option value="{{ $item->kode_proker}}">{{$item->kode_proker}}</option>
-                                                        @endforeach
+                                                        @endforeach -->
                                                     </select>
                                                 </div>
                                                 <div class="col-md-6" >
                                                     <label class="mb-1" for="inputLastName">Akun</label>
                                                     <select class="form-control" id="akun_bon" name="akun_bon">
-                                                        <option  value>Pilih Akun</option>
+                                                        <!-- <option  value>Pilih Akun</option>
                                                         @foreach ($akun as $item)
                                                         <option value="{{ $item->kode_akun}}">{{$item->kode_proker}} - {{$item->kode_akun}}</option>
-                                                        @endforeach
+                                                        @endforeach -->
                                                     </select>
                                                 </div></div>
                                                 <!-- <div class="col-md-6">
@@ -144,5 +147,46 @@
     </main>
 </div>
 <script src="/proker/kasbon.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+        $(document).ready(function(){
+            $("#proker_bon").select2({
+                placeholder:'Pilih Proker',
+                ajax: {
+                    url:"{{route('pilihprokerbon.index')}}",
+                    processResults: function({data}){
+                        return {
+                            results: $.map(data, function(item){
+                                return {
+                                    id: item.kode_proker,
+                                    text: item.nama_proker
+                                }
+                            })
+                        }
+                    }
+                }
+            });
+            $("#proker_bon").change(function(){
+                let kode_proker = $('#proker_bon').val();
+
+                $("#akun_bon").select2({
+                placeholder:'Pilih Akun',
+                ajax: {
+                    url: "{{url('pilihprokerbonakun')}}/"+kode_proker,
+                    processResults: function({data}){
+                        return {
+                            results: $.map(data, function(item){
+                                return {
+                                    id: item.kode_akun,
+                                    text: item.kode_akun
+                                }
+                            })
+                        }
+                    }
+                }
+            });
+            });
+        });
+            </script>
 
 @endsection

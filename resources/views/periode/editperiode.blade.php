@@ -51,7 +51,7 @@
                                                     <input class="form-control"  type="date" id="akhir_periode" name="akhir_periode" value="{{$item->akhir_periode}}"  required/>
                                                 </div>
                                             </div>
-                                            <div class="md-3">
+                                            <div class="mb-3">
                                                 <label for="inputLastName">Status</label>
                                                 <select class="form-control" id="status" name="status" value="{{$item->status}}" required>
                                                     <option disabled value>Pilih Status</option>

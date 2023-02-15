@@ -185,6 +185,22 @@ class KasMasukController extends Controller
 
 		return view('realisasi/kasmasuk/tambahkasmasuk',['periode'=>$periode,'akun'=>$akun,'murid'=>$murid,'sumber'=>$sumber]);
 	}
+	public function tambahkasmasukmurid()
+	{
+		$periode = Periode::where('status', 'LIKE', 'AKTIF')->get();
+		$murid = Murid::orderBy('created_at','desc')->get();
+		$sumber = Sumber::orderBy('created_at','desc')->where('id_sumber','!=',2)->get();
+		$akun = COA::where('kode_akun','like','4%')->get();
+		// $coa = Coa::orderBy('created_at','desc')->get();
+		// $coa = Coa::leftjoin("akuns", "coa.kode_akun", "=", "akuns.kode_akun")->get();
+		// $programkerja = programkerja::join("periode", "program_kerja.periode", "=", "periode.kode_periode")->where('status_proker', 'LIKE', 'Disetujui')->where('status', 'LIKE', 'AKTIF')->get();
+		// $programkerja = programkerja::join("periode", "program_kerja.periode", "=", "periode.kode_periode")
+		// ->join("akuns", "program_kerja.kode_proker", "=", "akuns.kode_proker")
+		// ->where('status_proker', 'LIKE', 'Disetujui')->where('status', 'LIKE', 'AKTIF')->where('kode_akun', 'LIKE', '4%')->where('status_amandemens', '!=', 'Amandemen')->get();
+		// // $programkerja = programkerja::join("periode", "program_kerja.periode", "=", "periode.kode_periode")->where('status_proker', 'LIKE', 'Konfirmasi')->where('status', 'LIKE', 'AKTIF')->get();
+
+		return view('realisasi/kasmasuk/tambahkasmasukmurid',['periode'=>$periode,'akun'=>$akun,'murid'=>$murid,'sumber'=>$sumber]);
+	}
 	public function tambahmutasi()
 	{
 		$periode = Periode::where('status', 'LIKE', 'AKTIF')->get();
@@ -202,6 +218,71 @@ class KasMasukController extends Controller
 		return view('realisasi/kasmasuk/tambahmutasi',['periode'=>$periode,'programkerja'=>$programkerja,'murid'=>$murid,'sumber'=>$sumber]);
 	}
     public function simpankasmasuk(Request $request)
+	{
+		$validator = Validator::make($request->all(), [			
+		
+			'periode' => 'required',
+			'keterangan' => 'required',
+			// 'progja' => 'required',
+			// 'akun' => 'required',
+			'diterimadari'=>'required',
+			'sumber' => 'required',
+			// 'nama_donatur' => 'required',
+			'jumlah' => 'required|numeric'
+
+		],[
+			"periode.required"=>"Periode tidak boleh kosong",
+			"keterangan.required"=>"Keterangan tidak boleh kosong",
+			// "progja.required"=>"Program kerja tidak boleh kosong",
+			// "akun.required"=>"Akun tidak boleh kosong",
+			"diterimadari.required"=>"Diterima dari siapa?",
+			// "nama_donatur.required"=>"Nama Donatur tidak boleh kosong?",
+			"sumber.required"=>"Sumber tidak boleh kosong",
+			"jumlah.required"=>"Jumlah tidak boleh kosong",
+			"jumlah.numeric"=>"Jumlah arus berupa nilai rupiah"
+		]);
+
+		if ($validator->fails()) {    
+			$message = $validator->errors()->getMessages();
+			$api = array(
+				'message' => $message
+			);
+			return redirect('/tambahkasmasuk')->withErrors($validator);
+			
+		}
+		$tanggalhariini = Carbon::now()->format('Ymd');
+		$tanggalhariinis = Carbon::now()->format('Y-m-d');
+        // // $check = KasMasuk::count();
+		// $check = KasMasuk::count();
+		// $no_bukti = 'BKM'.$tanggalhariini.$check + 1;	
+		$periode = $request->periode;
+		$ambilkm = Periode::where('kode_periode',$periode)->get();
+		$check = 0;
+		foreach ($ambilkm as $km) {
+			
+			$check = $km->counter_km;
+		}
+		$no_bukti = 'BKM' . $tanggalhariini . $check + 1;
+		KasMasuk::create([
+			'no_bukti'=>$no_bukti,
+			'periode'=>$request->periode,
+			'tanggal_pencatatan'=>$tanggalhariinis,
+			'keterangan'=>$request->keterangan,
+			// 'progja'=>$request->progja,
+			'diterimadari'=>$request->diterimadari,
+			'akun'=>$request->akun,
+			'sumber'=>$request->sumber,
+			'jumlah'=>$request->jumlah,
+			'kasir'=>$request->kasir,
+			'nama_donatur'=>$request->nama_donatur,
+	//$check = Periode kolom counter_kk +1, sesuai dengan $periode
+//setelah menambah km, ubah di tabel periode untuk kolom counter_km =+1 sesuai dengan $periode
+ 
+			]);
+			Periode::where('kode_periode', $periode)->update(['counter_km'=>$check+1]);
+			return redirect('/kasmasuk')->with('status', 'Data berhasil ditambahkan');
+	}
+	public function simpankasmasukmurid(Request $request)
 	{
 		$validator = Validator::make($request->all(), [			
 		
@@ -356,6 +437,7 @@ class KasMasukController extends Controller
 		$murid = Murid::orderBy('created_at','desc')->get();
 		$kasmasuk = KasMasuk::join("sumber","kas_masuk.sumber","=","sumber.id_sumber")
 		->join("coa","kas_masuk.akun","=","coa.kode_akun")
+		->join("murid","kas_masuk.kasir","=","murid.nomor_induk")
 		->where('no_bukti', $no_bukti)->get();
 		return view('realisasi/kasmasuk/lihatkasmasuk', compact('kasmasuk','murid'));
 	}

@@ -328,6 +328,7 @@ class KasKeluarController extends Controller
 	public function lihatkaskeluar($no_bukti)
 	{
 		$kaskeluar = KasKeluar::join("coa","kas_keluar.akun","=","coa.kode_akun")
+		->join("pegawai","kas_keluar.penanggungjawab","=","pegawai.niy")
 		->where('no_bukti', $no_bukti)->get();
 		return view('realisasi/kaskeluar/lihatkaskeluar', compact('kaskeluar'));
 	}
@@ -342,7 +343,16 @@ class KasKeluarController extends Controller
 		return redirect('/kaskeluar')->with('status', 'Data berhasil dihapus');
 	}
 	//yg dipakai
-	// public function pilihproker(Request $request)
+	public function pilihproker()
+	{
+		$data = ProgramKerja::where('pob','=','biaya')
+		->where('status_proker','=','Disetujui')
+		->where('nama_proker', 'LIKE', '%'.request('q').'%')->paginate(10);
+
+        return response()->json($data);
+	
+	}
+	// public function pilihprokers(Request $request)
 	// {
 	// 	$kode = $request->kode;
 	// 	$data = Akuns::where("kode_proker", $request->kode)->where('status_amandemens','!=','Amandemen')->first();
@@ -356,7 +366,18 @@ class KasKeluarController extends Controller
 
 	// 	]);
 	// }
-	public function pilihakun(Request $request)
+	public function pilihakun($kode_proker)
+	{
+		$data = Akuns::join("coa", "akuns.kode_akun", "=", "coa.kode_akun")
+		->where('kode_proker', $kode_proker)->where('status_amandemens','!=','Amandemen')
+		->where('nama_akun', 'LIKE', '%'.request('q').'%')->paginate(10);
+		$data2 = Akuns::join("lapposisianggaran", "akuns.kode_akun", "=", "lapposisianggaran.akun")
+		->join("coa", "akuns.kode_akun", "=", "coa.kode_akun")->get();
+		return response()->json($data);
+		
+	}
+
+	public function pilihakuns(Request $request)
 	{
 		$kode = $request->kode;
 		$data = Akuns::where("kode_akun", $request->kode)

@@ -1,5 +1,8 @@
 @extends('template')
 @section('container')
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 @if($errors->any())
    <ul class="alert alert-danger">
       @foreach($errors->all() as $error)
@@ -72,20 +75,20 @@
                                             <div class="row gx-3 mb-3">
                                             <div class="col-md-6">
                                                     <label class="mb-1" for="inputLastName">Program Kerja</label>
-                                                    <select class="form-control" id="prokers" name="prokers">
-                                                        <option  value>Pilih Program Kerja</option>
+                                                    <select class="form-select" id="prokers" name="prokers">
+                                                        <!-- <option  value>Pilih Program Kerja</option>
                                                         @foreach ($programkerja as $item)
                                                         <option value="{{ $item->kode_proker}}">{{$item->kode_proker}} - {{$item->nama_proker}}</option>
-                                                        @endforeach
+                                                        @endforeach -->
                                                     </select>
                                                 </div>
                                                 <div class="col-md-6" >
                                                     <label class="mb-1" for="inputLastName">Akun</label>
-                                                    <select class="form-control" id="akun" name="akun">
-                                                        <option  value>Pilih Akun</option>
+                                                    <select class="form-select" id="akun" name="akun">
+                                                        <!-- <option  value>Pilih Akun</option>
                                                         @foreach ($akun as $item)
                                                         <option value="{{ $item->kode_akun}}">{{$item->kode_proker}} - {{$item->kode_akun}}</option>
-                                                        @endforeach
+                                                        @endforeach -->
                                                     </select>
                                                 </div>                                              
                                             </div>
@@ -137,11 +140,47 @@
         </div>
     </main>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script src="/proker/kaskeluar.js"></script>
 <script>
-    $(document).ready(function(){
-        
-    })
-    </script>
+        $(document).ready(function(){
+            $("#prokers").select2({
+                placeholder:'Pilih Proker',
+                ajax: {
+                    url:"{{route('pilihproker.index')}}",
+                    processResults: function({data}){
+                        return {
+                            results: $.map(data, function(item){
+                                return {
+                                    id: item.kode_proker,
+                                    text: item.nama_proker
+                                }
+                            })
+                        }
+                    }
+                }
+            });
+            $("#prokers").change(function(){
+                let kode_proker = $('#prokers').val();
+
+                $("#akun").select2({
+                placeholder:'Pilih Akun',
+                ajax: {
+                    url: "{{url('pilihakun')}}/"+kode_proker,
+                    processResults: function({data}){
+                        return {
+                            results: $.map(data, function(item){
+                                return {
+                                    id: item.kode_akun,
+                                    text: item.kode_akun
+                                }
+                            })
+                        }
+                    }
+                }
+            });
+            });
+        });
+            </script>
 
 @endsection

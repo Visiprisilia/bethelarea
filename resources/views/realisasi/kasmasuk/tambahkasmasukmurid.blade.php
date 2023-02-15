@@ -32,81 +32,68 @@
                     <!-- Default Bootstrap Form Controls-->
                     <div id="default">
                         <div class="card mb-4">
-                            <div class="card-header">Kas Masuk</div>
+                            <div class="card-header">Kas Masuk Murid</div>
                             <div class="card-body">
                                 <!-- Component Preview-->
                                 <div class="sbp-preview">
                                     <div class="sbp-preview-content">
-                                        <form action="/simpankasmasuk" method="post">
+                                        <form action="/simpankasmasukmurid" method="post">
                                             @csrf
                                             <!-- <div class="mb-3">
                                                 <label for="exampleFormControlInput1">No Bukti</label>
                                                 <input class="form-control" id="no_bukti" name="no_bukti"/>
                                             </div> -->
-                                            <div class="mb-3">
-                                                <label class="mb-1" for="inputLastName">Periode</label>
+                                            <div class="row gx-3 mb-3">
+                                            <div class="col-md-8">
+                                            <label class="mb-1" for="inputLastName">Periode</label>
                                                 <select class="form-control" id="periode" name="periode">
                                                     <option value>Pilih Periode</option>
                                                     @foreach ($periode as $item)
                                                     <option value="{{ $item->kode_periode}}">{{$item->nama_periode}}</option>
                                                     @endforeach
                                                 </select>
-                                            </div>
-                                            <!-- <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Tanggal Pencatatan</label>
-                                                <input class="form-control" type="date" id="tanggal_pencatatan" name="tanggal_pencatatan"  />
-                                            </div>   -->
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Keterangan</label>
-                                                <input class="form-control" id="keterangan" name="keterangan" placeholder="Masukkan Keterangan"/>
-                                            </div>
+                                            </div></div>
                                             <div class="row gx-3 mb-3">
-
-                                                <!-- <div class="col-md-4">
-                                                    <label class="mb-1" for="inputFirstName">Akun</label>
-                                                    <input class="form-control" readonly id="akun" name="akun"  />
-                                                </div> -->
-                                                <div class="col-md-4">
-                                                    <label class="mb-1" for="inputLastName">Akun</label>
+                                            <div class="col-md-6">
+                                            <label class="mb-1" for="inputLastName">Murid</label>
+                                                <select class="form-control" id="periode" name="periode">
+                                                    <option value>Pilih Murid</option>
+                                                    @foreach ($murid as $item)
+                                                    <option value="{{ $item->nomor_induk}}">{{$item->nomor_induk}} - {{$item->nama}} </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                    <label class="mb-1" for="inputLastName">Pembayaran</label>
                                                     <select class="form-control" id="akun" name="akun">
-                                                        <option value>Pilih Akun</option>
+                                                        <option value>Pilih Pembayaran</option>
                                                         @foreach ($akun as $item)
                                                         <option value="{{ $item->kode_akun}}">{{$item->kode_akun}} - {{$item->nama_akun}}</option>
                                                         @endforeach
                                                     </select>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <label class="mb-1" for="inputFirstName">Sumber</label>
-                                                    <select class="form-control" id="sumber" name="sumber">
-                                                        <option value>Pilih Sumber</option>
-                                                        @foreach ($sumber as $item)
-                                                        <option value="{{ $item->id_sumber}}">{{$item->nama_sumber}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-4" id="murid" style="display: none;">
-                                                    <label class="mb-1" for="inputFirstName">Nama Murid :</label>
-                                                    <select class="form-control" id="kasir" name="kasir">
-                                                        <option value>Pilih Murid</option>
-                                                        @foreach ($murid as $item)
-                                                        <option value="{{ $item->nomor_induk}}">{{$item->nomor_induk}} {{$item->nama}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-4" id="donatur" style="display: none;">
-                                                <label for="exampleFormControlInput1">Nama Donatur</label>
-                                                <input class="form-control" id="nama_donatur" name="nama_donatur" />
-                                            </div>
-                                            </div>
+                                                </div></div>
                                             <div class="row gx-3 mb-3">
                                             <div class="col-md-6">
-                                                <label for="exampleFormControlInput1">Diterima dari :</label>
-                                                <input class="form-control" id="diterimadari" name="diterimadari" placeholder="Diterima dari.." />
+                                                <label for="exampleFormControlInput1">Total Tagihan</label>
+                                                <input class="form-control" readonly id="tagihan" name="tagihan" />
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="exampleFormControlInput1">Jumlah</label>
                                                 <input class="form-control" id="jumlah" name="jumlah" placeholder="Masukkan Jumlah" />
-                                            </div>
+                                            </div></div>
+                                            <!-- <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Tanggal Pencatatan</label>
+                                                <input class="form-control" type="date" id="tanggal_pencatatan" name="tanggal_pencatatan"  />
+                                            </div>   -->
+                                            <div class="row gx-3 mb-3">
+                                            <div class="col-md-6">
+                                                <label for="exampleFormControlInput1">Keterangan</label>
+                                                <input class="form-control" id="keterangan" name="keterangan" placeholder="Masukkan Keterangan" />
+                                            </div>                                       
+                                            <div class="col-md-6">
+                                                <label for="exampleFormControlInput1">Diterima dari :</label>
+                                                <input class="form-control" id="diterimadari" name="diterimadari" placeholder="Diterima dari.." />
+                                            </div>                                   
                                             </div>
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Tambah</button>

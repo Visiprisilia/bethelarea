@@ -45,7 +45,7 @@ class EvaluasiController extends Controller
 		// ->where('status', 'LIKE', 'AKTIF')->get();
 		$programkerja = programkerja::join("periode", "program_kerja.periode", "=", "periode.kode_periode")
 			->join("akuns", "program_kerja.kode_proker", "=", "akuns.kode_proker")
-			// ->where('status_pa', 'LIKE', 'proker')
+			->where('kode_akun', 'LIKE', '5%')
 			->where('status', 'LIKE', 'AKTIF')
 			->where('status_amandemens', '!=', 'Amandemen')
 			->where('persetujuan_proker', 'LIKE', 'Disetujui')

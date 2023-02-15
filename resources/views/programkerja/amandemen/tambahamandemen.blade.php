@@ -90,11 +90,11 @@
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Tujuan</label>
-                                                    <input class="form-control" id="tujuan" name="tujuan" required />
+                                                    <input class="form-control" id="tujuan" name="tujuan" required placeholder="Masukkan Tujuan" />
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputLastName">Indikator Pencapaian</label>
-                                                    <input class="form-control" id="indikator" name="indikator" required />
+                                                    <input class="form-control" id="indikator" name="indikator" required placeholder="Masukkan Indikator"/>
                                                 </div>
                                             </div>
                                             <div class="row gx-3 mb-3">
@@ -117,13 +117,13 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label for="exampleFormControlInput1">Anggaran</label>
-                                                    <input class="form-control"  id="anggaran_amandemen" name="anggaran_amandemen" required />
+                                                    <input class="form-control" readonly  id="anggaran_amandemen" name="anggaran_amandemen" required />
                                                 </div>
                                             </div>
 
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Keterangan</label>
-                                                <input class="form-control" id="keterangan_amandemen" name="keterangan_amandemen"  required />
+                                                <input class="form-control" id="keterangan_amandemen" name="keterangan_amandemen" placeholder="Masukkan Keterangan"  required />
                                             </div>
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Tambah</button>

@@ -34,24 +34,24 @@
                                             @csrf                                           
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Nama Lengkap</label>
-                                                <input class="form-control" id="nama_lengkap" name="nama_lengkap"  />
+                                                <input class="form-control" id="nama_lengkap" name="nama_lengkap" placeholder="Masukkan Nama Lengkap"  />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Username</label>
-                                                <input class="form-control" id="nama_user" name="nama_user"  />
+                                                <input class="form-control" id="nama_user" name="nama_user" placeholder="Masukkan Username"  />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Password</label>
-                                                <input class="form-control" type="password" id="password" name="password"  />
+                                                <input class="form-control" type="password" id="password" name="password" placeholder="Masukkan Password"  />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Level</label>
-                                                <input class="form-control" id="level" name="level"  />
+                                                <input class="form-control" id="level" name="level" placeholder="Masukkan Level Akses" />
                                             </div>
-                                            <div class="mb-3">
+                                            <!-- <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Status</label>
                                                 <input class="form-control" id="status" name="status"  />
-                                            </div>
+                                            </div> -->
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Tambah</button>
                                                 <a href="{{url('/user')}}" class="btn btn-danger">Kembali</a>

@@ -32,7 +32,7 @@
                     <!-- Default Bootstrap Form Controls-->
                     <div id="default">
                         <div class="card mb-4">
-                            <div class="card-header">Sumber</div>
+                            <div class="card-header">Sumber Dana</div>
                             <div class="card-body">
                                 <!-- Component Preview-->
                                 <div class="sbp-preview">
@@ -41,11 +41,11 @@
                                             @csrf
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Kode Sumber</label>
-                                                <input class="form-control" id="id_sumber" name="id_sumber"  />
+                                                <input class="form-control" id="id_sumber" name="id_sumber" placeholder="Masukkan Kode Sumber Dana"  />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Nama Sumber</label>
-                                                <input class="form-control" id="nama_sumber" name="nama_sumber"  />
+                                                <input class="form-control" id="nama_sumber" name="nama_sumber" placeholder="Masukkan Sumber Dana" />
                                             </div>
                                             
                                             <div class="mb-3">

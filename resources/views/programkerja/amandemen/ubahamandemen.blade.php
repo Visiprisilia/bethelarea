@@ -38,7 +38,7 @@
                                                     <select class="form-control" id="kode_prokeramandemen" require name="kode_prokeramandemen">
                                                         <option value>Pilih Proker</option>
                                                         @foreach ($amandemen as $item)
-                                                        <option value="{{ $item->kode_proker}}">{{$item->kode_proker}}</option>
+                                                        <option value="{{ $item->kode_proker}}">{{$item->kode_proker}} - {{$item->nama_proker}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -130,13 +130,13 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label for="exampleFormControlInput1">Anggaran</label>
-                                                    <input class="form-control"  id="anggaran_amandemen" name="anggaran_amandemen" required />
+                                                    <input class="form-control" readonly id="anggaran_amandemen" name="anggaran_amandemen" required />
                                                 </div>
                                             </div>
 
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Keterangan</label>
-                                                <input class="form-control" id="keterangan_amandemen" name="keterangan_amandemen" required />
+                                                <input class="form-control" id="keterangan_amandemen" name="keterangan_amandemen" placeholder="Masukkan Keterangan" required />
                                             </div>
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Tambah</button>

@@ -36,8 +36,13 @@ class BukuBesarKasController extends Controller
   }
   public function lihatkas($no_bukti)
   {
-    $kasmasuk = KasMasuk::where('no_bukti', $no_bukti)->where('no_bukti','LIKE','BKM%')->get();
-    $kaskeluar = KasKeluar::where('no_bukti', $no_bukti)->where('no_bukti','LIKE','BKK%')->get();
+    $kasmasuk = KasMasuk::join("sumber","kas_masuk.sumber","=","sumber.id_sumber")
+		->join("coa","kas_masuk.akun","=","coa.kode_akun")
+    ->join("murid","kas_masuk.kasir","=","murid.nomor_induk")
+    ->where('no_bukti', $no_bukti)->where('no_bukti','LIKE','BKM%')->get();
+    $kaskeluar = KasKeluar::join("coa","kas_keluar.akun","=","coa.kode_akun")
+    ->join("pegawai","kas_keluar.penanggungjawab","=","pegawai.niy")
+    ->where('no_bukti', $no_bukti)->where('no_bukti','LIKE','BKK%')->get();
 
     if (count ($kaskeluar)==0) {
       return view('realisasi/kasmasuk/lihatkasmasuk', compact('kasmasuk'));

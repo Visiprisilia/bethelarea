@@ -143,7 +143,7 @@
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Keterangan</label>
-                                                    <input class="form-control" id="keterangan" name="keterangan" placeholder="Masukkan Keterangan"  />
+                                                    <input class="form-control" id="keterangan_pegawai" name="keterangan_pegawai" placeholder="Masukkan Keterangan"  />
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">KTP</label>

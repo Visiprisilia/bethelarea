@@ -38,7 +38,7 @@ class AmandemenController extends Controller
 	{
 		$periode = Periode::where('status', 'LIKE', 'AKTIF')->get();
 		$pegawai = Pegawai::where('status', 'LIKE', 'AKTIF')->get();
-		$coa = Coa::orderBy('kode_akun', 'asc')->get();
+		$coa = Coa::orderBy('kode_akun', 'asc')->where('kode_akun','like','5%')->get();
 		$amandemen = programkerja::join("periode", "program_kerja.periode", "=", "periode.kode_periode")
 			->join("akuns", "program_kerja.kode_proker", "=", "akuns.kode_proker")
 			->where('status_proker', 'LIKE', 'Disetujui')->where('status', 'LIKE', 'AKTIF')->get();
@@ -51,9 +51,10 @@ class AmandemenController extends Controller
 	{
 		$periode = Periode::where('status', 'LIKE', 'AKTIF')->get();
 		$pegawai = Pegawai::where('status', 'LIKE', 'AKTIF')->get();
-		$coa = Coa::orderBy('kode_akun', 'asc')->get();
+		$coa = Coa::orderBy('kode_akun', 'asc')->where('kode_akun','like','5%')->get();
 		$amandemen = programkerja::join("periode", "program_kerja.periode", "=", "periode.kode_periode")
 			->join("akuns", "program_kerja.kode_proker", "=", "akuns.kode_proker")
+			->where('kode_akun','like','5%')
 			->where('status_pa', 'LIKE', 'proker')
 			->where('status', 'LIKE', 'AKTIF')
 			->where('persetujuan_proker', 'LIKE', 'Disetujui')

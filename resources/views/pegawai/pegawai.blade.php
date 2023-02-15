@@ -44,9 +44,9 @@
                             <th>Tanggal Masuk</th>
                             <th>Status Kepegawaian</th>
                             <th>Tanggal Penetapan Pegawai Tetap</th>
-                            <th>Foto Pegawai</th>
+                            <!-- <th>Foto Pegawai</th>
                             <th>File KTP</th>
-                            <th>Surat Keterangan</th>
+                            <th>Surat Keterangan</th> -->
                             <th>Status</th>
                             <th>Termin</th>
                             <th>Keterangan</th>
@@ -70,12 +70,12 @@
                             <td>{{ $item->tanggal_masuk}}</td>
                             <td>{{ $item->status_kepegawaian}}</td>
                             <td>{{ $item->tanggal_ppt}}</td>
-                            <td>{{ $item->foto_pegawai}}</td>
+                            <!-- <td>{{ $item->foto_pegawai}}</td>
                             <td>{{ $item->file_ktp}}</td>
-                            <td>{{ $item->file_suket}}</td>
+                            <td>{{ $item->file_suket}}</td> -->
                             <td>{{ $item->status}}</td>
                             <td>{{ $item->tanggal_terminasi}}</td>
-                            <td>{{ $item->keterangan}}</td>
+                            <td>{{ $item->keterangan_pegawai}}</td>
                             <td>{{ $item->updated_at}}</td>
                             @if (auth()->user()->level=="super admin")
                             <td>

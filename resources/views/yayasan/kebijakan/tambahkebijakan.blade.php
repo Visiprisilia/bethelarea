@@ -49,7 +49,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Keterangan</label>
-                                                <input class="form-control" id="keterangan" name="keterangan"  />
+                                                <input class="form-control" id="keterangan" name="keterangan"  placeholder="Masukkan Keterangan"/>
                                             </div>                                            
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Tambah</button>

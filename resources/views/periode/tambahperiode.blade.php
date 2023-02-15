@@ -57,7 +57,7 @@
                                                     <input class="form-control"  type="date" id="akhir_periode" name="akhir_periode" />
                                                 </div>
                                             </div>
-                                            <div class="md-3">
+                                            <div class="mb-3">
                                                 <label for="inputLastName">Status</label>
                                                 <select class="form-control" id="status" name="status" >
                                                     <option  value>Pilih Status</option>

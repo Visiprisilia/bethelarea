@@ -51,7 +51,7 @@
                                                 <input class="form-control" id="nama_subunit" name="nama_subunit" value="{{$sub->nama_subunit}}" required />
                                             </div>
                                           
-                                            <div class="md-3">
+                                            <div class="mb-3">
                                                 <label for="inputLastName">Status</label>
                                                 <select class="form-control" id="status" name="status" value="{{$sub->status}}"required >
                                                     <option disabled  value>Pilih Status</option>

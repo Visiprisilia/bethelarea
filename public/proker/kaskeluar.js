@@ -2,14 +2,14 @@
   $(document).on("change", "#akun", function () {
     var kode = $(this).val();
     $.ajax({
-        url: "/pilihakun",
+        url: '/pilihakuns',
         method: "get",
         data: {
             kode: kode
         },
         success: function (data) {
             // $("#akun").val(data.proker.kode_akun);
-            $("#id").val(data.proker.id);
+            // $("#id").val(data.proker.id);
             $("#penanggungjawab").val(data.proker.penanggungjawab);
 
             $.each(data.lappa, function (x, i) {
@@ -17,21 +17,6 @@
                 $("#anggaran").append('<input class="form-control" id="anggaran" name="anggaran" readonly name="anggaran" value="' + i.posisi_anggaran + '" placeholder="Masukkan Akun Biaya" required />');
 
             })
-            $.each(data.lappa, function (x, i) {
-
-                $("#akun").append('<input class="form-control" id="akun" name="akun" readonly name="akun" value="' + i.kode_akun + '" placeholder="Masukkan Akun Biaya" required />');
-
-            })
-            $.each(data.lappa, function (x, i) {
-
-                $("#namaakun").append('<input class="form-control" id="namaakun" name="namaakun" readonly name="namaakun" value="' + i.nama_akun + '" placeholder="Masukkan Akun Biaya" required />');
-
-            })
-            // $.each(data.lappa,function(x,i){
-
-            //     $("#id").append('<input class="form-control" id="id" name="id" readonly name="id" value="'+i.id+'" placeholder="Masukkan Akun Biaya" required />');
-
-            // })
         }
     })
 //     // alert(kode);

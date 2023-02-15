@@ -49,10 +49,10 @@
                                                 <label for="exampleFormControlInput1">Level</label>
                                                 <input class="form-control" id="level" name="level" value="{{$item->level}}" required  />
                                             </div>
-                                            <div class="mb-3">
+                                            <!-- <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Status</label>
                                                 <input class="form-control" id="status" name="status" value="{{$item->status}}" required  />
-                                            </div>
+                                            </div> -->
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Simpan</button>
                                                 <a href="{{url('/user')}}" class="btn btn-danger">Batal</a>                                            </div>

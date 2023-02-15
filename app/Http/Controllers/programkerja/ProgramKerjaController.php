@@ -152,7 +152,8 @@ class ProgramKerjaController extends Controller
 
 		$dataproker = ProgramKerja::where('kode_proker', $kode_proker)->get();
 		$programkerja = ProgramKerja::where('kode_proker', $kode_proker)->get();
-		$akun = Akuns::where('kode_proker', $kode_proker)->where('status_amandemens', '!=', 'Amandemen')->get();
+		$akun = Akuns::join("coa", "akuns.kode_akun", "=", "coa.kode_akun")
+		->where('kode_proker', $kode_proker)->where('status_amandemens', '!=', 'Amandemen')->get();
 		// return $programkerja;
 		foreach ($dataproker as $row) {
 			$status_proker = $row['status_proker'];

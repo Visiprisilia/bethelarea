@@ -76,6 +76,7 @@
                 <a class="collapse-item" href="/kasbon">Pendaftaran Kas Bon</a>
                 <a class="collapse-item" href="/kasmasuk">Kas Masuk</a>
                 <a class="collapse-item" href="/kaskeluar">Kas Keluar</a>
+                <a class="collapse-item" href="/tagihan">Tagihan Murid</a>
             </div>
         </div>
        

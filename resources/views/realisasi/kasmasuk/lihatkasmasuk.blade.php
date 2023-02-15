@@ -63,7 +63,7 @@
                                             </div>        
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Diterima dari:</label>
-                                                <input class="form-control" id="diterimadari" name="diterimadari" disabled value="{{$item->kasir}}{{$item->nama_donatur}}{{$item->yayasans}}" />
+                                                <input class="form-control" id="diterimadari" name="diterimadari" disabled value="{{$item->nama}}{{$item->nama_donatur}}{{$item->yayasans}}" />
                                             </div>      
                                             <div class="mb-3">
                                                 <a href="/cetakkasmasuk/{{$item->no_bukti}}"  class="btn btn-primary">Cetak</a>

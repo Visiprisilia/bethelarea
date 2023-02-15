@@ -58,7 +58,7 @@
                                             </div>   -->
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Keterangan</label>
-                                                <input class="form-control" id="keterangan" name="keterangan" />
+                                                <input class="form-control" id="keterangan" name="keterangan" placeholder="Masukkan Keterangan" />
                                             </div>      
                                             <!-- <div class="row gx-3 mb-3">
                                                 <div class="col-md-4">
@@ -96,7 +96,7 @@
                                             <div class="row gx-3 mb-3">
                                             <div class="col-md-4">
                                                 <label for="exampleFormControlInput1">Jumlah</label>
-                                                <input class="form-control" id="jumlah" name="jumlah"   />
+                                                <input class="form-control" id="jumlah" name="jumlah" placeholder="Masukkan Jumlah"  />
                                             </div></div>                                                                                                                                                   
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Tambah</button>

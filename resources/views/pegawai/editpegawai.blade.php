@@ -137,7 +137,7 @@
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Keterangan</label>
-                                                    <input class="form-control" id="keterangan" name="keterangan" value="{{$item->keterangan}}" required />
+                                                    <input class="form-control" id="keterangan_pegawai" name="keterangan_pegawai" value="{{$item->keterangan_pegawai}}" required />
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">KTP</label>
