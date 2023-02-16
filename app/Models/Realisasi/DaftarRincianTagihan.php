@@ -10,13 +10,13 @@ class DaftarRincianTagihan extends Model
     use HasFactory;
     protected $table = 'daftarrinciantagihan';
     public $incrementing = false;
-    protected $fillable = ['rincia_nis_tagihan','rincian_periode_tagihan','rincian_nominal_tagihan','rincian_namakategori_tagihan'];
+    protected $fillable = ['id_tagihan','rincian_nis_tagihan','rincian_periode_tagihan','rincian_nominal_tagihan','rincian_namakategori_tagihan'];
  
 }
 
 //new daftar rincian tagihan
 // CREATE or REPLACE VIEW daftarrinciantagihan as 
-// SELECT tm.nis_tagihan rinciian_nis_tagihan, tm.periode_tagihan rincian_periode_tagihan, it.nominal_tagihan rincian_nominal_tagihan, 
+// SELECT tm.id_tagihan id_tagihan tm.nis_tagihan rinciian_nis_tagihan, tm.periode_tagihan rincian_periode_tagihan, it.nominal_tagihan rincian_nominal_tagihan, 
 // ktm.nama_kategoritagihan rincian_namakategori_tagihan
 // FROM tagihan_murid tm left join item_tagihan it on tm.id_tagihan=it.id_tagihan
 // left join kategori_tagihanmurid ktm on it.id_kategoritagihan=ktm.id_kategoritagihan

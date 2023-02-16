@@ -32,25 +32,25 @@
                     <!-- Default Bootstrap Form Controls-->
                     <div id="default">
                         <div class="card mb-4">
-                            <div class="card-header">Unit</div>
+                            <div class="card-header">Jenis Tagihan</div>
                             <div class="card-body">
                                 <!-- Component Preview-->
                                 <div class="sbp-preview">
                                     <div class="sbp-preview-content">
-                                        <form action="/simpanunit" method="post">
+                                        <form action="/simpankategoritagihan" method="post">
                                             @csrf
                                             <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Kode Unit</label>
-                                                <input class="form-control" id="kode_unit" name="kode_unit" placeholder="Masukkan Kode Unit, Urut Sesuai Kode Unit Sebelumnya" />
+                                                <label for="exampleFormControlInput1">Kode Tagihan</label>
+                                                <input class="form-control" id="id_kategoritagihan" name="id_kategoritagihan" placeholder="Masukkan Kode Tagihan, Urut Sesuai Kode Tagihan Sebelumnya"  />
                                             </div>
                                             <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Nama Unit</label>
-                                                <input class="form-control" id="nama_unit" name="nama_unit" placeholder="Masukkan Nama Unit" />
+                                                <label for="exampleFormControlInput1">Jenis Tagihan</label>
+                                                <input class="form-control" id="nama_kategoritagihan" name="nama_kategoritagihan" placeholder="Masukkan Jenis Tagihan" />
                                             </div>
                                             
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Tambah</button>
-                                                <a href="{{url('/unit')}}" class="btn btn-danger">Kembali</a>
+                                                <a href="{{url('/kategoritagihan')}}" class="btn btn-danger">Kembali</a>
                                             </div>
 
                                         </form>

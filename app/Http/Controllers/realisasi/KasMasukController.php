@@ -220,7 +220,7 @@ class KasMasukController extends Controller
 			// "nama_donatur.required"=>"Nama Donatur tidak boleh kosong?",
 			"sumber.required"=>"Sumber tidak boleh kosong",
 			"jumlah.required"=>"Jumlah tidak boleh kosong",
-			"jumlah.numeric"=>"Jumlah arus berupa nilai rupiah"
+			"jumlah.numeric"=>"Jumlah harus berupa nilai rupiah"
 		]);
 
 		if ($validator->fails()) {    

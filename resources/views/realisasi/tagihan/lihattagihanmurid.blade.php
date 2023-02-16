@@ -49,10 +49,9 @@
                                 <td>{{ Str::rupiah ($item->rincian_nominal_tagihan)}}</td>
                                 @if (auth()->user()->level=="unit")
                                 <td>
-                                    <a href="/edittagihan/{{$item->nis_tagihan}}"><i class="fas fa-edit" style="color:green"></i></a>
-                                    <a href="/hapustagihan/{{$item->nis_tagihan}}" onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a>
+                                    <a href="/edittagihanmurid/{{$item->id_tagihan}}"><i class="fas fa-edit" style="color:green"></i></a>
+                                    <a href="/hapustagihanmurid/{{$item->id_tagihan}}" onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a>
                                     @endif
-                                    <a href="/lihattagihan/{{$item->nis_tagihan}}"><i class="fas fa-eye" style="color:red"></i></a>
                                 </td>
                             </tr>
                             @endforeach

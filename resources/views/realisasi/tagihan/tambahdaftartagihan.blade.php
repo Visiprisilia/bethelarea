@@ -39,32 +39,31 @@
                                     <div class="sbp-preview-content">
                                         <form action="/simpandaftartagihan" method="post">
                                             @csrf
-                                            <div class="row gx-3 mb-3">
-                                                <div class="col-md-6">
-                                                    <label class="mb-1" for="inputLastName">Periode</label>
-                                                    <select class="form-control" id="periode_tagihan" name="periode_tagihan">
-                                                        <option value>Pilih Periode</option>
-                                                        @foreach ($periode as $item)
-                                                        <option value="{{ $item->kode_periode}}">{{$item->nama_periode}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label class="mb-1" for="inputLastName">Murid</label>
-                                                    <select class="form-control" id="nis_tagihan" name="nis_tagihan">
-                                                        <option value>Pilih Murid</option>
-                                                        @foreach ($murid as $item)
-                                                        <option value="{{ $item->nomor_induk}}">{{$item->nomor_induk}} {{$item->nama}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
+
+                                            <div class="mb-3">
+                                                <label class="mb-1" for="inputLastName">Periode</label>
+                                                <select class="form-control" id="periode_tagihan" name="periode_tagihan">
+                                                    <option value>Pilih Periode</option>
+                                                    @foreach ($periode as $item)
+                                                    <option value="{{ $item->kode_periode}}">{{$item->nama_periode}}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
-                                           
-                                                <!-- <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="mb-1" for="inputLastName">Murid</label>
+                                                <select class="form-control" id="nis_tagihan" name="nis_tagihan">
+                                                    <option value>Pilih Murid</option>
+                                                    @foreach ($murid as $item)
+                                                    <option value="{{ $item->nomor_induk}}">{{$item->nomor_induk}} {{$item->nama}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+
+                                            <!-- <div class="col-md-6">
                                                     <label for="exampleFormControlInput1">Uang Lain-lain</label>
                                                     <input class="form-control" id="uang_lainlain" name="uang_lainlain" />
                                                 </div> -->
-                                           
+
 
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Tambah</button>

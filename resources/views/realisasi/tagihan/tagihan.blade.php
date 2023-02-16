@@ -31,6 +31,7 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
+                            <th>No</th>
                             <th>Nomor Induk</th>
                             <th>Nama Murid</th>
                             <th>Total</th>
@@ -39,12 +40,13 @@
                     <tbody>
                         @foreach ($tagihan as $item)
                         <tr>
+                        <td>{{ $loop->iteration}}</td>
                             <td>{{ $item->daftar_nis_tagihan}}</td>
                             <td>{{ $item->nama}}</td>
                             <td>{{ Str::rupiah ($item->daftar_nominal_tagihan)}}</td>
                             @if (auth()->user()->level=="unit")
                             <td>
-                                <a href="/lihattagihanmurid/{{$item->daftar_nis_tagihan}}" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">Tambah/Lihat Tagihan</a> 
+                                <a href="/lihattagihanmurid/{{$item->id_tagihan}}" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">Tambah/Lihat Tagihan</a> 
                                 <!-- <a href="/hapustagihan/{{$item->nis_tagihan}}" onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a> -->
                             </td>
                                 @endif

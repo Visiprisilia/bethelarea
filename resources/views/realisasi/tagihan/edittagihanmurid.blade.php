@@ -1,13 +1,6 @@
 @extends('template')
 @section('container')
 <!-- Default Bootstrap Form Controls-->
-@if($errors->any())
-<ul class="alert alert-danger">
-    @foreach($errors->all() as $error)
-    <li> {{$error}} </li>
-    @endforeach
-</ul>
-@endif
 <div id="layoutSidenav_content">
     <main>
         <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
@@ -17,7 +10,7 @@
                         <div class="col-auto mt-4">
                             <h1 class="page-header-title">
                                 <div class="page-header-icon"><i data-feather="edit-3"></i></div>
-                                Tambah Data
+                                Ubah Data
                             </h1>
 
                         </div>
@@ -37,7 +30,8 @@
                                 <!-- Component Preview-->
                                 <div class="sbp-preview">
                                     <div class="sbp-preview-content">
-                                        <form action="/simpantagihanmurid" method="post">
+                                        @foreach($tagihan as $itemss)
+                                        <form action="/updatetagihanmurid/{{$itemss->id_tagihan}}" method="post">
                                             @csrf
                                             <div class="mb-3">
                                                     <label class="mb-1" for="inputLastName">Jenis Tagihan</label>
@@ -50,23 +44,16 @@
                                                 </div>
                                                 <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Jumlah Tagihan</label>
-                                                <input class="form-control" id="nominal_tagihan" name="nominal_tagihan" placeholder="Masukkan Jumlah Tagihan" />
+                                                <input class="form-control" id="nominal_tagihan" name="nominal_tagihan" value="{{$itemss->nominal_tagihan}}" placeholder="Masukkan Jumlah Tagihan" />
                                             </div>    
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">ID tagiha</label>
-                                                <input class="form-control" id="id_tagihan" name="id_tagihan" placeholder="Masukkan Jumlah Tagihan" />
+                                                <input class="form-control" id="id_tagihan" name="id_tagihan" value="{{$itemss->id_tagihan}}"  placeholder="Masukkan Jumlah Tagihan" />
                                             </div>    
-                                           
-                                                <!-- <div class="col-md-6">
-                                                    <label for="exampleFormControlInput1">Uang Lain-lain</label>
-                                                    <input class="form-control" id="uang_lainlain" name="uang_lainlain" />
-                                                </div> -->
-                                           
 
                                             <div class="mb-3">
-                                                <button type="submit" class="btn btn-success">Tambah</button>
-                                                <!-- <a href="{{url('/lihattagihanmurid/{rincian_nis_tagihan}')}}" class="btn btn-danger">Batal</a> -->
-                                                <input type="button" value="Kembali" onclick=self.history.back() class="btn btn-danger">
+                                                <button type="submit" class="btn btn-success">Simpan</button>
+                                                <a href="{{url('/tagihan')}}" class="btn btn-danger">Batal</a>
                                             </div>
                                         </form>
                                     </div>
@@ -79,22 +66,6 @@
         </div>
     </main>
 </div>
-<script src="/proker/kasmasuk.js"></script>
-
-<script>
-    $(document).on('change', '#sumber', function() {
-        var val = $('#sumber option').filter(':selected').val() == "1" ? $('#murid').show() : $('#murid').hide();
-
-        //   if(val=="murid"{})  
-        // alert(val);
-    })
-</script>
-<script>
-    $(document).on('change', '#sumber', function() {
-        var val = $('#sumber option').filter(':selected').val() == "3" ? $('#donatur').show() : $('#donatur').hide();
-
-        //   if(val=="murid"{})  
-        // alert(val);
-    })
-</script>
+<script src="/proker/kasbon.js"></script>
+@endforeach
 @endsection

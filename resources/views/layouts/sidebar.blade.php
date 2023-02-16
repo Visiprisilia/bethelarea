@@ -40,8 +40,11 @@
                 <a class="collapse-item" href="/pegawai">Daftar Pegawai</a>
                 <a class="collapse-item" href="/murid">Daftar Murid</a>
                 <a class="collapse-item" href="/coa">Chart Of Accounts</a>
+                @if (auth()->user()->level=="unit")
+                <a class="collapse-item" href="/sumber">Daftar Sumber Dana</a>
+                <a class="collapse-item" href="/kategoritagihan">Daftar Jenis Tagihan</a>
+                @endif
                 @if (auth()->user()->level=="super admin")
-                <a class="collapse-item" href="/sumber">Sumber</a>
                 <a class="collapse-item" href="/user">User</a>
                 @endif
             </div>

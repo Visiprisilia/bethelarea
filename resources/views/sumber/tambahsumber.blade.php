@@ -41,7 +41,7 @@
                                             @csrf
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Kode Sumber</label>
-                                                <input class="form-control" id="id_sumber" name="id_sumber" placeholder="Masukkan Kode Sumber Dana"  />
+                                                <input class="form-control" id="id_sumber" name="id_sumber" placeholder="Masukkan Kode Sumber Dana, Urut Sesuai Kode Sumber Dana Sebelumnya"  />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Nama Sumber</label>
