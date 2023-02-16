@@ -5,13 +5,13 @@ namespace App\Models\Realisasi;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Tagihan extends Model
+class ItemTagihan extends Model
 {
     use HasFactory;
-    protected $table = 'tagihan_murid';
-    protected $primaryKey = 'id_tagihan';
+    protected $table = 'item_tagihan';
+    protected $primaryKey = 'id_itemtagihan';
     public $incrementing = false;
-    protected $fillable = ['id_tagihan','nis_tagihan','periode_tagihan'];
+    protected $fillable = ['id_itemtagihan','nominal_tagihan'];
  
 }
 

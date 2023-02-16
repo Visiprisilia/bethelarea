@@ -37,7 +37,7 @@
                                 <!-- Component Preview-->
                                 <div class="sbp-preview">
                                     <div class="sbp-preview-content">
-                                        <form action="/simpantagihan" method="post">
+                                        <form action="/simpantagihanmurid" method="post">
                                             @csrf
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-6">
@@ -59,46 +59,12 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="row gx-3 mb-3">
-                                                <div class="col-md-6">
-                                                    <label for="exampleFormControlInput1">Uang Pendaftaran</label>
-                                                    <input class="form-control" id="uang_pendaftaran" name="uang_pendaftaran" />
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label for="exampleFormControlInput1">Uang Pengembangan Pendidikan</label>
-                                                    <input class="form-control" id="uang_pengembanganpendidikan" name="uang_pengembanganpendidikan" />
-                                                </div>
-                                            </div>
-                                            <div class="row gx-3 mb-3">
-                                                <div class="col-md-6">
-                                                    <label for="exampleFormControlInput1">Uang Peralatan</label>
-                                                    <input class="form-control" id="uang_peralatan" name="uang_peralatan" />
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label for="exampleFormControlInput1">Uang Seragam</label>
-                                                    <input class="form-control" id="uang_seragam" name="uang_seragam" />
-                                                </div>
-                                            </div>
-                                            <div class="row gx-3 mb-3">
-                                                <div class="col-md-6">
-                                                    <label for="exampleFormControlInput1">Uang Parenting</label>
-                                                    <input class="form-control" id="uang_parenting" name="uang_parenting" />
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label for="exampleFormControlInput1">Uang SPP</label>
-                                                    <input class="form-control" id="uang_spp" name="uang_spp" />
-                                                </div>
-                                            </div>
-                                            <div class="row gx-3 mb-3">
-                                                <div class="col-md-6">
-                                                    <label for="exampleFormControlInput1">Uang Kegiatan</label>
-                                                    <input class="form-control" id="uang_kegiatan" name="uang_kegiatan" />
-                                                </div>
+                                           
                                                 <!-- <div class="col-md-6">
                                                     <label for="exampleFormControlInput1">Uang Lain-lain</label>
                                                     <input class="form-control" id="uang_lainlain" name="uang_lainlain" />
                                                 </div> -->
-                                            </div>
+                                           
 
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Tambah</button>

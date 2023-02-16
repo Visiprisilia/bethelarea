@@ -100,11 +100,12 @@
     <b>&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bagian Administrasi&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Kepala Sekolah&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>Bendahara Yayasan&emsp;&nbsp;&emsp;&emsp;&emsp;&nbsp;&emsp;</b></b></b><br /><br><br><br>
     &emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Astrid Wulan Dessianti, S.Pd&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;Arum Widuri, S.Pd&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Neny Widijawati, S.Pd&emsp;&nbsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;<br /><br><br><br>
 </center>
-    <span class="pull-right col-xs-12">
-        <input class="no-print" type="button" value="Cetak" onclick="window.print()">
+<br><br><br>
+    <span class="pull-right col-xs-12"> 
+    &nbsp;&nbsp;&nbsp; &nbsp;  <input class="btn btn-info" type="button" value="Cetak" onclick="window.print()">
         <!-- <input type="button" value="Kembali" onclick=self.history.back() class="no-print"> -->
-        <button type="submit" class="btn btn-success">Setor</button>
-        <a href="{{url('/kasmasuk')}}" class="btn">Kembali</a>
+       <br><br><br> <br><br><br>  &nbsp;&nbsp;&nbsp; &nbsp; <button type="submit" class="btn btn-success">Setor</button>
+        <a href="{{url('/kasmasuk')}}" class="btn btn-danger">Kembali</a>
 
         <div style="clear:both;"></div>
         </div>

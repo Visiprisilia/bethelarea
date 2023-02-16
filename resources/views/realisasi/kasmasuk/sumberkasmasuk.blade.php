@@ -28,7 +28,7 @@
                             <td>{{ $item->periode}}</td>
                             <td>{{ $item->tanggal_pencatatan}}</td>
                             <td>{{ $item->keterangan}}</td>
-                            <td>{{$item->kasir}}{{$item->nama_donatur}}{{$item->yayasans}}</td>                            
+                            <td>{{$item->kasir}}{{$item->nama_donatur}}{{$item->yayasans}}{{$item->nama_lainlain}}</td>                            
                             <td>{{Str::rupiah ($item->jumlah)}}</td>                              
                             <td>{{ $item->diterimadari}}</td>                              
                             <!-- <td>{{ $item->status_setoran}}</td>                               -->

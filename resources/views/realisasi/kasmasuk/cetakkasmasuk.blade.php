@@ -85,7 +85,7 @@
                                     </div>
                                     <p>
                                         <b>No. Bukti &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</b>&nbsp;{{ $item->no_bukti}}&emsp;&emsp;&emsp;&emsp;&emsp;<b>Tanggal : </b> {{$item->tanggal_pencatatan}} <br><br>
-                                        <b>Diterima dari &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</b>&nbsp;{{$item->kasir}}{{$item->nama_donatur}}{{$item->yayasans}}
+                                        <b>Diterima dari &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</b>&nbsp;{{$item->kasir}}{{$item->nama}}{{$item->nama_donatur}}{{$item->yayasans}}
                                        <?php  
                                     //    $id_sumber = $request->id_sumber;
                                     //    if ($id_sumber = 1) {

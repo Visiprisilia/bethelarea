@@ -13,7 +13,7 @@
         <div class="card-header py-3">
             @if (auth()->user()->level=="unit")
             <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
-            <a href="tambahtagihan" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i>Tambah Data</a>
+            <a href="tambahdaftartagihan" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i>Tambah Data</a>
             @endif
         </div>
         @if (session('error'))
@@ -33,20 +33,22 @@
                         <tr>
                             <th>Nomor Induk</th>
                             <th>Nama Murid</th>
+                            <th>Total</th>
                             <th>Aksi</th>
                         </tr>
                     <tbody>
                         @foreach ($tagihan as $item)
                         <tr>
-                            <td>{{ $item->nis_tagihan}}</td>
+                            <td>{{ $item->daftar_nis_tagihan}}</td>
                             <td>{{ $item->nama}}</td>
+                            <td>{{ Str::rupiah ($item->daftar_nominal_tagihan)}}</td>
                             @if (auth()->user()->level=="unit")
                             <td>
-                                <a href="/edittagihan/{{$item->nis_tagihan}}"><i class="fas fa-edit" style="color:green"></i></a> 
-                                <a href="/hapustagihan/{{$item->nis_tagihan}}" onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a>
-                                @endif
-                                <a href="/lihattagihan/{{$item->nis_tagihan}}"><i class="fas fa-eye" style="color:red"></i></a>
+                                <a href="/lihattagihanmurid/{{$item->daftar_nis_tagihan}}" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">Tambah/Lihat Tagihan</a> 
+                                <!-- <a href="/hapustagihan/{{$item->nis_tagihan}}" onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a> -->
                             </td>
+                                @endif
+                                <!-- <a href="/lihattagihan/{{$item->nis_tagihan}}"><i class="fas fa-eye" style="color:red"></i></a> -->
                         </tr>
                         @endforeach
                     </tbody>

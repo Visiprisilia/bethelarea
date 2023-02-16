@@ -100,7 +100,7 @@
         <!-- <input type="button" value="Kembali" onclick=self.history.back() class="no-print"> -->
         <!-- <button type="submit" class="btn btn-success">Cetak</button> -->
         <button type="submit" class="btn btn-success">Setor</button>
-        <a href="{{url('/kasmasuk')}}" class="btn">Kembali</a>
+        <a href="{{url('/kasmasuk')}}" class="btn btn-danger">Kembali</a>
 
         <div style="clear:both;"></div>
         </div>

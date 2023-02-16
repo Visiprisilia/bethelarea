@@ -12,7 +12,7 @@ class KasMasuk extends Model
     protected $primaryKey = 'no_bukti';
     public $incrementing = false;
     protected $fillable = ['no_bukti','periode','tanggal_pencatatan','keterangan','progja','akun','sumber','jumlah','kasir',
-    'diterimadari','nama_donatur','yayasans'];
+    'diterimadari','nama_donatur','nama_lainlain','yayasans'];
  
 }
 

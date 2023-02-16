@@ -97,6 +97,10 @@
                                                 <label for="exampleFormControlInput1">Nama Donatur</label>
                                                 <input class="form-control" id="nama_donatur" name="nama_donatur" />
                                             </div>
+                                            <div class="col-md-4" id="lainlain" style="display: none;">
+                                                <label for="exampleFormControlInput1">Nama Sumber lain-lain</label>
+                                                <input class="form-control" id="nama_lainlain" name="nama_lainlain" />
+                                            </div>
                                             </div>
                                             <div class="row gx-3 mb-3">
                                             <div class="col-md-6">
@@ -136,6 +140,14 @@
 <script>
     $(document).on('change', '#sumber', function() {
         var val = $('#sumber option').filter(':selected').val() == "3" ? $('#donatur').show() : $('#donatur').hide();
+
+        //   if(val=="murid"{})  
+        // alert(val);
+    })
+</script>
+<script>
+    $(document).on('change', '#sumber', function() {
+        var val = $('#sumber option').filter(':selected').val() == "4" ? $('#lainlain').show() : $('#lainlain').hide();
 
         //   if(val=="murid"{})  
         // alert(val);
