@@ -160,10 +160,14 @@ class EvaluasiController extends Controller
 		->first();
 		$data2 = Akuns::join("coa", "akuns.kode_akun", "=", "coa.kode_akun")->where("kode_proker", $kode)->get();
 		$data3 = KasKeluar::where("prokers", $kode)->get();
+		$data4 = Akuns::join("lapposisianggaran", "akuns.kode_akun", "=", "lapposisianggaran.akun")
+		->join("coa", "akuns.kode_akun", "=", "coa.kode_akun")->where("kode_proker", $kode)
+		->where("status_amandemens","!=","Amandemen")->get();
 		return response()->json([
 			"programkerja" => $data,
 			"akun" => $data2,
 			"kaskeluar" => $data3,
+			"lappa" => $data4,
 
 		]);
 	}

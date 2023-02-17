@@ -5,17 +5,12 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Tagihan Murid</h1>
+    <h1 class="h3 mb-2 text-gray-800">Daftar Tagihan Murid</h1>
 
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            @if (auth()->user()->level=="unit")
-            <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
-            <a href="tambahdaftartagihan" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i>Tambah Data</a>
-            @endif
-        </div>
+    
         @if (session('error'))
         <div class="alert alert-danger">
             {{ session('error') }}
@@ -34,25 +29,28 @@
                             <th>No</th>
                             <th>Nomor Induk</th>
                             <th>Nama Murid</th>
-                            <th>Total</th>
+                            <!-- <th>Total Tagihan</th>
+                            <th>Total Pembayaran</th>
+                            <th>Total Sisa Pembayaran</th> -->
                             @if (auth()->user()->level=="unit" or auth()->user()->level=="yayasan")
                             <th>Aksi</th>
                             @endif
                         </tr>
                     <tbody>
-                        @foreach ($tagihan as $item)
+                        @foreach ($pembayaran as $item)
                         <tr>
                         <td>{{ $loop->iteration}}</td>
-                            <td>{{ $item->daftar_nis_tagihan}}</td>
+                            <td>{{ $item->rincian_nis}}</td>
                             <td>{{ $item->nama}}</td>
-                            <td>{{ Str::rupiah ($item->daftar_nominal_tagihan)}}</td>
+                            <!-- <td>{{ Str::rupiah ($item->rincian_nominal)}}</td>
+                            <td>{{ Str::rupiah ($item->pembayaran)}}</td>
+                            <td>{{ Str::rupiah ($item->sisapembayaran)}}</td> -->
                             @if (auth()->user()->level=="unit" or auth()->user()->level=="yayasan")
+
                             <td>
-                                <a href="/lihattagihanmurid/{{$item->id_tagihan}}" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">Tambah/Lihat Tagihan</a> 
-                                <!-- <a href="/hapustagihan/{{$item->nis_tagihan}}" onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a> -->
+                                <a href="/lihatpembayaranmurid/{{$item->rincian_nis}}" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">Detail</a> 
                             </td>
                                 @endif
-                                <!-- <a href="/lihattagihan/{{$item->nis_tagihan}}"><i class="fas fa-eye" style="color:red"></i></a> -->
                         </tr>
                         @endforeach
                     </tbody>

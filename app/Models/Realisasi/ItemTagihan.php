@@ -11,7 +11,7 @@ class ItemTagihan extends Model
     protected $table = 'item_tagihan';
     protected $primaryKey = 'id_itemtagihan';
     public $incrementing = false;
-    protected $fillable = ['id_itemtagihan','id_tagihan','id_kategoritagihan','nominal_tagihan',];
+    protected $fillable = ['id_itemtagihan','id_tagihan','kode_akun','nominal_tagihan',];
  
 }
 

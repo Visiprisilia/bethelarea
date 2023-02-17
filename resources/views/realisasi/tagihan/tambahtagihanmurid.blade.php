@@ -37,24 +37,22 @@
                                 <!-- Component Preview-->
                                 <div class="sbp-preview">
                                     <div class="sbp-preview-content">
+                                    
                                         <form action="/simpantagihanmurid" method="post">
                                             @csrf
+                                                <input class="form-control" id="id_tagihan" name="id_tagihan" value="{{$tagihans->id_tagihan}}" hidden  placeholder="Masukkan Jumlah Tagihan" />
                                             <div class="mb-3">
                                                     <label class="mb-1" for="inputLastName">Jenis Tagihan</label>
-                                                    <select class="form-control" id="id_kategoritagihan" name="id_kategoritagihan">
+                                                    <select class="form-control" id="kode_akun" name="kode_akun">
                                                         <option value>Pilih Jenis Tagihan</option>
-                                                        @foreach ($kategori as $item)
-                                                        <option value="{{ $item->id_kategoritagihan}}">{{$item->nama_kategoritagihan}}</option>
+                                                        @foreach ($coa as $item)
+                                                        <option value="{{ $item->kode_akun}}">{{ $item->kode_akun}} - {{$item->nama_akun}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
                                                 <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Jumlah Tagihan</label>
                                                 <input class="form-control" id="nominal_tagihan" name="nominal_tagihan" placeholder="Masukkan Jumlah Tagihan" />
-                                            </div>    
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">ID tagiha</label>
-                                                <input class="form-control" id="id_tagihan" name="id_tagihan" placeholder="Masukkan Jumlah Tagihan" />
                                             </div>    
                                            
                                                 <!-- <div class="col-md-6">

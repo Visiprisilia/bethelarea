@@ -21,7 +21,7 @@ class DaftarTagihan extends Model
 // left join kategori_tagihanmurid ktm on it.id_kategoritagihan=ktm.id_kategoritagihan
 // left join murid md on (tm.nis_tagihan=md.nomor_induk)
 
-//new daftar tagihan
+// new daftar tagihan
 // CREATE or REPLACE VIEW daftartagihan as 
 // SELECT id_tagihan, rincian_nis_tagihan daftar_nis_tagihan, rincian_periode_tagihan daftar_periode_tagihan, SUM(rincian_nominal_tagihan)daftar_nominal_tagihan, rincian_namakategori_tagihan daftar_namakategori_tagihan
 // from daftarrinciantagihan

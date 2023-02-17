@@ -31,26 +31,24 @@
                                 <div class="sbp-preview">
                                     <div class="sbp-preview-content">
                                         @foreach($tagihan as $itemss)
-                                        <form action="/updatetagihanmurid/{{$itemss->id_tagihan}}" method="post">
+                                        <form action="/updatetagihanmurid/{{$itemss->id_itemtagihan}}" method="post">
                                             @csrf
+
+                                            <input class="form-control" id="id_tagihan" name="id_tagihan" hidden value="{{$itemss->id_tagihan}}" placeholder="Masukkan Jumlah Tagihan" />
+
                                             <div class="mb-3">
-                                                    <label class="mb-1" for="inputLastName">Jenis Tagihan</label>
-                                                    <select class="form-control" id="id_kategoritagihan" name="id_kategoritagihan">
-                                                        <option value>Pilih Jenis Tagihan</option>
-                                                        @foreach ($kategori as $item)
-                                                        <option value="{{ $item->id_kategoritagihan}}">{{$item->nama_kategoritagihan}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                                <div class="mb-3">
+                                                <label class="mb-1" for="inputLastName">Jenis Tagihan</label>
+                                                <select class="form-control" id="kode_akun" name="kode_akun">
+                                                    <option value>Pilih Jenis Tagihan</option>
+                                                    @foreach ($coa as $item)
+                                                    <option value="{{ $item->kode_akun}}">{{ $item->kode_akun}} - {{$item->nama_akun}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Jumlah Tagihan</label>
                                                 <input class="form-control" id="nominal_tagihan" name="nominal_tagihan" value="{{$itemss->nominal_tagihan}}" placeholder="Masukkan Jumlah Tagihan" />
-                                            </div>    
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">ID tagiha</label>
-                                                <input class="form-control" id="id_tagihan" name="id_tagihan" value="{{$itemss->id_tagihan}}"  placeholder="Masukkan Jumlah Tagihan" />
-                                            </div>    
-
+                                            </div>
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Simpan</button>
                                                 <a href="{{url('/tagihan')}}" class="btn btn-danger">Batal</a>

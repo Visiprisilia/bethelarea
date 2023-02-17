@@ -20,9 +20,14 @@ $(document).on("change","#kode_proker",function(){
                 $("#akunbeban").append('<input class="form-control" id="akun_beban" name="akun_beban" readonly name="akun_beban"  value="'+i.nama_akun+'" placeholder="Masukkan Akun Biaya" required />');
                 
             })
+            $.each(data.lappa, function (x, i) {
+
+                $("#realisasianggaran").append('<input class="form-control" id="realisasi_anggaran" name="realisasi_anggaran" readonly name="realisasi_anggaran" value="' + i.realisasi + '" placeholder="Masukkan Akun Biaya" required />');
+
+            })
             $.each(data.kaskeluar,function(x,i){
       
-                $("#realisasianggaran").append('<input class="form-control" id="realisasi_anggaran" name="realisasi_anggaran" readonly name="realisasi_anggaran"  value="'+i.jumlah+'" placeholder="Masukkan Akun Biaya" required />');
+                // $("#realisasianggaran").append('<input class="form-control" id="realisasi_anggaran" name="realisasi_anggaran" readonly name="realisasi_anggaran"  value="'+i.jumlah+'" placeholder="Masukkan Akun Biaya" required />');
                 $("#realisasiwaktu").append('<input class="form-control" id="realisasi_waktu" name="realisasi_waktu" readonly name="realisasi_waktu" type="date"  value="'+i.tanggal_pencatatan+'" placeholder="Masukkan Akun Biaya" required />');
                 
             })

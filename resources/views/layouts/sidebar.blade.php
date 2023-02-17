@@ -11,11 +11,11 @@
                 </p>
             </sup></div>
     </a>
+    
 
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
-
-
+    @if (auth()->user()->level!="murid")
     <li class="nav-item">
         <a class="nav-link" href="/dashboard">
             <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -42,7 +42,7 @@
                 <a class="collapse-item" href="/coa">Chart Of Accounts</a>
                 @if (auth()->user()->level=="unit")
                 <a class="collapse-item" href="/sumber">Daftar Sumber Dana</a>
-                <a class="collapse-item" href="/kategoritagihan">Daftar Jenis Tagihan</a>
+                <!-- <a class="collapse-item" href="/kategoritagihan">Daftar Jenis Tagihan</a> -->
                 @endif
                 @if (auth()->user()->level=="super admin")
                 <a class="collapse-item" href="/user">User</a>
@@ -79,10 +79,17 @@
                 <a class="collapse-item" href="/kasbon">Pendaftaran Kas Bon</a>
                 <a class="collapse-item" href="/kasmasuk">Kas Masuk</a>
                 <a class="collapse-item" href="/kaskeluar">Kas Keluar</a>
-                <a class="collapse-item" href="/tagihan">Tagihan Murid</a>
+                <a class="collapse-item" href="/tagihan">Daftar Jenis Tagihan Murid</a>
+                <!-- <a class="collapse-item" href="/pembayaranmurid">Pembayaran Murid</a> -->
             </div>
         </div>
        
+    </li>
+ 
+    <li class="nav-item">
+        <a class="nav-link" href="/pembayaranmurid">
+        <i class='fas fa-id-card-alt'></i>
+            <span>Tagihan Murid</span></a>
     </li>
 
     <li class="nav-item">
@@ -116,7 +123,14 @@
             </div>
         </div>
     </li>
-
+    @endif
+    @if (auth()->user()->level=="murid")
+    <li class="nav-item">
+        <a class="nav-link" href="/lihatpembayaranmurid/220220361">
+        <i class='fas fa-id-card-alt'></i>
+            <span>Tagihan Murid</span></a>
+    </li>
+    @endif
     <!-- Nav Item - Utilities Collapse Menu -->
     <!-- <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">

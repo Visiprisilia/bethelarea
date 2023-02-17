@@ -172,7 +172,7 @@
                             results: $.map(data, function(item){
                                 return {
                                     id: item.kode_akun,
-                                    text: item.kode_akun
+                                    text: item.nama_akun
                                 }
                             })
                         }

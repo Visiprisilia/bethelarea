@@ -20,7 +20,7 @@ class LoginController extends Controller
 
         // cek apakah email dan password benar
         if (auth()->attempt(request(['nama_user', 'password']))) {
-            return redirect('/dashboard');
+            return redirect('/home');
         }
 
         // jika salah, kembali ke halaman login

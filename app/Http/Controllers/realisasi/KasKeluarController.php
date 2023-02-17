@@ -352,20 +352,6 @@ class KasKeluarController extends Controller
         return response()->json($data);
 	
 	}
-	// public function pilihprokers(Request $request)
-	// {
-	// 	$kode = $request->kode;
-	// 	$data = Akuns::where("kode_proker", $request->kode)->where('status_amandemens','!=','Amandemen')->first();
-	// 	// $data2 =LaporanPosisiAnggaran::where("akun",$kode)->get();
-	// 	$data2 = Akuns::join("lapposisianggaran", "akuns.kode_akun", "=", "lapposisianggaran.akun")
-	// 	->join("coa", "akuns.kode_akun", "=", "coa.kode_akun")->where("kode_proker", $kode)
-	// 	->where("status_amandemens","!=","Amandemen")->get();
-	// 	return response()->json([
-	// 		"proker"=>$data,
-	// 		"lappa"=>$data2
-
-	// 	]);
-	// }
 	public function pilihakun($kode_proker)
 	{
 		$data = Akuns::join("coa", "akuns.kode_akun", "=", "coa.kode_akun")

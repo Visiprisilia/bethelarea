@@ -19,6 +19,8 @@ use App\Models\Realisasi\DaftarTagihan;
 use App\Models\Realisasi\DaftarRincianTagihan;
 use App\Models\Realisasi\KategoriTagihanMurid;
 use App\Models\Realisasi\ItemTagihan;
+use App\Models\Coa\Coa;
+use Illuminate\Validation\Rule;
 
 class TagihanController extends Controller
 {
@@ -110,25 +112,32 @@ class TagihanController extends Controller
 		$murid = Murid::orderBy('created_at','desc')->get();
 		$tagihans = DaftarRincianTagihan::join("murid","daftarrinciantagihan.rincian_nis_tagihan","=","murid.nomor_induk")
 		->where('id_tagihan', $id_tagihan)->get()->first();
-		$tagihan = DaftarRincianTagihan::where('id_tagihan', $id_tagihan)->get();
+		$tagihan = DaftarRincianTagihan::join('Coa','daftarrinciantagihan.rincian_namakategori_tagihan','=','coa.kode_akun')
+		->where('id_tagihan', $id_tagihan)->get();
 		return view('realisasi/tagihan/lihattagihanmurid',  ['tagihan'=>$tagihan,'tagihans'=>$tagihans,'periode'=>$periode,'murid'=>$murid]);
 	}
-	public function tambahtagihanmurid()
+	public function tambahtagihanmurid($id_tagihan)
 	{
 		$periode = Periode::where('status', 'LIKE', 'AKTIF')->get();
 		$murid = Murid::orderBy('created_at','desc')->get();
-		$kategori = KategoriTagihanMurid::orderBy('created_at','desc')->get();
+		// $kategori = KategoriTagihanMurid::orderBy('created_at','desc')->get();
+		$coa = Coa::where('kode_akun','like','4%')->orderBy('kode_akun','asc')->get();
+		$tagihans = DaftarRincianTagihan::where('id_tagihan', $id_tagihan)->get()->first();
+		$tagihan = DaftarRincianTagihan::join("tagihan_murid","daftarrinciantagihan.id_tagihan","=","tagihan_murid.id_tagihan")
+		->where('daftarrinciantagihan.id_tagihan', $id_tagihan)->get();
 		// $tagihan = DaftarTagihan::join("murid","daftartagihan.daftar_nis_tagihan","=","murid.nomor_induk")->get();
-		return view('realisasi/tagihan/tambahtagihanmurid',  ['periode'=>$periode,'murid'=>$murid,'kategori'=>$kategori]);
+		return view('realisasi/tagihan/tambahtagihanmurid',  ['periode'=>$periode,'murid'=>$murid,'coa'=>$coa,'tagihan'=>$tagihan,
+		'tagihans'=>$tagihans]);
 	}
 
 	public function simpantagihanmurid(Request $request)
 	{		
 		$validator = Validator::make($request->all(), [	
-			'id_kategoritagihan' => 'required',
+			'kode_akun' => ['required',Rule::unique('item_tagihan')->where('id_tagihan', $request->id_tagihan)],
 			'nominal_tagihan' => 'required|numeric',
 		],[
-			"id_kategoritagihan.required"=>"Jenis Tagihan tidak boleh kosong",
+			"kode_akun.required"=>"Jenis Tagihan tidak boleh kosong",
+			"kode_akun.unique"=>"Jenis Tagihan tersebut sudah terdaftar",
 			"nominal_tagihan.required"=>"Jumlah Tagihan tidak boleh kosong",
 			"nominal_tagihan.numeric"=>"Jumlah harus berupa nilai rupiah",	
 		]);
@@ -138,25 +147,28 @@ class TagihanController extends Controller
 			$api = array(
 				'message' => $message
 			);
-			return redirect('/tambahtagihanmurid')->withErrors($validator);
-		}		
+			return redirect('/tagihan')->withErrors($validator);
+			// return redirect('/tagihan')->with('status', 'Data berhasil ditambahkan');
+
+		}
 		$id_tagihan = $request->id_tagihan;
 		ItemTagihan::where('id_tagihan', $request->id_tagihan)->create([			
 		// ItemTagihan::create([			
 			'id_itemtagihan'=>$request->id_itemtagihan, 
 			'id_tagihan'=>$id_tagihan, 
-			'id_kategoritagihan'=>$request->id_kategoritagihan, 
+			'kode_akun'=>$request->kode_akun, 
 			'nominal_tagihan'=>$request->nominal_tagihan, 
 			]);
-			return redirect('/lihattagihanmurid')->with('status', 'Data berhasil ditambahkan');
+			return redirect('/tagihan')->with('status', 'Data berhasil ditambahkan');
 	}
 		public function edittagihanmurid($id_itemtagihan)
 	{
 		$periode = Periode::where('status', 'LIKE', 'AKTIF')->get();
 		$murid = Murid::orderBy('created_at','desc')->get();
 		$kategori = KategoriTagihanMurid::orderBy('created_at','desc')->get();
+		$coa = Coa::where('kode_akun','like','4%')->orderBy('kode_akun','asc')->get();
 		$tagihan = ItemTagihan::where('id_itemtagihan', $id_itemtagihan)->get();
-		return view('realisasi/tagihan/edittagihanmurid',  ['tagihan'=>$tagihan,'periode'=>$periode,'murid'=>$murid,'kategori'=>$kategori]);
+		return view('realisasi/tagihan/edittagihanmurid',  ['tagihan'=>$tagihan,'periode'=>$periode,'murid'=>$murid,'coa'=>$coa]);
 	}
 	public function updatetagihanmurid(Request $request)
 	{       
@@ -164,7 +176,7 @@ class TagihanController extends Controller
 			// 'id_tagihan'=>$request->id_tagihan, 
 			'id_itemtagihan'=>$request->id_itemtagihan, 
 			'id_tagihan'=>$request->id_tagihan, 
-			'id_kategoritagihan'=>$request->id_kategoritagihan, 
+			'kode_akun'=>$request->kode_akun, 
 			'nominal_tagihan'=>$request->nominal_tagihan, 
 		]);
 		return redirect('/tagihan')->with('status', 'Data berhasil diubah');

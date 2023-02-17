@@ -14,6 +14,9 @@ use App\Models\ProgramKerja\ProgramKerja;
 use App\Models\Pegawai\Pegawai;
 use App\Http\Controllers\Controller;
 use App\Models\Coa\Coa;
+use App\Models\Realisasi\DaftarRincianTagihan;
+use App\Models\Realisasi\DaftarTagihan;
+use App\Models\Realisasi\RincianPembayaran;
 
 class KasMasukController extends Controller
 {
@@ -273,7 +276,7 @@ class KasMasukController extends Controller
 			// 'progja' => 'required',
 			// 'akun' => 'required',
 			'diterimadari'=>'required',
-			'sumber' => 'required',
+			// 'sumber' => 'required',
 			// 'nama_donatur' => 'required',
 			'jumlah' => 'required|numeric'
 
@@ -284,7 +287,7 @@ class KasMasukController extends Controller
 			// "akun.required"=>"Akun tidak boleh kosong",
 			"diterimadari.required"=>"Diterima dari siapa?",
 			// "nama_donatur.required"=>"Nama Donatur tidak boleh kosong?",
-			"sumber.required"=>"Sumber tidak boleh kosong",
+			// "sumber.required"=>"Sumber tidak boleh kosong",
 			"jumlah.required"=>"Jumlah tidak boleh kosong",
 			"jumlah.numeric"=>"Jumlah arus berupa nilai rupiah"
 		]);
@@ -294,7 +297,7 @@ class KasMasukController extends Controller
 			$api = array(
 				'message' => $message
 			);
-			return redirect('/tambahkasmasuk')->withErrors($validator);
+			return redirect('/tambahkasmasukmurid')->withErrors($validator);
 			
 		}
 		$tanggalhariini = Carbon::now()->format('Ymd');
@@ -318,7 +321,7 @@ class KasMasukController extends Controller
 			// 'progja'=>$request->progja,
 			'diterimadari'=>$request->diterimadari,
 			'akun'=>$request->akun,
-			'sumber'=>$request->sumber,
+			'sumber'=>1,
 			'jumlah'=>$request->jumlah,
 			'kasir'=>$request->kasir,
 			'nama_donatur'=>$request->nama_donatur,
@@ -445,6 +448,30 @@ class KasMasukController extends Controller
 		$data = Akuns::where("kode_proker", $kode)->where('status_amandemens','!=','Amandemen')->first();
 		return response()->json([
 			"progja" => $data,
+
+		]);
+	}
+	public function pilihmurid()
+	{
+		$data = Murid::where('nama', 'LIKE', '%'.request('q').'%')->paginate(10);
+
+        return response()->json($data);
+	
+	}
+	public function pilihtagihan($nomor_induk)
+	{
+		$data = DaftarRincianTagihan::join("coa","daftarrinciantagihan.rincian_namakategori_tagihan","=","coa.kode_akun")
+		->where('rincian_nis_tagihan', $nomor_induk)
+		->where('nama_akun', 'LIKE', '%'.request('q').'%')->paginate(10);
+		return response()->json($data);
+		
+	}
+	public function pilihakunss(Request $request)
+	{
+		$kode = $request->kode;
+		$data = RincianPembayaran::where("rincian_namakategori", $request->kode)->first();
+		return response()->json([
+			"rincian"=>$data
 
 		]);
 	}

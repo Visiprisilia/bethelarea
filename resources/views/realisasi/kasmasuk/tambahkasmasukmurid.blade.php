@@ -1,6 +1,9 @@
 @extends('template')
 @section('container')
 <!-- Default Bootstrap Form Controls-->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 @if($errors->any())
 <ul class="alert alert-danger">
     @foreach($errors->all() as $error)
@@ -56,40 +59,40 @@
                                             <div class="row gx-3 mb-3">
                                             <div class="col-md-6">
                                             <label class="mb-1" for="inputLastName">Murid</label>
-                                                <select class="form-control" id="periode" name="periode">
-                                                    <option value>Pilih Murid</option>
+                                                <select class="form-select" id="kasir" name="kasir">
+                                                    <!-- <option value>Pilih Murid</option>
                                                     @foreach ($murid as $item)
                                                     <option value="{{ $item->nomor_induk}}">{{$item->nomor_induk}} - {{$item->nama}} </option>
-                                                    @endforeach
+                                                    @endforeach -->
                                                 </select>
                                             </div>
                                             <div class="col-md-6">
-                                                    <label class="mb-1" for="inputLastName">Pembayaran</label>
+                                                    <label class="mb-1" for="inputLastName">Jenis Tagihan</label>
                                                     <select class="form-control" id="akun" name="akun">
-                                                        <option value>Pilih Pembayaran</option>
+                                                        <!-- <option value>Pilih Jenis Tagihan</option>
                                                         @foreach ($akun as $item)
                                                         <option value="{{ $item->kode_akun}}">{{$item->kode_akun}} - {{$item->nama_akun}}</option>
-                                                        @endforeach
+                                                        @endforeach -->
                                                     </select>
                                                 </div></div>
                                             <div class="row gx-3 mb-3">
-                                            <div class="col-md-6">
+                                            <!-- <div class="col-md-6">
                                                 <label for="exampleFormControlInput1">Total Tagihan</label>
                                                 <input class="form-control" readonly id="tagihan" name="tagihan" />
-                                            </div>
+                                            </div> -->
                                             <div class="col-md-6">
                                                 <label for="exampleFormControlInput1">Jumlah</label>
                                                 <input class="form-control" id="jumlah" name="jumlah" placeholder="Masukkan Jumlah" />
-                                            </div></div>
+                                            </div>
                                             <!-- <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Tanggal Pencatatan</label>
                                                 <input class="form-control" type="date" id="tanggal_pencatatan" name="tanggal_pencatatan"  />
                                             </div>   -->
-                                            <div class="row gx-3 mb-3">
                                             <div class="col-md-6">
                                                 <label for="exampleFormControlInput1">Keterangan</label>
                                                 <input class="form-control" id="keterangan" name="keterangan" placeholder="Masukkan Keterangan" />
                                             </div>                                       
+                                            <div class="row gx-3 mb-3">
                                             <div class="col-md-6">
                                                 <label for="exampleFormControlInput1">Diterima dari :</label>
                                                 <input class="form-control" id="diterimadari" name="diterimadari" placeholder="Diterima dari.." />
@@ -110,22 +113,47 @@
         </div>
     </main>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script src="/proker/kasmasuk.js"></script>
 
 <script>
-    $(document).on('change', '#sumber', function() {
-        var val = $('#sumber option').filter(':selected').val() == "1" ? $('#murid').show() : $('#murid').hide();
+        $(document).ready(function(){
+            $("#kasir").select2({
+                placeholder:'Pilih Murid',
+                ajax: {
+                    url:"{{route('pilihmurid.index')}}",
+                    processResults: function({data}){
+                        return {
+                            results: $.map(data, function(item){
+                                return {
+                                    id: item.nomor_induk,
+                                    text: item.nama
+                                }
+                            })
+                        }
+                    }
+                }
+            });
+            $("#kasir").change(function(){
+                let nomor_induk = $('#kasir').val();
 
-        //   if(val=="murid"{})  
-        // alert(val);
-    })
-</script>
-<script>
-    $(document).on('change', '#sumber', function() {
-        var val = $('#sumber option').filter(':selected').val() == "3" ? $('#donatur').show() : $('#donatur').hide();
-
-        //   if(val=="murid"{})  
-        // alert(val);
-    })
-</script>
+                $("#akun").select2({
+                placeholder:'Pilih Akun',
+                ajax: {
+                    url: "{{url('pilihtagihan')}}/"+nomor_induk,
+                    processResults: function({data}){
+                        return {
+                            results: $.map(data, function(item){
+                                return {
+                                    id: item.rincian_namakategori_tagihan,
+                                    text: item.nama_akun
+                                }
+                            })
+                        }
+                    }
+                }
+            });
+            });
+        });
+            </script>
 @endsection

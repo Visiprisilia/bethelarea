@@ -15,6 +15,11 @@ use App\Http\Controllers\Controller;
 
 class DashboardController extends Controller
 {
+    public function home(Request $request)
+    {
+       
+        return view('dashboard/home');
+    }
     public function dashboard(Request $request)
     {
         $id = $request->id;
