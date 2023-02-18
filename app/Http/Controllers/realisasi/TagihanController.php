@@ -27,10 +27,17 @@ class TagihanController extends Controller
 	//daftar tagihan
 	public function tagihan()
     {
-        $tagihan = DaftarTagihan::join("murid","daftartagihan.daftar_nis_tagihan","=","murid.nomor_induk")
-
-		->orderBy('daftar_nis_tagihan','desc')->get();
+		$tagihan = Periode::orderBy('created_at', 'desc')->get();
+ 
         return view('realisasi/tagihan/tagihan', compact('tagihan'));
+    }
+	public function viewtagihan(Request $request)
+    {
+		$id = $request->id;
+        $tagihan = DaftarTagihan::join("murid","daftartagihan.daftar_nis_tagihan","=","murid.nomor_induk")
+		->where('daftar_periode_tagihan', $id)
+		->orderBy('daftar_nis_tagihan','desc')->get();
+        return view('realisasi/tagihan/viewtagihan', compact('tagihan'));
     }
     public function tambahdaftartagihan()
 	{
@@ -42,8 +49,8 @@ class TagihanController extends Controller
     public function simpandaftartagihan(Request $request)
 	{		
 		$validator = Validator::make($request->all(), [	
-			'periode_tagihan' => 'required',
-			'nis_tagihan' => 'required|unique:tagihan_murid',
+			'periode_tagihan' => 'required',			
+			'nis_tagihan' => ['required',Rule::unique('tagihan_murid')->where('periode_tagihan', $request->periode_tagihan)],
 		],[
 			"periode_tagihan.required"=>"Periode tidak boleh kosong",
 			"nis_tagihan.required"=>"Nama Murid tidak boleh kosong",
@@ -66,45 +73,7 @@ class TagihanController extends Controller
 		
 			return redirect('/tagihan')->with('status', 'Data berhasil ditambahkan');
 	}
-	// public function edittagihan($nis_tagihan)
-	// {
-	// 	$periode = Periode::where('status', 'LIKE', 'AKTIF')->get();
-	// 	$murid = Murid::orderBy('created_at','desc')->get();
-	// 	$tagihan = Tagihan::where('nis_tagihan', $nis_tagihan)->get();
-	// 	return view('realisasi/tagihan/edittagihan',  ['tagihan'=>$tagihan,'periode'=>$periode,'murid'=>$murid]);
-	// }
-	// public function updatetagihan(Request $request)
-	// {       
-    //     $tagihan = Tagihan::where('nis_tagihan', $request->nis_tagihan)->update([
-	// 		// 'id_tagihan'=>$request->id_tagihan, 
-	// 		'periode_tagihan'=>$request->periode_tagihan, 
-	// 		'nis_tagihan'=>$request->nis_tagihan, 
-	// 		'uang_pendaftaran'=>$request->uang_pendaftaran, 
-	// 		'uang_pengembanganpendidikan'=>$request->uang_pengembanganpendidikan,
-	// 		'uang_peralatan'=>$request->uang_peralatan,
-	// 		'uang_seragam'=>$request->uang_seragam,
-	// 		'uang_parenting'=>$request->uang_parenting,
-	// 		'uang_spp'=>$request->uang_spp,
-	// 		'uang_kegiatan'=>$request->uang_kegiatan,	
-	// 	]);
-	// 	return redirect('/tagihan')->with('status', 'Data berhasil diubah');
-	// }
-	// public function lihattagihan($nis_tagihan)
-	// {
-	// 	$tagihan = Tagihan::leftjoin("murid","tagihan.nis_tagihan","=","murid.nomor_induk")->where('nis_tagihan', $nis_tagihan)->get();
-	// 	return view('realisasi/tagihan/lihattagihan', compact('tagihan'));
-	// }
-	// public function cetaktagihan()
-	// {
-	// 	return view('realisasi/tagihan/cetaktagihan');
-	// }
-	// public function hapustagihan($nis_tagihan)
-	// {
-	// 	$tagihan = Tagihan::where('nis_tagihan', $nis_tagihan)->delete();
-	// 	return redirect('/tagihan') -> with ('status', 'Data berhasil dihapus');
-	// }	
-
-
+	
 	//tagihan per murid
 	public function lihattagihanmurid($id_tagihan)
 	{
@@ -114,14 +83,16 @@ class TagihanController extends Controller
 		->where('id_tagihan', $id_tagihan)->get()->first();
 		$tagihan = DaftarRincianTagihan::join('Coa','daftarrinciantagihan.rincian_namakategori_tagihan','=','coa.kode_akun')
 		->where('id_tagihan', $id_tagihan)->get();
-		return view('realisasi/tagihan/lihattagihanmurid',  ['tagihan'=>$tagihan,'tagihans'=>$tagihans,'periode'=>$periode,'murid'=>$murid]);
+		$total = DaftarRincianTagihan::where('id_tagihan', $id_tagihan)->sum('rincian_nominal_tagihan');
+		return view('realisasi/tagihan/lihattagihanmurid',  ['tagihan'=>$tagihan,'tagihans'=>$tagihans,'total'=>$total,
+		'periode'=>$periode,'murid'=>$murid]);
 	}
 	public function tambahtagihanmurid($id_tagihan)
 	{
 		$periode = Periode::where('status', 'LIKE', 'AKTIF')->get();
 		$murid = Murid::orderBy('created_at','desc')->get();
 		// $kategori = KategoriTagihanMurid::orderBy('created_at','desc')->get();
-		$coa = Coa::where('kode_akun','like','4%')->orderBy('kode_akun','asc')->get();
+		$coa = Coa::where('status_coa','like','tagihan')->orderBy('kode_akun','asc')->get();
 		$tagihans = DaftarRincianTagihan::where('id_tagihan', $id_tagihan)->get()->first();
 		$tagihan = DaftarRincianTagihan::join("tagihan_murid","daftarrinciantagihan.id_tagihan","=","tagihan_murid.id_tagihan")
 		->where('daftarrinciantagihan.id_tagihan', $id_tagihan)->get();
@@ -166,7 +137,7 @@ class TagihanController extends Controller
 		$periode = Periode::where('status', 'LIKE', 'AKTIF')->get();
 		$murid = Murid::orderBy('created_at','desc')->get();
 		$kategori = KategoriTagihanMurid::orderBy('created_at','desc')->get();
-		$coa = Coa::where('kode_akun','like','4%')->orderBy('kode_akun','asc')->get();
+		$coa = Coa::where('status_coa','like','tagihan')->orderBy('kode_akun','asc')->get();
 		$tagihan = ItemTagihan::where('id_itemtagihan', $id_itemtagihan)->get();
 		return view('realisasi/tagihan/edittagihanmurid',  ['tagihan'=>$tagihan,'periode'=>$periode,'murid'=>$murid,'coa'=>$coa]);
 	}

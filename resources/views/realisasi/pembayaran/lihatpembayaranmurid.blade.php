@@ -37,12 +37,12 @@
                                 <td>{{ Str::rupiah ($item->sisapembayaran)}}</td>
                             </tr>
                             @endforeach
+                        </tbody>
                             <th>Total</th>
                             <th></th>
                             <th>{{Str::rupiah($tagihan)}}</th>
                             <th>{{Str::rupiah($bayaran)}}</th>
                             <th>{{Str::rupiah($sisa)}}</th>
-
                             </thead>
                     </table>
                 </div>

@@ -30,9 +30,16 @@ class PembayaranController extends Controller
 	
 	public function pembayaranmurid()
     {
-        $pembayaran = Pembayaran::join("murid","pembayaran.rincian_nis","=","murid.nomor_induk")
-		->orderBy('rincian_nis','desc')->get();
+		$pembayaran = Periode::orderBy('created_at', 'desc')->get();   
         return view('realisasi/pembayaran/pembayaranmurid', compact('pembayaran'));
+    }
+	public function viewpembayaranmurid(Request $request)
+    {
+		$id = $request->id;
+        $pembayaran = Pembayaran::join("murid","pembayaran.rincian_nis","=","murid.nomor_induk")
+		->where('rincian_periode', $id)
+		->orderBy('rincian_nis','desc')->get();
+        return view('realisasi/pembayaran/viewpembayaranmurid', compact('pembayaran'));
     }
  
 	//tagihan per murid

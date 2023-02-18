@@ -15,7 +15,14 @@
             <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
             <a href="tambahdaftartagihan" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i>Tambah Data</a>
             @endif
+            <select class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" id="tagihan" name="tagihan">
+                <option value>Pilih Periode</option>
+                @foreach ($tagihan as $item)
+                <option value="{{ $item->kode_periode}}">{{$item->nama_periode}}</option>
+                @endforeach
+            </select>
         </div>
+
         @if (session('error'))
         <div class="alert alert-danger">
             {{ session('error') }}
@@ -27,7 +34,7 @@
         </div>
         @endif
         <div class="card-body">
-            <div class="table-responsive">
+        <div class="table-responsive" id="tabletagihan">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
@@ -40,21 +47,6 @@
                             @endif
                         </tr>
                     <tbody>
-                        @foreach ($tagihan as $item)
-                        <tr>
-                        <td>{{ $loop->iteration}}</td>
-                            <td>{{ $item->daftar_nis_tagihan}}</td>
-                            <td>{{ $item->nama}}</td>
-                            <td>{{ Str::rupiah ($item->daftar_nominal_tagihan)}}</td>
-                            @if (auth()->user()->level=="unit" or auth()->user()->level=="yayasan")
-                            <td>
-                                <a href="/lihattagihanmurid/{{$item->id_tagihan}}" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">Tambah/Lihat Tagihan</a> 
-                                <!-- <a href="/hapustagihan/{{$item->nis_tagihan}}" onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a> -->
-                            </td>
-                                @endif
-                                <!-- <a href="/lihattagihan/{{$item->nis_tagihan}}"><i class="fas fa-eye" style="color:red"></i></a> -->
-                        </tr>
-                        @endforeach
                     </tbody>
                     </thead>
                 </table>
@@ -63,6 +55,20 @@
     </div>
 
 </div>
-
+<script>
+    $(document).on('change', '#tagihan', function() {
+        var id = $(this).val();
+        $.ajax({
+            url: "/viewtagihan",
+            data: {
+                id: id
+            },
+            method: "get",
+            success: function(data) {
+                $('#tabletagihan').html(data);
+            }
+        })
+    })
+</script>
 <!-- /.container-fluid -->
 @endsection

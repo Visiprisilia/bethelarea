@@ -58,6 +58,10 @@
                             </tr>
                             @endforeach
                         </tbody>
+                        <th>Total</th>
+                            <th></th>
+                            <th>{{Str::rupiah($total)}}</th>
+                            <th></th>
                         </thead>
                     </table>
                 </div>

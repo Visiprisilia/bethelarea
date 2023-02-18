@@ -49,21 +49,31 @@
                                                 <label for="exampleFormControlInput1">Nama Akun</label>
                                                 <input class="form-control" id="nama_akun" name="nama_akun" placeholder="Masukkan Nama Akun" />
                                             </div>                                         
+                                            <!-- <div class="row gx-3 mb-3"> -->
+                                            <!-- <div class="col-md-6"> -->
                                             <div class="mb-3">
                                                 <label for="exampleFormControlSelect1">Kelompok Rekening</label>
                                                 <select class="form-control" id="kelompok_rek" name="kelompok_rek" >
                                                 <option  value>Pilih Kelompok Rekening</option>    
                                                 <option>Aktiva</option>
-                                                    <option>Utang</option>
-                                                    <option>Biaya</option>
-                                                    <option>Modal</option>
-                                                    <option>Pendapatan</option>
+                                                    <option value="utang">Utang</option>
+                                                    <option value="biaya">Biaya</option>
+                                                    <option value="modal">Modal</option>
+                                                    <option value="pendapatan">Pendapatan</option>
                                                 </select>
                                             </div>
+                                            <!-- <div class="col-md-6" id="cek" style="display: none;">
+                                                <label for="exampleFormControlInput1">Pendapatan</label>
+                                                <select class="form-control" id="status_coa" name="status_coa" >
+                                                <option  value>Pilih Saldo Normal</option>  
+                                                    <option>Debit</option>
+                                                    <option>Kredit</option>
+                                                </select>
+                                            </div></div> -->
                                             <div class="mb-3">
                                                 <label for="exampleFormControlSelect1">Saldo Normal</label>
                                                 <select class="form-control" id="saldo_normal" name="saldo_normal" >
-                                                <option  value>Pilih Kelompok Rekening</option>  
+                                                <option  value>Pilih Saldo Normal</option>  
                                                     <option>Debit</option>
                                                     <option>Kredit</option>
                                                 </select>
@@ -86,4 +96,12 @@
         </div>
     </main>
 </div>
+<!-- <script>
+    $(document).on('change', '#kelompok_rek', function() {
+        var val = $('#kelompok_rek option').filter(':selected').val() == "pendapatan" ? $('#cek').show() : $('#cek').hide();
+
+        //   if(val=="murid"{})  
+        // alert(val);
+    })
+</script> -->
 @endsection

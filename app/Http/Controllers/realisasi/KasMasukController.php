@@ -461,6 +461,8 @@ class KasMasukController extends Controller
 	public function pilihtagihan($nomor_induk)
 	{
 		$data = DaftarRincianTagihan::join("coa","daftarrinciantagihan.rincian_namakategori_tagihan","=","coa.kode_akun")
+		->join("periode","daftarrinciantagihan.rincian_periode_tagihan","=","periode.kode_periode")
+		->where('status','like','AKTIF')
 		->where('rincian_nis_tagihan', $nomor_induk)
 		->where('nama_akun', 'LIKE', '%'.request('q').'%')->paginate(10);
 		return response()->json($data);

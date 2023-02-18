@@ -138,7 +138,7 @@
                 let nomor_induk = $('#kasir').val();
 
                 $("#akun").select2({
-                placeholder:'Pilih Akun',
+                placeholder:'Pilih Tagihan',
                 ajax: {
                     url: "{{url('pilihtagihan')}}/"+nomor_induk,
                     processResults: function({data}){

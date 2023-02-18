@@ -23,14 +23,15 @@ class PeriodeController extends Controller
 		$validator = Validator::make($request->all(), [	
 			'nama_periode' => 'required|unique:periode',
 			'awal_periode' => 'required',
-			'akhir_periode' => 'required',
+			'akhir_periode' => 'required|unique:periode',
 			'status' => 'required',
 		],[
 			"nama_periode.required"=>"Nama periode tidak boleh kosong",
 			"nama_periode.unique"=>"Data Tersebut Sudah Terdaftar",
 			"awal_periode.required"=>"Awal periode tidak boleh kosong",
 			"akhir_periode.required"=>"Akhir periode tidak boleh kosong",
-			"status.required"=>"Status tidak boleh kosong"
+			"status.required"=>"Status tidak boleh kosong",
+			"status.unique"=>"Hanya satu periode saja yang di aktifkan",
 			
 		]);
 
