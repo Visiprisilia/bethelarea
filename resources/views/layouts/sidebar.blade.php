@@ -89,7 +89,7 @@
     <li class="nav-item">
         <a class="nav-link" href="/tagihan">        
 <i class='fa fa-credit-card'></i>
-            <span>Daftar Jenis Tagihan Murid</span></a>
+            <span>Daftar Tagihan Murid</span></a>
     </li>
 
     <li class="nav-item">
@@ -132,11 +132,12 @@
     @endif
     @if (auth()->user()->level=="murid")
     <li class="nav-item">
-        <a class="nav-link" href="/pembayaranmurids">
+        <a class="nav-link" href="/pembayaranmurids/{{ auth()->user()->nama_user }}">
         <i class='fas fa-id-card-alt'></i>
             <span>Tagihan</span></a>
     </li>
     @endif
+    <!-- 120210300 -->
     <!-- Nav Item - Utilities Collapse Menu -->
     <!-- <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">

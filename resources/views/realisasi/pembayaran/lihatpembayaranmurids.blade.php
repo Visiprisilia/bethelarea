@@ -17,7 +17,7 @@
                 <option value="{{ $item->kode_periode}}">{{$item->nama_periode}}</option>
                 @endforeach
             </select>     -->
-        <a href="{{url('/pembayaranmurids')}}" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"><i class="fas fa-sm text-white-50"></i>Kembali</a>
+            <input type="button" value="Kembali" onclick=self.history.back() class="no-print">
         </div>
         <br>
         <b> &nbsp;&nbsp; Nomor Induk : {{$pembayarans->rincian_nis}} <br>

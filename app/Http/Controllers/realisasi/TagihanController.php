@@ -34,10 +34,11 @@ class TagihanController extends Controller
 	public function viewtagihan(Request $request)
     {
 		$id = $request->id;
+		$totals = DaftarTagihan::where('daftar_periode_tagihan', $id)->sum('daftar_nominal_tagihan');
         $tagihan = DaftarTagihan::join("murid","daftartagihan.daftar_nis_tagihan","=","murid.nomor_induk")
 		->where('daftar_periode_tagihan', $id)
 		->orderBy('daftar_nis_tagihan','desc')->get();
-        return view('realisasi/tagihan/viewtagihan', compact('tagihan'));
+        return view('realisasi/tagihan/viewtagihan', compact('tagihan','totals'));
     }
 	
 	public function cetaktagihan()

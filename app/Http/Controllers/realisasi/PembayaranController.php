@@ -27,7 +27,7 @@ use Illuminate\Validation\Rule;
 
 class PembayaranController extends Controller
 {
-	
+	//unit
 	public function pembayaranmurid()
     {
 		$pembayaran = Periode::orderBy('created_at', 'desc')->get();   
@@ -41,29 +41,10 @@ class PembayaranController extends Controller
 		->orderBy('rincian_nis','desc')->get();
         return view('realisasi/pembayaran/viewpembayaranmurid', compact('pembayaran'));
     }
-	public function pembayaranmurids()
-    {
-		$pembayaran = Periode::orderBy('created_at', 'desc')->get();   
-        return view('realisasi/pembayaran/pembayaranmurids', compact('pembayaran'));
-    }
-	public function viewpembayaranmurids(Request $request)
-    {
-		$id = $request->id;
-        $pembayaran = Pembayaran::join("murid","pembayaran.rincian_nis","=","murid.nomor_induk")
-		->where('rincian_periode', $id)
-		->orderBy('rincian_nis','desc')->get();
-        return view('realisasi/pembayaran/viewpembayaranmurids', compact('pembayaran'));
-    }
-	
 	public function cetakpembayaranmurid()
     {
 		$pembayaran = Periode::orderBy('created_at', 'desc')->get();   
         return view('realisasi/pembayaran/cetakpembayaranmurid', compact('pembayaran'));
-    }
-	public function cetakpembayaranmurids()
-    {
-		$pembayaran = Periode::orderBy('created_at', 'desc')->get();   
-        return view('realisasi/pembayaran/cetakpembayaranmurids', compact('pembayaran'));
     }
 	public function viewcetakpembayaranmurid(Request $request)
     {
@@ -73,14 +54,54 @@ class PembayaranController extends Controller
 		->orderBy('rincian_nis','desc')->get();
         return view('realisasi/pembayaran/viewcetakpembayaranmurid', compact('pembayaran'));
     }
-	public function viewcetakpembayaranmurids(Request $request)
-    {
-		$id = $request->id;
-        $pembayaran = Pembayaran::join("murid","pembayaran.rincian_nis","=","murid.nomor_induk")
-		->where('rincian_periode', $id)
-		->orderBy('rincian_nis','desc')->get();
-        return view('realisasi/pembayaran/viewcetakpembayaranmurids', compact('pembayaran'));
+
+	//murids
+	public function pembayaranmurids($rincian_nis)
+    {		
+		$pembayaran = Periode::orderBy('created_at', 'desc')->get();   
+		$pembayarans = Pembayaran::join("murid","pembayaran.rincian_nis","=","murid.nomor_induk")
+		->where('rincian_nis', $rincian_nis)->get()->first();
+		$pembayaran = Pembayaran::join("murid","pembayaran.rincian_nis","=","murid.nomor_induk")
+		->where('rincian_nis', $rincian_nis)
+		->orderBy('rincian_nis','desc')->get();	
+        return view('realisasi/pembayaran/pembayaranmurids', compact('pembayaran','pembayarans'));
     }
+	public function cetakpembayaranmurids($rincian_nis)
+    {
+		$pembayaran = Periode::orderBy('created_at', 'desc')->get();   
+		$pembayarans = Pembayaran::join("murid","pembayaran.rincian_nis","=","murid.nomor_induk")
+		->where('rincian_nis', $rincian_nis)->get()->first();
+		$pembayaran = Pembayaran::join("murid","pembayaran.rincian_nis","=","murid.nomor_induk")
+		->where('rincian_nis', $rincian_nis)
+		->orderBy('rincian_nis','desc')->get();	
+        return view('realisasi/pembayaran/cetakpembayaranmurids', compact('pembayaran','pembayarans'));
+    }
+	// public function viewpembayaranmurids(Request $request)
+    // {
+	// 	$id = $request->id;
+    //     $pembayaran = Pembayaran::join("murid","pembayaran.rincian_nis","=","murid.nomor_induk")	
+	// 	->orderBy('rincian_nis','desc')->get();
+    //     return view('realisasi/pembayaran/viewpembayaranmurids', compact('pembayaran'));
+    // }	
+	
+	// public function cetakpembayaranmurids($rincian_nis)
+    // {
+	// 	$pembayaran = Periode::orderBy('created_at', 'desc')->get();   
+	// 	$pembayaran = Pembayaran::join("murid","pembayaran.rincian_nis","=","murid.nomor_induk")
+	// 	->where('rincian_nis', $rincian_nis)
+	// 	->orderBy('rincian_nis','desc')->get();	
+    //     return view('realisasi/pembayaran/cetakpembayaranmurids', compact('pembayaran'));
+    // }
+	
+	// public function viewcetakpembayaranmurids(Request $request)
+    // {
+	// 	$id = $request->id;
+    //     $pembayaran = Pembayaran::join("murid","pembayaran.rincian_nis","=","murid.nomor_induk")
+	// 	->where('rincian_periode', $id)
+	// 	->where('rincian_nis', 'like','220220361')
+	// 	->orderBy('rincian_nis','desc')->get();
+    //     return view('realisasi/pembayaran/viewcetakpembayaranmurids', compact('pembayaran'));
+    // }
  
 	//tagihan per murid
 	public function lihatpembayaranmurid($rincian_id)

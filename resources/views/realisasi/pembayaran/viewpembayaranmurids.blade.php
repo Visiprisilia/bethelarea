@@ -6,6 +6,7 @@
     <thead>
         <tr>
             <th>No</th>
+            <th>Periode</th>
             <th>Nomor Induk</th>
             <th>Nama Murid</th>
             <!-- <th>Total Tagihan</th>
@@ -19,6 +20,7 @@
         @foreach ($pembayaran as $item)
         <tr>
             <td>{{ $loop->iteration}}</td>
+            <td>{{ $item->rincian_periode}}</td>
             <td>{{ $item->rincian_nis}}</td>
             <td>{{ $item->nama}}</td>
             <!-- <td>{{ Str::rupiah ($item->rincian_nominal)}}</td>

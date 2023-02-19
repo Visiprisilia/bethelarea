@@ -15,7 +15,7 @@
         </div>
         <br>
         <b> &nbsp;&nbsp; Nomor Induk : {{$pembayarans->rincian_nis}} <br>
-            &nbsp;&nbsp; Nama Murid : {{$pembayarans->nama}}
+            &nbsp;&nbsp; Nama Murid : {{$pembayarans->nama}} </b>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

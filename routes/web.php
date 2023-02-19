@@ -52,6 +52,8 @@ Route::get('/logout', [LoginController::class,'logout']);
 // Dashboard -->
 Route::get('/dashboard', [DashboardController::class,'dashboard']);
 Route::get('/home', [DashboardController::class,'home']);
+Route::get('/hum', [DashboardController::class,'hum']);
+Route::get('/hum/{rincian_nis}', [DashboardController::class,'hum']);
 
 //Kebijakan
 Route::get('/kebijakans', [KebijakanController::class,'kebijakan']);
@@ -252,9 +254,9 @@ Route::get('/viewcetakpembayaranmurid', [PembayaranController::class,'viewcetakp
 Route::get('/lihatpembayaranmurid/{rincian_id}', [PembayaranController::class,'lihatpembayaranmurid']);
 Route::get('/cetaklihatpembayaranmurid/{rincian_id}', [PembayaranController::class,'cetaklihatpembayaranmurid']);
 //untuk murid
-Route::get('/pembayaranmurids', [PembayaranController::class,'pembayaranmurids']);
+Route::get('/pembayaranmurids/{rincian_nis}', [PembayaranController::class,'pembayaranmurids']);
 Route::get('/viewpembayaranmurids', [PembayaranController::class,'viewpembayaranmurids']);
-Route::get('/cetakpembayaranmurids', [PembayaranController::class,'cetakpembayaranmurids']);
+Route::get('/pembayaranmurids/cetakpembayaranmurids/{rincian_nis}', [PembayaranController::class,'cetakpembayaranmurids']);
 Route::get('/viewcetakpembayaranmurids', [PembayaranController::class,'viewcetakpembayaranmurids']);
 Route::get('/lihatpembayaranmurids/{rincian_id}', [PembayaranController::class,'lihatpembayaranmurids']);
 Route::get('/cetaklihatpembayaranmurids/{rincian_id}', [PembayaranController::class,'cetaklihatpembayaranmurids']);
