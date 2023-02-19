@@ -1,7 +1,4 @@
-<script src="{{asset('template/vendor/datatables/jquery.dataTables.min.js')}}"></script>
-<script src="{{asset('template/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
-<!-- Page level custom scripts -->
-<script src="{{asset('template/js/demo/datatables-demo.js')}}"></script>
+
 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
     <thead>
         <tr>
@@ -25,10 +22,9 @@
                             <td>{{ Str::rupiah ($item->pembayaran)}}</td>
                             <td>{{ Str::rupiah ($item->sisapembayaran)}}</td> -->
             @if (auth()->user()->level=="unit" or auth()->user()->level=="yayasan")
-            
 
             <td>
-                <a href="/lihatpembayaranmurid/{{$item->rincian_id}}" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">Detail</a>
+                <a href="/cetaklihatpembayaranmurid/{{$item->rincian_id}}" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">Detail</a>
             </td>
             @endif
         </tr>
@@ -36,3 +32,6 @@
     </tbody>
     </thead>
 </table>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<input class="no-print" type="button" value="Cetak" onclick="window.print()">
+<input type="button" value="Kembali" onclick=self.history.back() class="no-print">

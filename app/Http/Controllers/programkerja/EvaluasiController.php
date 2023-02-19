@@ -45,12 +45,13 @@ class EvaluasiController extends Controller
 		// ->where('status', 'LIKE', 'AKTIF')->get();
 		$programkerja = programkerja::join("periode", "program_kerja.periode", "=", "periode.kode_periode")
 			->join("akuns", "program_kerja.kode_proker", "=", "akuns.kode_proker")
-			->where('kode_akun', 'LIKE', '5%')
+			->join("coa", "akuns.kode_akun", "=", "coa.kode_akun")
+			->where('coa.kode_akun', 'LIKE', '5%')
 			->where('status', 'LIKE', 'AKTIF')
 			->where('status_amandemens', '!=', 'Amandemen')
 			->where('persetujuan_proker', 'LIKE', 'Disetujui')
 			->orwhere('persetujuan_amandemen', 'LIKE', 'Disetujui')
-			->where('anggaran', '!=', 0)->get();
+			->where('program_kerja.anggaran', '!=', 0)->get();
 		return view('programkerja/evaluasi/tambahevaluasi', ['evaluasi' => $evaluasi, 'programkerja' => $programkerja]);
 	}
 	public function simpanevaluasi(Request $request)

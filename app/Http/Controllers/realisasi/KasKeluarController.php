@@ -29,14 +29,30 @@ class KasKeluarController extends Controller
 		$kaskeluar = KasKeluar::join("pegawai","kas_keluar.penanggungjawab","=","pegawai.niy")->orderBy('kas_keluar.created_at','asc')->get();
 		return view('realisasi/kaskeluar/kaskeluar', ['periode' => $periode, 'pegawai' => $pegawai, 'akun' => $akun, 'kaskeluar' => $kaskeluar]);
 	}
+	public function viewkaskeluar(Request $request)
+	{
+		$id = $request->id;
+		$periode = Periode::orderBy('created_at', 'desc')->get();
+		$pegawai = Pegawai::orderBy('created_at', 'desc')->get();
+		$akun = Akuns::join("coa", "akuns.kode_akun", "=", "coa.kode_akun")->get();
+		// $coa = Coa::orderBy('created_at','desc')->get();
+		// $kaskeluar = KasKeluar::orderBy('created_at', 'desc')->get();
+		$kaskeluar = KasKeluar::join("pegawai","kas_keluar.penanggungjawab","=","pegawai.niy")
+		->where('periode',$id)->orderBy('kas_keluar.created_at','asc')->get();
+		return view('realisasi/kaskeluar/viewkaskeluar', ['periode' => $periode, 'pegawai' => $pegawai, 'akun' => $akun, 'kaskeluar' => $kaskeluar]);
+	}
 	public function tambahkaskeluar()
 	{
 		$periode = Periode::where('status', 'LIKE', 'AKTIF')->get();
 		$pegawai = Pegawai::where('status', 'LIKE', 'AKTIF')->get();
 		$kasbon = KasBon::where('status_bon', 'LIKE', 'Belum Dipertanggungjawabkan')->get();
 		$laporankas = BukuBesarKas::orderBy('tgl','desc')->get();  
-        $tambah = BukuBesarKas::sum('bertambah');
-        $kurang = BukuBesarKas::sum('berkurang');
+        $tambah = BukuBesarKas::join("periode", "bbkas.periode", "=", "periode.kode_periode")
+		->where('status', 'LIKE', 'AKTIF')
+		->sum('bertambah');
+        $kurang = BukuBesarKas::join("periode", "bbkas.periode", "=", "periode.kode_periode")
+		->where('status', 'LIKE', 'AKTIF')
+		->sum('berkurang');
         $totalkas = $tambah-$kurang;
 		// $akun = Akuns::orderBy('created_at','desc')->get();
 		$akun = Akuns::join("periode", "akuns.periode", "=", "periode.kode_periode")

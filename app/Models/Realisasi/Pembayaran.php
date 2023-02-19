@@ -14,8 +14,13 @@ class Pembayaran extends Model
  
 }
 
-//yangdipakai
+// yangdipakai
 // CREATE or REPLACE VIEW pembayaran as 
 // SELECT rincian_nis, rincian_periode, rincian_namakategori, sum(rincian_nominal) rincian_nominal, sum(pembayaran) pembayaran, sum(rincian_nominal)-sum(pembayaran) sisapembayaran  
+// FROM rincianpembayaran
+// GROUP BY rincian_nis, rincian_periode
+//new
+// CREATE or REPLACE VIEW pembayaran as 
+// SELECT rincian_id, rincian_nis, rincian_periode, rincian_namakategori, sum(rincian_nominal) rincian_nominal, sum(pembayaran) pembayaran, sum(rincian_nominal)-sum(pembayaran) sisapembayaran  
 // FROM rincianpembayaran
 // GROUP BY rincian_nis, rincian_periode

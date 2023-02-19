@@ -5,25 +5,20 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Tagihan Murid</h1>
+    <h1 class="h3 mb-2 text-gray-800"> Pembayaran Murid</h1>
 
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            @if (auth()->user()->level=="unit")
-            <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
-            <a href="tambahdaftartagihan" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i>Tambah Data</a>
-            <a href="cetaktagihan" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print fa-sm text-white-50"></i>Cetak</a>
-            @endif
-            <select class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" id="tagihan" name="tagihan">
+        <div class="card-header py-3">        
+            <a href="cetakpembayaranmurids" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print fa-sm text-white-50"></i>Cetak</a>      
+            <select class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" id="pembayaran" name="pembayaran">
                 <option value>Pilih Periode</option>
-                @foreach ($tagihan as $item)
+                @foreach ($pembayaran as $item)
                 <option value="{{ $item->kode_periode}}">{{$item->nama_periode}}</option>
                 @endforeach
             </select>
         </div>
-
         @if (session('error'))
         <div class="alert alert-danger">
             {{ session('error') }}
@@ -35,19 +30,22 @@
         </div>
         @endif
         <div class="card-body">
-        <div class="table-responsive" id="tabletagihan">
+            <div class="table-responsive" id="tablepembayarans">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>No</th>
                             <th>Nomor Induk</th>
                             <th>Nama Murid</th>
-                            <th>Total</th>
-                            @if (auth()->user()->level=="unit" or auth()->user()->level=="yayasan")
+                            <!-- <th>Total Tagihan</th>
+                            <th>Total Pembayaran</th>
+                            <th>Total Sisa Pembayaran</th> -->
+                            <!-- @if (auth()->user()->level=="unit" or auth()->user()->level=="yayasan") -->
                             <th>Aksi</th>
-                            @endif
+                            <!-- @endif -->
                         </tr>
                     <tbody>
+
                     </tbody>
                     </thead>
                 </table>
@@ -57,16 +55,16 @@
 
 </div>
 <script>
-    $(document).on('change', '#tagihan', function() {
+    $(document).on('change', '#pembayaran', function() {
         var id = $(this).val();
         $.ajax({
-            url: "/viewtagihan",
+            url: "/viewpembayaranmurids",
             data: {
                 id: id
             },
             method: "get",
             success: function(data) {
-                $('#tabletagihan').html(data);
+                $('#tablepembayarans').html(data);
             }
         })
     })

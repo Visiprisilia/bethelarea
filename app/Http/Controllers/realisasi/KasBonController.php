@@ -19,17 +19,29 @@ class KasBonController extends Controller
 {
 	public function kasbon()
     {
+		$periode = Periode::orderBy('created_at','desc')->get();
         $kasbon = KasBon::join("pegawai", "kas_bon.penanggungjawab_bon", "=", "pegawai.niy")
 		->orderBy('kas_bon.created_at','desc')->get();
-        return view('realisasi/kasbon/kasbon', compact('kasbon'));
+        return view('realisasi/kasbon/kasbon', compact('kasbon','periode'));
+    }
+	public function viewkasbon(Request $request)
+    {
+		$id = $request->id;
+        $kasbon = KasBon::join("pegawai", "kas_bon.penanggungjawab_bon", "=", "pegawai.niy")
+		->where('periode',$id)->orderBy('kas_bon.created_at','desc')->get();
+        return view('realisasi/kasbon/viewkasbon', compact('kasbon'));
     }
     public function tambahkasbon()
 	{
 		$periode = Periode::where('status', 'LIKE', 'AKTIF')->get();
 		$pegawai = Pegawai::where('status', 'LIKE', 'AKTIF')->get();
 		$laporankas = BukuBesarKas::orderBy('tgl','desc')->get();  
-        $tambah = BukuBesarKas::sum('bertambah');
-        $kurang = BukuBesarKas::sum('berkurang');
+        $tambah = BukuBesarKas::join("periode", "bbkas.periode", "=", "periode.kode_periode")
+		->where('status', 'LIKE', 'AKTIF')
+		->sum('bertambah');
+        $kurang = BukuBesarKas::join("periode", "bbkas.periode", "=", "periode.kode_periode")
+		->where('status', 'LIKE', 'AKTIF')
+		->sum('berkurang');
         $totalkas = $tambah-$kurang;
 		$akun = Akuns::join("periode", "akuns.periode", "=", "periode.kode_periode")
 		->join("coa", "akuns.kode_akun", "=", "coa.kode_akun")
@@ -124,6 +136,7 @@ class KasBonController extends Controller
 	}
 	public function updatekasbon(Request $request)
 	{
+		
         $tanggalhariini = Carbon::now()->format('Ymd');
         $tanggalhariinis = Carbon::now()->format('Y-m-d');
         $check = KasBon::count();

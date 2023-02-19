@@ -79,17 +79,23 @@
                 <a class="collapse-item" href="/kasbon">Pendaftaran Kas Bon</a>
                 <a class="collapse-item" href="/kasmasuk">Kas Masuk</a>
                 <a class="collapse-item" href="/kaskeluar">Kas Keluar</a>
-                <a class="collapse-item" href="/tagihan">Daftar Jenis Tagihan Murid</a>
+                <!-- <a class="collapse-item" href="/tagihan">Daftar Jenis Tagihan Murid</a> -->
                 <!-- <a class="collapse-item" href="/pembayaranmurid">Pembayaran Murid</a> -->
             </div>
         </div>
        
     </li>
- 
+
+    <li class="nav-item">
+        <a class="nav-link" href="/tagihan">        
+<i class='fa fa-credit-card'></i>
+            <span>Daftar Jenis Tagihan Murid</span></a>
+    </li>
+
     <li class="nav-item">
         <a class="nav-link" href="/pembayaranmurid">
         <i class='fas fa-id-card-alt'></i>
-            <span>Tagihan Murid</span></a>
+            <span>Daftar Pembayaran Murid</span></a>
     </li>
 
     <li class="nav-item">
@@ -126,9 +132,9 @@
     @endif
     @if (auth()->user()->level=="murid")
     <li class="nav-item">
-        <a class="nav-link" href="/lihatpembayaranmurid/220220361">
+        <a class="nav-link" href="/pembayaranmurids">
         <i class='fas fa-id-card-alt'></i>
-            <span>Tagihan Murid</span></a>
+            <span>Tagihan</span></a>
     </li>
     @endif
     <!-- Nav Item - Utilities Collapse Menu -->

@@ -185,6 +185,7 @@ Route::get('/viewcetakamandemen', [AmandemenController::class,'viewcetakamandeme
 
 //Kas bon
 Route::get('/kasbon', [KasBonController::class,'kasbon']);
+Route::get('/viewkasbon', [KasBonController::class,'viewkasbon']);
 Route::get('/tambahkasbon', [KasBonController::class,'tambahkasbon'])->middleware('auth', 'ceklevel:unit');
 Route::post('/simpankasbon', [KasBonController::class,'simpankasbon'])->middleware('auth', 'ceklevel:unit');
 Route::get('/editkasbon/{no_buktibon}', [KasBonController::class,'editkasbon'])->middleware('auth', 'ceklevel:unit');
@@ -226,6 +227,7 @@ Route::get('/pilihakunss', [KasMasukController::class,'pilihakunss'])->middlewar
 
 //Kas Keluar
 Route::get('/kaskeluar', [KasKeluarController::class,'kaskeluar']);
+Route::get('/viewkaskeluar', [KasKeluarController::class,'viewkaskeluar']);
 Route::get('/tambahkaskeluar', [KasKeluarController::class,'tambahkaskeluar'])->middleware('auth', 'ceklevel:unit');
 Route::get('/setoran', [KasKeluarController::class,'setoran'])->middleware('auth', 'ceklevel:unit');
 Route::post('/simpansetoran', [KasKeluarController::class,'simpansetoran'])->middleware('auth', 'ceklevel:unit');
@@ -243,23 +245,38 @@ Route::get('/downloadbkk/{no_bukti}', [KasKeluarController::class,'downloadbkk']
 
 //Pembayaran Murid
 Route::get('/pembayaranmurid', [PembayaranController::class,'pembayaranmurid']);
+
 Route::get('/viewpembayaranmurid', [PembayaranController::class,'viewpembayaranmurid']);
-Route::get('/lihatpembayaranmurid/{nis_tagihan}', [PembayaranController::class,'lihatpembayaranmurid']);
-Route::get('/lihatpembayaranmurids/{nis_tagihan}', [PembayaranController::class,'lihatpembayaranmurids']);
+Route::get('/cetakpembayaranmurid', [PembayaranController::class,'cetakpembayaranmurid']);
+Route::get('/viewcetakpembayaranmurid', [PembayaranController::class,'viewcetakpembayaranmurid']);
+Route::get('/lihatpembayaranmurid/{rincian_id}', [PembayaranController::class,'lihatpembayaranmurid']);
+Route::get('/cetaklihatpembayaranmurid/{rincian_id}', [PembayaranController::class,'cetaklihatpembayaranmurid']);
+//untuk murid
+Route::get('/pembayaranmurids', [PembayaranController::class,'pembayaranmurids']);
+Route::get('/viewpembayaranmurids', [PembayaranController::class,'viewpembayaranmurids']);
+Route::get('/cetakpembayaranmurids', [PembayaranController::class,'cetakpembayaranmurids']);
+Route::get('/viewcetakpembayaranmurids', [PembayaranController::class,'viewcetakpembayaranmurids']);
+Route::get('/lihatpembayaranmurids/{rincian_id}', [PembayaranController::class,'lihatpembayaranmurids']);
+Route::get('/cetaklihatpembayaranmurids/{rincian_id}', [PembayaranController::class,'cetaklihatpembayaranmurids']);
+Route::get('/viewlihatpembayaranmurids', [PembayaranController::class,'viewlihatpembayaranmurids']);
 
 //Tagihan
 Route::get('/tagihan', [TagihanController::class,'tagihan']);
 Route::get('/viewtagihan', [TagihanController::class,'viewtagihan']);
+Route::get('/cetaktagihan', [TagihanController::class,'cetaktagihan']);
+Route::get('/viewcetaktagihan', [TagihanController::class,'viewcetaktagihan']);
 Route::get('/tambahdaftartagihan', [TagihanController::class,'tambahdaftartagihan'])->middleware('auth', 'ceklevel:unit');
 Route::post('/simpandaftartagihan', [TagihanController::class,'simpandaftartagihan'])->middleware('auth', 'ceklevel:unit');
 //rincian
 Route::get('/lihattagihanmurid/{id_tagihan}', [TagihanController::class,'lihattagihanmurid']);
-Route::get('/viewlihattagihanmurid/{id_tagihan}', [TagihanController::class,'viewlihattagihanmurid']);
+Route::get('/cetaklihattagihanmurid/{id_tagihan}', [TagihanController::class,'cetaklihattagihanmurid']);
 Route::get('/tambahtagihanmurid/{id_tagihan}', [TagihanController::class,'tambahtagihanmurid'])->middleware('auth', 'ceklevel:unit');
 Route::post('/simpantagihanmurid', [TagihanController::class,'simpantagihanmurid'])->middleware('auth', 'ceklevel:unit');
 Route::get('/edittagihanmurid/{id_itemtagihan}', [TagihanController::class,'edittagihanmurid'])->middleware('auth', 'ceklevel:unit');
 Route::post('/updatetagihanmurid/{id_itemtagihan}', [TagihanController::class,'updatetagihanmurid'])->middleware('auth', 'ceklevel:unit');
 Route::get('/hapustagihanmurid/{id_itemtagihan}', [TagihanController::class,'hapustagihanmurid'])->middleware('auth', 'ceklevel:unit');
+
+
 
 //Buku Besar Kas
 Route::get('/bukubesarkas', [BukuBesarKasController::class,'bukubesarkas']);

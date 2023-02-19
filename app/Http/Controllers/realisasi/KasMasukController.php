@@ -22,9 +22,6 @@ class KasMasukController extends Controller
 {
     public function kasmasuk()
     {
-		// $periode = Periode::orderBy('created_at','desc')->get();
-		// $coa = Coa::orderBy('created_at','desc')->get();
-		// $kasmasuk = KasMasuk::orderBy('created_at','desc')->get();
 		$sumber = Sumber::orderBy('id_sumber','asc')->get();
 		$kasmasuk = Periode::orderBy('created_at','desc')->get();
         return view('realisasi/kasmasuk/kasmasuk', ['kasmasuk'=>$kasmasuk,'sumber'=>$sumber]);

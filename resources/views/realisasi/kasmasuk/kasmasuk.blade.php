@@ -28,7 +28,7 @@
             <a href="tambahkasmasuk" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i>Kas Masuk</a>
             <a href="tambahkasmasukmurid" class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i>Kas Masuk Murid</a>
             <a href="tambahmutasi" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i>Mutasi</a>
-            <a href="cetakkasmurid" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"></i>Cetak Kas Masuk Murid</a>
+            <a href="cetakkasmurid" class="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm"></i>Cetak Kas Masuk Murid</a>
             <a href="cetaksementara" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"></i>Cetak Setoran Kas Masuk Murid</a>
             <!-- <select class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" id="kasmasuk" require name="kasmasuk">
                 <option value>Pilih Periode</option>

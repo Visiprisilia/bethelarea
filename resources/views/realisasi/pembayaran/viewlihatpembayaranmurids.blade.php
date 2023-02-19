@@ -1,23 +1,8 @@
-@extends('template')
-@section('container')
-<!-- Begin Page Content -->
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<div class="container-fluid">
+<script src="{{asset('template/vendor/datatables/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('template/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
 
-    <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Rincian Pembayaran Murid</h1>
-
-
-    <!-- DataTales Example -->
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <a href="{{url('/pembayaranmurid')}}" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"><i class="fas fa-sm text-white-50"></i>Kembali</a>
-        </div>
-        <br>
-        <b> &nbsp;&nbsp; Nomor Induk : {{$pembayarans->rincian_nis}} <br>
-            &nbsp;&nbsp; Nama Murid : {{$pembayarans->nama}}
-            <div class="card-body">
-                <div class="table-responsive">
+    <!-- Page level custom scripts -->
+    <script src="{{asset('template/js/demo/datatables-demo.js')}}"></script>
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
@@ -37,21 +22,13 @@
                                 <td>{{ Str::rupiah ($item->sisapembayaran)}}</td>
                             </tr>
                             @endforeach
-                        </tbody>
                             <th>Total</th>
                             <th></th>
                             <th>{{Str::rupiah($tagihan)}}</th>
                             <th>{{Str::rupiah($bayaran)}}</th>
                             <th>{{Str::rupiah($sisa)}}</th>
+
                             </thead>
                     </table>
-                </div>
-            </div>
-            </form>
-    </div>
-
-</div>
-
-<!-- /.container-fluid -->
-
-@endsection
+               
+    

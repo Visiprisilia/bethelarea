@@ -39,6 +39,23 @@ class TagihanController extends Controller
 		->orderBy('daftar_nis_tagihan','desc')->get();
         return view('realisasi/tagihan/viewtagihan', compact('tagihan'));
     }
+	
+	public function cetaktagihan()
+    {
+		$cetaktagihan = Periode::orderBy('created_at', 'desc')->get();
+ 
+        return view('realisasi/tagihan/cetaktagihan', compact('cetaktagihan'));
+    }
+	public function viewcetaktagihan(Request $request)
+    {
+		$id = $request->id;
+		$totals = DaftarTagihan::where('daftar_periode_tagihan', $id)->sum('daftar_nominal_tagihan');
+        $tagihan = DaftarTagihan::join("murid","daftartagihan.daftar_nis_tagihan","=","murid.nomor_induk")
+		->where('daftar_periode_tagihan', $id)
+		->orderBy('daftar_nis_tagihan','desc')->get();
+        return view('realisasi/tagihan/viewcetaktagihan', compact('tagihan','totals'));
+    }
+	
     public function tambahdaftartagihan()
 	{
 		$periode = Periode::where('status', 'LIKE', 'AKTIF')->get();
@@ -85,6 +102,18 @@ class TagihanController extends Controller
 		->where('id_tagihan', $id_tagihan)->get();
 		$total = DaftarRincianTagihan::where('id_tagihan', $id_tagihan)->sum('rincian_nominal_tagihan');
 		return view('realisasi/tagihan/lihattagihanmurid',  ['tagihan'=>$tagihan,'tagihans'=>$tagihans,'total'=>$total,
+		'periode'=>$periode,'murid'=>$murid]);
+	}
+	public function cetaklihattagihanmurid($id_tagihan)
+	{
+		$periode = Periode::where('status', 'LIKE', 'AKTIF')->get();
+		$murid = Murid::orderBy('created_at','desc')->get();
+		$tagihans = DaftarRincianTagihan::join("murid","daftarrinciantagihan.rincian_nis_tagihan","=","murid.nomor_induk")
+		->where('id_tagihan', $id_tagihan)->get()->first();
+		$tagihan = DaftarRincianTagihan::join('Coa','daftarrinciantagihan.rincian_namakategori_tagihan','=','coa.kode_akun')
+		->where('id_tagihan', $id_tagihan)->get();
+		$total = DaftarRincianTagihan::where('id_tagihan', $id_tagihan)->sum('rincian_nominal_tagihan');
+		return view('realisasi/tagihan/cetaklihattagihanmurid',  ['tagihan'=>$tagihan,'tagihans'=>$tagihans,'total'=>$total,
 		'periode'=>$periode,'murid'=>$murid]);
 	}
 	public function tambahtagihanmurid($id_tagihan)

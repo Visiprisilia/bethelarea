@@ -15,6 +15,12 @@
             <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
             <a href="tambahkasbon" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i>Tambah Data</a>
         @endif
+        <select class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" id="periode" name="periode">
+                <option value>Pilih Periode</option>
+                @foreach ($periode as $item)
+                <option value="{{ $item->kode_periode}}">{{$item->nama_periode}}</option>
+                @endforeach
+            </select>
         </div>
         @if (session('error'))
         <div class="alert alert-danger">
@@ -27,7 +33,7 @@
         </div>
         @endif
         <div class="card-body">
-            <div class="table-responsive">
+        <div class="table-responsive" id="tablekasbon" >
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
@@ -47,31 +53,7 @@
                             <th>Aksi</th>
                             @endif
                         </tr>
-                    <tbody>
-                        @foreach ($kasbon as $item)
-                        <tr>
-                            <td>{{ $item->no_buktibon}}</td>
-                            <td>{{ $item->periode}}</td>
-                            <td>{{ $item->tanggal_pengajuan}}</td>
-                            <td>{{ $item->keterangan_bon}}</td>
-                            <td>{{ $item->proker_bon}}</td>
-                            <td>{{ $item->akun_bon}}</td>
-                            <td>{{ Str::rupiah($item->anggaran_bon)}}</td>                            
-                            <td>{{ Str::rupiah($item->jumlah_bon)}}</td>                            
-                            <td>{{ Str::rupiah($item->jumlah_ptj)}}</td>                            
-                            <td>{{ $item->nama}}</td>                              
-                            <td>{{ $item->status_bon}}</td>                              
-                            <td>{{ $item->tanggal_ptj}}</td>      
-                            @if (auth()->user()->level=="unit")                        
-                            <td>
-                                <!-- <a href="/editkasbon/{{$item->no_buktibon}}"><i class="fas fa-edit" style="color:green"></i></a> | -->
-                                <a href="/hapuskasbon/{{$item->no_buktibon}}" onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a> 
-                                <!-- <a href="#" id="bon" data-id="{{$item->no_buktibon}}" ><i class="fas fa-trash-alt" style="color:red"></i></a> -->
-                                <!-- <a href="/lihatkasbon/{{$item->no_bukti}}"><i class="fas fa-print" style="color:blue"></i></a> -->
-                            </td>
-                            @endif
-                        </tr>
-                        @endforeach
+                    <tbody>                       
                     </tbody>
                     </thead>
                 </table>
@@ -102,6 +84,21 @@
         });
     });
     
+</script>
+<script>
+    $(document).on('change', '#periode', function() {
+        var id = $(this).val();
+        $.ajax({
+            url: "/viewkasbon",
+            data: {
+                id: id
+            },
+            method: "get",
+            success: function(data) {
+                $('#tablekasbon').html(data);
+            }
+        })
+    })
 </script>
 <!-- /.container-fluid -->
 @endsection
