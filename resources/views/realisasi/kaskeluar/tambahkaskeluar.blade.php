@@ -107,7 +107,7 @@
                                                 </div> -->
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputFirstName">Jumlah</label>
-                                                    <input class="form-control" id="jumlah" name="jumlah" placeholder="Masukkan Jumlah"  />
+                                                    <input class="form-control" id="jumlah" name="jumlah" type-currency="IDR" placeholder="Masukkan Jumlah"  />
                                                 </div>
                                                 </div>
                                             
@@ -116,15 +116,17 @@
                                                     <label class="mb-1" for="inputFirstName">Bukti</label>
                                                     <input class="form-control" type="file" id="bukti" name="bukti"  placeholder="Masukkan Jumlah"  />
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-6" id="penanggungjawabs">
                                                 <label class="mb-1" for="inputFirstName">Penanggung Jawab :</label>
-                                                <input class="form-control" readonly id="penanggungjawab" name="penanggungjawab"  placeholder="Penanggung jawab"  />
+                                                <!-- <input class="form-control" readonly id="penanggungjawabs" name="penanggungjawabs"  placeholder="Penanggung jawab"  /> -->
+                                        
+                                                <input class="form-control" readonly id="penanggungjawab" hidden name="penanggungjawab"  placeholder="Penanggung jawab"  />
                                             </div></div>
                                             <div class="row gx-3 mb-3">
                                             <div class="col-md-6">
                                                 <label class="mb-1" for="inputFirstName">Dibayar Kepada :</label>
                                                 <input class="form-control" id="kasir" name="kasir"  placeholder="Dibayar Kepada"  />
-                                            </div>        
+                                            </div>                                                    
                                          </div>                                                                                                                                                        
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Tambah</button>
@@ -182,5 +184,24 @@
             });
         });
             </script>
-
+<script>
+document.querySelectorAll('input[type-currency="IDR"]').forEach((element) => {
+  element.addEventListener('keyup', function(e) {
+  let cursorPostion = this.selectionStart;
+    let value = parseInt(this.value.replace(/[^,\d]/g, ''));
+    let originalLenght = this.value.length;
+    if (isNaN(value)) {
+      this.value = "";
+    } else {    
+      this.value = value.toLocaleString('id-ID', {
+        currency: 'IDR',
+        style: 'currency',
+        minimumFractionDigits: 0
+      });
+      cursorPostion = this.value.length - originalLenght + cursorPostion;
+      this.setSelectionRange(cursorPostion, cursorPostion);
+    }
+  });
+});
+</script>
 @endsection

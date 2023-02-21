@@ -17,6 +17,11 @@
                 $("#anggaran").append('<input class="form-control" id="anggaran" name="anggaran" readonly name="anggaran" value="' + i.posisi_anggaran + '" placeholder="Masukkan Akun Biaya" required />');
 
             })
+            $.each(data.prokerz, function (x, i) {
+
+                $("#penanggungjawabs").append('<input class="form-control" id="penanggungjawabs" name="penanggungjawabs" readonly name="penanggungjawabs" value="' + i.nama + '" placeholder="Masukkan Akun Biaya" required />');
+
+            })
         }
     })
 //     // alert(kode);

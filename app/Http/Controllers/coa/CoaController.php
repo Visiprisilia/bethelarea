@@ -14,6 +14,11 @@ class CoaController extends Controller
         $coa = Coa::orderBy('kode_akun','asc')->get();
         return view('coa/coa', compact('coa'));
     }
+	public function cetakcoa()
+    {
+        $coa = Coa::orderBy('kode_akun','asc')->get();
+        return view('coa/cetakcoa', compact('coa'));
+    }
     public function tambahcoa()
 	{
 		return view('coa/tambahcoa');

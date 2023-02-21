@@ -27,6 +27,7 @@ use App\Http\Controllers\bukubesar\BukuBesarAnggaranBiayaController;
 use App\Http\Controllers\laporan\LaporanKasController;
 use App\Http\Controllers\laporan\LaporanPAController;
 use App\Http\Controllers\laporan\LaporanPKController;
+use App\Http\Controllers\murid\KelasController;
 use App\Http\Controllers\realisasi\PembayaranController;
 
 /*
@@ -82,11 +83,11 @@ Route::get('/hapussubunit/{kode_subunit}', [SubUnitController::class,'hapussubun
 
 //Sumber -->
 Route::get('/sumber', [SumberController::class,'sumber']);
-Route::get('/tambahsumber', [SumberController::class,'tambahsumber'])->middleware(['auth', 'ceklevel:unit']);
-Route::post('/simpansumber', [SumberController::class,'simpansumber'])->middleware(['auth', 'ceklevel:unit']);
-Route::get('/editsumber/{id_sumber}', [SumberController::class,'editsumber'])->middleware(['auth', 'ceklevel:unit']);
-Route::post('/updatesumber/{id_sumber}', [SumberController::class,'updatesumber'])->middleware(['auth', 'ceklevel:unit']);
-Route::get('/hapussumber/{id_sumber}', [SumberController::class,'hapussumber'])->middleware(['auth', 'ceklevel:unit']);
+Route::get('/tambahsumber', [SumberController::class,'tambahsumber'])->middleware(['auth', 'ceklevel:super admin']);
+Route::post('/simpansumber', [SumberController::class,'simpansumber'])->middleware(['auth', 'ceklevel:super admin']);
+Route::get('/editsumber/{id_sumber}', [SumberController::class,'editsumber'])->middleware(['auth', 'ceklevel:super admin']);
+Route::post('/updatesumber/{id_sumber}', [SumberController::class,'updatesumber'])->middleware(['auth', 'ceklevel:super admin']);
+Route::get('/hapussumber/{id_sumber}', [SumberController::class,'hapussumber'])->middleware(['auth', 'ceklevel:super admin']);
 
 //Kategori Tagihan -->
 Route::get('/kategoritagihan', [KategoriTagihanMuridController::class,'kategoritagihan']);
@@ -107,14 +108,24 @@ Route::get('/hapusperiode/{kode_periode}', [PeriodeController::class,'hapusperio
 
 //Pegawai -->
 Route::get('/pegawai', [PegawaiController::class,'pegawai']);
+Route::get('/cetakpegawai', [PegawaiController::class,'cetakpegawai']);
 Route::get('/tambahpegawai', [PegawaiController::class,'tambahpegawai'])->middleware(['auth', 'ceklevel:super admin']);
 Route::post('/simpanpegawai', [PegawaiController::class,'simpanpegawai'])->middleware(['auth', 'ceklevel:super admin']);
 Route::get('/editpegawai/{kode_pegawai}', [PegawaiController::class,'editpegawai'])->middleware(['auth', 'ceklevel:super admin']);
 Route::post('/updatepegawai/{kode_pegawai}', [PegawaiController::class,'updatepegawai'])->middleware(['auth', 'ceklevel:super admin']);
 Route::get('/hapuspegawai/{kode_pegawai}', [PegawaiController::class,'hapuspegawai'])->middleware(['auth', 'ceklevel:super admin']);
 
+//Kelas -->
+Route::get('/kelas', [KelasController::class,'kelas']);
+Route::get('/tambahkelas', [KelasController::class,'tambahkelas'])->middleware(['auth', 'ceklevel:super admin']);
+Route::post('/simpankelas', [KelasController::class,'simpankelas'])->middleware(['auth', 'ceklevel:super admin']);
+Route::get('/editkelas/{kode_kelas}', [KelasController::class,'editkelas'])->middleware(['auth', 'ceklevel:super admin']);
+Route::post('/updatekelas/{kode_kelas}', [KelasController::class,'updatekelas'])->middleware(['auth', 'ceklevel:super admin']);
+Route::get('/hapuskelas/{kode_kelas}', [KelasController::class,'hapuskelas'])->middleware(['auth', 'ceklevel:super admin']);
+
 //Murid -->
 Route::get('/murid', [MuridController::class,'murid']);
+Route::get('/cetakmurid', [MuridController::class,'cetakmurid']);
 Route::get('/tambahmurid', [MuridController::class,'tambahmurid'])->middleware(['auth', 'ceklevel:super admin']);
 Route::post('/simpanmurid', [MuridController::class,'simpanmurid'])->middleware(['auth', 'ceklevel:super admin']);
 Route::get('/editmurid/{nomor_induk}', [MuridController::class,'editmurid'])->middleware(['auth', 'ceklevel:super admin']);
@@ -124,6 +135,7 @@ Route::get('/cetakpdf', [MuridController::class,'cetakpdf'])->middleware(['auth'
 
 //COA -->
 Route::get('/coa', [CoaController::class,'coa']);
+Route::get('/cetakcoa', [CoaController::class,'cetakcoa']);
 Route::get('/tambahcoa', [CoaController::class,'tambahcoa'])->middleware(['auth', 'ceklevel:super admin']);
 Route::post('/simpancoa', [CoaController::class,'simpancoa'])->middleware(['auth', 'ceklevel:super admin']);
 Route::get('/editcoa/{kode_akun}', [CoaController::class,'editcoa'])->middleware(['auth', 'ceklevel:super admin']);
@@ -142,6 +154,8 @@ Route::get('/hapususer/{id}', [UserController::class,'hapususer'])->middleware('
 Route::get('/programkerja', [ProgramKerjaController::class,'programkerja']);
 Route::get('/viewprogramkerja', [ProgramKerjaController::class,'viewprogramkerja']);
 Route::get('/tambahprogramkerja', [ProgramKerjaController::class,'tambahprogramkerja'])->middleware('auth', 'ceklevel:unit');
+Route::get('/pilihprokeranggaran', [ProgramKerjaController::class,'pilihprokeranggaran'])->name('pilihprokeranggaran.index')->middleware('auth', 'ceklevel:unit');
+Route::get('/pilihakunz/{kode_rek}', [ProgramKerjaController::class,'pilihakunz'])->middleware('auth', 'ceklevel:unit');
 Route::post('/simpanprogramkerja', [ProgramKerjaController::class,'simpanprogramkerja'])->middleware('auth', 'ceklevel:unit');
 Route::get('/editprogramkerja/{kode_proker}', [ProgramKerjaController::class,'editprogramkerja'])->middleware('auth', 'ceklevel:unit');
 Route::post('/updateprogramkerja/{kode_proker}', [ProgramKerjaController::class,'updateprogramkerja'])->middleware('auth', 'ceklevel:unit');

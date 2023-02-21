@@ -7,23 +7,31 @@ use App\Models\Murid\Murid;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
+use App\Models\Murid\Kelas;
 
 class MuridController extends Controller
 {
     public function murid()
     {
-        $murid = Murid::orderBy('created_at','desc')->get();
+        $murid = Murid::orderBy('created_at','asc')->get();
         return view('murid/murid', compact('murid'));
+    }
+	public function cetakmurid()
+    {
+        $murid = Murid::orderBy('created_at','asc')->get();
+        return view('murid/cetakmurid', compact('murid'));
     }
     public function tambahmurid()
 	{
-		return view('murid/tambahmurid');
+		$kelas = Kelas::orderBy('created_at','asc')->get();
+		return view('murid/tambahmurid', compact('kelas'));
 	}
     public function simpanmurid(Request $request)
 	{ 
 		$validator = Validator::make($request->all(), [	
-			'nomor_induk' => 'required|numeric|max:9|min:9|unique:murid',
-			'nomor_isn' => 'required|numeric|max:10|min:10|unique:murid',
+			'nomor_induk' => 'required|numeric|unique:murid',
+			'nomor_isn' => 'required|numeric|unique:murid',
+			'kelas' => 'required',
 			'nama' => 'required',
 			'tempat_lahir' => 'required',
 			'ttl' => 'required',
@@ -44,14 +52,15 @@ class MuridController extends Controller
 		],[
 			"nomor_induk.required"=>"Nomor Induk tidak boleh kosong",
 			"nomor_induk.numeric"=>"Nomor Induk harus berupa angka",
-			"nomor_induk.max"=>"Nomor Induk tidak boleh lebih dari 9 karakter",
-			"nomor_induk.min"=>"Nomor Induk tidak boleh kurang dari 9 karakter",
+			// "nomor_induk.max"=>"Nomor Induk tidak boleh lebih dari 10 karakter",
+			// "nomor_induk.min"=>"Nomor Induk tidak boleh kurang dari 10 karakter",
 			"nomor_induk.unique"=>"Data Tersebut Sudah Terdaftar",
 			"nomor_isn.required"=>"Nomor ISN tidak boleh kosong",
 			"nomor_isn.numeric"=>"Nomor ISN harus berupa angka",
-			"nomor_isn.max"=>"Nomor ISN tidak boleh lebih dari 10 karakter",
-			"nomor_isn.min"=>"Nomor ISN tidak boleh kurang dari 10 karakter",
+			// "nomor_isn.max"=>"Nomor ISN tidak boleh lebih dari 10 karakter",
+			// "nomor_isn.min"=>"Nomor ISN tidak boleh kurang dari 10 karakter",
 			"nomor_isn.unique"=>"Data Tersebut Sudah Terdaftar",
+			"kelas.required"=>"Kelas tidak boleh kosong",
 			"nama.required"=>"Nama tidak boleh kosong",
 			"tempat_lahir.required"=>"Tempat Lahir tidak boleh kosong",
 			"ttl.required"=>"Tempat Tanggal Lahir tidak boleh kosong",
@@ -100,6 +109,7 @@ class MuridController extends Controller
 		Murid::create([
 			'nomor_induk'=>$request->nomor_induk,
 			'nomor_isn'=>$request->nomor_isn,
+			'kelas'=>$request->kelas,
 			'nama'=>$request->nama,
 			'tempat_lahir'=>$request->tempat_lahir,
 			'ttl'=>$request->ttl,	
@@ -124,8 +134,9 @@ class MuridController extends Controller
 	}
 	public function editmurid($nomor_induk)
 	{
+		$kelas = Kelas::orderBy('created_at','asc')->get();
 		$murid = Murid::where('nomor_induk', $nomor_induk)->get();
-		return view('murid/editmurid', compact('murid'));
+		return view('murid/editmurid', compact('murid','kelas'));
 	}
 	public function updatemurid(Request $request)
 	{
@@ -144,6 +155,7 @@ class MuridController extends Controller
 		$murid = Murid::where('nomor_induk', $request->nomor_induk)->update([
 			'nomor_induk'=>$request->nomor_induk,
 			'nomor_isn'=>$request->nomor_isn,
+			'kelas'=>$request->kelas,
 			'nama'=>$request->nama,
 			'tempat_lahir'=>$request->tempat_lahir,
 			'ttl'=>$request->ttl,	

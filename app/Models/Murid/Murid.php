@@ -11,6 +11,6 @@ class Murid extends Model
 
     protected $table = 'murid';
     protected $primaryKey = 'nomor_induk';
-    protected $fillable = ['nomor_induk','nomor_isn', 'nama', 'tempat_lahir','ttl', 'jk', 'alamat', 'agama', 'nama_ayah', 'nama_ibu', 
+    protected $fillable = ['nomor_induk','nomor_isn', 'kelas','nama', 'tempat_lahir','ttl', 'jk', 'alamat', 'agama', 'nama_ayah', 'nama_ibu', 
     'pekerjaan_ayah', 'pekerjaan_ibu', 'pendidikan_ayah', 'pendidikan_ibu', 'anak_keberapa', 'no_akte','foto_murid','file_kk','kontak'];
 }

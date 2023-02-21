@@ -174,7 +174,10 @@ class KasMasukController extends Controller
 		$periode = Periode::where('status', 'LIKE', 'AKTIF')->get();
 		$murid = Murid::orderBy('created_at','desc')->get();
 		$sumber = Sumber::orderBy('id_sumber','asc')->where('id_sumber','!=',2)->where('id_sumber','!=',1)->get();
-		$akun = COA::where('kode_akun','like','4%')->get();
+		$akun = COA::join("akuns","coa.kode_akun","=","akuns.kode_akun")
+		// ->Where('coa.status_coa','!=','tagihan')
+		->where('akuns.kode_akun','like','4%')
+		->get();
 		return view('realisasi/kasmasuk/tambahkasmasuk',['periode'=>$periode,'akun'=>$akun,'murid'=>$murid,'sumber'=>$sumber]);
 	}
 	public function tambahkasmasukmurid()
@@ -254,6 +257,7 @@ class KasMasukController extends Controller
 			'akun'=>$request->akun,
 			'sumber'=>$request->sumber,
 			'jumlah'=>$request->jumlah,
+			'bukti'=>null,
 			'kasir'=>$request->kasir,
 			'nama_donatur'=>$request->nama_donatur,
 			'nama_lainlain'=>$request->nama_lainlain,
@@ -320,6 +324,7 @@ class KasMasukController extends Controller
 			'akun'=>$request->akun,
 			'sumber'=>1,
 			'jumlah'=>$request->jumlah,
+			'bukti' => null,
 			'kasir'=>$request->kasir,
 			'nama_donatur'=>$request->nama_donatur,
 			'nama_lainlain'=>$request->nama_lainlain,
@@ -361,6 +366,7 @@ class KasMasukController extends Controller
 		// $check = KasMasuk::count();
 		// $no_bukti = 'BKM'.$tanggalhariini.$check + 1;	
 		$periode = $request->periode;
+		$bukti = $request->bukti;
 		$ambilkm = Periode::where('kode_periode',$periode)->get();
 		$check = 0;
 		foreach ($ambilkm as $km) {
@@ -368,15 +374,21 @@ class KasMasukController extends Controller
 			$check = $km->counter_km;
 		}
 		$no_bukti = 'BKM' . $tanggalhariini . $check + 1;
+
+		$destinationPath = 'assets/images/kasmasuk/';
+		$buktis = 'BKM_' . $no_bukti . '.' . $bukti->getClientOriginalExtension();
+		$bukti->move($destinationPath, $buktis);
+		$no_buktibon = $request->no_buktibon;
 		KasMasuk::create([
 			'no_bukti'=>$no_bukti,
 			'periode'=>$request->periode,
 			'tanggal_pencatatan'=>$tanggalhariinis,
 			'keterangan'=>$request->keterangan,
 			// 'progja'=>0,
-			'akun'=>'421001',
+			'akun'=>null,
 			'sumber'=>2,
 			'jumlah'=>$request->jumlah,
+			'bukti' => $buktis,
 			'kasir'=>NULL,
 			'diterimadari'=>'Neny Widijawati',
 			'nama_donatur'=>NULL,

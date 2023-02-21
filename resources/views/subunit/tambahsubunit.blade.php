@@ -40,10 +40,6 @@
                                     <div class="sbp-preview-content">
                                         <form action="/simpansubunit" method="post">
                                             @csrf
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Kode Sub Unit</label>
-                                                <input class="form-control" id="kode_subunit" name="kode_subunit" placeholder="Masukkan Kode Sub Unit; Digit pertama untuk Kode Unit, digit kedua untuk Kode Sub Unit (Cth : 1.1) "  />
-                                            </div>
                                             <div class="form-group">
                                             <label class="mb-1" for="inputLastName">Unit</label>
                                                 <select class="form-control select2" style="width: 100%;"name="unit_id" id="unit_id" >
@@ -53,6 +49,10 @@
                                                 @endforeach
                                                 </select>
                                             </div>
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Kode Sub Unit</label>
+                                                <input class="form-control" id="kode_subunit" name="kode_subunit" placeholder="Masukkan Kode Sub Unit; Digit pertama untuk Kode Unit, digit kedua untuk Kode Sub Unit (Cth : 1.1) "  />
+                                            </div>                                           
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Nama Sub Unit</label>
                                                 <input class="form-control" id="nama_subunit" name="nama_subunit" placeholder="Masukkan Nama Sub Unit"  />
@@ -76,6 +76,11 @@
                                 </div>
                             </div>
                         </div>
+                        <h6 style="color:Tomato;" >Catatan : </h6>
+                        <h6 style="color:Tomato;" >Kode Sub Unit : 1.1 -> Nama Sub Unit : Pengurus Yayasan </h6>
+                        <h6 style="color:Tomato;" >Kode Sub Unit : 2.1 -> Nama Sub Unit : Kelompok Bermain </h6>
+                        <h6 style="color:Tomato;" >Kode Sub Unit : 2.2 -> Nama Sub Unit : Taman Kanak-kanak </h6>
+                        <h6 style="color:Tomato;" >Kode Sub Unit Selanjutnya Diinput Urut Dengan Kode Sub Unit Sebelumnya</h6>
                     </div>
                 </div>
             </div>

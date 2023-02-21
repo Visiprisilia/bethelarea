@@ -37,7 +37,7 @@
                                 <!-- Component Preview-->
                                 <div class="sbp-preview">
                                     <div class="sbp-preview-content">
-                                        <form action="/simpanmutasi" method="post">
+                                        <form action="/simpanmutasi" method="post" enctype="multipart/form-data">
                                             @csrf
                                             <!-- <div class="mb-3">
                                                 <label for="exampleFormControlInput1">No Bukti</label>
@@ -94,6 +94,10 @@
                                                 </div>
                                             </div>                -->
                                             <div class="row gx-3 mb-3">
+                                            <div class="col-md-6">
+                                                    <label class="mb-1" for="inputFirstName">Bukti</label>
+                                                    <input class="form-control" type="file" id="bukti" name="bukti"  placeholder="Masukkan Jumlah"  />
+                                                </div>
                                             <div class="col-md-4">
                                                 <label for="exampleFormControlInput1">Jumlah</label>
                                                 <input class="form-control" id="jumlah" name="jumlah" placeholder="Masukkan Jumlah"  />

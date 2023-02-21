@@ -40,6 +40,16 @@
                                         <form action="/simpanmurid" method="post"  enctype="multipart/form-data">
                                             @csrf
                                             <div class="row gx-3 mb-3">
+                                            <div class="col-md-4">
+                                            <label class="mb-1" for="inputLastName">Kelas</label>
+                                                <select class="form-control" id="kelas" name="kelas">
+                                                    <option value>Pilih Kelas</option>
+                                                    @foreach ($kelas as $item)
+                                                    <option value="{{ $item->nama_kelas}}">{{$item->nama_kelas}} </option>
+                                                    @endforeach
+                                                </select>
+                                                </div></div>
+                                            <div class="row gx-3 mb-3">
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputLastName">Nomor Induk Siswa</label>
                                                     <input class="form-control" id="nomor_induk" name="nomor_induk" placeholder="Masukkan NIS"  />

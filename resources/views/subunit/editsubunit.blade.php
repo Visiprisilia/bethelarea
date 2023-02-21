@@ -39,7 +39,7 @@
                                             </div>
                                             <div class="form-group">
                                             <label for="inputLastName">Unit</label>
-                                                <select class="form-control select2" style="width: 100%;"name="unit_id" id="unit_id" value="{{$sub->unit_id}}" required>
+                                                <select class="form-control select2" style="width: 100%;"name="unit_id" id="unit_id" disabled value="{{$sub->unit_id}}" required>
                                                 <option disabled value>Pilih Unit</option>
                                                 @foreach ($unit as $item)
                                                 <option value="{{ $item->kode_unit}}">{{$item->nama_unit}}</option>
@@ -48,7 +48,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Nama Sub Unit</label>
-                                                <input class="form-control" id="nama_subunit" name="nama_subunit" value="{{$sub->nama_subunit}}" required />
+                                                <input class="form-control" id="nama_subunit" name="nama_subunit" disabled value="{{$sub->nama_subunit}}" required />
                                             </div>
                                           
                                             <div class="mb-3">

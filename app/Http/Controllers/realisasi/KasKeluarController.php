@@ -123,7 +123,7 @@ class KasKeluarController extends Controller
 	public function simpankaskeluar(Request $request)
 	{
 		$validator = Validator::make($request->all(), [	
-			'jumlah' => 'lte:anggaran|lte:totalkas|numeric|required',
+			'jumlah' => 'lte:anggaran|lte:totalkas|required',
 			'periode'=> 'required',
 			'keterangan'=> 'required',
 			'akun'=> 'required',
@@ -278,7 +278,7 @@ class KasKeluarController extends Controller
 			'periode' => $request->periode,
 			'tanggal_pencatatan' => $tanggalhariinis,
 			'keterangan' => $request->keterangan,
-			'akun' => 531001,
+			'akun' => null,
 			'prokers' => 0,
 			'anggaran' => 0,
 			'jumlah' => $request->jumlah,
@@ -388,6 +388,9 @@ class KasKeluarController extends Controller
 		$data2 = Akuns::join("lapposisianggaran", "akuns.kode_akun", "=", "lapposisianggaran.akun")
 		->join("coa", "akuns.kode_akun", "=", "coa.kode_akun")
 		->where("akun", $kode)->where("status_amandemens","!=","Amandemen")->get();
+		$data3 = Akuns::join("pegawai", "akuns.penanggungjawab", "=", "pegawai.niy")
+		->where("kode_akun", $request->kode)
+		->where('status_amandemens','!=','Amandemen')->get();
 		// $data2 = BukuBesarKas::orderBy('tgl','desc')->where('periode',$kode)->get();  
 		// $laporankas = BukuBesarKas::orderBy('tgl','desc')->get();  
         // $tambah = BukuBesarKas::sum('bertambah');
@@ -395,7 +398,8 @@ class KasKeluarController extends Controller
         // $totalkas = $tambah-$kurang;
 		return response()->json([
 			"proker"=>$data,
-			"lappa"=>$data2
+			"lappa"=>$data2,
+			"prokerz"=>$data3
 
 		]);
 	}

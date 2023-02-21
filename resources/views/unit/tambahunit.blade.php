@@ -58,6 +58,10 @@
                                 </div>
                             </div>
                         </div>
+                        <h6 style="color:Tomato;" >Catatan : </h6>
+                        <h6 style="color:Tomato;" >Kode Unit : 1 -> Nama Unit : Yayasan </h6>
+                        <h6 style="color:Tomato;" >Kode Unit : 2 -> Nama Unit : PAUD </h6>
+                        <h6 style="color:Tomato;" >Kode Unit Selanjutnya Diinput Urut Dengan Kode Unit Sebelumnya</h6>
                     </div>
                 </div>
             </div>

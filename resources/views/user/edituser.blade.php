@@ -46,13 +46,23 @@
                                                 <input class="form-control" id="password" name="password" value="{{$item->password}}"required   />
                                             </div>
                                             <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Level</label>
-                                                <input class="form-control" id="level" name="level" value="{{$item->level}}" required  />
+                                            <label class="mb-1" for="inputFirstName">Level</label>
+                                                    <select class="form-control" id="level" name="level">
+                                                        <option value>Pilih Level</option>
+                                                        <option value="super admin">Super Admin</option>
+                                                        <option value="admin">Admin</option>
+                                                        <option value="yayasan">Yayasan</option>
+                                                        <option value="murid">Murid</option>
+                                                    </select>
                                             </div>
-                                            <!-- <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Status</label>
-                                                <input class="form-control" id="status" name="status" value="{{$item->status}}" required  />
-                                            </div> -->
+                                            <div class="mb-3">
+                                            <label class="mb-1" for="inputFirstName">Status</label>
+                                                    <select class="form-control" id="status" name="status">
+                                                        <option value>Pilih Status</option>
+                                                        <option value="AKTIF">AKTIF</option>
+                                                        <option value="NON AKTIF">NON AKTIF</option>
+                                                    </select>
+                                            </div>
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Simpan</button>
                                                 <a href="{{url('/user')}}" class="btn btn-danger">Batal</a>                                            </div>

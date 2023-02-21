@@ -14,6 +14,7 @@
         @if (auth()->user()->level=="super admin")
             <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
             <a href="tambahmurid" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i>Tambah Data</a>
+            <a href="cetakmurid" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-sm text-white-50"></i>Cetak</a>
         @endif
         </div>
         @if (session('error'))
@@ -34,6 +35,7 @@
                             <th>No</th>
                             <th>Nomor Induk Siswa</th>
                             <th>Nomor Induk Siswa Nasional</th>
+                            <th>Kelas</th>
                             <th>Nama</th>
                             <th>Tempat Tanggal Lahir</th>
                             <th>Jenis Kelamin</th>
@@ -60,6 +62,7 @@
                             <td>{{ $loop->iteration}}</td>
                             <td>{{ $item->nomor_induk}}</td>
                             <td>{{ $item->nomor_isn}}</td>
+                            <td>{{ $item->kelas}}</td>
                             <td>{{ $item->nama}}</td>
                             <td>{{ $item->ttl}}</td>
                             <td>{{ $item->jk}}</td>

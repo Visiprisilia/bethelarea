@@ -39,20 +39,21 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Periode</label>
-                                                <input class="form-control" id="nama_periode" name="nama_periode" value="{{$item->nama_periode}}" placeholder="Nama periode" required/>
+                                                <input class="form-control" id="nama_periode" name="nama_periode" disabled value="{{$item->nama_periode}}" placeholder="Nama periode" required/>
                                             </div>
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Awal Periode</label>
-                                                    <input class="form-control" type="date" id="awal_periode" name="awal_periode" value="{{$item->awal_periode}}" required />
+                                                    <input class="form-control" type="date" id="awal_periode" disabled name="awal_periode" value="{{$item->awal_periode}}" required />
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputLastName">Akhir Periode</label>
-                                                    <input class="form-control"  type="date" id="akhir_periode" name="akhir_periode" value="{{$item->akhir_periode}}"  required/>
+                                                    <input class="form-control"  type="date" id="akhir_periode" disabled name="akhir_periode" value="{{$item->akhir_periode}}"  required/>
                                                 </div>
-                                            </div>
+                                            </div> 
                                             <div class="mb-3">
                                                 <label for="inputLastName">Status</label>
+                                                <h6 style="color:Tomato;">Nonaktifkan terlebih dahulu status periode yang lain. Pastikan hanya satu periode saja yang aktif!</h6>
                                                 <select class="form-control" id="status" name="status" value="{{$item->status}}" required>
                                                     <option disabled value>Pilih Status</option>
                                                     <option>AKTIF</option>

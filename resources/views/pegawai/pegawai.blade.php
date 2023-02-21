@@ -15,6 +15,8 @@
             @if (auth()->user()->level=="super admin")
             <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
             <a href="tambahpegawai" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i>Tambah Data</a>
+            <a href="cetakpegawai" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-sm text-white-50"></i>Cetak</a>
+
             @endif
         </div>
         @if (session('error'))

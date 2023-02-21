@@ -36,11 +36,11 @@
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputLastName">Nomor Induk Pegawai</label>
-                                                    <input class="form-control" id="niy" name="niy" placeholder="Masukkan Nomor Induk Pegawai" value="{{$item->niy}}" required/>
+                                                    <input class="form-control" id="niy" disabled name="niy" placeholder="Masukkan Nomor Induk Pegawai" value="{{$item->niy}}" required/>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputFirstName">Nama</label>
-                                                    <input class="form-control" id="nama" name="nama" placeholder="Masukkan Nama" value="{{$item->nama}}" required/>
+                                                    <input class="form-control" id="nama" name="nama" disabled placeholder="Masukkan Nama" value="{{$item->nama}}" required/>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputFirstName">Foto Pegawai</label>

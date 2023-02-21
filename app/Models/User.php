@@ -22,6 +22,7 @@ class User extends Authenticatable
         'password',
         'level',
         'nama_lengkap',
+        'status',
      
     ];
 

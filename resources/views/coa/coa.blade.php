@@ -14,6 +14,8 @@
             <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
             @if (auth()->user()->level=="super admin")
             <a href="tambahcoa" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i>Tambah Data</a>
+            <a href="cetakcoa" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-sm text-white-50"></i>Cetak</a>
+
             <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-upload fa-sm text-white-50"></i> Import Data</a> -->
             <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Export Data</a> -->
         @endif

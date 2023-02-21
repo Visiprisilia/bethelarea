@@ -44,8 +44,8 @@
                                                     <label class="mb-1" for="inputLastName">Program Kerja</label>
                                                     <select class="form-control" id="pob"  name="pob">
                                                         <option  value>Pilih Program Kerja Anggaran</option>                                              
-                                                        <option value="pendapatan">Anggaran Pendapatan</option>
-                                                        <option value="biaya">Anggaran Biaya</option>
+                                                        <option value="Pendapatan">Anggaran Pendapatan</option>
+                                                        <option value="Biaya">Anggaran Biaya</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-6">

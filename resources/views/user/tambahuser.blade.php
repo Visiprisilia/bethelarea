@@ -1,6 +1,13 @@
 @extends('template')
 @section('container')
 <!-- Default Bootstrap Form Controls-->
+@if($errors->any())
+   <ul class="alert alert-danger">
+      @foreach($errors->all() as $error)
+         <li> {{$error}} </li>
+      @endforeach
+   </ul>
+@endif
 <div id="layoutSidenav_content">
     <main>
         <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
@@ -45,13 +52,23 @@
                                                 <input class="form-control" type="password" id="password" name="password" placeholder="Masukkan Password"  />
                                             </div>
                                             <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Level</label>
-                                                <input class="form-control" id="level" name="level" placeholder="Masukkan Level Akses" />
+                                            <label class="mb-1" for="inputFirstName">Level</label>
+                                                    <select class="form-control" id="level" name="level">
+                                                        <option value>Pilih Level</option>
+                                                        <option value="super admin">Super Admin</option>
+                                                        <option value="admin">Admin</option>
+                                                        <option value="yayasan">Yayasan</option>
+                                                        <option value="murid">Murid</option>
+                                                    </select>
                                             </div>
-                                            <!-- <div class="mb-3">
-                                                <label for="exampleFormControlInput1">Status</label>
-                                                <input class="form-control" id="status" name="status"  />
-                                            </div> -->
+                                            <div class="mb-3">
+                                            <label class="mb-1" for="inputFirstName">Status</label>
+                                                    <select class="form-control" id="status" name="status">
+                                                        <option value>Pilih Status</option>
+                                                        <option value="AKTIF">AKTIF</option>
+                                                        <option value="NON AKTIF">NON AKTIF</option>
+                                                    </select>
+                                            </div>
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Tambah</button>
                                                 <a href="{{url('/user')}}" class="btn btn-danger">Kembali</a>

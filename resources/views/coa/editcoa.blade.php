@@ -39,11 +39,11 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Nama Akun</label>
-                                                <input class="form-control" id="nama_akun" name="nama_akun" value="{{$item->nama_akun}}" placeholder="Nama Akun"required />
+                                                <input class="form-control" id="nama_akun" name="nama_akun" disabled value="{{$item->nama_akun}}" placeholder="Nama Akun"required />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlSelect1">Kelompok Rekening</label>
-                                                <select class="form-control" id="kelompok_rek" name="kelompok_rek" value="{{$item->kelompok_rek}}"required>
+                                                <select class="form-control" id="kelompok_rek" name="kelompok_rek"  disabled value="{{$item->kelompok_rek}}"required>
                                                 <option disabled value>Pilih Kelompok Rekening</option>      
                                                 <option >{{$item->kelompok_rek}}</option>
                                                 <option>Aktiva</option>
@@ -55,7 +55,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlSelect1">Saldo Normal</label>
-                                                <select class="form-control" id="saldo_normal" name="saldo_normal" value="{{$item->saldo_normal}}"required>
+                                                <select class="form-control" id="saldo_normal" name="saldo_normal" disabled value="{{$item->saldo_normal}}"required>
                                                 <option >{{$item->saldo_normal}}</option>
                                                 <option>Debit</option>
                                                     <option>Kredit</option>

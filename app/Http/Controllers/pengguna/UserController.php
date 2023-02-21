@@ -5,6 +5,7 @@ namespace App\Http\Controllers\pengguna;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
@@ -20,6 +21,28 @@ class UserController extends Controller
 	}
     public function simpanuser(Request $request)
 	{
+		$validator = Validator::make($request->all(), [	
+			'nama_lengkap' => 'required',
+			'nama_user' => 'required|unique:users',
+			'password' => 'required',
+			'level' => 'required',
+			'status' => 'required'
+		],[
+			"nama_lengkap.required"=>"Nama Lengkap tidak boleh kosong",
+			"nama_user.required"=>"Nama User tidak boleh kosong",
+			"nama_user.unique"=>"Nama User Tersebut Sudah Terdaftar",
+			"password.required"=>"Password tidak boleh kosong",
+			"level.required"=>"Level tidak boleh kosong",
+			"status.required"=>"Status tidak boleh kosong",
+			
+		]);
+		if ($validator->fails()) {    
+			$message = $validator->errors()->getMessages();
+			$api = array(
+				'message' => $message
+			);
+			return redirect('/tambahuser')->withErrors($validator);	
+		}
 		User::create([
 			'nama_lengkap'=>$request->nama_lengkap,
 			'nama_user'=>$request->nama_user,

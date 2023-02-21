@@ -38,13 +38,12 @@
                 <a class="collapse-item" href="/subunit">Daftar Sub Unit</a>
                 <a class="collapse-item" href="/periode">Daftar Periode</a>
                 <a class="collapse-item" href="/pegawai">Daftar Pegawai</a>
+                <a class="collapse-item" href="/kelas">Daftar Kelas</a>
                 <a class="collapse-item" href="/murid">Daftar Murid</a>
                 <a class="collapse-item" href="/coa">Chart Of Accounts</a>
-                @if (auth()->user()->level=="unit")
-                <a class="collapse-item" href="/sumber">Daftar Sumber Dana</a>
-                <!-- <a class="collapse-item" href="/kategoritagihan">Daftar Jenis Tagihan</a> -->
-                @endif
                 @if (auth()->user()->level=="super admin")
+                <a class="collapse-item" href="/sumber">Daftar Sumber Dana</a>
+                <!-- <a class="collapse-item" href="/kategoritagihan">Daftar Jenis Tagihan</a> -->                           
                 <a class="collapse-item" href="/user">User</a>
                 @endif
             </div>
@@ -135,6 +134,11 @@
         <a class="nav-link" href="/pembayaranmurids/{{ auth()->user()->nama_user }}">
         <i class='fas fa-id-card-alt'></i>
             <span>Tagihan</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/pembayaranmurids/{{ auth()->user()->nama_user }}">
+        <i class='fas fa-id-card-alt'></i>
+            <span>Pembayaran</span></a>
     </li>
     @endif
     <!-- 120210300 -->

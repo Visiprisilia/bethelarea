@@ -15,6 +15,11 @@ class PegawaiController extends Controller
         $pegawai = Pegawai::orderBy('created_at','asc')->get();
         return view('pegawai/pegawai', compact('pegawai'));
     }
+	public function cetakpegawai()
+    {
+        $pegawai = Pegawai::orderBy('created_at','asc')->get();
+        return view('pegawai/cetakpegawai', compact('pegawai'));
+    }
     public function tambahpegawai()
 	{
 		return view('pegawai/tambahpegawai');

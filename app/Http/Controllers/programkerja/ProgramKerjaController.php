@@ -258,7 +258,7 @@ class ProgramKerjaController extends Controller
 		$tanggalhariini = Carbon::now()->isoFormat('D MMMM Y');
 		$jumlah = programkerja::where('periode',$id)
 		->where('anggaran','!=',0)
-		->where('pob','like','biaya')
+		->where('pob','like','Biaya')
 		->where('status_proker','like','Disetujui')
 		->sum('anggaran');
 		$periode = Periode::orderBy('created_at', 'desc')->get();
@@ -268,7 +268,7 @@ class ProgramKerjaController extends Controller
 		->where('periode', $id)
 		->where('anggaran','!=',0)
 		->where('status_proker','like','Disetujui')
-		->where('pob','like','biaya')
+		->where('pob','like','Biaya')
 		->get();
 		// $programkerja = ProgramKerja::join("pegawai","program_kerja.penanggungjawab","=","pegawai.niy")->where('periode', $id)->get();
 		return view('programkerja/programkerja/viewcetakprogramkerja', ['programkerja' => $programkerja, 
@@ -280,7 +280,7 @@ class ProgramKerjaController extends Controller
 		$tanggalhariini = Carbon::now()->isoFormat('D MMMM Y');
 		$jumlah = programkerja::where('periode',$id)
 		->where('anggaran','!=',0)
-		->where('pob','like','pendapatan')
+		->where('pob','like','Pendapatan')
 		->where('status_proker','like','Disetujui')
 		->sum('anggaran');
 		$periode = Periode::orderBy('created_at', 'desc')->get();
@@ -290,7 +290,7 @@ class ProgramKerjaController extends Controller
 		->where('periode', $id)
 		->where('anggaran','!=',0)
 		->where('status_proker','like','Disetujui')
-		->where('pob','like','pendapatan')
+		->where('pob','like','Pendapatan')
 		->get();
 		// $programkerja = ProgramKerja::join("pegawai","program_kerja.penanggungjawab","=","pegawai.niy")->where('periode', $id)->get();
 		return view('programkerja/programkerja/viewcetakprogramkerjapendapatan', ['programkerja' => $programkerja, 
