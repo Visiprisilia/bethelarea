@@ -35,11 +35,11 @@
                                             @csrf
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Kode Kelas</label>
-                                                <input class="form-control" id="kode_kelas" name="kode_kelas" disabled value="{{$item->kode_kelas}}" placeholder="Kode Unit" required />
+                                                <input class="form-control" id="kode_kelas" name="kode_kelas" readonly value="{{$item->kode_kelas}}" placeholder="Kode Unit" required />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Nama Kelas</label>
-                                                <input class="form-control" id="nama_kelas" name="nama_kelas" value="{{$item->nama_kelas}}" placeholder="Nama Unit" required />
+                                                <input class="form-control" id="nama_kelas" name="nama_kelas"  value="{{$item->nama_kelas}}" placeholder="Nama Unit" required />
                                             </div>
                                            
                                             <div class="mb-3">
@@ -50,6 +50,15 @@
                                 </div>
                             </div>
                         </div>
+                        <h5 style="color:blue;" >Panduan : </h5>
+                        <h6 style="color:blue;" >Kode Kelas : 21101 -> Nama Kelas : Daud </h6>
+                        <h6 style="color:blue;" >Kode Kelas : 22101 -> Nama Kelas : Rut </h6>
+                        <h6 style="color:blue;" >Kode Kelas : 22102 -> Nama Kelas : Daniel </h6>
+                        <h6 style="color:blue;" >Kode Kelas : 22201 -> Nama Kelas : Musa </h6>
+                        <h6 style="color:blue;" >Kode Kelas : 22202 -> Nama Kelas : Maria </h6>
+                        <h6 style="color:blue;" >Kode Kelas Selanjutnya Diinput Urut Dengan Kode Kelas Sebelumnya</h6>                        
+                        <h6 style="color:Tomato;">Kode Kelas : Digit Pertama Kode unit, digit kedua kode sub unit, digit 3 kode kelas, digit keempat dan lima kode sub kelas</h6>
+                       
                     </div>
                 </div>
             </div>

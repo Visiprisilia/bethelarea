@@ -50,18 +50,19 @@
                                             
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Tambah</button>
-                                                <a href="{{url('/unit')}}" class="btn btn-danger">Kembali</a>
+                                                <a href="{{url('/unit')}}" class="btn btn-danger">Kembali</a>                                                
                                             </div>
+                                            <h6 style="color:Tomato;" >Pastikan data yang diinput sudah benar! Data yang telah diinput, tidak bisa diubah lagi.</h6>
 
                                         </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <h6 style="color:Tomato;" >Catatan : </h6>
-                        <h6 style="color:Tomato;" >Kode Unit : 1 -> Nama Unit : Yayasan </h6>
-                        <h6 style="color:Tomato;" >Kode Unit : 2 -> Nama Unit : PAUD </h6>
-                        <h6 style="color:Tomato;" >Kode Unit Selanjutnya Diinput Urut Dengan Kode Unit Sebelumnya</h6>
+                        <h5 style="color:blue;" >Panduan : </h5>
+                        <h6 style="color:blue;" >Kode Unit : 1 -> Nama Unit : Yayasan </h6>
+                        <h6 style="color:blue;" >Kode Unit : 2 -> Nama Unit : PAUD </h6>
+                        <h6 style="color:blue;" >Kode Unit Selanjutnya Diinput Urut Dengan Kode Unit Sebelumnya</h6>
                     </div>
                 </div>
             </div>

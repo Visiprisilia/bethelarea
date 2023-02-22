@@ -1,15 +1,15 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="bethelarea">
         <div class="sidebar-brand-icon">
-            <img src="{{asset('template/img/logo2.png')}}" alt="" width="80px;">
+            <img src="{{asset('template/img/sirekan.png')}}" alt="" width="220px;">
         </div>
-        <div class="sidebar-brand-text mx-3">Yayasan<sup>
+        <!-- <div class="sidebar-brand-text mx-3">Yayasan<sup>
                 <p>
                 <p>Bethel</p> <p> Area</p></p>
                 </p>
                 </p>
-            </sup></div>
+            </sup></div> -->
     </a>
     
 

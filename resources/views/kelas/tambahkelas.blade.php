@@ -45,21 +45,30 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Nama Kelas</label>
-                                                <input class="form-control" id="nama_kelas" name="nama_kelas" placeholder="Masukkan Sumber Dana" />
+                                                <input class="form-control" id="nama_kelas" name="nama_kelas" placeholder="Masukkan Nama Kelas" />
                                             </div>
                                             
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Tambah</button>
                                                 <a href="{{url('/kelas')}}" class="btn btn-danger">Kembali</a>
                                             </div>
+                                            <h6 style="color:Tomato;" >Pastikan data yang diinput sudah benar! Data yang telah diinput, tidak bisa diubah lagi.</h6>
 
                                         </form>
                                     </div>
                                 </div>
                             </div>                            
                         </div>
-                        <h6 style="color:Tomato;">Catatan : </h6>
-                        <h6 style="color:Tomato;">Kode Kelas : Digit Pertama Kode unit, digit kedua kode sub unit, digit 3 kode kelas, digit keempat dan lima kode sub kelas (Cth untuk Kelas TK B1 : 22201) </h6>
+
+                        <h5 style="color:blue;" >Panduan : </h5>
+                        <h6 style="color:blue;" >Kode Kelas : 21101 -> Nama Kelas : Daud </h6>
+                        <h6 style="color:blue;" >Kode Kelas : 22101 -> Nama Kelas : Rut </h6>
+                        <h6 style="color:blue;" >Kode Kelas : 22102 -> Nama Kelas : Daniel </h6>
+                        <h6 style="color:blue;" >Kode Kelas : 22201 -> Nama Kelas : Musa </h6>
+                        <h6 style="color:blue;" >Kode Kelas : 22202 -> Nama Kelas : Maria </h6>
+                        <h6 style="color:blue;" >Kode Kelas Selanjutnya Diinput Urut Dengan Kode Kelas Sebelumnya</h6>                        
+                        <h6 style="color:Tomato;">Kode Kelas : Digit Pertama Kode unit, digit kedua kode sub unit, digit 3 kode kelas, digit keempat dan lima kode sub kelas</h6>
+                       
                     </div>
                 </div>
             </div>

@@ -25,7 +25,7 @@
                     <!-- Default Bootstrap Form Controls-->
                     <div id="default">
                         <div class="card mb-4">
-                            <div class="card-header">Unit</div>
+                            <div class="card-header">Unit  <h6 style="color:Tomato;" >Data Tidak Bisa Di Edit!</h6></div>                           
                             <div class="card-body">
                                 <!-- Component Preview-->
                                 <div class="sbp-preview">

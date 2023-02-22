@@ -70,17 +70,19 @@
                                                 <button type="submit" class="btn btn-success">Tambah</button>
                                                 <a href="{{url('/subunit')}}" class="btn btn-danger">Kembali</a>
                                             </div>
+                                            <h6 style="color:Tomato;" >Pastikan data yang diinput sudah benar! Data yang telah diinput, tidak bisa diubah lagi.</h6>
+
 
                                         </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <h6 style="color:Tomato;" >Catatan : </h6>
-                        <h6 style="color:Tomato;" >Kode Sub Unit : 1.1 -> Nama Sub Unit : Pengurus Yayasan </h6>
-                        <h6 style="color:Tomato;" >Kode Sub Unit : 2.1 -> Nama Sub Unit : Kelompok Bermain </h6>
-                        <h6 style="color:Tomato;" >Kode Sub Unit : 2.2 -> Nama Sub Unit : Taman Kanak-kanak </h6>
-                        <h6 style="color:Tomato;" >Kode Sub Unit Selanjutnya Diinput Urut Dengan Kode Sub Unit Sebelumnya</h6>
+                        <h6 style="color:blue;" >Panduan : </h6>
+                        <h6 style="color:blue;" >Kode Sub Unit : 1.1 -> Nama Sub Unit : Pengurus Yayasan </h6>
+                        <h6 style="color:blue;" >Kode Sub Unit : 2.1 -> Nama Sub Unit : Kelompok Bermain </h6>
+                        <h6 style="color:blue;" >Kode Sub Unit : 2.2 -> Nama Sub Unit : Taman Kanak-kanak </h6>
+                        <h6 style="color:blue;" >Kode Sub Unit Selanjutnya Diinput Urut Dengan Kode Sub Unit Sebelumnya</h6>
                     </div>
                 </div>
             </div>

@@ -34,117 +34,184 @@
                                     <form action="/updatemurid/{{$itemz->nomor_induk}}" method="post"  enctype="multipart/form-data">
                                             @csrf
                                             <div class="row gx-3 mb-3">
-                                            <div class="col-md-4">
-                                            <label class="mb-1" for="inputLastName">Kelas</label>
+                                                <div class="col-md-4">
+                                                <label class="mb-1" for="inputLastName">Kelas</label>
                                                 <select class="form-control" id="kelas" name="kelas" required value="{{$itemz->kelas}}" >
                                                     <option value>Pilih Kelas</option>
                                                     @foreach ($kelas as $item)
                                                     <option value="{{ $item->nama_kelas}}">{{$item->nama_kelas}} </option>
                                                     @endforeach
                                                 </select>
-                                                </div></div>
+                                                <h6 style="color:Tomato;" >Pilih Kelas</h6>
+                                                </div>
+
+                                            </div>
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputLastName">Nomor Induk Siswa</label>
-                                                    <input class="form-control" id="nomor_induk" name="nomor_induk" disabled placeholder="Masukkan NIS" required value="{{$itemz->nomor_induk}}" />
+                                                    <input class="form-control" id="nomor_induk" name="nomor_induk" readonly value="{{$itemz->nomor_induk}}" placeholder="Masukkan NIS" />
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputFirstName">Nomor Induk Siswa Nasional</label>
-                                                    <input class="form-control" id="nomor_isn" name="nomor_isn" disabled placeholder="Masukkan NISN" required value="{{$itemz->nomor_isn}}" />
+                                                    <input class="form-control" id="nomor_isn" name="nomor_isn" readonly value="{{$itemz->nomor_isn}}" placeholder="Masukkan NISN" />
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputLastName">Foto Murid</label>
-                                                    <input class="form-control" type="file" id="foto_murid" name="foto_murid" required value="{{$itemz->foto_murid}}" />
+                                                    <input class="form-control" type="file" id="foto_murid" name="foto_murid"  value="{{$itemz->foto_murid}}"  />
+                                                    <h6 style="color:Tomato;" >Upload Foto Murid</h6>
+
                                                 </div>
                                             </div>
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputLastName">Nama</label>
-                                                    <input class="form-control" id="nama" name="nama" disabled placeholder="Masukkan Nama" required value="{{$itemz->nama}}"  />
+                                                    <input class="form-control" id="nama" name="nama" placeholder="Masukkan Nama" readonly value="{{$itemz->nama}}"/>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputLastName">Tempat Lahir</label>
-                                                    <input class="form-control" id="tempat_lahir" name="tempat_lahir" placeholder="Masukkan Tempat Lahir" required value="{{$itemz->tempat_lahir}}" />
+                                                    <input class="form-control" id="tempat_lahir" name="tempat_lahir" placeholder="Masukkan Tempat Lahir" readonly value="{{$itemz->tempat_lahir}}" />
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputFirstName">Tanggal Lahir</label>
-                                                    <input class="form-control" type="date" id="ttl" name="ttl" required value="{{$itemz->ttl}}" />
+                                                    <input class="form-control" type="date" id="ttl" name="ttl" readonly value="{{$itemz->ttl}}"/>
                                                 </div>
                                             </div>
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputFirstName">Jenis Kelamin</label>
-                                                    <select class="form-control" id="jk" name="jk" required value="{{$itemz->jk}}" >
-                                                        <option disabled value>Pilih Jenis Kelamin</option>
-                                                        <option>Perempuan</option>
-                                                        <option>Laki-laki</option>
-                                                    </select>
+                                                    <input class="form-control" id="jk" name="jk" placeholder="Masukkan Alamat"  readonly value="{{$itemz->jk}}"/>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputLastName">Alamat</label>
-                                                    <input class="form-control" id="alamat" name="alamat" placeholder="Masukkan Alamat" required value="{{$itemz->alamat}}"  />
+                                                    <input class="form-control" id="alamat" name="alamat" placeholder="Masukkan Alamat"  readonly value="{{$itemz->alamat}}" />
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputFirstName">Agama</label>
-                                                    <select class="form-control" id="agama" name="agama" required value="{{$itemz->agama}}" >
-                                                        <option disabled value>Pilih Agama</option>
-                                                        <option>Kristen Protestan</option>
-                                                        <option>Katholik</option>
-                                                        <option>Islam</option>
-                                                        <option>Budha</option>
-                                                        <option>Hindu</option>
-                                                        <option>Konghucu</option>
-                                                    </select>
+                                                    <input class="form-control" id="agama" name="agama" placeholder="Masukkan Alamat"  readonly value="{{$itemz->agama}}"/>
                                                 </div>
                                             </div>
                                             <div class="row gx-3 mb-3">
-                                                <div class="col-md-4">
+                                                <div class="col-md-6">
                                                     <label class="mb-1" for="inputLastName">Nama Ayah</label>
-                                                    <input class="form-control" id="nama_ayah" name="nama_ayah" placeholder="Masukkan Nama Ayah" required value="{{$itemz->nama_ayah}}"  />
+                                                    <input class="form-control" id="nama_ayah" name="nama_ayah" placeholder="Masukkan Nama Ayah" readonly value="{{$itemz->nama_ayah}}" />
                                                 </div>
-                                                <div class="col-md-4">
+                                                <div class="col-md-6">
                                                     <label class="mb-1" for="inputLastName">Pekerjaan Ayah</label>
-                                                    <input class="form-control" id="pekerjaan_ayah" name="pekerjaan_ayah" placeholder="Masukkan Pekerjaan Ayah" required value="{{$itemz->pekerjaan_ayah}}" />
+                                                    <input class="form-control" id="pekerjaan_ayah" name="pekerjaan_ayah"  readonly value="{{$itemz->pekerjaan_ayah}}" placeholder="Masukkan Pekerjaan Ayah" />
                                                 </div>
-                                                <div class="col-md-4">
+                                            </div>
+                                            <div class="row gx-3 mb-3">
+                                                <div class="col-md-6">
                                                     <label class="mb-1" for="inputLastName">Pendidikan Terakhir Ayah</label>
-                                                    <input class="form-control" id="pendidikan_ayah" name="pendidikan_ayah" placeholder="Masukkan Pendidikan Terakhir Ayah" required value="{{$itemz->pendidikan_ayah}}" />
+                                                    <input class="form-control" id="pendidikan_ayah" name="pendidikan_ayah"  readonly value="{{$itemz->pendidikan_ayah}}" placeholder="Masukkan Pendidikan Terakhir Ayah" />
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="mb-1" for="inputLastName">KTP Ayah</label>
+                                                    <input class="form-control" type="file" id="ktp_ayah" name="ktp_ayah"   value="{{$itemz->ktp_ayah}}" placeholder="Masukkan Pendidikan Terakhir Ayah" />
+                                                    <h6 style="color:Tomato;" >Upload KTP Ayah</h6>
                                                 </div>
                                             </div>
                                             <div class="row gx-3 mb-3">
-                                                <div class="col-md-4">
+                                                <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Nama Ibu</label>
-                                                    <input class="form-control" id="nama_ibu" name="nama_ibu" placeholder="Masukkan Nama Ibu" required value="{{$itemz->nama_ibu}}" />
+                                                    <input class="form-control" id="nama_ibu" name="nama_ibu" placeholder="Masukkan Nama Ibu"  readonly value="{{$itemz->nama_ibu}}" />
                                                 </div>
-                                                <div class="col-md-4">
+                                                <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Pekerjaan Ibu</label>
-                                                    <input class="form-control" id="pekerjaan_ibu" name="pekerjaan_ibu" placeholder="Masukkan Pekerjaan Ibu" required value="{{$itemz->pekerjaan_ibu}}" />
+                                                    <input class="form-control" id="pekerjaan_ibu" name="pekerjaan_ibu"  readonly value="{{$itemz->pekerjaan_ibu}}" placeholder="Masukkan Pekerjaan Ibu" />
+                                                </div>
+                                            </div>
+                                            <div class="row gx-3 mb-3">
+                                                <div class="col-md-6">
+                                                    <label class="mb-1" for="inputFirstName">Pendidikan Terakhir Ibu</label>
+                                                    <input class="form-control" id="pendidikan_ibu" name="pendidikan_ibu"  readonly value="{{$itemz->pendidikan_ibu}}" placeholder="Masukkan Pendidikan Terakhir Ibu" />
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="mb-1" for="inputLastName">KTP Ibu</label>
+                                                    <input class="form-control" type="file" id="ktp_ibu" name="ktp_ibu"  value="{{$itemz->ktp_ibu}}" placeholder="Masukkan Pendidikan Terakhir Ayah" />
+                                                    <h6 style="color:Tomato;" >Upload KTP Ibu</h6>
+
+                                                </div>
+                                            </div>
+                                            <div class="row gx-3 mb-3">
+                                                <div class="col-md-4">
+                                                    <label class="mb-1" for="inputLastName">Anak Ke berapa</label>
+                                                    <input class="form-control" id="anak_keberapa" name="anak_keberapa"  readonly value="{{$itemz->anak_keberapa}}" placeholder="Masukkan Anak Ke berapa (Cth:1)" />
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <label class="mb-1" for="inputFirstName">Pendidikan Terakhir Ibu</label>
-                                                    <input class="form-control" id="pendidikan_ibu" name="pendidikan_ibu" placeholder="Masukkan Pendidikan Terakhir Ibu" required value="{{$itemz->pendidikan_ibu}}" />
-                                                </div>
-                                            </div>
-                                            <div class="row gx-3 mb-3">
-                                                <div class="col-md-6">
-                                                    <label class="mb-1" for="inputLastName">Anak Ke berapa</label>
-                                                    <input class="form-control" id="anak_keberapa" name="anak_keberapa" placeholder="Masukkan Anak Ke berapa" required value="{{$itemz->anak_keberapa}}" />
-                                                </div>
-                                                <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Nomor Akte Lahir</label>
-                                                    <input class="form-control" id="no_akte" name="no_akte" placeholder="Masukkan Nomor Akte Lahir" required value="{{$itemz->no_akte}}" />
+                                                    <input class="form-control" id="no_akte" name="no_akte"  readonly value="{{$itemz->no_akte}}" placeholder="Masukkan Nomor Akte Lahir" />
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="mb-1" for="inputFirstName">Akte Lahir</label>
+                                                    <input class="form-control" type="file" id="file_akte" name="file_akte"   value="{{$itemz->file_akte}}" placeholder="Masukkan Nomor Akte Lahir" />
+                                                    <h6 style="color:Tomato;" >Upload Akte Lahir</h6>
                                                 </div>
                                             </div>
                                             <div class="row gx-3 mb-3">
-                                            <div class="col-md-6">
+                                                <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Nomor Kontak</label>
-                                                    <input class="form-control" id="kontak" name="kontak" placeholder="Masukkan Nomor Akte Lahir" required value="{{$itemz->kontak}}" />
+                                                    <input class="form-control" id="kontak" name="kontak"   value="{{$itemz->kontak}}" placeholder="Masukkan Nomor Kontak" />
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Kartu Keluarga</label>
-                                                    <input class="form-control" type="file" id="file_kk" name="file_kk" required value="{{$itemz->file_kk}}" />
+                                                    <input class="form-control" type="file" id="file_kk" name="file_kk" value="{{$itemz->file_kk}}" />
+                                                    <h6 style="color:Tomato;" >Upload Kartu Keluarga</h6>
                                                 </div>
-                                            </div>              
+                                            </div>
+                                            <div class="row gx-3 mb-3">
+                                                <div class="col-md-6">
+                                                    <label class="mb-1" for="inputFirstName">Tanggal Siswa Diterima</label>
+                                                    <input class="form-control" type="date" id="tanggal_penerimaan" name="tanggal_penerimaan"   value="{{$itemz->tanggal_penerimaan}}" />
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="mb-1" for="inputFirstName">Bukti Diterima</label>
+                                                    <input class="form-control" type="file" id="file_suratpenerimaan" name="file_suratpenerimaan" value="{{$itemz->file_suratpenerimaan}}"/>
+                                                    <h6 style="color:Tomato;" >Upload Bukti Diterima</h6>
+                                                </div>
+                                            </div>
+                                            <div class="row gx-3 mb-3">
+                                                <div class="col-md-6">
+                                                    <label class="mb-1" for="inputFirstName">Tanggal Kenaikan Kelas</label>
+                                                    <input class="form-control" type="date" id="tanggal_kenaikankelas" name="tanggal_kenaikankelas"  value="{{$itemz->tanggal_kenaikankelas}}"/>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="mb-1" for="inputFirstName">Bukti Kenaikan Kelas</label>
+                                                    <input class="form-control" type="file" id="file_suratkenaikankelas" name="file_suratkenaikankelas"   value="{{$itemz->file_suratkenaikankelas}}" />
+                                                    <h6 style="color:Tomato;" >Upload Bukti Kenaikan Kelas</h6>
+                                                </div>
+                                            </div>
+                                            <div class="row gx-3 mb-3">
+                                                <div class="col-md-6">
+                                                    <label class="mb-1" for="inputFirstName">Tanggal Penerimaan Raport</label>
+                                                    <input class="form-control" type="date" id="tanggal_raport" name="tanggal_raport"   value="{{$itemz->tanggal_raport}}" />
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="mb-1" for="inputFirstName">Bukti Penerimaan Raport</label>
+                                                    <input class="form-control" type="file" id="file_raport" name="file_raport"  value="{{$itemz->file_raport}}" />
+                                                    <h6 style="color:Tomato;" >Upload File Raport</h6>
+                                                </div>
+                                            </div>
+                                            <div class="row gx-3 mb-3">
+                                                <div class="col-md-4">
+                                                    <label class="mb-1" for="inputFirstName">Status</label>
+                                                    <select class="form-control" id="status_murid" name="status_murid">
+                                                            <option value>Pilih Status</option>
+                                                            <option value="AKTIF">AKTIF</option>
+                                                            <option value="NON AKTIF">NON AKTIF</option>
+                                                        </select>
+                                                        <h6 style="color:Tomato;" >Pilih Status</h6>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="mb-1" for="inputLastName">Tanggal Kelulusan</label>
+                                                    <input class="form-control" type="date" id="tanggal_kelulusan" name="tanggal_kelulusan"   value="{{$itemz->tanggal_kelulusan}}" />
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="mb-1" for="inputLastName">Bukti Kelulusan</label>
+                                                    <input class="form-control" type="file" id="file_suratkelulusan" name="file_suratkelulusan"   value="{{$itemz->file_suratkelulusan}}" />
+                                                    <h6 style="color:Tomato;" >Upload Bukti Kelulusan</h6>
+                                                </div>
+                                            </div>
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Simpan</button>
                                                 <a href="{{url('/murid')}}" class="btn btn-danger">Batal</a>                                            </div>

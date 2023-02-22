@@ -36,56 +36,69 @@
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputLastName">Nomor Induk Pegawai</label>
-                                                    <input class="form-control" id="niy" disabled name="niy" placeholder="Masukkan Nomor Induk Pegawai" value="{{$item->niy}}" required/>
+                                                    <input class="form-control" id="niy" name="niy"  value="{{$item->niy}}" readonly placeholder="8 Digit pertama tahun bulan tanggal masuk, 2 digit nomor urut" />
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputFirstName">Nama</label>
-                                                    <input class="form-control" id="nama" name="nama" disabled placeholder="Masukkan Nama" value="{{$item->nama}}" required/>
+                                                    <input class="form-control" id="nama" name="nama"  value="{{$item->nama}}"readonly placeholder="Masukkan Nama" />
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputFirstName">Foto Pegawai</label>
-                                                    <input class="form-control" type="file" id="foto_pegawai" name="foto_pegawai" value="{{$item->foto_pegawai}}" required />
+                                                    <input class="form-control" type="file" id="foto_pegawai" name="foto_pegawai" required  value="{{$item->foto_pegawai}}"  />
+                                                    <h6 style="color:Tomato;" >Upload Foto Pegawai</h6>
                                                 </div>
                                             </div>
-
                                             <div class="row gx-3 mb-3">
                                             <div class="col-md-4">
-                                                    <label class="mb-1" for="inputFirstName">Jenis Kelamin</label>
-                                                    <select class="form-control" id="jk" name="jk" value="{{$item->jk}}" required>
-                                                        <option disabled value>Pilih Jenis Kelamin</option>
-                                                        <option>Perempuan</option>
-                                                        <option>Laki-laki</option>
-                                                    </select>
+                                                    <label class="mb-1" for="inputLastName">Jenis Kelamin</label>
+                                                    <input class="form-control" id="jk" name="jk"  value="{{$item->jk}}" required readonly placeholder="Masukkan Tempat Lahir" />
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputLastName">Tempat Lahir</label>
-                                                    <input class="form-control" id="tempat_lahir"  name="tempat_lahir" value="{{$item->tempat_lahir}}" placeholder="Masukkan Tempat Lahir"required />
+                                                    <input class="form-control" id="tempat_lahir" name="tempat_lahir"  value="{{$item->tempat_lahir}}" readonly placeholder="Masukkan Tempat Lahir" />
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputLastName">TTL</label>
-                                                    <input class="form-control" id="ttl" type="date" name="ttl" value="{{$item->ttl}}" required />
+                                                    <input class="form-control" id="ttl" type="date" name="ttl"  value="{{$item->ttl}}" required readonly />
                                                 </div>
                                             </div>
                                             <div class="row gx-3 mb-3">
-                                            <div class="col-md-4">
+                                                <div class="col-md-4">
                                                     <label class="mb-1" for="inputLastName">Alamat</label>
-                                                    <input class="form-control" id="alamat" name="alamat" placeholder="Masukkan Alamat" value="{{$item->alamat}}" required/>
+                                                    <input class="form-control" id="alamat" name="alamat" placeholder="Masukkan Alamat" required value="{{$item->alamat}}" readonly/>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <label class="mb-1" for="inputFirstName">Agama</label>
-                                                    <select class="form-control" id="agama" name="agama" value="{{$item->agama}}" required>
-                                                        <option disabled value>Pilih Agama</option>
-                                                        <option>Kristen Protestan</option>
-                                                        <option>Katholik</option>
-                                                    </select>
+                                                    <label class="mb-1" for="inputLastName">Agama</label>
+                                                    <input class="form-control" id="agama" name="agama" placeholder="Masukkan Alamat"  required value="{{$item->agama}}" readonly/>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <label class="mb-1" for="inputLastName">Pendidikan</label>
-                                                    <input class="form-control" id="pendidikan" name="pendidikan" value="{{$item->pendidikan}}" placeholder="Masukkan Pendidikan" required />
+                                                    <label class="mb-1" for="inputFirstName">KTP</label>
+                                                    <input class="form-control" type="file" id="file_ktp" name="file_ktp" value="{{$item->file_ktp}}" required />
+                                                    <h6 style="color:Tomato;" >Upload KTP</h6>
                                                 </div>
                                             </div>
                                             <div class="row gx-3 mb-3">
-                                            <div class="col-md-4">
+                                                <div class="col-md-4">
+                                                    <label class="mb-1" for="inputLastName">Pendidikan Terakhir</label>
+                                                    <input class="form-control" id="pendidikan" name="pendidikan" value="{{$item->pendidikan}}" required placeholder="Masukkan Pendidikan Terakhir" />
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="mb-1" for="inputFirstName">Ijasah Terakhir</label>
+                                                    <input class="form-control" type="file" id="file_ijasah" name="file_ijasah" required value="{{$item->file_ijasah}}"  />
+                                                    <h6 style="color:Tomato;" >Upload Ijasah Terakhir</h6>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="mb-1" for="inputFirstName">SK Pangkat/Golongan</label>
+                                                    <input class="form-control" type="file" id="file_skgolongan" name="file_skgolongan"value="{{$item->file_skgolongan}}" required />
+                                                    <h6 style="color:Tomato;" >Upload File SK Pangkat</h6>
+                                                </div>
+                                            </div>
+                                            <div class="row gx-3 mb-3">
+                                                <div class="col-md-4">
+                                                    <label class="mb-1" for="inputFirstName">Tanggal Masuk</label>
+                                                    <input class="form-control" type="date" id="tanggal_masuk" name="tanggal_masuk" value="{{$item->tanggal_masuk}}" required  placeholder="" />
+                                                </div>
+                                                <div class="col-md-4">
                                                     <label class="mb-1" for="inputFirstName">Penempatan</label>
                                                     <select class="form-control" id="penempatan" name="penempatan" value="{{$item->penempatan}}" required>
                                                         <option disabled value>Pilih Penempatan</option>
@@ -93,12 +106,16 @@
                                                         <option>Kelompok Bermain</option>
                                                         <option>Taman Kanak-kanak</option>
                                                     </select>
+                                                    <h6 style="color:Tomato;" >Pilih Penempatan</h6>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <label class="mb-1" for="inputFirstName">Tanggal Masuk</label>
-                                                    <input class="form-control" type="date" id="tanggal_masuk" name="tanggal_masuk" value="{{$item->tanggal_masuk}}" placeholder=""required />
+                                                    <label class="mb-1" for="inputFirstName">SK Penempatan</label>
+                                                    <input class="form-control" type="file" id="file_skpenempatan" name="file_skpenempatan" value="{{$item->file_skpenempatan}}"required  />
+                                                    <h6 style="color:Tomato;" >Upload File SK Penempatan</h6>
                                                 </div>
-                                                <div class="col-md-4">
+                                            </div>
+                                            <div class="row gx-3 mb-3">
+                                            <div class="col-md-4">
                                                     <label class="mb-1" for="inputLastName">Status Kepegawaian</label>
                                                     <select class="form-control" id="status_kepegawaian" name="status_kepegawaian" value="{{$item->status_kepegawaian}}" required>
                                                         <option disabled value>Pilih Status Kepegawaian</option>
@@ -107,43 +124,60 @@
                                                         <option>Staf Tetap</option>
                                                         <option>Staf Tidak Tetap</option>
                                                     </select>
+                                                    <h6 style="color:Tomato;" >Pilih Status Kepegawaian</h6>
+
                                                 </div>
-                                            </div>
+                                                    <div class="col-md-4">
+                                                        <label class="mb-1" for="inputFirstName">Tanggal PPT</label>
+                                                        <input class="form-control" type="date" id="tanggal_ppt" name="tanggal_ppt" value="{{$item->tanggal_ppt}}" required/>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label class="mb-1" for="inputLastName">SK Pegawai</label>
+                                                        <input class="form-control" type="file" id="file_suket" name="file_suket" value="{{$item->file_suket}}" required />
+                                                        <h6 style="color:Tomato;" >Upload File SK Pegawai </h6>
+                                                    </div>
+                                                </div>
                                                 <div class="row gx-3 mb-3">
-                                                <div class="col-md-6">
-                                                    <label class="mb-1" for="inputFirstName">Tanggal Penetapan Pegawai Tetap</label>
-                                                    <input class="form-control" type="date" id="tanggal_ppt" name="tanggal_ppt" value="{{$item->tanggal_ppt}}" required />
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label class="mb-1" for="inputLastName">Surat Keterangan</label>
-                                                    <input class="form-control" type="file"  id="file_suket" name="file_suket" value="{{$item->file_suket}}" required />
-                                                </div>
-                                            </div>
-                                            <div class="row gx-3 mb-3">
-                                                <div class="col-md-6">
+                                                    <div class="col-md-4">
+                                                        <label class="mb-1" for="inputFirstName">Jabatan</label>
+                                                        <input class="form-control" id="jabatan" name="jabatan" placeholder="Masukkan Jabatan" value="{{$item->jabatan}}" required  />
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label class="mb-1" for="inputLastName">SK Jabatan</label>
+                                                        <input class="form-control" type="file" id="file_skjabatan" name="file_skjabatan" value="{{$item->file_skjabatan}}" required />
+                                                        <h6 style="color:Tomato;" >Upload File SK Jabatan</h6>
+                                                    
+                                                    </div>
+                                                    <div class="col-md-4">
                                                     <label class="mb-1" for="inputFirstName">Status</label>
-                                                    <select class="form-control" id="status" name="status" value="{{$item->status}}" >
+                                                    <select class="form-control" id="status" name="status" value="{{$item->status}}" required>
                                                     <option value>Pilih Status</option>
                                                         <option value="AKTIF">AKTIF</option>
                                                         <option value="NON AKTIF">NON AKTIF</option>
                                                     </select>
-                                                </div>
-                                                <div class="col-md-6" id="terminasi" style="display: none;">
-                                                    <label class="mb-1" for="inputLastName">Tanggal Terminasi</label>
-                                                    <input class="form-control" type="date"  id="tanggal_terminasi" name="tanggal_terminasi" value="{{$item->tanggal_terminasi}}"  />
-                                                </div>
-                                            </div>
+                                                    <h6 style="color:Tomato;" >Pilih Status</h6>
 
-                                            <div class="row gx-3 mb-3">
-                                                <div class="col-md-6">
-                                                    <label class="mb-1" for="inputFirstName">Keterangan</label>
-                                                    <input class="form-control" id="keterangan_pegawai" name="keterangan_pegawai" value="{{$item->keterangan_pegawai}}" required />
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <label class="mb-1" for="inputFirstName">KTP</label>
-                                                    <input class="form-control" type="file" id="file_ktp" name="file_ktp" value="{{$item->file_ktp}}" required />
                                                 </div>
-                                            </div>
+                                                <div class="row gx-3 mb-3">                                                   
+                                                    <div class="col-md-4" >
+                                                        <label class="mb-1" for="inputLastName">Tanggal Terminasi</label>
+                                                        <input class="form-control" type="date" id="tanggal_terminasi" name="tanggal_terminasi" value="{{$item->tanggal_terminasi}}"required  />
+                                                    </div>
+                                                    <div class="col-md-4" >
+                                                        <label class="mb-1" for="inputLastName">SK Pemberhtentian</label>
+                                                        <input class="form-control" type="file" id="file_skpemberhentian" name="file_skpemberhentian" value="{{$item->file_skpemberhentian}}"required  />
+                                                        <h6 style="color:Tomato;" >Upload File SK Pemberhentian</h6>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="row gx-3 mb-3">
+                                                    <div class="col-md-6">
+                                                        <label class="mb-1" for="inputFirstName">Keterangan</label>
+                                                        <input class="form-control" id="keterangan_pegawai" name="keterangan_pegawai" placeholder="Masukkan Keterangan" value="{{$item->keterangan_pegawai}}" required />
+                                                    </div>
+                                                </div>
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Simpan</button>
                                                 <a href="{{url('/pegawai')}}" class="btn btn-danger">Batal</a>

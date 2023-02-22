@@ -53,6 +53,7 @@
                             <th>File KK</th>
                             <th>Kontak</th>
                             @if (auth()->user()->level=="super admin")
+                            <th>Perubahan Data</th>
                             <th>Aksi</th>
                             @endif
                         </tr>  
@@ -81,7 +82,9 @@
                             <td>{{ $item->kontak}}</td>
                             @if (auth()->user()->level=="super admin")
                             <td>
-                                <a href="/editmurid/{{$item->nomor_induk}}"><i class="fas fa-edit" style="color:green"></i></a> |
+                                <a href="/editmurid/{{$item->nomor_induk}}"><i class="fas fa-edit" style="color:green"></i></a> </td>
+                               <td>
+                               <a href="/lihatmurid/{{$item->nomor_induk}}"><i class="fas fa-eye" style="color:blue"></i></a> 
                                 <a href="/hapusmurid/{{$item->nomor_induk}}" onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a>
                                 <!-- <a href="#" id="del" data-id="{{$item->nomor_induk}}" ><i class="fas fa-trash-alt" style="color:red"></i></a> -->
                             </td>

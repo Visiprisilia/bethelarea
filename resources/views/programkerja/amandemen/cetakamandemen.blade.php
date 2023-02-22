@@ -38,6 +38,8 @@
                 </thead>
                 </tbody>
             </table>
+            <!-- <input class="no-print" type="button" value="Cetak" onclick="window.print()"> -->
+<input type="button" value="Kembali" onclick=self.history.back() class="no-print">
             <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
             <script>
                 $(document).on('change', '#amandemen', function() {

@@ -33,7 +33,14 @@ class PegawaiController extends Controller
 			'ttl' => 'required',
 			'jk' => 'required',
 			'agama' => 'required',
+			'pendidikan' => 'required',
+			'file_ijasah' => 'required',
+			'alamat' => 'required',
 			'penempatan' => 'required',
+			'file_skpenempatan' => 'required',
+			'jabatan' => 'required',
+			'file_skjabatan' => 'required',
+			'file_skgolongan' => 'required',
 			'tanggal_masuk' => 'required',
 			'status_kepegawaian' => 'required',
 			'tanggal_ppt' => 'required',
@@ -52,11 +59,18 @@ class PegawaiController extends Controller
 			"ttl.required"=>"Tempat Tanggal Lahir tidak boleh kosong",
 			"jk.required"=>"Data Jenis kelamin tidak boleh kosong",
 			"agama.required"=>"Agama tidak boleh kosong",
+			"pendidikan.required"=>"Pendidikan Terakhir tidak boleh kosong",
+			"file_ijasah.required"=>"Anda belum mengupload Ijasah Terakhir",
+			"alamat.required"=>"Alamat tidak boleh kosong",
 			"penempatan.required"=>"Penempatan tidak boleh kosong",
+			"file_skpenempatan.required"=>"Anda belum mengupload File SK Penempatan",
+			"jabatan.required"=>"Jabatan tidak boleh kosong",
+			"file_skjabatan.required"=>"Anda belum mengupload File SK Jabatan",
+			"file_skgolongan.required"=>"Anda belum mengupload File SK Golongan/Pangkat",
 			"tanggal_masuk.required"=>"Tanggal masuk tidak boleh kosong",
 			"status_kepegawaian.required"=>"Status kepegawaian tidak boleh kosong",
 			"tanggal_ppt.required"=>"Tanggal Penempatan Pegawai Tetap tidak boleh kosong",
-			"file_suket.required"=>"Anda belum mengupload Surat Keterangan",
+			"file_suket.required"=>"Anda belum mengupload File Surat Keterangan Pegawai",
 			"status.required"=>"Status tidak boleh kosong",
 			"foto_pegawai.required"=>"Anda belum mengupload foto pegawai",
 			"file_ktp.required"=>"Anda belum mengupload file KTP"
@@ -75,6 +89,11 @@ class PegawaiController extends Controller
 		$niy = $request->niy;			
 		$file_suket = $request->file_suket;			
 		$file_ktp = $request->file_ktp;			
+		$file_ijasah = $request->file_ijasah;			
+		$file_skpenempatan = $request->file_skpenempatan;			
+		$file_skjabatan = $request->file_skjabatan;			
+		$file_skgolongan = $request->file_skgolongan;			
+		$file_skpemberhentian = $request->file_skpemberhentian;			
 		
 		$destinationPath = 'assets/images/pegawai/fotopegawai/';
 		$fotos = 'fotopegawai_'.$niy.'.'.$foto_pegawai->getClientOriginalExtension();
@@ -88,6 +107,26 @@ class PegawaiController extends Controller
 		$ktp = 'ktp_'.$niy.'.'.$file_ktp->getClientOriginalExtension();
 		$file_ktp->move($destinationPath, $ktp);
 
+		$destinationPath = 'assets/images/pegawai/ijasahpegawai/';
+		$ijasah = 'ijasah_'.$niy.'.'.$file_ijasah->getClientOriginalExtension();
+		$file_ijasah->move($destinationPath, $ijasah);
+
+		$destinationPath = 'assets/images/pegawai/skpenempatanpegawai/';
+		$skpenempatan = 'skpenempatan_'.$niy.'.'.$file_skpenempatan->getClientOriginalExtension();
+		$file_skpenempatan->move($destinationPath, $skpenempatan);
+
+		$destinationPath = 'assets/images/pegawai/skjabatanpegawai/';
+		$skjabatan = 'skjabatan_'.$niy.'.'.$file_skjabatan->getClientOriginalExtension();
+		$file_skjabatan->move($destinationPath, $skjabatan);	
+		
+		$destinationPath = 'assets/images/pegawai/skgolonganpegawai/';
+		$skgolongan = 'skgolongan_'.$niy.'.'.$file_skgolongan->getClientOriginalExtension();
+		$file_skgolongan->move($destinationPath, $skgolongan);
+
+		$destinationPath = 'assets/images/pegawai/skpemberhentianpegawai/';
+		$skpemberhentian = 'skpemberhentian_'.$niy.'.'.$file_skpemberhentian->getClientOriginalExtension();
+		$file_skpemberhentian->move($destinationPath, $skpemberhentian);
+
 		Pegawai::create([
 			'niy'=>$request->niy,
 			'nama'=>$request->nama,
@@ -96,19 +135,30 @@ class PegawaiController extends Controller
 			'jk'=>$request->jk,	
 			'agama'=>$request->agama,	
 			'pendidikan'=>$request->pendidikan,	
+			'file_ijasah'=>$ijasah,	
 			'alamat'=>$request->alamat,
 			'penempatan'=>$request->penempatan,
+			'file_skpenempatan'=>$skpenempatan,
+			'jabatan'=>$request->jabatan,
+			'file_skjabatan'=>$skjabatan,
+			'file_skgolongan'=>$skgolongan,
 			'tanggal_masuk'=>$request->tanggal_masuk,
 			'status_kepegawaian'=>$request->status_kepegawaian,
 			'tanggal_ppt'=>$request->tanggal_ppt,
 			'file_suket'=>$suket,
 			'status'=>$request->status,
 			'tanggal_terminasi'=>$request->tanggal_terminasi,
+			'file_skpemberhentian'=>$skpemberhentian,
 			'foto_pegawai'=>$fotos,
 			'file_ktp'=>$ktp,
 			'keterangan_pegawai'=>$request->keterangan_pegawai
 			]);
 			return redirect('/pegawai')->with('status', 'Data berhasil ditambahkan');
+	}
+	public function lihatpegawai($niy)
+	{
+		$pegawai = Pegawai::where('niy', $niy)->get();
+		return view('pegawai/lihatpegawai', compact('pegawai'));
 	}
 	public function editpegawai($niy)
 	{
@@ -121,6 +171,11 @@ class PegawaiController extends Controller
 		$niy = $request->niy;			
 		$file_suket = $request->file_suket;			
 		$file_ktp = $request->file_ktp;			
+		$file_ijasah = $request->file_ijasah;			
+		$file_skpenempatan = $request->file_skpenempatan;			
+		$file_skjabatan = $request->file_skjabatan;			
+		$file_skgolongan = $request->file_skgolongan;			
+		$file_skpemberhentian = $request->file_skpemberhentian;			
 		
 		$destinationPath = 'assets/images/pegawai/fotopegawai/';
 		$fotos = 'fotopegawai_'.$niy.'.'.$foto_pegawai->getClientOriginalExtension();
@@ -133,6 +188,27 @@ class PegawaiController extends Controller
 		$destinationPath = 'assets/images/pegawai/ktppegawai/';
 		$ktp = 'ktp_'.$niy.'.'.$file_ktp->getClientOriginalExtension();
 		$file_ktp->move($destinationPath, $ktp);
+
+		$destinationPath = 'assets/images/pegawai/ijasahpegawai/';
+		$ijasah = 'ijasah_'.$niy.'.'.$file_ijasah->getClientOriginalExtension();
+		$file_ijasah->move($destinationPath, $ijasah);
+
+		$destinationPath = 'assets/images/pegawai/skpenempatanpegawai/';
+		$skpenempatan = 'skpenempatan_'.$niy.'.'.$file_skpenempatan->getClientOriginalExtension();
+		$file_skpenempatan->move($destinationPath, $skpenempatan);
+
+		$destinationPath = 'assets/images/pegawai/skjabatanpegawai/';
+		$skjabatan = 'skjabatan_'.$niy.'.'.$file_skjabatan->getClientOriginalExtension();
+		$file_skjabatan->move($destinationPath, $skjabatan);
+		
+		$destinationPath = 'assets/images/pegawai/skgolonganpegawai/';
+		$skgolongan = 'skgolongan_'.$niy.'.'.$file_skgolongan->getClientOriginalExtension();
+		$file_skgolongan->move($destinationPath, $skgolongan);
+
+		$destinationPath = 'assets/images/pegawai/skpemberhentianpegawai/';
+		$skpemberhentian = 'skpemberhentian_'.$niy.'.'.$file_skpemberhentian->getClientOriginalExtension();
+		$file_skpemberhentian->move($destinationPath, $skpemberhentian);
+		
 		$pegawai = Pegawai::where('niy', $request->niy)->update([
 			'niy'=>$request->niy,
 			'nama'=>$request->nama,
@@ -141,14 +217,20 @@ class PegawaiController extends Controller
 			'jk'=>$request->jk,	
 			'agama'=>$request->agama,	
 			'pendidikan'=>$request->pendidikan,	
+			'file_ijasah'=>$ijasah,	
 			'alamat'=>$request->alamat,
 			'penempatan'=>$request->penempatan,
+			'file_skpenempatan'=>$skpenempatan,
+			'jabatan'=>$request->jabatan,
+			'file_skjabatan'=>$skjabatan,
+			'file_skgolongan'=>$skgolongan,
 			'tanggal_masuk'=>$request->tanggal_masuk,
 			'status_kepegawaian'=>$request->status_kepegawaian,
 			'tanggal_ppt'=>$request->tanggal_ppt,
 			'file_suket'=>$suket,
 			'status'=>$request->status,
 			'tanggal_terminasi'=>$request->tanggal_terminasi,
+			'file_skpemberhentian'=>$skpemberhentian,
 			'foto_pegawai'=>$fotos,
 			'file_ktp'=>$ktp,
 			'keterangan_pegawai'=>$request->keterangan_pegawai

@@ -266,6 +266,9 @@ class KasMasukController extends Controller
  
 			]);
 			Periode::where('kode_periode', $periode)->update(['counter_km'=>$check+1]);
+			$akun = $request->akun;
+			ProgramKerja::join("akuns", "program_kerja.kode_proker", "=", "akuns.kode_proker")
+			->where('akuns.kode_akun', $akun)->update(['status_realisasi' => 'Realisasi']);
 			return redirect('/kasmasuk')->with('status', 'Data berhasil ditambahkan');
 	}
 	public function simpankasmasukmurid(Request $request)
@@ -332,6 +335,9 @@ class KasMasukController extends Controller
 //setelah menambah km, ubah di tabel periode untuk kolom counter_km =+1 sesuai dengan $periode
  
 			]);
+			$akun = $request->akun;
+			ProgramKerja::join("akuns", "program_kerja.kode_proker", "=", "akuns.kode_proker")
+			->where('akuns.kode_akun', $akun)->update(['status_realisasi' => 'Realisasi']);
 			Periode::where('kode_periode', $periode)->update(['counter_km'=>$check+1]);
 			return redirect('/kasmasuk')->with('status', 'Data berhasil ditambahkan');
 	}

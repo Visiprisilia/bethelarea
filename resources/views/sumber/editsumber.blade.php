@@ -50,6 +50,11 @@
                                 </div>
                             </div>
                         </div>
+                        <h5 style="color:blue;" >Panduan : </h5>
+                        <h6 style="color:blue;" >Kode Sumber : 1 -> Nama Sumber : Murid </h6>
+                        <h6 style="color:blue;" >Kode Sumber : 2 -> Nama Sumber : Yayasan </h6>
+                        <h6 style="color:blue;" >Kode Sumber : 3 -> Nama Sumber : Donatur </h6>
+                        <h6 style="color:blue;" >Kode Sumber Selanjutnya Diinput Urut Dengan Kode Sumber Sebelumnya</h6>
                     </div>
                 </div>
             </div>

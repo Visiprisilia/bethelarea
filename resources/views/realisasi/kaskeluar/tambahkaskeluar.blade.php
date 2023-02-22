@@ -107,7 +107,7 @@
                                                 </div> -->
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputFirstName">Jumlah</label>
-                                                    <input class="form-control" id="jumlah" name="jumlah" type-currency="IDR" placeholder="Masukkan Jumlah"  />
+                                                    <input class="form-control"  id="jumlah" name="jumlah"  placeholder="Masukkan Jumlah"  />
                                                 </div>
                                                 </div>
                                             
@@ -204,4 +204,6 @@ document.querySelectorAll('input[type-currency="IDR"]').forEach((element) => {
   });
 });
 </script>
+<!-- $string = str_replace(array(‘Rp’, ‘.’ ), ”, $_POST[‘angka’]); -->
+<!-- type-currency="IDR" -->
 @endsection

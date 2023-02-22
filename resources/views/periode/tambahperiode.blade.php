@@ -59,6 +59,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="inputLastName">Status</label>
+                                                <h6 style="color:Tomato;">Nonaktifkan terlebih dahulu Status Periode yang lain. Pastikan hanya satu Periode saja yang aktif!</h6>
                                                 <select class="form-control" id="status" name="status" >
                                                     <option  value>Pilih Status</option>
                                                     <option>AKTIF</option>

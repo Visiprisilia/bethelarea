@@ -52,12 +52,19 @@
                                                 <button type="submit" class="btn btn-success">Tambah</button>
                                                 <a href="{{url('/sumber')}}" class="btn btn-danger">Kembali</a>
                                             </div>
+                                            <h6 style="color:Tomato;" >Pastikan data yang diinput sudah benar! Data yang telah diinput, tidak bisa diubah lagi.</h6>
+
 
                                         </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <h5 style="color:blue;" >Panduan : </h5>
+                        <h6 style="color:blue;" >Kode Sumber : 1 -> Nama Sumber : Murid </h6>
+                        <h6 style="color:blue;" >Kode Sumber : 2 -> Nama Sumber : Yayasan </h6>
+                        <h6 style="color:blue;" >Kode Sumber : 3 -> Nama Sumber : Donatur </h6>
+                        <h6 style="color:blue;" >Kode Sumber Selanjutnya Diinput Urut Dengan Kode Sumber Sebelumnya</h6>
                     </div>
                 </div>
             </div>

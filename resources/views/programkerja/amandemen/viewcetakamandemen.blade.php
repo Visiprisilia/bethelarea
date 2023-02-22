@@ -10,6 +10,7 @@
         <th>Waktu Selesai</th>
         <th>Tujuan</th>
         <th>Indikator Pencapaian</th>
+        <th>Status Realisasi</th>
         <th>Keterangan</th>
         <th>Jumlah</th>
     </tr>
@@ -25,12 +26,14 @@
         <td>{{ $item->waktu_selesai}}</td>
         <td>{{ $item->tujuan}}</td>
         <td>{{ $item->indikator}}</td>
+        <td>{{ $item->status_realisasi}}</td>
         <td>{{ $item->keterangan_amandemen}}</td>
         <td>{{Str::rupiah ($item->anggaran_amandemen)}}</td>
     </tr>
     @endforeach
 </tbody>
 <th>Total</th>
+    <th></th>
     <th></th>
     <th></th>
     <th></th>

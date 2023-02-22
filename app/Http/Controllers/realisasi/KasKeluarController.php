@@ -14,6 +14,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Laporan\LaporanPosisiAnggaran;
 use App\Models\Realisasi\KasBon;
 use App\Models\BukuBesar\BukuBesarKas;
+use App\Models\ProgramKerja\Amandemen;
 use App\Models\ProgramKerja\ProgramKerja;
 use App\Models\ProgramKerja\Anggaran;
 
@@ -180,7 +181,10 @@ class KasKeluarController extends Controller
 		//setelah menambah kk, ubah di tabel periode untuk kolom counter_kk =+1 sesuai dengan $periode
 		//catat bukti kas bon jika ada 
 	
-
+		// $jumlah = $request->jumlah =str_replace(array(‘Rp’, ‘.’ ), ”, $_POST[‘angka’]);
+		// $jumlah = $request->jumlah;
+		// $jumlah = $request->jumlah = str_replace(('Rp'.'.' ));
+		
 		KasKeluar::create([
 			'no_bukti' => $no_bukti,
 			'periode' => $request->periode,
@@ -203,9 +207,13 @@ class KasKeluarController extends Controller
 				'tanggal_ptj' => $tanggalhariinis,
 			]);
 		}
+
 		//jika kas bon !=null 
 		//update untuk table kas bon pada kolom jumlah_ptj sesuai dengan bukti kas bon
 		//rumus jumlah_ptj=jumlah_ptj+jumlah kk
+		$prokers = $request->prokers;
+		ProgramKerja::where('kode_proker', $prokers)->update(['status_realisasi' => 'Realisasi']);
+		Amandemen::where('kode_proker', $prokers)->update(['status_realisasi' => 'Realisasi']);
 		Periode::where('kode_periode', $periode)->update(['counter_kk' => $check + 1]);
 	
 		return redirect('/kaskeluar')->with('status', 'Data berhasil ditambahkan');

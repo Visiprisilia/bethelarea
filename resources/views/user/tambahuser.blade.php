@@ -55,10 +55,10 @@
                                             <label class="mb-1" for="inputFirstName">Level</label>
                                                     <select class="form-control" id="level" name="level">
                                                         <option value>Pilih Level</option>
-                                                        <option value="super admin">Super Admin</option>
-                                                        <option value="admin">Admin</option>
-                                                        <option value="yayasan">Yayasan</option>
-                                                        <option value="murid">Murid</option>
+                                                        <option value="super admin">super admin</option>
+                                                        <option value="admin">unit</option>
+                                                        <option value="yayasan">yayasan</option>
+                                                        <option value="murid">murid</option>
                                                     </select>
                                             </div>
                                             <div class="mb-3">

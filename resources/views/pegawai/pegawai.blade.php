@@ -54,6 +54,7 @@
                             <th>Keterangan</th>
                             <th>Tanggal Update</th>
                             @if (auth()->user()->level=="super admin")
+                            <th>Perubahan Data</th>
                             <th>Aksi</th>
                             @endif
                         </tr>
@@ -81,7 +82,10 @@
                             <td>{{ $item->updated_at}}</td>
                             @if (auth()->user()->level=="super admin")
                             <td>
-                                <a href="/editpegawai/{{$item->niy}}"><i class="fas fa-edit" style="color:green"></i></a> |
+                                <a href="/editpegawai/{{$item->niy}}"><i class="fas fa-edit" style="color:green"></i></a> 
+                            </td>
+                            <td> 
+                                <a href="/lihatpegawai/{{$item->niy}}"><i class="fas fa-eye" style="color:blue"></i></a> 
                                 <a href="/hapuspegawai/{{$item->niy}}" onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a>
                                 <!-- <a href="#" id="cut" data-id="{{$item->niy}}" ><i class="fas fa-trash-alt" style="color:red"></i></a> -->
                             </td>

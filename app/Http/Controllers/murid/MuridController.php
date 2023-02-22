@@ -44,11 +44,14 @@ class MuridController extends Controller
 			'pekerjaan_ibu' => 'required',
 			'pendidikan_ayah' => 'required',
 			'pendidikan_ibu' => 'required',
+			'ktp_ayah' => 'required',
+			'ktp_ibu' => 'required',
 			'anak_keberapa' => 'required|numeric',
-			'no_akte' => 'required|numeric|unique:murid',
+			'no_akte' => 'required|unique:murid',
+			'file_akte' => 'required',
 			'foto_murid' => 'required',
 			'file_kk' => 'required',
-			'kontak' => 'required|numeric'
+			'kontak' => 'required|numeric',
 		],[
 			"nomor_induk.required"=>"Nomor Induk tidak boleh kosong",
 			"nomor_induk.numeric"=>"Nomor Induk harus berupa angka",
@@ -73,11 +76,13 @@ class MuridController extends Controller
 			"pekerjaan_ibu.required"=>"Pekerjaan ibu tidak boleh kosong",
 			"pendidikan_ayah.required"=>"Pendidikan ayah tidak boleh kosong",
 			"pendidikan_ibu.required"=>"Pendidikan ibu tidak boleh kosong",
-			"anak_keberapa.numeric"=>"Data anak keberapa harus berupa angka",
+			"ktp_ayah.required"=>"Anda belum mengupload KTP Ayah",
+			"ktp_ibu.required"=>"Anda belum mengupload KTP Ibu",
 			"anak_keberapa.required"=>"Data anak keberapa tidak boleh kosong",
 			"no_akte.required"=>"Nomor akte tidak boleh kosong",
 			"no_akte.numeric"=>"Nomor akte harus berupa angka",
 			"no_akte.unique"=>"Nomor akte sudah terdaftar",
+			"file_ktp.required"=>"Anda belum mengupload file Akta Kelahiran",
 			"foto_murid.required"=>"Anda belum mengupload foto murid",
 			"file_kk.required"=>"Anda belum mengupload file kartu keluarga",
 			"kontak.numeric"=>"Kontak harus berupa angka",
@@ -97,6 +102,13 @@ class MuridController extends Controller
 		$foto_murid = $request->foto_murid;			
 		$nomor_induk = $request->nomor_induk;			
 		$file_kk = $request->file_kk;			
+		$ktp_ayah = $request->ktp_ayah;			
+		$ktp_ibu = $request->ktp_ibu;			
+		$file_akte = $request->file_akte;			
+		$file_suratpenerimaan = $request->file_suratpenerimaan;	
+		$file_suratkenaikankelas = $request->file_suratkenaikankelas;	
+		$file_raport = $request->file_raport;	
+		$file_suratkelulusan = $request->file_suratkelulusan;	
 		
 		$destinationPath = 'assets/images/murid/fotomurid';
 		$fotos = 'fotomurid_'.$nomor_induk.'.'.$foto_murid->getClientOriginalExtension();
@@ -105,6 +117,34 @@ class MuridController extends Controller
 		$destinationPath = 'assets/images/murid/filekkmurid/';
 		$kk = 'filekkmurid_'.$nomor_induk.'.'.$file_kk->getClientOriginalExtension();
 		$file_kk->move($destinationPath, $kk);
+
+		$destinationPath = 'assets/images/murid/ktpayah/';
+		$ktpayah = 'ktpayah'.$nomor_induk.'.'.$ktp_ayah->getClientOriginalExtension();
+		$ktp_ayah->move($destinationPath, $ktpayah);
+
+		$destinationPath = 'assets/images/murid/ktpibu/';
+		$ktpibu = 'ktpibu'.$nomor_induk.'.'.$ktp_ibu->getClientOriginalExtension();
+		$ktp_ibu->move($destinationPath, $ktpibu);
+
+		$destinationPath = 'assets/images/murid/aktalahirmurid/';
+		$akta = 'akta'.$nomor_induk.'.'.$file_akte->getClientOriginalExtension();
+		$file_akte->move($destinationPath, $akta);
+
+		$destinationPath = 'assets/images/murid/suratpenerimaanmurid/';
+		$penerimaan = 'penerimaan'.$nomor_induk.'.'.$file_suratpenerimaan->getClientOriginalExtension();
+		$file_suratpenerimaan->move($destinationPath, $penerimaan);
+
+		$destinationPath = 'assets/images/murid/suratkenaikankelas/';
+		$kenaikankelas = 'kenaikankelas'.$nomor_induk.'.'.$file_suratkenaikankelas->getClientOriginalExtension();
+		$file_suratkenaikankelas->move($destinationPath, $kenaikankelas);
+
+		$destinationPath = 'assets/images/murid/raportmurid/';
+		$raportmurid = 'raportmurid'.$nomor_induk.'.'.$file_raport->getClientOriginalExtension();
+		$file_raport->move($destinationPath, $raportmurid);
+
+		$destinationPath = 'assets/images/murid/suratkelulusanmurid/';
+		$kelulusan = 'kelulusan'.$nomor_induk.'.'.$file_suratkelulusan->getClientOriginalExtension();
+		$file_suratkelulusan->move($destinationPath, $kelulusan);
 
 		Murid::create([
 			'nomor_induk'=>$request->nomor_induk,
@@ -122,15 +162,33 @@ class MuridController extends Controller
 			'pekerjaan_ibu'=>$request->pekerjaan_ibu,
 			'pendidikan_ayah'=>$request->pendidikan_ayah, 
 			'pendidikan_ibu'=>$request->pendidikan_ibu, 
+			'ktp_ayah'=>$ktpayah, 
+			'ktp_ibu'=>$ktpibu, 
 			'anak_keberapa'=>$request->anak_keberapa, 
 			'no_akte'=>$request->no_akte,
+			'file_akte'=>$akta,
 			'foto_murid'=>$fotos,
 			'file_kk'=>$kk,
-			'kontak'=>$request->kontak
+			'kontak'=>$request->kontak,
+			'tanggal_penerimaan'=>$request->tanggal_penerimaan,
+			'file_suratpenerimaan'=>$penerimaan,
+			'tanggal_kenaikankelas'=>$request->tanggal_kenaikankelas,
+			'file_suratkenaikankelas'=>$kenaikankelas,
+			'tanggal_raport'=>$request->tanggal_raport,
+			'file_raport'=>$raportmurid,
+			'status_murid'=>$request->status_murid,
+			'tanggal_kelulusan'=>$request->tanggal_kelulusan,
+			'file_suratkelulusan'=>$kelulusan
 
 
 			]);
 			return redirect('/murid')->with('status', 'Data berhasil ditambahkan');
+	}
+	public function lihatmurid($nomor_induk)
+	{
+		$kelas = Kelas::orderBy('created_at','asc')->get();
+		$murid = Murid::where('nomor_induk', $nomor_induk)->get();
+		return view('murid/lihatmurid', compact('murid','kelas'));
 	}
 	public function editmurid($nomor_induk)
 	{
@@ -140,18 +198,53 @@ class MuridController extends Controller
 	}
 	public function updatemurid(Request $request)
 	{
+		
 		$foto_murid = $request->foto_murid;			
 		$nomor_induk = $request->nomor_induk;			
 		$file_kk = $request->file_kk;			
+		$ktp_ayah = $request->ktp_ayah;			
+		$ktp_ibu = $request->ktp_ibu;			
+		$file_akte = $request->file_akte;			
+		$file_suratpenerimaan = $request->file_suratpenerimaan;	
+		$file_suratkenaikankelas = $request->file_suratkenaikankelas;	
+		$file_raport = $request->file_raport;	
+		$file_suratkelulusan = $request->file_suratkelulusan;	
 		
-		$destinationPath = 'assets/images/fotomurid/';
+		$destinationPath = 'assets/images/murid/fotomurid';
 		$fotos = 'fotomurid_'.$nomor_induk.'.'.$foto_murid->getClientOriginalExtension();
 		$foto_murid->move($destinationPath, $fotos);
 
-		$destinationPath = 'assets/images/filekkmurid/';
+		$destinationPath = 'assets/images/murid/filekkmurid/';
 		$kk = 'filekkmurid_'.$nomor_induk.'.'.$file_kk->getClientOriginalExtension();
 		$file_kk->move($destinationPath, $kk);
 
+		$destinationPath = 'assets/images/murid/ktpayah/';
+		$ktpayah = 'ktpayah'.$nomor_induk.'.'.$ktp_ayah->getClientOriginalExtension();
+		$ktp_ayah->move($destinationPath, $ktpayah);
+
+		$destinationPath = 'assets/images/murid/ktpibu/';
+		$ktpibu = 'ktpibu'.$nomor_induk.'.'.$ktp_ibu->getClientOriginalExtension();
+		$ktp_ibu->move($destinationPath, $ktpibu);
+
+		$destinationPath = 'assets/images/murid/aktalahirmurid/';
+		$akta = 'akta'.$nomor_induk.'.'.$file_akte->getClientOriginalExtension();
+		$file_akte->move($destinationPath, $akta);
+
+		$destinationPath = 'assets/images/murid/suratpenerimaanmurid/';
+		$penerimaan = 'penerimaan'.$nomor_induk.'.'.$file_suratpenerimaan->getClientOriginalExtension();
+		$file_suratpenerimaan->move($destinationPath, $penerimaan);
+
+		$destinationPath = 'assets/images/murid/suratkenaikankelas/';
+		$kenaikankelas = 'kenaikankelas'.$nomor_induk.'.'.$file_suratkenaikankelas->getClientOriginalExtension();
+		$file_suratpenerimaan->move($destinationPath, $kenaikankelas);
+
+		$destinationPath = 'assets/images/murid/raportmurid/';
+		$raportmurid = 'raportmurid'.$nomor_induk.'.'.$file_raport->getClientOriginalExtension();
+		$file_raport->move($destinationPath, $raportmurid);
+
+		$destinationPath = 'assets/images/murid/suratkelulusanmurid/';
+		$kelulusan = 'kelulusan'.$nomor_induk.'.'.$file_suratkelulusan->getClientOriginalExtension();
+		$file_suratkelulusan->move($destinationPath, $kelulusan);
 		$murid = Murid::where('nomor_induk', $request->nomor_induk)->update([
 			'nomor_induk'=>$request->nomor_induk,
 			'nomor_isn'=>$request->nomor_isn,
@@ -168,11 +261,23 @@ class MuridController extends Controller
 			'pekerjaan_ibu'=>$request->pekerjaan_ibu,
 			'pendidikan_ayah'=>$request->pendidikan_ayah, 
 			'pendidikan_ibu'=>$request->pendidikan_ibu, 
+			'ktp_ayah'=>$ktpayah, 
+			'ktp_ibu'=>$ktpibu, 
 			'anak_keberapa'=>$request->anak_keberapa, 
 			'no_akte'=>$request->no_akte,
+			'file_akte'=>$akta,
 			'foto_murid'=>$fotos,
 			'file_kk'=>$kk,
-			'kontak'=>$request->kontak
+			'kontak'=>$request->kontak,
+			'tanggal_penerimaan'=>$request->tanggal_penerimaan,
+			'file_suratpenerimaan'=>$penerimaan,
+			'tanggal_kenaikankelas'=>$request->tanggal_kenaikankelas,
+			'file_suratkenaikankelas'=>$kenaikankelas,
+			'tanggal_raport'=>$request->tanggal_raport,
+			'file_raport'=>$raportmurid,
+			'status_murid'=>$request->status_murid,
+			'tanggal_kelulusan'=>$request->tanggal_kelulusan,
+			'file_suratkelulusan'=>$kelulusan
 
 		]);
 		return redirect('/murid')->with('status', 'Data berhasil diubah');
