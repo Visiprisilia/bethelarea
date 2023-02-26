@@ -39,21 +39,15 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Username</label>
-                                                <input class="form-control" id="nama_user" name="nama_user" value="{{$item->nama_user}}" required   />
+                                                <input class="form-control" id="nama_user" name="nama_user" value="{{$item->nama_user}}"  required   />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Password</label>
-                                                <input class="form-control" id="password" name="password" value="{{$item->password}}"required   />
+                                                <input class="form-control" id="password" name="password" value="{{$item->password}}"  required   />
                                             </div>
                                             <div class="mb-3">
-                                            <label class="mb-1" for="inputFirstName">Level</label>
-                                            <select class="form-control" id="level" name="level">
-                                                        <option value>Pilih Level</option>
-                                                        <option value="super admin">super admin</option>
-                                                        <option value="admin">unit</option>
-                                                        <option value="yayasan">yayasan</option>
-                                                        <option value="murid">murid</option>
-                                                    </select>
+                                            <label for="exampleFormControlInput1">Level</label>
+                                                <input class="form-control" id="level" name="level" value="{{$item->level}}" readonly required   />
                                             </div>
                                             <div class="mb-3">
                                             <label class="mb-1" for="inputFirstName">Status</label>

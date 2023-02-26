@@ -22,13 +22,15 @@ class KelasController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'kode_kelas' => 'required|numeric|unique:kelas',
-            'nama_kelas' => 'required|unique:kelas'
+            'nama_kelas' => 'required|unique:kelas',
+            'keterangan_kelas' => 'required'
         ], [
             "kode_kelas.required" => "Kode Kelas tidak boleh kosong",
             "kode_kelas.numeric" => "Kode Kelas harus berupa angka",
             "kode_kelas.unique" => "Data Tersebut Sudah Terdaftar",
             "nama_kelas.required" => "Nama Kelas tidak boleh kosong",
-            "nama_kelas.unique" => "Data Tersebut Sudah Terdaftar"
+            "nama_kelas.unique" => "Data Tersebut Sudah Terdaftar",
+            "keterangan_kelas.required" => "Keterangan Kelas tidak boleh kosong",
 
         ]);
 
@@ -42,7 +44,8 @@ class KelasController extends Controller
 
         Kelas::create([
             'kode_kelas' => $request->kode_kelas,
-            'nama_kelas' => $request->nama_kelas
+            'nama_kelas' => $request->nama_kelas,
+            'keterangan_kelas' => $request->keterangan_kelas,
         ]);
         return redirect('/kelas')->with('status', 'Data berhasil ditambahkan');
     }
@@ -55,7 +58,8 @@ class KelasController extends Controller
     {
         $kelas = Kelas::where('kode_kelas', $request->kode_kelas)->update([
             'kode_kelas' => $request->kode_kelas,
-            'nama_kelas' => $request->nama_kelas
+            'nama_kelas' => $request->nama_kelas,
+            'keterangan_kelas' => $request->keterangan_kelas,
         ]);
         return redirect('/kelas')->with('status', 'Data berhasil diubah');
     }

@@ -21,7 +21,14 @@
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
-
+        <div class="card-header py-3">
+            <select class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" id="kasmasuk" name="kasmasuk">
+                <option value>Pilih Sumber</option>
+                @foreach ($sumber as $item)
+                <option value="{{ $item->id_sumber}}">{{$item->nama_sumber}}</option>
+                @endforeach
+            </select>
+        </div>
         <div class="card-header py-3">
             <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
             @if (auth()->user()->level=="unit")
@@ -37,12 +44,6 @@
                 @endforeach
             </select> -->
             @endif
-            <select class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" id="kasmasuk" name="kasmasuk">
-                <option value>Pilih Sumber</option>
-                @foreach ($sumber as $item)
-                <option value="{{ $item->id_sumber}}">{{$item->nama_sumber}}</option>
-                @endforeach
-            </select>
         </div>
         @if (session('error'))
         <div class="alert alert-danger">
@@ -59,15 +60,15 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                        <th>No</th>
+                            <th>No</th>
                             <th>No.Bukti</th>
                             <th>Periode</th>
                             <th>Tanggal Pencatatan</th>
                             <th>Keterangan</th>
-                            <th>Nama</th>                    
-                            <th>Jumlah</th>                              
-                            <th>Diterima Dari</th>    
-                            @if (auth()->user()->level=="unit")                          
+                            <th>Nama</th>
+                            <th>Jumlah</th>
+                            <th>Diterima Dari</th>
+                            @if (auth()->user()->level=="unit")
                             <th>Aksi</th>
                             @endif
                         </tr>

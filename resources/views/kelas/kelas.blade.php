@@ -33,6 +33,7 @@
                         <tr>
                             <th>Kode Kelas</th>
                             <th>Nama Kelas</th>
+                            <th>Keterangan</th>
                             @if (auth()->user()->level=="super admin")
                             <th>Aksi</th>
                             @endif
@@ -42,6 +43,7 @@
                         <tr>
                             <td>{{ $item->kode_kelas}}</td>
                             <td>{{ $item->nama_kelas}}</td>
+                            <td>{{ $item->keterangan_kelas}}</td>
                             @if (auth()->user()->level=="super admin")
                             <td>
                                 <a href="/editkelas/{{$item->kode_kelas}}"><i class="fas fa-edit" style="color:green"></i></a> |

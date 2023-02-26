@@ -127,6 +127,7 @@ Route::get('/hapuskelas/{kode_kelas}', [KelasController::class,'hapuskelas'])->m
 //Murid -->
 Route::get('/murid', [MuridController::class,'murid']);
 Route::get('/cetakmurid', [MuridController::class,'cetakmurid']);
+Route::get('/viewcetakmurid', [MuridController::class,'viewcetakmurid']);
 Route::get('/tambahmurid', [MuridController::class,'tambahmurid'])->middleware(['auth', 'ceklevel:super admin']);
 Route::post('/simpanmurid', [MuridController::class,'simpanmurid'])->middleware(['auth', 'ceklevel:super admin']);
 Route::get('/lihatmurid/{nomor_induk}', [MuridController::class,'lihatmurid'])->middleware(['auth', 'ceklevel:super admin']);
@@ -155,7 +156,8 @@ Route::get('/hapususer/{id}', [UserController::class,'hapususer'])->middleware('
 //Program Kerja
 Route::get('/programkerja', [ProgramKerjaController::class,'programkerja']);
 Route::get('/viewprogramkerja', [ProgramKerjaController::class,'viewprogramkerja']);
-Route::get('/tambahprogramkerja', [ProgramKerjaController::class,'tambahprogramkerja'])->middleware('auth', 'ceklevel:unit');
+Route::get('/tambahprogramkerjapendapatan', [ProgramKerjaController::class,'tambahprogramkerjapendapatan'])->middleware('auth', 'ceklevel:unit');
+Route::get('/tambahprogramkerjabiaya', [ProgramKerjaController::class,'tambahprogramkerjabiaya'])->middleware('auth', 'ceklevel:unit');
 Route::get('/pilihprokeranggaran', [ProgramKerjaController::class,'pilihprokeranggaran'])->name('pilihprokeranggaran.index')->middleware('auth', 'ceklevel:unit');
 Route::get('/pilihakunz/{kode_rek}', [ProgramKerjaController::class,'pilihakunz'])->middleware('auth', 'ceklevel:unit');
 Route::post('/simpanprogramkerja', [ProgramKerjaController::class,'simpanprogramkerja'])->middleware('auth', 'ceklevel:unit');
@@ -214,6 +216,9 @@ Route::get('/hapuskasbon/{no_buktibon}', [KasBonController::class,'hapuskasbon']
 Route::get('/pilihprokerbon', [KasBonController::class,'pilihprokerbon'])->name('pilihprokerbon.index')->middleware('auth', 'ceklevel:unit');
 Route::get('/pilihprokerbonakun/{kode_proker}', [KasBonController::class,'pilihprokerbonakun'])->middleware('auth', 'ceklevel:unit');
 Route::get('/pilihprokerbonakuns', [KasBonController::class,'pilihprokerbonakuns'])->middleware('auth', 'ceklevel:unit');
+Route::get('/ptjbon', [KasBonController::class,'ptjbon'])->middleware('auth', 'ceklevel:unit');
+
+
 
 //Kas Masuk
 Route::get('/kasmasuk', [KasMasukController::class,'kasmasuk']);

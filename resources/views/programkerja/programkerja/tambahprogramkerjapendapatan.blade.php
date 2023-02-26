@@ -37,17 +37,17 @@
                                 <!-- Component Preview-->
                                 <div class="sbp-preview">
                                     <div class="sbp-preview-content">
-                                        <form action="/simpanprogramkerja" method="post">
+                                        <form action="/simpanprogramkerjapendapatan" method="post">
                                             @csrf
                                             <div class="row gx-3 mb-3">
-                                                <div class="col-md-6">
+                                                <!-- <div class="col-md-6">
                                                     <label class="mb-1" for="inputLastName">Program Kerja</label>
                                                     <select class="form-control" id="pob"  name="pob">
                                                         <option  value>Pilih Program Kerja Anggaran</option>                                              
                                                         <option value="Pendapatan">Anggaran Pendapatan</option>
                                                         <option value="Biaya">Anggaran Biaya</option>
                                                     </select>
-                                                </div>
+                                                </div> -->
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputLastName">Periode</label>
                                                     <select class="form-control" id="periode"  name="periode">
@@ -110,7 +110,7 @@
                                                                 @endforeach
                                                             </select>
                                                             <div>
-                                                                <input type="text" class="form-control mb-1 jumlah" name="jumlah[]" placeholder="Masukkan Jumlah" >
+                                                                <input type="text"  class="form-control mb-1 jumlah" name="jumlah[]" placeholder="Masukkan Jumlah" >
                                                             </div>
                                                         </div>
                                                     </div>
@@ -141,4 +141,26 @@
     </main>
 </div>
 <script src="/proker/proker.js"></script>
+<script>
+    document.querySelectorAll('input[type-currency="IDR"]').forEach((element) => {
+        element.addEventListener('keyup', function(e) {
+            let cursorPostion = this.selectionStart;
+            let value = parseInt(this.value.replace(/[^,\d]/g, ''));
+            let originalLenght = this.value.length;
+            if (isNaN(value)) {
+                this.value = "";
+            } else {
+                this.value = value.toLocaleString('id-ID', {
+                    currency: 'IDR',
+                    // style: 'currency',
+                    minimumFractionDigits: 0
+                });
+                cursorPostion = this.value.length - originalLenght + cursorPostion;
+                this.setSelectionRange(cursorPostion, cursorPostion);
+            }
+        });
+    });
+</script>
+<!-- $string = str_replace(array(‘Rp’, ‘.’ ), ”, $_POST[‘angka’]); -->
+<!-- type-currency="IDR" -->
 @endsection

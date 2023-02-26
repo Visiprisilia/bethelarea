@@ -40,14 +40,21 @@ class ProgramKerjaController extends Controller
 			'pegawai' => $pegawai
 		]);
 	}
-	public function tambahprogramkerja()
+	public function tambahprogramkerjapendapatan()
 	{
 		$periode = Periode::where('status', 'LIKE', 'AKTIF')->get();
 		$pegawai = Pegawai::where('status', 'LIKE', 'AKTIF')->get();
-		$coa = Coa::orderBy('kode_akun', 'asc')->get();
-		return view('programkerja/programkerja/tambahprogramkerja', ['coa' => $coa, 'periode' => $periode, 'pegawai' => $pegawai]);
+		$coa = Coa::where('kode_akun','like','4%')->orderBy('kode_akun', 'asc')->get();
+		return view('programkerja/programkerja/tambahprogramkerjapendapatan', ['coa' => $coa, 'periode' => $periode, 'pegawai' => $pegawai]);
 	}
-	public function simpanprogramkerja(Request $request)
+	public function tambahprogramkerjabiaya()
+	{
+		$periode = Periode::where('status', 'LIKE', 'AKTIF')->get();
+		$pegawai = Pegawai::where('status', 'LIKE', 'AKTIF')->get();
+		$coa = Coa::where('kode_akun','like','5%')->orderBy('kode_akun', 'asc')->get();
+		return view('programkerja/programkerja/tambahprogramkerjabiaya', ['coa' => $coa, 'periode' => $periode, 'pegawai' => $pegawai]);
+	}
+	public function simpanprogramkerjapendapatan(Request $request)
 	{
 
 		$validator = Validator::make($request->all(), [
@@ -84,7 +91,7 @@ class ProgramKerjaController extends Controller
 			$api = array(
 				'message' => $message
 			);
-			return redirect('/tambahprogramkerja')->withErrors($validator);
+			return redirect('/tambahprogramkerjapendapatan')->withErrors($validator);
 		}
 		$periode = $request->periode;
 		$penanggungjawab = $request->penanggungjawab;
@@ -110,7 +117,111 @@ class ProgramKerjaController extends Controller
 			'indikator' => $request->indikator,
 			'anggaran' => $request->anggaran,
 			'keterangan_proker' => $request->keterangan_proker,
-			'pob' => $request->pob,
+			'pob' => 'Pendapatan',
+			'status_proker' => 'Menunggu Persetujuan'
+		];
+		ProgramKerja::create($data_proker);
+
+		// $validator = Validator::make($request->all(), [
+		// 	'kode_akun' => ['required',Rule::unique('akuns')
+		// 	->where('periode_tagihan', $request->periode_tagihan)],
+		// ], [
+		// 	"kode_akun.required" => "Kode akun tersebut sudah di anggarkan",
+		// 	"kode_akun.unique" => "Kode akun tersebut sudah di anggarkan",
+		// ]);
+
+		// if ($validator->fails()) {
+		// 	$message = $validator->errors()->getMessages();
+		// 	$api = array(
+		// 		'message' => $message
+		// 	);
+		// 	return redirect('/tambahprogramkerja')->withErrors($validator);
+		// }
+
+		$no_jumlah = 0;
+		foreach ($kode_akun as $i) {
+			$data = [
+				'kode_proker' => $kode_proker,
+				'kode_akun' => $i,
+				'penanggungjawab' => $penanggungjawab,
+				'periode' => $periode,
+				'jumlah' => $request->jumlah[$no_jumlah],
+			];
+			$no_jumlah++;
+
+			Akuns::create($data);
+			// return $periode;
+		}
+
+		Periode::where('kode_periode', $periode)->update(['counter_proker' => $check + 1]);
+
+
+		return redirect('/programkerja')->with('status', 'Data berhasil ditambahkan');
+	}
+	public function simpanprogramkerjabiaya(Request $request)
+	{
+
+		$validator = Validator::make($request->all(), [
+
+			'pob' => 'required',
+			'periode' => 'required',
+			// 'kode_akun' => 'required|exists:akuns,id',
+			'kode_akun' => 'unique:akuns',
+			'nama_proker' => 'required',
+			'penanggungjawab' => 'required',
+			'waktu_mulai' => 'required',
+			'waktu_selesai' => 'required',
+			'tujuan' => 'required',
+			'indikator' => 'required',
+			'anggaran' => 'required',
+			'keterangan_proker' => 'required'
+		], [
+			"kode_akun.unique" => "Kode akun tersebut sudah di anggarkan",
+			"pob.required" => "Program Kerja tidak boleh kosong",
+			"periode.required" => "Periode tidak boleh kosong",
+			"nama_proker.required" => "Nama Program Kerja tidak boleh kosong",
+			"penanggungjawab.required" => "Penanggung Jawab tidak boleh kosong",
+			"waktu_mulai.required" => "Waktu Mulai tidak boleh kosong",
+			"waktu_selesai.required" => "Waktu Selesai tidak boleh kosong",
+			"tujuan.required" => "Tujuan tidak boleh kosong",
+			"indikator.required" => "Indikator tidak boleh kosong",
+			"anggaran.required" => "Anggaran tidak boleh kosong",
+			"keterangan_proker.required" => "Keterangan tidak boleh kosong"
+
+		]);
+
+		if ($validator->fails()) {
+			$message = $validator->errors()->getMessages();
+			$api = array(
+				'message' => $message
+			);
+			return redirect('/tambahprogramkerjabiaya')->withErrors($validator);
+		}
+		$periode = $request->periode;
+		$penanggungjawab = $request->penanggungjawab;
+		$kode_akun = $request->akun;
+		$ambilcp = Periode::where('kode_periode', $periode)->get();
+		$check = 0;
+		foreach ($ambilcp as $cp) {
+
+			$check = $cp->counter_proker;
+		}
+		$kode_proker = 'PROKER' . $periode . $check + 1;
+
+		//$check = Periode kolom counter_proker +1, sesuai dengan $periode
+		//setelah menambah proker, ubah di tabel periode untuk kolom counter_proker =+1 sesuai dengan $periode
+		$data_proker = [
+			'kode_proker' => $kode_proker,
+			'periode' => $periode,
+			'nama_proker' => $request->nama_proker,
+			'penanggungjawab' => $penanggungjawab,
+			'waktu_mulai' => $request->waktu_mulai,
+			'waktu_selesai' => $request->waktu_selesai,
+			'tujuan' => $request->tujuan,
+			'indikator' => $request->indikator,
+			'anggaran' => $request->anggaran,
+			'keterangan_proker' => $request->keterangan_proker,
+			'pob' => 'Biaya',
 			'status_proker' => 'Menunggu Persetujuan'
 		];
 		ProgramKerja::create($data_proker);

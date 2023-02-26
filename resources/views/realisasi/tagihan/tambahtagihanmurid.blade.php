@@ -52,7 +52,7 @@
                                                 </div>
                                                 <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Jumlah Tagihan</label>
-                                                <input class="form-control" id="nominal_tagihan" name="nominal_tagihan" placeholder="Masukkan Jumlah Tagihan" />
+                                                <input class="form-control" id="nominal_tagihan" type-currency="IDR" name="nominal_tagihan" placeholder="Masukkan Jumlah Tagihan" />
                                             </div>    
                                            
                                                 <!-- <div class="col-md-6">
@@ -95,4 +95,26 @@
         // alert(val);
     })
 </script>
+<script>
+    document.querySelectorAll('input[type-currency="IDR"]').forEach((element) => {
+        element.addEventListener('keyup', function(e) {
+            let cursorPostion = this.selectionStart;
+            let value = parseInt(this.value.replace(/[^,\d]/g, ''));
+            let originalLenght = this.value.length;
+            if (isNaN(value)) {
+                this.value = "";
+            } else {
+                this.value = value.toLocaleString('id-ID', {
+                    currency: 'IDR',
+                    // style: 'currency',
+                    minimumFractionDigits: 0
+                });
+                cursorPostion = this.value.length - originalLenght + cursorPostion;
+                this.setSelectionRange(cursorPostion, cursorPostion);
+            }
+        });
+    });
+</script>
+<!-- $string = str_replace(array(‘Rp’, ‘.’ ), ”, $_POST[‘angka’]); -->
+<!-- type-currency="IDR" -->
 @endsection

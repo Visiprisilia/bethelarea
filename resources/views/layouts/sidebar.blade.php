@@ -130,11 +130,11 @@
     </li>
     @endif
     @if (auth()->user()->level=="murid")
-    <li class="nav-item">
+    <!-- <li class="nav-item">
         <a class="nav-link" href="/pembayaranmurids/{{ auth()->user()->nama_user }}">
         <i class='fas fa-id-card-alt'></i>
             <span>Tagihan</span></a>
-    </li>
+    </li> -->
     <li class="nav-item">
         <a class="nav-link" href="/pembayaranmurids/{{ auth()->user()->nama_user }}">
         <i class='fas fa-id-card-alt'></i>

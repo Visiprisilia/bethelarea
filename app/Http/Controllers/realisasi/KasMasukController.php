@@ -247,6 +247,9 @@ class KasMasukController extends Controller
 			$check = $km->counter_km;
 		}
 		$no_bukti = 'BKM' . $tanggalhariini . $check + 1;
+
+		$jumlah = $request->jumlah;
+		$jumlahs = str_replace(array('','.'),'',$jumlah);
 		KasMasuk::create([
 			'no_bukti'=>$no_bukti,
 			'periode'=>$request->periode,
@@ -256,7 +259,7 @@ class KasMasukController extends Controller
 			'diterimadari'=>$request->diterimadari,
 			'akun'=>$request->akun,
 			'sumber'=>$request->sumber,
-			'jumlah'=>$request->jumlah,
+			'jumlah'=>$jumlahs,
 			'bukti'=>null,
 			'kasir'=>$request->kasir,
 			'nama_donatur'=>$request->nama_donatur,
@@ -268,7 +271,9 @@ class KasMasukController extends Controller
 			Periode::where('kode_periode', $periode)->update(['counter_km'=>$check+1]);
 			$akun = $request->akun;
 			ProgramKerja::join("akuns", "program_kerja.kode_proker", "=", "akuns.kode_proker")
-			->where('akuns.kode_akun', $akun)->update(['status_realisasi' => 'Realisasi']);
+			->where('akuns.kode_akun', $akun)->where('waktu_selesai','!=',$tanggalhariinis)->update(['status_realisasi' => 'Realisasi Sebagian']);
+			ProgramKerja::join("akuns", "program_kerja.kode_proker", "=", "akuns.kode_proker")
+			->where('akuns.kode_akun', $akun)->where('waktu_selesai','=',$tanggalhariinis)->update(['status_realisasi' => 'Realisasi']);
 			return redirect('/kasmasuk')->with('status', 'Data berhasil ditambahkan');
 	}
 	public function simpankasmasukmurid(Request $request)
@@ -317,6 +322,9 @@ class KasMasukController extends Controller
 			$check = $km->counter_km;
 		}
 		$no_bukti = 'BKM' . $tanggalhariini . $check + 1;
+
+		$jumlah = $request->jumlah;
+		$jumlahs = str_replace(array('','.'),'',$jumlah);
 		KasMasuk::create([
 			'no_bukti'=>$no_bukti,
 			'periode'=>$request->periode,
@@ -326,7 +334,7 @@ class KasMasukController extends Controller
 			'diterimadari'=>$request->diterimadari,
 			'akun'=>$request->akun,
 			'sumber'=>1,
-			'jumlah'=>$request->jumlah,
+			'jumlah'=>$jumlahs,
 			'bukti' => null,
 			'kasir'=>$request->kasir,
 			'nama_donatur'=>$request->nama_donatur,
@@ -336,10 +344,13 @@ class KasMasukController extends Controller
  
 			]);
 			$akun = $request->akun;
-			ProgramKerja::join("akuns", "program_kerja.kode_proker", "=", "akuns.kode_proker")
-			->where('akuns.kode_akun', $akun)->update(['status_realisasi' => 'Realisasi']);
-			Periode::where('kode_periode', $periode)->update(['counter_km'=>$check+1]);
-			return redirect('/kasmasuk')->with('status', 'Data berhasil ditambahkan');
+	ProgramKerja::join("akuns", "program_kerja.kode_proker", "=", "akuns.kode_proker")
+	->where('akuns.kode_akun', $akun)->where('waktu_selesai','!=',$tanggalhariinis)->update(['status_realisasi' => 'Realisasi Sebagian']);
+	ProgramKerja::join("akuns", "program_kerja.kode_proker", "=", "akuns.kode_proker")
+	->where('akuns.kode_akun', $akun)->where('waktu_selesai','=',$tanggalhariinis)->update(['status_realisasi' => 'Realisasi sto']);
+	
+	Periode::where('kode_periode', $periode)->update(['counter_km'=>$check+1]);
+	return redirect('/kasmasuk')->with('status', 'Data berhasil ditambahkan');
 	}
 	public function simpanmutasi(Request $request)
 	{
@@ -385,6 +396,9 @@ class KasMasukController extends Controller
 		$buktis = 'BKM_' . $no_bukti . '.' . $bukti->getClientOriginalExtension();
 		$bukti->move($destinationPath, $buktis);
 		$no_buktibon = $request->no_buktibon;
+
+		$jumlah = $request->jumlah;
+		$jumlahs = str_replace(array('','.'),'',$jumlah);
 		KasMasuk::create([
 			'no_bukti'=>$no_bukti,
 			'periode'=>$request->periode,
@@ -393,7 +407,7 @@ class KasMasukController extends Controller
 			// 'progja'=>0,
 			'akun'=>null,
 			'sumber'=>2,
-			'jumlah'=>$request->jumlah,
+			'jumlah'=>$jumlahs,
 			'bukti' => $buktis,
 			'kasir'=>NULL,
 			'diterimadari'=>'Neny Widijawati',

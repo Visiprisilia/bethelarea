@@ -8,6 +8,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 use App\Models\Murid\Kelas;
+use App\Models\Periode\Periode;
 
 class MuridController extends Controller
 {
@@ -19,7 +20,17 @@ class MuridController extends Controller
 	public function cetakmurid()
     {
         $murid = Murid::orderBy('created_at','asc')->get();
-        return view('murid/cetakmurid', compact('murid'));
+        $kelas = Kelas::orderBy('created_at','asc')->get();
+        $periode = Periode::orderBy('created_at', 'desc')->where('status', 'LIKE', 'AKTIF')->first();
+        return view('murid/cetakmurid', compact('murid','periode','kelas'));
+    }
+	public function viewcetakmurid(Request $request)
+    {
+		$id = $request->id;
+        $murid = Murid::where('kelas',$id)->orderBy('created_at','asc')->get();
+        $kelas = Kelas::orderBy('created_at','asc')->get();
+        $periode = Periode::orderBy('created_at', 'desc')->where('status', 'LIKE', 'AKTIF')->first();
+        return view('murid/viewcetakmurid', compact('murid','periode','kelas'));
     }
     public function tambahmurid()
 	{

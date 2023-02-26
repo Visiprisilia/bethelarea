@@ -152,13 +152,15 @@ class TagihanController extends Controller
 			// return redirect('/tagihan')->with('status', 'Data berhasil ditambahkan');
 
 		}
+		$nominal_tagihan = $request->nominal_tagihan;
+		$jumlahs = str_replace(array('','.'),'',$nominal_tagihan);
 		$id_tagihan = $request->id_tagihan;
 		ItemTagihan::where('id_tagihan', $request->id_tagihan)->create([			
 		// ItemTagihan::create([			
 			'id_itemtagihan'=>$request->id_itemtagihan, 
 			'id_tagihan'=>$id_tagihan, 
 			'kode_akun'=>$request->kode_akun, 
-			'nominal_tagihan'=>$request->nominal_tagihan, 
+			'nominal_tagihan'=>$jumlahs, 
 			]);
 			return redirect('/tagihan')->with('status', 'Data berhasil ditambahkan');
 	}
@@ -173,12 +175,14 @@ class TagihanController extends Controller
 	}
 	public function updatetagihanmurid(Request $request)
 	{       
+		$nominal_tagihan = $request->nominal_tagihan;
+		$jumlahs = str_replace(array('','.'),'',$nominal_tagihan);
         $tagihan = ItemTagihan::where('id_itemtagihan', $request->id_itemtagihan)->update([
 			// 'id_tagihan'=>$request->id_tagihan, 
 			'id_itemtagihan'=>$request->id_itemtagihan, 
 			'id_tagihan'=>$request->id_tagihan, 
 			'kode_akun'=>$request->kode_akun, 
-			'nominal_tagihan'=>$request->nominal_tagihan, 
+			'nominal_tagihan'=>$jumlahs, 
 		]);
 		return redirect('/tagihan')->with('status', 'Data berhasil diubah');
 	}

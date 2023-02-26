@@ -21,10 +21,10 @@
         @if (auth()->user()->level=="unit")
         <div class="card-header py-3">       
             <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
-            <a href="tambahprogramkerja" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i>Tambah Data</a>
+            <a href="tambahprogramkerjapendapatan" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i>Program Kerja Anggaran Pendapatansss</a>
+            <a href="tambahprogramkerjabiaya" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i>Program Kerja Anggaran Biaya </a>
             <a href="cetakprogramkerjapendapatan" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm"><i class="fas fa-print fa-sm text-white-50"></i>Cetak Program Kerja Anggaran Pendapatan</a>
             <a href="cetakprogramkerja" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print fa-sm text-white-50"></i>Cetak Program Kerja Anggaran Biaya</a>
-            <!-- <a href="cetakprogramkerjaamandemen" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print fa-sm text-white-50"></i>Cetak Amandemen</a> -->
             </div>@endif
          
         @if (session('error'))

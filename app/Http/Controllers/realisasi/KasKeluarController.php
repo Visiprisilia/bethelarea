@@ -17,6 +17,7 @@ use App\Models\BukuBesar\BukuBesarKas;
 use App\Models\ProgramKerja\Amandemen;
 use App\Models\ProgramKerja\ProgramKerja;
 use App\Models\ProgramKerja\Anggaran;
+use Illuminate\Support\Arr;
 
 class KasKeluarController extends Controller
 {
@@ -124,7 +125,7 @@ class KasKeluarController extends Controller
 	public function simpankaskeluar(Request $request)
 	{
 		$validator = Validator::make($request->all(), [	
-			'jumlah' => 'lte:anggaran|lte:totalkas|required',
+			// 'jumlah' => 'lte:anggaran|lte:totalkas|required',
 			'periode'=> 'required',
 			'keterangan'=> 'required',
 			'akun'=> 'required',
@@ -134,8 +135,8 @@ class KasKeluarController extends Controller
 			'penanggungjawab'=> 'required',
 			'kasir'=> 'required',
 		],[
-			"jumlah.lte"=>"Jumlah harus bernilai kurang dari atau sama dengan Saldo Kas dan Anggaran",
-			"jumlah.numeric"=>"Jumlah harus berupa nilai rupiah",
+			// "jumlah.lte"=>"Jumlah harus bernilai kurang dari atau sama dengan Saldo Kas dan Anggaran",
+			// "jumlah.numeric"=>"Jumlah harus berupa nilai rupiah",
 			"periode.required"=>"Periode tidak boleh kosong",
 			"keterangan.required"=>"Keterangan tidak boleh kosong",
 			"akun.required"=>"Akun tidak boleh kosong",
@@ -182,8 +183,9 @@ class KasKeluarController extends Controller
 		//catat bukti kas bon jika ada 
 	
 		// $jumlah = $request->jumlah =str_replace(array(‘Rp’, ‘.’ ), ”, $_POST[‘angka’]);
-		// $jumlah = $request->jumlah;
-		// $jumlah = $request->jumlah = str_replace(('Rp'.'.' ));
+		//Puji Lord!
+		$jumlah = $request->jumlah;
+		$jumlahs = str_replace(array('','.'),'',$jumlah);
 		
 		KasKeluar::create([
 			'no_bukti' => $no_bukti,
@@ -193,7 +195,7 @@ class KasKeluarController extends Controller
 			'akun' => $request->akun,
 			'prokers' => $request->prokers,
 			'anggaran' => $request->anggaran,
-			'jumlah' => $request->jumlah,
+			'jumlah' => $jumlahs,
 			'bukti' => $buktis,
 			'penanggungjawab' => $request->penanggungjawab,
 			'kasir' => $request->kasir,
@@ -212,8 +214,19 @@ class KasKeluarController extends Controller
 		//update untuk table kas bon pada kolom jumlah_ptj sesuai dengan bukti kas bon
 		//rumus jumlah_ptj=jumlah_ptj+jumlah kk
 		$prokers = $request->prokers;
-		ProgramKerja::where('kode_proker', $prokers)->update(['status_realisasi' => 'Realisasi']);
-		Amandemen::where('kode_proker', $prokers)->update(['status_realisasi' => 'Realisasi']);
+		$waktu_selesai = $request->waktu_selesai;
+
+		// ProgramKerja::where('kode_proker', $prokers)->update(['status_realisasi' => 'Realisasi Sebagian']);
+		// if ($tanggalhariinis == $tanggalhariinis) {
+		// 	$programkerja = ProgramKerja::where('kode_proker', $request->kode_proker)->update([
+		// 		'status_realisasi' =>'Realisasi'
+		// 	]);
+		// }
+		ProgramKerja::where('kode_proker', $prokers)->where('waktu_selesai','!=',$tanggalhariinis)->update(['status_realisasi' => 'Realisasi Sebagian']);
+		ProgramKerja::where('kode_proker', $prokers)->where('waktu_selesai','=',$tanggalhariinis)->update(['status_realisasi' => 'Realisasi']);
+		// ProgramKerja::whereColumn([['kode_proker', $prokers],['waktu_selesai','==',$tanggalhariinis]])->update(['status_realisasi' => 'Realisasi']);
+		
+		Amandemen::where('kode_prokeramandemen', $prokers)->update(['status_realisasi' => 'Realisasi']);
 		Periode::where('kode_periode', $periode)->update(['counter_kk' => $check + 1]);
 	
 		return redirect('/kaskeluar')->with('status', 'Data berhasil ditambahkan');
@@ -280,7 +293,8 @@ class KasKeluarController extends Controller
 		//setelah menambah kk, ubah di tabel periode untuk kolom counter_kk =+1 sesuai dengan $periode
 		//catat bukti kas bon jika ada 
 	
-
+		$jumlah = $request->jumlah;
+		$jumlahs = str_replace(array('','.'),'',$jumlah);
 		KasKeluar::create([
 			'no_bukti' => $no_bukti,
 			'periode' => $request->periode,
@@ -289,7 +303,7 @@ class KasKeluarController extends Controller
 			'akun' => null,
 			'prokers' => 0,
 			'anggaran' => 0,
-			'jumlah' => $request->jumlah,
+			'jumlah' => $jumlahs,
 			'bukti' => $buktis,
 			'penanggungjawab' => '20100401003',
 			'kasir' => 'Neny Widijawati',
@@ -416,11 +430,15 @@ class KasKeluarController extends Controller
 		$no = $request->no;
 		$data = KasBon::where("no_buktibon", $no)->first();
 		$data2 = KasBon::where("no_buktibon", $no)->get();
-		$data3 = KasBon::where("no_buktibon", $no)->get();
+		$data3 = KasBon::join("program_kerja", "kas_bon.proker_bon", "=", "program_kerja.kode_proker")->where("no_buktibon", $no)->get();
+		$data4 = KasBon::join("coa", "kas_bon.akun_bon", "=", "coa.kode_akun")->where("no_buktibon", $no)->get();
+		$data5 = KasBon::join("pegawai", "kas_bon.penanggungjawab_bon", "=", "pegawai.niy")->where("no_buktibon", $no)->get();
 		return response()->json([
 			"bon" => $data,
 			"coba"=>$data2,
 			"coba2"=>$data3,
+			"coba3"=>$data4,
+			"coba4"=>$data5,
 
 		]);
 	}

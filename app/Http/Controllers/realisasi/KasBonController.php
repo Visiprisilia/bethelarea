@@ -60,6 +60,35 @@ class KasBonController extends Controller
 		return view('realisasi/kasbon/tambahkasbon', ['periode'=>$periode,'pegawai'=>$pegawai,'programkerja'=>$programkerja,
 		'akun'=>$akun,'totalkas'=>$totalkas]);
 	}
+	public function ptjbon()
+	{
+		$periode = Periode::where('status', 'LIKE', 'AKTIF')->get();
+		$pegawai = Pegawai::where('status', 'LIKE', 'AKTIF')->get();
+		$laporankas = BukuBesarKas::orderBy('tgl','desc')->get();  
+        $tambah = BukuBesarKas::join("periode", "bbkas.periode", "=", "periode.kode_periode")
+		->where('status', 'LIKE', 'AKTIF')
+		->sum('bertambah');
+        $kurang = BukuBesarKas::join("periode", "bbkas.periode", "=", "periode.kode_periode")
+		->where('status', 'LIKE', 'AKTIF')
+		->sum('berkurang');
+        $totalkas = $tambah-$kurang;
+		$akun = Akuns::join("periode", "akuns.periode", "=", "periode.kode_periode")
+		->join("coa", "akuns.kode_akun", "=", "coa.kode_akun")
+		->where('status', 'LIKE', 'AKTIF')
+		->where('status_amandemens','!=','Amandemen')//table akuns
+		->where('persetujuan_proker', 'LIKE', 'Disetujui')//proker
+		->orwhere('persetujuan_amandemen', 'LIKE', 'Disetujui')//proker
+		->get();
+
+		$programkerja = Anggaran::join("periode", "anggaran.periode", "=", "periode.kode_periode")
+		->where('status_proker', 'LIKE', 'Disetujui')
+		->orwhere('status_amandemen', 'LIKE', 'Disetujui')
+		// ->where('anggaran', '!=',0)		
+		// ->orderBy('anggaran', 'asc')
+		->get();
+		return view('realisasi/kasbon/ptjbon', ['periode'=>$periode,'pegawai'=>$pegawai,'programkerja'=>$programkerja,
+		'akun'=>$akun,'totalkas'=>$totalkas]);
+	}
     public function simpankasbon(Request $request)
 	{
 		$tanggalhariini = Carbon::now()->format('Ymd');
@@ -105,6 +134,8 @@ class KasBonController extends Controller
 			return redirect('/tambahkasbon')->withErrors($validator);
 			
 		}
+		$jumlah_bon = $request->jumlah_bon;
+		$jumlahs = str_replace(array('','.'),'',$jumlah_bon);
 		KasBon::create([
 			'no_buktibon'=>$no_buktibon,
 			'periode'=>$request->periode,
@@ -113,7 +144,7 @@ class KasBonController extends Controller
 			'proker_bon'=>$request->proker_bon, 
 			'akun_bon'=>$request->akun_bon, 
 			'anggaran_bon'=>$request->anggaran_bon,
-			'jumlah_bon'=>$request->jumlah_bon,
+			'jumlah_bon'=>$jumlahs,
 			'jumlah_ptj'=>$request->jumlah_ptj,
 			'penanggungjawab_bon'=>$request->penanggungjawab_bon,
 			'tanggal_ptj'=>$request->tanggal_ptj,

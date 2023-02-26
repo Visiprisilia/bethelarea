@@ -11,5 +11,5 @@ class Kelas extends Model
     protected $table = 'kelas';
     protected $primaryKey = 'kode_kelas';
     
-    protected $fillable = ['kode_kelas', 'nama_kelas'];
+    protected $fillable = ['kode_kelas', 'nama_kelas','keterangan_kelas'];
 	}

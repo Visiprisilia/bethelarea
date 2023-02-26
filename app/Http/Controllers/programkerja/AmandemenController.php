@@ -102,7 +102,7 @@ class AmandemenController extends Controller
 				'kode_proker' => $kode_proker,
 				'kode_akun' => $i,
 				'penanggungjawab' => $penanggungjawab,
-				'periode' => $periode,
+				'periode' => $periode_amandemen,
 				'jumlah' => $request->jumlah[$no_jumlah],
 				'status_pa' => "Amandemen",
 			];

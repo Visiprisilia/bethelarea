@@ -26,7 +26,7 @@
             @foreach ($programkerja as $item)
             <option value="{{ $item->kode_periode}}">{{$item->nama_periode}}</option>
             @endforeach
-        </select>
+        </select><br><br>    
 
 
         <div class="table-responsive" id="tablecetakprokerpendapatan">
