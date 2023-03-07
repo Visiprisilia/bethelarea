@@ -13,7 +13,7 @@ class Amandemen extends Model
     protected $primaryKey = 'id_amandemen';
     public $incrementing = false;
     protected $fillable = ['id_amandemen','kode_prokeramandemen','periode_amandemen','tanggal_amandemen', 'anggaran_amandemen', 'status_amandemen','keterangan_amandemen',
-     'catatan_amandemen'];
+     'catatan_amandemen','created_at'];
     
     // public function Pegawaiid()
 	// {

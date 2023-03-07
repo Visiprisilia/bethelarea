@@ -40,7 +40,7 @@
                             <td>{{ $item->id_sumber}}</td>
                             <td>{{ $item->nama_sumber}}</td>
                             <td>
-                                <a href="/editsumber/{{$item->id_sumber}}"><i class="fas fa-edit" style="color:green"></i></a> |
+                                <!-- <a href="/editsumber/{{$item->id_sumber}}"><i class="fas fa-edit" style="color:green"></i></a> | -->
                                 <a href="/hapussumber/{{$item->id_sumber}}" onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a>
                                 <!-- <a href="#" id="cutunit" data-id="{{$item->kode_unit}}" ><i class="fas fa-trash-alt" style="color:red"></i></a> -->
                             </td>

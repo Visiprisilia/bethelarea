@@ -23,7 +23,13 @@
                 @endforeach
             </select>
         </div>
-
+        @if($errors->any())
+        <ul class="alert alert-danger">
+            @foreach($errors->all() as $error)
+            <li> {{$error}} </li>
+            @endforeach
+        </ul>
+        @endif
         @if (session('error'))
         <div class="alert alert-danger">
             {{ session('error') }}
@@ -35,7 +41,7 @@
         </div>
         @endif
         <div class="card-body">
-        <div class="table-responsive" id="tabletagihan">
+            <div class="table-responsive" id="tabletagihan">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>

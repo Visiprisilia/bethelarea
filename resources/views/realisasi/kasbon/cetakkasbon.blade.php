@@ -132,8 +132,8 @@
                                             <tr></tr>
                                      
                                             <tr>
-                                                <th style="width: 30%; ">Arum Widuri, S.Pd</th>
-                                                <th style="width: 50%; ">Sri Harmini, S.Pd</th>
+                                            <th style="width: 30%; ">{{$ttd->kepala_sekolah ?? '' }}</th>
+                                                <th style="width: 50%; ">{{$ttd->bendahara_sekolah ?? '' }}</th>
                                                 <th style="width: 40%; ">{{$item->dibayarkepada}}</th>
 
                                             </tr>

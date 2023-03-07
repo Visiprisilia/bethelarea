@@ -95,13 +95,18 @@
                                             </div>                -->
                                             <div class="row gx-3 mb-3">
                                             <div class="col-md-6">
-                                                    <label class="mb-1" for="inputFirstName">Bukti</label>
+                                                <label for="mb-1">Bukti</label>
                                                     <input class="form-control" type="file" id="bukti" name="bukti"  placeholder="Masukkan Jumlah"  />
                                                 </div>
-                                            <div class="col-md-4">
-                                                <label for="exampleFormControlInput1">Jumlah</label>
+                                            <div class="col-md-6">
+                                                <label for="mb-1">Jumlah</label>
                                                 <input class="form-control" id="jumlah" name="jumlah" type-currency="IDR" placeholder="Masukkan Jumlah"  />
-                                            </div></div>                                                                                                                                                   
+                                            </div></div>       
+                                            <div class="row gx-3 mb-3">
+                                            <div class="col-md-6">
+                                                <label for="exampleFormControlInput1">Diterima dari :</label>
+                                                <input class="form-control" id="diterimadari" name="diterimadari" placeholder="Diterima dari.." />
+                                            </div></div>                                                                                                                                            
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Tambah</button>
                                                 <a href="{{url('/kasmasuk')}}" class="btn btn-danger">Batal</a>                                            

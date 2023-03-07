@@ -14,6 +14,7 @@ use App\Models\ProgramKerja\ProgramKerja;
 use App\Models\Pegawai\Pegawai;
 use App\Http\Controllers\Controller;
 use App\Models\Coa\Coa;
+use App\Models\Ttd\Ttd;
 use App\Models\Realisasi\DaftarRincianTagihan;
 use App\Models\Realisasi\DaftarTagihan;
 use App\Models\Realisasi\RincianPembayaran;
@@ -43,6 +44,7 @@ class KasMasukController extends Controller
     {
 		
 		//untuk tampilan cetak
+		$ttd = Ttd::orderBy('created_at', 'asc')->get()->first();
 		$tanggalhariini = Carbon::now()->isoFormat('D MMMM Y');
 		$periode = Periode::orderBy('created_at','desc')->get();
 		$coa = Coa::orderBy('created_at','desc')->get();
@@ -59,7 +61,7 @@ class KasMasukController extends Controller
 		->sum('jumlah');
 		
         return view('realisasi/kasmasuk/cetakkasmurid', ['kasmasuk'=>$kasmasuk,'sumber'=>$sumber,'jumlahs'=>$jumlahs,
-		'tanggalhariini'=>$tanggalhariini]);
+		'tanggalhariini'=>$tanggalhariini,'ttd'=>$ttd]);
     }
 	//filter scetak rekapan kas masuk murid
 	public function filter(Request $request)
@@ -91,6 +93,7 @@ class KasMasukController extends Controller
     {
 		
 		//untuk tampilan cetak
+		$ttd = Ttd::orderBy('created_at', 'asc')->get()->first();
 		$tanggalhariini = Carbon::now()->isoFormat('D MMMM Y');
 		$periode = Periode::orderBy('created_at','desc')->get();
 		$coa = Coa::orderBy('created_at','desc')->get();
@@ -109,12 +112,13 @@ class KasMasukController extends Controller
 		->sum('jumlah');
 		
         return view('realisasi/kasmasuk/cetakrekapan', ['kasmasuk'=>$kasmasuk,'sumber'=>$sumber,'jumlahs'=>$jumlahs,
-		'tanggalhariini'=>$tanggalhariini]);
+		'tanggalhariini'=>$tanggalhariini,'ttd'=>$ttd]);
     }
 	public function cetaksementara()
     {
 		
 		//untuk tampilan cetak
+		$ttd = Ttd::orderBy('created_at', 'asc')->get()->first();
 		$tanggalhariini = Carbon::now()->isoFormat('D MMMM Y');
 		$periode = Periode::orderBy('created_at','desc')->get();
 		$coa = Coa::orderBy('created_at','desc')->get();
@@ -133,7 +137,7 @@ class KasMasukController extends Controller
 		->sum('jumlah');
 		
         return view('realisasi/kasmasuk/cetaksementara', ['kasmasuk'=>$kasmasuk,'sumber'=>$sumber,'jumlahs'=>$jumlahs,
-		'tanggalhariini'=>$tanggalhariini]);
+		'tanggalhariini'=>$tanggalhariini,'ttd'=>$ttd]);
     }
 	public function simpanidsetoran(Request $request)
 	{
@@ -169,14 +173,27 @@ class KasMasukController extends Controller
 		->where('sumber',$id)->get();
         return view('realisasi/kasmasuk/viewcetakrekapan', ['periode'=>$periode,'coa'=>$coa,'kasmasuk'=>$kasmasuk,'sumber'=>$sumber]);
     }
-    public function tambahkasmasuk()
+    // public function tambahkasmasuk()
+	// {
+	// 	$periode = Periode::where('status', 'LIKE', 'AKTIF')->get();
+	// 	$murid = Murid::orderBy('created_at','desc')->get();
+	// 	$sumber = Sumber::orderBy('id_sumber','asc')->where('id_sumber','!=',2)->where('id_sumber','!=',1)->get();
+	// 	$akun = COA::join("akuns","coa.kode_akun","=","akuns.kode_akun")
+	// 	// ->Where('coa.status_coa','!=','tagihan')
+	// 	->where('akuns.kode_akun','like','4%')
+	// 	->get();
+	// 	return view('realisasi/kasmasuk/tambahkasmasuk',['periode'=>$periode,'akun'=>$akun,'murid'=>$murid,'sumber'=>$sumber]);
+	// }
+	public function tambahkasmasuk()
 	{
 		$periode = Periode::where('status', 'LIKE', 'AKTIF')->get();
 		$murid = Murid::orderBy('created_at','desc')->get();
 		$sumber = Sumber::orderBy('id_sumber','asc')->where('id_sumber','!=',2)->where('id_sumber','!=',1)->get();
-		$akun = COA::join("akuns","coa.kode_akun","=","akuns.kode_akun")
-		// ->Where('coa.status_coa','!=','tagihan')
-		->where('akuns.kode_akun','like','4%')
+		$akun = ProgramKerja::join("akuns", "program_kerja.kode_proker", "=", "akuns.kode_proker")
+		->join("periode", "program_kerja.periode", "=", "periode.kode_periode")
+		->where('program_kerja.pob','=','pendapatan')
+		->where('program_kerja.status_proker','=','Disetujui')
+		->where('periode.status','=','AKTIF')
 		->get();
 		return view('realisasi/kasmasuk/tambahkasmasuk',['periode'=>$periode,'akun'=>$akun,'murid'=>$murid,'sumber'=>$sumber]);
 	}
@@ -409,10 +426,10 @@ class KasMasukController extends Controller
 			'jumlah'=>$jumlahs,
 			'bukti' => $buktis,
 			'kasir'=>NULL,
-			'diterimadari'=>'Neny Widijawati',
+			'diterimadari'=>$request->diterimadari,
 			'nama_donatur'=>NULL,
 			'nama_lainlain'=>NULL,
-			'yayasans'=>'Neny Widijawati'
+			'yayasans'=>$request->diterimadari,
 	//$check = Periode kolom counter_kk +1, sesuai dengan $periode
 //setelah menambah km, ubah di tabel periode untuk kolom counter_km =+1 sesuai dengan $periode
  
@@ -458,17 +475,38 @@ class KasMasukController extends Controller
 	}
 	public function cetakkasmasuk($no_bukti)
 	{
+		$ttd = Ttd::orderBy('created_at', 'asc')->get()->first();
 		$murid = Murid::orderBy('created_at','desc')->get();
 		$kasmasuk = KasMasuk::where('no_bukti', $no_bukti)->get();
 		$sumber = Sumber::orderBy('created_at','desc')->get();
 		// $kasmasuk = KasMasuk::join("murid","kas_masuk.kasir","=","murid.nomor_induk")
 		// ->where('no_bukti', $no_bukti)->get();		
-		return view('realisasi/kasmasuk/cetakkasmasuk',compact('kasmasuk','murid','sumber'));
+		return view('realisasi/kasmasuk/cetakkasmasuk',compact('kasmasuk','murid','sumber','ttd'));
 	}
 	public function hapuskasmasuk($no_bukti)
 	{
         $kasmasuk = KasMasuk::where('no_bukti', $no_bukti)->delete();
 		return redirect('/kasmasuk') -> with ('status', 'Data berhasil dihapus');
+	}
+	public function pilihprokerkasmasuk()
+	{
+		$data = Akuns::join("program_kerja", "akuns.kode_proker", "=", "program_kerja.kode_proker")
+			->join("coa", "akuns.kode_akun", "=", "coa.kode_akun")
+			->join("periode", "akuns.periode", "=", "periode.kode_periode")
+			->where('coa.status_coa','=',Null)
+			->where('program_kerja.pob','=','Pendapatan')
+			->where('program_kerja.status_proker','=','Disetujui')
+			->where('periode.status','=','AKTIF')
+			->where('program_kerja.nama_proker', 'LIKE', '%' . request('q') . '%')->paginate(10);
+
+		return response()->json($data);
+	}
+	public function pilihakunkasmasuk($kode_proker)
+	{
+		$data = Akuns::join("coa", "akuns.kode_akun", "=", "coa.kode_akun")
+			->where('kode_proker', $kode_proker)->where('status_amandemens', '!=', 'Amandemen')
+			->where('nama_akun', 'LIKE', '%' . request('q') . '%')->paginate(10);
+		return response()->json($data);
 	}
 	public function pilihprokerkm(Request $request)
 	{

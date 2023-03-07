@@ -1,6 +1,8 @@
 @extends('template')
 @section('container')
-<!-- Default Bootstrap Form Controls-->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" 
+integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 @if($errors->any())
 <ul class="alert alert-danger">
     @foreach($errors->all() as $error)
@@ -66,16 +68,29 @@
                                                     <label class="mb-1" for="inputFirstName">Akun</label>
                                                     <input class="form-control" readonly id="akun" name="akun"  />
                                                 </div> -->
-                                                <div class="col-md-4">
-                                                    <label class="mb-1" for="inputLastName">Akun</label>
+                                                <!-- <div class="col-md-4">
+                                                    <label class="mb-1" for="inputLastName">Program Kerja</label>
                                                     <select class="form-control" id="akun" name="akun">
-                                                        <option value>Pilih Akun</option>
+                                                        <option value>Pilih Program Kerja</option>
                                                         @foreach ($akun as $item)
                                                         <option value="{{ $item->kode_akun}}">{{$item->kode_akun}} - {{$item->nama_akun}}</option>
                                                         @endforeach
                                                     </select>
+                                                </div> -->
+                                                <div class="col-md-6">
+                                                    <label class="mb-1" for="inputLastName">Program Kerja</label>
+                                                    <select class="form-select" id="progja" name="progja">
+                                                      
+                                                    </select>
                                                 </div>
-                                                <div class="col-md-4">
+                                                <div class="col-md-6">
+                                                    <label class="mb-1" for="inputLastName">Akun</label>
+                                                    <select class="form-select" id="akun" name="akun">
+                                                       
+                                                    </select>
+                                                </div></div>
+                                                <div class="row gx-3 mb-3">
+                                                <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Sumber</label>
                                                     <select class="form-control" id="sumber" name="sumber">
                                                         <option value>Pilih Sumber</option>
@@ -84,7 +99,7 @@
                                                         @endforeach
                                                     </select>
                                                 </div>
-                                                <div class="col-md-4" id="murid" style="display: none;">
+                                                <div class="col-md-6" id="murid" style="display: none;">
                                                     <label class="mb-1" for="inputFirstName">Nama Murid :</label>
                                                     <select class="form-control" id="kasir" name="kasir">
                                                         <option value>Pilih Murid</option>
@@ -93,11 +108,11 @@
                                                         @endforeach
                                                     </select>
                                                 </div>
-                                                <div class="col-md-4" id="donatur" style="display: none;">
+                                                <div class="col-md-6" id="donatur" style="display: none;">
                                                 <label for="exampleFormControlInput1">Nama Donatur</label>
                                                 <input class="form-control" id="nama_donatur" name="nama_donatur" />
                                             </div>
-                                            <div class="col-md-4" id="lainlain" style="display: none;">
+                                            <div class="col-md-6" id="lainlain" style="display: none;">
                                                 <label for="exampleFormControlInput1">Nama Sumber lain-lain</label>
                                                 <input class="form-control" id="nama_lainlain" name="nama_lainlain" />
                                             </div>
@@ -127,6 +142,7 @@
         </div>
     </main>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script src="/proker/kasmasuk.js"></script>
 
 <script>
@@ -152,6 +168,59 @@
         //   if(val=="murid"{})  
         // alert(val);
     })
+</script>
+<script>
+    // function set_max(){
+    //     let kas = parseInt(document.getElementById('totalkas').value);
+    //     let anggarans = parseInt(document.getElementById('anggarans').value);
+    //     let anggaran = parseInt(document.getElementById('anggaran').value);
+    //     var total = kas+anggaran+anggarans;
+    //     document.getElementById("jumlah").max=total;
+    //     // console.log(total);
+    // }
+
+    $(document).ready(function() {
+        $("#progja").select2({
+            placeholder: 'Pilih Proker',
+            ajax: {
+                url: "{{route('pilihprokerkasmasuk.index')}}",
+                processResults: function({
+                    data
+                }) {
+                    return {
+                        results: $.map(data, function(item) {
+                            return {
+                                id: item.kode_proker,
+                                text: item.nama_proker
+                            }
+                        })
+                    }
+                }
+            }
+        });
+        $("#progja").change(function() {
+            let kode_proker = $('#progja').val();
+
+            $("#akun").select2({
+                placeholder: 'Pilih Akun',
+                ajax: {
+                    url: "{{url('pilihakunkasmasuk')}}/" + kode_proker,
+                    processResults: function({
+                        data
+                    }) {
+                        return {
+                            results: $.map(data, function(item) {
+                                return {
+                                    id: item.kode_akun,
+                                    text: item.nama_akun
+                                }
+                            })
+                        }
+                    }
+                }
+            });
+        });
+    });
 </script>
 <script>
     document.querySelectorAll('input[type-currency="IDR"]').forEach((element) => {

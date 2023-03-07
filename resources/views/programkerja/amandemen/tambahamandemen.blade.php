@@ -42,16 +42,25 @@
                                                         @endforeach
                                                     </select>
                                                 </div> -->
-                                                <!-- <div class="col-md-6">
+                                            <!-- <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Kode Program Kerja</label>
                                                     <input class="form-control" id="kode_proker" name="kode_proker" placeholder="Masukkan Kode Proker" required />
                                                 </div> -->
                                             <!-- </div> -->
                                             <div class="row gx-3 mb-3">
+                                            <div class="col-md-8">
+                                                <label class="mb-1" for="inputLastName">Amandemen Program Kerja</label>
+                                                <select class="form-control" id="pob" name="pob">
+                                                    <option value>Pilih Program Kerja Anggaran</option>
+                                                    <option value="Pendapatan">Anggaran Pendapatan</option>
+                                                    <option value="Biaya">Anggaran Biaya</option>
+                                                </select>
+                                            </div></div>
+                                            <div class="row gx-3 mb-3">
                                                 <div class="col-md-8">
                                                     <label class="mb-1" for="inputLastName">Periode</label>
                                                     <select class="form-control" id="periode_amandemen" require name="periode_amandemen">
-                                                        <option  value>Pilih Periode</option>
+                                                        <option value>Pilih Periode</option>
                                                         @foreach ($periode as $item)
                                                         <option value="{{ $item->kode_periode}}">{{$item->nama_periode}}</option>
                                                         @endforeach
@@ -70,7 +79,7 @@
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputLastName">Penanggung Jawab</label>
                                                     <select class="form-control" id="penanggungjawab" name="penanggungjawab">
-                                                        <option  value>Pilih Penanggung Jawab</option>
+                                                        <option value>Pilih Penanggung Jawab</option>
                                                         @foreach ($pegawai as $item)
                                                         <option value="{{ $item->niy}}">{{$item->nama}}</option>
                                                         @endforeach
@@ -94,7 +103,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputLastName">Indikator Pencapaian</label>
-                                                    <input class="form-control" id="indikator" name="indikator" required placeholder="Masukkan Indikator"/>
+                                                    <input class="form-control" id="indikator" name="indikator" required placeholder="Masukkan Indikator" />
                                                 </div>
                                             </div>
                                             <div class="row gx-3 mb-3">
@@ -104,26 +113,26 @@
                                                     <div id="selectakun">
                                                         <div class="form-group" id="akun" name="akun">
                                                             <select class="form-control select2 mb-1" style="width: 100%;" name="akun[]">
-                                                                <option  value>Pilih Akun</option>
+                                                                <option value>Pilih Akun</option>
                                                                 @foreach ($coa as $item)
                                                                 <option value="{{ $item->kode_akun}}">{{ $item->kode_akun}} - {{$item->nama_akun}}</option>
                                                                 @endforeach
                                                             </select>
                                                             <div>
-                                                            <input type="text" class="form-control mb-1 jumlah" onkeyup="tambah_anggaran()" type-currency="IDR" id="jumlah0" name="jumlah[]" placeholder="Masukkan Jumlah">
+                                                                <input type="text" class="form-control mb-1 jumlah" onkeyup="tambah_anggaran()" type-currency="IDR" id="jumlah0" name="jumlah[]" placeholder="Masukkan Jumlah">
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label for="exampleFormControlInput1">Anggaran</label>
-                                                    <input class="form-control" readonly  id="anggaran_amandemen" name="anggaran_amandemen" required />
+                                                    <input class="form-control" readonly id="anggaran_amandemen" name="anggaran_amandemen" required />
                                                 </div>
                                             </div>
 
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Keterangan</label>
-                                                <input class="form-control" id="keterangan_amandemen" name="keterangan_amandemen" placeholder="Masukkan Keterangan"  required />
+                                                <input class="form-control" id="keterangan_amandemen" name="keterangan_amandemen" placeholder="Masukkan Keterangan" required />
                                             </div>
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Tambah</button>

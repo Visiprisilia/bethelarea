@@ -1,4 +1,10 @@
-
+<style type="text/css" media="all">
+    @media print {
+        .no-print {
+            display: none;
+        }
+    }
+</style>
 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
     <thead>
         <tr>
@@ -22,7 +28,7 @@
                             <td>{{ Str::rupiah ($item->sisapembayaran)}}</td> -->
 
             <td>
-                <a href="/cetaklihatpembayaranmurids/{{$item->rincian_id}}" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">Detail</a>
+                <a href="/cetaklihatpembayaranmurids/{{$item->rincian_id}}" class="no-print" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">Detail</a>
             </td>
         </tr>
         @endforeach

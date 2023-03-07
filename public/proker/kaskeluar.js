@@ -48,7 +48,7 @@ $(document).on("change", "#prokers", function () {
 
             $.each(data.data, function (x, i) {
 
-                $("#anggarans").val(i.anggaran);
+                $("#anggarans").val(i.jumlah);
 
             })
           

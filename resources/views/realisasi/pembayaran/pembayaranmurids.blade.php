@@ -11,7 +11,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <a href="cetakpembayaranmurids/{{$pembayarans->rincian_nis}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print fa-sm text-white-50"></i>Cetak</a>
+            <a href="cetakpembayaranmurids/{{$pembayarans->rincian_nis ?? ''}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-print fa-sm text-white-50"></i>Cetak</a>
             <!-- <select class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" id="pembayaran" name="pembayaran">
                 <option value>Pilih Periode</option>
                 @foreach ($pembayaran as $item)
@@ -29,8 +29,8 @@
             {{ session('status') }}
         </div>
         @endif
-        <b> &nbsp;&nbsp; Nomor Induk : {{$pembayarans->rincian_nis}} <br>
-            &nbsp;&nbsp; Nama Murid : {{$pembayarans->nama}}
+        <b> &nbsp;&nbsp; Nomor Induk : {{$pembayarans->rincian_nis ?? '' }} <br>
+            &nbsp;&nbsp; Nama Murid : {{$pembayarans->nama ?? '' }}
         <div class="card-body">
             <div class="table-responsive" id="tablepembayarans">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

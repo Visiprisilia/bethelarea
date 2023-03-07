@@ -6,6 +6,7 @@
     <tbody>
         <td><b>Pendapatan</b></td>
         <td></td>
+        <td></td>
         @foreach ($pendapatan as $item)
         <tr>
             <td>{{ $item->nama}}</td>

@@ -16,6 +16,7 @@ $(document).on("change","#kode_prokeramandemen",function(){
             $("#tujuan").val(data.ubah.tujuan);
             $("#indikator").val(data.ubah.indikator);          
             $("#keterangan_amandemen").val(data.ubah.keterangan);
+            $("#created_at").val(data.ubah.created_at);
 
             $.each(data.akun,function(x,i){
       

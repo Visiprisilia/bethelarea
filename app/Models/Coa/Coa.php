@@ -11,5 +11,5 @@ class Coa extends Model
 
     protected $table = 'coa';
     protected $primaryKey = 'kode_surat';
-    protected $fillable = ['kode_akun', 'nama_akun', 'kelompok_rek', 'saldo_normal', 'keterangan'];
+    protected $fillable = ['kode_akun', 'nama_akun', 'kelompok_rek', 'saldo_normal', 'keterangan_coa','status_coa'];
 }

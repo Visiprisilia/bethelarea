@@ -35,15 +35,15 @@
                                             @csrf
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Kode Akun</label>
-                                                <input class="form-control"  id="kode_akun" name="kode_akun" disabled value="{{$item->kode_akun}}" placeholder="Kode Akun"required />
+                                                <input class="form-control"  id="kode_akun" name="kode_akun" readonly value="{{$item->kode_akun}}" placeholder="Kode Akun"required />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Nama Akun</label>
-                                                <input class="form-control" id="nama_akun" name="nama_akun" disabled value="{{$item->nama_akun}}" placeholder="Nama Akun"required />
+                                                <input class="form-control" id="nama_akun" name="nama_akun" readonly value="{{$item->nama_akun}}" placeholder="Nama Akun"required />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlSelect1">Kelompok Rekening</label>
-                                                <select class="form-control" id="kelompok_rek" name="kelompok_rek"  disabled value="{{$item->kelompok_rek}}"required>
+                                                <select class="form-control" id="kelompok_rek" name="kelompok_rek"  readonly value="{{$item->kelompok_rek}}"required>
                                                 <option disabled value>Pilih Kelompok Rekening</option>      
                                                 <option >{{$item->kelompok_rek}}</option>
                                                 <option>Aktiva</option>
@@ -54,13 +54,18 @@
                                                 </select>
                                             </div>
                                             <div class="mb-3">
+                                                <label for="exampleFormControlInput1">Status COA</label>
+                                                <input class="form-control" id="status_coa" name="status_coa" readonly value="{{$item->status_coa}}" placeholder="Status COA"required />
+                                            </div>
+                                            <div class="mb-3">
                                                 <label for="exampleFormControlSelect1">Saldo Normal</label>
-                                                <select class="form-control" id="saldo_normal" name="saldo_normal" disabled value="{{$item->saldo_normal}}"required>
+                                                <select class="form-control" id="saldo_normal" name="saldo_normal" readonly value="{{$item->saldo_normal}}"required>
                                                 <option >{{$item->saldo_normal}}</option>
                                                 <option>Debit</option>
                                                     <option>Kredit</option>
                                                 </select>
                                             </div>
+                                          
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Keterangan</label>
                                                 <input class="form-control" id="keterangan_coa" name="keterangan_coa" value="{{$item->keterangan_coa}}" placeholder="Keterangan"required />
@@ -68,7 +73,7 @@
                                             <!-- <div class="mb-3">
                                                 <label for="exampleFormControlSelect1">Status</label>
                                                 <select class="form-control" id="status" name="" value=""requireds>
-                                                <option disabled value>Pilih Status</option>  
+                                                <option readonly value>Pilih Status</option>  
                                                 <option>Aktif</option>
                                                     <option>Tidak Aktif</option>
                                                 </select>

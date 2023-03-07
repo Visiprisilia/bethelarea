@@ -178,20 +178,20 @@
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputFirstName">Status</label>
-                                                    <input class="form-control" id="status_murid" name="status_murid"  readonly value="{{$itemz->status_murid}}" />
+                                                    <input class="form-control" id="status_murid" name="status_murid" placeholder="Status Murid"  readonly value="{{$itemz->status_murid}}" />
                                                 </div>
-                                                <div class="col-md-4" id="tgllulus" style="display: none;">
+                                                <div class="col-md-4">
                                                     <label class="mb-1" for="inputLastName">Tanggal Kelulusan</label>
                                                     <input class="form-control" type="date" id="tanggal_kelulusan" name="tanggal_kelulusan"  readonly value="{{$itemz->tanggal_kelulusan}}" />
                                                 </div>
-                                                <div class="col-md-4" id="bk" style="display: none;">
+                                                <div class="col-md-4" >
                                                     <label class="mb-1" for="inputLastName">Bukti Kelulusan</label>
                                                     <input class="form-control" type="file" id="file_suratkelulusan" name="file_suratkelulusan"  readonly value="{{$itemz->file_suratkelulusan}}" />
                                                 </div>
                                             </div>
                                             <div class="mb-3">
-                                                <button type="submit" class="btn btn-success">Simpan</button>
-                                                <a href="{{url('/murid')}}" class="btn btn-danger">Batal</a>                                            </div>
+                                                <!-- <button type="submit" class="btn btn-success">Simpan</button> -->
+                                                <a href="{{url('/murid')}}" class="btn btn-danger">Kembali</a>                                            </div>
                                         </form>
                                     </div>
                                 </div>

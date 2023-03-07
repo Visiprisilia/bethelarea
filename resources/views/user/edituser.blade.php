@@ -39,7 +39,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Username</label>
-                                                <input class="form-control" id="nama_user" name="nama_user" value="{{$item->nama_user}}"  required   />
+                                                <input class="form-control" readonly id="nama_user" name="nama_user" value="{{$item->nama_user}}"  required   />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Password</label>

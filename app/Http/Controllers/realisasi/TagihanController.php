@@ -148,7 +148,7 @@ class TagihanController extends Controller
 			$api = array(
 				'message' => $message
 			);
-			return redirect('/tambahtagihanmurid')->withErrors($validator);
+			return redirect('/tagihan')->withErrors($validator);
 			// return redirect('/tagihan')->with('status', 'Data berhasil ditambahkan');
 
 		}

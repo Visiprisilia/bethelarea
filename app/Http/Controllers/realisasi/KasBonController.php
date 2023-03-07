@@ -10,6 +10,7 @@ use App\Models\Akuns;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Pegawai\Pegawai;
 use App\Models\ProgramKerja\Anggaran;
+use App\Models\Ttd\Ttd;
 use Carbon\Carbon;
 use App\Models\BukuBesar\BukuBesarKas;
 use App\Http\Controllers\Controller;
@@ -234,23 +235,16 @@ class KasBonController extends Controller
 	}
 	public function cetakkasbon($no_bukti)
 	{
+		$ttd = Ttd::orderBy('created_at', 'asc')->get()->first();
 		$kasbon = KasBon::where('no_bukti', $no_bukti)->get();
-		return view('realisasi/kasbon/cetakkasbon', compact('kasbon'));
+		return view('realisasi/kasbon/cetakkasbon', compact('kasbon','ttd'));
 	}
 	public function hapuskasbon($no_bukti)
 	{
         $kasbon = KasBon::where('no_bukti', $no_bukti)->delete();
 		return redirect('/kasbon') -> with ('status', 'Data berhasil dihapus');
 	}
-	public function pilihprokerbon()
-	{
-		$data = ProgramKerja::where('pob','=','biaya')
-		->where('status_proker','=','Disetujui')
-		->where('nama_proker', 'LIKE', '%'.request('q').'%')->paginate(10);
-
-        return response()->json($data);
 	
-	}
 	public function editkasbon($no_bukti)
 	{
 		$periode = Periode::where('status', 'LIKE', 'AKTIF')->get();
@@ -259,6 +253,18 @@ class KasBonController extends Controller
 		$programkerja = ProgramKerja::join("periode","program_kerja.periode","=","periode.kode_periode")->where('status', 'LIKE', 'AKTIF')->get();
 		$kasbon = KasBon::where('no_bukti', $no_bukti)->get();
 		return view('realisasi/kasbon/editkasbon',  ['kasbon'=>$kasbon,'periode'=>$periode,'pegawai'=>$pegawai,'programkerja'=>$programkerja]);
+	}
+	public function pilihprokerbon()
+	{
+		$data = ProgramKerja::join("akuns", "program_kerja.kode_proker", "=", "akuns.kode_proker")
+			->join("periode", "program_kerja.periode", "=", "periode.kode_periode")
+			->where('status_amandemens','!=','Amandemen')
+			->where('program_kerja.pob','=','Biaya')
+			->where('program_kerja.status_proker','=','Disetujui')
+			->where('periode.status','=','AKTIF')
+			->where('program_kerja.nama_proker', 'LIKE', '%' . request('q') . '%')->paginate(10);
+
+		return response()->json($data);
 	}
 	// public function pilihprokerbon(Request $request)
 	// {
@@ -286,12 +292,12 @@ class KasBonController extends Controller
 	{
 		$id = $request->id;
 		// $data = Akuns::where("kode_akun", $request->kode)
-		$data = ProgramKerja::where('pob','=','biaya')->where("kode_proker", $request->id)
-		->where('status_proker','=','Disetujui')
-		->where('nama_proker', 'LIKE', '%'.request('q').'%')->paginate(10);
+		$data = Akuns::join("program_kerja", "akuns.kode_proker", "=", "program_kerja.kode_proker")
+		->where("akuns.kode_proker", $request->id)
+		->where('akuns.status_amandemens', '!=', 'Amandemen')
+		->where('program_kerja.nama_proker', 'LIKE', '%' . request('q') . '%')->paginate(10);
 
-        return response()->json($data);
-	
+		return response()->json($data);
 	}
 
 	public function pilihprokerbonakuns(Request $request)

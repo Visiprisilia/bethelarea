@@ -12,7 +12,8 @@
                             <th>Nomor Induk Siswa Nasional</th>
                             <th>Kelas</th>
                             <th>Nama</th>
-                            <th>Tempat Tanggal Lahir</th>
+                            <th>Tempat Lahir</th>
+                            <th>Tanggal Lahir</th>
                             <th>Jenis Kelamin</th>
                             <th>Alamat</th>
                             <th>Agama</th>
@@ -38,6 +39,7 @@
                             <td>{{ $item->nomor_isn}}</td>
                             <td>{{ $item->kelas}}</td>
                             <td>{{ $item->nama}}</td>
+                            <td>{{ $item->tempat_lahir}}</td>
                             <td>{{ $item->ttl}}</td>
                             <td>{{ $item->jk}}</td>
                             <td>{{ $item->alamat}}</td>

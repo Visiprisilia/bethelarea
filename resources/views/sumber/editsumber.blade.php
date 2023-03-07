@@ -35,11 +35,11 @@
                                             @csrf
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Kode Sumber</label>
-                                                <input class="form-control" id="id_sumber" name="id_sumber" disabled value="{{$item->id_sumber}}" placeholder="Kode Unit" required />
+                                                <input class="form-control" id="id_sumber" name="id_sumber" readonly value="{{$item->id_sumber}}" placeholder="Kode Unit" required />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Nama Sumber</label>
-                                                <input class="form-control" id="nama_sumber" name="nama_sumber" value="{{$item->nama_sumber}}" placeholder="Nama Unit" required />
+                                                <input class="form-control" readonly id="nama_sumber" name="nama_sumber" value="{{$item->nama_sumber}}" placeholder="Nama Unit" required />
                                             </div>
                                            
                                             <div class="mb-3">

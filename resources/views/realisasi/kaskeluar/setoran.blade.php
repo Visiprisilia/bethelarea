@@ -1,11 +1,11 @@
 @extends('template')
 @section('container')
 @if($errors->any())
-   <ul class="alert alert-danger">
-      @foreach($errors->all() as $error)
-         <li> {{$error}} </li>
-      @endforeach
-   </ul>
+<ul class="alert alert-danger">
+    @foreach($errors->all() as $error)
+    <li> {{$error}} </li>
+    @endforeach
+</ul>
 @endif
 <!-- Default Bootstrap Form Controls-->
 <div id="layoutSidenav_content">
@@ -38,15 +38,15 @@
                                 <div class="sbp-preview">
                                     <div class="sbp-preview-content">
                                         <form action="/simpansetoran" method="post" enctype="multipart/form-data">
-                                            @csrf                                         
+                                            @csrf
                                             <div class="mb-3">
-                                            <label class="mb-1" for="inputLastName">Periode</label>
-                                                    <select class="form-control" id="periode" name="periode">
-                                                        <option  value>Pilih Periode</option>
-                                                        @foreach ($periode as $item)
-                                                        <option value="{{ $item->kode_periode}}">{{$item->nama_periode}}</option>
-                                                        @endforeach
-                                                    </select>
+                                                <label class="mb-1" for="inputLastName">Periode</label>
+                                                <select class="form-control" id="periode" name="periode">
+                                                    <option value>Pilih Periode</option>
+                                                    @foreach ($periode as $item)
+                                                    <option value="{{ $item->kode_periode}}">{{$item->nama_periode}}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                             <!-- <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Tanggal</label>
@@ -54,33 +54,37 @@
                                             </div>   -->
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Keterangan</label>
-                                                <input class="form-control" id="keterangan" name="keterangan" placeholder="Masukkan Keterangan"   />
-                                            </div>      
-                                        
-                                               
-                                                
-                                            
+                                                <input class="form-control" id="keterangan" name="keterangan" placeholder="Masukkan Keterangan" />
+                                            </div>
                                             <div class="row gx-3 mb-3">
-                                            <div class="col-md-6">
+                                                <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Bukti</label>
-                                                    <input class="form-control" type="file" id="bukti" name="bukti"  placeholder="Masukkan Jumlah"  />
+                                                    <input class="form-control" type="file" id="bukti" name="bukti" placeholder="Masukkan Jumlah" />
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Jumlah</label>
-                                                    <input class="form-control" id="jumlah" name="jumlah" type-currency="IDR" placeholder="Masukkan Jumlah"  />
+                                                    <input class="form-control" id="jumlah" name="jumlah" type-currency="IDR" placeholder="Masukkan Jumlah" />
                                                 </div>
-                                                <!-- <div class="col-md-6">
-                                                <label class="mb-1" for="inputFirstName">Penanggung Jawab :</label>
-                                                <input class="form-control" readonly id="penanggungjawab" name="penanggungjawab"  placeholder="Penanggung jawab"  />
-                                            </div> -->
-                                            <!-- <div class="col-md-6">
-                                                <label class="mb-1" for="inputFirstName">Dibayar Kepada :</label>
-                                                <input class="form-control" id="kasir" name="kasir"  placeholder="Dibayar Kepada"  />
-                                            </div>         -->
-                                         </div>                                                                                                                                                        
+                                            </div>
+                                            <div class="row gx-3 mb-3">
+                                            <div class="col-md-6">
+                                                    <label class="mb-1" for="inputLastName">Penanggung Jawab</label>
+                                                    <select class="form-control" id="penanggungjawab" name="penanggungjawab">
+                                                        <option  value>Pilih Penanggung Jawab</option>
+                                                        @foreach ($pegawai as $item)
+                                                        <option value="{{ $item->niy}}">{{$item->nama}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="mb-1" for="inputFirstName">Dibayar Kepada :</label>
+                                                    <input class="form-control" id="kasir" name="kasir" placeholder="Dibayar Kepada" />
+                                                </div>
+                                            </div>
                                             <div class="mb-3">
                                                 <button type="submit" class="btn btn-success">Tambah</button>
-                                                <a href="{{url('/kaskeluar')}}" class="btn btn-danger">Batal</a>                                            </div>
+                                                <a href="{{url('/kaskeluar')}}" class="btn btn-danger">Batal</a>
+                                            </div>
                                         </form>
                                     </div>
                                 </div>
@@ -94,10 +98,10 @@
 </div>
 <script src="/proker/kaskeluar.js"></script>
 <script>
-    $(document).ready(function(){
-        
+    $(document).ready(function() {
+
     })
-    </script>
+</script>
 <script>
     document.querySelectorAll('input[type-currency="IDR"]').forEach((element) => {
         element.addEventListener('keyup', function(e) {

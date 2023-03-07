@@ -64,6 +64,7 @@
                         <h6 style="color:blue;" >Kode Sumber : 1 -> Nama Sumber : Murid </h6>
                         <h6 style="color:blue;" >Kode Sumber : 2 -> Nama Sumber : Yayasan </h6>
                         <h6 style="color:blue;" >Kode Sumber : 3 -> Nama Sumber : Donatur </h6>
+                        <h6 style="color:blue;" >Kode Sumber : 4 -> Nama Sumber : Lain-lain </h6>
                         <h6 style="color:blue;" >Kode Sumber Selanjutnya Diinput Urut Dengan Kode Sumber Sebelumnya</h6>
                         <h6 style="color:Tomato;" >Pastikan Kode dan Nama harus sesuai!</h6>
                     </div>

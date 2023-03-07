@@ -35,39 +35,39 @@
                                             @csrf
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">No Bukti</label>
-                                                <input class="form-control" id="no_bukti" name="no_bukti" disabled value="{{$item->no_bukti}}" />
+                                                <input class="form-control" id="no_bukti" name="no_bukti" readonly value="{{$item->no_bukti}}" />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Periode</label>
-                                                <input class="form-control" id="periode" name="periode" disabled value="{{$item->periode}}" />
+                                                <input class="form-control" id="periode" name="periode" readonly value="{{$item->periode}}" />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Tanggal Pencatatan</label>
-                                                <input class="form-control" type="date" id="tanggal_pencatatan" name="tanggal_pencatatan" disabled value="{{$item->tanggal_pencatatan}}"/>
+                                                <input class="form-control" type="date" id="tanggal_pencatatan" name="tanggal_pencatatan" readonly value="{{$item->tanggal_pencatatan}}"/>
                                             </div>  
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Keterangan</label>
-                                                <input class="form-control" id="keterangan" name="keterangan" disabled value="{{$item->keterangan}}"/>
+                                                <input class="form-control" id="keterangan" name="keterangan" readonly value="{{$item->keterangan}}"/>
                                             </div>      
                                             <!-- <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Akun</label>
-                                                <input class="form-control"  id="akun" name="akun" disabled value="{{$item->nama_akun}}"/>
+                                                <input class="form-control"  id="akun" name="akun" readonly value="{{$item->nama_akun}}"/>
                                             </div>                            -->
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Sumber</label>
-                                                <input class="form-control"  id="sumber" name="sumber" disabled value="{{$item->nama_sumber}}"/>
+                                                <input class="form-control"  id="sumber" name="sumber" readonly value="{{$item->nama_sumber}}"/>
                                             </div>                                             
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Jumlah</label>
-                                                <input class="form-control" id="jumlah" name="jumlah" disabled value="{{$item->jumlah}}"  />
+                                                <input class="form-control" id="jumlah" name="jumlah" readonly value="{{$item->jumlah}}"  />
                                             </div>        
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Diterima dari:</label>
-                                                <input class="form-control" id="diterimadari" name="diterimadari" disabled value="{{$item->kasir}}{{$item->nama_donatur}}{{$item->yayasans}}{{$item->nama_lainlain}}" />
+                                                <input class="form-control" id="diterimadari" name="diterimadari" readonly value="{{$item->kasir}}{{$item->nama_donatur}}{{$item->yayasans}}{{$item->nama_lainlain}}" />
                                             </div>      
                                             <div class="mb-3">
                                                 <a href="/cetakkasmasuk/{{$item->no_bukti}}"  class="btn btn-primary">Cetak</a>
-                                                <a href="{{url('/kasmasuk')}}" class="btn btn-danger">Batal</a>
+                                                <!-- <a href="{{url('/kasmasuk')}}" class="btn btn-danger">Batal</a> -->
                                                 <input type="button" value="Kembali" onclick=self.history.back() class="btn btn-success">
                                             </div>
                                         </form>

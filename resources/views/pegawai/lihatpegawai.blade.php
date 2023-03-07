@@ -150,8 +150,8 @@
                                                     </div>
                                                 </div>
                                             <div class="mb-3">
-                                                <button type="submit" class="btn btn-success">Simpan</button>
-                                                <a href="{{url('/pegawai')}}" class="btn btn-danger">Batal</a>
+                                                <!-- <button type="submit" class="btn btn-success">Simpan</button> -->
+                                                <a href="{{url('/pegawai')}}" class="btn btn-danger">Kembali</a>
                                             </div>
                                         </form>
                                     </div>

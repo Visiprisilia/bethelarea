@@ -54,11 +54,12 @@
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Nama Program Kerja</label>
-                                                    <input class="form-control" id="nama_proker" name="nama_proker" placeholder="Masukkan Nama Proker" value="{{ $items->nama_proker}}" readonly />
+                                                    <input class="form-control" id="nama_proker" name="nama_proker"  placeholder="Masukkan Nama Proker" value="{{ $items->nama_proker}}"  />
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputLastName">Penanggung Jawab</label>
-                                                    <input class="form-control" id="penanggungjawab" name="penanggungjawab" placeholder="Masukkan Nama Proker" value="{{ $items->penanggungjawab}}" readonly />
+                                                    <input class="form-control" id="penanggungjawabs" name="penanggungjawabs" placeholder="Masukkan Nama Proker" value="{{ $items->nama}}" readonly />
+                                                    <input class="form-control" id="penanggungjawab" hidden name="penanggungjawab" placeholder="Masukkan Nama Proker" value="{{ $items->penanggungjawab}}" readonly />
                                                     <!-- <select class="form-control" id="penanggungjawab" name="penanggungjawab" value="{{ $items->penanggungjawab}}" required>
                                                         <option value>Pilih Penanggung Jawab</option>
                                                         @foreach ($pegawai as $item)
@@ -70,21 +71,21 @@
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Waktu Mulai</label>
-                                                    <input class="form-control" type="date" id="waktu_mulai" name="waktu_mulai" value="{{ $items->waktu_mulai}}" readonly />
+                                                    <input class="form-control" type="date" id="waktu_mulai"  name="waktu_mulai" value="{{ $items->waktu_mulai}}"  />
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputLastName">Waktu Selesai</label>
-                                                    <input class="form-control" type="date" id="waktu_selesai" name="waktu_selesai" value="{{ $items->waktu_selesai}}" readonly />
+                                                    <input class="form-control" type="date" id="waktu_selesai"  name="waktu_selesai" value="{{ $items->waktu_selesai}}"  />
                                                 </div>
                                             </div>
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Tujuan</label>
-                                                    <input class="form-control" id="tujuan" name="tujuan" value="{{ $items->tujuan}}" readonly />
+                                                    <input class="form-control" id="tujuan"   name="tujuan" value="{{ $items->tujuan}}"  />
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputLastName">Indikator Pencapaian</label>
-                                                    <input class="form-control" id="indikator" name="indikator" value="{{ $items->indikator}}" readonly />
+                                                    <input class="form-control" id="indikator"  name="indikator" value="{{ $items->indikator}}"  />
                                                 </div>
                                             </div>
                                             <?php $j = 1;
@@ -96,7 +97,8 @@
 
                                                 <div class="col-md-6">
                                                     <label for="exampleFormControlInput1">Akun</label>
-                                                    <input class="form-control" readonly id="kode_akun<?=$j?>" name="kode_akun<?=$j?>" value="{{ $akuns->kode_akun}}" required />
+                                                    <input class="form-control" readonly id="kode_akuns<?=$j?>" name="kode_akuns<?=$j?>" value="{{ $akuns->nama_akun}}" required />
+                                                    <input class="form-control" readonly id="kode_akun<?=$j?>" hidden name="kode_akun<?=$j?>" value="{{ $akuns->kode_akun}}" required />
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label for="exampleFormControlInput1">Anggaran</label>
@@ -110,13 +112,13 @@
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-6">
                                                     <label for="exampleFormControlInput1">Jumlah Anggaran</label>
-                                                    <input class="form-control" id="anggaran_amandemen" name="anggaran_amandemen" value="{{ $items->anggaran_amandemen}}" required />
+                                                    <input class="form-control" id="anggaran_amandemen" readonly name="anggaran_amandemen" value="{{ $items->anggaran_amandemen}}" required />
                                                 </div>
                                             </div>
 
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Keterangan</label>
-                                                <input class="form-control" id="keterangan_amandemen" name="keterangan_amandemen" value="{{ $items->keterangan_amandemen}}" required />
+                                                <input class="form-control" id="keterangan_amandemen"   name="keterangan_amandemen" value="{{ $items->keterangan_amandemen}}" required />
                                             </div>
 
                                             <div class="mb-3">

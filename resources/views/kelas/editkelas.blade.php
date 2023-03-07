@@ -39,7 +39,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Nama Kelas</label>
-                                                <input class="form-control" id="nama_kelas" name="nama_kelas"  value="{{$item->nama_kelas}}" placeholder="Nama Unit" required />
+                                                <input class="form-control" id="nama_kelas" name="nama_kelas" readonly value="{{$item->nama_kelas}}" placeholder="Nama Unit" required />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Keterangan</label>

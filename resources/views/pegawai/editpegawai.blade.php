@@ -89,7 +89,7 @@
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="mb-1" for="inputFirstName">SK Pangkat/Golongan</label>
-                                                    <input class="form-control" type="file" id="file_skgolongan" name="file_skgolongan"value="{{$item->file_skgolongan}}" required />
+                                                    <input class="form-control" type="file" id="file_skgolongan" name="file_skgolongan"value="{{$item->file_skgolongan}}"  />
                                                     <h6 style="color:Tomato;" >Upload File SK Pangkat</h6>
                                                 </div>
                                             </div>
@@ -129,11 +129,11 @@
                                                 </div>
                                                     <div class="col-md-4">
                                                         <label class="mb-1" for="inputFirstName">Tanggal PPT</label>
-                                                        <input class="form-control" type="date" id="tanggal_ppt" name="tanggal_ppt" value="{{$item->tanggal_ppt}}" required/>
+                                                        <input class="form-control" type="date" id="tanggal_ppt" name="tanggal_ppt" value="{{$item->tanggal_ppt}}" />
                                                     </div>
                                                     <div class="col-md-4">
                                                         <label class="mb-1" for="inputLastName">SK Pegawai</label>
-                                                        <input class="form-control" type="file" id="file_suket" name="file_suket" value="{{$item->file_suket}}" required />
+                                                        <input class="form-control" type="file" id="file_suket" name="file_suket" value="{{$item->file_suket}}"  />
                                                         <h6 style="color:Tomato;" >Upload File SK Pegawai </h6>
                                                     </div>
                                                 </div>
@@ -162,11 +162,11 @@
                                                 <div class="row gx-3 mb-3">                                                   
                                                     <div class="col-md-4" >
                                                         <label class="mb-1" for="inputLastName">Tanggal Terminasi</label>
-                                                        <input class="form-control" type="date" id="tanggal_terminasi" name="tanggal_terminasi" value="{{$item->tanggal_terminasi}}"required  />
+                                                        <input class="form-control" type="date" id="tanggal_terminasi" name="tanggal_terminasi" value="{{$item->tanggal_terminasi}}"  />
                                                     </div>
                                                     <div class="col-md-4" >
                                                         <label class="mb-1" for="inputLastName">SK Pemberhtentian</label>
-                                                        <input class="form-control" type="file" id="file_skpemberhentian" name="file_skpemberhentian" value="{{$item->file_skpemberhentian}}"required  />
+                                                        <input class="form-control" type="file" id="file_skpemberhentian" name="file_skpemberhentian" value="{{$item->file_skpemberhentian}}"  />
                                                         <h6 style="color:Tomato;" >Upload File SK Pemberhentian</h6>
                                                     </div>
 

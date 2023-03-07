@@ -1,3 +1,10 @@
+<style type="text/css" media="all">
+    @media print {
+        .no-print {
+            display: none;
+        }
+    }
+</style>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -20,7 +27,7 @@
             <td>{{ Str::rupiah ($item->daftar_nominal_tagihan)}}</td>
             @if (auth()->user()->level=="unit" or auth()->user()->level=="yayasan")
             <td>
-                <a href="/cetaklihattagihanmurid/{{$item->id_tagihan}}" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">Detail</a>
+                <a href="/cetaklihattagihanmurid/{{$item->id_tagihan}}" class="no-print" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">Detail</a>
                 <!-- <a href="/hapustagihan/{{$item->nis_tagihan}}" onclick="return confirm('Yakin hapus data?')"><i class="fas fa-trash-alt" style="color:red"></i></a> -->
             </td>
             @endif

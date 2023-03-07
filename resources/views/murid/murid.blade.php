@@ -44,6 +44,7 @@
                             <th>Nomor Induk Siswa Nasional</th>
                             <th>Kelas</th>
                             <th>Nama</th>
+                            <th>Tempat Lahir</th>
                             <th>Tempat Tanggal Lahir</th>
                             <th>Jenis Kelamin</th>
                             <th>Alamat</th>

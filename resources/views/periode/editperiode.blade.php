@@ -35,20 +35,20 @@
                                             @csrf
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Kode</label>
-                                                <input class="form-control" id="kode_periode" name="kode_periode" disabled value="{{$item->kode_periode}}" placeholder="Kode periode" />
+                                                <input class="form-control" id="kode_periode" name="kode_periode" readonly value="{{$item->kode_periode}}" placeholder="Kode periode" />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Periode</label>
-                                                <input class="form-control" id="nama_periode" name="nama_periode" disabled value="{{$item->nama_periode}}" placeholder="Nama periode" required/>
+                                                <input class="form-control" id="nama_periode" name="nama_periode" readonly value="{{$item->nama_periode}}" placeholder="Nama periode" required/>
                                             </div>
                                             <div class="row gx-3 mb-3">
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputFirstName">Awal Periode</label>
-                                                    <input class="form-control" type="date" id="awal_periode" disabled name="awal_periode" value="{{$item->awal_periode}}" required />
+                                                    <input class="form-control" type="date" id="awal_periode" readonly name="awal_periode" value="{{$item->awal_periode}}" required />
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="mb-1" for="inputLastName">Akhir Periode</label>
-                                                    <input class="form-control"  type="date" id="akhir_periode" disabled name="akhir_periode" value="{{$item->akhir_periode}}"  required/>
+                                                    <input class="form-control"  type="date" id="akhir_periode" readonly name="akhir_periode" value="{{$item->akhir_periode}}"  required/>
                                                 </div>
                                             </div> 
                                             <div class="mb-3">

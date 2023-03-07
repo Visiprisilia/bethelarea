@@ -9,6 +9,7 @@ use App\Models\ProgramKerja\ProgramKerja;
 use App\Models\ProgramKerja\Amandemen;
 use App\Models\Periode\Periode;
 use App\Models\Coa\Coa;
+use App\Models\Ttd\Ttd;
 use App\Models\Pegawai\Pegawai;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -38,7 +39,7 @@ class AmandemenController extends Controller
 	{
 		$periode = Periode::where('status', 'LIKE', 'AKTIF')->get();
 		$pegawai = Pegawai::where('status', 'LIKE', 'AKTIF')->get();
-		$coa = Coa::orderBy('kode_akun', 'asc')->where('kode_akun','like','5%')->get();
+		$coa = Coa::orderBy('kode_akun', 'asc')->get();
 		$amandemen = programkerja::join("periode", "program_kerja.periode", "=", "periode.kode_periode")
 			->join("akuns", "program_kerja.kode_proker", "=", "akuns.kode_proker")
 			->where('status_proker', 'LIKE', 'Disetujui')->where('status', 'LIKE', 'AKTIF')->get();
@@ -52,14 +53,13 @@ class AmandemenController extends Controller
 		$periode = Periode::where('status', 'LIKE', 'AKTIF')->get();
 		$pegawai = Pegawai::where('status', 'LIKE', 'AKTIF')->get();
 		$coa = Coa::orderBy('kode_akun', 'asc')->where('kode_akun','like','5%')->get();
-		$amandemen = programkerja::join("periode", "program_kerja.periode", "=", "periode.kode_periode")
-			->join("akuns", "program_kerja.kode_proker", "=", "akuns.kode_proker")
-			->where('kode_akun','like','5%')
-			->where('status_pa', 'LIKE', 'proker')
+		$amandemen = Akuns::join("periode", "akuns.periode", "=", "periode.kode_periode")
+			->join("program_kerja", "akuns.kode_proker", "=", "program_kerja.kode_proker")
 			->where('status', 'LIKE', 'AKTIF')
 			->where('persetujuan_proker', 'LIKE', 'Disetujui')
 			->where('status_amandemens', '!=', 'Amandemen')
-			->where('anggaran','!=',0)->get();
+			// ->where('anggaran','!=',0)
+			->get();
 			// ->groupBy("akuns.kode_proker") ->get();
 		return view('programkerja/amandemen/ubahamandemen', [
 			'coa' => $coa, 'periode' => $periode, 'pegawai' => $pegawai,
@@ -92,7 +92,7 @@ class AmandemenController extends Controller
 			'anggaran' => 0,
 			'keterangan_proker' => $request->keterangan_amandemen,
 			'status_proker' => 'Disetujui',
-			'pob' => 'Biaya'
+			'pob' => $request->pob,
 		];
 
 		ProgramKerja::create($data_amandemen);
@@ -156,14 +156,9 @@ class AmandemenController extends Controller
 	public function simpanamandemen(Request $request)
 	{
 
-		// $akun = Akuns::where('kode_proker', $request->kode_prokeramandemen)->update([
-		// 	'status_amandemens' =>'Amandemen',
-		// 	]);
-			// echo($akun);
+		
 		$kode_prokeramandemen = $request->kode_prokeramandemen;
 		$tanggalhariinis = Carbon::now()->format('Y-m-d');
-		// $check = Amandemen::count();
-		// $id_amandemen = $check + 3;
 		$periode_amandemen = $request->periode_amandemen;
 		$ambilca = Periode::where('kode_periode', $periode_amandemen)->get();
 		$check = 0;
@@ -197,6 +192,7 @@ class AmandemenController extends Controller
 				'periode' => $request->periode_amandemen,
 				'jumlah' => $jumlahs[$no_jumlah],
 				'status_pa' => "Amandemen",
+				'created_at' => $request->created_at,
 			];
 			$no_jumlah++;
 			Akuns::create($data);
@@ -238,11 +234,13 @@ class AmandemenController extends Controller
 		$akun = Akuns::where('kode_proker', $request->kode_prokeramandemen)->where('status_pa','=','proker')->update([
 				'status_amandemens' =>'Amandemen',
 				]);
+			
 		$akun = Akuns::where('kode_proker', $request->kode_prokeramandemen)->where('status_pa','=','Amandemen')->update([
 			'persetujuan_amandemen' => $request->status_amandemen,
 			// 'status_amandemens' =>'Amandemen'
 		]);
 		return redirect('/amandemen')->with('status', 'Data berhasil diubah');
+		// 2021-11-16 17:07:50
 	}
 	public function editamandemen($kode_prokeramandemen)
 	{
@@ -254,7 +252,8 @@ class AmandemenController extends Controller
 			->where('kode_prokeramandemen', $kode_prokeramandemen)->get();
 		$periode = Periode::orderBy('created_at', 'desc')->get();
 		$pegawai = Pegawai::orderBy('created_at', 'desc')->get();
-		$akun = Akuns::where('kode_proker', $kode_prokeramandemen)->where('status_amandemens','!=','Amandemen')->get();		
+		$akun = Akuns::join("coa", "akuns.kode_akun", "=", "coa.kode_akun")
+		->where('kode_proker', $kode_prokeramandemen)->where('status_amandemens','!=','Amandemen')->get();		
 		$coa = Coa::orderBy('created_at', 'desc')->get();
 
 		foreach($dataamandemen as $row){
@@ -276,7 +275,19 @@ class AmandemenController extends Controller
 	{
 		$amandemen = Amandemen::where('kode_prokeramandemen', $request->kode_prokeramandemen)->update([
 			'anggaran_amandemen' => $request->anggaran_amandemen,			
+			'keterangan_amandemen' => $request->keterangan_amandemen,			
 			'status_amandemen' => 'Menunggu Persetujuan',			
+		]);
+		$programkerja = ProgramKerja::where('kode_proker', $request->kode_prokeramandemen)->update([
+			'nama_proker' => $request->nama_proker,
+			'penanggungjawab' => $request->penanggungjawab,
+			'waktu_mulai' => $request->waktu_mulai,
+			'waktu_selesai' => $request->waktu_selesai,
+			'tujuan' => $request->tujuan,
+			'indikator' => $request->indikator,
+			'anggaran' => $request->anggaran_amandemen,
+			'keterangan_proker' => $request->keterangan_amandemen,
+			'status_proker' => 'Menunggu Persetujuan'
 		]);
 		for ($i = 1; $i <= $request->jumlahbaris; $i++) {
 			$idnya = 'id' . $i;
@@ -316,6 +327,7 @@ class AmandemenController extends Controller
 	public function viewcetakamandemen(Request $request)
 	{
 		$id = $request->id;
+		$ttd = Ttd::orderBy('created_at', 'asc')->get()->first();
 		$jumlah = Amandemen::where('periode_amandemen',$id)
 		->where('status_amandemen','like','Disetujui')
 		->sum('anggaran_amandemen');		
@@ -332,7 +344,9 @@ class AmandemenController extends Controller
 			'periode' => $periode,
 			'pegawai' => $pegawai,
 			'tanggalhariini' => $tanggalhariini,
-			'jumlah'=>$jumlah
+			'jumlah'=>$jumlah,
+			'ttd'=>$ttd
+
 		]);
 	}
 }

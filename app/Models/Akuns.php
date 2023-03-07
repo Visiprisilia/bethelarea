@@ -11,5 +11,5 @@ class Akuns extends Model
     protected $table = 'akuns';
     protected $primaryKey = 'id';
     protected $fillable = ['id','kode_proker', 'kode_akun','penanggungjawab','periode','jumlah','status_pa',
-    'persetujuan_proker','persetujuan_amandemen'];
+    'persetujuan_proker','persetujuan_amandemen','created_at'];
 }

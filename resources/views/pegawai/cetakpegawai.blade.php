@@ -5,6 +5,14 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
+<style type="text/css" media="all">
+    @media print {
+        .no-print {
+            display: none;
+        }
+    }
+</style>
+
 
 <body>
     <div id="print-area">
@@ -41,7 +49,7 @@
                             <th>File KTP</th>
                             <th>Surat Keterangan</th> -->
                             <th>Status</th>
-                            <th>Termin</th>
+                            <th>Tanggal Keluar</th>
                             <th>Keterangan</th>
                             <!-- <th>Tanggal Update</th> -->
                         </tr>
@@ -72,6 +80,6 @@
 <br><br><br><br><br><br><br><br>
 				<input class="no-print" type="button" value="Cetak" onclick="window.print()">
 <input type="button" value="Kembali" onclick=self.history.back() class="no-print">
-
+    </div>
 
 

@@ -29,6 +29,7 @@ use App\Http\Controllers\laporan\LaporanPAController;
 use App\Http\Controllers\laporan\LaporanPKController;
 use App\Http\Controllers\murid\KelasController;
 use App\Http\Controllers\realisasi\PembayaranController;
+use App\Http\Controllers\ttd\TtdController;
 
 /*
 |--------------------------------------------------------------------------
@@ -97,6 +98,13 @@ Route::get('/editkategoritagihan/{id_kategoritagihan}', [KategoriTagihanMuridCon
 Route::post('/updatekategoritagihan/{id_kategoritagihan}', [KategoriTagihanMuridController::class,'updatekategoritagihan'])->middleware(['auth', 'ceklevel:unit']);
 Route::get('/hapuskategoritagihan/{id_kategoritagihan}', [KategoriTagihanMuridController::class,'hapuskategoritagihan'])->middleware(['auth', 'ceklevel:unit']);
 
+//Ttd -->
+Route::get('/ttd', [TtdController::class,'ttd']);
+Route::get('/tambahttd', [TtdController::class,'tambahttd'])->middleware(['auth', 'ceklevel:super admin']);
+Route::post('/simpanttd', [TtdController::class,'simpanttd'])->middleware(['auth', 'ceklevel:super admin']);
+Route::get('/editttd/{id_ttd}', [TtdController::class,'editttd'])->middleware(['auth', 'ceklevel:super admin']);
+Route::post('/updatettd/{id_ttd}', [TtdController::class,'updatettd'])->middleware(['auth', 'ceklevel:super admin']);
+Route::get('/hapusttd/{id_ttd}', [TtdController::class,'hapusttd'])->middleware(['auth', 'ceklevel:super admin']);
 
 //Periode -->
 Route::get('/periode', [PeriodeController::class,'periode']);
@@ -239,6 +247,8 @@ Route::post('/updatekasmasuk/{no_bukti}', [KasMasukController::class,'updatekasm
 Route::get('/hapuskasmasuk/{no_bukti}', [KasMasukController::class,'hapuskasmasuk'])->middleware('auth', 'ceklevel:unit');
 Route::get('/sumberkasmasuk', [KasMasukController::class,'sumberkasmasuk']);
 Route::get('/pilihprokerkm', [KasMasukController::class,'pilihprokerkm'])->middleware('auth', 'ceklevel:unit');
+Route::get('/pilihprokerkasmasuk', [KasMasukController::class,'pilihprokerkasmasuk'])->name('pilihprokerkasmasuk.index')->middleware('auth', 'ceklevel:unit');
+Route::get('/pilihakunkasmasuk/{kode_proker}', [KasMasukController::class,'pilihakunkasmasuk'])->middleware('auth', 'ceklevel:unit');
 Route::get('/cetakkasmurid', [KasMasukController::class,'cetakkasmurid']);
 Route::get('/cetakkasmurid', [KasMasukController::class,'cetakkasmurid']);
 Route::get('/cetaksementara', [KasMasukController::class,'cetaksementara']);

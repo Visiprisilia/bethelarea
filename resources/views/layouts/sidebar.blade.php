@@ -33,10 +33,10 @@
         <div id="datamaster" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Data Master:</h6>
+                <a class="collapse-item" href="/periode">Daftar Periode</a>
                 <a class="collapse-item" href="/kebijakans">Kebijakan Yayasan</a>
                 <a class="collapse-item" href="/unit">Daftar Unit</a>
                 <a class="collapse-item" href="/subunit">Daftar Sub Unit</a>
-                <a class="collapse-item" href="/periode">Daftar Periode</a>
                 <a class="collapse-item" href="/pegawai">Daftar Pegawai</a>
                 <a class="collapse-item" href="/kelas">Daftar Kelas</a>
                 <a class="collapse-item" href="/murid">Daftar Murid</a>
@@ -44,7 +44,7 @@
                 @if (auth()->user()->level=="super admin")
                 <a class="collapse-item" href="/sumber">Daftar Sumber Dana</a>
                 <!-- <a class="collapse-item" href="/kategoritagihan">Daftar Jenis Tagihan</a> -->                           
-                <a class="collapse-item" href="/user">User</a>
+                <!-- <a class="collapse-item" href="/user">User</a> -->
                 @endif
             </div>
         </div>
@@ -125,6 +125,22 @@
                 <a class="collapse-item" href="/laporanposisianggaran">Lap. Posisi Anggaran</a>
                 <a class="collapse-item" href="/laporankas">Lap. Kas</a>
                 <a class="collapse-item" href="/laporanpengkomp">Lap. Peng. Komprehensif</a>
+            </div>
+        </div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pengaturan" aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-solid fa-wrench"></i>
+            <span>Pengaturan</span>
+        </a>
+        <div id="pengaturan" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">pengaturan:</h6>
+                @if (auth()->user()->level=="super admin")
+                <a class="collapse-item" href="/user">User</a>
+                <a class="collapse-item" href="/ttd">Data Penanda tangan </a>
+                @endif
+                <a class="collapse-item" href="/panduan">Panduan Aplikasi</a>
             </div>
         </div>
     </li>

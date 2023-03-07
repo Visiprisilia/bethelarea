@@ -35,11 +35,11 @@
                                             @csrf
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Kode Unit</label>
-                                                <input class="form-control" id="kode_unit" name="kode_unit" disabled value="{{$item->kode_unit}}" placeholder="Kode Unit" required />
+                                                <input class="form-control" id="kode_unit" name="kode_unit" readonly value="{{$item->kode_unit}}" placeholder="Kode Unit" required />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Nama Unit</label>
-                                                <input class="form-control" id="nama_unit" name="nama_unit" disabled value="{{$item->nama_unit}}" placeholder="Nama Unit" required />
+                                                <input class="form-control" id="nama_unit" name="nama_unit" readonly value="{{$item->nama_unit}}" placeholder="Nama Unit" required />
                                             </div>
                                            
                                             <div class="mb-3">

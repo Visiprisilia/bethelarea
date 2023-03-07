@@ -70,6 +70,14 @@
                                                     <option>Kredit</option>
                                                 </select>
                                             </div></div> -->
+                                            <div class="mb-3" id="cek" style="display: none;">
+                                                <label for="exampleFormControlSelect1">Status COA</label>
+                                                <select class="form-control" id="status_coa" name="status_coa" >
+                                                <option  value>Pilih Status</option>  
+                                                    <option value="tagihan">Tagihan Murid</option>
+                                                    <option value="NULL">Non Tagihan Murid</option>
+                                                </select>
+                                            </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlSelect1">Saldo Normal</label>
                                                 <select class="form-control" id="saldo_normal" name="saldo_normal" >
@@ -78,6 +86,7 @@
                                                     <option>Kredit</option>
                                                 </select>
                                             </div>
+                                       
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1">Keterangan</label>
                                                 <input class="form-control" id="keterangan_coa" name="keterangan_coa" placeholder="Masukkan Keterangan" />
@@ -96,12 +105,12 @@
         </div>
     </main>
 </div>
-<!-- <script>
+<script>
     $(document).on('change', '#kelompok_rek', function() {
         var val = $('#kelompok_rek option').filter(':selected').val() == "pendapatan" ? $('#cek').show() : $('#cek').hide();
 
         //   if(val=="murid"{})  
         // alert(val);
     })
-</script> -->
+</script>
 @endsection

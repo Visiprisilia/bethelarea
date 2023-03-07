@@ -10,6 +10,7 @@ use App\Models\Periode\Periode;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Coa\Coa;
 use App\Models\Pegawai\Pegawai;
+use App\Models\Ttd\Ttd;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules\Unique;
@@ -277,7 +278,8 @@ class ProgramKerjaController extends Controller
 		$coa = Coa::orderBy('created_at', 'asc')->get();
 
 		$dataproker = ProgramKerja::where('kode_proker', $kode_proker)->get();
-		$programkerja = ProgramKerja::where('kode_proker', $kode_proker)->get();
+		$programkerja = ProgramKerja::join("pegawai", "program_kerja.penanggungjawab", "=", "pegawai.niy")
+		->where('kode_proker', $kode_proker)->get();
 		$akun = Akuns::join("coa", "akuns.kode_akun", "=", "coa.kode_akun")
 			->where('kode_proker', $kode_proker)->where('status_amandemens', '!=', 'Amandemen')->get();
 		// return $programkerja;
@@ -382,6 +384,7 @@ class ProgramKerjaController extends Controller
 	public function viewcetakprogramkerja(Request $request)
 	{
 		$id = $request->id;
+		$ttd = Ttd::orderBy('created_at', 'asc')->get()->first();
 		$tanggalhariini = Carbon::now()->isoFormat('D MMMM Y');
 		$jumlah = programkerja::where('periode', $id)
 			->where('anggaran', '!=', 0)
@@ -399,13 +402,14 @@ class ProgramKerjaController extends Controller
 			->get();
 		// $programkerja = ProgramKerja::join("pegawai","program_kerja.penanggungjawab","=","pegawai.niy")->where('periode', $id)->get();
 		return view('programkerja/programkerja/viewcetakprogramkerja', [
-			'programkerja' => $programkerja,
+			'programkerja' => $programkerja,'ttd' => $ttd,
 			'periode' => $periode, 'pegawai' => $pegawai, 'tanggalhariini' => $tanggalhariini, 'jumlah' => $jumlah
 		]);
 	}
 	public function viewcetakprogramkerjapendapatan(Request $request)
 	{
 		$id = $request->id;
+		$ttd = Ttd::orderBy('created_at', 'asc')->get()->first();
 		$tanggalhariini = Carbon::now()->isoFormat('D MMMM Y');
 		$jumlah = programkerja::where('periode', $id)
 			->where('anggaran', '!=', 0)
@@ -423,7 +427,7 @@ class ProgramKerjaController extends Controller
 			->get();
 		// $programkerja = ProgramKerja::join("pegawai","program_kerja.penanggungjawab","=","pegawai.niy")->where('periode', $id)->get();
 		return view('programkerja/programkerja/viewcetakprogramkerjapendapatan', [
-			'programkerja' => $programkerja,
+			'programkerja' => $programkerja, 'ttd' => $ttd,
 			'periode' => $periode, 'pegawai' => $pegawai, 'tanggalhariini' => $tanggalhariini, 'jumlah' => $jumlah
 		]);
 	}
