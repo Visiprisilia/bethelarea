@@ -36,13 +36,14 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Nomor Induk Yayasan</th>
+                            <th>Nomor Induk Pegawai</th>
                             <th>Nama</th>
                             <th>Tempat Lahir</th>
-                            <th>TTL</th>
+                            <th>Tanggal Lahir</th>
                             <th>Agama</th>
-                            <th>Pendidikan</th>
                             <th>Alamat</th>
+                            <th>Jabatan</th>
+                            <th>Pendidikan</th>
                             <th>Penempatan</th>
                             <th>Tanggal Masuk</th>
                             <th>Status Kepegawaian</th>
@@ -51,8 +52,8 @@
                             <th>File KTP</th>
                             <th>Surat Keterangan</th> -->
                             <th>Status</th>
-                            <th>Termin</th>
-                            <th>Keterangan</th>
+                            <th>Tanggal Keluar</th>
+                            <!-- <th>Keterangan</th> -->
                             <th>Tanggal Update</th>
                             @if (auth()->user()->level=="super admin")
                             <th>Perubahan Data</th>
@@ -68,8 +69,9 @@
                             <td>{{ $item->tempat_lahir}}</td>
                             <td>{{ $item->ttl}}</td>
                             <td>{{ $item->agama}}</td>
-                            <td>{{ $item->pendidikan}}</td>
                             <td>{{ $item->alamat}}</td>
+                            <td>{{ $item->jabatan}}</td>
+                            <td>{{ $item->pendidikan}}</td>
                             <td>{{ $item->penempatan}}</td>
                             <td>{{ $item->tanggal_masuk}}</td>
                             <td>{{ $item->status_kepegawaian}}</td>
@@ -79,7 +81,7 @@
                             <td>{{ $item->file_suket}}</td> -->
                             <td>{{ $item->status}}</td>
                             <td>{{ $item->tanggal_terminasi}}</td>
-                            <td>{{ $item->keterangan_pegawai}}</td>
+                            <!-- <td>{{ $item->keterangan_pegawai}}</td> -->
                             <td>{{ $item->updated_at}}</td>
                             @if (auth()->user()->level=="super admin")
                             <td>

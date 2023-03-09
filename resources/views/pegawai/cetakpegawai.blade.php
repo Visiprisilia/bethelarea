@@ -37,10 +37,11 @@
                             <th>Nomor Induk Yayasan</th>
                             <th>Nama</th>
                             <th>Tempat Lahir</th>
-                            <th>TTL</th>
+                            <th>Tanggal Lahir</th>
                             <th>Agama</th>
-                            <th>Pendidikan</th>
                             <th>Alamat</th>
+                            <th>Jabatan</th>
+                            <th>Pendidikan Terakhir</th>
                             <th>Penempatan</th>
                             <th>Tanggal Masuk</th>
                             <th>Status Kepegawaian</th>
@@ -50,7 +51,7 @@
                             <th>Surat Keterangan</th> -->
                             <th>Status</th>
                             <th>Tanggal Keluar</th>
-                            <th>Keterangan</th>
+                            <!-- <th>Keterangan</th> -->
                             <!-- <th>Tanggal Update</th> -->
                         </tr>
                     <tbody>
@@ -62,15 +63,16 @@
                             <td>{{ $item->tempat_lahir}}</td>
                             <td>{{ $item->ttl}}</td>
                             <td>{{ $item->agama}}</td>
-                            <td>{{ $item->pendidikan}}</td>
                             <td>{{ $item->alamat}}</td>
+                            <td>{{ $item->jabatan}}</td>
+                            <td>{{ $item->pendidikan}}</td>
                             <td>{{ $item->penempatan}}</td>
                             <td>{{ $item->tanggal_masuk}}</td>
                             <td>{{ $item->status_kepegawaian}}</td>
                             <td>{{ $item->tanggal_ppt}}</td>
                             <td>{{ $item->status}}</td>
                             <td>{{ $item->tanggal_terminasi}}</td>
-                            <td>{{ $item->keterangan_pegawai}}</td>
+                            <!-- <td>{{ $item->keterangan_pegawai}}</td> -->
                             <!-- <td>{{ $item->updated_at}}</td> -->
                         </tr>
                         @endforeach

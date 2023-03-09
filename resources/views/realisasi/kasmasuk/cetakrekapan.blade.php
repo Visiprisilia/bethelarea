@@ -5,6 +5,13 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
+<style type="text/css" media="all">
+    @media print {
+        .no-print {
+            display: none;
+        }
+    }
+</style>
 
 <body>
     <div id="print-area">
@@ -21,9 +28,9 @@
             <h6>Alamat: Jl Hasanudin No.3B, Mangunsari, Kec.Sidomukti, Kota Salatiga, Jawa Tengah </h6> <br>
             <p style="text-align:center;"><strong>REKAPAN KAS MASUK MURID</strong><br>
         </center>
-  
+
         <div id="print-area">
-            <form action="/simpanstatus/{id_setoran}" method="post">                                         
+            <form action="/simpanstatus/{id_setoran}" method="post">
                 @csrf
                 <!-- <div class="container">
                     <div class="row">
@@ -43,71 +50,71 @@
                             </div>
                         </div>
                     </div> -->
-            <br>
+                <br>
 
-            <!-- Periode : <select class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" id="laporankas" require name="laporankas"> -->
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>No.Bukti</th>
-                        <th>Periode</th>
-                        <th>Tanggal Pencatatan</th>
-                        <th>Nama Murid</th>
-                        <th>Keterangan</th>
-                        <!-- <th>Akun</th> -->
-                        <!-- <th>Sumber</th> -->
-                        <th>Jumlah</th>
-                        <!-- <th>id</th> -->
-                    </tr>
-                <tbody>
-                    @foreach ($kasmasuk as $item)
-                    <tr>
-                        <td>{{ $loop->iteration}}</td>
-                        <td>{{ $item->no_bukti}}</td>
-                        <td>{{ $item->periode}}</td>
-                        <td>{{ $item->tanggal_pencatatan}}</td>
-                        <td>{{ $item->nama}}</td>
-                        <td>{{ $item->keterangan}}</td>
-                        <!-- <td>{{ $item->akun}}</td>                             -->
-                        <!-- <td>{{ $item->nama_sumber}}</td>                             -->
-                        <td>{{Str::rupiah ($item->jumlah)}}</td>
-                        <!-- <td>{{ $item->id_setoran}}</td>                             -->
+                <!-- Periode : <select class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" id="laporankas" require name="laporankas"> -->
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>No.Bukti</th>
+                            <th>Periode</th>
+                            <th>Tanggal Pencatatan</th>
+                            <th>Nama Murid</th>
+                            <th>Keterangan</th>
+                            <!-- <th>Akun</th> -->
+                            <!-- <th>Sumber</th> -->
+                            <th>Jumlah</th>
+                            <!-- <th>id</th> -->
+                        </tr>
+                    <tbody>
+                        @foreach ($kasmasuk as $item)
+                        <tr>
+                            <td>{{ $loop->iteration}}</td>
+                            <td>{{ $item->no_bukti}}</td>
+                            <td>{{ $item->periode}}</td>
+                            <td>{{ $item->tanggal_pencatatan}}</td>
+                            <td>{{ $item->nama}}</td>
+                            <td>{{ $item->keterangan}}</td>
+                            <!-- <td>{{ $item->akun}}</td>                             -->
+                            <!-- <td>{{ $item->nama_sumber}}</td>                             -->
+                            <td>{{Str::rupiah ($item->jumlah)}}</td>
+                            <!-- <td>{{ $item->id_setoran}}</td>                             -->
 
-                    </tr>
-                    @endforeach
-                </tbody>
-                <th></th>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                    <th></th>
                     <th></th>
                     <th></th>
                     <th></th>
                     <th></th>
                     <th>Total</th>
                     <th>{{Str::rupiah ($jumlahs)}}</th>
-                </thead>
-            </table>
+                    </thead>
+                </table>
 
-            <div style="clear:both;"></div>
+                <div style="clear:both;"></div>
         </div>
     </div>
-<br>
-<br>
+    <br>
+    <br>
 
 
-<center>
-    &emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b> Salatiga,</b> {{$tanggalhariini}} &nbsp;<br><br>
-    <b>&emsp;&nbsp;&nbsp;&emsp;Membuat&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Menyetujui&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>Mengetahui&emsp;&nbsp;&emsp;&emsp;&emsp;&nbsp;</b></b></b><br />
-    <b>&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bagian Administrasi&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Kepala Sekolah&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>Bendahara Yayasan&emsp;&nbsp;&emsp;&emsp;&emsp;&nbsp;&emsp;</b></b></b><br /><br><br><br>
-    &emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$ttd->bagian_administrasi ?? '' }}&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;{{$ttd->kepala_sekolah ?? '' }}&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;{{$ttd->bendahara_yayasan ?? '' }}&emsp;&nbsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;<br /><br><br><br>
-</center>
-<br><br><br>
-    <span class="pull-right col-xs-12"> 
-    &nbsp;&nbsp;&nbsp; &nbsp;  <input class="btn btn-info" type="button" value="Cetak" onclick="window.print()">
+    <center>
+        &emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b> Salatiga,</b> {{$tanggalhariini}} &nbsp;<br><br>
+        <b>&emsp;&nbsp;&nbsp;&emsp;Membuat&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Menyetujui&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>Mengetahui&emsp;&nbsp;&emsp;&emsp;&emsp;&nbsp;</b></b></b><br />
+        <b>&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bagian Administrasi&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Kepala Sekolah&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>Bendahara Yayasan&emsp;&nbsp;&emsp;&emsp;&emsp;&nbsp;&emsp;</b></b></b><br /><br><br><br>
+        &emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$ttd->bagian_administrasi ?? '' }}&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;{{$ttd->kepala_sekolah ?? '' }}&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;{{$ttd->bendahara_yayasan ?? '' }}&emsp;&nbsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;<br /><br><br><br>
+    </center>
+    <br><br><br>
+    <span class="pull-right col-xs-12">
+        &nbsp;&nbsp;&nbsp; &nbsp; <input class="no-print" type="button" value="Cetak" onclick="window.print()">
         <!-- <input type="button" value="Kembali" onclick=self.history.back() class="no-print"> -->
-       <br><br><br> <br><br><br>  &nbsp;&nbsp;&nbsp; &nbsp; <button type="submit" class="btn btn-success">Setor</button>
-        <a href="{{url('/kasmasuk')}}" class="btn btn-danger">Kembali</a>
-
+        <br><br><br> <br><br><br> &nbsp;&nbsp;&nbsp; &nbsp; <button type="submit" class="no-print">Setor</button>
+        <!-- <a href="{{url('/kasmasuk')}}"  class="no-print">Kembali</a> -->
+        <input type="button" value="Kembali" onclick=self.history.back() class="no-print">
         <div style="clear:both;"></div>
         </div>
     </span>
-    </form> 
+    </form>

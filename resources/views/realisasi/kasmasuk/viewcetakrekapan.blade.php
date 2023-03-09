@@ -1,12 +1,10 @@
-
-<!-- <style type="text/css" media="all">.dataTables_wrapper {
-    font-family: tahoma;
-    font-size: 10px;
-    position: relative;
-    clear: both;
-    *zoom: 1;
-    zoom: 1;
-}</style> -->
+<style type="text/css" media="all">
+    @media print {
+        .no-print {
+            display: none;
+        }
+    }
+</style>
 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>

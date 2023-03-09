@@ -5,7 +5,13 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-
+<style type="text/css" media="all">
+    @media print {
+        .no-print {
+            display: none;
+        }
+    }
+</style>
 <body>
     <div id="print-area">
         <style type="text/css">
@@ -107,9 +113,9 @@
 </center>
     <span class="pull-right col-xs-12">
         <input class="no-print" type="button" value="Cetak" onclick="window.print()">
-        <!-- <input type="button" value="Kembali" onclick=self.history.back() class="no-print"> -->
+        <input type="button" value="Kembali" onclick=self.history.back() class="no-print">
         <!-- <button type="submit" class="btn btn-success">Cetak</button> -->
-        <a href="{{url('/kasmasuk')}}" class="btn">Kembali</a>
+        <!-- <a href="{{url('/kasmasuk')}}" class="btn">Kembali</a> -->
 
         <div style="clear:both;"></div>
         </div>
